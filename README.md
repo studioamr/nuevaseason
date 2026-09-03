@@ -19,6 +19,12 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 - Rutas por **pathfinding A\*** sobre máscaras del blueprint (`img/masks`, `tools/build-masks.py`): pared blanca = bloqueada, amarillo = rompible (caro), interior/exterior del edificio distinguidos para que las rutas exteriores rodeen el edificio.
 - Estrategias por sitio en `js/strats/<mapa>.json` (generadas por agentes contra `tools/ctx/<mapa>.json` y validadas con `tools/validate-strats.js`). Faltan 9 mapas (límite de sesión): kanal, house, tower, bartlett, closequarter, fortress, favela, yacht, plane, hereford.
 
+## Diseño
+Centro de mando táctico: chapa mate, reglas finas, sin neón ni cristal. Tipografía condensada (Barlow/Saira/Oswald) con animación de teletipo. El acento de toda la interfaz **cambia con el lado**: azul en ataque, naranja en defensa (convención de R6).
+
+## Etapas sobre el plano
+La estrategia se muestra como fases numeradas encima del mapa (`.phasebar`) y **se van completando** con el reloj en *En vivo*. En ataque salen de la línea de tiempo de la estrategia; en defensa se generan de la fase de preparación, roam, anclas y retake.
+
 ## Tema
 `js/theme.js` — presets **R6 clásico** (azul ataque / naranja defensa), Nueva Season, Pro league, Sigilo; colores editables, 4 fuentes condensadas y control de brillo. El acento de toda la interfaz **sigue al lado activo**.
 

@@ -108,15 +108,22 @@
     return out;
   }
   function renderCanvas() {
-    const m = map(), s = site(); const c = $('#canvas');
+    const m = map(), s = site(); const c = CV; if (!c) return;
     if (!mounted) { c.innerHTML = ''; MapView.mount(c); mounted = true; }
     // floor buttons + tools (re-crear sobre el canvas)
-    c.querySelectorAll('.floors,.tools,.legend,.src,.verify,.empty').forEach(x => x.remove());
+    c.querySelectorAll('.floors,.tools,.legend,.src,.verify,.empty,.phasebar').forEach(x => x.remove());
     const fls = floorList(m); const sIdx = siteFloorIdx(m, s); if (S.floorIdx == null || !fls.some(f => String(f.idx) === String(S.floorIdx))) S.floorIdx = sIdx;
     const fb = document.createElement('div'); fb.className = 'floors'; fb.innerHTML = fls.map(f => `<button class="${String(f.idx) === String(S.floorIdx) ? 'on' : ''} ${String(f.idx) === String(sIdx) ? 'site' : ''}" data-f="${f.idx}">${E(f.n)}</button>`).join(''); c.appendChild(fb);
     fb.querySelectorAll('button').forEach(b => b.onclick = () => { S.floorIdx = m.r6 ? +b.dataset.f : b.dataset.f; renderCanvas(); });
     const t = document.createElement('div'); t.className = 'tools'; t.innerHTML = `<button class="btn" data-t="in">＋</button><button class="btn" data-t="out">－</button><button class="btn" data-t="fit">Ajustar</button><button class="btn ${S.labels ? '' : 'ghost'}" data-t="lbl">Nombres</button><button class="btn ${S.lang === 'en' ? '' : 'ghost'}" data-t="lang">EN</button><button class="btn ${S.edit ? 'p' : ''}" data-t="edit">${S.edit ? 'Editando rutas' : 'Editar rutas'}</button>${!m.r6 ? '<button class="btn" data-t="up">Subir plano</button>' : ''}`; c.appendChild(t);
     t.querySelectorAll('button').forEach(b => b.onclick = () => { const k = b.dataset.t; if (k === 'in') MapView.zoom(1.3); else if (k === 'out') MapView.zoom(1 / 1.3); else if (k === 'fit') MapView.fit(); else if (k === 'lbl') { S.labels = !S.labels; save(); renderCanvas(); } else if (k === 'lang') { S.lang = S.lang === 'en' ? 'es' : 'en'; save(); renderCanvas(); } else if (k === 'edit') { S.edit = !S.edit; if (!S.edit) S.selected = null; renderCanvas(); renderPlanPane(); } else if (k === 'up') uploadPlan(); });
+    // etapas de la estrategia, sobre el plano, que se van completando
+    const xs = curStrat(); const ph = Round.phases();
+    if (xs && ph.length) {
+      const pb = document.createElement('div'); pb.className = 'phasebar'; pb.id = 'phaseBar';
+      pb.innerHTML = ph.map((p, i) => `<div class="ph" data-i="${i}"><b>${i + 1}</b><span>${E(p.label)}</span><i></i></div>`).join('');
+      c.appendChild(pb); c.classList.add('has-phases'); paintPhases();
+    } else c.classList.remove('has-phases');
     const lg = document.createElement('div'); lg.className = 'legend'; lg.innerHTML = S.side === 'atk' ? slots().map((p, i) => `<span><i style="background:${Engine.COLORS[i]}"></i>${E(p.name)}</span>`).join('') + `<span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span><span><i style="background:#cfd8e3;height:8px"></i>escotilla</span><span><i style="background:#6aa3ff;height:8px;border-radius:50%"></i>spawn</span><span><i style="background:#ff2e63;height:8px;border-radius:50%"></i>zona de defensores</span>` : `<span><i style="background:#ff4fd8"></i>ancla</span><span><i style="background:#7dff6a"></i>roam</span><span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span>`; c.appendChild(lg);
     const src = document.createElement('div'); src.className = 'src'; src.textContent = m.r6 ? 'plano: r6maps.com · in-game blueprint' + (['border', 'chalet', 'skyscraper', 'consulate', 'house', 'favela'].includes(m.id) ? ' · versión previa al rework' : '') : m.userImgs ? 'plano subido por ti' : 'croquis esquemático · editable'; c.appendChild(src);
     if (s.verify || m.verify) { const v = document.createElement('div'); v.className = 'verify'; v.innerHTML = `<span class="chip acc">Callouts por confirmar en el juego</span>`; c.appendChild(v); }
@@ -247,14 +254,18 @@
   // =====================================================================
   const stepLabels = () => ({ 1: map().n, 2: `${S.side === 'atk' ? 'Ataque' : 'Defensa'} · ${S.side === 'atk' && !S.siteKnown ? 'sitio ?' : site().n}`, 3: (curStrat() ? (curStrat().tag || curStrat().n) : 'libre'), 4: S.live && S.live.playing ? 'en curso' : '' });
   function goStep(n) { S.step = n; S.selected = null; save(); render(); }
+  const CV = $('#canvas');
+  function mountCanvas() { // el canvas vive fuera de las pantallas: al reconstruirlas hay que volver a colgarlo
+    const cv = CV; if (!cv) return; cv.hidden = !(S.step === 3 || S.step === 4);
+    const host = S.step === 3 ? $('#s3 .mini') : S.step === 4 ? $('#s4 .lv-canvas') : null;
+    if (host && cv.parentElement !== host) { host.appendChild(cv); setTimeout(() => MapView.fit(), 60); }
+  }
   function renderWiz() {
     const lb = stepLabels(); $$('#steps button[data-step]').forEach(b => { const n = +b.dataset.step; b.classList.toggle('on', n === S.step); b.classList.toggle('done', n < S.step); b.querySelector('small').textContent = lb[n] || ''; b.onclick = () => goStep(n); });
     $$('.screen').forEach(sc => sc.classList.toggle('on', sc.id === 's' + S.step));
     renderScore(); $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, round: 1, live: null, siteKnown: true }); };
-    const cv = $('#canvas'); cv.hidden = !(S.step === 3 || S.step === 4);
     if (S.step === 1) renderS1(); if (S.step === 2) renderS2(); if (S.step === 3) renderS3(); if (S.step === 4) renderS4();
-    if (S.step === 3) { const host = $('#s3 .mini'); if (host && cv.parentElement !== host) host.appendChild(cv); }
-    if (S.step === 4) { const host = $('#s4 .lv-canvas'); if (host && cv.parentElement !== host) host.appendChild(cv); }
+    mountCanvas();
     if (S.step !== 4) Round.stopTick();
     else Round.ensureTick();
   }
@@ -388,6 +399,7 @@
     $$('#s3 .flexnote [data-site]').forEach(b => b.onclick = () => { S.floorIdx = null; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
     $$('#s3 .pcard').forEach(d => d.onclick = e => { if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return; S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS3(); renderCanvas(); });
     $$('#s3 .pcard select').forEach(sel => { sel.onclick = e => e.stopPropagation(); sel.onchange = () => { const picks = { ...S.picks }; picks[sel.dataset.slot] = { op: sel.value || undefined }; commit({ picks }); }; });
+    mountCanvas();
     $('#goLive').onclick = () => goStep(4); $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
     $('#openDrawer').onclick = () => $('#drawer').classList.add('on');
     setTimeout(() => MapView.fit(), 50);
@@ -395,7 +407,22 @@
   // ---- paso 4: EN VIVO (mapa grande + reloj + instrucción del operador enfocado)
   const Round = {
     T: 180, raf: null,
-    phases() { const x = curStrat(); const out = []; (x && x.timeline || []).forEach(t => { const mm = String(t).match(/(\d+):(\d\d)\s*[–\-]\s*(\d+):(\d\d)\s*[·:\-]?\s*(.*)/); if (mm) out.push({ from: +mm[1] * 60 + +mm[2], to: +mm[3] * 60 + +mm[4], label: mm[5] || t }); }); return out; },
+    phases() {
+      const x = curStrat(); const out = [];
+      (x && x.timeline || []).forEach(t => { const mm = String(t).match(/(\d+):(\d\d)\s*[–\-]\s*(\d+):(\d\d)\s*[·:\-]?\s*(.*)/); if (mm) out.push({ from: +mm[1] * 60 + +mm[2], to: +mm[3] * 60 + +mm[4], label: mm[5] || t }); });
+      if (out.length || !x || S.side !== 'def') return out;
+      // defensa: fases fijas de la ronda a partir del setup
+      const rf = (x.reinforce || []).slice(0, 3).join(' · ') || 'refuerzos del sitio';
+      const rot = (x.rotations || []).join(' · ');
+      const anc = (x.ops || []).filter(o => o.role === 'ancla').map(o => `${(Engine.op(o.op) || {}).n || o.op} en ${o.room}`).join(' · ');
+      const roam = (x.ops || []).filter(o => o.role === 'roam').map(o => (Engine.op(o.op) || {}).n || o.op).join(' · ');
+      return [
+        { from: 0, to: 45, label: 'Preparación: ' + rf },
+        { from: 45, to: 105, label: 'Roam y primer contacto' + (roam ? ': ' + roam : '') },
+        { from: 105, to: 150, label: 'Anclas al sitio' + (anc ? ': ' + anc : '') },
+        { from: 150, to: 180, label: 'Retake / cortar el plant' + (rot ? ' · rotar ' + rot : '') }
+      ];
+    },
     arrival() { const ph = this.phases(); if (ph.length >= 3) return ph[ph.length - 1].from; return this.T * .75; },
     t() { if (!S.live) return 0; if (!S.live.playing) return S.live.t || 0; return Math.min(this.T, (Date.now() - S.live.t0) / 1000); },
     progress() { const t = this.t(); const arr = this.arrival(); const pr = {}; SQUAD.forEach(p => { pr[p.id] = S.live ? Math.min(1, t / arr) : 1; }); return pr; },
@@ -414,17 +441,29 @@
     const cards = callSheet(); const focus = S.focus || (me && cards.some(c => c.slot === me.slot) ? me.slot : cards[0].slot); if (!S.focus) S.focus = focus;
     const isAtk = S.side === 'atk';
     $('#s4').innerHTML = `<div class="lv-canvas"></div><aside class="live"><div class="clock ${isAtk ? '' : 'def'}" id="clock">3:00</div><div class="phase" id="phase">${E(site().n)}</div><div class="ctl"><button class="btn p" id="lvPlay">▶</button><button class="btn" id="lvPause">❚❚</button><button class="btn" id="lvReset">↺</button><button class="btn ghost" id="lvBack">Plan</button></div><div class="now" id="now"></div><div class="tl" id="tl"></div><div class="opchips">${cards.map(c => `<button class="${S.focus === c.slot ? 'on' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><i></i><b>${E(c.op)}</b><small>${E(c.name)}</small></button>`).join('')}</div></aside>`;
+    mountCanvas();
     $('#lvPlay').onclick = () => Round.play(); $('#lvPause').onclick = () => Round.pause(); $('#lvReset').onclick = () => Round.reset(); $('#lvBack').onclick = () => goStep(3);
     $$('#s4 .opchips button').forEach(b => b.onclick = () => { S.focus = b.dataset.slot; save(); renderS4(); renderCanvas(); });
     renderLiveClock(true); setTimeout(() => MapView.fit(), 50);
   }
   let lastNowKey = '';
+  function paintPhases() { // marca hecha/actual/pendiente y rellena la barra de la etapa en curso
+    const bar = $('#phaseBar'); if (!bar) return; const ph = Round.phases(); if (!ph.length) return;
+    const live = S.step === 4 && S.live; const t = live ? Round.t() : 0;
+    [...bar.children].forEach((el, i) => {
+      const p = ph[i]; const done = live && t >= p.to; const now = live ? (t >= p.from && t < p.to) : i === 0;
+      el.classList.toggle('done', !!done); el.classList.toggle('now', !!now);
+      const fill = el.querySelector('i'); const k = !live ? 0 : done ? 1 : now ? Math.max(0, Math.min(1, (t - p.from) / (p.to - p.from))) : 0;
+      fill.style.width = (k * 100) + '%';
+    });
+  }
   function renderLiveClock(force) {
     if (S.step !== 4) return; const t = Round.t(); const cl = $('#clock'); if (!cl) return; cl.textContent = fmtT(Round.T - t);
     const ph = Round.phases(); const cur = ph.find(p => t >= p.from && t < p.to) || (t >= Round.T ? ph[ph.length - 1] : null);
     const phEl = $('#phase'); if (phEl) phEl.textContent = cur ? cur.label : (S.live ? '' : 'Listo · toca ▶ al empezar la acción');
     const tl = $('#tl'); if (tl && (force || tl.children.length !== ph.length)) tl.innerHTML = ph.map(p => `<div><b>${fmtT(p.from)}–${fmtT(p.to)}</b><span>${E(p.label)}</span></div>`).join('');
     if (tl) [...tl.children].forEach((d, i) => d.classList.toggle('on', ph[i] === cur));
+    paintPhases();
     // instrucción del operador enfocado según el avance
     const c = callSheet().find(x => x.slot === S.focus); const now = $('#now'); if (!c || !now) return;
     let key, html;

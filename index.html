@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>R6 NUEVA SEASON · Centro de mando del squad</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700;800&family=Saira+Extra+Condensed:wght@500;600;700;800&family=Oswald:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788478253">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css?v=1788478972">
 <style>
 .land{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
 .land header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--line)}
@@ -57,10 +57,10 @@ footer{padding:18px 28px;border-top:1px solid var(--line);font-family:var(--mono
   </main>
   <footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
 </div>
-<script src="js/store.js?v=1788478253"></script>
-<script src="js/fx.js?v=1788478253"></script>
-<script src="js/theme.js?v=1788478253"></script>
-<script src="js/data-squad.js?v=1788478253"></script>
+<script src="js/store.js?v=1788478972"></script>
+<script src="js/fx.js?v=1788478972"></script>
+<script src="js/theme.js?v=1788478972"></script>
+<script src="js/data-squad.js?v=1788478972"></script>
 <script>
 document.getElementById('sqRow').innerHTML = SQUAD.map(p => `<div class="m"><span class="av ${p.me?'acc':''}">${Store.esc((p.nick||'AM').replace(/^o\s+/i,'').slice(0,2).toUpperCase())}</span><div><b>${Store.esc(p.nick||'André')}</b><small>${Store.esc(p.role)} · ${p.stats?('K/D '+p.stats.kd.toFixed(2)+' · nivel '+p.stats.level):'pon tu nick'}</small></div></div>`).join('');
 </script>
