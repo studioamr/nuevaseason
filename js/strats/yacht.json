@@ -7,12 +7,12 @@
      "id": "default",
      "n": "Default lento",
      "tag": "DEFAULT",
-     "summary": "El sitio de sótano (Engine Storage / Server Room) se gana desde arriba: Buck rompe el piso de Engine Utility y Engine Control para negar el Engine y las anclas de Storage, mientras Thermite y Thatcher abren la pared reforzada de Engine Hallway a Server Room. Con el piso abierto y la pared caída, los defensores se apretan en Storage y ahí planta Thermite pegado a la pared, con Nomad cerrando el flanco de Back Stairs.",
+     "summary": "El sitio de sótano (Engine Storage / Server Room) se gana desde arriba: Buck toma Kitchen Hallway y Kitchen Pantry y abre el piso y la escotilla de la despensa sobre Engine Storage, mientras Thermite y Thatcher abren la pared reforzada de Engine Hallway a Server Room desde Back Entrance. Con el piso abierto y la pared caída, los defensores se apretan en Server Room y ahí planta Thermite pegado a la pared, con Nomad cerrando Back Stairs e IQ entrando por Emergency Exit a babor.",
      "timeline": [
-      "0:00–0:45 · drones a Back Entrance y Engine Hallway; IQ escanea Server Room desde Emergency Exit; Buck sube por Rear Deck 2F a Engine Utility",
-      "0:45–1:30 · Buck abre el piso sobre Engine y Storage; Thatcher EMP + Thermite en la pared Engine Hallway–Server Room",
+      "0:00–0:45 · drones a Back Entrance y Engine Hallway; IQ escanea Server Room desde West Hull Breach; Buck sube por Rear Deck 2F a Engine Control y Kitchen Hallway",
+      "0:45–1:30 · Buck abre el piso de Kitchen Pantry sobre Engine Storage; Thatcher EMP + Thermite en la pared Engine Hallway–Server Room",
       "1:30–2:30 · entrada por la pared abierta y por Emergency Exit; Nomad tapa Back Stairs; planta en Server Room",
-      "2:30–3:00 · post-plant: Buck desde arriba, Thermite en el hueco, IQ vigila Engine Hallway"
+      "2:30–3:00 · post-plant: Buck desde Kitchen Pantry, Thermite en el hueco, IQ vigila Engine Hallway lado babor"
      ],
      "ops": [
       {
@@ -62,7 +62,7 @@
          "room": "Engine Hallway",
          "f": 1,
          "threat": "Bandit trickeando la pared y Smoke asomando desde la puerta de Storage",
-         "how": "Espera el EMP, pon la carga en la esquina lejana de la puerta y que Buck ya tenga el piso abierto para que no asome"
+         "how": "Espera el EMP, pon la carga en la esquina lejana de la puerta y que Buck ya tenga abierto el piso de Kitchen Hallway para que no asome"
         },
         {
          "room": "Server Room",
@@ -128,18 +128,24 @@
       {
        "op": "iq",
        "role": "intel",
-       "spawn": "Snow Mobile",
+       "spawn": "Submarine",
        "path": [
         {
-         "room": "Frozen River",
+         "room": "Submarine",
          "f": -1,
-         "do": "Corre pegado al hielo hacia el casco de babor",
+         "do": "Sale del sub y camina el glaciar de babor pegado al casco",
+         "via": "door"
+        },
+        {
+         "room": "West Glacier",
+         "f": -1,
+         "do": "Cruza el glaciar oeste y dronea la puerta de Emergency Exit",
          "via": "door"
         },
         {
          "room": "West Hull Breach",
          "f": -1,
-         "do": "Escanea Server Room y Engine Hallway desde fuera, marca Valkyrie y Maestro",
+         "do": "Escanea Server Room y Engine Hallway a través del casco, marca Valkyrie y Evil Eye",
          "via": "door"
         },
         {
@@ -151,7 +157,7 @@
         {
          "room": "Engine Hallway",
          "f": 1,
-         "do": "Sostiene el pasillo desde el lado oeste mientras Thermite abre",
+         "do": "Sostiene el pasillo desde el lado de babor mientras Thermite abre",
          "via": "door"
         },
         {
@@ -166,7 +172,7 @@
          "room": "Emergency Exit",
          "f": 1,
          "threat": "Kapkan en la puerta y Frost detrás de las cajas",
-         "how": "Escaneo electrónico antes de abrir, destruye la trampa por la rendija y entra agachado"
+         "how": "Escaneo electrónico desde West Hull Breach, destruye la trampa por la rendija y entra agachado"
         },
         {
          "room": "Engine Storage",
@@ -185,7 +191,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la escalera de popa hasta la cubierta de segundo piso",
+         "do": "Sube por la escalera exterior de popa hasta la cubierta del segundo piso",
          "via": "stairs"
         },
         {
@@ -197,19 +203,25 @@
         {
          "room": "Engine Control",
          "f": 2,
-         "do": "Limpia el cuarto y abre el piso sobre Engine Storage con la Skeleton Key",
+         "do": "Limpia las consolas y cruza a Kitchen Hallway",
          "via": "door"
         },
         {
-         "room": "Engine Utility",
+         "room": "Kitchen Hallway",
          "f": 2,
-         "do": "Abre el piso sobre Engine y la escotilla, niega el cuarto grande de máquinas",
+         "do": "Abre el piso sobre Engine Hallway y Server Room con la Skeleton Key para quitar el trickeo de la pared",
          "via": "door"
         },
         {
-         "room": "Engine",
+         "room": "Kitchen Pantry",
+         "f": 2,
+         "do": "Abre el piso y la escotilla de la despensa sobre Engine Storage y niega las estanterías",
+         "via": "door"
+        },
+        {
+         "room": "Engine Storage",
          "f": 1,
-         "do": "Baja por la escotilla al final para cerrar la planta",
+         "do": "Baja por la escotilla de la despensa al final para cerrar la planta",
          "via": "hatch"
         }
        ],
@@ -221,13 +233,19 @@
          "how": "Dron primero, entra con prefire a las consolas y limpia el rincón de Back Stairs"
         },
         {
-         "room": "Engine Utility",
+         "room": "Kitchen Pantry",
          "f": 2,
-         "threat": "Cepo de Frost en la escotilla y ADS de Jäger para bloquear granadas",
-         "how": "Rompe el piso desde lejos, tira la frag por el hueco solo después de ver que el ADS ya gastó cargas"
+         "threat": "Cepo de Frost bajo la escotilla y ADS de Jäger en Storage para tragarse la frag",
+         "how": "Rompe el piso desde la puerta de Kitchen, tira la frag por el hueco solo después de ver que el ADS ya gastó cargas"
+        },
+        {
+         "room": "Engine Storage",
+         "f": 1,
+         "threat": "Ancla Mira o Smoke pegada a las estanterías bajo la escotilla",
+         "how": "Baja solo cuando IQ confirme que no hay nadie bajo el hueco y con Thermite ya dentro de Server Room"
         }
        ],
-       "final": "Sostiene el piso abierto sobre Storage y baja por la escotilla en post-plant"
+       "final": "Sostiene el piso abierto sobre Storage desde Kitchen Pantry y baja por la escotilla en post-plant"
       },
       {
        "op": "nomad",
@@ -559,13 +577,13 @@
     },
     {
      "id": "vertical",
-     "n": "Vertical desde Engine Control",
+     "n": "Vertical desde Kitchen Pantry",
      "tag": "VERTICAL",
-     "summary": "Todo el equipo toma el segundo piso (Engine Control, Engine Utility y Kitchen Hallway) y destruye el sótano desde arriba: Sledge y Buck abren el piso, Fuze mete racimos por Engine Utility sobre Storage y Ram manda el BU-GI por Engine Control. Los defensores de sótano no tienen a dónde esconderse y bajan a plantar cuando queden dos o menos. Funciona porque el techo del sitio es blando casi entero.",
+     "summary": "Todo el equipo toma el segundo piso por la popa (Engine Control, Kitchen Hallway y Kitchen Pantry) y destruye el sótano desde arriba: Sledge abre Kitchen Hallway sobre Engine Hallway y Server Room, Buck abre la despensa y su escotilla sobre Engine Storage, Fuze mete racimos por la despensa y Ram manda el BU-GI por Engine Control sobre el Engine. Los defensores de sótano no tienen a dónde esconderse y se baja a plantar cuando queden dos o menos. Funciona porque el techo del sitio es blando casi entero y la escotilla de la despensa cae directo a Storage.",
      "timeline": [
-      "0:00–0:45 · Dokkaebi hackea cámaras y llama, drones a Rear Deck 2F y Engine Control",
-      "0:45–1:30 · Sledge y Buck abren el piso, Fuze cargas en Engine Utility, Ram BU-GI en Engine Control",
-      "1:30–2:30 · matar desde arriba, Dokkaebi llama de nuevo, bajar por Back Stairs",
+      "0:00–0:45 · Dokkaebi hackea cámaras y llama desde el glaciar; drones a Rear Deck 2F, Engine Control y Kitchen Hallway",
+      "0:45–1:30 · Sledge abre Kitchen Hallway sobre Server Room, Buck abre Kitchen Pantry sobre Storage, Fuze cargas en la despensa, Ram BU-GI en Engine Control",
+      "1:30–2:30 · matar desde arriba, Dokkaebi llama de nuevo y entra por Emergency Exit, bajar por Back Stairs",
       "2:30–3:00 · planta en Storage con dos arriba sosteniendo el piso abierto"
      ],
      "ops": [
@@ -577,25 +595,31 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la escalera de la popa",
+         "do": "Sube por la escalera exterior de popa al segundo piso",
          "via": "stairs"
         },
         {
          "room": "Rear Deck",
          "f": 2,
-         "do": "Dronea Engine Control",
+         "do": "Dronea Engine Control y la puerta de Kitchen Hallway",
          "via": "stairs"
         },
         {
          "room": "Engine Control",
          "f": 2,
-         "do": "Abre el piso sobre Server Room con el martillo",
+         "do": "Limpia las consolas con Buck y cruza a Kitchen Hallway",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Hallway",
+         "f": 2,
+         "do": "Abre el piso sobre Engine Hallway y Server Room con el martillo",
          "via": "door"
         },
         {
          "room": "Back Stairs",
          "f": 2,
-         "do": "Baja al final para entrar a plantar",
+         "do": "Baja por la escalera de popa al final para entrar a plantar",
          "via": "door"
         },
         {
@@ -615,14 +639,20 @@
         {
          "room": "Engine Control",
          "f": 2,
-         "threat": "Roamer esperando detrás de las consolas y Kapkan en la puerta de Back Stairs",
-         "how": "Dron primero, prefire a las consolas, revisa la puerta de Back Stairs antes de abrir el piso"
+         "threat": "Roamer esperando detrás de las consolas y Kapkan en la puerta de Kitchen Hallway",
+         "how": "Dron primero, prefire a las consolas, revisa el marco de Kitchen Hallway antes de cruzar"
+        },
+        {
+         "room": "Kitchen Hallway",
+         "f": 2,
+         "threat": "Bandit o Kaid asomando desde la escalera de Back Stairs mientras abres el piso",
+         "how": "Abre el piso pegado a la pared de Kitchen y deja a Ram mirando la puerta de Back Stairs"
         },
         {
          "room": "Back Stairs",
          "f": 1,
          "threat": "Ancla que sube a pelear al pie de la escalera",
-         "how": "Baja solo cuando Dokkaebi tenga las cámaras y con Buck sosteniendo el hueco"
+         "how": "Baja solo cuando Dokkaebi tenga las cámaras y con Buck sosteniendo el hueco de la despensa"
         }
        ],
        "final": "Planta en Storage bajo el piso abierto que Buck sostiene"
@@ -635,29 +665,35 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con Sledge por la popa",
+         "do": "Sube con Sledge por la escalera exterior de popa",
          "via": "stairs"
         },
         {
          "room": "Rear Deck",
          "f": 2,
-         "do": "Cubre la entrada a Engine Control",
+         "do": "Cubre la puerta de Engine Control mientras Sledge dronea",
          "via": "stairs"
         },
         {
          "room": "Engine Control",
          "f": 2,
-         "do": "Limpia el cuarto con Sledge",
+         "do": "Limpia las consolas con Sledge y sigue a Kitchen Hallway",
          "via": "door"
         },
         {
-         "room": "Engine Utility",
+         "room": "Kitchen Hallway",
          "f": 2,
-         "do": "Abre el piso sobre Storage y la escotilla, mata a los que se pegan a las estanterías",
+         "do": "Cruza el pasillo y entra a la despensa",
          "via": "door"
         },
         {
-         "room": "Engine",
+         "room": "Kitchen Pantry",
+         "f": 2,
+         "do": "Abre el piso y la escotilla de la despensa sobre Storage, mata a los que se pegan a las estanterías",
+         "via": "door"
+        },
+        {
+         "room": "Engine Storage",
          "f": 1,
          "do": "Baja por la escotilla cuando el sitio quede vacío",
          "via": "hatch"
@@ -665,19 +701,19 @@
        ],
        "clear": [
         {
-         "room": "Engine Utility",
+         "room": "Kitchen Pantry",
          "f": 2,
-         "threat": "Cepo de Frost en la escotilla y roamer en Kitchen Hallway",
-         "how": "Skeleton Key al piso desde lejos y que Ram cubra la puerta de Kitchen Hallway"
+         "threat": "Cepo de Frost en la escotilla y roamer saliendo de Kitchen por la puerta de la despensa",
+         "how": "Skeleton Key al piso desde la puerta de Kitchen Hallway y que Ram cubra Kitchen"
         },
         {
-         "room": "Engine",
+         "room": "Engine Storage",
          "f": 1,
-         "threat": "Ancla Maestro cubriendo la escotilla desde abajo",
-         "how": "Frag por el hueco antes de bajar y baja solo con Fuze cubriendo"
+         "threat": "Ancla Maestro o Smoke cubriendo la escotilla desde abajo",
+         "how": "Frag por el hueco antes de bajar y baja solo con Fuze cubriendo desde arriba"
         }
        ],
-       "final": "Sostiene el piso abierto sobre Storage desde Engine Utility hasta que planten"
+       "final": "Sostiene el piso abierto sobre Storage desde Kitchen Pantry hasta que planten"
       },
       {
        "op": "fuze",
@@ -687,25 +723,31 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa detrás de los blandos",
+         "do": "Sube por la escalera de popa detrás de los blandos",
          "via": "stairs"
         },
         {
          "room": "Rear Deck",
          "f": 2,
-         "do": "Espera a que limpien Engine Control",
+         "do": "Espera en la cubierta a que limpien Engine Control",
          "via": "stairs"
         },
         {
          "room": "Engine Control",
          "f": 2,
+         "do": "Cruza las consolas y sigue a Kitchen Hallway",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Hallway",
+         "f": 2,
          "do": "Carga de racimo en el piso sobre Server Room",
          "via": "door"
         },
         {
-         "room": "Engine Utility",
+         "room": "Kitchen Pantry",
          "f": 2,
-         "do": "Dos cargas de racimo en el piso sobre Storage, una tras otra",
+         "do": "Dos cargas de racimo en el piso de la despensa sobre Storage, una tras otra",
          "via": "door"
         }
        ],
@@ -717,13 +759,13 @@
          "how": "Dron adelantado a la consola y entra en pareja con Buck, nunca solo"
         },
         {
-         "room": "Engine Utility",
+         "room": "Kitchen Pantry",
          "f": 2,
          "threat": "ADS de Jäger o Wamai en Storage que atrapan los racimos",
-         "how": "Primera carga para gastar el ADS, segunda en otra esquina para que sí exploten"
+         "how": "Primera carga para gastar el ADS, segunda en otra esquina de la despensa para que sí exploten"
         }
        ],
-       "final": "Se queda en Engine Utility cubriendo el piso abierto en post-plant"
+       "final": "Se queda en Kitchen Pantry cubriendo el piso abierto en post-plant"
       },
       {
        "op": "ram",
@@ -733,25 +775,31 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera de popa cerrando al grupo",
          "via": "stairs"
         },
         {
          "room": "Rear Deck",
          "f": 2,
-         "do": "Cubre la retaguardia del grupo",
+         "do": "Cubre la retaguardia del grupo desde la cubierta",
          "via": "stairs"
         },
         {
          "room": "Engine Control",
          "f": 2,
-         "do": "Lanza el BU-GI hacia el piso de Server Room y Back Stairs",
+         "do": "Lanza el BU-GI hacia el piso de Engine Control sobre el Engine para negar la rotación por máquinas",
+         "via": "door"
+        },
+        {
+         "room": "Engine Utility",
+         "f": 2,
+         "do": "Abre la escotilla de Engine Utility con la segunda pasada y cubre Back Stairs",
          "via": "door"
         },
         {
          "room": "Kitchen Hallway",
          "f": 2,
-         "do": "Cubre la puerta de Kitchen Hallway para que no lleguen roamers de Kitchen",
+         "do": "Cubre la puerta de Kitchen para que no lleguen roamers a los verticales",
          "via": "door"
         }
        ],
@@ -763,29 +811,41 @@
          "how": "Dron a la puerta y dispara la trampa desde el deck antes de entrar"
         },
         {
+         "room": "Engine Utility",
+         "f": 2,
+         "threat": "Roamer tipo Vigil o Cav subiendo por Back Stairs a flanquear a los verticales",
+         "how": "Te paras mirando la salida de Back Stairs y usas el BU-GI para abrir la escotilla si te presionan"
+        },
+        {
          "room": "Kitchen Hallway",
          "f": 2,
-         "threat": "Roamer tipo Vigil o Cav bajando desde Kitchen a flanquear a los verticales",
-         "how": "Te paras en la puerta mirando al pasillo y usas el segundo BU-GI para abrir el piso si te presionan"
+         "threat": "Roamer bajando de Kitchen Stairs o saliendo de Kitchen a la espalda de Buck",
+         "how": "Sostienes la puerta de Kitchen con prefire y avisas a Buck"
         }
        ],
-       "final": "Sostiene Kitchen Hallway como flanco de todo el grupo vertical"
+       "final": "Sostiene Kitchen Hallway y Back Stairs como flanco de todo el grupo vertical"
       },
       {
        "op": "dokkaebi",
        "role": "intel",
-       "spawn": "Snow Mobile",
+       "spawn": "Submarine",
        "path": [
         {
-         "room": "Frozen River",
+         "room": "Submarine",
          "f": -1,
-         "do": "Hackea cámaras desde el hielo y llama para revelar posiciones",
+         "do": "Hackea cámaras desde el sub y llama para revelar posiciones",
+         "via": "door"
+        },
+        {
+         "room": "West Glacier",
+         "f": -1,
+         "do": "Camina el glaciar de babor y dronea Emergency Exit",
          "via": "door"
         },
         {
          "room": "West Hull Breach",
          "f": -1,
-         "do": "Llega al casco de babor y dronea Emergency Exit",
+         "do": "Espera en la brecha del casco a que arriba maten",
          "via": "door"
         },
         {
@@ -829,9 +889,9 @@
      "id": "split",
      "n": "Split popa + emergencia",
      "tag": "SPLIT",
-     "summary": "Dos frentes al mismo tiempo: Ace y Brava por Back Entrance abren la pared de Server Room, mientras Zofia, Jackal y Montagne entran por Emergency Exit de babor y empujan Engine Hallway desde el otro lado. Los defensores no pueden cubrir las dos bocas del pasillo a la vez y quien voltee a un frente muere por el otro. Funciona porque el pasillo del sótano es largo y recto.",
+     "summary": "Dos frentes al mismo tiempo: Ace y Brava por Back Entrance abren la pared de Server Room, mientras Zofia, Jackal y Montagne cruzan el glaciar de babor y entran por Emergency Exit para empujar Engine Hallway desde el otro lado. Los defensores no pueden cubrir las dos bocas del pasillo a la vez y quien voltee a un frente muere por el otro. Funciona porque el pasillo del sótano es largo y recto.",
      "timeline": [
-      "0:00–0:45 · drones a Back Entrance y Emergency Exit; Brava hackea cámaras y ADS; Jackal escanea huellas en el hielo",
+      "0:00–0:45 · drones a Back Entrance y Emergency Exit; Brava hackea cámaras y ADS; Jackal escanea huellas en el glaciar",
       "0:45–1:30 · Ace SELMA en Server Room; Zofia impacts a Emergency Exit; Montagne cruza primero por babor",
       "1:30–2:30 · pinza sobre Engine Hallway; planta en Server Room detrás de Montagne",
       "2:30–3:00 · post-plant: Ace en el hueco, Montagne en Server Room, Jackal cuida Back Stairs"
@@ -845,13 +905,13 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Dronea la popa",
+         "do": "Dronea Rear Deck y Back Entrance buscando Kapkan",
          "via": "door"
         },
         {
          "room": "Rear Deck",
          "f": 1,
-         "do": "Entra por la popa con Brava",
+         "do": "Sube a la popa con Brava y cubre la puerta de Back Entrance",
          "via": "door"
         },
         {
@@ -909,7 +969,7 @@
         {
          "room": "Back Entrance",
          "f": 1,
-         "do": "Entra con Ace",
+         "do": "Entra detrás de Ace pegada a la pared de Engine",
          "via": "door"
         },
         {
@@ -944,12 +1004,18 @@
       {
        "op": "montagne",
        "role": "soporte",
-       "spawn": "Snow Mobile",
+       "spawn": "Submarine",
        "path": [
         {
-         "room": "Frozen River",
+         "room": "Submarine",
          "f": -1,
-         "do": "Camina con Zofia y Jackal hacia babor",
+         "do": "Camina con Zofia y Jackal por el glaciar de babor",
+         "via": "door"
+        },
+        {
+         "room": "West Glacier",
+         "f": -1,
+         "do": "Cruza el glaciar oeste con el escudo arriba",
          "via": "door"
         },
         {
@@ -996,12 +1062,18 @@
       {
        "op": "zofia",
        "role": "entrada",
-       "spawn": "Snow Mobile",
+       "spawn": "Submarine",
        "path": [
         {
-         "room": "Frozen River",
+         "room": "Submarine",
          "f": -1,
-         "do": "Acompaña a Montagne",
+         "do": "Acompaña a Montagne por el glaciar",
+         "via": "door"
+        },
+        {
+         "room": "West Glacier",
+         "f": -1,
+         "do": "Dronea la puerta de Emergency Exit desde el hielo",
          "via": "door"
         },
         {
@@ -1025,7 +1097,7 @@
         {
          "room": "Server Room",
          "f": 1,
-         "do": "Planta detrás de Montagne",
+         "do": "Planta detrás de Montagne pegada a los racks",
          "via": "door"
         }
        ],
@@ -1048,18 +1120,24 @@
       {
        "op": "jackal",
        "role": "flanco",
-       "spawn": "Snow Mobile",
+       "spawn": "Submarine",
        "path": [
         {
-         "room": "Frozen River",
+         "room": "Submarine",
          "f": -1,
-         "do": "Escanea huellas en el hielo por si un roamer salió",
+         "do": "Escanea huellas en el hielo por si un roamer salió del barco",
+         "via": "door"
+        },
+        {
+         "room": "West Glacier",
+         "f": -1,
+         "do": "Cubre la espalda del grupo por el glaciar",
          "via": "door"
         },
         {
          "room": "West Hull Breach",
          "f": -1,
-         "do": "Cubre la espalda del grupo de babor",
+         "do": "Escanea la brecha del casco y cubre Emergency Exit",
          "via": "door"
         },
         {
@@ -1104,10 +1182,11 @@
     {
      "id": "default",
      "n": "Default",
-     "summary": "Reforzar la pared Engine Hallway–Server Room y las escotillas de arriba, Kaid las electrifica, Mira pone espejos en Storage mirando el pasillo y Smoke ancla Server Room. Valkyrie sube cámaras a Engine Control y Rear Deck para avisar de la vertical, y Jäger cuida la puerta de Back Entrance. Se gana negando la vertical y castigando cada entrada al pasillo.",
+     "summary": "Reforzar la pared Engine Hallway–Server Room y las escotillas de Kitchen Pantry y Engine Utility, Kaid las electrifica, Mira pone espejos en Storage mirando el pasillo y Smoke ancla Server Room. Valkyrie sube cámaras a Kitchen Pantry y Rear Deck 2F para avisar de la vertical, y Jäger cuida la puerta de Back Entrance. Se gana negando la vertical y castigando cada entrada al pasillo.",
      "reinforce": [
       "Pared Engine Hallway–Server Room ×2",
-      "Escotilla de Engine Utility",
+      "Escotilla de Kitchen Pantry (sobre Storage)",
+      "Escotilla de Engine Utility (sobre Engine)",
       "Escotilla de Back Entrance",
       "Pared Engine Storage–Emergency Exit"
      ],
@@ -1135,7 +1214,7 @@
        "room": "Engine Hallway",
        "f": 1,
        "role": "flex",
-       "job": "Rtila en la pared de Server Room y en la escotilla de Engine Utility; luego cae a Engine a jugar la rotación"
+       "job": "Rtila en la pared de Server Room y en la escotilla de Kitchen Pantry desde abajo; luego cae a Engine a jugar la rotación"
       },
       {
        "op": "jager",
@@ -1149,17 +1228,18 @@
        "room": "Engine Control",
        "f": 2,
        "role": "roam",
-       "job": "Cámaras en Engine Control y Rear Deck 2F; roamea Kitchen Hallway y cae por Back Stairs al ver la vertical"
+       "job": "Cámaras en Kitchen Pantry y Rear Deck 2F; roamea Kitchen Hallway y Engine Control y cae por Back Stairs al ver la vertical"
       }
      ]
     },
     {
      "id": "alt",
      "n": "Anti-vertical con Melusi",
-     "summary": "Setup para cuando el rival siempre tira vertical: Melusi pone Banshees en Engine Control y Engine Utility para frenarlos arriba, Mute jammea las escotillas y la pared de Server Room, Solis detecta drones y cargas desde Engine, Castle tapa Back Entrance y Vigil roamea el segundo piso invisible a drones.",
+     "summary": "Setup para cuando el rival siempre tira vertical: Melusi pone Banshees en Kitchen Pantry y Engine Control para frenarlos arriba, Mute jammea las escotillas y la pared de Server Room, Solis detecta drones y cargas desde Storage, Castle tapa Back Entrance y Emergency Exit, y Vigil roamea el segundo piso invisible a drones.",
      "reinforce": [
       "Pared Engine Hallway–Server Room ×2",
-      "Escotilla de Engine Utility",
+      "Escotilla de Kitchen Pantry (sobre Storage)",
+      "Escotilla de Engine Utility (sobre Engine)",
       "Escotilla de Back Entrance",
       "Pared Engine Control–Rear Deck"
      ],
@@ -1170,10 +1250,10 @@
      "ops": [
       {
        "op": "melusi",
-       "room": "Engine Utility",
+       "room": "Kitchen Pantry",
        "f": 2,
        "role": "flex",
-       "job": "Banshees en Engine Control y Engine Utility; frena a los verticales y cae por Back Stairs"
+       "job": "Banshees en Kitchen Pantry y Engine Control; frena a los verticales que vienen de la popa y cae por Back Stairs"
       },
       {
        "op": "mute",
@@ -1194,7 +1274,7 @@
        "room": "Back Entrance",
        "f": 1,
        "role": "flex",
-       "job": "Barricada blindada en Back Entrance y Emergency Exit; juega Engine Hallway"
+       "job": "Barricada blindada en Back Entrance y Emergency Exit; juega Engine Hallway entre las dos puertas"
       },
       {
        "op": "vigil",
@@ -1287,7 +1367,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con Thermite",
+         "do": "Sube con Thermite por la escalera exterior de popa",
          "via": "stairs"
         },
         {
@@ -1345,8 +1425,8 @@
         {
          "room": "Aklark Sub Entrance",
          "f": 2,
-         "do": "Entra por la puerta del sub cuando el Gemini confirme",
-         "via": "door"
+         "do": "Sube por la rampa del sub y entra por la puerta del sub cuando el Gemini confirme",
+         "via": "stairs"
         },
         {
          "room": "Boreal Sub Room",
@@ -1443,14 +1523,14 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Acompaña a Iana al sub",
+         "do": "Acompaña a Iana por el hielo hasta la rampa del submarino",
          "via": "door"
         },
         {
          "room": "Aklark Sub Entrance",
          "f": 2,
-         "do": "Entra por la puerta del sub",
-         "via": "door"
+         "do": "Sube por la rampa del submarino y entra por la puerta del sub",
+         "via": "stairs"
         },
         {
          "room": "Boreal Sub Room",
@@ -1509,7 +1589,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Corre a la popa y sube",
+         "do": "Corre a la popa y sube la escalera exterior al segundo piso",
          "via": "stairs"
         },
         {
@@ -1561,7 +1641,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube detrás de Blitz",
+         "do": "Sube la escalera de popa detrás de Blitz",
          "via": "stairs"
         },
         {
@@ -1585,7 +1665,7 @@
         {
          "room": "Kitchen",
          "f": 2,
-         "do": "Limpia detrás de Blitz",
+         "do": "Limpia la isla y la barra detrás de Blitz",
          "via": "door"
         }
        ],
@@ -1613,7 +1693,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con el grupo",
+         "do": "Sube la escalera de popa con el grupo",
          "via": "stairs"
         },
         {
@@ -1625,7 +1705,7 @@
         {
          "room": "Engine Control",
          "f": 2,
-         "do": "Entra después del escudo",
+         "do": "Entra a Engine Control después del escudo y cubre Back Stairs",
          "via": "door"
         },
         {
@@ -1665,19 +1745,19 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con el grupo",
+         "do": "Sube la escalera de popa con el grupo",
          "via": "stairs"
         },
         {
          "room": "Rear Deck",
          "f": 2,
-         "do": "Cubre la retaguardia",
+         "do": "Cubre la retaguardia mirando la escalera de popa",
          "via": "stairs"
         },
         {
          "room": "Engine Control",
          "f": 2,
-         "do": "Entra tercero",
+         "do": "Entra tercero a Engine Control y cubre la puerta de Engine Utility",
          "via": "door"
         },
         {
@@ -1717,7 +1797,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Cierra el grupo",
+         "do": "Cierra el grupo subiendo último por la popa",
          "via": "stairs"
         },
         {
@@ -1795,7 +1875,7 @@
         {
          "room": "Lounge",
          "f": 3,
-         "do": "Limpia Lounge",
+         "do": "Limpia los sillones de Lounge y la puerta de Top Deck Stairs",
          "via": "door"
         },
         {
@@ -1847,19 +1927,19 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Sube con Buck",
+         "do": "Sube con Buck por la escalera exterior de babor",
          "via": "stairs"
         },
         {
          "room": "West Deck",
          "f": 3,
-         "do": "Cubre la cubierta de babor",
+         "do": "Cubre la cubierta de babor mirando hacia proa",
          "via": "stairs"
         },
         {
          "room": "Lounge",
          "f": 3,
-         "do": "Entra tras Buck",
+         "do": "Entra a Lounge tras Buck y cubre Casino Hallway",
          "via": "door"
         },
         {
@@ -1911,7 +1991,7 @@
         {
          "room": "Globe Hallway",
          "f": 3,
-         "do": "Limpia el pasillo del globo",
+         "do": "Limpia el pasillo del globo mirando a Bedroom Hallway",
          "via": "door"
         },
         {
@@ -1945,7 +2025,7 @@
         {
          "room": "Frozen River",
          "f": -1,
-         "do": "Sube con Fuze por estribor",
+         "do": "Sube con Fuze por la escalera exterior de estribor",
          "via": "stairs"
         },
         {
@@ -1957,7 +2037,7 @@
         {
          "room": "Globe Hallway",
          "f": 3,
-         "do": "Entra tras Fuze",
+         "do": "Entra a Globe Hallway tras Fuze y cubre la puerta de Casino",
          "via": "door"
         },
         {
@@ -1991,7 +2071,7 @@
         {
          "room": "Frozen River",
          "f": -1,
-         "do": "Sube por estribor",
+         "do": "Sube por la escalera exterior de estribor",
          "via": "stairs"
         },
         {
@@ -2063,13 +2143,13 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera exterior de popa",
          "via": "stairs"
         },
         {
          "room": "Rear Deck",
          "f": 2,
-         "do": "Dronea Engine Control",
+         "do": "Dronea Engine Control desde la cubierta",
          "via": "stairs"
         },
         {
@@ -2115,7 +2195,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Kludge por la popa",
+         "do": "Manda el Kludge por la popa a Engine Control",
          "via": "stairs"
         },
         {
@@ -2127,7 +2207,7 @@
         {
          "room": "Engine Control",
          "f": 2,
-         "do": "Entra con Hibana",
+         "do": "Entra a Engine Control con Hibana",
          "via": "door"
         },
         {
@@ -2173,8 +2253,8 @@
         {
          "room": "Aklark Sub Entrance",
          "f": 2,
-         "do": "Entra primero con escudo extendido",
-         "via": "door"
+         "do": "Sube por la rampa del sub y entra primero con escudo extendido",
+         "via": "stairs"
         },
         {
          "room": "Boreal Sub Room",
@@ -2219,14 +2299,14 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Acompaña a Montagne",
+         "do": "Acompaña a Montagne por el hielo al submarino",
          "via": "door"
         },
         {
          "room": "Aklark Sub Entrance",
          "f": 2,
          "do": "Impact a la barricada del sub",
-         "via": "door"
+         "via": "stairs"
         },
         {
          "room": "Boreal Sub Room",
@@ -2277,8 +2357,8 @@
         {
          "room": "Aklark Sub Entrance",
          "f": 2,
-         "do": "Entra último",
-         "via": "door"
+         "do": "Sube por la rampa del sub último cubriendo la espalda del grupo",
+         "via": "stairs"
         },
         {
          "room": "Boreal Sub Room",
@@ -2511,7 +2591,7 @@
         {
          "room": "Spa Deck",
          "f": 3,
-         "do": "Cubre la puerta de Lounge",
+         "do": "Cubre la puerta de Lounge desde el jacuzzi",
          "via": "stairs"
         },
         {
@@ -2563,7 +2643,7 @@
         {
          "room": "King of the World",
          "f": 3,
-         "do": "Sube a la punta de la proa y mata gadgets desde afuera",
+         "do": "Sube por el glaciar a la punta de la proa y mata gadgets desde afuera",
          "via": "stairs"
         },
         {
@@ -2621,7 +2701,7 @@
         {
          "room": "Helipad",
          "f": 4,
-         "do": "Dronea Helipad Entrance",
+         "do": "Dronea Helipad Entrance desde el helipuerto",
          "via": "stairs"
         },
         {
@@ -2727,7 +2807,7 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Corre a la proa y sube",
+         "do": "Corre por el glaciar a la proa y sube a Front Deck",
          "via": "stairs"
         },
         {
@@ -2773,7 +2853,7 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Sube detrás de Blitz",
+         "do": "Sube a Front Deck detrás de Blitz",
          "via": "stairs"
         },
         {
@@ -2819,7 +2899,7 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Sube con el grupo",
+         "do": "Sube a Front Deck con el grupo",
          "via": "stairs"
         },
         {
@@ -2859,7 +2939,7 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Sube con el grupo",
+         "do": "Sube a Front Deck con el grupo",
          "via": "stairs"
         },
         {
@@ -2905,7 +2985,7 @@
         {
          "room": "East Deck",
          "f": 3,
-         "do": "Cubre la puerta de estribor",
+         "do": "Cubre la puerta de estribor a Globe Hallway",
          "via": "stairs"
         },
         {
@@ -2959,7 +3039,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera exterior de popa",
          "via": "stairs"
         },
         {
@@ -2977,26 +3057,26 @@
         {
          "room": "Helipad Entrance",
          "f": 4,
-         "do": "Limpia y avanza",
+         "do": "Limpia la esquina de la entrada y avanza a Cockpit Hallway",
          "via": "door"
         },
         {
          "room": "Cockpit Hallway",
          "f": 4,
-         "do": "Abre el piso sobre Casino Hallway y Lounge",
-         "via": "door"
-        },
-        {
-         "room": "Top Deck Stairs",
-         "f": 4,
-         "do": "Baja al final para plantar",
+         "do": "Abre el piso sobre Casino Hallway con el martillo",
          "via": "door"
         },
         {
          "room": "Top Deck Stairs",
          "f": 3,
-         "do": "Sale de la escalera y toma Lounge",
+         "do": "Baja por la escalera interior al final para plantar",
          "via": "stairs"
+        },
+        {
+         "room": "Casino Hallway",
+         "f": 3,
+         "do": "Cruza el pasillo hacia el hueco de Casino",
+         "via": "door"
         },
         {
          "room": "Casino",
@@ -3029,7 +3109,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con Sledge",
+         "do": "Sube con Sledge por la popa",
          "via": "stairs"
         },
         {
@@ -3041,19 +3121,19 @@
         {
          "room": "Helipad",
          "f": 4,
-         "do": "Cubre la entrada",
+         "do": "Cubre la puerta de Helipad Entrance mientras Sledge dronea",
          "via": "stairs"
         },
         {
          "room": "Helipad Entrance",
          "f": 4,
-         "do": "Entra tras Sledge",
+         "do": "Entra tras Sledge y limpia el rincón de Top Deck Stairs",
          "via": "door"
         },
         {
          "room": "Cockpit Hallway",
          "f": 4,
-         "do": "Limpia el pasillo",
+         "do": "Limpia el pasillo hasta la puerta de Captain's Office",
          "via": "door"
         },
         {
@@ -3099,13 +3179,13 @@
         {
          "room": "Helipad",
          "f": 4,
-         "do": "Espera a que limpien",
+         "do": "Espera en el helipuerto a que limpien la entrada",
          "via": "stairs"
         },
         {
          "room": "Helipad Entrance",
          "f": 4,
-         "do": "Entra tercero",
+         "do": "Entra tercero cubriendo la puerta de Top Deck Stairs",
          "via": "door"
         },
         {
@@ -3139,7 +3219,7 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Sube por la proa",
+         "do": "Sube por el glaciar hasta la proa",
          "via": "stairs"
         },
         {
@@ -3179,7 +3259,7 @@
         {
          "room": "Frozen River",
          "f": -1,
-         "do": "Sube por estribor",
+         "do": "Sube por la escalera exterior de estribor",
          "via": "stairs"
         },
         {
@@ -3245,7 +3325,7 @@
         {
          "room": "Spa Deck",
          "f": 3,
-         "do": "Dronea Lounge",
+         "do": "Dronea Lounge desde el jacuzzi",
          "via": "stairs"
         },
         {
@@ -3291,7 +3371,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Kludge por la popa",
+         "do": "Manda el Kludge por la popa a Spa Deck",
          "via": "stairs"
         },
         {
@@ -3303,7 +3383,7 @@
         {
          "room": "Lounge",
          "f": 3,
-         "do": "Entra con Hibana",
+         "do": "Entra a Lounge con Hibana",
          "via": "door"
         },
         {
@@ -3389,7 +3469,7 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Acompaña a Montagne",
+         "do": "Acompaña a Montagne por el glaciar a la proa",
          "via": "door"
         },
         {
@@ -3669,7 +3749,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con Thermite",
+         "do": "Sube con Thermite por la escalera de popa",
          "via": "stairs"
         },
         {
@@ -3687,7 +3767,7 @@
         {
          "room": "Helipad Entrance",
          "f": 4,
-         "do": "Limpia y avanza",
+         "do": "Limpia la esquina de Helipad Entrance y avanza a Cockpit Hallway",
          "via": "door"
         },
         {
@@ -3773,7 +3853,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera exterior de popa",
          "via": "stairs"
         },
         {
@@ -3797,8 +3877,8 @@
         {
          "room": "Maps Room",
          "f": 4,
-         "do": "Baja por el hueco al final para cerrar la planta",
-         "via": "hatch"
+         "do": "Baja por el hueco que abrió en el techo al final para cerrar la planta",
+         "via": "breach"
         }
        ],
        "clear": [
@@ -3897,7 +3977,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Corre a la popa y sube",
+         "do": "Corre a la popa y sube la escalera exterior",
          "via": "stairs"
         },
         {
@@ -3955,7 +4035,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube detrás de Blitz",
+         "do": "Sube la escalera de popa detrás de Blitz",
          "via": "stairs"
         },
         {
@@ -3979,7 +4059,7 @@
         {
          "room": "Cockpit Hallway",
          "f": 4,
-         "do": "Tercera Candela a Cockpit antes de entrar",
+         "do": "Limpia el timón detrás de Blitz",
          "via": "door"
         },
         {
@@ -4013,7 +4093,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con el grupo",
+         "do": "Sube la escalera de popa con el grupo",
          "via": "stairs"
         },
         {
@@ -4031,7 +4111,7 @@
         {
          "room": "Helipad Entrance",
          "f": 4,
-         "do": "Entra después del escudo",
+         "do": "Entra a Helipad Entrance después del escudo",
          "via": "door"
         },
         {
@@ -4071,7 +4151,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con el grupo",
+         "do": "Sube la escalera de popa con el grupo",
          "via": "stairs"
         },
         {
@@ -4083,13 +4163,13 @@
         {
          "room": "Helipad",
          "f": 4,
-         "do": "Cubre la retaguardia",
+         "do": "Cubre la retaguardia desde el helipuerto",
          "via": "stairs"
         },
         {
          "room": "Helipad Entrance",
          "f": 4,
-         "do": "Entra tercero",
+         "do": "Entra tercero a Helipad Entrance cubriendo Top Deck Stairs",
          "via": "door"
         },
         {
@@ -4213,8 +4293,8 @@
         {
          "room": "Cockpit",
          "f": 4,
-         "do": "Baja por el hueco al final para plantar",
-         "via": "hatch"
+         "do": "Baja por el hueco del techo al final para plantar",
+         "via": "breach"
         },
         {
          "room": "Maps Room",
@@ -4247,7 +4327,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube con Sledge",
+         "do": "Sube con Sledge por la popa",
          "via": "stairs"
         },
         {
@@ -4293,7 +4373,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera exterior de popa",
          "via": "stairs"
         },
         {
@@ -4339,7 +4419,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera exterior de popa",
          "via": "stairs"
         },
         {
@@ -4385,7 +4465,7 @@
         {
          "room": "Frozen River",
          "f": -1,
-         "do": "Sube por estribor",
+         "do": "Sube por la escalera exterior de estribor",
          "via": "stairs"
         },
         {
@@ -4445,7 +4525,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera exterior de popa",
          "via": "stairs"
         },
         {
@@ -4457,7 +4537,7 @@
         {
          "room": "Helipad",
          "f": 4,
-         "do": "Dronea Helipad Entrance",
+         "do": "Dronea Helipad Entrance desde el helipuerto",
          "via": "stairs"
         },
         {
@@ -4503,7 +4583,7 @@
         {
          "room": "Zodiac",
          "f": -1,
-         "do": "Sube por la popa",
+         "do": "Sube por la escalera exterior de popa",
          "via": "stairs"
         },
         {
@@ -4521,7 +4601,7 @@
         {
          "room": "Helipad Entrance",
          "f": 4,
-         "do": "Entra con Hibana",
+         "do": "Entra a Helipad Entrance con Hibana",
          "via": "door"
         },
         {
@@ -4619,13 +4699,13 @@
         {
          "room": "Submarine",
          "f": -1,
-         "do": "Acompaña a Montagne",
+         "do": "Acompaña a Montagne por el hielo a babor",
          "via": "door"
         },
         {
          "room": "West Deck",
          "f": 3,
-         "do": "Sube por babor",
+         "do": "Sube por la escalera exterior de babor a la cubierta",
          "via": "stairs"
         },
         {
@@ -4683,7 +4763,7 @@
         {
          "room": "West Deck",
          "f": 3,
-         "do": "Sube por babor último",
+         "do": "Sube por la escalera de babor último cubriendo la espalda",
          "via": "stairs"
         },
         {
@@ -4728,11 +4808,11 @@
     {
      "id": "default",
      "n": "Default",
-     "summary": "Reforzar la pared Cockpit Hallway–Cockpit y la pared Maps Room–Top Deck Stairs; dejar las ventanas con Frost debajo. Mira pone espejos en Cockpit hacia Cockpit Hallway y Smoke ancla Maps Room con gas para las ventanas. Jäger cuida las ventanas de East Balcony y Valkyrie sube cámaras a Helipad y Roof para avisar de la vertical.",
+     "summary": "Reforzar la pared Cockpit Hallway–Cockpit, la pared Cockpit Hallway–Maps Room y la pared Maps Room–Top Deck Stairs; dejar las ventanas con Frost debajo. Mira pone espejos en Cockpit hacia Cockpit Hallway y Smoke ancla Maps Room con gas para las ventanas. Jäger cuida las ventanas de East Balcony y Valkyrie sube cámaras a Helipad y Roof para avisar de la vertical.",
      "reinforce": [
       "Pared Cockpit Hallway–Cockpit ×2",
-      "Pared Maps Room–Top Deck Stairs",
-      "Pared Captain's Office–Cockpit Hallway"
+      "Pared Cockpit Hallway–Maps Room",
+      "Pared Maps Room–Top Deck Stairs"
      ],
      "rotations": [
       "Maps Room↔Cockpit por la puerta interior",

@@ -14,6 +14,7 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 1. **Mapa** (tiles con plano) → 2. **Lado + sitio** (en defensa te dice qué sitio pedir; en ataque "aún no sé el sitio" = comp flexible) →
 3. **Plan**: 5 tarjetas grandes jugador → operador → a dónde va, estrategia DEFAULT/RUSH/VERTICAL/SPLIT, botón 🔊 Dictar (voz es-MX) →
 4. **En vivo**: mapa grande, reloj de 3:00, fases de la estrategia, las líneas avanzan y la tarjeta muestra el paso actual y la zona de defensores que toca limpiar.
+5. **Terminó la ronda** → GANAMOS/PERDIMOS + qué pasó (rush, vertical, flanco, plant, tiempo, duelos) → la app propone la ronda siguiente: cambio de lado (medio tiempo tras la 3ª; tiempo extra alterna), qué sitio pedir (récord por sitio; una derrota no cambia de sitio, dos seguidas sí), qué setup (perdimos a rush → anti-rush; ataque sin tiempo → RUSH; sin plant → VERTICAL…). "Nuevo partido" borra marcador y rondas.
 - Rutas por **pathfinding A\*** sobre máscaras del blueprint (`img/masks`, `tools/build-masks.py`): pared blanca = bloqueada, amarillo = rompible (caro), interior/exterior del edificio distinguidos para que las rutas exteriores rodeen el edificio.
 - Estrategias por sitio en `js/strats/<mapa>.json` (generadas por agentes contra `tools/ctx/<mapa>.json` y validadas con `tools/validate-strats.js`). Faltan 9 mapas (límite de sesión): kanal, house, tower, bartlett, closequarter, fortress, favela, yacht, plane, hereford.
 
