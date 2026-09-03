@@ -1,0 +1,4810 @@
+{
+ "map": "kafe",
+ "sites": {
+  "kitchen": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Se abre la pared reforzada de Main Corridor a Bakery con Thatcher + Thermite mientras Buck castiga Kitchen desde Reading Room. La idea es partir el sitio en dos: el ancla de Bakery no puede mirar el hoyo y el techo al mismo tiempo, y Kitchen se vuelve inhabitable con el vertical. Nomad cierra Back Stairs para que nadie te flanquee por Cold Room.",
+     "timeline": [
+      "0:00–0:45 · drones: Zero mete Argus en Cold Room Corridor y Kitchen Prep, Buck sube a Reading Room y quita el piso",
+      "0:45–1:30 · Thatcher EMP + Thermite abren Main Corridor→Bakery; Buck abre Kitchen Grill desde arriba",
+      "1:30–2:30 · Thermite/Thatcher entran por el hoyo a Bakery, Nomad aguanta Back Stairs, Buck sigue negando Kitchen",
+      "2:30–3:00 · plant en Bakery pegado a Bakery Kitchen; post-plant desde Front Stairs y Reading Room"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Dronea la entrada principal antes de cruzar",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Entra por la puerta principal, limpia Storage con el dron",
+         "via": "door"
+        },
+        {
+         "room": "Main Corridor",
+         "f": 1,
+         "do": "Se pega a Thermite y tira EMP sobre la pared de Bakery",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Cruza el hoyo cuando el ancla se retira",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Storage",
+         "f": 1,
+         "threat": "Roamer tipo Vigil escondido esperando la entrada",
+         "how": "Dron primero, prefire la esquina y flash si hay duda"
+        },
+        {
+         "room": "Main Corridor",
+         "f": 1,
+         "threat": "Bandit/Kaid en la pared y espejo de Mira desde Bakery",
+         "how": "EMP pegado a la pared y quemar solo después del pitido"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Ancla con Smoke detrás del mostrador tirando gas al hoyo",
+         "how": "Entrar con flash de Thermite y en pareja, nunca solo"
+        }
+       ],
+       "final": "Cubre la puerta Bakery↔Front Stairs mientras Thermite planta"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Cruza con Thatcher, evita la ventana de Bakery",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Entra y despeja Storage a la izquierda",
+         "via": "door"
+        },
+        {
+         "room": "Main Corridor",
+         "f": 1,
+         "do": "Coloca la carga tras el EMP y espera el ping",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Entra, limpia detrás del mostrador y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "threat": "Kapkan en la puerta principal",
+         "how": "Drón revisando los marcos antes de pisar"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Ancla detrás del mostrador con Smoke tirando gas al hoyo",
+         "how": "Flash por el hoyo y entrar con Thatcher trade-eando"
+        }
+       ],
+       "final": "Planta en Bakery pegado a la pared de Bakery Kitchen"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre pegado a la pared hasta la entrada",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube sin detenerse, dron adelante",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Sale al segundo piso y checa Main Corridor 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "do": "Pasa rápido y revisa la escotilla",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Abre el piso sobre Kitchen Grill con la Skeleton Key",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "threat": "Roamer tipo Cav/Solis esperando en la escalera",
+         "how": "Dron cada rellano y prefire los marcos"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Roamer negando vertical (Vigil/Ela con Grzmot en la puerta)",
+         "how": "Sube con compañero, quema las minas con impacto y limpia esquinas"
+        }
+       ],
+       "final": "Abre el piso y castiga a los defensores de Kitchen Grill/Prep desde arriba"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale rápido y coloca un Argus en la puerta de Back Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Mete cam a Cold Room Corridor por la puerta exterior",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Entra despacio con la cam mirando el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "do": "Rompe gadgets de Kitchen Pick Up con las cams",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Frost o Kapkan en la puerta de la calle",
+         "how": "Argus en el marco y disparar la trampa con la cam"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "threat": "Mira/Maestro apuntando al pasillo desde Kitchen Pick Up",
+         "how": "Cam por la pared, disparar el Evil Eye y esperar el vertical"
+        }
+       ],
+       "final": "Sostiene Cold Room Corridor dando info al equipo y niega la rotación por Back Stairs"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sigue a Zero con distancia",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Coloca Airjab en la puerta de Garrage",
+         "via": "door"
+        },
+        {
+         "room": "Garrage",
+         "f": -1,
+         "do": "Dronea Cold Room antes de entrar",
+         "via": "door"
+        },
+        {
+         "room": "Cold Room",
+         "f": 1,
+         "do": "Airjab en la salida a Cold Room Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "do": "Airjab en la boca de Back Stairs y sostiene",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cold Room",
+         "f": 1,
+         "threat": "Roamer saliendo a cazar por el Garrage (Cav/Oryx)",
+         "how": "Airjab en la puerta y entrar con dron adelante"
+        },
+        {
+         "room": "Kitchen Pick Up",
+         "f": 1,
+         "threat": "Ancla de Kitchen asomando por el pasillo",
+         "how": "No pelear el ángulo, esperar a que Buck abra el piso"
+        }
+       ],
+       "final": "Cubre el flanco de Back Stairs y Cold Room durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por la ventana de Bakery desde Bakery Parking en los primeros 30 segundos, antes de que Castle o Smoke tengan todo listo. Ying tira candelas por la ventana, Ash abre la barricada y Blitz entra primero absorbiendo. Funciona porque Bakery está a un paso del spawn de Christmas Market y el ancla suele estar todavía poniendo cosas.",
+     "timeline": [
+      "0:00–0:20 · sprint a Bakery Parking sin dronear, Ash rompe la barricada de la ventana",
+      "0:20–0:45 · Ying candela + Capitão humo, Blitz salta la ventana con Iana detrás",
+      "0:45–1:30 · limpiar Bakery Kitchen y Main Corridor, plant en Bakery",
+      "1:30–3:00 · post-plant aguantando Front Stairs y la puerta de Bakery Kitchen"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre hacia el oeste sin drones",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre en la esquina",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Dispara la carga a la barricada de la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Entra detrás de Blitz y limpia el mostrador",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "threat": "Defensor spawn-peekeando desde la ventana de Bakery",
+         "how": "Nadie se para en el parking hasta que Ying lanza candela"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Ancla con Smoke detrás del mostrador",
+         "how": "Entrar en cadena mientras la candela está activa"
+        }
+       ],
+       "final": "Limpia Bakery Kitchen y aguanta la puerta a Main Corridor"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre pegada a Ash",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Prepara la candela",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Tira dos candelas por la ventana ya abierta",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Entra después de Blitz y trade-ea",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "threat": "Roamer saliendo por la ventana a spawn-peekear el parking",
+         "how": "Correr pegada a la pared y dejar que Ash abra primero"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Castle en la ventana + ancla al fondo",
+         "how": "Ash rompe primero la barricada; candela al segundo 0"
+        }
+       ],
+       "final": "Planta en Bakery en la esquina ciega a Front Stairs"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre con el escudo arriba",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se pega a la pared del parking",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Se pone bajo la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Salta primero y flashea a todo lo que se mueva",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Ancla y Noor (fuego anti-escudo) esperando la entrada",
+         "how": "Flash y meterse a la esquina en vez de quedarse en la ventana"
+        },
+        {
+         "room": "Bakery Kitchen",
+         "f": 1,
+         "threat": "Ancla retrocediendo a Bakery Kitchen para pelear desde la puerta",
+         "how": "Flash a la puerta y dejar que Iana limpie"
+        }
+       ],
+       "final": "Cubre Front Stairs desde dentro de Bakery mientras plantan"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Lanza Gemini por delante para ver Bakery Parking",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Sigue en réplica hasta la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Réplica dentro de Bakery para contar defensores",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Entra en cuerpo cuando Blitz ya está dentro",
+         "via": "window"
+        },
+        {
+         "room": "Bakery Kitchen",
+         "f": 1,
+         "do": "Limpia el cuarto trasero",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Ancla Smoke detrás del mostrador",
+         "how": "Réplica primero para sacarle el disparo"
+        },
+        {
+         "room": "Bakery Kitchen",
+         "f": 1,
+         "threat": "Roamer regresando desde Main Corridor / Laundry",
+         "how": "Réplica primero, luego prefire del marco"
+        }
+       ],
+       "final": "Sostiene Bakery Kitchen para que no regresen por Main Corridor"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre al parking",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Prepara humo",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Humo dentro de Bakery hacia Front Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Entra el último y tira fuego a la puerta de Front Stairs",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Kapkan en la puerta a Bakery Kitchen",
+         "how": "Dron rápido al marco y dispararla"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "threat": "Rotación de defensores desde Main Corridor/Storage",
+         "how": "Asfixiante en la puerta y humo para el plant"
+        }
+       ],
+       "final": "Post-plant en la esquina de Bakery mirando Front Stairs con fuego listo"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Nadie entra hasta que Kitchen sea inhabitable. Sledge y Ram abren Reading Room y Fireplace Hall sobre Kitchen, Fuze cocina Bakery Kitchen desde Laundry y IQ marca gadgets y teléfonos. Maverick abre la pared de Bakery al final para entrar a plantar con el sitio ya vacío.",
+     "timeline": [
+      "0:00–0:45 · todos suben por Front Stairs a 2F, IQ escanea Reading Room y Laundry",
+      "0:45–1:30 · Sledge/Ram abren piso sobre Kitchen Grill y Pick Up; Fuze en Laundry sobre Bakery Kitchen",
+      "1:30–2:30 · Maverick baja y abre Main Corridor→Bakery mientras arriba mantienen los hoyos",
+      "2:30–3:00 · plant en Bakery con cobertura desde arriba"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra por la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube con dron adelante",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Limpia Main Corridor 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "do": "Abre la escotilla con martillo para dar ángulo a Kitchen Prep",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Abre el piso sobre Kitchen Grill",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "threat": "Ela/Kapkan en la puerta y roamer en Reading",
+         "how": "Dron y martillazo desde lejos a las trampas"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Roamer con Solis o Vigil negando vertical",
+         "how": "Entrar en pareja con Ram, granada a la esquina del fondo"
+        }
+       ],
+       "final": "Sostiene el hoyo sobre Kitchen Grill toda la ronda"
+      },
+      {
+       "op": "ram",
+       "role": "blando",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra con Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Cubre Museum Entrance mientras Sledge avanza",
+         "via": "stairs"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "do": "Pasa a Reading",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Cruza a Fireplace",
+         "via": "door"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Lanza el BU-GI hacia Kitchen Pick Up y Cold Room Corridor",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Roamer negando vertical en Reading",
+         "how": "Entrar detrás de Sledge y cubrir su espalda"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "threat": "Maestro o roamer mirando desde Train Museum",
+         "how": "Dron a Train Museum antes de plantar el BU-GI"
+        }
+       ],
+       "final": "Abre Fireplace sobre Kitchen Pick Up y niega la rotación Cold Room"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra por la principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Gira a Museum Entrance",
+         "via": "stairs"
+        },
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "do": "Limpia y pasa a Laundry",
+         "via": "door"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "do": "Carga de racimo sobre Bakery Kitchen y abre la escotilla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "threat": "Roamer con Alibi/Vigil en la esquina",
+         "how": "Dron y prefire, esperar a IQ"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "threat": "Melusi o Frost en la escotilla",
+         "how": "IQ detecta, Fuze las rompe con racimo"
+        }
+       ],
+       "final": "Cubre la escotilla de Laundry hacia Bakery Kitchen durante el plant"
+      },
+      {
+       "op": "iq",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra por la principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube escaneando",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Escanea Museum Entrance y el pasillo",
+         "via": "stairs"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "do": "Marca gadgets del suelo de Kitchen",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Detecta teléfonos y cámaras de Valk/Maestro abajo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "threat": "Roamer con Alibi/Vigil en la escalera",
+         "how": "Escanear y dron cada rellano"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Cámaras de Valk y Evil Eye en Kitchen",
+         "how": "Detectar con escáner y disparar por los hoyos"
+        }
+       ],
+       "final": "Cubre Reading Room Corridor y Front Stairs 2F para que no suban a cazar"
+      },
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale sin ruido",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea la puerta de Back Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Entra despacio",
+         "via": "door"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "do": "Abre agujeros en la pared reforzada hacia Kitchen Pick Up",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Pick Up",
+         "f": 1,
+         "do": "Entra al final cuando arriba ya limpiaron",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Kapkan/Frost en la puerta exterior",
+         "how": "Dron y disparar la trampa"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "threat": "Mira mirando el pasillo desde Kitchen",
+         "how": "Agujeritos con soplete detrás del espejo, no dar pelea frontal"
+        }
+       ],
+       "final": "Planta en Kitchen Grill si Bakery está bloqueada; si no, cubre la rotación"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes a la vez: Hibana y Brava abren Cold Room Corridor→Kitchen Pick Up desde Park, mientras Osa, Dokkaebi y Grim entran por la ventana de Bakery desde el parking. Los defensores no pueden mirar Kitchen y Bakery al mismo tiempo, y Dokkaebi les explota los teléfonos justo en el momento de la doble entrada.",
+     "timeline": [
+      "0:00–0:45 · Grim mete colmenas en Main Corridor, Brava hackea gadgets de Kitchen",
+      "0:45–1:30 · Hibana abre la pared de Kitchen Pick Up; Osa pone Talon en la ventana de Bakery",
+      "1:30–2:30 · Dokkaebi llama y entran los dos frentes al mismo tiempo",
+      "2:30–3:00 · plant en Kitchen Grill o Bakery según cuál quedó limpio"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale con Brava",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Entra y limpia la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "do": "Dispara X-KAIROS a la pared de Kitchen Pick Up",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Pick Up",
+         "f": 1,
+         "do": "Entra con Brava después del reloj de Dokkaebi",
+         "via": "breach"
+        },
+        {
+         "room": "Kitchen Grill",
+         "f": 1,
+         "do": "Planta detrás de la estufa",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Frost o Kapkan en la puerta de Back Alley",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Kitchen Pick Up",
+         "f": 1,
+         "threat": "Ancla con Mira/Smoke apuntando al hoyo",
+         "how": "Brava hackea, flash y entrada en pareja"
+        }
+       ],
+       "final": "Planta en Kitchen Grill y sostiene desde Cold Room Corridor"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Mete el Kludge por la puerta de Back Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Hackea Kapkan/Jäger del pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "do": "Hackea Bandit/Kaid de la pared y ADS",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Pick Up",
+         "f": 1,
+         "do": "Entra detrás de Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Kapkan/Frost en la puerta de Back Alley",
+         "how": "Kludge hackea la trampa o la convierte"
+        },
+        {
+         "room": "Cold Room Corridor",
+         "f": 1,
+         "threat": "Bandit/Kaid en la pared + Evil Eye",
+         "how": "Kludge convierte o rompe lo electrónico antes de la X-KAIROS"
+        }
+       ],
+       "final": "Cubre Cold Room y la puerta de Garrage durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Va al oeste",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Pone Talon-8 en la ventana de Bakery para mirar adentro",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Entra cuando Dokkaebi llama, pone el segundo Talon en la puerta a Main Corridor",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "threat": "Defensor peekeando la ventana de Bakery",
+         "how": "Talon primero, cuerpo después"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Ancla Smoke detrás del mostrador + Castle en la ventana",
+         "how": "Talon en la ventana para ganar el ángulo, Dokkaebi los distrae"
+        }
+       ],
+       "final": "Bloquea Main Corridor con el Talon y planta en Bakery si Kitchen se traba"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre al oeste",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Logic Bomb justo antes de la doble entrada",
+         "via": "door"
+        },
+        {
+         "room": "Bakery",
+         "f": 1,
+         "do": "Entra tras Osa",
+         "via": "window"
+        },
+        {
+         "room": "Bakery Kitchen",
+         "f": 1,
+         "do": "Limpia y hackea cámaras",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery",
+         "f": 1,
+         "threat": "Ancla Smoke detrás del mostrador",
+         "how": "Logic Bomb para taparle el sonido y entrar con Osa"
+        },
+        {
+         "room": "Bakery Kitchen",
+         "f": 1,
+         "threat": "Roamer regresando desde Main Corridor",
+         "how": "Llamar teléfonos para escucharlo y prefire"
+        }
+       ],
+       "final": "Cubre Bakery Kitchen y hackea cams para post-plant"
+      },
+      {
+       "op": "grim",
+       "role": "flanco",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra por la principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Limpia Storage con dron",
+         "via": "door"
+        },
+        {
+         "room": "Main Corridor",
+         "f": 1,
+         "do": "Lanza colmenas hacia Kitchen Prep y Dining Room",
+         "via": "door"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "do": "Sostiene la rotación por VIP/Bar Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Storage",
+         "f": 1,
+         "threat": "Roamer escondido esperando la entrada principal",
+         "how": "Dron y prefire"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "threat": "Roamer bajando por Bar Stairs desde Pillar Dining",
+         "how": "Colmena en Bar Stairs para ver el rastro"
+        }
+       ],
+       "final": "Niega la rotación Dining↔Main Corridor y marca a los que se muevan"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Smoke ancla Bakery y Mira ancla Kitchen Grill con espejo hacia Main Corridor. Bandit electrifica la pared Main Corridor→Bakery, Jäger cuida Kitchen Prep y Solis roamea en Reading Room negando el vertical, que es lo que de verdad mata este sitio.",
+     "reinforce": [
+      "Pared Main Corridor→Bakery ×2",
+      "Pared Cold Room Corridor→Kitchen Pick Up ×2",
+      "Escotilla Reading Room Corridor",
+      "Escotilla Laundry"
+     ],
+     "rotations": [
+      "Bakery↔Bakery Kitchen↔Main Corridor",
+      "Kitchen Grill↔Kitchen Pick Up (rotación blanda)"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Bakery",
+       "f": 1,
+       "role": "ancla",
+       "job": "Gas al hoyo de Main Corridor y a la ventana; aguanta detrás del mostrador"
+      },
+      {
+       "op": "mira",
+       "room": "Kitchen Grill",
+       "f": 1,
+       "role": "ancla",
+       "job": "Espejo hacia Main Corridor y otro a Cold Room Corridor; mata en el pasillo"
+      },
+      {
+       "op": "bandit",
+       "room": "Main Corridor",
+       "f": 1,
+       "role": "flex",
+       "job": "Batería en la pared de Bakery, trick contra Thermite, luego cubre Dining Room"
+      },
+      {
+       "op": "jager",
+       "room": "Kitchen Prep",
+       "f": 1,
+       "role": "flex",
+       "job": "ADS en Kitchen Prep y Bakery; juega la puerta a Main Corridor"
+      },
+      {
+       "op": "solis",
+       "room": "Reading Room",
+       "f": 2,
+       "role": "roam",
+       "job": "Detecta drones y mata a Buck/Sledge antes de que abran el piso; baja por Front Stairs si lo presionan"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush con Castle y Noor",
+     "summary": "Setup contra rushes por la ventana de Bakery: Castle blinda la ventana, Kaid electrifica la pared con Rtila y Azami tapa líneas dentro de Bakery. Noor castiga escudos en la ventana con fuego, y Vigil roamea en Fireplace Hall para hacer tiempo arriba.",
+     "reinforce": [
+      "Pared Main Corridor→Bakery ×2",
+      "Ventana Bakery (Castle)",
+      "Escotilla Laundry",
+      "Escotilla Train Museum"
+     ],
+     "rotations": [
+      "Bakery↔Bakery Kitchen",
+      "Kitchen Pick Up↔Cold Room Corridor (Azami)"
+     ],
+     "ops": [
+      {
+       "op": "castle",
+       "room": "Bakery",
+       "f": 1,
+       "role": "ancla",
+       "job": "Barricada blindada en la ventana y en la puerta a Front Stairs; aguanta el mostrador"
+      },
+      {
+       "op": "kaid",
+       "room": "Main Corridor",
+       "f": 1,
+       "role": "flex",
+       "job": "Rtila en la pared de Bakery y en la escotilla de arriba; juega Main Corridor"
+      },
+      {
+       "op": "azami",
+       "room": "Kitchen Grill",
+       "f": 1,
+       "role": "ancla",
+       "job": "Kiba cerrando líneas de Reading Room y del hoyo de Cold Room Corridor"
+      },
+      {
+       "op": "noor",
+       "room": "Bakery Kitchen",
+       "f": 1,
+       "role": "flex",
+       "job": "Fuego a la ventana de Bakery contra Blitz/Montagne, cubre la puerta a Main Corridor"
+      },
+      {
+       "op": "vigil",
+       "room": "Fireplace Hall",
+       "f": 2,
+       "role": "roam",
+       "job": "Roam invisible a drones entre Fireplace y Train Museum, cae por Back Stairs para flanquear"
+      }
+     ]
+    }
+   ]
+  },
+  "reading": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thatcher y Thermite abren la pared reforzada de Reading Room Corridor→Reading Room subiendo por Front Stairs, mientras Sledge abre Cocktail Lounge sobre Fireplace Hall. Twitch limpia el Evil Eye de Fireplace desde Train Museum y Gridlock cierra Back Stairs. Funciona porque Fireplace es un cuarto muy grande y sin techo se vuelve imposible de sostener.",
+     "timeline": [
+      "0:00–0:45 · drones a Reading y Fireplace; Sledge sube a 3F, Twitch shockea gadgets",
+      "0:45–1:30 · EMP + Thermite en la pared de Reading; Sledge abre Cocktail sobre Fireplace",
+      "1:30–2:30 · entrada por el hoyo y por Train Museum con Twitch; Gridlock trax en Back Stairs",
+      "2:30–3:00 · plant en Reading Room bajo la ventana; post-plant desde Cocktail y el pasillo"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Cruza rápido, no mirar las ventanas de Reading",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Entra y sube con dron",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Limpia Main Corridor 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "do": "EMP pegado a la pared de Reading",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra tras Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "threat": "Roamer con Alibi/Vigil en la escalera",
+         "how": "Dron cada rellano y prefire"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "threat": "Bandit/Kaid en la pared y Kapkan en la puerta",
+         "how": "EMP y quemar en ventana de batería"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Ancla con Smoke en la esquina de las ventanas",
+         "how": "Entrar con flash y en pareja"
+        }
+       ],
+       "final": "Cubre la puerta Reading↔Fireplace mientras Thermite planta"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Cruza con Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Cubre Museum Entrance",
+         "via": "stairs"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "do": "Carga exotérmica en la pared",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra y planta bajo la ventana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "threat": "Mira mirando el pasillo desde Reading",
+         "how": "No dar el pasillo hasta que Sledge tenga presión arriba"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Frost bajo las ventanas y ancla en la esquina",
+         "how": "Dron antes de entrar, romper cepos"
+        }
+       ],
+       "final": "Planta en Reading Room en la esquina de la ventana"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre a la entrada principal por la calle",
+         "via": "door"
+        },
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube hasta 3F sin parar",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa de largo",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Sale a 3F y limpia Cocktail Lounge Entrance",
+         "via": "stairs"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "Dronea Cocktail",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Abre el piso sobre Fireplace Hall",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "threat": "Roamer subiendo a cazar a los verticales",
+         "how": "Dron y esperar apoyo, no pelear solo en la escalera"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Roamer negando vertical (Vigil/Cav) tras la barra",
+         "how": "Granada a la barra y limpiar en pareja"
+        }
+       ],
+       "final": "Sostiene los hoyos sobre Fireplace Hall toda la ronda"
+      },
+      {
+       "op": "twitch",
+       "role": "intel",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Lanza el dron de choque adelante",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron a Back Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Entra y sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Shockea el Evil Eye de Train Museum",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Limpia y se coloca en la puerta a Fireplace",
+         "via": "door"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Entra cuando Sledge ya abrió el techo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Kapkan en la puerta a Pillar Dining",
+         "how": "Dron de choque a la trampa"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Maestro en Fireplace mirando la puerta",
+         "how": "Shockear el Evil Eye desde el museo, después entrar"
+        }
+       ],
+       "final": "Entra a Fireplace y cubre a Thermite desde el otro lado"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sigue a Twitch",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Cubre la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Trax en la puerta de Cold Room Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Trax en la salida a Pillar Dining",
+         "via": "stairs"
+        },
+        {
+         "room": "Pillar Dining Room",
+         "f": 2,
+         "do": "Sostiene el flanco de Bar Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Kapkan/Frost en la puerta de la calle",
+         "how": "Dron y disparar antes de subir"
+        },
+        {
+         "room": "Pillar Dining Room",
+         "f": 2,
+         "threat": "Roamer subiendo por Bar Stairs desde VIP",
+         "how": "Trax en la boca de Bar Stairs y esperar el sonido"
+        }
+       ],
+       "final": "Niega Back Stairs y Bar Stairs durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Rappel directo desde Terrace a las ventanas de Reading Room antes de que Castle las tape. Ying candela por la ventana, Ash rompe barricadas, Blitz entra primero y Capitão tapa Fireplace con humo. Sale bien porque desde River Docks llegas a Terrace en 15 segundos.",
+     "timeline": [
+      "0:00–0:20 · sprint a Terrace, Ash rompe las barricadas de Reading",
+      "0:20–0:45 · Ying candela, Blitz + Iana entran por ventana, Capitão humo a Fireplace",
+      "0:45–1:30 · limpiar Reading y plant",
+      "1:30–3:00 · post-plant mirando Reading Room Corridor y Fireplace"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre sin dron",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Sube a la terraza y dispara las barricadas de Reading",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra por la ventana tras Blitz",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 2,
+         "threat": "Defensor peekeando la terraza desde Reading",
+         "how": "Nadie se asoma hasta que la candela esté fuera"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Frost bajo la ventana y ancla en la esquina",
+         "how": "Impact en el cepo, entrar en cadena"
+        }
+       ],
+       "final": "Limpia Reading y aguanta la puerta a Reading Room Corridor"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre con Ash",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Candelas por las ventanas abiertas",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra y planta",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 2,
+         "threat": "Defensor peekeando la terraza desde Reading",
+         "how": "Correr pegada a la pared, candela desde el rappel"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Ancla Smoke y Castle",
+         "how": "Ash rompe primero, candela al instante"
+        }
+       ],
+       "final": "Planta en Reading Room pegada a la pared de Reading Room Corridor"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre con escudo",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Engancha rappel bajo la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Salta primero y flashea",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Noor con fuego esperando el escudo",
+         "how": "Flash y meterse a la esquina, no quedarse en la ventana"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "threat": "Ancla Maestro apuntando la puerta de Reading",
+         "how": "No cruzar la puerta, flash y esperar a Iana"
+        }
+       ],
+       "final": "Cubre Fireplace desde dentro de Reading mientras plantan"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Réplica adelante",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Réplica dentro de Reading para contar",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra en cuerpo",
+         "via": "rappel"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Limpia la esquina de la chimenea",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Frost bajo la ventana y ancla en la esquina",
+         "how": "Réplica para sacarles el disparo"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "threat": "Ancla Maestro con Evil Eye mirando Reading",
+         "how": "Réplica para sacar el disparo y luego entrar"
+        }
+       ],
+       "final": "Sostiene Fireplace Hall hacia Train Museum"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Humo dentro de Reading hacia el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra el último, fuego a la puerta de Fireplace",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Ancla Smoke con gas listo para el plant",
+         "how": "Humo primero y fuego a la esquina"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "threat": "Rotación desde Main Corridor 2F",
+         "how": "Asfixiante en la puerta del pasillo"
+        }
+       ],
+       "final": "Post-plant en Reading con fuego listo para la puerta del pasillo"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Todo se juega desde Cocktail Lounge y Washrooms. Buck y Ram abren el piso sobre Fireplace Hall, Fuze cocina Reading Room Corridor desde Wash- rooms, IQ marca gadgets, y Hibana abre la pared de Reading al final para entrar a plantar con el sitio vacío.",
+     "timeline": [
+      "0:00–0:45 · todos suben por Front Stairs a 3F, IQ escanea Cocktail",
+      "0:45–1:30 · Buck/Ram abren Cocktail sobre Fireplace; Fuze en Washrooms",
+      "1:30–2:30 · Hibana baja a Reading Room Corridor y abre la pared",
+      "2:30–3:00 · plant en Reading con cobertura desde 3F"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "blando",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra por la principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa de largo con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Limpia Cocktail Lounge Entrance",
+         "via": "stairs"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "Dronea Cocktail",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Abre el piso sobre Fireplace Hall con Skeleton Key",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "threat": "Roamer subiendo a negar vertical",
+         "how": "Dron cada rellano"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Vigil/Cav tras la barra",
+         "how": "Entrar en pareja con Ram y granada a la barra"
+        }
+       ],
+       "final": "Sostiene el hoyo sobre Fireplace toda la ronda"
+      },
+      {
+       "op": "ram",
+       "role": "blando",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Cubre a Buck",
+         "via": "stairs"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "BU-GI hacia el fondo de Cocktail",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Segundo BU-GI sobre Reading Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "threat": "Roamer subiendo a cazar verticales",
+         "how": "Dron cada rellano y esperar a Buck"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Roamer con Ela minas en la entrada",
+         "how": "Dron y BU-GI para limpiar el piso"
+        }
+       ],
+       "final": "Abre Cocktail sobre Reading Room y niega el plant-deny"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Gira a Cocktail Lounge Entrance",
+         "via": "stairs"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "Limpia",
+         "via": "door"
+        },
+        {
+         "room": "Washroom Corridor",
+         "f": 3,
+         "do": "Pasa a los baños",
+         "via": "door"
+        },
+        {
+         "room": "Wash- rooms",
+         "f": 3,
+         "do": "Racimo sobre Reading Room Corridor",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Washroom Corridor",
+         "f": 3,
+         "threat": "Roamer en los baños esperando",
+         "how": "Dron y prefire de la esquina"
+        },
+        {
+         "room": "Wash- rooms",
+         "f": 3,
+         "threat": "Roamer escondido en los cubículos",
+         "how": "Dron y prefire de cada cubículo"
+        }
+       ],
+       "final": "Cubre Washroom Corridor y sigue fuzeando el pasillo de Reading"
+      },
+      {
+       "op": "iq",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube escaneando",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Escanea Reading Room Corridor",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "Escanea",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Marca cámaras, Evil Eye y teléfonos abajo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "threat": "Roamer Cav esperando la escalera",
+         "how": "Escanear teléfonos y dron"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Cámaras de Valk y Evil Eye en Fireplace",
+         "how": "Detectar y disparar por los hoyos"
+        }
+       ],
+       "final": "Cubre Front Stairs 3F para que no suban a cazar"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Espera a que arriba abran",
+         "via": "stairs"
+        },
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "do": "X-KAIROS en la pared de Reading",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra y planta con cobertura de arriba",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room Corridor",
+         "f": 2,
+         "threat": "Kapkan en la puerta y Bandit en la pared",
+         "how": "Dron, esperar a que IQ marque la batería y disparar por un agujero"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Ancla en la esquina de la ventana",
+         "how": "Ram abre el techo antes de entrar"
+        }
+       ],
+       "final": "Planta en Reading Room"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Ace y Brava entran por Back Stairs → Train Museum → Fireplace, mientras Osa, Dokkaebi y Jackal rapelean a Reading desde Terrace. Dos frentes opuestos: el ancla de Fireplace mira hacia el museo y le entran por la espalda desde Reading. Jackal caza al roamer antes de la entrada.",
+     "timeline": [
+      "0:00–0:45 · Jackal escanea huellas en Back Stairs, Brava hackea Train Museum",
+      "0:45–1:30 · Ace abre Train Museum→Fireplace; Osa pone Talon en la ventana de Reading",
+      "1:30–2:30 · Dokkaebi llama y entran los dos lados",
+      "2:30–3:00 · plant en Fireplace o Reading según cuál quedó limpio"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale con Brava",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Limpia la salida",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "SELMA en la pared reforzada hacia Fireplace",
+         "via": "door"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Entra tras el reloj de Dokkaebi",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Kapkan/Frost en la puerta",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Maestro y Bandit en la pared",
+         "how": "Brava hackea, luego SELMA"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "threat": "Ancla detrás de la chimenea",
+         "how": "Entrar cuando Osa presione desde Reading"
+        }
+       ],
+       "final": "Planta en Fireplace Hall detrás de la chimenea"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Kludge por la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Hackea trampas",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Kludge a Train Museum",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Convierte Evil Eye y ADS",
+         "via": "door"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Entra tras Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Kapkan en la puerta a Pillar Dining",
+         "how": "Kludge o dron a la trampa"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Evil Eye de Fireplace apuntando al museo",
+         "how": "Kludge lo convierte y lo usas de intel"
+        }
+       ],
+       "final": "Cubre Train Museum y Pillar Dining durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Talon-8 en la ventana de Reading",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra y pone el segundo Talon en la puerta al pasillo",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 2,
+         "threat": "Defensor peekeando la terraza",
+         "how": "Talon primero desde el rappel"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Ancla Smoke en la esquina y Frost bajo la ventana",
+         "how": "Talon en la ventana, romper cepos y entrar con Dokkaebi"
+        }
+       ],
+       "final": "Bloquea Reading Room Corridor con el Talon y cubre el plant"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Logic Bomb antes de la doble entrada",
+         "via": "door"
+        },
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "do": "Entra tras Osa",
+         "via": "rappel"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Aprieta hacia Fireplace",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Reading Room",
+         "f": 2,
+         "threat": "Ancla Smoke en la esquina de las ventanas",
+         "how": "Logic Bomb y entrar con Osa"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "threat": "Ancla Maestro mirando Train Museum",
+         "how": "Llamar teléfonos y entrar por la espalda"
+        }
+       ],
+       "final": "Cubre Fireplace y hackea cámaras para post-plant"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Escanea huellas",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Cubre a Ace",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Escanea la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Persigue el rastro",
+         "via": "stairs"
+        },
+        {
+         "room": "Pillar Dining Room",
+         "f": 2,
+         "do": "Caza al roamer y sostiene Bar Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Frost en la puerta de Back Alley",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Pillar Dining Room",
+         "f": 2,
+         "threat": "Roamer moviéndose entre Pillar Dining y Bar Stairs",
+         "how": "Eyenox y prefire"
+        }
+       ],
+       "final": "Niega Bar Stairs y Back Stairs durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Maestro ancla Fireplace con Evil Eye hacia Train Museum, Smoke ancla Reading. Bandit trickea la pared del pasillo, Jäger cubre Fireplace, Frost pone cepos bajo las ventanas de Reading y roamea en Cocktail para negar el vertical.",
+     "reinforce": [
+      "Pared Reading Room Corridor→Reading ×2",
+      "Pared Train Museum→Fireplace ×2",
+      "Escotilla Reading Room Corridor"
+     ],
+     "rotations": [
+      "Reading↔Fireplace",
+      "Fireplace↔Train Museum (blanda)"
+     ],
+     "ops": [
+      {
+       "op": "maestro",
+       "room": "Fireplace Hall",
+       "f": 2,
+       "role": "ancla",
+       "job": "Evil Eye mirando Train Museum y otro a Reading; aguanta detrás de la chimenea"
+      },
+      {
+       "op": "smoke",
+       "room": "Reading Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "Gas a la pared del pasillo y a las ventanas; esquina de las ventanas"
+      },
+      {
+       "op": "bandit",
+       "room": "Reading Room Corridor",
+       "f": 2,
+       "role": "flex",
+       "job": "Trick en la pared de Reading, después juega Main Corridor 2F"
+      },
+      {
+       "op": "jager",
+       "room": "Fireplace Hall",
+       "f": 2,
+       "role": "flex",
+       "job": "ADS en Fireplace y Reading; juega la puerta a Train Museum"
+      },
+      {
+       "op": "frost",
+       "room": "Cocktail Lounge",
+       "f": 3,
+       "role": "roam",
+       "job": "Cepos bajo las ventanas de Reading, luego roamea Cocktail para matar verticales"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Mira + Azami anti-vertical",
+     "summary": "Mira en Fireplace con espejo a Train Museum, Azami tapa los hoyos del techo con Kiba, Mute apaga drones en el pasillo. Noor cuida las ventanas de Reading contra escudos y Vigil roamea entre Cocktail y Washrooms para hacer tiempo.",
+     "reinforce": [
+      "Pared Reading Room Corridor→Reading ×2",
+      "Ventanas Reading (Castle si hay)",
+      "Escotilla Reading Room Corridor",
+      "Escotilla Train Museum"
+     ],
+     "rotations": [
+      "Reading↔Fireplace"
+     ],
+     "ops": [
+      {
+       "op": "mira",
+       "room": "Fireplace Hall",
+       "f": 2,
+       "role": "ancla",
+       "job": "Espejo hacia Train Museum y otro a Reading Room Corridor"
+      },
+      {
+       "op": "azami",
+       "room": "Reading Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "Kiba en los hoyos del techo y en la ventana; esquina segura"
+      },
+      {
+       "op": "mute",
+       "room": "Reading Room Corridor",
+       "f": 2,
+       "role": "flex",
+       "job": "Jammers en la pared y en la escotilla; niega drones del pasillo"
+      },
+      {
+       "op": "noor",
+       "room": "Reading Room",
+       "f": 2,
+       "role": "flex",
+       "job": "Fuego a las ventanas contra rappel con escudo; rota a Fireplace"
+      },
+      {
+       "op": "vigil",
+       "room": "Cocktail Lounge",
+       "f": 3,
+       "role": "roam",
+       "job": "Roam en Cocktail/Washrooms, mata a Buck/Sledge y baja por Front Stairs"
+      }
+     ]
+    }
+   ]
+  },
+  "mining": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Ace y Thatcher abren la pared Back Stairs→Train Museum, Buck abre Bar sobre Mining Room, Lion escanea antes de cada entrada y Nomad cierra Front Stairs/Museum Entrance. Mining es pequeño y con Buck encima el ancla de Mining tiene que salir a Train Museum, justo donde entra Ace.",
+     "timeline": [
+      "0:00–0:45 · Lion escanea, drones a Mining y Museum; Buck sube a Bar",
+      "0:45–1:30 · Thatcher EMP + Ace SELMA en Back Stairs→Train Museum; Buck abre Bar sobre Mining",
+      "1:30–2:30 · entrada a Train Museum; Nomad airjabs en Museum Entrance",
+      "2:30–3:00 · plant en Mining Room; post-plant desde Bar y Back Stairs"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale con Ace",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea Back Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "EMP en la pared de Train Museum",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Entra tras Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Kapkan en la puerta de la calle",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Kaid/Bandit en la pared + Mira mirando la escalera",
+         "how": "EMP pegado y SELMA en el pitido"
+        }
+       ],
+       "final": "Cubre Pillar Dining mientras Ace avanza a Mining"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "SELMA en la pared tras el EMP",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Entra y limpia el tren",
+         "via": "breach"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Ancla Mira detrás del tren + Smoke",
+         "how": "Entrar con flash y Buck presionando desde arriba"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "threat": "Ancla en la esquina de la ventana",
+         "how": "Buck abre el piso antes de entrar"
+        }
+       ],
+       "final": "Planta en Mining Room contra la pared de Laundry"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra por la principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa de largo",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Limpia Cigar Shop",
+         "via": "stairs"
+        },
+        {
+         "room": "Cigar Shop",
+         "f": 3,
+         "do": "Abre la escotilla para dar ángulo a Museum Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Cigar Lounge",
+         "f": 3,
+         "do": "Pasa al bar",
+         "via": "door"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Abre el piso sobre Mining Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cigar Shop",
+         "f": 3,
+         "threat": "Roamer negando vertical (Vigil/Solis)",
+         "how": "Dron y prefire, esperar compañía"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Roamer tras la barra y Ela minas",
+         "how": "Granada a la barra, entrar despacio"
+        }
+       ],
+       "final": "Sostiene el hoyo sobre Mining toda la ronda"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Escanea al minuto para ver roamers",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube con Nomad",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Escanea antes de la entrada",
+         "via": "stairs"
+        },
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "do": "Sostiene la puerta a Laundry",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "threat": "Roamer Cav esperando la escalera",
+         "how": "Escaneo y dron"
+        },
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Laundry + ancla asomando",
+         "how": "Dron y escaneo cuando Ace entre"
+        }
+       ],
+       "final": "Cubre Museum Entrance y Laundry durante el plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Airjab en la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Airjab en Main Corridor 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "do": "Airjab en la puerta de Laundry y sostiene",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "threat": "Roamer con Alibi/Vigil en la escalera",
+         "how": "Airjab en el rellano y dron"
+        },
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "threat": "Rotación de defensores desde Laundry",
+         "how": "Airjab en el marco y esperar el pop"
+        }
+       ],
+       "final": "Niega Front Stairs y Laundry como flanco"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Subes por la escalera de Bakery Parking a Bakery Roof y entras por la ventana de Mining Room en los primeros 30 segundos. Ying candela, Zofia rompe la barricada, Blitz entra primero y Finka da impulso al equipo. Funciona porque el ancla de Mining casi siempre está reforzando cuando llegas.",
+     "timeline": [
+      "0:00–0:20 · sprint a Bakery Parking y subir a Bakery Roof",
+      "0:20–0:45 · Zofia rompe la barricada, Ying candela, Blitz + Iana entran",
+      "0:45–1:30 · limpiar Mining y Laundry, plant",
+      "1:30–3:00 · post-plant desde Bakery Roof y Laundry"
+     ],
+     "ops": [
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre al oeste",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Sube la escalera al techo",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "do": "Impact en la barricada de Mining",
+         "via": "stairs"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Entra tras Blitz",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "threat": "Defensor peekeando la ventana de Mining",
+         "how": "Nadie se para en el techo hasta la candela"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "threat": "Ancla Smoke en la esquina",
+         "how": "Entrar en cadena con la candela activa"
+        }
+       ],
+       "final": "Limpia Mining y aguanta la puerta a Train Museum"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "do": "Candelas por la ventana",
+         "via": "stairs"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Entra y planta",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "threat": "Defensor peekeando la ventana de Mining",
+         "how": "Subir pegada al muro, candela desde el borde"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "threat": "Castle en la ventana + ancla",
+         "how": "Zofia rompe, candela al instante"
+        }
+       ],
+       "final": "Planta en Mining Room"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "do": "Se pone bajo la ventana",
+         "via": "stairs"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Salta primero y flashea",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "threat": "Noor con fuego y ancla esperando el escudo",
+         "how": "Flash y meterse a la esquina"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Ancla de Museum apuntando la puerta de Mining",
+         "how": "No cruzar, flash y sostener la puerta"
+        }
+       ],
+       "final": "Cubre Train Museum desde Mining mientras plantan"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Réplica adelante",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Sigue",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "do": "Réplica dentro de Mining",
+         "via": "stairs"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Entra en cuerpo",
+         "via": "window"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "do": "Limpia Laundry",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "threat": "Ancla Smoke en la esquina",
+         "how": "Réplica para sacarle el disparo"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "threat": "Roamer regresando desde Museum Entrance",
+         "how": "Réplica y prefire"
+        }
+       ],
+       "final": "Sostiene Laundry hacia Museum Entrance"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "do": "Adrenal Surge justo antes de la entrada",
+         "via": "stairs"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Entra la última y cubre",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "threat": "Kapkan en la puerta a Laundry",
+         "how": "Dron rápido y disparar"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Rotación desde Fireplace/Pillar Dining",
+         "how": "Segundo surge y prefire de la puerta"
+        }
+       ],
+       "final": "Post-plant desde Bakery Roof o la esquina de Mining"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Sledge y Ram abren Bar sobre Mining y Train Museum, Fuze cocina Museum Entrance desde Cigar Shop, Zero mete cams por los hoyos y Maverick abre agujeros en la pared de Back Stairs para rematar. Nadie baja hasta que Mining esté vacío.",
+     "timeline": [
+      "0:00–0:45 · todos suben a 3F por Front Stairs; Zero cams en Cigar Lounge",
+      "0:45–1:30 · Sledge/Ram abren Bar sobre Mining y Museum; Fuze en Cigar Shop",
+      "1:30–2:30 · Maverick baja por Back Stairs y abre agujeros a Train Museum",
+      "2:30–3:00 · plant en Mining con cobertura desde Bar"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Limpia Cigar Shop",
+         "via": "stairs"
+        },
+        {
+         "room": "Cigar Shop",
+         "f": 3,
+         "do": "Pasa",
+         "via": "door"
+        },
+        {
+         "room": "Cigar Lounge",
+         "f": 3,
+         "do": "Limpia",
+         "via": "door"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Abre el piso sobre Mining Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cigar Lounge",
+         "f": 3,
+         "threat": "Roamer con Alibi/Vigil",
+         "how": "Dron y prefire"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Roamer tras la barra negando vertical",
+         "how": "Granada y entrar con Ram"
+        }
+       ],
+       "final": "Sostiene el hoyo sobre Mining"
+      },
+      {
+       "op": "ram",
+       "role": "blando",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Cubre",
+         "via": "stairs"
+        },
+        {
+         "room": "Cigar Shop",
+         "f": 3,
+         "do": "Pasa",
+         "via": "door"
+        },
+        {
+         "room": "Cigar Lounge",
+         "f": 3,
+         "do": "Pasa",
+         "via": "door"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "BU-GI hacia Train Museum",
+         "via": "door"
+        },
+        {
+         "room": "Bar Backstore",
+         "f": 3,
+         "do": "Segundo BU-GI sobre Pillar Dining",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Roamer tras la barra negando vertical",
+         "how": "Entrar detrás de Sledge y cubrir"
+        },
+        {
+         "room": "Bar Backstore",
+         "f": 3,
+         "threat": "Roamer subiendo por Back Stairs 3F",
+         "how": "Dron a la escalera antes de entrar"
+        }
+       ],
+       "final": "Abre Bar sobre Train Museum y Pillar Dining"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Cigar Shop",
+         "f": 3,
+         "do": "Racimo sobre Museum Entrance y abre la escotilla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "threat": "Roamer subiendo a cazar verticales",
+         "how": "Dron y esperar a Sledge"
+        },
+        {
+         "room": "Cigar Shop",
+         "f": 3,
+         "threat": "Melusi/Frost en la escotilla",
+         "how": "Zero marca, racimo rompe"
+        }
+       ],
+       "final": "Cubre la escotilla de Cigar Shop hacia Museum Entrance"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Argus a Museum Entrance",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Cigar Shop",
+         "f": 3,
+         "do": "Pasa",
+         "via": "door"
+        },
+        {
+         "room": "Cigar Lounge",
+         "f": 3,
+         "do": "Argus por el piso a Laundry",
+         "via": "door"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Argus por el hoyo a Mining",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cigar Lounge",
+         "f": 3,
+         "threat": "Roamer con Alibi/Vigil",
+         "how": "Argus adelante y prefire"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Cámaras de Valk y Evil Eye en Mining",
+         "how": "Argus por los hoyos y disparar"
+        }
+       ],
+       "final": "Cubre Front Stairs 3F y da intel"
+      },
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale sin ruido",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Agujeros a Train Museum",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Entra al final",
+         "via": "breach"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Mira mirando la escalera desde Train Museum",
+         "how": "Agujeritos con soplete detrás del espejo"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Ancla tras el tren",
+         "how": "Ram abre el techo primero"
+        }
+       ],
+       "final": "Planta en Mining Room"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Hibana y Brava abren Back Stairs→Train Museum, mientras Osa, Dokkaebi y Grim entran por Front Stairs → Museum Entrance → Laundry → Mining. Los defensores tienen que mirar Train Museum y Laundry al mismo tiempo y Dokkaebi les explota los teléfonos justo cuando cae la pared.",
+     "timeline": [
+      "0:00–0:45 · Grim colmenas en Museum Entrance, Brava hackea Train Museum",
+      "0:45–1:30 · Hibana X-KAIROS en la pared; Osa Talon en la puerta de Laundry",
+      "1:30–2:30 · Dokkaebi llama y doble entrada",
+      "2:30–3:00 · plant en Mining o Train Museum"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "X-KAIROS en la pared de Train Museum",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Entra tras el reloj",
+         "via": "breach"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Kaid en la pared y Kapkan en la puerta",
+         "how": "Brava hackea, dron a la trampa"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Ancla Mira detrás del tren",
+         "how": "Entrar cuando Osa presione desde Laundry"
+        }
+       ],
+       "final": "Planta en Mining Room"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Kludge",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Hackea trampas",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Hackea Kaid y ADS",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Entra tras Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Kapkan en la puerta de Back Alley",
+         "how": "Kludge hackea o dron a la trampa"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Evil Eye y Bandit en la pared",
+         "how": "Kludge convierte todo antes de la X-KAIROS"
+        }
+       ],
+       "final": "Cubre Pillar Dining durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "do": "Talon en la puerta de Laundry",
+         "via": "door"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "do": "Segundo Talon en la puerta de Mining",
+         "via": "door"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Entra cuando Dokkaebi llama",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Laundry",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "threat": "Ancla asomando desde Mining",
+         "how": "Talon en el marco para ganar el ángulo"
+        }
+       ],
+       "final": "Bloquea Laundry con el Talon y cubre el plant"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Logic Bomb antes de la doble entrada",
+         "via": "stairs"
+        },
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "do": "Pasa",
+         "via": "door"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "do": "Entra tras Osa",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Museum Entrance",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Laundry",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Laundry Room",
+         "f": 2,
+         "threat": "Roamer regresando por Museum Entrance",
+         "how": "Llamar teléfonos y prefire"
+        }
+       ],
+       "final": "Cubre Laundry y hackea cams para post-plant"
+      },
+      {
+       "op": "grim",
+       "role": "flanco",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Colmenas a Main Corridor 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Corridor",
+         "f": 2,
+         "do": "Sostiene hacia Reading Room Corridor",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "threat": "Roamer con Alibi en la escalera",
+         "how": "Colmena y prefire"
+        },
+        {
+         "room": "Main Corridor",
+         "f": 2,
+         "threat": "Roamer llegando desde Reading/Fireplace",
+         "how": "Colmena en el pasillo y prefire del rastro"
+        }
+       ],
+       "final": "Niega el flanco de Reading Room Corridor y Front Stairs"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Smoke ancla Mining y Mira ancla Train Museum con espejo a Back Stairs. Kaid electrifica la pared de Back Stairs y la escotilla de Cigar Shop, Jäger cuida Laundry y Mozzie roba drones en Museum Entrance antes de roamear en Bar.",
+     "reinforce": [
+      "Pared Back Stairs→Train Museum ×2",
+      "Pared Museum Entrance→Laundry",
+      "Escotilla Cigar Shop",
+      "Escotilla Train Museum"
+     ],
+     "rotations": [
+      "Mining↔Train Museum",
+      "Mining↔Laundry (blanda)"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Mining Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "Gas a la ventana y a la puerta de Laundry; esquina detrás de las cajas"
+      },
+      {
+       "op": "mira",
+       "room": "Train Museum",
+       "f": 2,
+       "role": "ancla",
+       "job": "Espejo hacia Back Stairs y otro a Fireplace; mata detrás del tren"
+      },
+      {
+       "op": "kaid",
+       "room": "Back Stairs",
+       "f": 2,
+       "role": "flex",
+       "job": "Rtila en la pared de Train Museum y en la escotilla; juega Pillar Dining"
+      },
+      {
+       "op": "jager",
+       "room": "Laundry Room",
+       "f": 2,
+       "role": "flex",
+       "job": "ADS en Laundry y Mining; juega la puerta a Museum Entrance"
+      },
+      {
+       "op": "mozzie",
+       "room": "Bar",
+       "f": 3,
+       "role": "roam",
+       "job": "Pests en Museum Entrance, luego roamea Bar negando vertical"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Castle + Azami anti-roof",
+     "summary": "Contra el rush por Bakery Roof: Castle blinda la ventana de Mining, Bandit trickea Back Stairs, Azami tapa los hoyos de Bar y Solis roamea 3F detectando drones. Noor castiga escudos en la ventana con fuego.",
+     "reinforce": [
+      "Pared Back Stairs→Train Museum ×2",
+      "Ventana Mining (Castle)",
+      "Escotilla Cigar Shop",
+      "Escotilla Train Museum"
+     ],
+     "rotations": [
+      "Mining↔Train Museum"
+     ],
+     "ops": [
+      {
+       "op": "castle",
+       "room": "Mining Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "Barricada en la ventana de Mining y en Laundry; aguanta la esquina"
+      },
+      {
+       "op": "bandit",
+       "room": "Back Stairs",
+       "f": 2,
+       "role": "flex",
+       "job": "Trick en la pared de Train Museum, luego Pillar Dining"
+      },
+      {
+       "op": "azami",
+       "room": "Train Museum",
+       "f": 2,
+       "role": "ancla",
+       "job": "Kiba en los hoyos de Bar y en la puerta a Fireplace"
+      },
+      {
+       "op": "noor",
+       "room": "Laundry Room",
+       "f": 2,
+       "role": "flex",
+       "job": "Fuego a la ventana de Mining contra Blitz; cubre Museum Entrance"
+      },
+      {
+       "op": "solis",
+       "room": "Cigar Lounge",
+       "f": 3,
+       "role": "roam",
+       "job": "Detecta drones y mata verticales en Bar/Cigar; baja por Back Stairs"
+      }
+     ]
+    }
+   ]
+  },
+  "cocktail": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thatcher y Thermite abren la pared Back Stairs→Bar, Glaz aguanta las ventanas de Cocktail desde Terrace con humo, Zero mete cams por las ventanas y Gridlock cierra Front Stairs. El sitio es el último piso, así que sin vertical el plan es apretar Bar por la pared y Cocktail por las ventanas al mismo tiempo.",
+     "timeline": [
+      "0:00–0:45 · Zero cams a Cocktail por Terrace, drones a Bar",
+      "0:45–1:30 · EMP + Thermite en Back Stairs→Bar; Glaz humo en Cocktail",
+      "1:30–2:30 · entrada por el hoyo a Bar y presión de Glaz por ventana; Gridlock en Front Stairs",
+      "2:30–3:00 · plant en Cocktail o Bar; post-plant desde Terrace y Back Stairs"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale con Thermite",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Cubre Pillar Dining",
+         "via": "stairs"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 3,
+         "do": "EMP en la pared de Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Entra tras Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Roamer en Pillar Dining esperando la escalera",
+         "how": "Dron y prefire"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 3,
+         "threat": "Bandit/Kaid en la pared + Kapkan en Bar Backstore",
+         "how": "EMP y quemar en ventana"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Ancla Mira tras la barra",
+         "how": "Flash y entrar en pareja"
+        }
+       ],
+       "final": "Cubre Cigar Lounge mientras Thermite planta"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 3,
+         "do": "Carga en la pared tras el EMP",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Entra y planta tras la barra",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar Backstore",
+         "f": 3,
+         "threat": "Kapkan/Frost en la puerta trasera",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Ancla Mira y Smoke tras la barra",
+         "how": "Entrar con flash y Glaz presionando por Cocktail"
+        }
+       ],
+       "final": "Planta en Bar detrás de la barra"
+      },
+      {
+       "op": "glaz",
+       "role": "soporte",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre a la terraza",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Humo dentro de Cocktail y aguanta desde el rappel",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra por la ventana al final para plantar o cubrir",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 3,
+         "threat": "Defensor peekeando la terraza desde Cocktail",
+         "how": "Humo primero, térmica después"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Ancla Frost + Smoke en el fondo",
+         "how": "Térmica por el humo, no entrar hasta que caiga la pared de Bar"
+        }
+       ],
+       "final": "Sostiene las ventanas de Cocktail y remata en post-plant"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre a la terraza",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Argus por la ventana de Cocktail y otro en Cocktail Lounge Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra tras Glaz",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 3,
+         "threat": "Defensor peekeando la terraza desde Cocktail",
+         "how": "Argus desde abajo antes de asomar"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Cepos de Frost bajo la ventana y Valk cams",
+         "how": "Argus por la ventana, disparar cepos"
+        }
+       ],
+       "final": "Sostiene Cocktail y da intel de las rotaciones"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 2,
+         "do": "Trax en Main Corridor 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "do": "Trax en Cigar Shop y sostiene",
+         "via": "stairs"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "Sostiene la entrada del salón",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Stairs",
+         "f": 3,
+         "threat": "Roamer bajando desde Cigar Shop",
+         "how": "Trax en la escalera"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "threat": "Kapkan en la puerta y ancla asomando",
+         "how": "Dron y prefire"
+        }
+       ],
+       "final": "Niega Front Stairs y Cocktail Lounge Entrance durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Rappel a las ventanas de Cocktail desde Terrace en los primeros 30 segundos, antes de que Castle tape. Ying candela, Ash rompe barricadas, Blitz entra primero, Iana cuenta y Capitão tapa Cocktail Lounge Entrance con fuego.",
+     "timeline": [
+      "0:00–0:20 · sprint a Terrace, Ash rompe barricadas",
+      "0:20–0:45 · Ying candela, Blitz + Iana entran, Capitão humo",
+      "0:45–1:30 · limpiar Cocktail y plant",
+      "1:30–3:00 · post-plant mirando la entrada y Washroom Corridor"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre sin dron",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Dispara las barricadas de Cocktail",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra tras Blitz",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 3,
+         "threat": "Defensor peekeando desde la ventana",
+         "how": "Nadie se asoma hasta la candela"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Frost bajo la ventana y ancla en el fondo",
+         "how": "Impact en el cepo y entrar en cadena"
+        }
+       ],
+       "final": "Limpia Cocktail y aguanta la entrada"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Candelas por las ventanas",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra y planta",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 3,
+         "threat": "Defensor peekeando la terraza",
+         "how": "Candela desde el rappel sin asomar"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Smoke y Castle",
+         "how": "Ash rompe primero, candela al instante"
+        }
+       ],
+       "final": "Planta en Cocktail Lounge en la esquina lejana a la entrada"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Engancha rappel",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Salta primero y flashea",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Noor con fuego esperando el escudo",
+         "how": "Flash y meterse a la esquina"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "threat": "Ancla asomando desde la entrada",
+         "how": "Flash y esperar a Iana"
+        }
+       ],
+       "final": "Cubre Cocktail Lounge Entrance mientras plantan"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Réplica adelante",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Réplica dentro para contar",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra en cuerpo",
+         "via": "rappel"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "Limpia la entrada",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Frost bajo la ventana y Smoke al fondo",
+         "how": "Réplica para sacarles el disparo"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "threat": "Rotación desde Front Stairs y Washroom Corridor",
+         "how": "Réplica y prefire"
+        }
+       ],
+       "final": "Sostiene Cocktail Lounge Entrance"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Humo dentro hacia la entrada",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra el último, fuego a la entrada",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Ancla Smoke con gas para el plant",
+         "how": "Humo primero y fuego a la esquina"
+        },
+        {
+         "room": "Washroom Corridor",
+         "f": 3,
+         "threat": "Rotación desde Bar por los baños",
+         "how": "Asfixiante en el pasillo"
+        }
+       ],
+       "final": "Post-plant con fuego listo para la entrada y los baños"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Como es el último piso, el vertical es desde abajo: Buck y Sledge abren el techo de Fireplace Hall y Mining hacia Cocktail y Bar, Zofia mete impactos y aturdidoras por los hoyos, IQ marca gadgets, y Ace abre la pared de Bar al final para entrar con el sitio desmantelado.",
+     "timeline": [
+      "0:00–0:45 · todos suben a 2F por Back Stairs; IQ escanea",
+      "0:45–1:30 · Buck abre el techo de Fireplace hacia Cocktail; Sledge el de Mining hacia Bar",
+      "1:30–2:30 · Zofia aturde por los hoyos; Ace sube y abre Back Stairs→Bar",
+      "2:30–3:00 · plant en Bar con cobertura desde abajo"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "blando",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Limpia Pillar Dining",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Pasa",
+         "via": "door"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Dispara el techo hacia Cocktail Lounge",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Roamer en Pillar Dining",
+         "how": "Dron y prefire"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "threat": "Roamer esperando en la chimenea",
+         "how": "Entrar en pareja y granada"
+        }
+       ],
+       "final": "Sostiene los hoyos hacia Cocktail desde Fireplace"
+      },
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Abre el techo hacia Bar",
+         "via": "door"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Abre el techo hacia Bar",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "threat": "Roamer en Pillar Dining esperando la escalera",
+         "how": "Dron y prefire"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Roamer con Alibi en el tren",
+         "how": "Dron y prefire"
+        }
+       ],
+       "final": "Sostiene los hoyos bajo Bar"
+      },
+      {
+       "op": "zofia",
+       "role": "negacion",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Pasa",
+         "via": "door"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "do": "Aturdidoras por los hoyos hacia Cocktail",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "threat": "Roamer con Alibi en el tren",
+         "how": "Impact y prefire"
+        },
+        {
+         "room": "Fireplace Hall",
+         "f": 2,
+         "threat": "Ancla de Cocktail mirando los hoyos",
+         "how": "Aturdidora y cambiar de hoyo"
+        }
+       ],
+       "final": "Niega Cocktail desde abajo durante el plant"
+      },
+      {
+       "op": "iq",
+       "role": "intel",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Escanea",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Escanea Pillar Dining",
+         "via": "stairs"
+        },
+        {
+         "room": "Train Museum",
+         "f": 2,
+         "do": "Marca gadgets de Bar arriba",
+         "via": "door"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "do": "Marca cams y teléfonos",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "threat": "Kapkan en la puerta de Back Alley",
+         "how": "Escanear y disparar"
+        },
+        {
+         "room": "Mining Room",
+         "f": 2,
+         "threat": "Cámaras de Valk mirando 2F",
+         "how": "Detectar y disparar"
+        }
+       ],
+       "final": "Cubre Back Stairs 2F y da intel"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Espera a que abran abajo",
+         "via": "stairs"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 3,
+         "do": "SELMA en la pared de Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 3,
+         "threat": "Kaid/Bandit en la pared y Kapkan",
+         "how": "IQ marca, disparar la batería por un agujero de Sledge"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Ancla tras la barra",
+         "how": "Sledge presiona desde abajo antes de entrar"
+        }
+       ],
+       "final": "Planta en Bar"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Hibana y Amaru aprietan Bar (pared de Back Stairs + ventana desde Bakery Roof), mientras Osa, Dokkaebi y Nomad rapelean a Cocktail desde Terrace. Dos frentes opuestos: el ancla de Bar mira la pared y le cae Amaru por la ventana; Nomad cierra la rotación por Washroom Corridor.",
+     "timeline": [
+      "0:00–0:45 · drones; Amaru sube a Bakery Roof, Osa a Terrace",
+      "0:45–1:30 · Hibana X-KAIROS en Back Stairs→Bar; Osa Talon en la ventana de Cocktail",
+      "1:30–2:30 · Dokkaebi llama, Amaru gancho a Bar, Osa entra a Cocktail",
+      "2:30–3:00 · plant en Cocktail o Bar"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Park",
+       "path": [
+        {
+         "room": "Park Alley",
+         "f": -1,
+         "do": "Sale",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dronea",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 2,
+         "do": "Pasa",
+         "via": "stairs"
+        },
+        {
+         "room": "Back Stairs",
+         "f": 3,
+         "do": "X-KAIROS en la pared de Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Entra tras el reloj",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Stairs",
+         "f": 3,
+         "threat": "Kaid en la pared y Kapkan en Bar Backstore",
+         "how": "Dron, disparar la Rtila y X-KAIROS"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Ancla Mira tras la barra",
+         "how": "Entrar cuando Amaru cae por la ventana"
+        }
+       ],
+       "final": "Planta en Bar"
+      },
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Christmas Market",
+       "path": [
+        {
+         "room": "Main Street",
+         "f": -1,
+         "do": "Va al oeste",
+         "via": "door"
+        },
+        {
+         "room": "West Main Street",
+         "f": -1,
+         "do": "Se cubre",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Parking",
+         "f": -1,
+         "do": "Sube la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Bakery Roof",
+         "f": 2,
+         "do": "Sube al techo alto",
+         "via": "stairs"
+        },
+        {
+         "room": "Bakery Roof",
+         "f": 3,
+         "do": "Gancho a la ventana de Bar cuando Dokkaebi llama",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "do": "Entra por la ventana y limpia la barra",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bakery Roof",
+         "f": 3,
+         "threat": "Defensor peekeando la ventana de Bar",
+         "how": "No asomar hasta el Logic Bomb"
+        },
+        {
+         "room": "Bar",
+         "f": 3,
+         "threat": "Ancla tras la barra mirando la pared",
+         "how": "Entrar por la espalda justo con la X-KAIROS"
+        }
+       ],
+       "final": "Cubre Cigar Lounge y Bar Backstore durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Talon en la ventana de Cocktail",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra y pone el segundo Talon en la entrada",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 3,
+         "threat": "Defensor peekeando la terraza",
+         "how": "Talon primero desde el rappel"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Frost bajo la ventana y Smoke en el fondo",
+         "how": "Talon en la ventana, romper cepos y entrar con Dokkaebi"
+        }
+       ],
+       "final": "Bloquea Cocktail Lounge Entrance y cubre el plant"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Logic Bomb antes de la doble entrada",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra tras Osa",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 3,
+         "threat": "Defensor peekeando",
+         "how": "Logic Bomb antes de asomar"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Ancla en la esquina y Valk cams",
+         "how": "Llamar teléfonos y hackear cams"
+        }
+       ],
+       "final": "Planta en Cocktail si Bar se traba; hackea cams"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "River Docks",
+       "path": [
+        {
+         "room": "East Main Street",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Terrace",
+         "f": 3,
+         "do": "Sube tras Osa",
+         "via": "door"
+        },
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "do": "Entra",
+         "via": "rappel"
+        },
+        {
+         "room": "Cocktail Lounge Entrance",
+         "f": 3,
+         "do": "Airjab en la puerta a Front Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Washroom Corridor",
+         "f": 3,
+         "do": "Airjab hacia los baños y sostiene",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cocktail Lounge",
+         "f": 3,
+         "threat": "Frost bajo la ventana",
+         "how": "Dron y disparar cepos"
+        },
+        {
+         "room": "Washroom Corridor",
+         "f": 3,
+         "threat": "Rotación desde Bar por los baños",
+         "how": "Airjab en el pasillo y esperar el pop"
+        }
+       ],
+       "final": "Niega Washroom Corridor y Front Stairs durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Frost pone cepos bajo las ventanas de Cocktail, Castle las blinda, Smoke ancla Cocktail y Mira ancla Bar con espejo a Back Stairs. Valkyrie mete cams en Terrace para ver el rappel y roamea 2F.",
+     "reinforce": [
+      "Pared Back Stairs→Bar ×2",
+      "Ventanas Cocktail (Castle)",
+      "Pared Bar Backstore→Back Stairs"
+     ],
+     "rotations": [
+      "Cocktail↔Washroom Corridor↔Bar"
+     ],
+     "ops": [
+      {
+       "op": "frost",
+       "room": "Cocktail Lounge",
+       "f": 3,
+       "role": "ancla",
+       "job": "Cepos bajo las ventanas y en la entrada; aguanta el fondo del salón"
+      },
+      {
+       "op": "castle",
+       "room": "Cocktail Lounge",
+       "f": 3,
+       "role": "flex",
+       "job": "Barricadas en las ventanas de Cocktail; luego juega Cocktail Lounge Entrance"
+      },
+      {
+       "op": "smoke",
+       "room": "Cocktail Lounge Entrance",
+       "f": 3,
+       "role": "ancla",
+       "job": "Gas a la entrada y a las ventanas en post-plant"
+      },
+      {
+       "op": "mira",
+       "room": "Bar",
+       "f": 3,
+       "role": "ancla",
+       "job": "Espejo hacia Back Stairs y otro a Cigar Lounge; mata tras la barra"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Fireplace Hall",
+       "f": 2,
+       "role": "roam",
+       "job": "Cam en Terrace para ver el rappel, cam en Back Stairs; roamea 2F y sube a flanquear"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Azami + Kaid anti-vertical",
+     "summary": "Contra el vertical desde 2F: Azami tapa hoyos del piso, Kaid electrifica la pared de Bar y la escotilla de Cigar Shop, Jäger cuida las ventanas. Noor quema escudos en el rappel y Vigil roamea en Train Museum para cazar a los verticales.",
+     "reinforce": [
+      "Pared Back Stairs→Bar ×2",
+      "Ventanas Cocktail (Castle si hay)",
+      "Escotilla Cigar Shop"
+     ],
+     "rotations": [
+      "Cocktail↔Bar por Washroom Corridor"
+     ],
+     "ops": [
+      {
+       "op": "azami",
+       "room": "Cocktail Lounge",
+       "f": 3,
+       "role": "ancla",
+       "job": "Kiba en los hoyos del piso y en las ventanas; esquina segura"
+      },
+      {
+       "op": "kaid",
+       "room": "Bar Backstore",
+       "f": 3,
+       "role": "flex",
+       "job": "Rtila en la pared de Bar y escotilla; juega Bar Backstore"
+      },
+      {
+       "op": "jager",
+       "room": "Bar",
+       "f": 3,
+       "role": "ancla",
+       "job": "ADS en Bar y Cocktail; mata tras la barra"
+      },
+      {
+       "op": "noor",
+       "room": "Cocktail Lounge Entrance",
+       "f": 3,
+       "role": "flex",
+       "job": "Fuego a las ventanas de Cocktail contra escudos; rota a Washroom Corridor"
+      },
+      {
+       "op": "vigil",
+       "room": "Train Museum",
+       "f": 2,
+       "role": "roam",
+       "job": "Roam invisible en Train Museum/Fireplace, caza a Buck/Sledge antes de que abran el techo"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

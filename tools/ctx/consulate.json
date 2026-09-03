@@ -1,0 +1,1303 @@
+{
+ "id": "consulate",
+ "name": "Consulate",
+ "pool": "ranked",
+ "hasBlueprint": true,
+ "floors": [
+  {
+   "idx": 0,
+   "key": "b",
+   "name": "Basement"
+  },
+  {
+   "idx": 1,
+   "key": "1",
+   "name": "1st Floor"
+  },
+  {
+   "idx": 2,
+   "key": "2",
+   "name": "2nd Floor"
+  },
+  {
+   "idx": 3,
+   "key": "r",
+   "name": "Roof"
+  }
+ ],
+ "rooms": [
+  {
+   "f": 0,
+   "en": "Exit Stairs",
+   "es": "Escaleras de salida"
+  },
+  {
+   "f": 0,
+   "en": "Garage",
+   "es": "Garage"
+  },
+  {
+   "f": 0,
+   "en": "Basement Corridor",
+   "es": "Pasillo del sótano"
+  },
+  {
+   "f": 0,
+   "en": "Security Room",
+   "es": "Sala de seguridad"
+  },
+  {
+   "f": 0,
+   "en": "Cafeteria",
+   "es": "Cafetería"
+  },
+  {
+   "f": 0,
+   "en": "Main Stairs",
+   "es": "Escalera principal"
+  },
+  {
+   "f": 0,
+   "en": "Locker Hallway",
+   "es": "Pasillo de taquillas"
+  },
+  {
+   "f": 0,
+   "en": "Service Stairs",
+   "es": "Escalera de servicio"
+  },
+  {
+   "f": 0,
+   "en": "Electric Room",
+   "es": "Cuarto eléctrico"
+  },
+  {
+   "f": 0,
+   "en": "Storage Room",
+   "es": "Zona de almacén"
+  },
+  {
+   "f": 0,
+   "en": "Archives",
+   "es": "Archivo"
+  },
+  {
+   "f": 0,
+   "en": "Archives Corridor",
+   "es": "Pasillo del archivo"
+  },
+  {
+   "f": 1,
+   "en": "Exit Stairs",
+   "es": "Escaleras de salida"
+  },
+  {
+   "f": 1,
+   "en": "Press Room",
+   "es": "Sala de prensa"
+  },
+  {
+   "f": 1,
+   "en": "West Corridor",
+   "es": "Pasillo oeste"
+  },
+  {
+   "f": 1,
+   "en": "Public Bathroom",
+   "es": "Baño público"
+  },
+  {
+   "f": 1,
+   "en": "Antechamber",
+   "es": "Antesala"
+  },
+  {
+   "f": 1,
+   "en": "Lobby",
+   "es": "Vestíbulo"
+  },
+  {
+   "f": 1,
+   "en": "East Corridor",
+   "es": "Pasillo este"
+  },
+  {
+   "f": 1,
+   "en": "Tellers",
+   "es": "Ventanillas de atención pública"
+  },
+  {
+   "f": 1,
+   "en": "Service Stairs",
+   "es": "Escalera de servicio"
+  },
+  {
+   "f": 1,
+   "en": "Visa Office",
+   "es": "Despacho de visados"
+  },
+  {
+   "f": 1,
+   "en": "Main Stairs",
+   "es": "Escalera principal"
+  },
+  {
+   "f": 1,
+   "en": "Visa Entrance",
+   "es": "Entrada de visados"
+  },
+  {
+   "f": 1,
+   "en": "Front Door",
+   "es": "Puerta frontal"
+  },
+  {
+   "f": 2,
+   "en": "Balcony",
+   "es": "Balcón"
+  },
+  {
+   "f": 3,
+   "en": "Balcony",
+   "es": "Balcón"
+  },
+  {
+   "f": 2,
+   "en": "Service Stairs",
+   "es": "Escalera de servicio"
+  },
+  {
+   "f": 2,
+   "en": "Copy Room",
+   "es": "Sala de fotocopiadoras"
+  },
+  {
+   "f": 2,
+   "en": "Cabinet",
+   "es": "Armario"
+  },
+  {
+   "f": 2,
+   "en": "Administration Office",
+   "es": "Oficina de administración"
+  },
+  {
+   "f": 2,
+   "en": "Main Stairs",
+   "es": "Escalera principal"
+  },
+  {
+   "f": 2,
+   "en": "Break Room",
+   "es": "Sala de descanso"
+  },
+  {
+   "f": 2,
+   "en": "Front Office",
+   "es": "Oficina frontal"
+  },
+  {
+   "f": 2,
+   "en": "Meeting Room",
+   "es": "Sala de reuniones"
+  },
+  {
+   "f": 2,
+   "en": "Hallway",
+   "es": "Pasillo"
+  },
+  {
+   "f": 2,
+   "en": "Consul Front Desk",
+   "es": "Mostrador del consulado"
+  },
+  {
+   "f": 2,
+   "en": "Private Bathroom",
+   "es": "Baño privado"
+  },
+  {
+   "f": 2,
+   "en": "Exit Stairs",
+   "es": "Escaleras de salida"
+  },
+  {
+   "f": 2,
+   "en": "Waiting Room",
+   "es": "Sala de espera"
+  },
+  {
+   "f": 2,
+   "en": "Consulate Office",
+   "es": "Oficina del cónsul"
+  },
+  {
+   "f": -1,
+   "en": "Garage Way",
+   "es": "Acceso al garage"
+  },
+  {
+   "f": -1,
+   "en": "Courtyard",
+   "es": "Patio"
+  },
+  {
+   "f": -1,
+   "en": "Back Courtyard",
+   "es": "Patio trasero"
+  },
+  {
+   "f": -1,
+   "en": "Side Entrance",
+   "es": "Entrada lateral"
+  },
+  {
+   "f": -1,
+   "en": "Dumpster",
+   "es": "Contendor de basura"
+  },
+  {
+   "f": -1,
+   "en": "Parking",
+   "es": "Aparcamiento"
+  },
+  {
+   "f": -1,
+   "en": "Gardens",
+   "es": "Jardines"
+  },
+  {
+   "f": -1,
+   "en": "Fountain",
+   "es": "Fuente"
+  },
+  {
+   "f": -1,
+   "en": "Emergency Exit",
+   "es": "Salida de emergencia"
+  },
+  {
+   "f": -1,
+   "en": "Garage Roof",
+   "es": "Tejado del garage"
+  },
+  {
+   "f": -1,
+   "en": "Memorial Garden",
+   "es": "Jarín de estatuas"
+  },
+  {
+   "f": -1,
+   "en": "Police Line",
+   "es": "Cordón policial"
+  },
+  {
+   "f": -1,
+   "en": "Riot Barracade",
+   "es": "Barricada Antitumultos"
+  },
+  {
+   "f": -1,
+   "en": "West Front Yard",
+   "es": "Oeste del jadín delantero"
+  },
+  {
+   "f": -1,
+   "en": "East Front Yard",
+   "es": "Este del jardín delantero"
+  },
+  {
+   "f": -1,
+   "en": "Front Alley",
+   "es": "Callejón delantero"
+  },
+  {
+   "f": 3,
+   "en": "Building Roof",
+   "es": "Tejado del edificio"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Riot Barricade",
+   "es": "Barricada antitumultos"
+  },
+  {
+   "letter": "B",
+   "en": "Police Line",
+   "es": "Cordón policial"
+  },
+  {
+   "letter": "C",
+   "en": "Gas Station",
+   "es": "Gasolinera"
+  },
+  {
+   "letter": "D",
+   "en": "Side Entrance",
+   "es": "Entrada lateral"
+  }
+ ],
+ "bombSets": {
+  "1": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Meeting Room"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Consulate Office"
+   }
+  ],
+  "2": [
+   {
+    "f": 1,
+    "letter": "A",
+    "nearest": "Press Room"
+   },
+   {
+    "f": 1,
+    "letter": "B",
+    "nearest": "Lobby"
+   }
+  ],
+  "3": [
+   {
+    "f": 0,
+    "letter": "B",
+    "nearest": "Garage"
+   },
+   {
+    "f": 0,
+    "letter": "A",
+    "nearest": "Cafeteria"
+   }
+  ]
+ },
+ "hatches": [
+  {
+   "f": 0,
+   "near": "Cafeteria"
+  },
+  {
+   "f": 0,
+   "near": "Service Stairs"
+  },
+  {
+   "f": 0,
+   "near": "Electric Room"
+  },
+  {
+   "f": 0,
+   "near": "Archives Corridor"
+  },
+  {
+   "f": 0,
+   "near": "Archives"
+  },
+  {
+   "f": 0,
+   "near": "Cafeteria"
+  },
+  {
+   "f": 1,
+   "near": "Press Room"
+  },
+  {
+   "f": 1,
+   "near": "Lobby"
+  },
+  {
+   "f": 1,
+   "near": "Visa Office"
+  }
+ ],
+ "sites": [
+  {
+   "id": "garage",
+   "name": "Garaje / Cafetería",
+   "fl": "b",
+   "floorIdx": 0,
+   "rooms": [
+    "Garaje",
+    "Cafetería"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Puerta grande → Garaje",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Garaje"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Escaleras servicio → Cafetería",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras servicio",
+      "Cafetería"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vertical Lobby → Cafetería",
+     "kind": "vertical",
+     "path": [
+      "Lobby (arriba)",
+      "Cafetería"
+     ],
+     "roles": [
+      "blando",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escaleras Prensa → Garaje (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras Prensa",
+      "Garaje"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Thatcher + Thermite en la pared de Cafetería desde Escaleras de Servicio. Buck abre el piso de Lobby sobre Cafetería.",
+    "Entrada por la puerta grande del Garaje (Osa/humo) y por la pared abierta. Lion cuando bajen.",
+    "Planta en Cafetería. Nomad en Escaleras de Prensa."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Cafetería–Escaleras ×2",
+     "Puerta Garaje (Castle)",
+     "Escotilla Garaje"
+    ],
+    "keepSoft": [
+     "Piso Lobby"
+    ],
+    "rotations": [
+     "Garaje↔Cafetería"
+    ],
+    "anchors": "Ancla Cafetería (Smoke), ancla Garaje detrás de los autos (Mira). Roam en Lobby.",
+    "ops": [
+     "castle",
+     "smoke",
+     "mira",
+     "bandit",
+     "jager"
+    ],
+    "tip": "La puerta del Garaje decide: Castle + Mira + Kapkan."
+   }
+  },
+  {
+   "id": "lobby",
+   "name": "Lobby / Sala de prensa",
+   "fl": "1",
+   "floorIdx": 1,
+   "rooms": [
+    "Lobby",
+    "Sala de prensa"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Puerta principal → Lobby",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Lobby"
+     ],
+     "roles": [
+      "soporte",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Visados → Prensa",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Visados",
+      "Sala de prensa"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vertical Cónsul → Lobby",
+     "kind": "vertical",
+     "path": [
+      "Oficina Cónsul (arriba)",
+      "Lobby"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escaleras servicio → Prensa",
+     "kind": "puerta",
+     "path": [
+      "Escaleras servicio",
+      "Sala de prensa"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Oficina del Cónsul (2F) sobre Lobby con Sledge. Ace abre la pared de Prensa desde el Pasillo de Visados.",
+    "Entrada por Puerta principal (Montagne) y por la pared. Twitch limpia Evil Eye del Lobby.",
+    "Planta en Prensa. Gridlock en Escaleras de servicio."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Prensa–Visados ×2",
+     "Puerta principal (Castle)"
+    ],
+    "keepSoft": [
+     "Piso Cónsul"
+    ],
+    "rotations": [
+     "Lobby↔Prensa"
+    ],
+    "anchors": "Ancla Prensa (Smoke), ancla Lobby (Maestro). Roam arriba.",
+    "ops": [
+     "maestro",
+     "smoke",
+     "castle",
+     "bandit",
+     "valkyrie"
+    ],
+    "tip": "Evil Eye en Lobby mirando la puerta principal."
+   }
+  },
+  {
+   "id": "piano",
+   "name": "Sala de piano / Oficina de visados",
+   "fl": "1",
+   "floorIdx": 1,
+   "rooms": [
+    "Sala de piano",
+    "Visados"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared exterior → Visados",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Visados"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Reunión → Piano",
+     "kind": "vertical",
+     "path": [
+      "Reunión (arriba)",
+      "Sala de piano"
+     ],
+     "roles": [
+      "blando",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Lobby → Piano",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Lobby",
+      "Sala de piano"
+     ],
+     "roles": [
+      "soporte",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escaleras Prensa → Visados",
+     "kind": "puerta",
+     "path": [
+      "Escaleras Prensa",
+      "Visados"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Reunión (2F) sobre Piano. Thermite abre la pared de Visados desde el exterior.",
+    "Entrada por Lobby (puerta) y por la pared. Capitão quema el rincón del Piano.",
+    "Planta en Visados. Nomad en Escaleras Prensa."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Visados–Exterior ×2",
+     "Pared Piano–Lobby"
+    ],
+    "keepSoft": [
+     "Piso Reunión"
+    ],
+    "rotations": [
+     "Piano↔Visados"
+    ],
+    "anchors": "Anclas en Piano y Visados. Roam arriba.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "lesion"
+    ],
+    "tip": "Confirma los callouts de este sitio en el juego."
+   }
+  },
+  {
+   "id": "consul",
+   "name": "Oficina del Cónsul / Sala de reuniones",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Oficina Cónsul",
+    "Reuniones"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Cónsul (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Oficina Cónsul"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Reuniones",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras principales",
+      "Pasillo 2F",
+      "Reuniones"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras servicio → Reuniones",
+     "kind": "puerta",
+     "path": [
+      "Escaleras servicio",
+      "Reuniones"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escotilla Cónsul (techo)",
+     "kind": "escotilla",
+     "path": [
+      "Exterior",
+      "Oficina Cónsul"
+     ],
+     "roles": [
+      "blando"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Cónsul. Thermite abre la pared de Reuniones desde Pasillo de Escaleras principales.",
+    "Ying por ventana + Glaz en el pasillo con humo. Entrada simultánea ventana + pared.",
+    "Planta en Cónsul. Gridlock en Escaleras de servicio."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Reuniones–Pasillo ×2",
+     "Ventanas Cónsul (Castle)",
+     "Escotilla Cónsul"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Cónsul↔Reuniones"
+    ],
+    "anchors": "Ancla Cónsul (Frost + Smoke), ancla Reuniones (Mira). Roam en Lobby.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "jager"
+    ],
+    "tip": "Frost bajo las ventanas del Cónsul."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

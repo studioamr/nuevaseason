@@ -1,0 +1,1068 @@
+{
+ "map": "clubhouse",
+ "sites": {
+  "church": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Abrir la pared de Church desde Basement Hallway (Escaleras Azules) con Thatcher + Thermite mientras Buck abre el piso de Bar sobre Arsenal. La ancla de Arsenal no puede quedarse, la de Church queda expuesta a la pared abierta y a la escotilla de Garage. Plantamos en Arsenal con tres ángulos controlados.",
+     "timeline":["0:00–0:45 · drones por el túnel y por Blue Stairs; Zero pone Argus en Church","0:45–1:30 · Thatcher EMP + Thermite en la pared de Church; Buck abre piso de Bar","1:30–2:30 · entrada por pared y escotilla de Garage a la vez; plant en Arsenal","2:30–3:00 · post-plant: Nomad sella Blue Stairs, Buck cuida el túnel desde arriba"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Dronea el porche y el Lobby desde la reja","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza pegado a los coches, ojo a la ventana de Bar","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe barricada y checa Lobby con dron","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia Lobby y baja con Thermite","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Baja por Blue Stairs con dron adelante","via":"stairs"},
+        {"room":"Central Stairs","f":0,"do":"Sale abajo, controla el pasillo","via":"stairs"},
+        {"room":"Basement Hallway","f":0,"do":"EMP sobre la pared de Church (Bandit/Kaid/Mute) y avisa a Thermite","via":"door"},
+        {"room":"Church","f":0,"do":"Entra por la pared abierta detrás de Thermite","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer tipo Vigil/Cav esperando el push de Front Porch","how":"dron primero, prefire a la esquina de Lounge y espera a Zero"},
+        {"room":"Basement Hallway","f":0,"threat":"Mira en la pared de Church + Kapkan en la puerta del pasillo","how":"dron pegado al piso, rompe trampas, EMP y no asomes al espejo"},
+        {"room":"Church","f":0,"threat":"Ancla pegada a la pared abierta o detrás de la banca","how":"flash/Airjab antes de cruzar, entrada con Thermite y dos más"}],
+       "final":"Cubre Basement Hallway y Memorial mientras plantan en Arsenal"},
+      {"op":"thermite","role":"duro","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sale detrás de Thatcher","via":"door"},
+        {"room":"Parking","f":-1,"do":"Avanza cubierto, no te asomes a la ventana de Bar","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra tras el dron de Thatcher","via":"door"},
+        {"room":"Lobby","f":1,"do":"Sostiene Lobby mientras bajan","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Baja segundo por Blue Stairs","via":"stairs"},
+        {"room":"Central Stairs","f":0,"do":"Sale al pasillo del sótano","via":"stairs"},
+        {"room":"Basement Hallway","f":0,"do":"Pone la carga en la pared de Church tras el EMP","via":"door"},
+        {"room":"Church","f":0,"do":"Entra por la pared y avanza hacia Arsenal","via":"breach"}],
+       "clear":[
+        {"room":"Central Stairs","f":0,"threat":"Frost o Ela al pie de Blue Stairs","how":"dron antes de bajar, dispara las trampas"},
+        {"room":"Basement Hallway","f":0,"threat":"Bandit-trick en la pared de Church","how":"espera el EMP de Thatcher, pon la carga y aléjate del agujero"},
+        {"room":"Arsenal Room","f":0,"threat":"Smoke ancla con gas en la rotación Church–Arsenal","how":"no cruces el gas, deja que Buck lo mueva desde arriba"}],
+       "final":"Planta en Arsenal pegado a la pared abierta"},
+      {"op":"buck","role":"vertical","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Corre al Garage con dron mirando la entrada","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Cruza junto a las perreras, ojo a la puerta de Garage","via":"door"},
+        {"room":"Garage","f":1,"do":"Entra por el portón, checa Garage Storage","via":"door"},
+        {"room":"Bar","f":1,"do":"Abre el piso de Bar sobre Arsenal con Skeleton Key y dispara a las anclas","via":"door"},
+        {"room":"Garage","f":1,"do":"Regresa a la escotilla de Garage","via":"door"},
+        {"room":"Arsenal Room","f":0,"do":"Baja por la escotilla cuando la pared ya esté abierta","via":"hatch"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Roamer saliendo de Eastern Stairs o Kapkan en la puerta de Bar","how":"dron en Garage Storage y prefire a la puerta de Bar"},
+        {"room":"Bar","f":1,"threat":"Roamer de arriba (Gym) escuchando el vertical","how":"no te quedes en el mismo hoyo, cambia de posición tras cada ráfaga"},
+        {"room":"Arsenal Room","f":0,"threat":"Ancla de Arsenal bajo la escotilla con Smoke o Jäger","how":"dispara desde los agujeros del piso hasta que se mueva, luego baja"}],
+       "final":"Baja por la escotilla y cubre el plant desde Arsenal"},
+      {"op":"zero","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Baja al contenedor con dron en el túnel","via":"door"},
+        {"room":"Container","f":0,"do":"Entra al túnel de escape","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Lanza Argus a Church y Basement Hallway, dronea trampas","via":"door"},
+        {"room":"Church","f":0,"do":"Entra al final cuando la pared ya esté abierta","via":"door"}],
+       "clear":[
+        {"room":"Escape Tunnel","f":0,"threat":"Ela o Lesion en el túnel + roamer esperando en la salida","how":"dron todo el túnel, dispara gadgets, Argus a la boca del túnel"},
+        {"room":"Church","f":0,"threat":"Ancla con Mira apuntando al túnel","how":"no entres hasta que Thermite abra; usa el Argus para pinguear a la ancla"}],
+       "final":"Sostiene el túnel y pinguea rotaciones con las Argus durante el plant"},
+      {"op":"nomad","role":"flanco","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Graffiti Area","f":-1,"do":"Rodea por el norte hacia la chatarra","via":"door"},
+        {"room":"Junkyard","f":-1,"do":"Entra por la puerta de la chatarra","via":"door"},
+        {"room":"Junkyard Entrance","f":1,"do":"Rompe barricada y checa Strip Club","via":"door"},
+        {"room":"Strip Club","f":1,"do":"Limpia el club con dron","via":"door"},
+        {"room":"Western Hallway","f":1,"do":"Airjab en la puerta hacia Kitchen para tapar roamers","via":"door"},
+        {"room":"Central Hallway","f":1,"do":"Avanza hacia Blue Stairs","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Pone Airjabs en Blue Stairs y sostiene desde arriba","via":"stairs"}],
+       "clear":[
+        {"room":"Strip Club","f":1,"threat":"Roamer tipo Cav/Vigil escondido detrás del escenario","how":"dron primero, prefire esquinas, no entres solo si oyes pasos"},
+        {"room":"Central Hallway","f":1,"threat":"Roamer que sube por Blue Stairs para flanquear el sótano","how":"Airjab en la escalera y sostén el ángulo con paciencia"}],
+       "final":"Sostiene Blue Stairs desde 1F para que nadie flanquee a los que plantan"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Todos por el túnel de escape desde Construction Site antes de que terminen de reforzar Church. Iana dronea en tiempo real, Zofia y Ash aturden la boca del túnel, Blitz entra flasheando. Funciona porque el túnel es una sola puerta y a los 30 segundos casi nadie la está mirando.",
+     "timeline":["0:00–0:20 · Iana clona hacia el túnel, resto baja al contenedor","0:20–0:50 · Zofia aturde Church, Ash rompe barricada, Blitz entra flasheando","0:50–1:30 · limpiar Church y Arsenal, plant rápido","1:30–3:00 · post-plant: sostener túnel y Basement Hallway"],
+     "ops":[
+      {"op":"iana","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Manda al clon por el túnel para ver trampas y anclas","via":"door"},
+        {"room":"Container","f":0,"do":"Baja al contenedor","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Clon otra vez hasta Church","via":"door"},
+        {"room":"Church","f":0,"do":"Entra tras Blitz y limpia el rincón de la banca","via":"door"}],
+       "clear":[
+        {"room":"Escape Tunnel","f":0,"threat":"Gu de Lesion o cepo de Frost en el túnel","how":"el clon las activa/detecta, dispara antes de pasar"},
+        {"room":"Church","f":0,"threat":"Ancla armando Mira mirando el túnel","how":"clon para sacarle el tiro, luego Zofia aturde y entran"}],
+       "final":"Cubre desde Church hacia Basement Hallway mientras plantan"},
+      {"op":"zofia","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Corre al contenedor","via":"door"},
+        {"room":"Container","f":0,"do":"Baja al túnel","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Aturdidoras a Church por la salida del túnel","via":"door"},
+        {"room":"Church","f":0,"do":"Entra detrás de Blitz, impacto a la pared Church–Arsenal si está blanda","via":"door"},
+        {"room":"Arsenal Room","f":0,"do":"Limpia Arsenal y planta","via":"door"}],
+       "clear":[
+        {"room":"Church","f":0,"threat":"Ancla detrás del altar o pegada a la puerta de Arsenal","how":"aturdidora primero, entra en par con Blitz"},
+        {"room":"Arsenal Room","f":0,"threat":"Smoke/Rook armando el sitio con la espalda a Church","how":"impacto y entra rápido antes de que refuercen"}],
+       "final":"Planta en Arsenal en la esquina más lejana a Basement Hallway"},
+      {"op":"ash","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Baja de segunda","via":"door"},
+        {"room":"Container","f":0,"do":"Entra al túnel","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Brecha a la barricada de Church a distancia","via":"door"},
+        {"room":"Church","f":0,"do":"Entra y avanza hacia Basement Hallway","via":"door"},
+        {"room":"Basement Hallway","f":0,"do":"Corta la rotación desde Blue Stairs","via":"door"}],
+       "clear":[
+        {"room":"Church","f":0,"threat":"Defensor corriendo a reforzar la pared del túnel","how":"brecha desde lejos y prefire a la salida"},
+        {"room":"Basement Hallway","f":0,"threat":"Rotación de Memorial / Blue Stairs hacia el sitio","how":"sostén el ángulo del pasillo, no persigas"}],
+       "final":"Sostiene Basement Hallway durante el plant"},
+      {"op":"blitz","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Va primero con el escudo","via":"door"},
+        {"room":"Container","f":0,"do":"Baja de primero","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Avanza con escudo levantado","via":"door"},
+        {"room":"Church","f":0,"do":"Flash y entra a Church","via":"door"},
+        {"room":"Arsenal Room","f":0,"do":"Segunda flash hacia Arsenal","via":"door"}],
+       "clear":[
+        {"room":"Church","f":0,"threat":"Ancla con escopeta esperando el escudo en la puerta","how":"flash por la esquina, deja que Zofia/Ash rematen"},
+        {"room":"Arsenal Room","f":0,"threat":"Noor con fuego bajo la puerta de Arsenal (anti-escudo nuevo)","how":"no entres con el fuego prendido, espera que se apague y flashea"}],
+       "final":"Cuerpo en la puerta Church–Arsenal cubriendo el plant"},
+      {"op":"finka","role":"soporte","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Cierra la fila","via":"door"},
+        {"room":"Container","f":0,"do":"Baja de último","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Boost al entrar a Church","via":"door"},
+        {"room":"Church","f":0,"do":"Segundo boost cuando plantan","via":"door"}],
+       "clear":[
+        {"room":"Escape Tunnel","f":0,"threat":"Roamer regresando por el túnel para cerrar la salida","how":"quédate en la boca del túnel mirando atrás"},
+        {"room":"Church","f":0,"threat":"Cruce de Memorial / Basement Hallway","how":"boost para tanquear el cruce y limpiar"}],
+       "final":"Cubre el túnel y revive con boost si cae alguien en Church"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sledge abre el piso de Bar sobre Arsenal y Ram el de Kitchen sobre Church; Fuze mete cargas por la escotilla de Garage. IQ ubica Pulse/Mira y Capitão quema anclas. Nadie entra al sótano hasta que las anclas estén muertas o desplazadas; la entrada final es por la escotilla de Garage.",
+     "timeline":["0:00–0:45 · tomar Garage, Bar y Kitchen; drones abajo","0:45–1:45 · Sledge + Ram abren pisos, Fuze escotilla de Garage, IQ marca anclas","1:45–2:30 · bajar por escotilla de Garage con Capitão quemando","2:30–3:00 · plant en Arsenal y post-plant desde arriba"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Avanza al portón de Garage","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Cruza rápido, ojo a la puerta de Kitchen Entrance","via":"door"},
+        {"room":"Garage","f":1,"do":"Rompe hacia Bar","via":"door"},
+        {"room":"Bar","f":1,"do":"Martillea el piso sobre Arsenal, agujeros grandes","via":"door"},
+        {"room":"Garage","f":1,"do":"Regresa a la escotilla ya abierta por Fuze","via":"door"},
+        {"room":"Arsenal Room","f":0,"do":"Baja al final para plantar","via":"hatch"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Roamer en Garage Storage o Kapkan en la puerta de Bar","how":"dron y prefire, rompe trampas de la puerta"},
+        {"room":"Bar","f":1,"threat":"Roamer bajando de Gym por el hoyo sobre Bar","how":"ten a IQ mirando arriba, cambia de posición al abrir"},
+        {"room":"Arsenal Room","f":0,"threat":"Ancla debajo esperando el drop","how":"dispara desde los hoyos antes de bajar"}],
+       "final":"Planta en Arsenal bajo los hoyos del piso de Bar"},
+      {"op":"ram","role":"blando","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va hacia Kitchen Entrance","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Rompe barricada de Kitchen Entrance","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Entra y checa Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Lanza BU-GI por el piso de Kitchen sobre Church","via":"door"},
+        {"room":"Central Hallway","f":1,"do":"Se mueve al pasillo para cubrir Blue Stairs","via":"door"}],
+       "clear":[
+        {"room":"Kitchen Entrance","f":1,"threat":"Roamer en Kitchen esperando el push desde afuera","how":"dron por debajo de la puerta, prefire estufa"},
+        {"room":"Kitchen","f":1,"threat":"Ancla de Church disparando hacia arriba por los agujeros","how":"lanza BU-GI y sal de la línea del hoyo"},
+        {"room":"Central Hallway","f":1,"threat":"Roamer subiendo por Blue Stairs","how":"sostén el ángulo desde el pasillo, pide a IQ que lo pinguee"}],
+       "final":"Sostiene Blue Stairs desde 1F para que nadie flanquee"},
+      {"op":"fuze","role":"negacion","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sigue a Sledge","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra a Garage","via":"door"},
+        {"room":"Garage","f":1,"do":"Carga de racimo en la escotilla de Garage sobre Arsenal, luego la abre","via":"door"},
+        {"room":"Arsenal Room","f":0,"do":"Baja después de la carga cuando Capitão quemó","via":"hatch"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Bandit/Kaid electrificando la escotilla","how":"IQ la ve; pon la carga cuando la electricidad se apague o pide EMP"},
+        {"room":"Arsenal Room","f":0,"threat":"Ancla pegada bajo la escotilla","how":"racimo primero, nunca bajes sin que Sledge vea el sitio"}],
+       "final":"Baja y cubre la puerta Arsenal–Church desde el sitio"},
+      {"op":"iq","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Escanea electrónicos desde la reja","via":"door"},
+        {"room":"Parking","f":-1,"do":"Avanza al porche","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra y checa Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Escanea el piso: Pulse, Mira, cámaras Valk","via":"door"},
+        {"room":"Central Hallway","f":1,"do":"Marca gadgets del sótano desde arriba","via":"door"},
+        {"room":"Bar","f":1,"do":"Se une a Sledge, pinguea a la ancla bajo el piso","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer en Lounge esperando el porche","how":"dron primero y escanea con el detector"},
+        {"room":"Central Hallway","f":1,"threat":"Pulse o cámara Valk debajo escuchando el vertical","how":"escanea el piso y dispara a través"}],
+       "final":"Sostiene Central Hallway / Bar y pinguea rotaciones al equipo"},
+      {"op":"capitao","role":"negacion","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Cierra la fila hacia Garage","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra a Garage","via":"door"},
+        {"room":"Garage","f":1,"do":"Espera junto a la escotilla","via":"door"},
+        {"room":"Arsenal Room","f":0,"do":"Baja primero tras el racimo y quema el rincón de Church","via":"hatch"},
+        {"room":"Church","f":0,"do":"Fuego a la rotación Church–Arsenal y humo al pasillo","via":"door"}],
+       "clear":[
+        {"room":"Arsenal Room","f":0,"threat":"Ancla en la esquina bajo la escotilla","how":"fuego a la esquina antes de bajar"},
+        {"room":"Church","f":0,"threat":"Ancla detrás del altar","how":"quema el altar y humo al pasillo mientras plantan"}],
+       "final":"Humo a Basement Hallway y cubre la puerta de Church durante el plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes: Ace y Kali abren la pared de Church desde Basement Hallway (bajan por Blue Stairs), mientras Dokkaebi, Osa y Gridlock entran por el túnel. La defensa tiene que elegir entre la pared y el túnel; el que dejen suelto entra y planta.",
+     "timeline":["0:00–0:45 · drones por Blue Stairs y túnel, Gridlock trax en Memorial","0:45–1:30 · Kali rompe Bandit/Kaid, Ace abre la pared; Osa arma escudos en la boca del túnel","1:30–2:30 · doble push al mismo tiempo con llamada de Dokkaebi","2:30–3:00 · plant en Arsenal y post-plant"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sale con dron adelante","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra al Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia y baja","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Baja por Blue Stairs","via":"stairs"},
+        {"room":"Central Stairs","f":0,"do":"Sale al pasillo","via":"stairs"},
+        {"room":"Basement Hallway","f":0,"do":"SELMA en la pared de Church tras la lanza de Kali","via":"door"},
+        {"room":"Church","f":0,"do":"Entra por la pared","via":"breach"}],
+       "clear":[
+        {"room":"Central Stairs","f":0,"threat":"Frost/Kapkan al pie de Blue Stairs","how":"dron y dispara trampas antes de bajar"},
+        {"room":"Basement Hallway","f":0,"threat":"Mira y Bandit-trick en la pared de Church","how":"Kali rompe la batería, tú lanzas SELMA de inmediato"},
+        {"room":"Church","f":0,"threat":"Ancla con escopeta esperando la brecha","how":"no entres solo; cruza con Kali cuando Dokkaebi llame"}],
+       "final":"Entra a Church y cubre hacia Arsenal para el plant"},
+      {"op":"kali","role":"antigadget","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sigue a Ace","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Cubre Lobby mientras Ace baja","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Baja por Blue Stairs","via":"stairs"},
+        {"room":"Central Stairs","f":0,"do":"Sale al pasillo","via":"stairs"},
+        {"room":"Basement Hallway","f":0,"do":"Lanza LV a la pared de Church para matar batería/Kaid y Mira","via":"door"},
+        {"room":"Church","f":0,"do":"Entra tras Ace","via":"breach"}],
+       "clear":[
+        {"room":"Basement Hallway","f":0,"threat":"Bandit/Kaid en la pared + Kapkan en la puerta de Memorial","how":"LV a la pared y dispara la trampa"},
+        {"room":"Church","f":0,"threat":"Ancla en la esquina del altar","how":"entra con Ace cuando Osa ya jaló la atención por el túnel"}],
+       "final":"Sostiene la pared abierta y Basement Hallway durante el plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Logic Bomb cuando los dos frentes estén listos","via":"door"},
+        {"room":"Container","f":0,"do":"Baja al túnel","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Hackea cámaras si mata a alguien; llama el push","via":"door"},
+        {"room":"Church","f":0,"do":"Entra por el túnel tras Osa","via":"door"},
+        {"room":"Arsenal Room","f":0,"do":"Planta","via":"door"}],
+       "clear":[
+        {"room":"Escape Tunnel","f":0,"threat":"Trampas de Ela/Lesion en el túnel","how":"dron y dispara antes de pasar"},
+        {"room":"Church","f":0,"threat":"Ancla mirando el túnel","how":"Logic Bomb para que suenen y entra con Osa"}],
+       "final":"Planta en Arsenal y hackea cámaras para el post-plant"},
+      {"op":"osa","role":"soporte","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Baja primero con el Talon","via":"door"},
+        {"room":"Container","f":0,"do":"Entra al túnel","via":"stairs"},
+        {"room":"Escape Tunnel","f":0,"do":"Escudo Talon en la boca del túnel hacia Church","via":"door"},
+        {"room":"Church","f":0,"do":"Segundo Talon en la puerta Church–Arsenal","via":"door"}],
+       "clear":[
+        {"room":"Escape Tunnel","f":0,"threat":"Ancla de Church disparando al túnel","how":"pon Talon y deja que Dokkaebi vea por él"},
+        {"room":"Church","f":0,"threat":"Noor con fuego en la salida del túnel","how":"espera a que se apague, mueve el Talon después"}],
+       "final":"Cubre el plant desde detrás del Talon en Church"},
+      {"op":"gridlock","role":"flanco","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Graffiti Area","f":-1,"do":"Rodea por la chatarra","via":"door"},
+        {"room":"Junkyard","f":-1,"do":"Entra a la entrada de chatarra","via":"door"},
+        {"room":"Junkyard Entrance","f":1,"do":"Entra y checa Strip Club","via":"door"},
+        {"room":"Strip Club","f":1,"do":"Limpia y avanza","via":"door"},
+        {"room":"Changing Room","f":1,"do":"Checa camerinos","via":"door"},
+        {"room":"Western Hallway","f":1,"do":"Trax en el pasillo oeste hacia Kitchen","via":"door"},
+        {"room":"Central Hallway","f":1,"do":"Trax en Blue Stairs y sostiene","via":"door"}],
+       "clear":[
+        {"room":"Strip Club","f":1,"threat":"Roamer tipo Cav en el escenario","how":"dron y prefire, trax para que no te flanquee"},
+        {"room":"Central Hallway","f":1,"threat":"Roamer subiendo Blue Stairs para flanquear a Ace","how":"trax en la escalera y sostén"}],
+       "final":"Sostiene Blue Stairs desde 1F con trax puestas"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Church con Mira mirando Basement Hallway y Bandit-trick en la pared de Blue Stairs. Smoke ancla en Arsenal bajo la escotilla de Garage (reforzada). Pulse debajo de Bar avisa quién hace vertical y Jäger cuida el túnel; dos roamers arriba retrasan el vertical.",
+     "reinforce":["Pared Church–Basement Hallway ×2 (Bandit-trick)","Escotilla Garage → Arsenal","Pared Arsenal–Kitchen","Escotilla Memorial Room"],
+     "rotations":["Church↔Arsenal (agujero rotación)","Arsenal→Basement Hallway (agujero chico)"],
+     "ops":[
+      {"op":"mira","room":"Church","f":0,"role":"ancla","job":"Espejos en la pared de Basement Hallway; mira Blue Stairs y la salida del túnel"},
+      {"op":"smoke","room":"Arsenal Room","f":0,"role":"ancla","job":"Gas en la puerta Church–Arsenal y bajo la escotilla; sostiene post-plant"},
+      {"op":"bandit","room":"Basement Hallway","f":0,"role":"flex","job":"Bandit-trick la pared de Church, luego cae a Memorial para flanquear"},
+      {"op":"jager","room":"Escape Tunnel","f":0,"role":"flex","job":"ADS en Church y la boca del túnel; sostiene el túnel con la escopeta"},
+      {"op":"pulse","room":"Bar","f":1,"role":"roam","job":"Roamea Bar/Kitchen, escanea a los que hacen vertical y les dispara por el piso"}]},
+    {"id":"alt","n":"Roam pesado arriba","summary":"Setup agresivo: Kaid electrifica pared y escotilla, Maestro cuida el túnel desde Church, Rook blinda a las anclas. Vigil y Ela roamean en 1F (Garage/Kitchen) para castigar a los que suben a hacer vertical, y Ela mina el túnel.",
+     "reinforce":["Pared Church–Basement Hallway ×2 (Rtila)","Escotilla Garage → Arsenal (Rtila)","Pared Arsenal–Kitchen","Escotilla Utility Room"],
+     "rotations":["Church↔Arsenal","Basement Hallway→Memorial Room"],
+     "ops":[
+      {"op":"kaid","room":"Church","f":0,"role":"ancla","job":"Rtila en la pared de Church y en la escotilla de Garage; ancla en la banca"},
+      {"op":"maestro","room":"Arsenal Room","f":0,"role":"ancla","job":"Evil Eye mirando la salida del túnel y la puerta de Church; ancla en Arsenal"},
+      {"op":"rook","room":"Church","f":0,"role":"ancla","job":"Blindaje y escopeta en la rotación Church–Arsenal"},
+      {"op":"ela","room":"Escape Tunnel","f":0,"role":"flex","job":"Grzmot en el túnel y Blue Stairs, luego flex en Basement Hallway"},
+      {"op":"vigil","room":"Garage","f":1,"role":"roam","job":"Roamea Garage/Bar/Kitchen, caza al que abre pisos y drena tiempo"}]}
+   ]
+  },
+  "bar": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Sledge abre el piso de Gym sobre Bar: la ancla del Bar se tiene que mover. Thatcher + Thermite abren la pared Kitchen → Stock Room. Lion escanea antes de entrar por Central Hallway y Gridlock tapa Garage y Red Stairs. Plant en Stock pegado a la pared abierta.",
+     "timeline":["0:00–0:45 · drones a Bar/Stock, Gridlock trax en Garage","0:45–1:30 · Sledge abre Gym sobre Bar; Thatcher EMP + Thermite en Kitchen–Stock","1:30–2:30 · Lion escanea; entrada por la pared y por Central Hallway","2:30–3:00 · plant en Stock; Sledge cubre desde arriba"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Dronea Kitchen Entrance","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Rompe barricada de Kitchen Entrance","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Entra y checa Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"EMP a la pared Kitchen–Stock (Bandit/Mute) y avisa a Thermite","via":"door"},
+        {"room":"Stock Room","f":1,"do":"Entra por la pared abierta","via":"breach"}],
+       "clear":[
+        {"room":"Kitchen Entrance","f":1,"threat":"Kapkan en la puerta y roamer en Kitchen","how":"dron por debajo, dispara la trampa, prefire a la barra de la cocina"},
+        {"room":"Kitchen","f":1,"threat":"Mira en la pared de Stock + Bandit-trick","how":"no te asomes al espejo; EMP y que Thermite ponga rápido"},
+        {"room":"Stock Room","f":1,"threat":"Smoke ancla detrás de las cajas de Stock","how":"flash o Airjab antes de cruzar, entra con Thermite"}],
+       "final":"Cubre Kitchen y Kitchen Entrance mientras plantan en Stock"},
+      {"op":"thermite","role":"duro","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sigue a Thatcher","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra tras él","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Entra y cubre Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Carga en la pared de Stock tras el EMP","via":"door"},
+        {"room":"Stock Room","f":1,"do":"Entra y planta","via":"breach"}],
+       "clear":[
+        {"room":"Kitchen","f":1,"threat":"Bandit-trick en la pared de Stock","how":"espera el EMP, pon y aléjate del agujero"},
+        {"room":"Stock Room","f":1,"threat":"Ancla en Stock pegada a la pared o Jäger en la esquina","how":"cruza con Thatcher tras el scan de Lion"}],
+       "final":"Planta en Stock pegado a la pared abierta"},
+      {"op":"sledge","role":"vertical","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a la ventana de Gym","via":"door"},
+        {"room":"Gym","f":2,"do":"Entra por la ventana, abre el piso de Gym sobre Bar","via":"rappel"},
+        {"room":"Bar","f":1,"do":"Baja por la escotilla de Gym al final","via":"hatch"}],
+       "clear":[
+        {"room":"Gym","f":2,"threat":"Roamer en Gym/CCTV esperando el vertical","how":"dron Gym y CCTV antes de entrar, prefire la puerta de CCTV"},
+        {"room":"Bar","f":1,"threat":"Ancla de Bar bajo el piso con Rook/Doc","how":"dispara por los hoyos, no te quedes en el mismo"}],
+       "final":"Baja a Bar y cubre el plant de Stock desde el Bar"},
+      {"op":"lion","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sale con dron","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra al Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia Lobby y Lounge","via":"door"},
+        {"room":"Central Hallway","f":1,"do":"Escanea antes del push y entra a Bar","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra a Bar con el equipo","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer en Lounge / Strip Club","how":"dron y scan al pasar"},
+        {"room":"Central Hallway","f":1,"threat":"Kapkan en la puerta de Bar y ancla mirando el pasillo","how":"dispara la trampa y scan antes de cruzar"}],
+       "final":"Sostiene Central Hallway y escanea en post-plant"},
+      {"op":"gridlock","role":"flanco","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va al portón de Garage","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra a Garage","via":"door"},
+        {"room":"Garage","f":1,"do":"Trax en Garage Storage y Eastern Stairs","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra por la puerta Garage–Bar cuando llamen","via":"door"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Roamer bajando de Red Stairs a flanquear","how":"trax en la escalera y en Garage Storage"},
+        {"room":"Bar","f":1,"threat":"Ancla de Bar mirando la puerta de Garage","how":"no entres antes que la pared; entra tras el scan"}],
+       "final":"Sostiene Garage y Red Stairs con trax durante el plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rush por la ventana de Bar desde Parking. Amaru entra primero con Garra, Ying tira Candelas por la ventana, Ash y Blitz entran detrás, Finka bostea. Antes del minuto la ventana de Bar casi nunca está cubierta y el sitio no tiene refuerzos listos.",
+     "timeline":["0:00–0:20 · sprint a Parking, dron a la ventana de Bar","0:20–0:50 · Ying Candela + Amaru Garra a la ventana; Ash rompe","0:50–1:30 · limpiar Bar, Stock; plant en Stock","1:30–3:00 · post-plant: sostener Garage y Central Hallway"],
+     "ops":[
+      {"op":"amaru","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sprint","via":"door"},
+        {"room":"Parking","f":-1,"do":"Garra a la ventana de Bar tras la Candela","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra por la ventana y limpia la barra","via":"window"},
+        {"room":"Stock Room","f":1,"do":"Entra a Stock","via":"door"}],
+       "clear":[
+        {"room":"Bar","f":1,"threat":"Ancla armando Bar detrás de la barra","how":"Candela de Ying primero, entra por el lado ciego"},
+        {"room":"Stock Room","f":1,"threat":"Defensor reforzando la pared de Kitchen de espaldas","how":"entra rápido antes de que voltee"}],
+       "final":"Sostiene Stock desde la esquina de la pared de Kitchen"},
+      {"op":"ying","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sprint","via":"door"},
+        {"room":"Parking","f":-1,"do":"Candela por la ventana de Bar","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra por la ventana con el flash","via":"window"},
+        {"room":"Stock Room","f":1,"do":"Segunda Candela a Stock y entra","via":"door"}],
+       "clear":[
+        {"room":"Bar","f":1,"threat":"Jäger/Wamai que atrapan la Candela","how":"tira la Candela rodando por el piso, no en el aire"},
+        {"room":"Stock Room","f":1,"threat":"Smoke con gas en la puerta Bar–Stock","how":"espera que se disipe, Candela y entra"}],
+       "final":"Planta en Stock"},
+      {"op":"ash","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sprint","via":"door"},
+        {"room":"Parking","f":-1,"do":"Brecha a la ventana de Bar desde lejos","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra tercera y limpia hacia Central Hallway","via":"window"},
+        {"room":"Central Hallway","f":1,"do":"Sostiene el pasillo","via":"door"}],
+       "clear":[
+        {"room":"Bar","f":1,"threat":"Defensor en la puerta de Garage","how":"prefire al pasar"},
+        {"room":"Central Hallway","f":1,"threat":"Rotación desde Blue Stairs / Lobby","how":"sostén el ángulo del pasillo, no persigas"}],
+       "final":"Sostiene Central Hallway en post-plant"},
+      {"op":"blitz","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sprint con escudo","via":"door"},
+        {"room":"Parking","f":-1,"do":"Rappel a la ventana","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra flasheando y empuja Garage","via":"window"},
+        {"room":"Garage","f":1,"do":"Flash y limpia Garage","via":"door"}],
+       "clear":[
+        {"room":"Bar","f":1,"threat":"Noor con fuego bajo la ventana (anti-escudo)","how":"no bajes al fuego, espera que se apague"},
+        {"room":"Garage","f":1,"threat":"Roamer en Garage Storage","how":"flash y entra en par"}],
+       "final":"Sostiene la puerta Garage–Bar durante el plant"},
+      {"op":"finka","role":"soporte","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sprint","via":"door"},
+        {"room":"Parking","f":-1,"do":"Boost cuando Amaru entra","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra al final y sostiene la ventana","via":"window"}],
+       "clear":[
+        {"room":"Parking","f":-1,"threat":"Defensor asomado a la ventana de Bar o spawn-peek","how":"dron, humo si hay tiempo, entra tras la Candela"},
+        {"room":"Bar","f":1,"threat":"Cruce desde Central Hallway","how":"boost para tanquear y limpiar"}],
+       "final":"Cubre desde Bar mirando Central Hallway y revive con boost"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck y Ram destrozan Gym sobre Bar; Fuze mete racimo por la escotilla de Gym sobre Bar. IQ marca a las anclas y Capitão quema Stock desde Bar. Entrada final por la escotilla de Gym cuando el Bar ya está vacío.",
+     "timeline":["0:00–0:45 · rappel a Gym y Balcony, drones abajo","0:45–1:45 · Buck + Ram abren piso; Fuze racimo por la escotilla de Gym","1:45–2:30 · bajar por la escotilla con Capitão quemando Stock","2:30–3:00 · plant en Bar y post-plant desde arriba"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a la ventana de Gym","via":"door"},
+        {"room":"Gym","f":2,"do":"Entra y abre el piso sobre Bar con Skeleton Key","via":"rappel"},
+        {"room":"Bar","f":1,"do":"Baja por la escotilla al final","via":"hatch"}],
+       "clear":[
+        {"room":"Gym","f":2,"threat":"Roamer en CCTV/Gym con Kapkan en la puerta","how":"dron y dispara la trampa, prefire CCTV"},
+        {"room":"Bar","f":1,"threat":"Ancla de Bar bajo el piso","how":"dispara por los hoyos, rota entre hoyos"}],
+       "final":"Planta en Bar bajo los hoyos del piso de Gym"},
+      {"op":"ram","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony","via":"door"},
+        {"room":"Balcony","f":2,"do":"Entra por la ventana de Bedroom","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Limpia y avanza a Gym","via":"window"},
+        {"room":"Bedroom Hallway","f":2,"do":"Cruza a Gym","via":"door"},
+        {"room":"Gym","f":2,"do":"BU-GI cruzando el piso de Gym sobre Bar","via":"door"}],
+       "clear":[
+        {"room":"Bedroom","f":2,"threat":"Frost bajo la ventana","how":"dron antes de entrar, dispara el cepo"},
+        {"room":"Bedroom Hallway","f":2,"threat":"Roamer entre Bedroom y Gym","how":"prefire y entra con Buck"}],
+       "final":"Sostiene Gym y sigue disparando por los hoyos en post-plant"},
+      {"op":"fuze","role":"negacion","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Gym tras Buck","via":"door"},
+        {"room":"Gym","f":2,"do":"Racimo en la escotilla de Gym sobre Bar y luego la abre","via":"rappel"},
+        {"room":"Bar","f":1,"do":"Baja tras el racimo","via":"hatch"}],
+       "clear":[
+        {"room":"Gym","f":2,"threat":"Bandit/Kaid en la escotilla","how":"IQ la ve; espera EMP o pon cuando la quiten"},
+        {"room":"Bar","f":1,"threat":"Ancla bajo la escotilla","how":"racimo primero, baja detrás de Capitão"}],
+       "final":"Baja y cubre la puerta Bar–Stock"},
+      {"op":"iq","role":"intel","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Escanea Kitchen Entrance","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra por la entrada de cocina","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Escanea Kitchen y Stock","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Marca Mira/Pulse/Valk en Stock a través de la pared","via":"door"}],
+       "clear":[
+        {"room":"Kitchen Entrance","f":1,"threat":"Kapkan en la puerta","how":"detector y dispara"},
+        {"room":"Kitchen","f":1,"threat":"Mira en Kitchen–Stock","how":"escanea, no te asomes, dispara el gadget de Pulse por la pared"}],
+       "final":"Sostiene Kitchen y pinguea a las anclas de Stock durante el plant"},
+      {"op":"capitao","role":"negacion","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Gym al final","via":"door"},
+        {"room":"Gym","f":2,"do":"Espera junto a la escotilla","via":"rappel"},
+        {"room":"Bar","f":1,"do":"Baja primero, quema Stock y humo a Central Hallway","via":"hatch"},
+        {"room":"Stock Room","f":1,"do":"Entra a Stock tras el fuego","via":"door"}],
+       "clear":[
+        {"room":"Bar","f":1,"threat":"Ancla en la esquina de la barra","how":"fuego a la esquina desde arriba antes de bajar"},
+        {"room":"Stock Room","f":1,"threat":"Smoke en Stock con gas","how":"quema detrás de las cajas y humo a la puerta"}],
+       "final":"Humo a Central Hallway y Garage, cubre el plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Ace y Kali abren Kitchen → Stock; a la vez Osa, Dokkaebi y Nomad entran por la puerta Garage → Bar con el Talon. La ancla de Bar mira Garage, la de Stock mira la pared; nadie puede cubrir las dos cosas.",
+     "timeline":["0:00–0:45 · drones a Bar y Stock; Nomad Airjabs en Red Stairs","0:45–1:30 · Kali LV + Ace en Kitchen–Stock; Osa arma Talon en Garage","1:30–2:30 · Logic Bomb y push doble a la vez","2:30–3:00 · plant en Stock; Nomad cuida Garage"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va a Kitchen Entrance","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Rompe barricada","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Entra","via":"door"},
+        {"room":"Kitchen","f":1,"do":"SELMA en la pared de Stock tras la LV de Kali","via":"door"},
+        {"room":"Stock Room","f":1,"do":"Entra por la pared","via":"breach"}],
+       "clear":[
+        {"room":"Kitchen Entrance","f":1,"threat":"Kapkan y roamer en Kitchen","how":"dron y dispara la trampa"},
+        {"room":"Kitchen","f":1,"threat":"Bandit-trick / Mira en la pared","how":"Kali rompe, tú lanzas SELMA de inmediato"},
+        {"room":"Stock Room","f":1,"threat":"Ancla detrás de las cajas","how":"entra con Kali cuando Dokkaebi llame el push"}],
+       "final":"Planta en Stock"},
+      {"op":"kali","role":"antigadget","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sigue a Ace","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Cubre Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"LV a la pared de Stock: batería, Mira y Kapkan","via":"door"},
+        {"room":"Stock Room","f":1,"do":"Entra tras Ace","via":"breach"}],
+       "clear":[
+        {"room":"Kitchen","f":1,"threat":"Bandit/Kaid + Mira en Kitchen–Stock","how":"LV pegada a la pared, dos lanzas si hay dos espejos"},
+        {"room":"Stock Room","f":1,"threat":"Smoke ancla","how":"cruza con Ace tras el Logic Bomb"}],
+       "final":"Sostiene Kitchen y la pared abierta durante el plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va a Garage con Osa","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra a Garage","via":"door"},
+        {"room":"Garage","f":1,"do":"Logic Bomb cuando ambos frentes estén listos","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra tras el Talon de Osa","via":"door"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Roamer en Garage Storage / Red Stairs","how":"dron y Nomad tapa Red Stairs"},
+        {"room":"Bar","f":1,"threat":"Ancla de Bar mirando la puerta de Garage","how":"Logic Bomb y entra con el Talon"}],
+       "final":"Limpia Bar, hackea cámaras y cubre Central Hallway"},
+      {"op":"osa","role":"soporte","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va a Garage","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra a Garage","via":"door"},
+        {"room":"Garage","f":1,"do":"Talon en la puerta Garage–Bar","via":"door"},
+        {"room":"Bar","f":1,"do":"Avanza con el segundo Talon dentro de Bar","via":"door"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Kapkan en la puerta de Bar","how":"dron y dispara"},
+        {"room":"Bar","f":1,"threat":"Noor con fuego en la puerta (anti-escudo)","how":"espera que se apague, entra con Talon"}],
+       "final":"Cubre Bar desde el Talon durante el plant"},
+      {"op":"nomad","role":"flanco","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va a Garage","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Garage","f":1,"do":"Airjabs en Eastern Stairs y Garage Storage","via":"door"},
+        {"room":"Bar","f":1,"do":"Entra detrás de Osa","via":"door"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Roamer bajando por Red Stairs","how":"Airjab en la escalera y sostén"},
+        {"room":"Bar","f":1,"threat":"Cruce Central Hallway","how":"Airjab en la puerta del pasillo"}],
+       "final":"Sostiene Garage y Red Stairs en post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Smoke ancla en Stock, Mira en Kitchen–Stock mirando Kitchen. Bandit-trick esa pared. Jäger cuida las Candelas y la ventana de Bar. Kapkan en Kitchen Entrance y Garage. Un roamer en Gym niega el vertical.",
+     "reinforce":["Pared Kitchen–Stock Room ×2 (Bandit-trick)","Pared Bar–Garage","Escotilla Stock Room","Escotilla Gym sobre Bar"],
+     "rotations":["Bar↔Stock Room","Stock Room→Central Hallway (agujero chico)"],
+     "ops":[
+      {"op":"smoke","room":"Stock Room","f":1,"role":"ancla","job":"Ancla detrás de las cajas; gas a la pared abierta y a la puerta de Bar"},
+      {"op":"mira","room":"Stock Room","f":1,"role":"ancla","job":"Espejos en Kitchen–Stock; mira Kitchen y rompe el espejo si abren"},
+      {"op":"jager","room":"Bar","f":1,"role":"flex","job":"ADS en Bar y Stock; cuida la ventana de Bar y rota a Garage"},
+      {"op":"bandit","room":"Kitchen","f":1,"role":"flex","job":"Bandit-trick la pared de Stock desde dentro, luego juega Central Hallway"},
+      {"op":"kapkan","room":"Gym","f":2,"role":"roam","job":"Trampas en Kitchen Entrance y Garage; roamea Gym para negar el vertical"}]},
+    {"id":"alt","n":"Anti-vertical","summary":"Setup para cuando abusan de Gym: Maestro con Evil Eye mirando arriba desde Bar, Kaid en la pared de Kitchen, Rook blinda y Doc sostiene Stock. Vigil roamea Gym/CCTV para cazar al que rapelea.",
+     "reinforce":["Pared Kitchen–Stock Room ×2 (Rtila)","Pared Bar–Garage","Escotilla Gym sobre Bar (Rtila)","Escotilla Stock Room"],
+     "rotations":["Bar↔Stock Room","Bar→Garage (agujero chico)"],
+     "ops":[
+      {"op":"maestro","room":"Bar","f":1,"role":"ancla","job":"Evil Eyes en Bar mirando Central Hallway y el techo; ancla detrás de la barra"},
+      {"op":"kaid","room":"Kitchen","f":1,"role":"flex","job":"Rtila en Kitchen–Stock y en la escotilla de Gym; luego flex en Kitchen"},
+      {"op":"rook","room":"Stock Room","f":1,"role":"ancla","job":"Blindaje y escopeta mirando la puerta de Bar"},
+      {"op":"doc","room":"Stock Room","f":1,"role":"ancla","job":"Ancla en Stock, cura y sostiene post-plant"},
+      {"op":"vigil","room":"Gym","f":2,"role":"roam","job":"Roamea Gym y CCTV, castiga rappels y baja por Blue Stairs a flanquear"}]}
+   ]
+  },
+  "gym": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thatcher + Ace abren la pared Cash Room → Bedroom desde Cash (tomada por Red Stairs). Montagne sostiene Balcony para que nadie cierre Bedroom. Zero pone Argus en Gym y CCTV, Nomad tapa Blue Stairs. Plant en Gym pegado a la ventana.",
+     "timeline":["0:00–0:45 · drones a Gym/Bedroom, Zero Argus, Nomad Airjabs Blue Stairs","0:45–1:30 · tomar Cash por Red Stairs; Thatcher EMP + Ace en Cash–Bedroom","1:30–2:30 · entrada por la pared y por Balcony con Montagne","2:30–3:00 · plant en Gym; Nomad y Zero cuidan CCTV"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Dronea Kitchen Entrance y Red Stairs","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Rompe barricada de Kitchen Entrance","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Entra a Red Stairs","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube por Red Stairs con dron adelante","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Sale arriba, checa Cash","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"EMP a la pared Cash–Bedroom (Bandit/Mute/Mira)","via":"door"},
+        {"room":"Bedroom","f":2,"do":"Entra por la pared abierta","via":"breach"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":1,"threat":"Kapkan al pie de Red Stairs o roamer en Garage Storage","how":"dron la escalera y dispara la trampa"},
+        {"room":"Cash Room","f":2,"threat":"Roamer en Cash / Secret Stash esperando a los que suben","how":"dron Cash y Secret Stash, prefire y sube en par con Ace"},
+        {"room":"Bedroom","f":2,"threat":"Mira en Cash–Bedroom y ancla en Bathroom","how":"EMP, no te asomes al espejo, entra tras la SELMA"}],
+       "final":"Cubre Cash y Secret Stash mientras plantan en Gym"},
+      {"op":"ace","role":"duro","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sigue a Thatcher","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube por Red Stairs","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Sale y entra a Cash","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"SELMA en la pared de Bedroom tras el EMP","via":"door"},
+        {"room":"Bedroom","f":2,"do":"Entra y avanza hacia Gym","via":"breach"},
+        {"room":"Gym","f":2,"do":"Planta","via":"door"}],
+       "clear":[
+        {"room":"Cash Room","f":2,"threat":"Bandit-trick en Cash–Bedroom","how":"espera EMP y lanza SELMA"},
+        {"room":"Bedroom","f":2,"threat":"Ancla en Bathroom mirando la pared","how":"cruza con Thatcher cuando Montagne jale desde Balcony"},
+        {"room":"Gym","f":2,"threat":"Smoke ancla en Gym con gas en la puerta Bedroom–Gym","how":"espera que se disipe, entra tras el Argus de Zero"}],
+       "final":"Planta en Gym pegado a la ventana"},
+      {"op":"montagne","role":"soporte","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony","via":"door"},
+        {"room":"Balcony","f":2,"do":"Escudo extendido en la ventana de Bedroom, jala atención","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Entra cuando abran la pared","via":"window"},
+        {"room":"Gym","f":2,"do":"Cubre el plant con el escudo","via":"door"}],
+       "clear":[
+        {"room":"Balcony","f":2,"threat":"Frost bajo la ventana y Castle en la ventana","how":"dron, dispara el cepo, no rompas Castle sin apoyo"},
+        {"room":"Bedroom","f":2,"threat":"Ancla en Bathroom + Noor con fuego bajo la ventana","how":"escudo arriba, espera que el fuego se apague, deja que Ace remate"}],
+       "final":"Escudo mirando CCTV durante el plant en Gym"},
+      {"op":"zero","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a la ventana de Gym","via":"door"},
+        {"room":"Gym","f":2,"do":"Argus en Gym y en la puerta de CCTV desde la ventana","via":"rappel"},
+        {"room":"Bedroom Hallway","f":2,"do":"Entra al final para cubrir CCTV","via":"door"}],
+       "clear":[
+        {"room":"Gym","f":2,"threat":"Ancla en Gym pegada a la ventana con Frost debajo","how":"Argus por la ventana, dispara desde el rappel"},
+        {"room":"Bedroom Hallway","f":2,"threat":"Rotación desde CCTV","how":"Argus mirando la puerta de CCTV y avisa"}],
+       "final":"Sostiene la ventana de Gym y pinguea desde las Argus"},
+      {"op":"nomad","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sale con dron","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra al Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia Lobby","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Airjabs en Blue Stairs y sube","via":"stairs"},
+        {"room":"CCTV Room","f":2,"do":"Sale por Blue Stairs a CCTV con Airjab en la puerta","via":"stairs"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer en Lounge","how":"dron y prefire"},
+        {"room":"Central Stairs","f":1,"threat":"Roamer bajando por Blue Stairs a flanquear","how":"Airjab en la escalera"},
+        {"room":"CCTV Room","f":2,"threat":"Maestro / roamer en CCTV mirando Blue Stairs","how":"no subas sin dron; Airjab en la puerta y espera apoyo"}],
+       "final":"Sostiene Blue Stairs / CCTV con Airjabs en post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rappel masivo a Balcony y ventanas de Bedroom. Amaru abre en un segundo, Ying tira Candelas, Ash rompe Castle, Blitz entra flasheando, Osa pone Talon en la ventana. Los defensores todavía están reforzando Cash–Bedroom cuando ya estamos dentro.",
+     "timeline":["0:00–0:20 · sprint a Construction Site, rappel a Balcony","0:20–0:50 · Ash rompe Castle, Ying Candela, Amaru Garra, Blitz flash","0:50–1:30 · limpiar Bedroom, Bathroom, Gym; plant en Gym","1:30–3:00 · post-plant: Talon en la ventana, cubrir CCTV"],
+     "ops":[
+      {"op":"amaru","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Garra directo a la ventana de Bedroom","via":"door"},
+        {"room":"Bedroom","f":2,"do":"Entra primero tras la Candela","via":"rappel"},
+        {"room":"Bathroom","f":2,"do":"Limpia el baño","via":"door"},
+        {"room":"Gym","f":2,"do":"Entra a Gym y planta","via":"door"}],
+       "clear":[
+        {"room":"Bedroom","f":2,"threat":"Ancla armando Bedroom mirando la ventana","how":"Candela de Ying antes de la Garra"},
+        {"room":"Bathroom","f":2,"threat":"Defensor escondido en el baño","how":"prefire la esquina"}],
+       "final":"Planta en Gym"},
+      {"op":"ying","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony","via":"door"},
+        {"room":"Balcony","f":2,"do":"Candela por la ventana de Bedroom","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Entra con el flash","via":"window"},
+        {"room":"Gym","f":2,"do":"Segunda Candela a Gym","via":"door"}],
+       "clear":[
+        {"room":"Balcony","f":2,"threat":"Castle en la ventana","how":"Ash la rompe, luego Candela"},
+        {"room":"Gym","f":2,"threat":"Smoke ancla en Gym","how":"Candela rodando y entra con Blitz"}],
+       "final":"Cubre la puerta Gym–CCTV en post-plant"},
+      {"op":"ash","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Brecha a la Castle de Bedroom desde abajo","via":"door"},
+        {"room":"Balcony","f":2,"do":"Rappel y entra tras Blitz","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Entra y corre a Bedroom Hallway","via":"window"},
+        {"room":"Bedroom Hallway","f":2,"do":"Sostiene el pasillo hacia CCTV","via":"door"}],
+       "clear":[
+        {"room":"Bedroom","f":2,"threat":"Frost bajo la ventana","how":"dron y dispara"},
+        {"room":"Bedroom Hallway","f":2,"threat":"Rotación desde CCTV / Blue Stairs","how":"sostén el ángulo, no persigas"}],
+       "final":"Sostiene Bedroom Hallway durante el plant"},
+      {"op":"blitz","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony con escudo","via":"door"},
+        {"room":"Balcony","f":2,"do":"Entra flasheando","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Flash y limpia Bedroom","via":"window"},
+        {"room":"Gym","f":2,"do":"Flash y entra a Gym","via":"door"}],
+       "clear":[
+        {"room":"Bedroom","f":2,"threat":"Noor con fuego bajo la ventana (anti-escudo)","how":"espera que se apague, entra por la otra ventana"},
+        {"room":"Gym","f":2,"threat":"Ancla con escopeta en la puerta","how":"flash por la esquina, deja que Ying/Amaru rematen"}],
+       "final":"Cuerpo en la puerta Bedroom–Gym cubriendo el plant"},
+      {"op":"osa","role":"soporte","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony al final","via":"door"},
+        {"room":"Balcony","f":2,"do":"Talon en la ventana de Bedroom","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Segundo Talon en la puerta Bedroom–Bedroom Hallway","via":"window"}],
+       "clear":[
+        {"room":"Balcony","f":2,"threat":"Defensor asomado a Balcony desde Bedroom","how":"Talon primero, pinguea"},
+        {"room":"Bedroom","f":2,"threat":"Cruce desde Bedroom Hallway","how":"Talon en la puerta y sostén"}],
+       "final":"Cubre Bedroom desde el Talon en post-plant"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sledge sube al techo y abre la escotilla y el techo de Gym, Fuze mete racimo por la escotilla del techo. Buck desde Bar dispara hacia arriba al piso de Gym. IQ marca anclas y Capitão quema Gym desde el techo. Entrada final por la escotilla del techo.",
+     "timeline":["0:00–0:45 · rappel a Western Roof; Buck toma Bar","0:45–1:45 · Sledge abre escotilla de Gym; Fuze racimo; Buck abre techo de Bar","1:45–2:30 · Capitão quema y bajan por la escotilla","2:30–3:00 · plant en Gym; IQ y Buck cubren desde abajo"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Trash y sube al techo","via":"door"},
+        {"room":"Trash","f":3,"do":"Sube al techo oeste","via":"rappel"},
+        {"room":"Western Roof","f":3,"do":"Abre la escotilla de Gym y hace hoyos en el techo","via":"door"},
+        {"room":"Gym","f":2,"do":"Baja por la escotilla al final","via":"hatch"}],
+       "clear":[
+        {"room":"Western Roof","f":3,"threat":"Defensor asomado al techo desde la ventana de Gym","how":"dron el borde y avanza agachado"},
+        {"room":"Gym","f":2,"threat":"Ancla bajo la escotilla con Frost","how":"martillea desde arriba y dispara por los hoyos antes de bajar"}],
+       "final":"Baja y planta en Gym"},
+      {"op":"fuze","role":"negacion","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Trash","via":"door"},
+        {"room":"Trash","f":3,"do":"Sube al techo","via":"rappel"},
+        {"room":"Western Roof","f":3,"do":"Racimo en la escotilla de Gym, luego en el techo de Bedroom","via":"door"},
+        {"room":"Gym","f":2,"do":"Baja tras Sledge","via":"hatch"}],
+       "clear":[
+        {"room":"Western Roof","f":3,"threat":"Bandit/Kaid en la escotilla","how":"IQ la ve, pon el racimo cuando quiten la electricidad"},
+        {"room":"Gym","f":2,"threat":"Ancla pegada bajo la escotilla","how":"racimo y baja detrás de Capitão"}],
+       "final":"Cubre la puerta Gym–CCTV"},
+      {"op":"buck","role":"blando","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va a Garage","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra a Garage","via":"door"},
+        {"room":"Garage","f":1,"do":"Cruza a Bar","via":"door"},
+        {"room":"Bar","f":1,"do":"Abre el techo de Bar bajo Gym y dispara hacia arriba","via":"door"},
+        {"room":"Central Hallway","f":1,"do":"Sube por Blue Stairs al final","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"CCTV Room","f":2,"do":"Sale a CCTV para cubrir el plant","via":"stairs"}],
+       "clear":[
+        {"room":"Garage","f":1,"threat":"Roamer en Garage Storage","how":"dron y prefire"},
+        {"room":"Bar","f":1,"threat":"Ancla de Gym disparando hacia abajo por sus propios hoyos","how":"abre techo, dispara y muévete"},
+        {"room":"CCTV Room","f":2,"threat":"Maestro / roamer en CCTV","how":"IQ pinguea, sube solo cuando Gym esté limpio"}],
+       "final":"Cubre desde CCTV en post-plant"},
+      {"op":"iq","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Trash","via":"door"},
+        {"room":"Trash","f":3,"do":"Sube al techo","via":"rappel"},
+        {"room":"Western Roof","f":3,"do":"Escanea Gym y Bedroom desde el techo, marca Mira/Pulse/Valk","via":"door"},
+        {"room":"Gym","f":2,"do":"Baja al final","via":"hatch"}],
+       "clear":[
+        {"room":"Western Roof","f":3,"threat":"Cámara Valk en el techo o Echo escuchando","how":"escanea y dispara"},
+        {"room":"Gym","f":2,"threat":"Pulse escaneando desde Bedroom","how":"pinguea y dispara por el techo"}],
+       "final":"Baja y cubre Bedroom Hallway durante el plant"},
+      {"op":"capitao","role":"negacion","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Trash","via":"door"},
+        {"room":"Trash","f":3,"do":"Sube al techo","via":"rappel"},
+        {"room":"Western Roof","f":3,"do":"Fuego por la escotilla a las esquinas de Gym","via":"door"},
+        {"room":"Gym","f":2,"do":"Baja primero y humo a la puerta de CCTV","via":"hatch"}],
+       "clear":[
+        {"room":"Gym","f":2,"threat":"Ancla en la esquina de Gym","how":"fuego desde arriba antes de bajar"},
+        {"room":"Bedroom Hallway","f":2,"threat":"Rotación desde Bedroom","how":"humo a la puerta y sostén"}],
+       "final":"Humo a CCTV y Bedroom Hallway durante el plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Kali abren Cash → Bedroom desde Red Stairs; a la vez Glaz, Dokkaebi y Gridlock entran por CCTV desde Blue Stairs. Glaz mata a través del humo en Bedroom Hallway. Dokkaebi da el timing.",
+     "timeline":["0:00–0:45 · drones a CCTV y Cash; Gridlock trax Blue Stairs","0:45–1:30 · Kali LV + Hibana en Cash–Bedroom; Glaz humo en Bedroom Hallway","1:30–2:30 · Logic Bomb y push doble","2:30–3:00 · plant en Gym; Gridlock cuida CCTV"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va a Kitchen Entrance","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Rompe barricada","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube por Red Stairs","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Sale a Cash","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"X-KAIROS en Cash–Bedroom tras la LV","via":"door"},
+        {"room":"Bedroom","f":2,"do":"Entra por la pared","via":"breach"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":2,"threat":"Roamer arriba de Red Stairs","how":"dron y prefire"},
+        {"room":"Cash Room","f":2,"threat":"Bandit-trick / Mira en Cash–Bedroom","how":"Kali rompe, tú pones X-KAIROS de inmediato"},
+        {"room":"Bedroom","f":2,"threat":"Ancla en Bathroom","how":"entra con Kali cuando Dokkaebi llame"}],
+       "final":"Cubre Bedroom durante el plant"},
+      {"op":"kali","role":"antigadget","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sigue a Hibana","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube por Red Stairs","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Sale a Cash","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"LV a la pared de Bedroom: batería, Mira, Kapkan","via":"door"},
+        {"room":"Bedroom","f":2,"do":"Entra tras Hibana","via":"breach"}],
+       "clear":[
+        {"room":"Cash Room","f":2,"threat":"Bandit/Kaid en Cash–Bedroom","how":"LV pegada a la pared"},
+        {"room":"Bedroom","f":2,"threat":"Frost bajo la ventana","how":"dron y dispara"}],
+       "final":"Sostiene Cash y Secret Stash durante el plant"},
+      {"op":"glaz","role":"negacion","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sale con dron","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia Lobby","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Sube por Blue Stairs","via":"stairs"},
+        {"room":"CCTV Room","f":2,"do":"Humo hacia Bedroom Hallway y mata a través","via":"stairs"},
+        {"room":"Gym","f":2,"do":"Entra a Gym cuando esté limpio","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer en Lounge","how":"dron y prefire"},
+        {"room":"CCTV Room","f":2,"threat":"Maestro con Evil Eye en CCTV mirando Blue Stairs","how":"dispara el ojo por la mira térmica, humo y entra"},
+        {"room":"Gym","f":2,"threat":"Ancla en Gym mirando CCTV","how":"humo y mata a través con la térmica"}],
+       "final":"Cubre Gym desde CCTV en post-plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sigue a Glaz","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Cubre Lobby","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Logic Bomb y sube","via":"stairs"},
+        {"room":"CCTV Room","f":2,"do":"Entra a CCTV tras Glaz","via":"stairs"},
+        {"room":"Gym","f":2,"do":"Planta","via":"door"}],
+       "clear":[
+        {"room":"Central Stairs","f":1,"threat":"Kapkan en Blue Stairs","how":"dron y dispara"},
+        {"room":"CCTV Room","f":2,"threat":"Roamer en CCTV","how":"Logic Bomb y entra con Glaz"}],
+       "final":"Planta en Gym y hackea cámaras"},
+      {"op":"gridlock","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sale","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Trax en Lobby hacia Lounge","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Trax en Blue Stairs y sube al final","via":"stairs"},
+        {"room":"CCTV Room","f":2,"do":"Trax en CCTV hacia Logistic Office","via":"stairs"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer regresando por Lobby","how":"trax y sostén"},
+        {"room":"CCTV Room","f":2,"threat":"Rotación desde Logistic Office","how":"trax en la puerta y sostén"}],
+       "final":"Sostiene CCTV y Blue Stairs con trax en post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle en la ventana de Gym, Frost bajo cada ventana de Bedroom. Mira en Bedroom mirando Balcony. Smoke ancla en Gym. Valkyrie con cámaras en Balcony y Western Roof para ver rappels. Es el sitio donde más atacantes mueren en ventanas.",
+     "reinforce":["Pared Bedroom–Balcony","Pared Cash Room–Bedroom ×2","Ventana Gym (Castle)","Escotilla Gym (techo)"],
+     "rotations":["Gym↔Bedroom (por Bedroom Hallway)","Bedroom→CCTV Room (agujero)"],
+     "ops":[
+      {"op":"castle","room":"Gym","f":2,"role":"ancla","job":"Castle en la ventana de Gym y en Bedroom; ancla en Gym"},
+      {"op":"smoke","room":"Gym","f":2,"role":"ancla","job":"Gas en la escotilla del techo y la puerta de CCTV; post-plant"},
+      {"op":"mira","room":"Bedroom","f":2,"role":"ancla","job":"Espejos mirando Balcony y la pared de Cash"},
+      {"op":"frost","room":"Bedroom","f":2,"role":"flex","job":"Cepos bajo las ventanas de Bedroom y Gym; flex a Bathroom"},
+      {"op":"valkyrie","room":"CCTV Room","f":2,"role":"roam","job":"Cámaras en Balcony, Western Roof y Red Stairs; roamea CCTV/Cash"}]},
+    {"id":"alt","n":"Anti-rappel Noor","summary":"Setup contra rush de ventanas: Noor con fuego bajo las ventanas contra escudos, Wamai atrapa Candelas, Kaid electrifica la escotilla del techo y la pared de Cash. Maestro mira Balcony. Jäger roamea Cash para castigar Red Stairs.",
+     "reinforce":["Pared Cash Room–Bedroom ×2 (Rtila)","Escotilla Gym (Rtila)","Pared Bedroom–Balcony","Escotilla CCTV Room"],
+     "rotations":["Gym↔Bedroom","Gym→CCTV Room"],
+     "ops":[
+      {"op":"noor","room":"Bedroom","f":2,"role":"ancla","job":"Fuego bajo las ventanas de Bedroom cuando entren escudos; ancla en Bathroom"},
+      {"op":"wamai","room":"Gym","f":2,"role":"ancla","job":"Mag-NET en Gym y Bedroom para tragar Candelas y aturdidoras"},
+      {"op":"kaid","room":"Gym","f":2,"role":"flex","job":"Rtila en la escotilla del techo y Cash–Bedroom; flex en Bedroom Hallway"},
+      {"op":"maestro","room":"Bedroom","f":2,"role":"ancla","job":"Evil Eye mirando Balcony y la puerta de Bedroom Hallway"},
+      {"op":"jager","room":"Cash Room","f":2,"role":"roam","job":"ADS en Bedroom; roamea Cash y Red Stairs para retrasar la pared"}]}
+   ]
+  },
+  "cash": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thatcher + Ace abren la pared Cash Room desde Red Stairs. Twitch mata Evil Eyes y cámaras de CCTV. Buck sube al techo y abre la escotilla de Logistic Office para presionar CCTV desde arriba. Gridlock tapa Blue Stairs. Plant en CCTV (más cerrado).",
+     "timeline":["0:00–0:45 · Twitch mata Evil Eyes; Gridlock trax en Blue Stairs","0:45–1:30 · Thatcher EMP + Ace en Cash; Buck escotilla de Logistic Office","1:30–2:30 · entrada por Cash y por Logistic; limpiar CCTV","2:30–3:00 · plant en CCTV; post-plant desde Cash"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Dronea Kitchen Entrance y Red Stairs","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Rompe barricada de Kitchen Entrance","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Entra a Red Stairs","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube por Red Stairs con dron","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"EMP a la pared de Cash (Bandit/Mute)","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Entra por la pared abierta","via":"breach"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":1,"threat":"Kapkan al pie de Red Stairs y roamer en Garage Storage","how":"dron y dispara la trampa"},
+        {"room":"Eastern Stairs","f":2,"threat":"Mira/Bandit en la pared de Cash + Mute jammers","how":"EMP y no te asomes al espejo hasta la SELMA"},
+        {"room":"Cash Room","f":2,"threat":"Smoke ancla en Cash con gas en la brecha","how":"espera que se disipe, cruza con Ace"}],
+       "final":"Cubre Red Stairs y Logistic Office mientras plantan en CCTV"},
+      {"op":"ace","role":"duro","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sigue a Thatcher","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube por Red Stairs","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"SELMA en la pared de Cash tras el EMP","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Entra y limpia Cash","via":"breach"},
+        {"room":"CCTV Room","f":2,"do":"Planta en CCTV","via":"door"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":2,"threat":"Bandit-trick en la pared de Cash","how":"espera el EMP y lanza SELMA"},
+        {"room":"Cash Room","f":2,"threat":"Ancla detrás de la caja fuerte","how":"flash y cruza en par con Thatcher"},
+        {"room":"CCTV Room","f":2,"threat":"Maestro ancla en CCTV con Evil Eye","how":"Twitch la mata; entra cuando Buck presione desde arriba"}],
+       "final":"Planta en CCTV"},
+      {"op":"twitch","role":"antigadget","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Dron de choque a CCTV: mata Evil Eyes y cámaras","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra al Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia y sube","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Sube por Blue Stairs","via":"stairs"},
+        {"room":"CCTV Room","f":2,"do":"Entra a CCTV desde Blue Stairs cuando Cash caiga","via":"stairs"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer en Lounge","how":"dron y prefire"},
+        {"room":"Central Stairs","f":1,"threat":"Kapkan / Ela en Blue Stairs","how":"dron de choque las quita"},
+        {"room":"CCTV Room","f":2,"threat":"Maestro mirando Blue Stairs","how":"dron de choque a los ojos, entra tras el push de Cash"}],
+       "final":"Sostiene la entrada de CCTV por Blue Stairs durante el plant"},
+      {"op":"buck","role":"vertical","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Recreation Area","f":-1,"do":"Rappel al techo este","via":"door"},
+        {"room":"Eastern Roof","f":3,"do":"Abre la escotilla de Logistic Office con Skeleton Key","via":"rappel"},
+        {"room":"Logistic Office","f":2,"do":"Baja y presiona CCTV","via":"hatch"},
+        {"room":"CCTV Room","f":2,"do":"Entra a CCTV con Ace","via":"door"}],
+       "clear":[
+        {"room":"Eastern Roof","f":3,"threat":"Cámara Valk en el techo","how":"dispárala al subir"},
+        {"room":"Logistic Office","f":2,"threat":"Roamer en Logistic Office bajo la escotilla","how":"dispara por los hoyos antes de bajar"},
+        {"room":"CCTV Room","f":2,"threat":"Ancla de CCTV mirando Logistic","how":"entra en sincronía con Ace desde Cash"}],
+       "final":"Cubre CCTV desde Logistic Office durante el plant"},
+      {"op":"gridlock","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Gate","f":-1,"do":"Sale","via":"door"},
+        {"room":"Parking","f":-1,"do":"Cruza","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Trax en Lobby hacia Lounge","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"Trax en Blue Stairs y sostiene","via":"stairs"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer regresando por Lounge","how":"trax y prefire"},
+        {"room":"Central Stairs","f":1,"threat":"Roamer bajando por Blue Stairs","how":"trax en la escalera"}],
+       "final":"Sostiene Blue Stairs con trax en post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rush por Red Stairs directo a Cash antes de que refuercen la pared. Ash rompe la barricada de la puerta de Cash, Zofia aturde, Blitz entra flasheando, Iana ve antes, Finka bostea. A los 40 segundos la pared de Cash suele estar blanda todavía.",
+     "timeline":["0:00–0:20 · sprint a Kitchen Entrance, Iana clon a Red Stairs","0:20–0:50 · Zofia aturde Cash, Ash rompe, Blitz flash","0:50–1:30 · limpiar Cash y CCTV; plant en Cash","1:30–3:00 · post-plant: sostener Red Stairs y Logistic"],
+     "ops":[
+      {"op":"iana","role":"intel","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Clon a Kitchen Entrance","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Clon sube Red Stairs","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Clon a Cash, ve quién está","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Entra tras Blitz","via":"door"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":1,"threat":"Kapkan en Red Stairs","how":"el clon la detecta, dispara"},
+        {"room":"Cash Room","f":2,"threat":"Ancla armando Cash","how":"clon para sacar el tiro, Zofia aturde"}],
+       "final":"Cubre Cash hacia Secret Stash durante el plant"},
+      {"op":"zofia","role":"entrada","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sprint","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Aturdidoras a Cash e impacto a la pared blanda","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Entra y planta","via":"breach"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":2,"threat":"Ancla mirando la escalera desde Cash","how":"aturdidora y entra con Blitz"},
+        {"room":"Cash Room","f":2,"threat":"Defensor reforzando de espaldas","how":"impacto a la pared blanda y entra"}],
+       "final":"Planta en Cash detrás de la caja fuerte"},
+      {"op":"ash","role":"entrada","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sprint","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Brecha a la barricada de Cash desde abajo","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Sube","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Entra y corre a CCTV","via":"door"},
+        {"room":"CCTV Room","f":2,"do":"Limpia CCTV","via":"door"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":2,"threat":"Defensor en Logistic Office mirando la escalera","how":"prefire al subir"},
+        {"room":"CCTV Room","f":2,"threat":"Ancla armando Maestro","how":"entra antes de que arme"}],
+       "final":"Sostiene CCTV durante el plant"},
+      {"op":"blitz","role":"entrada","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sprint con escudo","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube primero","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube con escudo","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Flash arriba","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Flash y entra a Cash","via":"door"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":2,"threat":"Noor con fuego arriba de la escalera (anti-escudo)","how":"espera que se apague antes de subir"},
+        {"room":"Cash Room","f":2,"threat":"Ancla con escopeta en la puerta","how":"flash y deja que Zofia/Ash rematen"}],
+       "final":"Cuerpo en la puerta Cash–CCTV cubriendo el plant"},
+      {"op":"finka","role":"soporte","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Cierra la fila","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Boost al subir","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube al final","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"Sostiene Red Stairs","via":"stairs"}],
+       "clear":[
+        {"room":"Kitchen Entrance","f":1,"threat":"Roamer en Kitchen saliendo detrás","how":"mira atrás al subir"},
+        {"room":"Eastern Stairs","f":2,"threat":"Rotación desde Logistic Office","how":"boost y sostén"}],
+       "final":"Cubre Red Stairs y revive con boost"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Todo desde el techo: Sledge abre la escotilla de CCTV, Ram manda BU-GI por Central Roof sobre CCTV, Fuze racimo por la escotilla de Logistic Office. IQ marca Evil Eyes y anclas, Capitão quema Cash. Entrada final por las escotillas.",
+     "timeline":["0:00–0:45 · rappel a Eastern Roof y Central Roof; drones abajo","0:45–1:45 · Sledge escotilla CCTV, Ram BU-GI, Fuze racimo Logistic","1:45–2:30 · Capitão quema y bajan","2:30–3:00 · plant en CCTV; post-plant desde el techo"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Recreation Area","f":-1,"do":"Rappel al techo este","via":"door"},
+        {"room":"Eastern Roof","f":3,"do":"Sube y cruza al techo central","via":"rappel"},
+        {"room":"Central Roof","f":3,"do":"Abre la escotilla de CCTV y hoyos en el techo","via":"door"},
+        {"room":"CCTV Room","f":2,"do":"Baja por la escotilla al final","via":"hatch"}],
+       "clear":[
+        {"room":"Eastern Roof","f":3,"threat":"Cámara Valk / defensor asomado a Eastern Sub-roof","how":"dron el techo y avanza agachado"},
+        {"room":"CCTV Room","f":2,"threat":"Maestro ancla bajo la escotilla","how":"martillea y dispara por los hoyos antes de bajar"}],
+       "final":"Baja y planta en CCTV"},
+      {"op":"ram","role":"blando","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Recreation Area","f":-1,"do":"Rappel al techo","via":"door"},
+        {"room":"Eastern Roof","f":3,"do":"Sube","via":"rappel"},
+        {"room":"Central Roof","f":3,"do":"BU-GI cruzando el techo sobre CCTV","via":"door"},
+        {"room":"CCTV Room","f":2,"do":"Baja tras Sledge","via":"hatch"}],
+       "clear":[
+        {"room":"Central Roof","f":3,"threat":"Ancla disparando hacia arriba por sus hoyos","how":"lanza BU-GI y sal de la línea"},
+        {"room":"CCTV Room","f":2,"threat":"Ancla en la esquina de CCTV","how":"baja detrás de Capitão"}],
+       "final":"Cubre la puerta CCTV–Cash"},
+      {"op":"fuze","role":"negacion","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Recreation Area","f":-1,"do":"Rappel al techo","via":"door"},
+        {"room":"Eastern Roof","f":3,"do":"Racimo en la escotilla de Logistic Office, luego la abre","via":"rappel"},
+        {"room":"Logistic Office","f":2,"do":"Baja tras el racimo","via":"hatch"},
+        {"room":"CCTV Room","f":2,"do":"Entra a CCTV","via":"door"}],
+       "clear":[
+        {"room":"Eastern Roof","f":3,"threat":"Bandit/Kaid en la escotilla","how":"IQ la ve, pon el racimo cuando quiten la electricidad"},
+        {"room":"Logistic Office","f":2,"threat":"Roamer en Logistic bajo la escotilla","how":"racimo y baja con apoyo"}],
+       "final":"Cubre desde Logistic Office hacia Red Stairs"},
+      {"op":"iq","role":"intel","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Recreation Area","f":-1,"do":"Rappel al techo","via":"door"},
+        {"room":"Eastern Roof","f":3,"do":"Escanea Cash y Logistic desde el techo","via":"rappel"},
+        {"room":"Central Roof","f":3,"do":"Marca Evil Eyes y Pulse bajo el techo de CCTV","via":"door"},
+        {"room":"CCTV Room","f":2,"do":"Baja al final","via":"hatch"}],
+       "clear":[
+        {"room":"Central Roof","f":3,"threat":"Cámaras Valk en el techo","how":"escanea y dispara"},
+        {"room":"CCTV Room","f":2,"threat":"Evil Eyes y Pulse en CCTV","how":"dispara los gadgets por el techo"}],
+       "final":"Baja y cubre Blue Stairs desde CCTV"},
+      {"op":"capitao","role":"negacion","spawn":"Shipping Docks",
+       "path":[
+        {"room":"Recreation Area","f":-1,"do":"Rappel al techo","via":"door"},
+        {"room":"Eastern Roof","f":3,"do":"Fuego por la escotilla a Logistic","via":"rappel"},
+        {"room":"Central Roof","f":3,"do":"Fuego a las esquinas de CCTV por la escotilla","via":"door"},
+        {"room":"CCTV Room","f":2,"do":"Baja primero y humo a Cash","via":"hatch"}],
+       "clear":[
+        {"room":"CCTV Room","f":2,"threat":"Ancla en la esquina de CCTV","how":"fuego desde arriba antes de bajar"},
+        {"room":"Cash Room","f":2,"threat":"Ancla de Cash rotando a CCTV","how":"humo a la puerta y sostén"}],
+       "final":"Humo a Cash y Blue Stairs durante el plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Kali abren la pared de Cash desde Red Stairs; a la vez Osa, Dokkaebi y Nomad entran por Balcony → Bedroom → CCTV. Dokkaebi da el timing con el Logic Bomb. La defensa tiene que elegir entre la pared y la puerta de Bedroom.",
+     "timeline":["0:00–0:45 · drones; Nomad Airjabs en Bedroom Hallway","0:45–1:30 · Kali LV + Hibana en Cash; Osa Talon en Bedroom","1:30–2:30 · Logic Bomb y push doble","2:30–3:00 · plant en CCTV; Nomad cuida Bedroom"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Va a Kitchen Entrance","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Rompe barricada","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube por Red Stairs","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"X-KAIROS en la pared de Cash tras la LV","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Entra por la pared","via":"breach"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":1,"threat":"Kapkan en Red Stairs","how":"dron y dispara"},
+        {"room":"Eastern Stairs","f":2,"threat":"Bandit-trick / Mira en la pared de Cash","how":"Kali rompe, tú pones X-KAIROS"},
+        {"room":"Cash Room","f":2,"threat":"Ancla detrás de la caja","how":"entra con Kali cuando Dokkaebi llame"}],
+       "final":"Limpia Cash y cubre hacia CCTV para el plant"},
+      {"op":"kali","role":"antigadget","spawn":"Warehouse",
+       "path":[
+        {"room":"VIP Parking","f":-1,"do":"Sigue a Hibana","via":"door"},
+        {"room":"Kennels","f":-1,"do":"Entra","via":"door"},
+        {"room":"Kitchen Entrance","f":1,"do":"Sube","via":"door"},
+        {"room":"Eastern Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Eastern Stairs","f":2,"do":"LV a la pared de Cash: batería, Mira, Mute","via":"stairs"},
+        {"room":"Cash Room","f":2,"do":"Entra tras Hibana","via":"breach"}],
+       "clear":[
+        {"room":"Eastern Stairs","f":2,"threat":"Bandit/Kaid en la pared","how":"LV pegada a la pared"},
+        {"room":"Cash Room","f":2,"threat":"Smoke ancla","how":"cruza con Hibana"}],
+       "final":"Sostiene Red Stairs y Logistic durante el plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony","via":"door"},
+        {"room":"Balcony","f":2,"do":"Logic Bomb cuando ambos frentes estén listos","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Entra tras el Talon de Osa","via":"window"},
+        {"room":"Bedroom Hallway","f":2,"do":"Avanza a CCTV","via":"door"},
+        {"room":"CCTV Room","f":2,"do":"Planta","via":"door"}],
+       "clear":[
+        {"room":"Bedroom","f":2,"threat":"Frost bajo la ventana y roamer en Bathroom","how":"dron y dispara, prefire el baño"},
+        {"room":"CCTV Room","f":2,"threat":"Maestro ancla en CCTV","how":"Logic Bomb y entra con Osa cuando Hibana entre a Cash"}],
+       "final":"Planta en CCTV y hackea cámaras"},
+      {"op":"osa","role":"soporte","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony primero","via":"door"},
+        {"room":"Balcony","f":2,"do":"Talon en la ventana de Bedroom","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Entra y pone Talon en la puerta a Bedroom Hallway","via":"window"},
+        {"room":"Bedroom Hallway","f":2,"do":"Avanza con el Talon hacia CCTV","via":"door"}],
+       "clear":[
+        {"room":"Balcony","f":2,"threat":"Ancla de Bedroom mirando Balcony","how":"Talon primero"},
+        {"room":"Bedroom Hallway","f":2,"threat":"Noor con fuego en la puerta de CCTV (anti-escudo)","how":"espera que se apague"}],
+       "final":"Cubre CCTV desde el Talon en Bedroom Hallway"},
+      {"op":"nomad","role":"flanco","spawn":"Construction Site",
+       "path":[
+        {"room":"Construction Site","f":-1,"do":"Rappel a Balcony al final","via":"door"},
+        {"room":"Balcony","f":2,"do":"Entra por la ventana","via":"rappel"},
+        {"room":"Bedroom","f":2,"do":"Airjabs en Bedroom hacia Gym","via":"window"},
+        {"room":"Bedroom Hallway","f":2,"do":"Airjab en la puerta de Gym y sostiene","via":"door"}],
+       "clear":[
+        {"room":"Bedroom","f":2,"threat":"Roamer saliendo de Gym a flanquear","how":"Airjab en la puerta de Gym"},
+        {"room":"Bedroom Hallway","f":2,"threat":"Roamer subiendo por Blue Stairs","how":"Airjab y sostén"}],
+       "final":"Sostiene Bedroom Hallway y Gym en post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Maestro en CCTV mirando Blue Stairs (la defensa más fuerte del mapa). Smoke ancla en Cash. Mute jammea la pared de Cash y la escotilla de Logistic. Jäger cuida Cash; Mozzie roba drones y roamea Bar/Garage.",
+     "reinforce":["Pared Cash Room–Eastern Stairs ×2 (Mute)","Escotilla Logistic Office","Escotilla CCTV Room","Pared CCTV–Bedroom Hallway"],
+     "rotations":["Cash Room↔CCTV Room","CCTV Room→Logistic Office (agujero)"],
+     "ops":[
+      {"op":"maestro","room":"CCTV Room","f":2,"role":"ancla","job":"Evil Eyes mirando Blue Stairs y la puerta de Bedroom Hallway; ancla en CCTV"},
+      {"op":"smoke","room":"Cash Room","f":2,"role":"ancla","job":"Gas en la pared de Red Stairs y en la puerta Cash–CCTV; post-plant"},
+      {"op":"mute","room":"Cash Room","f":2,"role":"flex","job":"Jammers en la pared de Cash y la escotilla de Logistic; flex a Secret Stash"},
+      {"op":"jager","room":"Logistic Office","f":2,"role":"flex","job":"ADS en Cash y CCTV; cuida Logistic y Red Stairs"},
+      {"op":"mozzie","room":"Bar","f":1,"role":"roam","job":"Pests en Garage y Kitchen Entrance; roamea Bar/Garage y sube por Red Stairs a flanquear"}]},
+    {"id":"alt","n":"Bunker Cash","summary":"Setup cerrado: Kaid electrifica pared y escotillas, Mira en Cash mirando Red Stairs, Rook blinda, Azami cierra Bedroom Hallway con Kiba y Noor castiga escudos en la puerta de Bedroom.",
+     "reinforce":["Pared Cash Room–Eastern Stairs ×2 (Rtila)","Escotilla CCTV Room (Rtila)","Escotilla Logistic Office","Pared CCTV–Bedroom Hallway"],
+     "rotations":["Cash Room↔CCTV Room","Cash Room→Secret Stash (agujero)"],
+     "ops":[
+      {"op":"kaid","room":"Cash Room","f":2,"role":"ancla","job":"Rtila en la pared de Red Stairs y las dos escotillas; ancla detrás de la caja"},
+      {"op":"mira","room":"Cash Room","f":2,"role":"ancla","job":"Espejos en Cash–Red Stairs mirando la escalera"},
+      {"op":"rook","room":"CCTV Room","f":2,"role":"ancla","job":"Blindaje y escopeta mirando Blue Stairs"},
+      {"op":"azami","room":"Bedroom Hallway","f":2,"role":"flex","job":"Kiba cerrando Bedroom Hallway y los hoyos del techo; flex a Gym"},
+      {"op":"noor","room":"CCTV Room","f":2,"role":"flex","job":"Fuego en la puerta de Bedroom Hallway contra Osa/Blitz/Montagne; flex a Logistic"}]}
+   ]
+  }
+ }
+}

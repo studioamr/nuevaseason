@@ -1,0 +1,1008 @@
+{
+ "map": "border",
+ "sites": {
+  "customs": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Abrimos la pared Ventilation→Supply con Thermite+Thatcher mientras Buck pica desde Armory Lockers el techo de Supply. Osa presiona la puerta de Customs Inspection para que el sitio tenga que mirar dos lados y Lion cierra el flanco por Server. Funciona porque Supply es chiquito: con el techo abierto y la pared caída el ancla no tiene dónde pararse.",
+     "timeline":["0:00–0:45 · drones en Ventilation y Supply Corridor; Buck sube por North Balcony","0:45–1:30 · Thatcher EMP + Thermite abre Ventilation→Supply; Buck abre techo de Supply","1:30–2:30 · Osa entra por Customs Inspection, Lion escanea, cruzamos y plantamos en Supply","2:30–3:00 · post-plant: Buck desde arriba, Osa en Customs Desk, Lion en Supply Corridor"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sale corriendo pegado a la pared, dronea antes de asomar","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"cruza rápido, ojo al peek de la ventana de Customs Inspection","via":"door"},
+        {"room":"East Alley","f":-1,"do":"llega al garage de Workshop y espera a Thermite","via":"door"},
+        {"room":"Work- shop","f":1,"do":"entra por el garage abierto, limpia el cuarto","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"tira EMP a la pared reforzada de Supply","via":"door"},
+        {"room":"Supply Room","f":1,"do":"entra detrás de Thermite y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Work- shop","f":1,"threat":"Kapkan en la puerta del garage o Mozzie robando drones","how":"dron primero, quemar la trampa con una bala, no entrar a ciegas"},
+        {"room":"Venti- lation Room","f":1,"threat":"Bandit o Kaid tricking la pared, Mira mirando desde Supply","how":"IQ-style: escuchar el clip, EMP justo cuando Thermite pega la carga"}],
+       "final":"cubre la puerta Supply→Supply Corridor mientras plantan"},
+      {"op":"thermite","role":"duro","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Thatcher, dron adelantado","via":"door"},
+        {"room":"East Alley","f":-1,"do":"abre el garage de Workshop si está reforzado","via":"door"},
+        {"room":"Work- shop","f":1,"do":"cruza al fondo, no se para en la puerta","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"pone la carga en la pared de Supply tras el EMP","via":"door"},
+        {"room":"Supply Room","f":1,"do":"entra por el hueco y planta","via":"breach"}],
+       "clear":[
+        {"room":"East Alley","f":-1,"threat":"Spawn peek desde la ventana del garage de Workshop","how":"dron a la ventana antes de asomar, cruzar en diagonal"},
+        {"room":"Venti- lation Room","f":1,"threat":"Ancla de Supply asomando por la puerta de Ventilation","how":"dron en la puerta y prefire al rincón, Thatcher va primero"}],
+       "final":"planta en Supply pegado a la pared abierta y sostiene desde Ventilation"},
+      {"op":"buck","role":"vertical","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre al muro norte del edificio","via":"door"},
+        {"room":"North Balcony","f":2,"do":"rapela y checa la ventana de Archives con dron","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra por la ventana y limpia el rincón","via":"window"},
+        {"room":"Armory Lockers","f":2,"do":"abre el piso sobre Supply con Skeleton Key","via":"door"},
+        {"room":"East Stairs","f":2,"do":"baja cuando la planta ya está puesta","via":"door"},
+        {"room":"East Stairs","f":1,"do":"llega abajo con cuidado del roamer","via":"stairs"},
+        {"room":"Supply Corridor","f":1,"do":"cierra el flanco hacia Supply","via":"door"},
+        {"room":"Supply Room","f":1,"do":"refuerza la post-plant","via":"door"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Roamer tipo Vigil/Cav esperando el rappel","how":"dron en la ventana, entrar con compañero mirando la puerta a Main Hallway"},
+        {"room":"Armory Lockers","f":2,"threat":"Valkyrie cam o roamer que sube por East Stairs","how":"buscar cam, mirar East Stairs mientras abre piso"},
+        {"room":"East Stairs","f":1,"threat":"Jäger o roamer holdeando las escaleras","how":"no bajar sin dron, tirar granada primero"}],
+       "final":"abre el techo de Supply, mata al ancla desde arriba y baja a la post-plant"},
+      {"op":"osa","role":"soporte","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"sale con el escudo en la mano","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"planta un Talon en la puerta de Customs Inspection","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"entra detrás del escudo, mira Passport Check","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"segundo Talon en la puerta hacia Supply Corridor","via":"door"}],
+       "clear":[
+        {"room":"Customs Inspection","f":1,"threat":"Kapkan en la puerta exterior o Noor esperando el escudo","how":"dron la puerta, quemar Kapkan, no forzar contra Noor: humo primero"},
+        {"room":"Customs Desk","f":1,"threat":"Mira en la pared hacia Supply Corridor, Smoke tirando gas","how":"Talon como cobertura, disparar la Mira cuando la abran o esperar al vertical"}],
+       "final":"sostiene Customs Desk con Talon para que nadie retome desde Customs Inspection"},
+      {"op":"lion","role":"intel","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Parking Lot","f":-1,"do":"cruza el estacionamiento a Pedestrian Exit","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"escanea antes de abrir la puerta","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"entra y limpia el pasillo","via":"door"},
+        {"room":"Detention","f":1,"do":"cruza mirando las celdas","via":"door"},
+        {"room":"Server Room","f":1,"do":"segundo escaneo cuando Thermite abre","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"cierra el pasillo hacia East Stairs","via":"door"},
+        {"room":"Supply Room","f":1,"do":"entra al último y cubre","via":"door"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer que sale del Bathroom a peekear la puerta","how":"escaneo al abrir la puerta, prefire al rincón"},
+        {"room":"Server Room","f":1,"threat":"Alibi o Maestro cubriendo Supply Corridor","how":"dron primero, quemar Evil Eye con una bala desde el pasillo"}],
+       "final":"vigila Supply Corridor y East Stairs durante la post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Todo por la puerta de Customs Inspection antes de que armen Customs Desk. Ying candela + Zofia concusión, Ash abre la puerta a Customs Desk y en 25 segundos hay planta en Customs Desk. Funciona si el equipo defensor está lento en refuerzos o el Kapkan todavía no está.",
+     "timeline":["0:00–0:20 · sprint a Vehicle Customs, un dron rápido a la puerta","0:20–0:40 · Ying candela por la puerta, Zofia concusión, Ash abre","0:40–1:15 · entrada y planta en Customs Desk","1:15–3:00 · sostener con Finka boost, cerrar Supply Corridor"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sprint pegado al muro","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"candela rodando por la puerta de Customs Inspection","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"entra primera tras la flash","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"limpia el rincón y planta","via":"door"}],
+       "clear":[
+        {"room":"Vehicle Customs","f":-1,"threat":"Peek desde la ventana de Customs Inspection","how":"correr en zigzag, candela a la ventana antes de cruzar"},
+        {"room":"Customs Desk","f":1,"threat":"Ancla detrás del escritorio o Rook con armadura","how":"entrar de a dos, prefire al escritorio"}],
+       "final":"planta en Customs Desk detrás del escritorio"},
+      {"op":"zofia","role":"entrada","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Ying","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"concusión por la puerta a Customs Inspection","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"segunda en entrar, mira Passport Check","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"cubre a Ying en la planta","via":"door"}],
+       "clear":[
+        {"room":"Customs Inspection","f":1,"threat":"Kapkan en la puerta, Lesion Gu en el suelo","how":"impact al marco de la puerta, mirar el piso al entrar"}],
+       "final":"sostiene la puerta Customs Desk→Supply Corridor"},
+      {"op":"ash","role":"blando","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre con las otras dos","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"brecha a la puerta de Customs Inspection si tiene Castle","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"abre la pared blanda a Customs Desk","via":"breach"},
+        {"room":"Customs Desk","f":1,"do":"entra por el hueco nuevo","via":"breach"}],
+       "clear":[
+        {"room":"Customs Inspection","f":1,"threat":"Defensor holdeando desde Customs Desk por la puerta","how":"brecha la pared para tener dos entradas y no una"}],
+       "final":"cubre Customs Inspection para que no retomen por atrás"},
+      {"op":"finka","role":"soporte","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"boost cuando cruzan Vehicle Customs","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"entra al final, cubre la puerta","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"segundo boost al plantar","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"levanta caídos y cubre","via":"door"}],
+       "clear":[
+        {"room":"Customs Inspection","f":1,"threat":"Roamer que baja por Central Stairs a Waiting Room","how":"mirar la puerta a Waiting Room mientras plantan"}],
+       "final":"sostiene Customs Inspection mirando Waiting Room"},
+      {"op":"blitz","role":"entrada","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"llega por el otro lado del carril","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"flash de escudo a la puerta cuando Ying entra","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"empuja al primero que quede ciego","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"cuerpo delante de la planta","via":"door"}],
+       "clear":[
+        {"room":"Customs Desk","f":1,"threat":"Noor pidiéndote el escudo con fuego","how":"no entrar de frente si hay Noor: dejar que Ash abra la pared y entrar por ahí"}],
+       "final":"se para en la puerta de Supply Corridor absorbiendo balas"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Matamos desde arriba: Sledge abre Armory Lockers sobre Supply, Buck y Ram trabajan Offices sobre Customs Desk y Ace abre las escotillas de Customs Desk para bajar al final. IQ ve gadgets bajo el piso. El sitio queda sin techo y las anclas tienen que salirse.",
+     "timeline":["0:00–0:45 · subir a Offices y Armory Lockers, IQ marca gadgets","0:45–1:45 · Sledge/Buck/Ram abren pisos, kills desde arriba","1:45–2:30 · Ace abre escotilla y bajan a plantar en Customs Desk","2:30–3:00 · post-plant desde arriba por los huecos"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre a la fachada norte","via":"door"},
+        {"room":"North Balcony","f":2,"do":"rapela, dron a Archives","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra por la ventana","via":"window"},
+        {"room":"Armory Lockers","f":2,"do":"martilla el piso sobre Supply Room","via":"door"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Roamer holdeando la ventana desde el rincón","how":"dron antes de entrar, granada al rincón"},
+        {"room":"Armory Lockers","f":2,"threat":"Valkyrie cam en los lockers, roamer por East Stairs","how":"buscar cam, dejar dron mirando East Stairs"}],
+       "final":"abre todo el piso de Armory Lockers y mata al ancla de Supply desde arriba"},
+      {"op":"buck","role":"blando","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre al muro sur","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela a South Balcony","via":"door"},
+        {"room":"South Balcony","f":2,"do":"dron a Offices Hallway","via":"rappel"},
+        {"room":"Offices Hallway","f":2,"do":"entra por la ventana","via":"window"},
+        {"room":"Offices","f":2,"do":"abre el piso sobre Customs Desk","via":"door"}],
+       "clear":[
+        {"room":"Offices Hallway","f":2,"threat":"Roamer que sube de Fountain a peekear la ventana","how":"dron primero, entrar con Ram cubriendo"},
+        {"room":"Offices","f":2,"threat":"Frost cepo bajo la ventana o roamer en el rincón","how":"mirar el piso al entrar, prefire al rincón"}],
+       "final":"agujeros de Buck sobre Customs Desk, mata al ancla y cubre la planta"},
+      {"op":"ram","role":"negacion","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Buck","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela al balcón","via":"door"},
+        {"room":"South Balcony","f":2,"do":"cubre a Buck mientras entra","via":"rappel"},
+        {"room":"Offices Hallway","f":2,"do":"entra, mira Fountain","via":"window"},
+        {"room":"Offices","f":2,"do":"BU-GI sobre Customs Desk en línea con las escotillas","via":"door"}],
+       "clear":[
+        {"room":"Offices","f":2,"threat":"Mute jammer o Bandit en las escotillas de Customs Desk","how":"BU-GI limpia el piso y los gadgets de la escotilla"}],
+       "final":"abre el piso completo de Offices y sostiene desde arriba"},
+      {"op":"iq","role":"intel","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"cruza con el grupo","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"escanea desde afuera gadgets de Customs Inspection","via":"door"},
+        {"room":"South Balcony","f":2,"do":"rapela","via":"rappel"},
+        {"room":"Offices Hallway","f":2,"do":"detector: marca Mira, Maestro y celulares bajo el piso","via":"window"},
+        {"room":"Offices","f":2,"do":"dice dónde están los gadgets para que Buck abra ahí","via":"door"}],
+       "clear":[
+        {"room":"Offices Hallway","f":2,"threat":"Cámara de Valkyrie en Fountain","how":"detector, dispararla antes de que el roamer llegue"},
+        {"room":"Offices","f":2,"threat":"Pulse o Vigil pegado bajo el piso en Customs Desk","how":"marcar con el detector y disparar a través del piso abierto"}],
+       "final":"mata gadgets a través del piso y avisa dónde está el ancla"},
+      {"op":"ace","role":"duro","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"sube por el norte con Sledge","via":"door"},
+        {"room":"North Balcony","f":2,"do":"rapela","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra por la ventana","via":"window"},
+        {"room":"Main Hallway","f":2,"do":"cruza el pasillo mirando Central Stairs","via":"door"},
+        {"room":"Offices Hallway","f":2,"do":"pasa a Offices","via":"door"},
+        {"room":"Offices","f":2,"do":"SELMA a la escotilla reforzada de Customs Desk","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"baja por la escotilla y planta","via":"hatch"}],
+       "clear":[
+        {"room":"Main Hallway","f":2,"threat":"Roamer que sube por Central Stairs","how":"dron en las escaleras, cruzar rápido con Sledge cubriendo"},
+        {"room":"Customs Desk","f":1,"threat":"Ancla escondida en el escritorio esperando la bajada","how":"esperar a que Buck/Ram abran todo el piso y maten antes de bajar"}],
+       "final":"baja por la escotilla ya limpia y planta en Customs Desk"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes al mismo tiempo: Hibana + Kali abren la pared Ventilation→Supply desde Workshop mientras Zofia + Blackbeard entran por Customs Inspection a Customs Desk con Nomad cerrando Supply Corridor. El ancla no puede mirar la pared y la puerta a la vez.",
+     "timeline":["0:00–0:45 · dos grupos posicionados: Workshop y Vehicle Customs","0:45–1:30 · Kali vuela Bandit, Hibana abre pared; Zofia entra por Customs Inspection","1:30–2:30 · cruce simultáneo, planta en Supply o Customs Desk según quién limpió","2:30–3:00 · Nomad airjabs en Supply Corridor y East Stairs"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre al este","via":"door"},
+        {"room":"East Alley","f":-1,"do":"pellets al garage si está reforzado","via":"door"},
+        {"room":"Work- shop","f":1,"do":"cruza al fondo","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"pellets a la pared de Supply cuando Kali confirme","via":"door"},
+        {"room":"Supply Room","f":1,"do":"entra y planta","via":"breach"}],
+       "clear":[
+        {"room":"Work- shop","f":1,"threat":"Kapkan en el garage, Mira desde Ventilation","how":"dron, quemar Kapkan, esperar a que Kali rompa la Mira"},
+        {"room":"Supply Room","f":1,"threat":"Smoke con gas en la pared abierta","how":"esperar que el gas se vaya, entrar a la vez que Zofia por el otro lado"}],
+       "final":"planta en Supply Room"},
+      {"op":"kali","role":"antigadget","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Hibana","via":"door"},
+        {"room":"East Alley","f":-1,"do":"lanza LV al garage si hay Kapkan","via":"door"},
+        {"room":"Work- shop","f":1,"do":"cubre desde el fondo","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"LV a la pared de Supply: vuela Bandit/Kaid y Mira","via":"door"}],
+       "clear":[
+        {"room":"Venti- lation Room","f":1,"threat":"Bandit tricking la pared o Kaid con Rtila","how":"lanza LV, Hibana pega en el mismo segundo"}],
+       "final":"sostiene el hueco desde Ventilation con la CSRX"},
+      {"op":"zofia","role":"entrada","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"llega al carril de vehículos","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"concusión a la puerta de Customs Inspection","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"entra y limpia","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"segundo frente, planta si Supply está caliente","via":"door"}],
+       "clear":[
+        {"room":"Customs Inspection","f":1,"threat":"Kapkan o Lesion en la puerta exterior","how":"impact al marco, dron antes"},
+        {"room":"Customs Desk","f":1,"threat":"Ancla en el escritorio con Mira a Supply Corridor","how":"entrar cuando Hibana abre, el ancla tiene que voltear"}],
+       "final":"planta en Customs Desk o cubre desde ahí la planta en Supply"},
+      {"op":"blackbeard","role":"soporte","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"sale con Zofia","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"escudo en el rifle, holdea la puerta","via":"door"},
+        {"room":"Customs Inspection","f":1,"do":"entra segundo, gana el duelo de la puerta","via":"door"},
+        {"room":"Customs Desk","f":1,"do":"cubre la planta de frente","via":"door"}],
+       "clear":[
+        {"room":"Customs Inspection","f":1,"threat":"Noor con fuego contra el escudo","how":"no pelear en la puerta, retroceder y entrar con la concusión de Zofia"}],
+       "final":"holdea la puerta Customs Desk→Supply Corridor de frente"},
+      {"op":"nomad","role":"flanco","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Parking Lot","f":-1,"do":"cruza a la puerta de Pedestrian Exit","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"airjab afuera por si salen","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"entra callado","via":"door"},
+        {"room":"Detention","f":1,"do":"airjab en la puerta a Server","via":"door"},
+        {"room":"Server Room","f":1,"do":"llega al pasillo","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"airjab en East Stairs y cubre","via":"door"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer saliendo del Bathroom","how":"dron y airjab al pasillo"},
+        {"room":"Supply Corridor","f":1,"threat":"Jäger ADS o Evil Eye cubriendo el pasillo","how":"dron, quemar ADS con un disparo, no correr el pasillo"}],
+       "final":"sostiene Supply Corridor con airjabs en East Stairs y Server"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Smoke ancla Supply, Mira en Customs Desk mirando Supply Corridor, Bandit trickea la pared de Ventilation y Valkyrie roamea arriba en Armory Lockers negando el vertical. Sin roam arriba este sitio muere al vertical.",
+     "reinforce":["Pared Supply Room–Ventilation Room ×2","Pared Customs Desk–Customs Inspection","Escotilla de Supply Room","Escotillas de Customs Desk ×2"],
+     "rotations":["Customs Desk↔Supply Corridor↔Supply Room","Supply Room↔Server Room (rotate hole)"],
+     "ops":[
+      {"op":"smoke","room":"Supply Room","f":1,"role":"ancla","job":"gas en la pared de Ventilation y en la puerta de Supply Corridor; juega el rincón"},
+      {"op":"mira","room":"Customs Desk","f":1,"role":"ancla","job":"espejo hacia Supply Corridor y otro a Customs Inspection; controla las dos entradas"},
+      {"op":"bandit","room":"Venti- lation Room","f":1,"role":"flex","job":"trick de la pared Supply–Ventilation, luego cae a Supply cuando abren"},
+      {"op":"jager","room":"Supply Corridor","f":1,"role":"flex","job":"ADS en Supply Corridor y Customs Desk; holdea East Stairs"},
+      {"op":"valkyrie","room":"Armory Lockers","f":2,"role":"roam","job":"cams en Archives y East Stairs; niega el vertical de Buck sobre Supply"}]},
+    {"id":"alt","n":"Anti-vertical con Noor","summary":"Kaid electrifica pared y escotillas, Mute mata los drones, Maestro ve Supply Corridor desde Customs Desk, Oryx sube y baja por la escotilla para cazar verticales y Noor castiga a Osa/Blackbeard en la puerta de Customs Inspection.",
+     "reinforce":["Pared Supply Room–Ventilation Room ×2","Escotilla de Supply Room","Escotillas de Customs Desk ×2","Pared Customs Desk–Customs Inspection"],
+     "rotations":["Customs Desk↔Supply Corridor↔Supply Room","Supply Room↔Ventilation (hueco de Oryx)"],
+     "ops":[
+      {"op":"kaid","room":"Supply Room","f":1,"role":"ancla","job":"Rtila en la pared de Ventilation y en la escotilla de Supply; ancla el rincón"},
+      {"op":"mute","room":"Customs Desk","f":1,"role":"ancla","job":"jammers en las escotillas y en la puerta de Customs Inspection; ancla el escritorio"},
+      {"op":"maestro","room":"Customs Desk","f":1,"role":"flex","job":"Evil Eye mirando Supply Corridor y otra a Customs Inspection; castiga el cruce"},
+      {"op":"oryx","room":"Armory Lockers","f":2,"role":"roam","job":"roam en Armory Lockers y Archives, salta escotillas para cazar a Buck/Sledge"},
+      {"op":"noor","room":"Customs Inspection","f":1,"role":"flex","job":"Horus en la puerta exterior contra Osa/Blackbeard, luego cae a Customs Desk"}]}
+   ]
+  },
+  "bathroom": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Ace abre la pared Main Lobby→Tellers con Thatcher limpiando Bandit, Osa escuda la puerta del Lobby y Buck baja del hatch de Archives sobre Tellers. Gridlock entra por Pedestrian Exit y traba el pasillo para que el Bathroom no reciba rotaciones. Con la pared de Tellers abierta el sitio es una caja sin cobertura.",
+     "timeline":["0:00–0:45 · drones a Main Lobby y Tellers; Buck rapela a North Balcony","0:45–1:30 · Thatcher EMP, Ace abre Lobby→Tellers, Buck abre Archives sobre Tellers","1:30–2:30 · Osa entra por Lobby, Gridlock traba Exit Hallway, planta en Bathroom","2:30–3:00 · post-plant: Ace en Tellers, Buck arriba, Gridlock en Exit Hallway"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"baja por el valle con dron adelantado","via":"door"},
+        {"room":"Pedestrian Entrance","f":-1,"do":"cruza la reja","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"llega a la puerta principal, dron dentro del Lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"EMP a la pared de Tellers","via":"door"},
+        {"room":"Tellers","f":1,"do":"entra por la pared abierta","via":"breach"}],
+       "clear":[
+        {"room":"Pedestrian Customs","f":-1,"threat":"Spawn peek desde la puerta del Main Lobby","how":"dron a la puerta, cruzar pegado a las casetas"},
+        {"room":"Main Lobby","f":1,"threat":"Kapkan en la puerta principal, Mira en la pared de Tellers","how":"quemar Kapkan con una bala, EMP a la Mira antes de que Ace pegue"}],
+       "final":"cubre la puerta Main Lobby→Passport Check durante la planta"},
+      {"op":"ace","role":"duro","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"sigue a Thatcher","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"espera fuera del Lobby a que limpien","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"SELMA a la pared de Tellers tras el EMP","via":"door"},
+        {"room":"Tellers","f":1,"do":"entra por la pared","via":"breach"},
+        {"room":"Bath- room","f":1,"do":"planta en el Bathroom","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Bandit o Kaid tricking la pared de Tellers","how":"SELMA en dos partes: la primera para forzar el trick, la segunda con el EMP"},
+        {"room":"Tellers","f":1,"threat":"Ancla de Tellers detrás de las cajas, Smoke con gas","how":"esperar el gas, entrar con Osa mirando el rincón"}],
+       "final":"planta en Bathroom y sostiene desde Tellers"},
+      {"op":"buck","role":"vertical","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre a la fachada norte","via":"door"},
+        {"room":"North Balcony","f":2,"do":"rapela y dronea Archives","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra por la ventana, abre el piso sobre Tellers","via":"window"},
+        {"room":"Tellers","f":1,"do":"baja por la escotilla de Archives al final","via":"hatch"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Roamer tipo Vigil o Alibi cubriendo la ventana","how":"dron en la ventana, entrar con granada al rincón"},
+        {"room":"Tellers","f":1,"threat":"Ancla de Tellers pegada a la pared bajo el hatch","how":"abrir el piso con Skeleton Key y prefire por los agujeros"}],
+       "final":"mata al ancla de Tellers desde arriba y baja a la post-plant"},
+      {"op":"osa","role":"soporte","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"llega con el grupo","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"Talon en la puerta principal","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra detrás del escudo, segundo Talon en la pared abierta","via":"door"},
+        {"room":"Tellers","f":1,"do":"cuerpo delante de Ace","via":"breach"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Noor esperando escudos en la puerta","how":"Talon como cobertura y humo, no forzar el marco"},
+        {"room":"Tellers","f":1,"threat":"Rook con blindaje en las cajas de Tellers","how":"entrar tras el EMP con Buck disparando desde arriba"}],
+       "final":"sostiene Tellers con el Talon mirando la puerta al Bathroom"},
+      {"op":"gridlock","role":"flanco","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"sale por el oeste","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza el estacionamiento","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"dron a la puerta de Exit Hallway","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"trax en el pasillo hacia Detention","via":"door"},
+        {"room":"Bath- room","f":1,"do":"entra por la puerta del Bathroom cuando abren la pared","via":"door"}],
+       "clear":[
+        {"room":"Pedestrian Exit","f":-1,"threat":"Peek desde la puerta exterior del Bathroom","how":"dron antes, cruzar rápido a la pared"},
+        {"room":"Exit Hallway","f":1,"threat":"Lesion Gu en la puerta del Bathroom, roamer en Detention","how":"mirar el piso, trax hacia Detention para bloquear la rotación"}],
+       "final":"sostiene Exit Hallway con trax para que no retomen el Bathroom"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Cinco por la puerta del Bathroom desde Pedestrian Exit antes de que Lesion ponga sus Gu. Ying candela dentro, Ash abre lo que haya reforzado, Blitz se pone de frente y Finka sostiene el empujón. Funciona porque el Bathroom tiene una puerta exterior que casi nadie cubre en los primeros 30 segundos.",
+     "timeline":["0:00–0:20 · sprint por Parking Lot a Pedestrian Exit","0:20–0:40 · candela + concusión por la puerta del Bathroom, Ash abre","0:40–1:15 · entrada y planta en Bathroom","1:15–3:00 · sostener con Blitz en la puerta a Tellers"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"sprint al oeste","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza rápido","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"candela por la puerta del Bathroom","via":"door"},
+        {"room":"Bath- room","f":1,"do":"entra primera tras el flash y planta","via":"door"}],
+       "clear":[
+        {"room":"Pedestrian Exit","f":-1,"threat":"Peek desde la puerta exterior del Bathroom","how":"candela a la puerta antes de asomar"},
+        {"room":"Bath- room","f":1,"threat":"Rook o Doc anclando en los lavabos","how":"entrar de a dos, prefire a los cubículos"}],
+       "final":"planta en Bathroom detrás de los cubículos"},
+      {"op":"ash","role":"blando","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"corre con Ying","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"brecha a la barricada del Bathroom si tiene Castle","via":"door"},
+        {"room":"Bath- room","f":1,"do":"segunda en entrar","via":"door"}],
+       "clear":[
+        {"room":"Bath- room","f":1,"threat":"Castle en la puerta exterior","how":"brecha remota, entrar en el mismo segundo"}],
+       "final":"cubre la puerta Bathroom→Tellers"},
+      {"op":"zofia","role":"entrada","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"corre con el grupo","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"concusión dentro del Bathroom","via":"door"},
+        {"room":"Bath- room","f":1,"do":"entra y mira la puerta a Exit Hallway","via":"door"}],
+       "clear":[
+        {"room":"Bath- room","f":1,"threat":"Lesion Gu o Kapkan en la puerta exterior","how":"impact al marco, mirar el piso"}],
+       "final":"sostiene la puerta Bathroom→Exit Hallway"},
+      {"op":"blitz","role":"entrada","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"corre con el escudo","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"flash al asomar la puerta","via":"door"},
+        {"room":"Bath- room","f":1,"do":"empuja el rincón ciego","via":"door"}],
+       "clear":[
+        {"room":"Bath- room","f":1,"threat":"Noor con Horus en la entrada","how":"si hay fuego, esperar la candela de Ying y no forzar"}],
+       "final":"se para en la puerta a Tellers cubriendo la planta"},
+      {"op":"finka","role":"soporte","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"boost al salir","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza al final","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"segundo boost antes de entrar","via":"door"},
+        {"room":"Bath- room","f":1,"do":"levanta caídos y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Pedestrian Exit","f":-1,"threat":"Roamer que sale por Exit Hallway a flanquear","how":"mirar la puerta de Exit Hallway desde afuera mientras entran"}],
+       "final":"sostiene Exit Hallway desde la puerta del Bathroom"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sledge y Fuze trabajan Archives sobre Tellers, Ram tira BU-GI desde Break Room sobre el Bathroom y Zero ve por los agujeros. Montagne se planta en la puerta del Lobby para que no roten y da intel de frente. Bajamos al final por la escotilla de Archives.",
+     "timeline":["0:00–0:45 · rappel a North Balcony, entrar a Archives y Break Room","0:45–1:45 · Sledge abre techo de Tellers, Fuze en el hatch, Ram sobre Bathroom","1:45–2:30 · kills desde arriba, bajar por el hatch de Archives y plantar en Tellers","2:30–3:00 · post-plant por los agujeros"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre al muro norte","via":"door"},
+        {"room":"North Balcony","f":2,"do":"rapela, dron a Archives","via":"rappel"},
+        {"room":"Archives","f":2,"do":"martilla el piso sobre Tellers","via":"window"},
+        {"room":"Tellers","f":1,"do":"baja por el hatch al final","via":"hatch"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Roamer en el rincón de Archives o Frost cepo bajo la ventana","how":"dron, granada al rincón, mirar el piso al entrar"},
+        {"room":"Tellers","f":1,"threat":"Ancla de Tellers bajo el hatch con Smoke","how":"agujeros con el martillo antes de abrir el hatch, matar desde arriba"}],
+       "final":"abre todo Archives sobre Tellers y baja a plantar"},
+      {"op":"fuze","role":"negacion","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"sigue a Sledge","via":"door"},
+        {"room":"North Balcony","f":2,"do":"rapela","via":"rappel"},
+        {"room":"Archives","f":2,"do":"cluster en el hatch y en el piso sobre Tellers","via":"window"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Jäger ADS pegado al hatch por abajo","how":"Sledge abre primero, cluster después de que el ADS gaste"}],
+       "final":"vacía Tellers con clusters y cubre la ventana de Archives"},
+      {"op":"ram","role":"negacion","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"llega al lado oeste","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"rapela a West Balcony","via":"door"},
+        {"room":"West Balcony","f":2,"do":"dron a Break Room","via":"rappel"},
+        {"room":"Break Room","f":2,"do":"BU-GI cruzando el piso sobre el Bathroom","via":"window"},
+        {"room":"Archives","f":2,"do":"se junta con Sledge","via":"door"}],
+       "clear":[
+        {"room":"Break Room","f":2,"threat":"Roamer que sube por Main Hallway a la ventana","how":"dron en la puerta de Main Hallway antes de entrar"},
+        {"room":"Archives","f":2,"threat":"Mute jammer o Bandit bajo el piso de Archives","how":"BU-GI limpia gadgets del techo de Tellers"}],
+       "final":"abre el techo del Bathroom y sostiene desde Break Room"},
+      {"op":"zero","role":"intel","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"llega con el grupo","via":"door"},
+        {"room":"North Balcony","f":2,"do":"Argus a la ventana de Archives","via":"rappel"},
+        {"room":"Archives","f":2,"do":"Argus en el piso abierto mirando Tellers","via":"window"},
+        {"room":"Main Hallway","f":2,"do":"cubre el pasillo desde la puerta de Archives","via":"door"}],
+       "clear":[
+        {"room":"Main Hallway","f":2,"threat":"Roamer subiendo por Central Stairs","how":"Argus en el pasillo, prefire a las escaleras"}],
+       "final":"da intel de Tellers y Bathroom por las cams y holdea Main Hallway"},
+      {"op":"montagne","role":"soporte","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"baja con escudo","via":"door"},
+        {"room":"Pedestrian Entrance","f":-1,"do":"cruza la reja","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"escudo extendido en la puerta del Lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"se planta mirando la pared/puerta de Tellers y da intel","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Mira en la pared de Tellers, Noor con fuego","how":"escudo extendido y quedarse fuera del alcance del Horus, solo intel"}],
+       "final":"bloquea la rotación Tellers→Lobby y reporta dónde se mueven"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana + Twitch abren la pared Main Lobby→Tellers mientras Zofia + Blackbeard entran por la puerta exterior del Bathroom y Nomad cierra Exit Hallway. El ancla de Tellers y el de Bathroom se separan y ninguno recibe apoyo.",
+     "timeline":["0:00–0:45 · grupo Lobby y grupo Pedestrian Exit se posicionan","0:45–1:30 · Twitch quema Bandit, Hibana abre; Zofia concusión al Bathroom","1:30–2:30 · cruce simultáneo, planta en Tellers","2:30–3:00 · Nomad en Exit Hallway, Blackbeard en Bathroom"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"baja al Lobby","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"espera a que Twitch limpie","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"pellets a la pared de Tellers","via":"door"},
+        {"room":"Tellers","f":1,"do":"entra y planta","via":"breach"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Kapkan en la puerta principal, Mira en la pared","how":"dron, quemar Kapkan, Twitch a la Mira"},
+        {"room":"Tellers","f":1,"threat":"Ancla en las cajas de Tellers","how":"entrar al mismo tiempo que Zofia por el Bathroom"}],
+       "final":"planta en Tellers"},
+      {"op":"twitch","role":"antigadget","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"dron de choque adelantado","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"dron a la puerta del Lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"quema Bandit/Kaid y la Mira de Tellers con el dron","via":"door"},
+        {"room":"Tellers","f":1,"do":"entra tras Hibana","via":"breach"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Bandit tricking o Kaid en la pared de Tellers","how":"dron de choque pegado a la pared, disparar la batería"}],
+       "final":"cubre Main Lobby mirando Passport Check"},
+      {"op":"zofia","role":"entrada","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"sale al oeste","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"concusión por la puerta del Bathroom","via":"door"},
+        {"room":"Bath- room","f":1,"do":"entra y limpia los cubículos","via":"door"},
+        {"room":"Tellers","f":1,"do":"cruza cuando Hibana abre","via":"door"}],
+       "clear":[
+        {"room":"Bath- room","f":1,"threat":"Lesion Gu en la puerta y Rook en los lavabos","how":"impact al marco, mirar el piso, concusión adentro"}],
+       "final":"planta en Tellers o cubre desde el Bathroom"},
+      {"op":"blackbeard","role":"soporte","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"sigue a Zofia","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"cruza","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"escudo, holdea la puerta del Bathroom","via":"door"},
+        {"room":"Bath- room","f":1,"do":"entra segundo, gana el duelo","via":"door"}],
+       "clear":[
+        {"room":"Bath- room","f":1,"threat":"Noor con fuego contra el escudo del rifle","how":"pelear desde afuera con la concusión de Zofia, no en el marco"}],
+       "final":"sostiene el Bathroom mirando la puerta a Exit Hallway"},
+      {"op":"nomad","role":"flanco","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"West Road","f":-1,"do":"cruza al oeste","via":"door"},
+        {"room":"Parking Lot","f":-1,"do":"airjab en la puerta exterior del Bathroom","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"entra a Exit Hallway","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"airjab hacia Detention y sostiene","via":"door"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer rotando de Detention/Server al Bathroom","how":"airjab en la puerta de Detention, dron antes de entrar"}],
+       "final":"sostiene Exit Hallway con airjabs cerrando el flanco"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Smoke ancla Tellers, Rook ancla Bathroom, Kaid electrifica la pared del Lobby, Jäger cubre las entradas con ADS y Lesion mina la puerta exterior del Bathroom y la de Exit Hallway.",
+     "reinforce":["Pared Tellers–Main Lobby ×2","Pared Bathroom–Exit Hallway","Escotilla de Tellers (Archives)"],
+     "rotations":["Bathroom↔Tellers","Tellers↔Waiting Room (hueco chico)"],
+     "ops":[
+      {"op":"smoke","room":"Tellers","f":1,"role":"ancla","job":"gas en la pared del Lobby y en la puerta a Waiting Room; juega detrás de las cajas"},
+      {"op":"rook","room":"Bath- room","f":1,"role":"ancla","job":"armadura en Tellers, ancla los cubículos mirando la puerta exterior"},
+      {"op":"kaid","room":"Tellers","f":1,"role":"flex","job":"Rtila en la pared del Lobby y en la escotilla de Archives; luego holdea Waiting Room"},
+      {"op":"jager","room":"Main Lobby","f":1,"role":"flex","job":"ADS en Tellers y Bathroom; juega Main Lobby al inicio y cae al sitio"},
+      {"op":"lesion","room":"Exit Hallway","f":1,"role":"roam","job":"Gu en la puerta exterior del Bathroom y en Exit Hallway; roamea Detention y Server"}]},
+    {"id":"alt","n":"Mira Tellers + roam Archives","summary":"Mira en la pared Tellers→Lobby ve toda la entrada, Mute niega drones y el hatch, Azami sella la pared del Bathroom, Vigil roamea Archives negando el vertical y Fenrir ciega Exit Hallway.",
+     "reinforce":["Pared Tellers–Main Lobby ×2","Escotilla de Tellers (Archives)","Pared Bathroom–Exit Hallway"],
+     "rotations":["Bathroom↔Tellers","Tellers↔Waiting Room"],
+     "ops":[
+      {"op":"mira","room":"Tellers","f":1,"role":"ancla","job":"espejo en la pared del Lobby y otro al Bathroom; ancla desde las cajas"},
+      {"op":"mute","room":"Tellers","f":1,"role":"ancla","job":"jammers en la pared del Lobby y bajo el hatch de Archives; niega drones y Ace"},
+      {"op":"azami","room":"Bath- room","f":1,"role":"flex","job":"Kiba en la puerta exterior del Bathroom y cerrando la línea de Tellers; flex entre los dos cuartos"},
+      {"op":"vigil","room":"Archives","f":2,"role":"roam","job":"invisible a drones, caza a Buck/Sledge en Archives y Break Room"},
+      {"op":"fenrir","room":"Exit Hallway","f":1,"role":"roam","job":"F-NATT en Exit Hallway y en la puerta a Detention; roamea Server"}]}
+   ]
+  },
+  "workshop": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite abre el garage de Workshop desde East Alley con Thatcher limpiando Bandit, Sledge pica Offices sobre Ventilation, Flores mata Kapkan/Jäger antes de entrar y Nomad llega por Supply cerrando la rotación. El sitio tiene una sola pared gorda y cuando cae, Workshop es un pasillo abierto.",
+     "timeline":["0:00–0:45 · Flores dronea Workshop y Ventilation desde East Alley; Sledge rapela a South Balcony","0:45–1:30 · Thatcher EMP, Thermite abre el garage; Sledge abre Offices sobre Ventilation","1:30–2:30 · entrada por garage, Nomad por Supply, planta en Ventilation","2:30–3:00 · post-plant: Sledge arriba, Thermite en Workshop, Nomad en Supply"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sale pegado al muro","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza detrás de los autos","via":"door"},
+        {"room":"East Alley","f":-1,"do":"EMP al garage de Workshop","via":"door"},
+        {"room":"Work- shop","f":1,"do":"entra tras Thermite","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"East Alley","f":-1,"threat":"Spawn peek desde la ventana del garage o la puerta de Ventilation","how":"dron primero, cruzar pegado a la pared, EMP antes de asomar"},
+        {"room":"Work- shop","f":1,"threat":"Mira en la pared a Ventilation, Kapkan en la puerta","how":"EMP a todo, Flores limpia lo que quede"}],
+       "final":"sostiene la puerta Workshop→Customs Desk"},
+      {"op":"thermite","role":"duro","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Thatcher","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"carga en el garage de Workshop","via":"door"},
+        {"room":"Work- shop","f":1,"do":"entra por el hueco","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"planta","via":"door"}],
+       "clear":[
+        {"room":"East Alley","f":-1,"threat":"Bandit o Kaid tricking el garage","how":"pegar la carga con el EMP de Thatcher en el aire"},
+        {"room":"Venti- lation Room","f":1,"threat":"Ancla de Ventilation con Smoke en la puerta","how":"esperar el gas, Sledge mata desde arriba"}],
+       "final":"planta en Ventilation y sostiene desde Workshop"},
+      {"op":"sledge","role":"vertical","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre al muro sur","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela a South Balcony","via":"door"},
+        {"room":"South Balcony","f":2,"do":"dron a Offices Hallway","via":"rappel"},
+        {"room":"Offices Hallway","f":2,"do":"entra por la ventana","via":"window"},
+        {"room":"Offices","f":2,"do":"martilla el piso sobre Ventilation","via":"door"},
+        {"room":"Work- shop","f":1,"do":"baja por la escotilla de Workshop al final","via":"hatch"}],
+       "clear":[
+        {"room":"Offices Hallway","f":2,"threat":"Roamer que sube de Fountain","how":"dron en la puerta de Fountain, entrar con cuidado"},
+        {"room":"Offices","f":2,"threat":"Vigil o Cav esperando en Offices, Valkyrie cam","how":"dron cada esquina, granada al rincón"}],
+       "final":"abre el techo de Ventilation, mata al ancla y baja por la escotilla"},
+      {"op":"flores","role":"antigadget","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"Ratero adelantado","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"Ratero al garage de Workshop: quema Kapkan/ADS","via":"door"},
+        {"room":"East Alley","f":-1,"do":"segundo Ratero a Ventilation","via":"door"},
+        {"room":"Work- shop","f":1,"do":"entra tras el breach","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Work- shop","f":1,"threat":"Kapkan en las puertas y Jäger ADS en la esquina","how":"Ratero primero, siempre antes de la carga de Thermite"},
+        {"room":"Venti- lation Room","f":1,"threat":"Maestro Evil Eye mirando Workshop","how":"Ratero explota la cam o disparar cuando abra"}],
+       "final":"sostiene la puerta Ventilation→Supply Room"},
+      {"op":"nomad","role":"flanco","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Parking Lot","f":-1,"do":"cruza al oeste","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"entra por Exit Hallway","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"airjab en la puerta al Bathroom","via":"door"},
+        {"room":"Detention","f":1,"do":"cruza mirando las celdas","via":"door"},
+        {"room":"Server Room","f":1,"do":"llega al pasillo","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"airjab en East Stairs","via":"door"},
+        {"room":"Supply Room","f":1,"do":"holdea la puerta a Ventilation","via":"door"},
+        {"room":"Venti- lation Room","f":1,"do":"entra al final a la planta","via":"door"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer saliendo del Bathroom","how":"airjab y dron"},
+        {"room":"Supply Room","f":1,"threat":"Kapkan en la puerta Supply→Ventilation","how":"dron, disparar la trampa desde Supply Corridor"}],
+       "final":"cierra la rotación Supply→Ventilation con airjabs"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Cinco por la puerta exterior de Ventilation desde East Alley. Ying candela adentro, Zofia concusión, Ash abre la barricada, Blitz de frente y Finka sostiene. Funciona si el equipo defensor todavía está reforzando el garage y la puerta de Ventilation tiene solo madera.",
+     "timeline":["0:00–0:20 · sprint por Crash Scene a East Alley","0:20–0:40 · candela + concusión por la puerta de Ventilation, Ash la abre","0:40–1:15 · entrada y planta en Ventilation","1:15–3:00 · sostener desde Workshop y la puerta de Supply"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sprint","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza detrás de los autos","via":"door"},
+        {"room":"East Alley","f":-1,"do":"candela por la puerta de Ventilation","via":"door"},
+        {"room":"Venti- lation Room","f":1,"do":"entra primera y planta","via":"door"}],
+       "clear":[
+        {"room":"East Alley","f":-1,"threat":"Peek desde la ventana del garage","how":"candela a la ventana antes de cruzar"},
+        {"room":"Venti- lation Room","f":1,"threat":"Ancla detrás de los ductos","how":"entrar de a dos tras la flash, prefire a los ductos"}],
+       "final":"planta en Ventilation detrás de los ductos"},
+      {"op":"zofia","role":"entrada","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Ying","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"concusión dentro de Ventilation","via":"door"},
+        {"room":"Venti- lation Room","f":1,"do":"entra segunda","via":"door"},
+        {"room":"Work- shop","f":1,"do":"limpia Workshop","via":"door"}],
+       "clear":[
+        {"room":"Venti- lation Room","f":1,"threat":"Kapkan en la puerta exterior","how":"impact al marco antes de entrar"}],
+       "final":"sostiene Workshop mirando el garage"},
+      {"op":"ash","role":"blando","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"brecha a la barricada de Ventilation","via":"door"},
+        {"room":"Venti- lation Room","f":1,"do":"entra tercera","via":"door"}],
+       "clear":[
+        {"room":"Venti- lation Room","f":1,"threat":"Castle en la puerta exterior","how":"brecha remota, entrar en el mismo segundo que la candela"}],
+       "final":"cubre la puerta a Supply Room"},
+      {"op":"blitz","role":"entrada","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre con escudo","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"flash al asomar","via":"door"},
+        {"room":"Venti- lation Room","f":1,"do":"empuja al rincón","via":"door"}],
+       "clear":[
+        {"room":"Venti- lation Room","f":1,"threat":"Noor con Horus esperando el escudo","how":"no forzar si hay fuego, entrar tras la candela"}],
+       "final":"cuerpo delante de la planta mirando Workshop"},
+      {"op":"finka","role":"soporte","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"boost al salir","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"segundo boost antes de la puerta","via":"door"},
+        {"room":"Venti- lation Room","f":1,"do":"levanta y cubre","via":"door"}],
+       "clear":[
+        {"room":"East Alley","f":-1,"threat":"Roamer que sale por el garage a flanquear","how":"mirar el garage desde afuera mientras entran"}],
+       "final":"sostiene la puerta exterior de Ventilation"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck y Ram abren Offices sobre Ventilation y Workshop, Fuze mete clusters por la escotilla de Workshop, IQ marca gadgets y Ace abre la escotilla reforzada para bajar al final. Subimos por Central Stairs y por South Balcony para no depender de un solo acceso.",
+     "timeline":["0:00–0:45 · subir a Offices por Central Stairs y South Balcony","0:45–1:45 · Buck/Ram abren el piso, Fuze en la escotilla, IQ marca","1:45–2:30 · Ace abre la escotilla, bajan y plantan en Workshop","2:30–3:00 · post-plant desde Offices por los agujeros"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre al muro sur","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela","via":"door"},
+        {"room":"South Balcony","f":2,"do":"dron a Offices Hallway","via":"rappel"},
+        {"room":"Offices Hallway","f":2,"do":"entra por la ventana","via":"window"},
+        {"room":"Offices","f":2,"do":"abre el piso sobre Ventilation","via":"door"}],
+       "clear":[
+        {"room":"Offices Hallway","f":2,"threat":"Roamer subiendo de Fountain","how":"dron a la puerta, entrar con Ram"},
+        {"room":"Offices","f":2,"threat":"Frost cepo o Ela mina bajo la ventana","how":"mirar el piso, disparar la mina"}],
+       "final":"abre Offices sobre Ventilation y mata al ancla desde arriba"},
+      {"op":"ram","role":"negacion","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Buck","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela","via":"door"},
+        {"room":"South Balcony","f":2,"do":"cubre a Buck","via":"rappel"},
+        {"room":"Offices Hallway","f":2,"do":"entra","via":"window"},
+        {"room":"Offices","f":2,"do":"BU-GI hacia la escotilla de Workshop","via":"door"}],
+       "clear":[
+        {"room":"Offices","f":2,"threat":"Mute jammer o Bandit en la escotilla de Workshop","how":"BU-GI rompe el piso y los gadgets de la escotilla"}],
+       "final":"abre el piso completo de Offices y sostiene desde arriba"},
+      {"op":"fuze","role":"negacion","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"baja al Lobby","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"dron a la puerta","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza al fondo","via":"door"},
+        {"room":"Waiting Room","f":1,"do":"llega a Central Stairs","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"sube","via":"door"},
+        {"room":"Main Hallway","f":2,"do":"cruza el pasillo","via":"stairs"},
+        {"room":"Offices Hallway","f":2,"do":"cluster sobre Ventilation","via":"door"},
+        {"room":"Offices","f":2,"do":"cluster en la escotilla de Workshop","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Kapkan en la puerta principal","how":"dron, disparar la trampa"},
+        {"room":"Main Hallway","f":2,"threat":"Roamer holdeando Central Stairs desde arriba","how":"dron a la salida de la escalera, subir con Ace"}],
+       "final":"vacía Workshop y Ventilation con clusters desde Offices"},
+      {"op":"iq","role":"intel","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"sigue a Fuze","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"cruza a la puerta","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"detector: gadgets en Tellers/Passport","via":"door"},
+        {"room":"Waiting Room","f":1,"do":"llega a la escalera","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"sube","via":"door"},
+        {"room":"Main Hallway","f":2,"do":"cruza","via":"stairs"},
+        {"room":"Offices","f":2,"do":"marca Mira, Maestro y celulares bajo el piso","via":"door"}],
+       "clear":[
+        {"room":"Waiting Room","f":1,"threat":"Roamer bajando por Central Stairs","how":"dron a la escalera, prefire"},
+        {"room":"Offices","f":2,"threat":"Pulse o Vigil pegado bajo el piso en Workshop","how":"detector y disparar a través del piso abierto"}],
+       "final":"mata gadgets a través del piso y avisa dónde está el ancla"},
+      {"op":"ace","role":"duro","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"sube con el grupo","via":"door"},
+        {"room":"Pedestrian Customs","f":-1,"do":"cruza","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza al fondo","via":"door"},
+        {"room":"Waiting Room","f":1,"do":"a la escalera","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"sube","via":"door"},
+        {"room":"Main Hallway","f":2,"do":"cruza","via":"stairs"},
+        {"room":"Offices","f":2,"do":"SELMA a la escotilla reforzada de Workshop","via":"door"},
+        {"room":"Work- shop","f":1,"do":"baja por la escotilla y planta","via":"hatch"}],
+       "clear":[
+        {"room":"Offices","f":2,"threat":"Kaid Rtila o Bandit en la escotilla","how":"IQ marca, SELMA en dos partes o Ram limpia antes"},
+        {"room":"Work- shop","f":1,"threat":"Ancla de Workshop bajo la escotilla","how":"esperar a que Buck/Fuze limpien, bajar con Ram cubriendo"}],
+       "final":"baja por la escotilla y planta en Workshop"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana + Kali + Montagne abren el garage de Workshop desde East Alley mientras Maverick + Jackal entran por Supply Room y Maverick abre un agujero en la pared Supply→Ventilation. Dos paredes reforzadas se caen a la vez y el ancla no puede sostener las dos.",
+     "timeline":["0:00–0:45 · grupo East Alley y grupo Supply se posicionan","0:45–1:30 · Kali vuela Bandit, Hibana abre el garage; Maverick abre agujeros desde Supply","1:30–2:30 · cruce simultáneo, planta en Ventilation","2:30–3:00 · Montagne en Workshop, Jackal caza al roamer"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre al este","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"pellets al garage cuando Kali confirme","via":"door"},
+        {"room":"Work- shop","f":1,"do":"entra tras Montagne","via":"breach"},
+        {"room":"Venti- lation Room","f":1,"do":"planta","via":"door"}],
+       "clear":[
+        {"room":"East Alley","f":-1,"threat":"Bandit tricking el garage, spawn peek","how":"dron, Kali rompe la batería y pegar al segundo"},
+        {"room":"Work- shop","f":1,"threat":"Ancla de Workshop con Mira a Ventilation","how":"entrar detrás de Montagne cuando Maverick abre por el otro lado"}],
+       "final":"planta en Ventilation"},
+      {"op":"kali","role":"antigadget","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Hibana","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"LV al garage: vuela Bandit/Kaid y ADS","via":"door"},
+        {"room":"Work- shop","f":1,"do":"entra al final","via":"breach"}],
+       "clear":[
+        {"room":"East Alley","f":-1,"threat":"Kaid Rtila en el garage, Jäger detrás","how":"LV y Hibana pega en el mismo segundo"}],
+       "final":"sostiene el garage con la CSRX mirando Ventilation"},
+      {"op":"montagne","role":"soporte","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"escudo al frente","via":"door"},
+        {"room":"Crash Scene","f":-1,"do":"cruza","via":"door"},
+        {"room":"East Alley","f":-1,"do":"escudo extendido en el garage abierto","via":"door"},
+        {"room":"Work- shop","f":1,"do":"entra primero y da intel","via":"breach"}],
+       "clear":[
+        {"room":"Work- shop","f":1,"threat":"Noor con fuego contra el escudo, Kapkan en la puerta","how":"quedarse fuera del alcance del Horus, Kali quema la trampa"}],
+       "final":"bloquea Workshop y protege la planta"},
+      {"op":"maverick","role":"duro","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Parking Lot","f":-1,"do":"cruza al oeste","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"entra callado","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"cruza","via":"door"},
+        {"room":"Detention","f":1,"do":"cruza","via":"door"},
+        {"room":"Server Room","f":1,"do":"llega al pasillo","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"cruza a Supply","via":"door"},
+        {"room":"Supply Room","f":1,"do":"soplete en la pared a Ventilation: agujeros de mira y uno de paso","via":"door"},
+        {"room":"Venti- lation Room","f":1,"do":"entra cuando Hibana abre","via":"breach"}],
+       "clear":[
+        {"room":"Server Room","f":1,"threat":"Alibi o Maestro cubriendo Supply Corridor","how":"dron, quemar la cam desde Server"},
+        {"room":"Supply Room","f":1,"threat":"Kapkan en la puerta y ancla asomando de Ventilation","how":"dron, quemar la trampa, soplete callado"}],
+       "final":"abre la pared Supply→Ventilation y entra al último"},
+      {"op":"jackal","role":"flanco","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Parking Lot","f":-1,"do":"cruza","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"entra","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"Eyenox: huellas del roamer","via":"door"},
+        {"room":"Detention","f":1,"do":"sigue las huellas","via":"door"},
+        {"room":"Server Room","f":1,"do":"cubre a Maverick","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"holdea East Stairs","via":"door"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer que sale del Bathroom","how":"Eyenox, escanear y cazar con apoyo"},
+        {"room":"Supply Corridor","f":1,"threat":"Roamer bajando por East Stairs","how":"dron a la escalera, holdear el pasillo"}],
+       "final":"caza al roamer y sostiene Supply Corridor"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Smoke ancla Ventilation, Mira ancla Workshop mirando el garage, Bandit trickea el garage, Kapkan mina las puertas de Supply y Mozzie roba drones desde East Alley. Roam arriba en Offices con Mozzie cuando ya no hay drones.",
+     "reinforce":["Pared Workshop–garage (East Alley) ×2","Escotilla de Workshop","Pared Ventilation–Supply Room","Pared Workshop–Customs Desk"],
+     "rotations":["Workshop↔Ventilation","Ventilation↔Supply Room (puerta)"],
+     "ops":[
+      {"op":"smoke","room":"Venti- lation Room","f":1,"role":"ancla","job":"gas en la puerta a Supply y en el hueco del garage; juega detrás de los ductos"},
+      {"op":"mira","room":"Work- shop","f":1,"role":"ancla","job":"espejo hacia el garage y otro a Customs Desk; ancla Workshop"},
+      {"op":"bandit","room":"Work- shop","f":1,"role":"flex","job":"trick del garage y luego cae a Ventilation"},
+      {"op":"kapkan","room":"Supply Room","f":1,"role":"roam","job":"trampas en la puerta Supply→Ventilation y en Supply Corridor; roamea Server"},
+      {"op":"mozzie","room":"Offices","f":2,"role":"roam","job":"Pest en East Alley y Offices; roamea Offices negando el vertical"}]},
+    {"id":"alt","n":"Anti-vertical con Tubarão","summary":"Kaid electrifica garage y escotilla, Mute mata drones, Azami sella la escotilla de Workshop, Tubarão congela los agujeros de Buck y Vigil roamea Offices invisible a drones.",
+     "reinforce":["Pared Workshop–garage (East Alley) ×2","Escotilla de Workshop","Pared Ventilation–Supply Room","Escotillas de Customs Desk"],
+     "rotations":["Workshop↔Ventilation","Ventilation↔Supply Room"],
+     "ops":[
+      {"op":"kaid","room":"Work- shop","f":1,"role":"ancla","job":"Rtila en el garage y en la escotilla; ancla Workshop"},
+      {"op":"mute","room":"Venti- lation Room","f":1,"role":"ancla","job":"jammers en la puerta exterior de Ventilation y en la pared de Supply; ancla los ductos"},
+      {"op":"azami","room":"Work- shop","f":1,"role":"flex","job":"Kiba en la escotilla y cerrando la línea del garage; flex entre Workshop y Ventilation"},
+      {"op":"tubarao","room":"Venti- lation Room","f":1,"role":"flex","job":"Zoto en el techo cuando Buck abre; congela la planta"},
+      {"op":"vigil","room":"Offices","f":2,"role":"roam","job":"caza a Buck/Sledge en Offices y Offices Hallway; invisible a drones"}]}
+   ]
+  },
+  "armory": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite y Thatcher suben por Central Stairs y abren la pared Offices Hallway→Armory Desk, Lion rapela a East Balcony y escanea, Capitão quema el rincón de Archives desde North Balcony y Gridlock traba East Stairs. Con la pared de Armory Desk abierta y Archives quemado el sitio pierde sus dos anclas.",
+     "timeline":["0:00–0:45 · drones a Archives y Armory; Lion y Capitão rapelan","0:45–1:30 · Thatcher EMP, Thermite abre Offices→Armory Desk; Capitão quema Archives","1:30–2:30 · Lion escanea, entrada por Armory Desk, planta en Armory Lockers","2:30–3:00 · post-plant: Gridlock en East Stairs, Capitão en Archives, Thermite en Armory Desk"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Valley",
+       "path":[
+        {"room":"Pedestrian Customs","f":-1,"do":"dron a la puerta del Lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra y limpia","via":"door"},
+        {"room":"Waiting Room","f":1,"do":"cruza a Central Stairs","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"sube con dron adelantado","via":"door"},
+        {"room":"Main Hallway","f":2,"do":"cruza el pasillo","via":"stairs"},
+        {"room":"Offices Hallway","f":2,"do":"EMP a la pared de Armory Desk","via":"door"},
+        {"room":"Armory Desk","f":2,"do":"entra tras Thermite","via":"breach"},
+        {"room":"Armory Lockers","f":2,"do":"cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Kapkan en la puerta principal, roamer en Tellers","how":"dron, quemar Kapkan, no cruzar sin mirar Tellers"},
+        {"room":"Main Hallway","f":2,"threat":"Roamer holdeando la salida de Central Stairs","how":"dron a la escalera, subir de a dos"},
+        {"room":"Offices Hallway","f":2,"threat":"Mira en la pared de Armory Desk, Bandit tricking","how":"EMP justo cuando Thermite pega la carga"}],
+       "final":"sostiene Armory Desk mirando East Stairs"},
+      {"op":"thermite","role":"duro","spawn":"Valley",
+       "path":[
+        {"room":"Pedestrian Customs","f":-1,"do":"sigue a Thatcher","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza","via":"door"},
+        {"room":"Waiting Room","f":1,"do":"a la escalera","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"sube","via":"door"},
+        {"room":"Main Hallway","f":2,"do":"cruza","via":"stairs"},
+        {"room":"Offices Hallway","f":2,"do":"carga en la pared de Armory Desk","via":"door"},
+        {"room":"Armory Desk","f":2,"do":"entra por el hueco","via":"breach"},
+        {"room":"Armory Lockers","f":2,"do":"planta","via":"door"}],
+       "clear":[
+        {"room":"Offices Hallway","f":2,"threat":"Kaid o Bandit en la pared de Armory Desk","how":"pegar con el EMP en el aire"},
+        {"room":"Armory Desk","f":2,"threat":"Ancla de Armory con Smoke en el hueco","how":"esperar el gas, entrar con Lion escaneando"}],
+       "final":"planta en Armory Lockers y sostiene desde Armory Desk"},
+      {"op":"lion","role":"intel","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre al este","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela a East Balcony","via":"door"},
+        {"room":"East Balcony","f":2,"do":"escaneo antes de entrar","via":"rappel"},
+        {"room":"Offices","f":2,"do":"entra por la ventana","via":"window"},
+        {"room":"Offices Hallway","f":2,"do":"se junta con Thermite","via":"door"},
+        {"room":"Armory Desk","f":2,"do":"segundo escaneo al entrar","via":"breach"}],
+       "clear":[
+        {"room":"East Balcony","f":2,"threat":"Peek desde la ventana de Armory Desk","how":"escanear antes de rapelar, no asomar sin dron"},
+        {"room":"Offices","f":2,"threat":"Frost cepo bajo la ventana, roamer en el rincón","how":"mirar el piso, prefire"}],
+       "final":"escanea en la planta y cubre Armory Desk"},
+      {"op":"capitao","role":"negacion","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre al muro norte","via":"door"},
+        {"room":"Watch Tower","f":-1,"do":"dron a la ventana de Archives","via":"door"},
+        {"room":"North Balcony","f":2,"do":"flecha de fuego al rincón de Archives","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra cuando el fuego saca al ancla","via":"window"},
+        {"room":"Armory Lockers","f":2,"do":"cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Frost cepo y Castle en las ventanas, Mira al rincón","how":"quemar el rincón, disparar el cepo, esperar a que abran la Mira"},
+        {"room":"Armory Lockers","f":2,"threat":"Ancla de Armory en los lockers con Smoke","how":"fuego a los lockers, entrar con Thermite del otro lado"}],
+       "final":"quema Archives y sostiene la puerta Archives→Main Hallway"},
+      {"op":"gridlock","role":"flanco","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Pedestrian Exit","f":-1,"do":"entra por Exit Hallway","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"trax en la puerta del Bathroom","via":"door"},
+        {"room":"Detention","f":1,"do":"cruza","via":"door"},
+        {"room":"Server Room","f":1,"do":"llega al pasillo","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"llega a East Stairs","via":"door"},
+        {"room":"East Stairs","f":1,"do":"trax en la escalera","via":"door"},
+        {"room":"East Stairs","f":2,"do":"sostiene arriba de la escalera","via":"stairs"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer en Aduana que sale por el Bathroom","how":"trax, dron y avanzar con cuidado"},
+        {"room":"East Stairs","f":1,"threat":"Roamer bajando de Armory Desk por la escalera","how":"trax en la escalera antes de subir"}],
+       "final":"traba East Stairs con trax y niega la rotación por abajo"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Todos por las ventanas de Archives desde North Balcony antes de que Castle las cierre. Ying candela adentro, Ash abre lo que haya, Iana réplica para ver la ventana y Blitz entra de frente con Finka. Si Castle no está puesto todavía, Archives es la entrada más rápida del mapa.",
+     "timeline":["0:00–0:20 · sprint a la fachada norte, rappel","0:20–0:40 · Iana réplica, Ying candela, Ash abre Castle si hay","0:40–1:15 · entrada y planta en Archives","1:15–3:00 · sostener desde Archives y Armory Lockers"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"sprint al muro norte","via":"door"},
+        {"room":"North Balcony","f":2,"do":"candela por la ventana de Archives","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra primera tras la flash y planta","via":"window"}],
+       "clear":[
+        {"room":"North Balcony","f":2,"threat":"Peek desde la ventana de Archives o Security Room","how":"candela a la ventana antes de asomar"},
+        {"room":"Archives","f":2,"threat":"Frost cepo bajo la ventana y ancla en el rincón","how":"mirar el piso, saltar la ventana cuando ya la flash pegó"}],
+       "final":"planta en Archives detrás de los estantes"},
+      {"op":"ash","role":"blando","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre con Ying","via":"door"},
+        {"room":"North Balcony","f":2,"do":"brecha a la Castle de la ventana","via":"rappel"},
+        {"room":"Archives","f":2,"do":"segunda en entrar","via":"window"},
+        {"room":"Armory Lockers","f":2,"do":"limpia los lockers","via":"door"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Castle en la ventana","how":"brecha remota desde el balcón, entrar en el mismo segundo"}],
+       "final":"cubre la puerta Archives→Main Hallway"},
+      {"op":"iana","role":"intel","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre con el grupo","via":"door"},
+        {"room":"North Balcony","f":2,"do":"réplica por la ventana: ve dónde está el ancla","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra tercera","via":"window"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Ancla de Archives con Mira y Smoke esperando la ventana","how":"réplica primero para que gaste el gas, entrar después"}],
+       "final":"sostiene la puerta a Armory Lockers"},
+      {"op":"blitz","role":"entrada","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre con escudo","via":"door"},
+        {"room":"North Balcony","f":2,"do":"flash al asomar la ventana","via":"rappel"},
+        {"room":"Archives","f":2,"do":"empuja el rincón ciego","via":"window"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Noor con fuego en la ventana","how":"no entrar de frente si hay fuego, esperar la candela"}],
+       "final":"cuerpo delante de la planta"},
+      {"op":"finka","role":"soporte","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"boost al salir","via":"door"},
+        {"room":"North Balcony","f":2,"do":"segundo boost antes de la ventana","via":"rappel"},
+        {"room":"Archives","f":2,"do":"levanta y cubre","via":"window"}],
+       "clear":[
+        {"room":"North Balcony","f":2,"threat":"Roamer que sale por Security Room a peekear el balcón","how":"mirar la ventana de Security Room mientras entran"}],
+       "final":"sostiene la ventana de Archives desde adentro"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Hibana abre la escotilla del techo de Armory desde el Roof y Fuze mete clusters por ahí, Buck sube desde Supply Room abriendo el techo bajo Armory Lockers, Zero mete Argus por la escotilla y Glaz cubre Archives con humo desde North Balcony. El sitio recibe fuego desde arriba y desde abajo.",
+     "timeline":["0:00–0:45 · Hibana y Fuze suben al Roof, Buck llega a Supply Room","0:45–1:45 · Hibana abre la escotilla, Fuze clusters, Buck abre el techo de Supply","1:45–2:30 · bajan por la escotilla del techo y plantan en Armory Lockers","2:30–3:00 · post-plant desde el Roof y desde Supply"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre al este","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela a East Balcony","via":"door"},
+        {"room":"East Balcony","f":2,"do":"sube la escalera al techo","via":"rappel"},
+        {"room":"Roof","f":3,"do":"pellets a la escotilla reforzada de Armory","via":"stairs"},
+        {"room":"Armory Lockers","f":2,"do":"baja por la escotilla al final","via":"hatch"}],
+       "clear":[
+        {"room":"East Balcony","f":2,"threat":"Peek desde la ventana de Armory Desk","how":"dron antes de rapelar, subir rápido"},
+        {"room":"Roof","f":3,"threat":"Bandit o Kaid en la escotilla","how":"Zero Argus primero, pellets en dos tandas"}],
+       "final":"abre la escotilla y baja a plantar cuando Fuze limpia"},
+      {"op":"fuze","role":"negacion","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"sigue a Hibana","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela","via":"door"},
+        {"room":"East Balcony","f":2,"do":"sube","via":"rappel"},
+        {"room":"Roof","f":3,"do":"cluster en la escotilla de Armory","via":"stairs"}],
+       "clear":[
+        {"room":"Roof","f":3,"threat":"Jäger ADS pegado a la escotilla por abajo","how":"primer cluster gasta el ADS, segundo mata"}],
+       "final":"vacía Armory Lockers con clusters desde el Roof"},
+      {"op":"buck","role":"blando","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Parking Lot","f":-1,"do":"cruza al oeste","via":"door"},
+        {"room":"Pedestrian Exit","f":-1,"do":"entra callado","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"cruza","via":"door"},
+        {"room":"Detention","f":1,"do":"cruza","via":"door"},
+        {"room":"Server Room","f":1,"do":"llega al pasillo","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"cruza a Supply","via":"door"},
+        {"room":"Supply Room","f":1,"do":"Skeleton Key al techo bajo Armory Lockers","via":"door"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer saliendo del Bathroom","how":"dron y prefire"},
+        {"room":"Supply Room","f":1,"threat":"Roamer holdeando Supply desde Ventilation","how":"dron en la puerta de Ventilation, mirarla mientras abre techo"}],
+       "final":"abre el techo de Supply y dispara a los pies del ancla de Armory desde abajo"},
+      {"op":"zero","role":"intel","spawn":"East Vehicle Entrance",
+       "path":[
+        {"room":"East Road","f":-1,"do":"corre con Hibana","via":"door"},
+        {"room":"Vehicle Customs","f":-1,"do":"rapela","via":"door"},
+        {"room":"East Balcony","f":2,"do":"Argus por la ventana de Armory Desk","via":"rappel"},
+        {"room":"Roof","f":3,"do":"Argus por la escotilla abierta mirando Armory Lockers","via":"stairs"}],
+       "clear":[
+        {"room":"East Balcony","f":2,"threat":"Ancla de Armory Desk peekeando la ventana","how":"Argus primero, no asomar"}],
+       "final":"da intel de Armory desde las cams y mata gadgets"},
+      {"op":"glaz","role":"negacion","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre al muro norte","via":"door"},
+        {"room":"Watch Tower","f":-1,"do":"humo a la ventana de Archives","via":"door"},
+        {"room":"North Balcony","f":2,"do":"rapela y mira Archives con la térmica","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra al final cuando Armory cae","via":"window"}],
+       "clear":[
+        {"room":"North Balcony","f":2,"threat":"Ancla de Archives con Mira y Frost","how":"humo en la ventana, térmica, matar sin entrar"}],
+       "final":"cubre Archives con humo y térmica desde North Balcony"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Ace + Twitch abren la pared Offices Hallway→Armory Desk mientras Zofia + Blackbeard entran por las ventanas de Archives y Nomad sube por East Stairs. Tres puntas al mismo tiempo: Archives, Armory Desk y East Stairs.",
+     "timeline":["0:00–0:45 · grupo Central Stairs y grupo North Balcony se posicionan; Nomad a East Stairs","0:45–1:30 · Twitch quema Bandit, Ace abre; Zofia concusión a Archives","1:30–2:30 · cruce simultáneo, planta en Armory Lockers","2:30–3:00 · Nomad en East Stairs, Blackbeard en Archives"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Valley",
+       "path":[
+        {"room":"Pedestrian Customs","f":-1,"do":"cruza a la puerta del Lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza","via":"door"},
+        {"room":"Waiting Room","f":1,"do":"a la escalera","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"sube","via":"door"},
+        {"room":"Main Hallway","f":2,"do":"cruza","via":"stairs"},
+        {"room":"Offices Hallway","f":2,"do":"SELMA a la pared de Armory Desk","via":"door"},
+        {"room":"Armory Desk","f":2,"do":"entra","via":"breach"},
+        {"room":"Armory Lockers","f":2,"do":"planta","via":"door"}],
+       "clear":[
+        {"room":"Main Hallway","f":2,"threat":"Roamer holdeando Central Stairs","how":"dron, subir con Twitch"},
+        {"room":"Offices Hallway","f":2,"threat":"Bandit tricking la pared de Armory Desk","how":"SELMA en dos partes con Twitch quemando"}],
+       "final":"planta en Armory Lockers"},
+      {"op":"twitch","role":"antigadget","spawn":"Valley",
+       "path":[
+        {"room":"Pedestrian Customs","f":-1,"do":"dron de choque adelantado","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza","via":"door"},
+        {"room":"Waiting Room","f":1,"do":"a la escalera","via":"door"},
+        {"room":"Central Stairs","f":1,"do":"sube","via":"door"},
+        {"room":"Main Hallway","f":2,"do":"cruza","via":"stairs"},
+        {"room":"Offices Hallway","f":2,"do":"quema Bandit y Mira de Armory Desk con el dron","via":"door"},
+        {"room":"Armory Desk","f":2,"do":"entra tras Ace","via":"breach"}],
+       "clear":[
+        {"room":"Offices Hallway","f":2,"threat":"Mira y Bandit en la pared de Armory Desk, Jäger ADS","how":"dron de choque a todo antes de que Ace pegue"}],
+       "final":"sostiene Armory Desk mirando East Stairs"},
+      {"op":"zofia","role":"entrada","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"corre al muro norte","via":"door"},
+        {"room":"North Balcony","f":2,"do":"concusión por la ventana de Archives","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra y limpia el rincón","via":"window"},
+        {"room":"Armory Lockers","f":2,"do":"cruza cuando Ace abre","via":"door"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Frost cepo, Castle y ancla en el rincón","how":"impact a la Castle, mirar el piso, concusión adentro"}],
+       "final":"planta en Armory Lockers o cubre desde Archives"},
+      {"op":"blackbeard","role":"soporte","spawn":"Valley",
+       "path":[
+        {"room":"Valley","f":-1,"do":"sigue a Zofia","via":"door"},
+        {"room":"North Balcony","f":2,"do":"escudo, holdea la ventana","via":"rappel"},
+        {"room":"Archives","f":2,"do":"entra segundo, gana el duelo","via":"window"}],
+       "clear":[
+        {"room":"Archives","f":2,"threat":"Noor con fuego contra el escudo del rifle","how":"pelear desde el balcón con la concusión, no en la ventana"}],
+       "final":"sostiene Archives mirando la puerta a Main Hallway"},
+      {"op":"nomad","role":"flanco","spawn":"West Vehicle Exit",
+       "path":[
+        {"room":"Pedestrian Exit","f":-1,"do":"entra por Exit Hallway","via":"door"},
+        {"room":"Exit Hallway","f":1,"do":"airjab en la puerta del Bathroom","via":"door"},
+        {"room":"Detention","f":1,"do":"cruza","via":"door"},
+        {"room":"Server Room","f":1,"do":"llega al pasillo","via":"door"},
+        {"room":"Supply Corridor","f":1,"do":"airjab en Supply","via":"door"},
+        {"room":"East Stairs","f":1,"do":"sube callado","via":"door"},
+        {"room":"East Stairs","f":2,"do":"airjab arriba y sostiene","via":"stairs"}],
+       "clear":[
+        {"room":"Exit Hallway","f":1,"threat":"Roamer saliendo del Bathroom","how":"airjab y dron"},
+        {"room":"East Stairs","f":2,"threat":"Roamer bajando de Armory Desk","how":"airjab en la escalera, dron antes de subir"}],
+       "final":"sostiene East Stairs con airjabs cerrando el flanco"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Frost cepos bajo las ventanas de Archives, Castle cierra las ventanas, Smoke ancla Armory Lockers, Mira en Archives mirando la ventana y Jäger cubre las entradas. Todo el mundo entra por Archives: Frost + Castle.",
+     "reinforce":["Pared Armory Desk–Offices Hallway ×2","Escotilla de Armory (techo)","Ventanas de Archives (Castle)","Escotilla Armory→Supply"],
+     "rotations":["Armory Lockers↔Archives","Armory Lockers↔Armory Desk"],
+     "ops":[
+      {"op":"frost","room":"Archives","f":2,"role":"ancla","job":"cepos bajo las ventanas de Archives y en la puerta a Main Hallway; ancla los estantes"},
+      {"op":"castle","room":"Archives","f":2,"role":"flex","job":"Castle en las ventanas de Archives y en la ventana de Armory Desk; flex al sitio"},
+      {"op":"smoke","room":"Armory Lockers","f":2,"role":"ancla","job":"gas en la pared de Armory Desk y en la escotilla del techo; ancla los lockers"},
+      {"op":"mira","room":"Archives","f":2,"role":"ancla","job":"espejo hacia la ventana y otro a Main Hallway; ancla Archives"},
+      {"op":"jager","room":"Armory Desk","f":2,"role":"flex","job":"ADS en Archives y Armory Desk; holdea East Stairs y cae al sitio"}]},
+    {"id":"alt","n":"Aruni + roam abajo","summary":"Kaid electrifica pared y escotilla del techo, Mute mata drones, Melusi frena las ventanas de Archives, Aruni cierra las ventanas con Surya y Solis roamea Offices viendo drones y gadgets.",
+     "reinforce":["Pared Armory Desk–Offices Hallway ×2","Escotilla de Armory (techo)","Escotilla Armory→Supply"],
+     "rotations":["Armory Lockers↔Archives","Armory Desk↔East Stairs"],
+     "ops":[
+      {"op":"kaid","room":"Armory Lockers","f":2,"role":"ancla","job":"Rtila en la pared de Armory Desk y en la escotilla del techo; ancla los lockers"},
+      {"op":"mute","room":"Archives","f":2,"role":"ancla","job":"jammers en las ventanas de Archives y en la pared; ancla Archives"},
+      {"op":"melusi","room":"Archives","f":2,"role":"flex","job":"Banshees en las ventanas de Archives y en Armory Desk; flex entre cuartos"},
+      {"op":"aruni","room":"Archives","f":2,"role":"flex","job":"Surya en las ventanas de Archives y en la puerta a Main Hallway; flex al sitio"},
+      {"op":"solis","room":"Offices","f":2,"role":"roam","job":"roam en Offices y Offices Hallway viendo drones; caza al que sube por Central Stairs"}]}
+   ]
+  }
+ }
+}

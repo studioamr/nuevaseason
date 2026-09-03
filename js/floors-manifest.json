@@ -1,0 +1,426 @@
+{
+"bank": [
+{
+"idx": 0,
+"key": "basement",
+"fl": "b",
+"src": "img/maps/bank/0.jpg"
+},
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/bank/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/bank/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/bank/3.jpg"
+}
+],
+"bartlett": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/bartlett/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/bartlett/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/bartlett/3.jpg"
+}
+],
+"border": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/border/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/border/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/border/3.jpg"
+}
+],
+"chalet": [
+{
+"idx": 0,
+"key": "basement",
+"fl": "b",
+"src": "img/maps/chalet/0.jpg"
+},
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/chalet/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/chalet/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/chalet/3.jpg"
+}
+],
+"coastline": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/coastline/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/coastline/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/coastline/3.jpg"
+}
+],
+"consulate": [
+{
+"idx": 0,
+"key": "basement",
+"fl": "b",
+"src": "img/maps/consulate/0.jpg"
+},
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/consulate/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/consulate/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/consulate/3.jpg"
+}
+],
+"favela": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/favela/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/favela/2.jpg"
+},
+{
+"idx": 3,
+"key": "thirdFloor",
+"fl": "3",
+"src": "img/maps/favela/3.jpg"
+},
+{
+"idx": 4,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/favela/4.jpg"
+}
+],
+"hereford": [
+{
+"idx": 0,
+"key": "basement",
+"fl": "b",
+"src": "img/maps/hereford/0.jpg"
+},
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/hereford/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/hereford/2.jpg"
+},
+{
+"idx": 3,
+"key": "thirdFloor",
+"fl": "3",
+"src": "img/maps/hereford/3.jpg"
+},
+{
+"idx": 4,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/hereford/4.jpg"
+}
+],
+"house": [
+{
+"idx": 0,
+"key": "basement",
+"fl": "b",
+"src": "img/maps/house/0.jpg"
+},
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/house/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/house/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/house/3.jpg"
+}
+],
+"kafe": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/kafe/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/kafe/2.jpg"
+},
+{
+"idx": 3,
+"key": "thirdFloor",
+"fl": "3",
+"src": "img/maps/kafe/3.jpg"
+},
+{
+"idx": 4,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/kafe/4.jpg"
+}
+],
+"kanal": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/kanal/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/kanal/2.jpg"
+},
+{
+"idx": 3,
+"key": "thirdFloor",
+"fl": "3",
+"src": "img/maps/kanal/3.jpg"
+},
+{
+"idx": 4,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/kanal/4.jpg"
+}
+],
+"oregon": [
+{
+"idx": 0,
+"key": "basement",
+"fl": "b",
+"src": "img/maps/oregon/0.jpg"
+},
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/oregon/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/oregon/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/oregon/3.jpg"
+}
+],
+"plane": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/plane/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/plane/2.jpg"
+},
+{
+"idx": 3,
+"key": "thirdFloor",
+"fl": "3",
+"src": "img/maps/plane/3.jpg"
+},
+{
+"idx": 4,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/plane/4.jpg"
+}
+],
+"skyscraper": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/skyscraper/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/skyscraper/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/skyscraper/3.jpg"
+}
+],
+"themepark": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/themepark/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/themepark/2.jpg"
+},
+{
+"idx": 3,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/themepark/3.jpg"
+}
+],
+"tower": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/tower/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/tower/2.jpg"
+},
+{
+"idx": 3,
+"key": "thirdFloor",
+"fl": "3",
+"src": "img/maps/tower/3.jpg"
+},
+{
+"idx": 4,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/tower/4.jpg"
+}
+],
+"yacht": [
+{
+"idx": 1,
+"key": "firstFloor",
+"fl": "1",
+"src": "img/maps/yacht/1.jpg"
+},
+{
+"idx": 2,
+"key": "secondFloor",
+"fl": "2",
+"src": "img/maps/yacht/2.jpg"
+},
+{
+"idx": 3,
+"key": "thirdFloor",
+"fl": "3",
+"src": "img/maps/yacht/3.jpg"
+},
+{
+"idx": 4,
+"key": "fourthFloor",
+"fl": "4",
+"src": "img/maps/yacht/4.jpg"
+},
+{
+"idx": 5,
+"key": "roof",
+"fl": "r",
+"src": "img/maps/yacht/5.jpg"
+}
+]
+}

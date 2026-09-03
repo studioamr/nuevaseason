@@ -1,0 +1,1025 @@
+{
+ "map": "lair",
+ "sites": {
+  "storage": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Lounge para abrir la pared reforzada de Storage mientras Buck rompe el piso de Pasillo 2F sobre Storage y Zero mete una Argus por Warehouse Entrance. El sitio vive de la rotación Storage↔Warehouse: cuando el ancla de Storage se queda sin techo y sin pared, se aprieta hacia Warehouse y ahí lo cierras desde Warehouse Entrance y Control Room. Planta en Storage pegado a la pared abierta con dos ángulos de cobertura.",
+     "timeline":["0:00–0:45 · drones a Storage y Warehouse, Zero pone Argus en Warehouse Entrance, Thatcher y Thermite toman Lobby y Lounge","0:45–1:30 · Buck abre el piso de Pasillo 2F sobre Storage; EMP + carga en la pared Lounge–Storage","1:30–2:30 · entrada por la pared abierta y presión de Zero por Warehouse Entrance; Nomad tapa Control Room; planta en Storage","2:30–3:00 · post-plant: Buck desde arriba, Thermite sostiene el hueco, Nomad el flanco de Warehouse"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Lounge buscando trampas y al roamer","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal pegado a la pared con Thatcher","via":"door"},
+        {"room":"Lounge","f":"1","do":"Limpia el cuarto y coloca la carga exotérmica en la pared reforzada de Storage tras el EMP","via":"door"},
+        {"room":"Storage","f":"1","do":"Cruza el hueco con humo y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Kapkan o ADS de Jäger en la puerta principal y roamer tipo Vigil asomando desde Cafeteria","how":"Dron a la puerta antes de abrir, EMP de Thatcher al marco y limpias la esquina de Cafeteria con un compañero"},
+        {"room":"Lounge","f":"1","threat":"Bandit trickeando la pared y Mira con espejo hacia Lounge","how":"Espera el doble EMP, pon la carga en la orilla que el espejo no cubre y que Buck ya haya roto el piso de arriba"},
+        {"room":"Storage","f":"1","threat":"Ancla Smoke con gas listo detrás de la pared reforzada","how":"Humo antes de cruzar y entra con Zero viendo por la Argus de Warehouse Entrance"}],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Storage desde Lounge"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea la puerta de Lobby buscando trampas","via":"door"},
+        {"room":"Lobby","f":"1","do":"EMP al marco de la puerta y limpia la esquina de Cafeteria","via":"door"},
+        {"room":"Lounge","f":"1","do":"Tira dos EMP a la pared de Storage para quemar Bandit, Kaid y Mute","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra tras Thermite y cubre el rincón de Vending Stairs","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Trampas de Kapkan en el marco y jammer de Mute","how":"EMP al marco antes de que entre nadie y entra tras el dron"},
+        {"room":"Lounge","f":"1","threat":"Mira mirando por el espejo y Bandit esperando a trickear","how":"Doble EMP con dos segundos de diferencia y Thermite pone la carga al instante"},
+        {"room":"Storage","f":"1","threat":"Ancla Smoke y un Jäger detrás de los estantes","how":"Prefire del rincón de los estantes y entra con humo"}],
+       "final":"Cubre el hueco y la puerta de Vending Stairs mientras plantan en Storage"},
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Cafeteria y CC Stairs para subir limpio","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con el grupo de Lounge y se separa hacia Cafeteria","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza rápido pegado a la barra y toma la puerta de Cafeteria Hallway","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Limpia el pasillo y sube por CC Stairs","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube la escalera con dron adelante","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale al segundo piso y checa Pasillo 2F","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Abre el piso sobre Storage con el Skeleton Key y mata al ancla desde arriba","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria","f":"1","threat":"Roamer tipo Vigil o Caveira esperando detrás de la barra","how":"Dron primero, prefire la esquina de la barra y cruza en pareja con Buck cubriendo"},
+        {"room":"CC Stairs","f":"1","threat":"Kapkan en la escalera o un roamer bajando de Command Center","how":"Dron a la escalera, dispara la trampa y sube con el dron adelante"},
+        {"room":"Pasillo 2F","f":"2","threat":"Defensor que sube por Vending Stairs a negar el vertical","how":"Pon un claymore hacia Vending Stairs y abre el piso desde una esquina"}],
+       "final":"Sostiene el agujero sobre Storage y niega la rotación a Warehouse durante la planta"},
+      {"op":"zero","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Tira una Argus a Warehouse Entrance y dronea Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Rompe la barricada, mete Argus dentro de Warehouse y llama las posiciones","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Entra cuando cae la pared de Storage y presiona al ancla de Warehouse desde la puerta","via":"door"},
+        {"room":"Storage","f":"1","do":"Cierra la rotación por la puerta Storage–Warehouse","via":"door"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Castle en la puerta y Mira mirando desde las cajas de Warehouse","how":"No rompas el Castle a mano: Argus al marco, quema el espejo con la Argus y entra solo cuando el sitio ya está bajo presión"},
+        {"room":"Warehouse","f":"1","threat":"Ancla detrás de las cajas con Evil Eye hacia la puerta","how":"Argus para destruir el Evil Eye y entra pegado a la pared con humo"}],
+       "final":"Sostiene la puerta Warehouse–Storage y vigila la rotación del ancla durante la planta"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Cargo y Control Room Hallway","via":"door"},
+        {"room":"Cargo","f":"1","do":"Entra por la puerta de carga y limpia el cuarto","via":"door"},
+        {"room":"Control Room Hallway","f":"1","do":"Tira dos Airjab en el pasillo hacia CC Stairs para cubrir la espalda del equipo","via":"door"},
+        {"room":"Control Room","f":"1","do":"Limpia Control Room y sostiene la puerta a Warehouse","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Entra con el push final y tapa la rotación a Warehouse Stairs","via":"door"}],
+       "clear":[
+        {"room":"Cargo","f":"1","threat":"Roamer tipo Vigil/Cav flanqueando por la puerta de carga","how":"Dron a la entrada y entra con un compañero cubriendo Control Room Hallway"},
+        {"room":"Control Room","f":"1","threat":"Flex tipo Lesion o Solis mirando la puerta de Warehouse","how":"Dron al cuarto, quema los Gu y prefire la esquina detrás de las consolas"}],
+       "final":"Cubre el flanco desde Control Room y cierra Warehouse Stairs en el post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Entrada explosiva por Warehouse Entrance antes de que cierren el Castle y armen las cajas: Osa clava el escudo en la puerta, Ash abre la barricada, Ying tira las Candela y Blitz entra con flash. Funciona cuando el equipo enemigo tarda en setear, porque Warehouse Entrance da directo a Warehouse y Storage está a una puerta.",
+     "timeline":["0:00–0:20 · Ash rompe la barricada de Warehouse Entrance, Osa planta el escudo en el marco","0:20–0:50 · Candela de Ying + flash de Blitz, entran todos por Warehouse","0:50–1:30 · limpian Warehouse, cruzan a Storage y plantan","1:30–3:00 · post-plant: Finka boost, sostienen desde las cajas y la pared de Lounge"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Corre directo a Warehouse Entrance sin dronear más de tres segundos","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Tira la carga de brecha a la barricada y entra pegada a Osa","via":"breach"},
+        {"room":"Warehouse","f":"1","do":"Limpia las cajas con el flash de Blitz y avanza a la puerta de Storage","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra al sitio y planta detrás de los estantes","via":"door"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Kapkan o ADS de Jäger en el marco antes del setup","how":"Carga de brecha desde lejos: la explosión limpia trampas y barricada juntas"},
+        {"room":"Warehouse","f":"1","threat":"Ancla detrás de las cajas y Mira si ya la pusieron","how":"Candela de Ying primero, entras con el escudo de Osa y prefire de las cajas"}],
+       "final":"Planta en Storage y sostiene la puerta de Lounge"},
+      {"op":"osa","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Llega con el escudo listo a Warehouse Entrance","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Clava el Talon-8 en el marco para que el equipo entre cubierto","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Pone el segundo escudo en la puerta de Storage y cubre a Ash","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra al sitio y sostiene la pared de Lounge","via":"door"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Defensor pegado al Castle a medio poner","how":"Escudo primero, disparas por los lados mientras Ash rompe"},
+        {"room":"Warehouse","f":"1","threat":"Evil Eye o cámara de Valkyrie hacia la puerta","how":"Escudo de espaldas al Evil Eye y que Ying lo quite con Candela"}],
+       "final":"Sostiene la puerta Storage–Lounge detrás del escudo durante la planta"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Llega con Osa y prepara dos Candela","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Tira Candela dentro de Warehouse en cuanto cae la barricada","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Entra con el flash, limpia las cajas y tira la segunda Candela a Storage","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra al sitio cegando al ancla y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Ancla Mira o Smoke detrás de las cajas","how":"Candela por encima de las cajas y entra con Ash en el mismo segundo"},
+        {"room":"Storage","f":"1","threat":"Ancla Smoke y Jäger en el rincón de Vending Stairs","how":"Candela a Storage antes de cruzar la puerta y prefire del rincón"}],
+       "final":"Cubre la planta desde Storage y niega la puerta de Vending Stairs"},
+      {"op":"blitz","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Corre pegado a Osa hacia Warehouse Entrance","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra primero con el escudo tras la Candela","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Flash a las cajas y limpia al ancla cuerpo a cuerpo","via":"door"},
+        {"room":"Storage","f":"1","do":"Flashea al entrar y mata al ancla de Storage","via":"door"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Ancla detrás de las cajas y posible Noor apuntando al escudo","how":"Flash antes de cruzar la puerta y que Ash entre a tu lado; si hay fuego de Noor retrocedes al escudo de Osa"},
+        {"room":"Storage","f":"1","threat":"Smoke con gas en la entrada del sitio","how":"Flash y entrada antes del gas; Finka boost si te alcanzan"}],
+       "final":"Sostiene el cuerpo a cuerpo dentro de Storage cubriendo al que planta"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Boost al llegar a la puerta y va último","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra con el segundo boost cubriendo la espalda","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Cubre la puerta de Control Room y levanta a quien caiga","via":"door"},
+        {"room":"Storage","f":"1","do":"Boost final para la planta","via":"door"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Flex saliendo de Control Room a flanquear","how":"Sostén la puerta de Control Room mientras plantan y prefire el marco"},
+        {"room":"Warehouse Entrance","f":"1","threat":"Roamer que regresa por Warehouse Entrance a la espalda","how":"Claymore en la entrada al pasar"}],
+       "final":"Cubre Control Room y Warehouse Entrance durante la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sledge y Buck se apoderan de Pasillo 2F y CC Stairs sobre Storage y desde arriba matan al ancla, mientras Fuze pone cargas de racimo desde Lounge y Twitch quema gadgets por Warehouse Entrance. El sitio de Storage no aguanta sin techo: la entrada final es tardía y por Vending Stairs con Gridlock cerrando el flanco.",
+     "timeline":["0:00–0:45 · drones; Twitch quema gadgets desde Warehouse Entrance; Sledge y Buck suben por CC Stairs","0:45–1:45 · abren el piso de Pasillo 2F sobre Storage; Fuze mete racimos desde Lounge","1:45–2:30 · entrada por Vending Stairs y Warehouse con el sitio sin ancla; planta","2:30–3:00 · post-plant desde arriba con Buck y Sledge; Gridlock cierra Vending"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Cafeteria buscando al roamer","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal con Buck","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza rápido hacia Cafeteria Hallway","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Limpia el pasillo y sube","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube por la escalera con dron adelante","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale al segundo piso y despeja hacia Pasillo 2F","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Martillea el piso sobre Storage en línea de la entrada de Lounge y mata al ancla","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria","f":"1","threat":"Roamer tipo Vigil detrás de la barra","how":"Dron y prefire de la barra antes de cruzar"},
+        {"room":"CC Stairs","f":"2","threat":"Defensor en Command Center mirando la salida de la escalera","how":"Dron arriba, granada a la esquina y sube con Buck"},
+        {"room":"Pasillo 2F","f":"2","threat":"Roamer subiendo por Vending Stairs","how":"Claymore hacia Vending Stairs y trabaja el piso desde la pared opuesta"}],
+       "final":"Sostiene el agujero sobre Storage y dispara al que se acerque a la planta"},
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Cargo y Control Room Hallway","via":"door"},
+        {"room":"Cargo","f":"1","do":"Entra por la puerta de carga y limpia","via":"door"},
+        {"room":"Control Room Hallway","f":"1","do":"Cruza el pasillo hasta CC Stairs","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube la escalera cubriendo a Sledge","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale arriba y toma el lado de Vending Stairs","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Abre el piso sobre la puerta Storage–Warehouse para cortar la rotación","via":"door"}],
+       "clear":[
+        {"room":"Control Room Hallway","f":"1","threat":"Gu de Lesion o Kapkan en la puerta hacia CC Stairs","how":"Dron al pasillo, dispara los Gu y trampas antes de pasar"},
+        {"room":"Pasillo 2F","f":"2","threat":"Defensor debajo con Impact Trip o disparando al techo","how":"Rompe desde una esquina no pisada y cambia de posición tras cada agujero"}],
+       "final":"Corta la rotación Storage–Warehouse desde arriba durante la planta"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Lounge","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con el grupo y toma Lounge","via":"door"},
+        {"room":"Lounge","f":"1","do":"Pone tres cargas de racimo en la pared de Storage cuando Sledge abre arriba","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra al final por la pared blanda que abra el racimo o la puerta de Vending Stairs","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Trampa en la puerta principal y roamer en Cafeteria","how":"Dron y espera a que Sledge cruce primero"},
+        {"room":"Lounge","f":"1","threat":"Mira mirando Lounge por el espejo","how":"Pon las cargas fuera de la vista del espejo, en el tramo blando de la pared"}],
+       "final":"Cubre Lounge y la pared de Storage durante la planta"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dron de choque por Warehouse Entrance a quemar gadgets de Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Abre la barricada y sostiene la puerta con el dron dentro","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Entra cuando Sledge mate al ancla y limpia las cajas","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra al sitio y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Castle + Mira apuntando a la puerta","how":"No entres hasta que el vertical mate al ancla; quema el Evil Eye y las cámaras con el dron"},
+        {"room":"Warehouse","f":"1","threat":"Ancla detrás de las cajas","how":"Prefire de las cajas con Buck viendo desde arriba"}],
+       "final":"Sostiene la puerta Warehouse–Storage en el post-plant"},
+      {"op":"gridlock","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Kitchen","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza hacia Kitchen","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Limpia la cocina y pasa a Vending","via":"door"},
+        {"room":"Vending","f":"1","do":"Tira Trax en Vending para tapar el flanco","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Sostiene la escalera y entra a Storage con el push final","via":"door"},
+        {"room":"Storage","f":"1","do":"Planta detrás de los estantes","via":"door"}],
+       "clear":[
+        {"room":"Kitchen","f":"1","threat":"Gu de Lesion o roamer tipo Cav en la cocina","how":"Dron y dispara los Gu; prefire la esquina de Pantry"},
+        {"room":"Vending Stairs","f":"1","threat":"Defensor bajando de 2F o subiendo del sótano por la escalera","how":"Trax en la escalera y sostén con un compañero antes de entrar"}],
+       "final":"Planta en Storage y cubre Vending Stairs con Trax"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Hibana y Kali abren la pared Lounge–Storage mientras Montagne, Glaz y Dokkaebi presionan por Warehouse Entrance. El ancla de Warehouse no puede mirar el espejo y la pared al mismo tiempo, y Dokkaebi obliga a los roamers a soltar el teléfono cuando se decide el push.",
+     "timeline":["0:00–0:45 · drones; Dokkaebi hackea cámaras; Kali dispara lanzas a la pared de Storage desde Lounge","0:45–1:30 · Hibana abre la pared; Montagne toma Warehouse Entrance con Glaz","1:30–2:30 · doble push: Lounge→Storage y Warehouse Entrance→Warehouse; planta en Storage","2:30–3:00 · Glaz y Montagne sostienen Warehouse; Hibana y Kali el hueco de Lounge"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Lounge","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal con Kali","via":"door"},
+        {"room":"Lounge","f":"1","do":"Dispara X-KAIROS a la pared reforzada de Storage tras las lanzas de Kali","via":"door"},
+        {"room":"Storage","f":"1","do":"Cruza el hueco y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Roamer en Cafeteria y Kapkan en la puerta","how":"Dron al marco y cruza con Kali cubriendo Cafeteria"},
+        {"room":"Lounge","f":"1","threat":"Bandit y Mira detrás de la pared","how":"Lanza de Kali primero para tumbar la batería y los pellets caen enseguida"}],
+       "final":"Sostiene el hueco Lounge–Storage y cubre la planta"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea la puerta de Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra y cubre Cafeteria mientras Hibana avanza","via":"door"},
+        {"room":"Lounge","f":"1","do":"Dispara lanzas LV a la pared de Storage para quemar Bandit/Kaid y el espejo","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra tras Hibana y sostiene la puerta a Warehouse","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Roamer tipo Vigil mirando desde Cafeteria","how":"Sostén el ángulo largo de Cafeteria con la mira mientras Hibana pasa"},
+        {"room":"Lounge","f":"1","threat":"Mira con espejo y Bandit detrás de la pared","how":"Lanza al centro del panel y una segunda a la batería en cuanto la escuches"}],
+       "final":"Sostiene Lounge y el ángulo largo a Cafeteria en el post-plant"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse Entrance y Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Rompe la barricada con Glaz y se planta con el escudo en el marco","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Avanza con el escudo extendido hacia las cajas cuando cae la pared","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra al sitio bloqueando la puerta y da información","via":"door"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Castle en la puerta y ancla Mira detrás de las cajas","how":"Escudo en el marco, Glaz rompe el Castle y Dokkaebi hackea antes de avanzar"},
+        {"room":"Warehouse","f":"1","threat":"Noor apuntando el fuego al escudo y ancla en las cajas","how":"Avanza solo cuando Hibana abrió la pared y el ancla mira al otro lado; si hay fuego, retrocede al marco"}],
+       "final":"Bloquea la puerta Storage–Warehouse con el escudo durante la planta"},
+      {"op":"glaz","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse Entrance","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Tira humo dentro de Warehouse y mira con la térmica detrás de Montagne","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Limpia las cajas con la térmica y avanza a la puerta de Storage","via":"door"},
+        {"room":"Storage","f":"1","do":"Entra y cubre la planta a través del humo","via":"door"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Ancla Mira y ADS de Jäger en la puerta","how":"Humo a la puerta y dispara la térmica a través del humo detrás del escudo"},
+        {"room":"Warehouse","f":"1","threat":"Ancla detrás de las cajas rotando a Storage","how":"Térmica sobre las cajas mientras Montagne avanza"}],
+       "final":"Cubre la planta en Storage con humo y térmica desde Warehouse"},
+      {"op":"dokkaebi","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Logic Bomb a los 45 segundos y hackea cámaras","via":"door"},
+        {"room":"Cargo","f":"1","do":"Entra por la puerta de carga y limpia","via":"door"},
+        {"room":"Control Room Hallway","f":"1","do":"Cruza el pasillo cubriendo CC Stairs","via":"door"},
+        {"room":"Control Room","f":"1","do":"Limpia Control Room y sostiene la puerta a Warehouse","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Entra con el push de Montagne por el flanco","via":"door"}],
+       "clear":[
+        {"room":"Control Room Hallway","f":"1","threat":"Roamer que baja de CC Stairs con Logic Bomb activo","how":"Escucha el teléfono, prefire la salida de la escalera"},
+        {"room":"Control Room","f":"1","threat":"Flex mirando la puerta de Warehouse desde las consolas","how":"Dron al cuarto y entra con la segunda Logic Bomb"}],
+       "final":"Cubre Control Room y la cámara hackeada en el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle + Mira en Warehouse Entrance para que el que entre por ahí no salga, Bandit trickeando la pared de Lounge y Smoke anclado en Storage. Pulse abajo en Storage (arriba) lee el vertical y avisa. Lo que mata este sitio es el vertical desde Pasillo 2F, así que el roamer vive en Cafeteria y CC Stairs.","reinforce":["Pared Storage–Lounge ×2","Warehouse Entrance (Castle)","Pared Warehouse–Control Room","Escotilla Warehouse"],"rotations":["Storage↔Warehouse","Warehouse→Warehouse Stairs"],
+     "ops":[
+      {"op":"castle","room":"Warehouse Entrance","f":"1","role":"ancla","job":"Barricada blindada en Warehouse Entrance y sostiene la puerta de Control Room desde Warehouse"},
+      {"op":"mira","room":"Warehouse","f":"1","role":"ancla","job":"Espejo detrás de las cajas mirando la puerta de Warehouse Entrance; segundo espejo en la pared de Lounge"},
+      {"op":"smoke","room":"Storage","f":"1","role":"ancla","job":"Gas a la pared de Lounge y a la puerta de Vending Stairs en la planta"},
+      {"op":"bandit","room":"Lounge","f":"1","role":"flex","job":"Trickea la pared Storage–Lounge desde el lado de Storage y rota a Warehouse si cae"},
+      {"op":"pulse","room":"Storage (arriba)","f":"b","role":"roam","job":"Escanea desde el sótano el piso de Storage y avisa el vertical; sube por Vending Stairs a molestar"}
+     ]},
+    {"id":"alt","n":"Anti-vertical con Azami","summary":"Cuando el rival juega Buck/Sledge en Pasillo 2F, Azami tapa los agujeros y Kaid electrifica la pared de Lounge y la escotilla. Solis en Control Room detecta drones y Argus; Vigil roamea Cafeteria y CC Stairs para negar la subida.","reinforce":["Pared Storage–Lounge ×2","Escotilla Warehouse","Pared Warehouse–Control Room"],"rotations":["Storage↔Warehouse","Storage→Vending Stairs"],
+     "ops":[
+      {"op":"kaid","room":"Storage","f":"1","role":"ancla","job":"Rtila en la pared de Lounge y en la escotilla de Warehouse; ancla detrás de los estantes"},
+      {"op":"azami","room":"Storage","f":"1","role":"ancla","job":"Kiba sobre los agujeros del techo y la puerta de Vending Stairs; sostiene la planta"},
+      {"op":"jager","room":"Warehouse","f":"1","role":"flex","job":"ADS en la puerta de Warehouse Entrance y en Storage; juega las cajas"},
+      {"op":"solis","room":"Control Room","f":"1","role":"flex","job":"Detecta drones y Argus por Control Room Hallway y avisa el flanco"},
+      {"op":"vigil","room":"Cafeteria","f":"1","role":"roam","job":"Roamea Cafeteria y CC Stairs para cazar al Buck que sube a Pasillo 2F"}
+     ]}
+   ]
+  },
+  "cafeteria": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Ace y Thatcher abren la pared Pantry–Kitchen mientras Sledge rompe el piso de Command Center sobre Cafeteria y Twitch quema el Evil Eye desde Lobby. El sitio depende de que Kitchen esté cerrada y Cafeteria tenga techo: quitas las dos cosas y el ancla de Cafeteria se queda sola con Nomad cerrando Cafeteria Hallway.",
+     "timeline":["0:00–0:45 · drones; Twitch quema gadgets desde Lobby; Sledge rappelea a Command Center","0:45–1:30 · EMP + SELMA en la pared Pantry–Kitchen; Sledge abre el piso sobre Cafeteria","1:30–2:30 · entrada por Kitchen; Nomad tapa Cafeteria Hallway; planta en Kitchen","2:30–3:00 · post-plant: Sledge desde arriba, Ace en el hueco, Twitch en Lobby"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Pantry y Kitchen buscando Bandit y Kapkan","via":"door"},
+        {"room":"Pantry","f":"1","do":"Entra por la puerta exterior de Pantry y pone la SELMA en la pared de Kitchen tras el EMP","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza el hueco con humo y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Pantry","f":"1","threat":"Kapkan en la puerta y Bandit detrás de la pared","how":"Dron a la puerta, EMP de Thatcher y SELMA en el mismo segundo"},
+        {"room":"Kitchen","f":"1","threat":"Ancla Smoke detrás de la barra de la cocina y Gu de Lesion en el hueco","how":"Dispara los Gu, humo y entra con Sledge viendo desde arriba"}],
+       "final":"Sostiene el hueco Pantry–Kitchen y cubre la planta"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Pantry","via":"door"},
+        {"room":"Pantry","f":"1","do":"Doble EMP a la pared de Kitchen para quemar Bandit/Kaid y el jammer","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Entra tras Ace y sostiene la puerta de Vending","via":"breach"}],
+       "clear":[
+        {"room":"Pantry","f":"1","threat":"Mute jammer y Bandit trickeando","how":"Dos EMP con dos segundos de diferencia y Ace pone SELMA al instante"},
+        {"room":"Kitchen","f":"1","threat":"Ancla en la esquina de Vending","how":"Prefire de la esquina y entra con humo"}],
+       "final":"Cubre la puerta Kitchen–Vending durante la planta"},
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la ventana de Command Center y dronea dentro","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra por la ventana, limpia y martillea el piso sobre Cafeteria","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Roamer tipo Vigil esperando la ventana o Kapkan en Vending Stairs","how":"Dron al cuarto antes de entrar, claymore hacia Vending Stairs"},
+        {"room":"Cafeteria","f":"1","threat":"Maestro con Evil Eye hacia Lobby y ancla debajo","how":"Agujeros sobre el Evil Eye y prefire por el piso cuando Twitch avise"}],
+       "final":"Sostiene los agujeros sobre Cafeteria y mata al que rote a Kitchen"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dron de choque a Lobby y Cafeteria a quemar el Evil Eye","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal y sostiene la puerta de Cafeteria","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Entra cuando cae el techo y limpia la barra","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cierra la rotación Cafeteria–Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Evil Eye de Maestro apuntando a la puerta de Lobby","how":"Dron de choque al Evil Eye antes de asomar"},
+        {"room":"Cafeteria","f":"1","threat":"Ancla Maestro detrás de la barra","how":"Espera a que Sledge rompa arriba y entra con humo"}],
+       "final":"Sostiene la puerta Cafeteria–Kitchen en el post-plant"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Cargo y Control Room Hallway","via":"door"},
+        {"room":"Cargo","f":"1","do":"Entra por carga y limpia","via":"door"},
+        {"room":"Control Room Hallway","f":"1","do":"Cruza el pasillo hasta CC Stairs","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Airjab en la escalera hacia 2F y sigue a Cafeteria Hallway","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Airjab en el pasillo hacia Lounge y sostiene la puerta de Cafeteria","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Entra con el push final por el flanco","via":"door"}],
+       "clear":[
+        {"room":"Control Room Hallway","f":"1","threat":"Roamer tipo Cav bajando de CC Stairs","how":"Dron al pasillo y prefire la salida de la escalera"},
+        {"room":"Cafeteria Hallway","f":"1","threat":"Lesion con Gu en el pasillo y Evil Eye hacia la puerta","how":"Dispara los Gu, Twitch quema el Evil Eye y entras"}],
+       "final":"Cubre Cafeteria Hallway y CC Stairs durante la planta"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Montagne abre la puerta de Lobby con Ash rompiendo la barricada, Ying ciega Cafeteria y entran los cinco por Lobby → Cafeteria antes de que Maestro tenga Evil Eye. La puerta de Lobby está a diez metros del spawn: si el rival no está en posición a los 20 segundos, el sitio es tuyo.",
+     "timeline":["0:00–0:20 · Ash rompe la puerta de Lobby, Montagne pasa con el escudo","0:20–0:50 · Candela a Cafeteria, entran Blackbeard y Finka detrás","0:50–1:30 · limpian Cafeteria y Kitchen, plantan en Kitchen","1:30–3:00 · post-plant desde la barra y Pantry"],
+     "ops":[
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Corre a la puerta principal con el escudo arriba","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra primero y se planta en la puerta de Cafeteria","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Avanza con el escudo hacia la barra bloqueando el Evil Eye","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Bloquea la puerta de Vending mientras plantan","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Kapkan en la puerta y Maestro en la barra de Cafeteria","how":"Ash rompe la barricada desde lejos y tú entras con el escudo extendido"},
+        {"room":"Cafeteria","f":"1","threat":"Noor con fuego al escudo y ancla detrás de la barra","how":"Si ves fuego te haces a un lado y dejas que Blackbeard limpie; Candela de Ying antes de avanzar"}],
+       "final":"Bloquea la puerta Kitchen–Vending con el escudo durante la planta"},
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Carga de brecha a la puerta de Lobby desde el spawn","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra pegada a Montagne y limpia Lounge de reojo","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Entra con la Candela y limpia la barra","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Planta detrás de la barra de la cocina","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Trampas en la puerta y roamer en Lounge","how":"Carga de brecha limpia la puerta; prefire Lounge al pasar"},
+        {"room":"Cafeteria","f":"1","threat":"Ancla Maestro y Jäger en la barra","how":"Entra con la Candela de Ying y el escudo de Montagne adelante"}],
+       "final":"Planta en Kitchen y sostiene Cafeteria"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Llega con Montagne a la puerta de Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Candela a Cafeteria al entrar","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Entra con el flash y segunda Candela a Kitchen","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Limpia la cocina y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria","f":"1","threat":"Maestro y Smoke detrás de la barra","how":"Candela por arriba de la barra y entrada inmediata con Ash"},
+        {"room":"Kitchen","f":"1","threat":"Ancla Smoke en la cocina con gas listo","how":"Candela a Kitchen antes de cruzar la puerta"}],
+       "final":"Cubre la planta desde Kitchen y niega Pantry"},
+      {"op":"blackbeard","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Llega tercero a la puerta de Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Sostiene Lounge y la puerta de Cafeteria con el escudo de rifle","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Limpia la barra con el escudo puesto","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Sostiene la puerta de Pantry en la planta","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Roamer asomando desde Lounge","how":"Sostén el ángulo de Lounge con el escudo de rifle mientras entran"},
+        {"room":"Cafeteria","f":"1","threat":"Ancla en la barra peekeando","how":"Escudo de rifle puesto, prefire la barra"}],
+       "final":"Sostiene Pantry desde Kitchen durante la planta"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Boost al llegar a la puerta","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra última y cubre la espalda hacia Lounge","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Sostiene la puerta de Cafeteria Hallway","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Boost final para la planta","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria","f":"1","threat":"Flex saliendo de Cafeteria Hallway a flanquear","how":"Claymore en la puerta de Cafeteria Hallway al pasar"},
+        {"room":"Lobby","f":"1","threat":"Roamer que regresa por Lounge a la espalda","how":"Prefire el marco de Lounge y avisa"}],
+       "final":"Cubre Cafeteria Hallway y Lobby durante la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck y Sledge rappelean a Command Center y desde arriba destrozan el techo de Cafeteria; Fuze mete racimos desde Command Center sobre la barra e IQ detecta al ancla y los gadgets por el piso. Gridlock baja por Vending Stairs y cierra Vending. El sitio no tiene dónde esconderse cuando pierde el techo.",
+     "timeline":["0:00–0:45 · drones; rappel a Command Center; Gridlock entra por Lobby hacia Kitchen","0:45–1:45 · Buck y Sledge abren el techo de Cafeteria; Fuze racimos; IQ marca gadgets","1:45–2:30 · entrada por Vending → Kitchen con el sitio sin ancla; planta","2:30–3:00 · post-plant desde Command Center"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la ventana de Command Center","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra por la ventana y abre el piso sobre la barra de Cafeteria","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Roamer tipo Vigil o Kapkan en la ventana","how":"Dron desde el rappel, dispara la trampa y entra con Sledge"},
+        {"room":"Cafeteria","f":"1","threat":"Ancla Maestro debajo y Evil Eye mirando arriba","how":"IQ marca el Evil Eye y le disparas por el piso antes de abrir grande"}],
+       "final":"Sostiene el agujero sobre Cafeteria y mata al que rote a Kitchen"},
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la segunda ventana de Command Center","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Martillea el piso sobre la entrada Cafeteria–Kitchen","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Defensor subiendo por Vending Stairs a negar","how":"Claymore hacia Vending Stairs antes de trabajar el piso"},
+        {"room":"Kitchen","f":"1","threat":"Ancla Smoke rotando de Kitchen a Cafeteria","how":"Agujero sobre la puerta y prefire la rotación"}],
+       "final":"Corta la rotación Cafeteria–Kitchen desde arriba durante la planta"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a Command Center detrás de Buck","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Pone cargas de racimo en el piso sobre la barra de Cafeteria","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Roamer que sube por CC Stairs a la espalda","how":"Claymore hacia Pasillo 2F"},
+        {"room":"Cafeteria","f":"1","threat":"Ancla Maestro en la barra y Jäger","how":"Racimo directo a la barra cuando IQ avise dónde están"}],
+       "final":"Sostiene Command Center y niega la barra con racimos en el post-plant"},
+      {"op":"iq","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a Command Center","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Escanea el piso para marcar Evil Eye, Gu, teléfonos y ADS y avisa a Buck","via":"window"},
+        {"room":"Vending Stairs","f":"2","do":"Baja por Vending Stairs con Gridlock cuando el ancla muere","via":"stairs"},
+        {"room":"Vending Stairs","f":"1","do":"Sale al primer piso y entra a Vending","via":"stairs"},
+        {"room":"Vending","f":"1","do":"Limpia Vending y sostiene la puerta a Kitchen","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Planta en Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Vending Stairs","f":"1","threat":"Lesion con Gu en la escalera","how":"Escaneo marca los Gu, dispáralos antes de bajar"},
+        {"room":"Vending","f":"1","threat":"Flex mirando la escalera desde Vending","how":"Trax de Gridlock por la escalera y bajas con dron adelante"}],
+       "final":"Planta en Kitchen y cubre la puerta de Pantry"},
+      {"op":"gridlock","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a Command Center","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Tira Trax en la entrada de CC Stairs para cubrir a los verticales","via":"window"},
+        {"room":"Vending Stairs","f":"2","do":"Tira Trax por la escalera hacia abajo y baja con IQ","via":"stairs"},
+        {"room":"Vending Stairs","f":"1","do":"Sale al primer piso","via":"stairs"},
+        {"room":"Vending","f":"1","do":"Sostiene Vending y la puerta a Kitchen","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Entra al final y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Vending Stairs","f":"2","threat":"Roamer subiendo desde Vending a matar a los verticales","how":"Trax en la escalera y sostén desde arriba"},
+        {"room":"Vending","f":"1","threat":"Lesion o Melusi en Vending","how":"Dron y dispara gadgets; baja en pareja con IQ"}],
+       "final":"Sostiene Vending con Trax durante la planta"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Kali abren la pared Pantry–Kitchen mientras Zofia, Osa y Lion entran por Lobby a Cafeteria. Lion escanea justo cuando cae la pared, así los defensores tienen que elegir entre rotar sin moverse o morir quietos. Dos frentes contra un sitio de dos cuartos alineados.",
+     "timeline":["0:00–0:45 · drones; Kali dispara la pared de Kitchen desde Pantry; Osa y Zofia toman Lobby","0:45–1:30 · Hibana abre la pared; Lion escanea; push simultáneo","1:30–2:30 · Zofia y Osa entran a Cafeteria, Hibana y Kali a Kitchen; planta en Kitchen","2:30–3:00 · Lion y Osa sostienen Lobby y Cafeteria; Hibana el hueco de Pantry"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Pantry","via":"door"},
+        {"room":"Pantry","f":"1","do":"Dispara X-KAIROS a la pared de Kitchen tras las lanzas de Kali","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza el hueco y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Pantry","f":"1","threat":"Kapkan en la puerta y Bandit detrás de la pared","how":"Dron a la puerta, lanza de Kali y pellets enseguida"},
+        {"room":"Kitchen","f":"1","threat":"Ancla Smoke con gas en el hueco","how":"Entra justo con el escaneo de Lion y con humo"}],
+       "final":"Sostiene el hueco Pantry–Kitchen y cubre la planta"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Pantry","via":"door"},
+        {"room":"Pantry","f":"1","do":"Lanzas LV a la pared de Kitchen para quemar Bandit/Kaid","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Entra tras Hibana y sostiene la puerta de Vending","via":"breach"}],
+       "clear":[
+        {"room":"Pantry","f":"1","threat":"Bandit trickeando y Mute jammer","how":"Lanza al panel y segunda lanza a la batería si la escuchas"},
+        {"room":"Kitchen","f":"1","threat":"Jäger en la esquina de Vending","how":"Prefire de la esquina y entra tras Hibana"}],
+       "final":"Cubre la puerta Kitchen–Vending durante la planta"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal detrás de Osa y tira concusión a Cafeteria","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Entra con el escaneo de Lion y limpia la barra","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Planta en Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Kapkan en la puerta y roamer en Lounge","how":"Impacto a la puerta desde lejos y prefire Lounge"},
+        {"room":"Cafeteria","f":"1","threat":"Maestro con Evil Eye y ancla en la barra","how":"Concusión a la barra y entrada con Osa adelante"}],
+       "final":"Planta en Kitchen y sostiene Cafeteria"},
+      {"op":"osa","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Llega a la puerta de Lobby con el escudo listo","via":"door"},
+        {"room":"Lobby","f":"1","do":"Clava el Talon-8 en la puerta de Cafeteria","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Avanza con el segundo escudo hasta la barra","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Evil Eye hacia la puerta de Lobby","how":"Escudo transparente en el marco, dispara el Evil Eye desde atrás del escudo"},
+        {"room":"Cafeteria","f":"1","threat":"Ancla peekeando la barra","how":"Escudo puesto en la puerta y que Zofia limpie con concusión"}],
+       "final":"Sostiene Cafeteria detrás del escudo durante la planta"},
+      {"op":"lion","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Escanea a los 45 segundos y entra por Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Sostiene Lounge y la puerta de Cafeteria","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Entra con el push y sostiene Cafeteria Hallway","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Roamer en Lounge flanqueando","how":"Escaneo antes de cruzar y prefire el marco de Lounge"},
+        {"room":"Cafeteria","f":"1","threat":"Flex saliendo de Cafeteria Hallway","how":"Claymore en la puerta y escaneo en la planta"}],
+       "final":"Cubre Cafeteria Hallway y Lobby con escaneos en el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Maestro con Evil Eye hacia Lobby desde la barra de Cafeteria, Smoke anclado en Kitchen, Kaid electrificando la pared de Pantry y la escotilla de Kitchen. Jäger cubre las entradas contra flash y Lesion siembra Gu en Vending y Cafeteria Hallway y roamea Lounge.","reinforce":["Pared Kitchen–Pantry ×2","Pared Cafeteria–Lobby","Escotilla Kitchen"],"rotations":["Cafeteria↔Kitchen","Kitchen→Vending"],
+     "ops":[
+      {"op":"maestro","room":"Cafeteria","f":"1","role":"ancla","job":"Evil Eye hacia la puerta de Lobby y otro hacia Cafeteria Hallway; ancla detrás de la barra"},
+      {"op":"smoke","room":"Kitchen","f":"1","role":"ancla","job":"Gas a la pared de Pantry y a la puerta de Vending en la planta"},
+      {"op":"kaid","room":"Kitchen","f":"1","role":"ancla","job":"Rtila en la pared Pantry y en la escotilla; juega la barra de la cocina"},
+      {"op":"jager","room":"Cafeteria","f":"1","role":"flex","job":"ADS en la puerta de Lobby y en Kitchen; rota entre los dos cuartos"},
+      {"op":"lesion","room":"Vending","f":"1","role":"roam","job":"Gu en Vending, Cafeteria Hallway y Lobby; roamea Lounge y castiga el vertical desde Vending Stairs"}
+     ]},
+    {"id":"alt","n":"Anti-rush con Noor","summary":"Contra equipos que rushean Lobby con Montagne: Mute en la puerta de Lobby, Noor con el Horus apuntando la puerta de Cafeteria para quemar escudos, Mira en Kitchen viendo Pantry y Bandit trickeando. Thunderbird cura desde la barra.","reinforce":["Pared Kitchen–Pantry ×2","Pared Cafeteria–Lobby","Escotilla Kitchen"],"rotations":["Cafeteria↔Kitchen","Cafeteria→Cafeteria Hallway"],
+     "ops":[
+      {"op":"mira","room":"Kitchen","f":"1","role":"ancla","job":"Espejo en la pared de Pantry y otro Cafeteria–Kitchen; ancla en la cocina"},
+      {"op":"bandit","room":"Pantry","f":"1","role":"flex","job":"Trickea la pared Pantry–Kitchen desde el lado de Kitchen y rota a Vending"},
+      {"op":"mute","room":"Lobby","f":"1","role":"flex","job":"Jammer en la puerta de Lobby y en la pared de Pantry; juega la esquina de Cafeteria"},
+      {"op":"noor","room":"Cafeteria","f":"1","role":"ancla","job":"Horus apuntando la puerta de Lobby para quemar Montagne/Osa; ancla en la barra"},
+      {"op":"thunderbird","room":"Cafeteria","f":"1","role":"flex","job":"Kóna en la barra y en Kitchen; sostiene Cafeteria Hallway"}
+     ]}
+   ]
+  },
+  "bunks": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Warehouse y se baja por Warehouse Stairs para abrir la pared Bunks–Warehouse Stairs con Thermite y Thatcher, mientras Hibana abre la escotilla de Warehouse sobre Bathroom y Lion cierra por Vending Stairs. El sótano solo tiene dos escaleras y una escotilla: si controlas las tres, el ancla de Bunks no tiene rotación.",
+     "timeline":["0:00–0:45 · drones al sótano; Nomad toma Control Room; Hibana abre la escotilla de Warehouse","0:45–1:30 · Thermite y Thatcher bajan Warehouse Stairs; EMP + carga en la pared de Bunks","1:30–2:30 · entrada por la pared y por la escotilla; Lion escanea desde Vending Stairs; planta en Bunks","2:30–3:00 · post-plant: Hibana desde la escotilla, Nomad en Warehouse Stairs, Lion en Bathroom"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse y Warehouse Stairs","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra por la puerta con Thatcher","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Limpia las cajas y toma la escalera","via":"door"},
+        {"room":"Warehouse Stairs","f":"1","do":"Baja con dron adelante","via":"stairs"},
+        {"room":"Warehouse Stairs","f":"b","do":"Coloca la carga exotérmica en la pared de Bunks tras el EMP","via":"stairs"},
+        {"room":"Bunks","f":"b","do":"Cruza el hueco con humo y planta","via":"breach"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Roamer tipo Vigil detrás de las cajas o Pulse escaneando desde abajo","how":"Dron a las cajas y cruza con Nomad cubriendo Control Room"},
+        {"room":"Warehouse Stairs","f":"b","threat":"Bandit/Kaid trickeando la pared y Kapkan en la escalera","how":"Dron a la escalera, dispara la trampa, espera el EMP y pon la carga"},
+        {"room":"Bunks","f":"b","threat":"Ancla Smoke con gas detrás de la pared reforzada","how":"Humo antes de cruzar y entra con Hibana viendo por la escotilla"}],
+       "final":"Planta en Bunks pegado a la pared abierta y sostiene el hueco"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse Entrance","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"EMP al marco y entra","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Cruza a la escalera cubriendo a Thermite","via":"door"},
+        {"room":"Warehouse Stairs","f":"1","do":"Baja detrás de Thermite","via":"stairs"},
+        {"room":"Warehouse Stairs","f":"b","do":"Doble EMP a la pared de Bunks para quemar Bandit/Kaid y Mute","via":"stairs"},
+        {"room":"Bunks","f":"b","do":"Entra tras Thermite y cubre la puerta a Bathroom","via":"breach"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Kapkan o ADS en la puerta","how":"EMP al marco antes de entrar"},
+        {"room":"Warehouse Stairs","f":"b","threat":"Mira mirando la escalera por el espejo","how":"EMP al espejo y quédate fuera de su línea hasta que caiga la pared"}],
+       "final":"Cubre la puerta Bunks–Bathroom durante la planta"},
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra con el grupo","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Dispara X-KAIROS a la escotilla del piso sobre Bathroom y la abre","via":"door"},
+        {"room":"Bathroom","f":"b","do":"Baja por la escotilla con humo cuando cae la pared de Bunks","via":"hatch"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Jäger o Wamai comiéndose los pellets de la escotilla","how":"Tira una granada primero para gastar ADS y luego los pellets"},
+        {"room":"Bathroom","f":"b","threat":"Ancla Mira mirando la escotilla desde el baño","how":"Humo abajo antes de bajar y baja solo cuando el sitio esté bajo presión por la pared"}],
+       "final":"Cubre la planta desde la escotilla y baja a Bathroom en el post-plant"},
+      {"op":"lion","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Kitchen","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza hacia Kitchen","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Limpia y pasa a Vending","via":"door"},
+        {"room":"Vending","f":"1","do":"Toma Vending y prepara la bajada","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Escanea y baja cuando cae la pared","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Sale al sótano y sostiene el pasillo","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Cierra la rotación hacia Bathroom","via":"door"}],
+       "clear":[
+        {"room":"Kitchen","f":"1","threat":"Roamer tipo Cav en la cocina","how":"Escaneo y prefire la esquina de Pantry"},
+        {"room":"Vending Stairs","f":"b","threat":"Kapkan en la salida de la escalera y Mira mirando el pasillo","how":"Dron a la escalera, dispara la trampa y baja con humo"}],
+       "final":"Sostiene Pasillo sótano y escanea en la planta"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Cargo","via":"door"},
+        {"room":"Cargo","f":"1","do":"Entra por carga","via":"door"},
+        {"room":"Control Room Hallway","f":"1","do":"Airjab en el pasillo hacia CC Stairs","via":"door"},
+        {"room":"Control Room","f":"1","do":"Limpia y sostiene la puerta a Warehouse","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Airjab en la entrada de Warehouse Stairs y sostiene la escalera para el equipo","via":"door"},
+        {"room":"Warehouse Stairs","f":"1","do":"Baja al final y cubre la escalera desde arriba","via":"stairs"}],
+       "clear":[
+        {"room":"Control Room","f":"1","threat":"Flex con Solis o Lesion mirando Warehouse","how":"Dron y dispara los Gu, prefire las consolas"},
+        {"room":"Warehouse","f":"1","threat":"Roamer regresando por Warehouse Entrance","how":"Airjab en la puerta y sostén las cajas"}],
+       "final":"Cubre Warehouse Stairs desde arriba durante la planta"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Bajada rápida por Vending Stairs con Ash rompiendo barricadas, Blitz flasheando la escalera y Ying cegando Pasillo sótano. Entran a Bathroom y de ahí a Bunks antes de que el sótano esté reforzado. Funciona porque Vending Stairs es la escalera que menos cuidan.",
+     "timeline":["0:00–0:30 · corren Lobby → Cafeteria → Kitchen → Vending","0:30–1:00 · Ash rompe la barricada de Vending Stairs, Blitz baja con flash","1:00–1:40 · Candela a Pasillo sótano, entran a Bathroom y Bunks, plantan","1:40–3:00 · post-plant con Finka boost desde Bathroom"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Carga de brecha a la puerta de Lobby desde el spawn","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra corriendo","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza pegada a la barra","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza la cocina","via":"door"},
+        {"room":"Vending","f":"1","do":"Carga de brecha a la barricada de Vending Stairs","via":"breach"},
+        {"room":"Vending Stairs","f":"1","do":"Baja detrás de Blitz","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Sale al sótano","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Limpia el pasillo y entra a Bunks","via":"door"},
+        {"room":"Bunks","f":"b","do":"Planta detrás de las literas","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria","f":"1","threat":"Roamer tomando posición en la barra","how":"Prefire la barra y sigue; no te pares"},
+        {"room":"Vending Stairs","f":"b","threat":"Kapkan en la salida y ancla mirando la escalera","how":"Carga de brecha limpia la barricada y trampas; Blitz baja primero con flash"}],
+       "final":"Planta en Bunks y sostiene la puerta de Bathroom"},
+      {"op":"blitz","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Corre a Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con el escudo","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Se planta en la escalera con el escudo","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Baja primero flasheando","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Flash al salir y limpia","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Flash al pasillo y entra a Bathroom","via":"door"},
+        {"room":"Bathroom","f":"b","do":"Mata al ancla del baño cuerpo a cuerpo","via":"door"}],
+       "clear":[
+        {"room":"Vending Stairs","f":"b","threat":"Ancla mirando la escalera y posible Noor con fuego","how":"Flash antes de bajar el último tramo; si hay fuego, retrocedes y que Ying tire Candela"},
+        {"room":"Bathroom","f":"b","threat":"Mira o Smoke en el baño","how":"Flash y entrada con Ying"}],
+       "final":"Sostiene Bathroom y la puerta a Bunks durante la planta"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Corre a Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Candela por la escalera hacia abajo","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Baja","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Segunda Candela a Pasillo sótano","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Entra con el flash y limpia","via":"door"},
+        {"room":"Bunks","f":"b","do":"Entra a Bunks y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Pasillo sótano","f":"b","threat":"Ancla en el pasillo mirando Vending Stairs","how":"Candela rodada por el pasillo y entrada con Blitz"},
+        {"room":"Bunks","f":"b","threat":"Smoke en las literas con gas","how":"Candela a Bunks antes de que Ash entre"}],
+       "final":"Cubre la planta en Bunks y niega Warehouse Stairs"},
+      {"op":"iana","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Corre a Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Manda la réplica Gemini por la escalera para ver quién espera","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Baja","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Sale al sótano","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Sostiene el pasillo hacia Warehouse Stairs","via":"door"}],
+       "clear":[
+        {"room":"Vending Stairs","f":"b","threat":"Defensor esperando en la salida de la escalera","how":"Réplica primero: si dispara, Blitz baja con flash sobre él"},
+        {"room":"Pasillo sótano","f":"b","threat":"Rotación desde Warehouse Stairs","how":"Sostén el pasillo con la réplica adelante"}],
+       "final":"Sostiene Pasillo sótano hacia Warehouse Stairs durante la planta"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Boost y corre a Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra última","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Claymore en la puerta de Kitchen y baja","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Baja con segundo boost","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Sale al sótano","via":"stairs"},
+        {"room":"Bathroom","f":"b","do":"Entra al baño y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Vending","f":"1","threat":"Roamer que regresa a la espalda desde Kitchen","how":"Claymore en la puerta al bajar"},
+        {"room":"Bathroom","f":"b","threat":"Ancla Mira detrás de los lavabos","how":"Boost y entra tras Blitz"}],
+       "final":"Cubre Bathroom y levanta a quien caiga en la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck y Ram destruyen el piso de Storage sobre Bunks mientras Sledge y Fuze trabajan el piso de Warehouse sobre Bathroom; Zero mete Argus para ver abajo. El sótano no tiene ventanas ni rotaciones: sin techo, las anclas se quedan en los pasillos y entras al final por Warehouse Stairs.",
+     "timeline":["0:00–0:45 · drones; se toma Warehouse y Storage desde Warehouse Entrance y Lobby","0:45–1:45 · Buck y Ram rompen Storage sobre Bunks; Sledge y Fuze Warehouse sobre Bathroom","1:45–2:30 · entrada por Warehouse Stairs con el sitio sin anclas; planta en Bunks","2:30–3:00 · post-plant desde los agujeros de Storage y Warehouse"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Lounge","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal","via":"door"},
+        {"room":"Lounge","f":"1","do":"Limpia Lounge y abre la pared blanda a Storage","via":"door"},
+        {"room":"Storage","f":"1","do":"Abre el piso sobre Bunks con el Skeleton Key y mata al ancla desde arriba","via":"breach"}],
+       "clear":[
+        {"room":"Lounge","f":"1","threat":"Roamer tipo Vigil o Cav esperando en Lounge","how":"Dron y prefire con Ram cubriendo"},
+        {"room":"Storage","f":"1","threat":"Pulse escaneando desde abajo y disparando por el piso","how":"Muévete después de cada agujero y abre desde una esquina distinta"}],
+       "final":"Sostiene los agujeros sobre Bunks y cubre la planta"},
+      {"op":"ram","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con Buck","via":"door"},
+        {"room":"Lounge","f":"1","do":"Cruza a Storage por la pared abierta","via":"door"},
+        {"room":"Storage","f":"1","do":"Lanza los BU-GI por el piso de Storage sobre las literas de Bunks","via":"breach"}],
+       "clear":[
+        {"room":"Lounge","f":"1","threat":"Kapkan en la puerta de Lobby a Lounge","how":"Dron a la puerta y dispara la trampa"},
+        {"room":"Storage","f":"1","threat":"Defensor que sube por Vending Stairs a negar el vertical","how":"Claymore en la puerta de Vending Stairs antes de soltar los BU-GI"}],
+       "final":"Sostiene Storage y la puerta de Vending Stairs en el post-plant"},
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra con Fuze y Zero","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Martillea el piso sobre Bathroom y la escotilla","via":"door"},
+        {"room":"Warehouse Stairs","f":"1","do":"Baja al final cubriendo a Zero","via":"stairs"},
+        {"room":"Warehouse Stairs","f":"b","do":"Sale al sótano y entra a Bunks por la pared abierta o el pasillo","via":"stairs"},
+        {"room":"Bunks","f":"b","do":"Planta en Bunks","via":"door"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Roamer detrás de las cajas y Mira en la escotilla","how":"Dron a las cajas; abre el piso lejos de la escotilla reforzada"},
+        {"room":"Warehouse Stairs","f":"b","threat":"Kapkan y Kaid en la pared de Bunks","how":"Dron a la escalera, dispara la trampa y entra cuando las anclas estén muertas"}],
+       "final":"Planta en Bunks y sostiene la pared abierta"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Pone cargas de racimo en el piso sobre Bathroom y Pasillo sótano","via":"door"}],
+       "clear":[
+        {"room":"Warehouse Entrance","f":"1","threat":"Castle y ADS en la puerta","how":"Rompe el Castle con las cargas de Sledge y quema ADS con una granada"},
+        {"room":"Warehouse","f":"1","threat":"Flex saliendo de Control Room a la espalda","how":"Claymore en la puerta de Control Room"}],
+       "final":"Sostiene Warehouse con racimos sobre Bathroom en el post-plant"},
+      {"op":"zero","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse Entrance","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra con Sledge","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Tira Argus por la escotilla abierta hacia Bathroom y ve el sótano","via":"door"},
+        {"room":"Warehouse Stairs","f":"1","do":"Baja con Sledge","via":"stairs"},
+        {"room":"Warehouse Stairs","f":"b","do":"Sale al sótano y sostiene el pasillo","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Cierra la rotación a Bathroom","via":"door"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Valkyrie cams o Evil Eye hacia la escalera","how":"Argus para quemar cams y Evil Eye"},
+        {"room":"Pasillo sótano","f":"b","threat":"Ancla rotando de Bathroom a Bunks","how":"Argus abajo y prefire el pasillo"}],
+       "final":"Sostiene Pasillo sótano en el post-plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Ace y Kali abren la pared de Bunks desde Warehouse Stairs mientras Montagne, Glaz y Dokkaebi bajan por Vending Stairs a Bathroom. Dokkaebi hackea Valkyrie y suena los teléfonos justo cuando cae la pared; las dos anclas tienen que mirar direcciones opuestas.",
+     "timeline":["0:00–0:45 · drones; Kali dispara la pared de Bunks desde Warehouse Stairs; Montagne toma Vending","0:45–1:30 · Ace abre la pared; Dokkaebi hackea; Montagne baja Vending Stairs","1:30–2:30 · doble push: pared a Bunks y Vending Stairs a Bathroom; planta en Bunks","2:30–3:00 · Glaz sostiene Pasillo sótano; Ace el hueco"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra con Kali","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Cruza a la escalera","via":"door"},
+        {"room":"Warehouse Stairs","f":"1","do":"Baja","via":"stairs"},
+        {"room":"Warehouse Stairs","f":"b","do":"SELMA a la pared de Bunks tras las lanzas de Kali","via":"stairs"},
+        {"room":"Bunks","f":"b","do":"Cruza y planta","via":"breach"}],
+       "clear":[
+        {"room":"Warehouse","f":"1","threat":"Roamer en las cajas","how":"Dron y prefire con Kali cubriendo"},
+        {"room":"Warehouse Stairs","f":"b","threat":"Bandit trickeando y Kapkan en la escalera","how":"Dispara la trampa desde arriba, lanza de Kali y SELMA de inmediato"}],
+       "final":"Planta en Bunks y sostiene el hueco"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Warehouse","via":"door"},
+        {"room":"Warehouse Entrance","f":"1","do":"Entra","via":"door"},
+        {"room":"Warehouse","f":"1","do":"Sostiene las cajas y sigue a Ace","via":"door"},
+        {"room":"Warehouse Stairs","f":"1","do":"Baja detrás de Ace","via":"stairs"},
+        {"room":"Warehouse Stairs","f":"b","do":"Lanzas LV a la pared de Bunks para quemar Kaid/Bandit","via":"stairs"},
+        {"room":"Bunks","f":"b","do":"Entra tras Ace y cubre la puerta a Bathroom","via":"breach"}],
+       "clear":[
+        {"room":"Warehouse Stairs","f":"b","threat":"Kaid Rtila en la pared y Mira mirando la escalera","how":"Lanza al Rtila y segunda al espejo"},
+        {"room":"Bunks","f":"b","threat":"Smoke con gas en el hueco","how":"Entra con el push de Vending Stairs para dividir su gas"}],
+       "final":"Cubre la puerta Bunks–Bathroom en la planta"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con Glaz y Dokkaebi","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza con el escudo","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Toma Vending y espera la señal de Ace","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Baja primero con el escudo","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Sale al sótano con el escudo extendido","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Avanza bloqueando el pasillo hacia Bathroom","via":"door"},
+        {"room":"Bathroom","f":"b","do":"Bloquea la puerta y da información","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria","f":"1","threat":"Roamer en la barra","how":"Escudo extendido, Glaz limpia por los lados"},
+        {"room":"Vending Stairs","f":"b","threat":"Ancla mirando la escalera y Noor con fuego al escudo","how":"Baja escalón por escalón; si hay fuego, retrocede y Glaz tira humo"}],
+       "final":"Bloquea la puerta de Bathroom durante la planta en Bunks"},
+      {"op":"glaz","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Humo por la escalera y térmica detrás de Montagne","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Baja","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Humo a Pasillo sótano y limpia con la térmica","via":"stairs"},
+        {"room":"Pasillo sótano","f":"b","do":"Sostiene el pasillo hacia Warehouse Stairs","via":"door"}],
+       "clear":[
+        {"room":"Vending Stairs","f":"b","threat":"Ancla en la salida de la escalera","how":"Humo abajo y térmica detrás del escudo"},
+        {"room":"Pasillo sótano","f":"b","threat":"Rotación de Bunks a Bathroom por el pasillo","how":"Humo al pasillo y dispara a través"}],
+       "final":"Sostiene Pasillo sótano con humo y térmica en el post-plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Logic Bomb a los 45 segundos","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con Montagne","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Sostiene Vending y hackea cámaras","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Baja al final","via":"stairs"},
+        {"room":"Vending Stairs","f":"b","do":"Sale al sótano y sostiene la escalera","via":"stairs"}],
+       "clear":[
+        {"room":"Vending","f":"1","threat":"Roamer que regresa a Vending por Kitchen","how":"Escucha el teléfono y prefire la puerta de Kitchen"},
+        {"room":"Vending Stairs","f":"b","threat":"Kapkan en la salida","how":"Dron a la escalera y dispara la trampa"}],
+       "final":"Cubre Vending Stairs con la cámara hackeada en el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Smoke anclado en Bunks, Mira en Bathroom con espejos a Pasillo sótano y a la escotilla, Kaid electrificando la pared de Warehouse Stairs y las escotillas. Jäger cubre las entradas y Pulse juega arriba en Storage para castigar al vertical y bajar por Vending Stairs.","reinforce":["Pared Bunks–Warehouse Stairs ×2","Escotilla Warehouse","Escotilla Storage"],"rotations":["Bunks↔Bathroom","Bathroom→Vending Stairs"],
+     "ops":[
+      {"op":"smoke","room":"Bunks","f":"b","role":"ancla","job":"Gas a la pared de Warehouse Stairs y a la puerta del pasillo en la planta"},
+      {"op":"mira","room":"Bathroom","f":"b","role":"ancla","job":"Espejo hacia Pasillo sótano y otro hacia la escotilla de Warehouse"},
+      {"op":"kaid","room":"Warehouse Stairs","f":"b","role":"ancla","job":"Rtila en la pared de Bunks y en la escotilla de Warehouse; juega la esquina de Bunks"},
+      {"op":"jager","room":"Pasillo sótano","f":"b","role":"flex","job":"ADS en Vending Stairs y en Bunks; rota entre las dos escaleras"},
+      {"op":"pulse","room":"Storage","f":"1","role":"roam","job":"Escanea desde Storage a los verticales y baja por Vending Stairs a molestar el flanco"}
+     ]},
+    {"id":"alt","n":"Anti-vertical con Azami","summary":"Cuando Buck y Sledge trabajan Storage y Warehouse, Azami tapa el techo de Bunks, Bandit trickea la pared, Melusi frena las escaleras con Banshee, Warden aguanta el humo en Bathroom y Vigil roamea Warehouse para cazar al que rompe el piso.","reinforce":["Pared Bunks–Warehouse Stairs ×2","Escotilla Warehouse","Escotilla Storage"],"rotations":["Bunks↔Bathroom"],
+     "ops":[
+      {"op":"azami","room":"Bunks","f":"b","role":"ancla","job":"Kiba sobre las literas contra el vertical de Storage y en la puerta del pasillo"},
+      {"op":"bandit","room":"Warehouse Stairs","f":"b","role":"flex","job":"Trickea la pared de Bunks desde adentro y rota a Bathroom"},
+      {"op":"melusi","room":"Pasillo sótano","f":"b","role":"flex","job":"Banshee en la salida de Vending Stairs y en Warehouse Stairs; sostiene el pasillo"},
+      {"op":"warden","room":"Bathroom","f":"b","role":"ancla","job":"Glance contra humo y flash; ancla mirando la escotilla y el pasillo"},
+      {"op":"vigil","room":"Warehouse","f":"1","role":"roam","job":"Roamea Warehouse y Storage para cazar al Buck/Sledge que trabaja el piso"}
+     ]}
+   ]
+  },
+  "cc": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Ace y Thatcher suben por CC Stairs para abrir la pared Pasillo 2F–Server Room mientras Zero rappelea las ventanas de Command Center con Argus y Glaz cubre con humo y térmica. Gridlock sube por Vending Stairs y cierra el flanco. El sitio vive de las ventanas y la pared de Server: cuando las dos caen, Server Room queda sin rotación.",
+     "timeline":["0:00–0:45 · drones; Zero rappelea y mete Argus a Command Center; Ace y Thatcher suben CC Stairs","0:45–1:30 · EMP + SELMA en la pared de Server; Glaz humo en las ventanas","1:30–2:30 · entrada por la pared y por las ventanas; Gridlock cierra Vending Stairs; planta en Server Room","2:30–3:00 · post-plant: Glaz con térmica desde la ventana, Ace en el hueco"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Cafeteria Hallway y CC Stairs","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal con Thatcher","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza hacia Cafeteria Hallway","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Limpia el pasillo y sube","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube con dron adelante","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale al segundo piso y toma Pasillo 2F","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"SELMA a la pared de Server Room tras el EMP","via":"door"},
+        {"room":"Server Room","f":"2","do":"Cruza con humo y planta","via":"breach"}],
+       "clear":[
+        {"room":"Cafeteria","f":"1","threat":"Roamer tipo Vigil en la barra","how":"Dron y prefire con Thatcher cubriendo"},
+        {"room":"CC Stairs","f":"2","threat":"Kapkan en la escalera y Frost en la salida","how":"Dron arriba, dispara trampas y sube en pareja"},
+        {"room":"Pasillo 2F","f":"2","threat":"Bandit trickeando la pared y Mira con espejo al pasillo","how":"Doble EMP y SELMA en la orilla que el espejo no ve"}],
+       "final":"Planta en Server Room y sostiene el hueco de Pasillo 2F"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con Ace","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Cubre el pasillo hacia Lounge","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale arriba cubriendo Command Center","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Doble EMP a la pared de Server para quemar Bandit/Kaid/Mute","via":"door"},
+        {"room":"Server Room","f":"2","do":"Entra tras Ace y cubre la puerta a Command Center","via":"breach"}],
+       "clear":[
+        {"room":"Cafeteria Hallway","f":"1","threat":"Gu de Lesion y roamer desde Lounge","how":"Dispara los Gu y prefire Lounge"},
+        {"room":"Pasillo 2F","f":"2","threat":"Mute jammer y Bandit","how":"Dos EMP con dos segundos de diferencia y Ace pone SELMA al instante"}],
+       "final":"Cubre la puerta Server–Command Center durante la planta"},
+      {"op":"zero","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la ventana de Command Center y tira Argus dentro","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra por la ventana cuando cae la pared de Server y presiona al ancla","via":"window"},
+        {"room":"Server Room","f":"2","do":"Cierra la rotación por la puerta Command Center–Server","via":"door"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Castle en las ventanas, Frost bajo la ventana y Mira mirando la ventana","how":"Argus por el Castle, quema el espejo y destruye el cepo antes de entrar; entra solo cuando el sitio está bajo presión"},
+        {"room":"Server Room","f":"2","threat":"Ancla Smoke detrás de los racks","how":"Argus para ver, humo de Glaz y entras"}],
+       "final":"Sostiene la puerta Command Center–Server durante la planta"},
+      {"op":"glaz","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la segunda ventana de Command Center y tira humo dentro","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Limpia con la térmica a través del humo y entra con Zero","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Ancla Frost/Mira mirando las ventanas","how":"Humo a la ventana y dispara con térmica desde el rappel"},
+        {"room":"Server Room","f":"2","threat":"Ancla rotando de Server a Command Center","how":"Térmica sobre la puerta de Server mientras Ace entra"}],
+       "final":"Cubre la planta con humo y térmica desde la ventana de Command Center"},
+      {"op":"gridlock","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Kitchen","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Cruza","via":"door"},
+        {"room":"Vending","f":"1","do":"Trax en Vending y toma la escalera","via":"door"},
+        {"room":"Vending Stairs","f":"1","do":"Sube","via":"stairs"},
+        {"room":"Vending Stairs","f":"2","do":"Trax en la salida de la escalera y sostiene hacia Command Center","via":"stairs"},
+        {"room":"Command Center","f":"2","do":"Entra con el push final","via":"door"}],
+       "clear":[
+        {"room":"Kitchen","f":"1","threat":"Roamer tipo Cav en la cocina","how":"Dron y prefire la esquina de Pantry"},
+        {"room":"Vending Stairs","f":"2","threat":"Defensor mirando la escalera desde Command Center","how":"Trax por la escalera y sube con dron adelante"}],
+       "final":"Sostiene Vending Stairs con Trax durante la planta"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rappel directo a las ventanas de Command Center: Ash abre la barricada desde el rappel, Ying tira Candela adentro y entran Blitz, Iana y Finka antes de que pongan Castle. Command Center es enorme y sin techo que defender: si entras a los 30 segundos, el sitio no tiene setup.",
+     "timeline":["0:00–0:20 · corren al rappel de Command Center","0:20–0:50 · Ash rompe la ventana, Candela de Ying, entran por las ventanas","0:50–1:30 · limpian Command Center y Server, plantan en Server Room","1:30–3:00 · post-plant desde las ventanas y la puerta de Server"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la ventana de Command Center y tira la carga a la barricada","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra con la Candela y limpia","via":"window"},
+        {"room":"Server Room","f":"2","do":"Entra a Server y planta","via":"door"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Frost bajo la ventana y ancla en las consolas","how":"Carga de brecha desde el rappel limpia la ventana y el cepo; entra con Blitz"},
+        {"room":"Server Room","f":"2","threat":"Smoke con gas en los racks","how":"Candela de Ying a Server antes de cruzar"}],
+       "final":"Planta en Server Room y sostiene la puerta de Pasillo 2F"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la segunda ventana","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Candela dentro y entra con el flash","via":"window"},
+        {"room":"Server Room","f":"2","do":"Segunda Candela y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Ancla Mira o Castle a medio poner","how":"Candela por la ventana en cuanto Ash rompe"},
+        {"room":"Server Room","f":"2","threat":"Ancla detrás de los racks","how":"Candela a Server y entrada con Ash"}],
+       "final":"Cubre la planta y niega Vending Stairs"},
+      {"op":"blitz","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la ventana con el escudo","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra primero flasheando y limpia las consolas","via":"window"},
+        {"room":"Server Room","f":"2","do":"Flash y mata al ancla de Server","via":"door"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Ancla en las consolas y Noor con fuego al escudo","how":"Flash al entrar por la ventana; si hay fuego, sales por la ventana y Ying limpia"},
+        {"room":"Server Room","f":"2","threat":"Smoke en los racks","how":"Flash y entrada con Ash"}],
+       "final":"Sostiene Server Room cuerpo a cuerpo durante la planta"},
+      {"op":"iana","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea y manda la réplica por la ventana","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra detrás de la réplica y sostiene Vending Stairs","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Defensor esperando la ventana","how":"Réplica primero: si dispara, Blitz entra sobre él"},
+        {"room":"Vending Stairs","f":"2","threat":"Roamer subiendo por Vending Stairs","how":"Sostén la escalera con la réplica adelante"}],
+       "final":"Sostiene la puerta a Vending Stairs durante la planta"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Boost y rappelea última","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra y cubre CC Stairs y Pasillo 2F","via":"window"},
+        {"room":"Server Room","f":"2","do":"Boost final para la planta","via":"door"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Flex saliendo de Pasillo 2F a flanquear","how":"Claymore en la puerta de Pasillo 2F"},
+        {"room":"Server Room","f":"2","threat":"Gas de Smoke en la planta","how":"Boost para aguantar y planta"}],
+       "final":"Cubre Pasillo 2F y CC Stairs durante la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Vertical desde abajo: Buck rompe el techo de Cafeteria bajo Command Center y Sledge el techo de Vending bajo Server Room, Fuze mete racimos por la escotilla del techo de Server desde el exterior, Capitão quema desde las ventanas y Brava hackea las cams. Las anclas de 2F quedan sin piso y entras al final por CC Stairs.",
+     "timeline":["0:00–0:45 · drones; Brava hackea Valkyrie/Evil Eye; Buck y Sledge toman Cafeteria y Vending","0:45–1:45 · abren techos bajo Command Center y Server; Fuze racimos por la escotilla del techo","1:45–2:30 · Capitão quema las ventanas; entrada por CC Stairs; planta en Server Room","2:30–3:00 · post-plant desde abajo con Buck y Sledge"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby y Cafeteria","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra por la puerta principal","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Abre el techo bajo Command Center con el Skeleton Key y mata al ancla desde abajo","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":"1","threat":"Roamer tipo Vigil en Lounge","how":"Dron y prefire el marco de Lounge"},
+        {"room":"Cafeteria","f":"1","threat":"Defensor bajando por CC Stairs a negar","how":"Claymore en la puerta de Cafeteria Hallway y trabaja el techo desde la barra"}],
+       "final":"Sostiene el techo abierto bajo Command Center y mata al que rote"},
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Kitchen y Vending","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con Buck","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza a Kitchen","via":"door"},
+        {"room":"Kitchen","f":"1","do":"Limpia la cocina","via":"door"},
+        {"room":"Vending","f":"1","do":"Martillea el techo bajo Server Room y niega los racks","via":"door"}],
+       "clear":[
+        {"room":"Kitchen","f":"1","threat":"Roamer tipo Cav o Gu de Lesion","how":"Dron, dispara los Gu y prefire Pantry"},
+        {"room":"Vending","f":"1","threat":"Defensor bajando por Vending Stairs","how":"Claymore en la salida de la escalera antes de martillear"}],
+       "final":"Sostiene el techo abierto bajo Server Room durante la planta"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Sube al techo y pone cargas de racimo en la escotilla de Server Room","via":"hatch"},
+        {"room":"Server Room","f":"2","do":"Baja por la escotilla al final para plantar","via":"hatch"}],
+       "clear":[
+        {"room":"Server Room","f":"2","threat":"Ancla Smoke detrás de los racks y Jäger comiéndose las cargas","how":"Racimo a la escotilla cuando Sledge abra abajo; baja solo con el sitio limpio"},
+        {"room":"Command Center","f":"2","threat":"Ancla rotando a Server tras el racimo","how":"Segundo racimo hacia la puerta Command Center–Server"}],
+       "final":"Baja por la escotilla y planta en Server Room"},
+      {"op":"capitao","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la ventana de Command Center y quema las consolas con flechas de fuego","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra al final por la ventana y cubre la planta","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Castle y Frost en las ventanas","how":"Fuego por encima del Castle y humo para entrar cuando el ancla muera"},
+        {"room":"Server Room","f":"2","threat":"Ancla en los racks","how":"Fuego a la puerta de Server para negar la rotación"}],
+       "final":"Cubre la planta con humo y fuego desde la ventana"},
+      {"op":"brava","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dron Kludge por Lobby hacia CC Stairs a hackear cams y Evil Eye","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza a Cafeteria Hallway","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Sostiene el pasillo y sube al final","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale arriba con el sitio sin anclas","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Cruza a Command Center y planta si Fuze no bajó","via":"door"},
+        {"room":"Command Center","f":"2","do":"Entra y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria Hallway","f":"1","threat":"Evil Eye o cámara de Valkyrie hacia el pasillo","how":"Kludge hackea el Evil Eye y lo usas contra ellos"},
+        {"room":"CC Stairs","f":"2","threat":"Kapkan y Frost en la salida","how":"Dron a la escalera y dispara trampas"}],
+       "final":"Cubre Command Center desde Pasillo 2F en el post-plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Kali abren la pared de Server desde Pasillo 2F mientras Montagne, Blackbeard y Dokkaebi rappelean a Command Center. Dokkaebi hackea Valkyrie y suena teléfonos justo cuando cae la pared; el ancla de Command Center no puede mirar la ventana y la puerta de Server al mismo tiempo.",
+     "timeline":["0:00–0:45 · drones; Dokkaebi hackea; Kali dispara la pared de Server desde Pasillo 2F","0:45–1:30 · Hibana abre; Montagne y Blackbeard suben al rappel","1:30–2:30 · doble push: pared a Server y ventanas a Command Center; planta en Server Room","2:30–3:00 · Montagne bloquea Command Center; Hibana y Kali el hueco"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Cafeteria Hallway","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra con Kali","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Limpia el pasillo","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale arriba","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"X-KAIROS a la pared de Server tras las lanzas de Kali","via":"door"},
+        {"room":"Server Room","f":"2","do":"Cruza y planta","via":"breach"}],
+       "clear":[
+        {"room":"CC Stairs","f":"2","threat":"Frost y Kapkan en la salida de la escalera","how":"Dron y dispara trampas antes de subir"},
+        {"room":"Pasillo 2F","f":"2","threat":"Bandit y Mira detrás de la pared","how":"Lanza de Kali a la batería y pellets enseguida"}],
+       "final":"Planta en Server Room y sostiene el hueco"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Dronea Lobby","via":"door"},
+        {"room":"Lobby","f":"1","do":"Entra","via":"door"},
+        {"room":"Cafeteria","f":"1","do":"Cruza cubriendo la barra","via":"door"},
+        {"room":"Cafeteria Hallway","f":"1","do":"Sostiene Lounge y sube","via":"door"},
+        {"room":"CC Stairs","f":"1","do":"Sube","via":"stairs"},
+        {"room":"CC Stairs","f":"2","do":"Sale arriba","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Lanzas LV a la pared de Server para quemar Kaid/Bandit y el espejo","via":"door"},
+        {"room":"Server Room","f":"2","do":"Entra tras Hibana y cubre la puerta a Command Center","via":"breach"}],
+       "clear":[
+        {"room":"Cafeteria Hallway","f":"1","threat":"Roamer desde Lounge","how":"Sostén el ángulo largo con la mira"},
+        {"room":"Pasillo 2F","f":"2","threat":"Mira con espejo al pasillo","how":"Lanza al espejo y quédate fuera de su línea"}],
+       "final":"Cubre la puerta Server–Command Center durante la planta"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la ventana de Command Center con el escudo","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra por la ventana con el escudo extendido y bloquea las consolas","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Castle en la ventana, Frost debajo y Noor apuntando el fuego a la ventana","how":"Blackbeard rompe el Castle desde el rappel; entras después del fuego con Dokkaebi sonando teléfonos"}],
+       "final":"Bloquea Command Center con el escudo durante la planta en Server"},
+      {"op":"blackbeard","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Rappelea a la segunda ventana con el escudo de rifle","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Limpia las consolas desde la ventana y entra con Montagne","via":"window"},
+        {"room":"Server Room","f":"2","do":"Cierra la rotación por la puerta a Server","via":"door"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Ancla peekeando la ventana desde las consolas","how":"Escudo de rifle en el rappel y prefire las consolas"},
+        {"room":"Server Room","f":"2","threat":"Ancla Smoke rotando a Command Center","how":"Sostén la puerta con el escudo puesto"}],
+       "final":"Sostiene la puerta Command Center–Server durante la planta"},
+      {"op":"dokkaebi","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":"2","do":"Logic Bomb a los 45 segundos y rappelea a la ventana","via":"rappel"},
+        {"room":"Command Center","f":"2","do":"Entra tras Montagne, hackea cámaras y sostiene Vending Stairs","via":"window"}],
+       "clear":[
+        {"room":"Command Center","f":"2","threat":"Roamer subiendo por Vending Stairs a la espalda","how":"Escucha el teléfono y prefire la puerta de Vending Stairs"},
+        {"room":"Vending Stairs","f":"2","threat":"Defensor en la escalera","how":"Claymore en la salida de la escalera"}],
+       "final":"Cubre Vending Stairs con la cámara hackeada en el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle en las ventanas de Command Center con Frost debajo para castigar el rappel, Mira en Server con espejos al pasillo y a Command Center, Smoke anclado en Server y Valkyrie con cámaras en CC Stairs y Vending Stairs roameando 1F para cazar el vertical desde abajo.","reinforce":["Pared Server–CC Stairs ×2","Ventanas Command Center (Castle)","Escotilla Server"],"rotations":["Command Center↔Server","Command Center→Vending Stairs"],
+     "ops":[
+      {"op":"frost","room":"Command Center","f":"2","role":"ancla","job":"Cepos bajo las ventanas de Command Center; ancla en las consolas"},
+      {"op":"castle","room":"Command Center","f":"2","role":"flex","job":"Barricadas blindadas en las ventanas y en Vending Stairs; rota a Server"},
+      {"op":"smoke","room":"Server Room","f":"2","role":"ancla","job":"Gas a la pared de Pasillo 2F y a la puerta de Command Center en la planta"},
+      {"op":"mira","room":"Server Room","f":"2","role":"ancla","job":"Espejo hacia Pasillo 2F y otro Server–Command Center; ancla en los racks"},
+      {"op":"valkyrie","room":"Cafeteria Hallway","f":"1","role":"roam","job":"Cámaras en CC Stairs, Vending Stairs y afuera de las ventanas; roamea Cafeteria para cazar al vertical"}
+     ]},
+    {"id":"alt","n":"Anti-rappel con Noor","summary":"Contra rappel: Noor con el Horus apuntando las ventanas de Command Center para quemar escudos, Azami tapando ventanas y agujeros, Kaid electrificando la pared de Server y la escotilla, Mute en Pasillo 2F contra drones y Alibi confundiendo con prismas en Command Center.","reinforce":["Pared Server–CC Stairs ×2","Ventanas Command Center","Escotilla Server"],"rotations":["Command Center↔Server"],
+     "ops":[
+      {"op":"noor","room":"Command Center","f":"2","role":"ancla","job":"Horus a las ventanas para quemar Montagne/Blitz; ancla en las consolas"},
+      {"op":"azami","room":"Command Center","f":"2","role":"flex","job":"Kiba en las ventanas y en los agujeros del piso; rota a Server"},
+      {"op":"kaid","room":"Server Room","f":"2","role":"ancla","job":"Rtila en la pared de Pasillo 2F y en la escotilla del techo; ancla en los racks"},
+      {"op":"mute","room":"Pasillo 2F","f":"2","role":"flex","job":"Jammer en la pared de Server y en CC Stairs contra drones; sostiene el pasillo"},
+      {"op":"alibi","room":"Command Center","f":"2","role":"roam","job":"Prismas en Command Center y Vending Stairs; roamea Vending Stairs y castiga el flanco"}
+     ]}
+   ]
+  }
+ }
+}

@@ -1,0 +1,1109 @@
+{
+ "map": "house",
+ "sites": {
+  "garage": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Garage Entrance para abrir la pared reforzada del Garage mientras Buck rompe el piso de Kitchen sobre Training Room y Nomad sella la Laundry Room desde las Basement Stairs. Cuando la pared cae y el ancla de Training Room ya no tiene piso, los defensores se apretujan en Garage y ahí los pinchas por dos lados. Funciona porque las dos rotaciones del sitio (Garage↔Training Room y Training Room↔Laundry) quedan expuestas al mismo tiempo.",
+     "timeline":["0:00–0:45 · drones a Garage y Training Room; Zero mete Argus por Kitchen Stairs; Thatcher y Thermite toman Garage Entrance","0:45–1:30 · Buck abre el piso de Kitchen sobre Training Room; EMP + carga exotérmica en la pared exterior del Garage","1:30–2:30 · entrada por la pared abierta y por Laundry Room; Nomad tapa las Basement Stairs; planta en Training Room","2:30–3:00 · post-plant: Buck desde Kitchen, Thermite sostiene el hueco, Nomad el flanco de Laundry"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Dronea la rampa del Garage y espera a que Thatcher revise la pared","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"Pega la carga exotérmica a la pared reforzada del Garage después del EMP","via":"breach"},
+        {"room":"Garage","f":0,"do":"Entra por el hueco pegado a la izquierda y limpia detrás del coche","via":"breach"},
+        {"room":"Training Room","f":0,"do":"Cruza la puerta con humo y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Garage Entrance","f":-1,"threat":"Bandit trickeando la pared y una C4 de Kapkan/Mute en la persiana del Garage","how":"Espera el doble EMP de Thatcher, pega la carga en cuanto brille y no te pares frente a la persiana"},
+        {"room":"Garage","f":0,"threat":"Mira con espejo hacia la pared exterior y ancla Castle detrás del coche","how":"Buck ya rompió el piso de Kitchen para que suelten Training Room; entra tras el humo y prefirea la esquina del coche"},
+        {"room":"Training Room","f":0,"threat":"Smoke con gas listo en la puerta Garage–Training Room","how":"Deja que Zero vea por la Argus y cruza sólo cuando el gas ya tronó"}],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Training Room desde Garage"},
+      {"op":"thatcher","role":"antigadget","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Dronea la persiana del Garage buscando ADS y baterías","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"Tira dos EMP a la pared reforzada del Garage para quemar Bandit, Kaid y Mute","via":"breach"},
+        {"room":"Garage","f":0,"do":"Entra tras Thermite y limpia el rincón de la escotilla","via":"breach"},
+        {"room":"Training Room","f":0,"do":"Tercer EMP a las puertas para quemar Kapkan y ADS antes de plantar","via":"door"}],
+       "clear":[
+        {"room":"Garage Entrance","f":-1,"threat":"Kaid o Bandit trickeando desde dentro y Mozzie robando drones en la persiana","how":"Doble EMP con dos segundos de diferencia y avisa a Thermite; dronea con cuidado para que no te lo robe el Pest"},
+        {"room":"Garage","f":0,"threat":"Jäger con ADS en la esquina y un Alibi con prisma","how":"EMP al entrar y dispara sólo a lo que se mueve, no a los prismas"},
+        {"room":"Training Room","f":0,"threat":"Trampa de Kapkan en la puerta hacia Laundry Room","how":"EMP a la puerta antes de que Nomad la cruce"}],
+       "final":"Cubre el hueco de la pared exterior y la rotación Garage→Training Room durante la planta"},
+      {"op":"zero","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal y entra con el equipo","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza rápido, no te quedes en la banqueta","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada y revisa el Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de las Lobby Stairs y sigue a Dining Room","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Argus en la escotilla para ver Depot","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Cubre a Buck mientras abre el piso","via":"door"},
+        {"room":"Kitchen Stairs","f":1,"do":"Argus en la escotilla para ver la parte baja de Training Room","via":"stairs"},
+        {"room":"Kitchen Stairs","f":0,"do":"Baja al final con el equipo y cubre la puerta de Training Room","via":"stairs"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer tipo Vigil o Cav bajando por las Lobby Stairs","how":"Dron a las escaleras antes de pasar y avanza en pareja con Buck"},
+        {"room":"Kitchen","f":1,"threat":"Cam de Valkyrie en Kitchen y un defensor asomando por Kitchen Stairs","how":"Busca la cam en las esquinas altas y tira una Argus a la escalera antes de acercarte"},
+        {"room":"Kitchen Stairs","f":0,"threat":"Ancla con Smoke o Jäger cubriendo la escalera desde Training Room","how":"Ve por la Argus y baja sólo cuando el hueco de Buck ya los obligó a moverse"}],
+       "final":"Cubre la escalera de Kitchen y da la info de dónde está cada defensor para la planta"},
+      {"op":"buck","role":"vertical","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra con Zero por la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado al muro","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada y limpia el Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de la escalera y avanza a Dining Room","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Abre huecos en el piso sobre Depot para negar la rotación","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Skeleton Key al piso de Kitchen sobre Training Room y granadas a la ancla","via":"door"},
+        {"room":"Kitchen Stairs","f":1,"do":"Abre la escotilla y baja para el post-plant","via":"hatch"},
+        {"room":"Kitchen Stairs","f":0,"do":"Cae por la escotilla al final y cubre la puerta de Training Room","via":"hatch"}],
+       "clear":[
+        {"room":"Dining Room","f":1,"threat":"Roamer subiendo por la escotilla de Depot o por Kitchen Stairs","how":"Dron a las dos escotillas y abre la de Depot sólo si ya hay un compañero cubriendo"},
+        {"room":"Kitchen","f":1,"threat":"Ancla de Training Room disparando hacia arriba por los huecos del piso","how":"Abre el piso desde una esquina distinta a la que rompiste primero y tira la granada antes de asomarte"},
+        {"room":"Kitchen Stairs","f":0,"threat":"Smoke o Jäger sosteniendo la puerta de Training Room desde la escalera","how":"Cae sólo cuando Thermite ya está dentro del Garage y ellos tienen que voltear"}],
+       "final":"Rompe el piso de Kitchen, niega Training Room desde arriba y baja para cubrir la planta"},
+      {"op":"nomad","role":"flanco","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden buscando spawn peek desde Back Porch","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza a las escaleras del sótano pegado a la barda","via":"door"},
+        {"room":"Basement Stairs","f":-1,"do":"Rompe la barricada y pone un Airjab en la puerta","via":"door"},
+        {"room":"Laundry Room","f":0,"do":"Limpia y deja dos Airjabs en la puerta hacia Training Room","via":"door"},
+        {"room":"Training Room","f":0,"do":"Entra al final para plantar detrás del equipo","via":"door"}],
+       "clear":[
+        {"room":"Basement Stairs","f":-1,"threat":"Kapkan o Frost en la barricada de Basement Stairs","how":"Dron a la barricada, dispara la trampa desde afuera y baja con cuidado"},
+        {"room":"Laundry Room","f":0,"threat":"Roamer tipo Vigil o Oryx escondido en las lavadoras","how":"Airjab a la puerta, prefire de la esquina y espera a que Zero confirme"},
+        {"room":"Training Room","f":0,"threat":"Ancla Smoke con gas hacia la puerta de Laundry","how":"Entra sólo cuando el equipo ya está en Garage y el gas ya se usó"}],
+       "final":"Sella Laundry Room con Airjabs y planta en Training Room cuando el sitio ya está limpio"}
+     ]},
+    {"id":"rush","n":"Rush Garage","tag":"RUSH","summary":"Antes de que refuercen y pongan trampas, se abre la persiana del Garage a la vez que Sledge baja por Side Stairs. Candelas de Ying al Garage, Ash rompe la barricada y todos entran con Finka activa. En ranked la defensa de House suele tardar en cerrar el Garage y esta es la ventana.",
+     "timeline":["0:00–0:20 · sin drones largos: Ying y Ash a Garage Entrance, Sledge a la puerta de Side Stairs","0:20–0:45 · candelas, breach de la persiana y Finka; Sledge rompe la puerta de Side Stairs","0:45–1:30 · limpiar Garage y Training Room, plantar en Training Room","1:30–3:00 · post-plant sosteniendo Garage y Laundry"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Corre a la rampa con Ash, sin detenerte","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"Dos candelas por la persiana en cuanto Ash la abra","via":"door"},
+        {"room":"Garage","f":0,"do":"Entra ciega con las candelas y limpia el coche","via":"door"},
+        {"room":"Training Room","f":0,"do":"Última candela a la puerta y entra a plantar","via":"door"}],
+       "clear":[
+        {"room":"Garage Entrance","f":-1,"threat":"Defensor asomando por la persiana o Kapkan recién puesto","how":"Candela primero, nadie cruza antes de que truene"},
+        {"room":"Garage","f":0,"threat":"Ancla Castle o Mira detrás del coche todavía sin espejo","how":"Prefire del coche y entra con Blitz por delante"}],
+       "final":"Planta en Training Room pegada a la pared de Laundry y sostiene la puerta"},
+      {"op":"ash","role":"entrada","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Corre a la rampa del Garage","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"Breach a la persiana o barricada del Garage desde lejos","via":"door"},
+        {"room":"Garage","f":0,"do":"Entra por el hueco y limpia la esquina de la escotilla","via":"door"},
+        {"room":"Training Room","f":0,"do":"Segunda carga a la puerta si la castlearon y entra","via":"door"}],
+       "clear":[
+        {"room":"Garage Entrance","f":-1,"threat":"Mute jammeando la persiana o Castle poniendo la barricada blindada","how":"El breach de Ash rompe Castle a distancia; tíralo apenas veas el marco"},
+        {"room":"Training Room","f":0,"threat":"Jäger o Smoke cubriendo la puerta Garage–Training Room","how":"Entra con la candela de Ying y con Blitz por delante"}],
+       "final":"Cubre la planta desde la puerta Garage–Training Room"},
+      {"op":"blitz","role":"soporte","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Corre pegado a Ying con el escudo arriba","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"Entra primero por el hueco con flash lista","via":"door"},
+        {"room":"Garage","f":0,"do":"Flash al coche y a la esquina de la escotilla","via":"door"},
+        {"room":"Training Room","f":0,"do":"Flash a la puerta y entra para tanquear la planta","via":"door"}],
+       "clear":[
+        {"room":"Garage","f":0,"threat":"Ancla detrás del coche y Noor con fuego para escudos en la puerta","how":"Flash antes de cruzar y no te pares en el fuego; deja que Ash abra la puerta"},
+        {"room":"Training Room","f":0,"threat":"Smoke con gas en la puerta","how":"Flash y cruza rápido con Finka activa"}],
+       "final":"Tanquea la planta de Ying en Training Room"},
+      {"op":"finka","role":"soporte","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Activa el primer Surge cuando Ash rompa la persiana","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"Entra detrás de Blitz","via":"door"},
+        {"room":"Garage","f":0,"do":"Segundo Surge al entrar a Training Room y revive a quien caiga","via":"door"},
+        {"room":"Training Room","f":0,"do":"Cubre la planta desde la puerta de Garage","via":"door"}],
+       "clear":[
+        {"room":"Garage","f":0,"threat":"C4 de un ancla al grupo apretado en la persiana","how":"No entren en bola: Blitz primero, tú al último y con Surge para aguantar"},
+        {"room":"Training Room","f":0,"threat":"Frost en la puerta de Laundry o Lesion en el marco","how":"Mira el piso, dispara el cepo y sigue"}],
+       "final":"Sostiene la puerta Garage–Training Room y revive con Surge en el post-plant"},
+      {"op":"sledge","role":"blando","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Corre a la puerta lateral de Side Stairs","via":"door"},
+        {"room":"Side Stairs","f":1,"do":"Rompe la barricada con el martillo y baja","via":"door"},
+        {"room":"Side Stairs","f":0,"do":"Baja al sótano y abre la puerta blanda hacia Garage","via":"stairs"},
+        {"room":"Garage","f":0,"do":"Entra por atrás de los defensores que miran la persiana","via":"door"},
+        {"room":"Training Room","f":0,"do":"Entra y cubre la puerta de Laundry","via":"door"}],
+       "clear":[
+        {"room":"Side Stairs","f":1,"threat":"Kapkan en la puerta lateral y roamer bajando por Side Stairs","how":"Martillazo a la barricada desde un lado y prefire de la escalera"},
+        {"room":"Garage","f":0,"threat":"Ancla Mira/Castle de espaldas a la puerta de Side Stairs","how":"Entra justo cuando Ying tira la candela y dispárales por la espalda"}],
+       "final":"Cubre la puerta de Laundry Room durante la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma todo el primer piso (Lobby, Dining Room, Kitchen, Living Room) y desde ahí se destruye el sótano: Sledge y Fuze desde Kitchen sobre Training Room, Ram desde Living Room sobre Garage e IQ cazando gadgets. Thermite abre la escotilla de Dining Room y bajan a Depot sólo cuando el sitio está vacío. Funciona porque el sótano de House tiene techo blando en casi todo el sitio.",
+     "timeline":["0:00–0:45 · drones y toma del Lobby, Dining Room, Kitchen y Living Room","0:45–1:45 · Ram sobre Garage, Sledge y Fuze sobre Training Room, IQ marca gadgets","1:45–2:30 · Thermite abre la escotilla de Dining Room y bajan a Depot; planta en Garage","2:30–3:00 · post-plant desde arriba con los huecos abiertos"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal y avanza","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada del frente","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de las Lobby Stairs","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Cruza a Kitchen cubierto por IQ","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Rompe el piso de Kitchen sobre Training Room por pedazos y castiga a la ancla","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer bajando por las Lobby Stairs o Vigil en Office","how":"Dron a la escalera y a Office antes de pasar"},
+        {"room":"Kitchen","f":1,"threat":"Ancla de Training Room disparando hacia arriba y Valk cam en Kitchen","how":"Rompe desde una esquina, cambia de lugar tras cada hueco y deja que IQ rompa la cam"}],
+       "final":"Sostiene Kitchen con el piso abierto y niega Training Room durante la planta"},
+      {"op":"fuze","role":"negacion","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra con Sledge","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza rápido","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra tras la barricada rota","via":"door"},
+        {"room":"Lobby","f":1,"do":"Cubre la escalera mientras Sledge avanza","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Carga de racimo en el piso sobre Depot para limpiar la rotación","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Dos cargas en el piso de Kitchen sobre Training Room justo antes de bajar","via":"door"}],
+       "clear":[
+        {"room":"Dining Room","f":1,"threat":"Defensor subiendo por la escotilla de Depot","how":"Dron a la escotilla, carga encima y la detonas cuando se acerque"},
+        {"room":"Kitchen","f":1,"threat":"Ancla Smoke pegada a la pared de Training Room bajo Kitchen","how":"Carga en el piso justo sobre donde IQ la marca"}],
+       "final":"Cubre Kitchen desde arriba y detona la última carga cuando el rehén del sitio se junte en Training Room"},
+      {"op":"ram","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea Living Room desde afuera","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza a la puerta principal","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra por la barricada abierta","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia y gira a Living Room","via":"door"},
+        {"room":"Living Room","f":1,"do":"Lanza el BU-GI cruzando el piso sobre Garage para abrirlo entero","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer de Side Stairs asomando a Living Room","how":"Dron a Side Stairs y prefire de la puerta lateral"},
+        {"room":"Living Room","f":1,"threat":"Ancla de Garage disparando hacia arriba una vez que el BU-GI abre el piso","how":"Lánzalo y quítate del hueco; pelea desde la esquina de Lobby"}],
+       "final":"Abre el piso de Living Room sobre Garage y niega la rotación Garage→Training Room desde arriba"},
+      {"op":"iq","role":"intel","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Escanea la fachada buscando cams de Valk","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza a la puerta principal","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra con el equipo","via":"door"},
+        {"room":"Lobby","f":1,"do":"Escanea Office y las escaleras","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Marca gadgets de Depot a través del piso","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Marca ADS, cams y el teléfono de la ancla bajo Kitchen para Sledge y Fuze","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Cam de Valkyrie en Lobby y Vigil en Office","how":"Escáner al entrar, rompe la cam y dronea Office"},
+        {"room":"Kitchen","f":1,"threat":"Ancla con teléfono (Maestro/Echo) bajo Kitchen","how":"Márcala con el escáner y que Sledge abra justo encima"}],
+       "final":"Marca gadgets y defensores a través del piso de Kitchen para que la vertical sea exacta"},
+      {"op":"thermite","role":"duro","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra al último con el equipo","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza a la puerta principal","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra y cubre el Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Cubre las Lobby Stairs contra el roamer","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Carga exotérmica a la escotilla de Depot cuando el sótano ya está vacío","via":"hatch"},
+        {"room":"Depot","f":0,"do":"Cae y limpia Depot","via":"hatch"},
+        {"room":"Garage","f":0,"do":"Entra desde Depot y planta detrás del coche","via":"door"}],
+       "clear":[
+        {"room":"Dining Room","f":1,"threat":"Bandit o Kaid electrificando la escotilla de Depot","how":"Rómpela sólo cuando IQ confirme que no hay batería; si la hay, que Sledge abra el piso al lado"},
+        {"room":"Depot","f":0,"threat":"Ancla esperando la caída por la escotilla","how":"Fuze detona la carga sobre Depot antes de caer"},
+        {"room":"Garage","f":0,"threat":"Mira con espejo hacia Depot","how":"Ram ya abrió el piso de Living Room; entra cuando la ancla voltee hacia arriba"}],
+       "final":"Planta en Garage detrás del coche con el equipo cubriendo desde los huecos"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Ace y Kali abren la pared exterior del Garage mientras Zofia, Capitão y Gridlock entran por Basement Stairs a Laundry Room. Gridlock tira Trax en Kitchen Stairs para que nadie rote desde arriba. La defensa tiene que elegir entre la pared y Laundry, y el lado que dejen solo es por donde se planta.",
+     "timeline":["0:00–0:45 · drones; Ace y Kali a Garage Entrance, los otros tres a Basement Stairs","0:45–1:30 · Kali quema la pared, Ace abre; Zofia rompe Laundry con impactos","1:30–2:30 · entrada simultánea; Gridlock cierra Kitchen Stairs; planta en Training Room","2:30–3:00 · post-plant con Capitão quemando la puerta de Garage"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Dronea la pared exterior del Garage","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"SELMA a la pared reforzada después del lance de Kali","via":"breach"},
+        {"room":"Garage","f":0,"do":"Entra por el hueco y limpia el coche","via":"breach"},
+        {"room":"Training Room","f":0,"do":"Cruza cuando los de Laundry ya presionan","via":"door"}],
+       "clear":[
+        {"room":"Garage Entrance","f":-1,"threat":"Bandit trickeando y Mute con jammer en la pared","how":"Kali quema primero con el lance; tira la SELMA por partes y muévete entre cargas"},
+        {"room":"Garage","f":0,"threat":"Ancla Mira/Castle detrás del coche","how":"Entra cuando el otro frente dispare en Laundry y la ancla mire para allá"}],
+       "final":"Sostiene el hueco de la pared exterior mientras plantan en Training Room"},
+      {"op":"kali","role":"antigadget","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Lance a la pared exterior del Garage para quemar baterías y ADS","via":"door"},
+        {"room":"Garage Entrance","f":-1,"do":"Segundo lance si vuelven a trickear; cubre a Ace","via":"breach"},
+        {"room":"Garage","f":0,"do":"Entra al final y sostiene el hueco con el rifle","via":"breach"},
+        {"room":"Training Room","f":0,"do":"Cubre la planta desde la puerta","via":"door"}],
+       "clear":[
+        {"room":"Garage Entrance","f":-1,"threat":"Bandit/Kaid en la pared y Jäger con ADS en el Garage","how":"Lance explosivo desde lejos; con el rifle castiga a quien vuelva a poner batería"},
+        {"room":"Garage","f":0,"threat":"Ancla peekeando el hueco desde el coche","how":"Sostén el hueco a distancia con el Sniper hasta que Ace entre"}],
+       "final":"Sostiene la pared exterior del Garage y cubre la planta desde lejos"},
+      {"op":"zofia","role":"entrada","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden y revisa Back Porch","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza a las escaleras del sótano","via":"door"},
+        {"room":"Basement Stairs","f":-1,"do":"Impactos a la barricada y a la trampa de la puerta","via":"door"},
+        {"room":"Laundry Room","f":0,"do":"Entra con concusión y limpia las lavadoras","via":"door"},
+        {"room":"Training Room","f":0,"do":"Entra con el segundo frente y planta","via":"door"}],
+       "clear":[
+        {"room":"Basement Stairs","f":-1,"threat":"Kapkan o Frost en la barricada de Basement Stairs","how":"Impacto a la barricada desde arriba; la trampa vuela con ella"},
+        {"room":"Laundry Room","f":0,"threat":"Roamer tipo Vigil/Oryx en las lavadoras","how":"Concusión a la esquina y entra con Capitão"},
+        {"room":"Training Room","f":0,"threat":"Smoke con gas en la puerta de Laundry","how":"Espera a que Ace abra la pared del Garage y cruza cuando volteen"}],
+       "final":"Planta en Training Room pegada a la pared de Laundry"},
+      {"op":"capitao","role":"negacion","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Entra con Zofia","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Basement Stairs","f":-1,"do":"Baja tras Zofia","via":"door"},
+        {"room":"Laundry Room","f":0,"do":"Flecha de humo a la puerta hacia Training Room","via":"door"},
+        {"room":"Training Room","f":0,"do":"Fuego a la puerta de Garage para cortar la rotación en la planta","via":"door"}],
+       "clear":[
+        {"room":"Laundry Room","f":0,"threat":"Ancla asomando desde Training Room a la puerta de Laundry","how":"Humo en la puerta y fuego a la esquina donde se para"},
+        {"room":"Training Room","f":0,"threat":"Rotación desde Garage para defusear","how":"Fuego a la puerta Garage–Training Room justo cuando Zofia planta"}],
+       "final":"Quema la puerta de Garage y cubre el post-plant desde Laundry"},
+      {"op":"gridlock","role":"flanco","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza con el grupo","via":"door"},
+        {"room":"Basement Stairs","f":-1,"do":"Trax en la parte alta para que nadie salga a flanquear","via":"door"},
+        {"room":"Laundry Room","f":0,"do":"Entra tras Zofia","via":"door"},
+        {"room":"Training Room","f":0,"do":"Trax a la puerta de Kitchen Stairs para bloquear la rotación desde arriba","via":"door"}],
+       "clear":[
+        {"room":"Laundry Room","f":0,"threat":"Roamer escondido en las lavadoras","how":"Entra después de la concusión de Zofia"},
+        {"room":"Training Room","f":0,"threat":"Defensor bajando por Kitchen Stairs para el defuse","how":"Trax en la escalera y sostén el ángulo desde la puerta de Laundry"}],
+       "final":"Bloquea Kitchen Stairs con Trax y cubre el defuser desde Laundry Room"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Anclas duras en Garage (Castle y Mira detrás del coche) y en Training Room (Smoke con gas a Laundry). Bandit trickea la pared exterior del Garage y Jäger cubre las escotillas y la escalera de Kitchen. Nadie roamea lejos: el sótano de House se defiende desde adentro y con la rotación Garage↔Training Room abierta.",
+     "reinforce":["Pared exterior del Garage ×2","Escotilla de Depot (Dining Room)","Escotilla de Kitchen Stairs","Pared Depot–Garage (una sola)"],
+     "rotations":["Garage↔Training Room","Training Room↔Laundry Room (puerta abierta con gas)","Garage↔Depot (rotación pequeña)"],
+     "ops":[
+      {"op":"castle","room":"Garage","f":0,"role":"ancla","job":"Castle en la persiana y en la puerta de Side Stairs; se planta detrás del coche mirando la pared exterior"},
+      {"op":"mira","room":"Garage","f":0,"role":"ancla","job":"Espejo en la pared reforzada hacia Garage Entrance y otro hacia Depot; controla el coche y la rotación"},
+      {"op":"smoke","room":"Training Room","f":0,"role":"ancla","job":"Gas a la puerta de Laundry Room y a la de Garage en el defuse; se queda pegado a la pared bajo Kitchen"},
+      {"op":"bandit","room":"Garage","f":0,"role":"flex","job":"Trickea la pared exterior del Garage y una batería en la escotilla de Depot; rota a Training Room si abren Laundry"},
+      {"op":"jager","room":"Kitchen Stairs","f":0,"role":"flex","job":"ADS en la escalera de Kitchen y en la puerta de Training Room; asoma a Laundry y cubre el hueco vertical de Kitchen"}
+     ]},
+    {"id":"alt","n":"Contra rush y vertical","summary":"Para equipos que rushean la persiana o hacen vertical desde Kitchen. Kaid electrifica pared y escotillas sin que lo vean, Azami sella el piso roto de Kitchen desde abajo, Noor quema la persiana para los escudos, Melusi frena Laundry y Solis roamea en Kitchen para robar el vertical.",
+     "reinforce":["Pared exterior del Garage ×2","Escotilla de Depot","Escotilla de Kitchen Stairs","Pared Laundry–Training Room (una sola)"],
+     "rotations":["Garage↔Training Room","Training Room↔Kitchen Stairs (Solis baja)","Training Room↔Laundry Room"],
+     "ops":[
+      {"op":"kaid","room":"Garage","f":0,"role":"ancla","job":"Rtila en la pared exterior del Garage y en la escotilla de Depot desde adentro; sostiene el coche"},
+      {"op":"azami","room":"Training Room","f":0,"role":"ancla","job":"Kibas a los huecos del piso de Kitchen cuando Buck o Sledge abran; cubre la puerta de Garage"},
+      {"op":"noor","room":"Garage","f":0,"role":"flex","job":"Fuego del Horus a la persiana y a la puerta de Side Stairs cuando entren Blitz o Montagne; rota a Training Room"},
+      {"op":"melusi","room":"Laundry Room","f":0,"role":"flex","job":"Banshees en la puerta de Basement Stairs y en la de Training Room; frena el flanco y avisa"},
+      {"op":"solis","room":"Kitchen","f":1,"role":"roam","job":"Roamea en Kitchen y Dining Room, ve los gadgets del vertical y cae por Kitchen Stairs a defender cuando planten"}
+     ]}
+   ]
+  },
+  "kitchen": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Living Room para abrir la pared reforzada de Dining Room mientras Buck rappelea a Back Porch Top, entra a Master Bedroom y rompe el piso sobre Kitchen. Nomad sella Back Entrance para que nadie flanquee por el Garden. Cuando la pared cae y Kitchen no tiene techo, plantas en Dining Room con la ancla de Kitchen aislada.",
+     "timeline":["0:00–0:45 · drones a Kitchen y Dining Room; Iana revisa Living Room; Buck sube a Back Porch Top","0:45–1:30 · Buck abre el piso de Master Bedroom sobre Kitchen; EMP + SELMA en la pared Living–Dining","1:30–2:30 · entrada por la pared y por Back Entrance; Nomad cierra Back Porch; planta en Dining Room","2:30–3:00 · post-plant: Buck desde arriba, Ace sostiene el hueco, Nomad la puerta trasera"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal y Living Room","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada y limpia el Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de las Lobby Stairs y gira a Living Room","via":"door"},
+        {"room":"Living Room","f":1,"do":"SELMA a la pared reforzada de Dining Room después del EMP","via":"breach"},
+        {"room":"Dining Room","f":1,"do":"Entra por el hueco con humo y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer tipo Vigil/Cav bajando de las Lobby Stairs o en Office","how":"Dron a la escalera y a Office antes de pasar; Iana manda el holo"},
+        {"room":"Living Room","f":1,"threat":"Bandit trickeando la pared y Maestro con Evil Eye hacia Living Room","how":"Espera el doble EMP de Thatcher y pon la SELMA por partes desde la esquina que el Evil Eye no ve"},
+        {"room":"Dining Room","f":1,"threat":"Ancla Maestro con Evil Eye y Jäger detrás de la mesa","how":"Humo antes de cruzar, Buck ya rompió el techo y entra con Iana viendo"}],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Dining Room desde Living Room"},
+      {"op":"thatcher","role":"antigadget","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal buscando trampas","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza rápido a la puerta","via":"door"},
+        {"room":"Front Porch","f":1,"do":"EMP a la barricada del frente antes de romperla","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de las escaleras","via":"door"},
+        {"room":"Living Room","f":1,"do":"Dos EMP a la pared Living–Dining para quemar Bandit, Kaid, Mute y el Evil Eye","via":"breach"},
+        {"room":"Dining Room","f":1,"do":"Entra tras Ace y cubre la puerta de Kitchen","via":"breach"}],
+       "clear":[
+        {"room":"Front Porch","f":1,"threat":"Kapkan en la puerta principal y jammer de Mute","how":"EMP al marco antes de que entre nadie"},
+        {"room":"Living Room","f":1,"threat":"Bandit trickeando y Maestro con Evil Eye","how":"Doble EMP con dos segundos de diferencia y avisa a Ace"},
+        {"room":"Dining Room","f":1,"threat":"Ancla Smoke con gas en la puerta Dining–Kitchen","how":"EMP al gas si ya lo puso y entra con humo"}],
+       "final":"Cubre el hueco y la rotación Kitchen→Dining Room durante la planta"},
+      {"op":"iana","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Manda el holo a Living Room antes de entrar","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza con el equipo","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra con la barricada rota","via":"door"},
+        {"room":"Lobby","f":1,"do":"Holo a Office y a las Lobby Stairs para sacar al roamer","via":"door"},
+        {"room":"Living Room","f":1,"do":"Cubre a Ace y mete el holo por el hueco","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Entra con el holo por delante y busca al ancla de Kitchen","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer en Office o en las Lobby Stairs","how":"Holo primero, tú después; que dispare al holo y prefire"},
+        {"room":"Dining Room","f":1,"threat":"Ancla Maestro detrás de la mesa y Jäger en la esquina de Kitchen","how":"Holo por el hueco de Ace para ver dónde están y entra cuando Buck los presione"}],
+       "final":"Da la info del sitio y planta en Dining Room si Ace está sosteniendo"},
+      {"op":"buck","role":"vertical","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden buscando spawn peek en Back Porch","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche trasero","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Rompe la barricada de la ventana de Master Bedroom","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Skeleton Key al piso de Master Bedroom sobre Kitchen y granadas a la ancla","via":"window"},
+        {"room":"Walk-in","f":2,"do":"Abre huecos sobre la puerta Kitchen–Dining para negar la rotación","via":"door"}],
+       "clear":[
+        {"room":"Garden","f":-1,"threat":"Spawn peek desde la ventana de Master Bedroom o desde Back Entrance","how":"Dron primero y rappelea por el lado que no ven"},
+        {"room":"Master Bedroom","f":2,"threat":"Roamer 2F (Lesion/Vigil) esperando en Master Bedroom o Walk-in","how":"Entra por la ventana con dron dentro y prefire del Walk-in"},
+        {"room":"Walk-in","f":2,"threat":"Ancla de Kitchen disparando hacia arriba por los huecos","how":"Abre el piso desde otra esquina y tira la granada antes de asomarte"}],
+       "final":"Rompe el piso de Master Bedroom sobre Kitchen y niega al ancla desde arriba durante la planta"},
+      {"op":"nomad","role":"flanco","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza al porche trasero pegado a la barda","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Airjab en la puerta trasera y rompe la barricada","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Limpia el marco y deja dos Airjabs hacia Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Entra al final cuando el sitio esté limpio y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Back Porch","f":1,"threat":"Castle en la puerta trasera y Kapkan en el marco","how":"Dron al marco, rompe la trampa y usa el impacto de otro para la barricada de Castle"},
+        {"room":"Back Entrance","f":1,"threat":"Ancla Smoke con gas a la puerta trasera","how":"Airjab a la puerta y no entres hasta que gaste el gas"},
+        {"room":"Kitchen","f":1,"threat":"Ancla Smoke en Kitchen y Lesion con gu en el marco","how":"Entra cuando Buck ya abrió el piso y Ace la pared; mira el piso"}],
+       "final":"Sella Back Entrance con Airjabs y cubre el post-plant desde Kitchen"}
+     ]},
+    {"id":"rush","n":"Rush puerta trasera","tag":"RUSH","summary":"Entrada rápida por Back Entrance antes de que castleen la puerta: candelas de Ying a Kitchen, Ash rompe la barricada, Blitz al frente con Finka activa. Zofia sube por Kitchen Stairs desde Laundry para pinchar por la espalda. Kitchen es un cuarto chico y el rush lo revienta antes de que armen Smoke y Maestro.",
+     "timeline":["0:00–0:20 · sin drones largos: cuatro al Garden, Zofia a Basement Stairs","0:20–0:45 · candelas y breach de la puerta trasera; Zofia sube por Kitchen Stairs","0:45–1:30 · limpiar Kitchen y Dining Room, plantar en Kitchen","1:30–3:00 · post-plant sosteniendo Back Entrance y Dining"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Corre al Garden sin detenerte","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza al porche trasero","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Dos candelas por la puerta trasera cuando Ash la abra","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Entra ciega con las candelas","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Última candela a Dining Room y planta","via":"door"}],
+       "clear":[
+        {"room":"Back Porch","f":1,"threat":"Defensor asomando por la puerta trasera o Kapkan recién puesto","how":"Candela primero, nadie cruza antes de que truene"},
+        {"room":"Kitchen","f":1,"threat":"Ancla Smoke pegada a la barra o Warden anulando la candela","how":"Prefire de la barra y entra con Blitz por delante"}],
+       "final":"Planta en Kitchen pegada a la barra y sostiene la puerta de Dining Room"},
+      {"op":"ash","role":"entrada","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Corre al Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Breach a la puerta trasera desde lejos","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Entra por el hueco","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Limpia el marco y avanza","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Segunda carga a la puerta de Dining si la castlearon","via":"door"}],
+       "clear":[
+        {"room":"Garden","f":-1,"threat":"Castle poniendo la barricada blindada en Back Entrance","how":"El breach de Ash la rompe a distancia; tíralo apenas veas el marco"},
+        {"room":"Kitchen","f":1,"threat":"Jäger o Smoke cubriendo la puerta Kitchen–Dining","how":"Entra con la candela y con Blitz por delante"}],
+       "final":"Cubre la planta desde la puerta Kitchen–Dining Room"},
+      {"op":"blitz","role":"soporte","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Corre pegado a Ying con el escudo arriba","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Entra primero por la puerta trasera con flash lista","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Flash al marco de Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Flash a la barra y a Dining Room; tanquea la planta","via":"door"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Noor con fuego para escudos en el marco de Kitchen","how":"No te pares en el fuego: flash y que Ash abra otra vez si hace falta"},
+        {"room":"Kitchen","f":1,"threat":"Smoke con gas en la puerta trasera","how":"Flash y cruza rápido con Finka activa"}],
+       "final":"Tanquea la planta de Ying en Kitchen"},
+      {"op":"finka","role":"soporte","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Activa el primer Surge cuando Ash rompa la puerta","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Entra detrás de Blitz","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Segundo Surge al entrar a Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Cubre la planta desde Back Entrance y revive a quien caiga","via":"door"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"C4 de un ancla al grupo apretado en la puerta","how":"No entren en bola: Blitz primero, tú al último con Surge activo"},
+        {"room":"Kitchen","f":1,"threat":"Lesion con gu en el marco o Frost bajo la ventana","how":"Mira el piso, dispara el cepo y sigue"}],
+       "final":"Sostiene Back Entrance y revive con Surge en el post-plant"},
+      {"op":"zofia","role":"flanco","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Corre a las escaleras del sótano","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza a Basement Stairs","via":"door"},
+        {"room":"Basement Stairs","f":-1,"do":"Impacto a la barricada y baja","via":"door"},
+        {"room":"Laundry Room","f":0,"do":"Cruza a Training Room","via":"door"},
+        {"room":"Training Room","f":0,"do":"Corre a Kitchen Stairs","via":"door"},
+        {"room":"Kitchen Stairs","f":0,"do":"Concusión a la parte alta de la escalera y sube","via":"stairs"},
+        {"room":"Kitchen Stairs","f":1,"do":"Sale por la espalda de Kitchen","via":"stairs"},
+        {"room":"Kitchen","f":1,"do":"Pincha a la ancla por atrás mientras miran la puerta trasera","via":"door"}],
+       "clear":[
+        {"room":"Laundry Room","f":0,"threat":"Roamer en el sótano o Kapkan en la puerta de Training Room","how":"Impacto a la puerta desde lejos y prefire de las lavadoras"},
+        {"room":"Kitchen Stairs","f":1,"threat":"Ancla Smoke o Jäger de espaldas a la escalera de Kitchen","how":"Concusión arriba y sube justo cuando truenen las candelas"}],
+       "final":"Pincha a la ancla de Kitchen por la espalda y cubre Kitchen Stairs durante la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma todo el segundo piso por las Lobby Stairs y desde ahí se destruye el sitio: Sledge en Bathroom sobre Dining Room, Ram en Master Bedroom sobre Kitchen, Fuze en Walk-in sobre la puerta Kitchen–Dining. Glaz cubre Back Entrance con humo y térmica desde el Garden. Hibana abre la pared de Dining al final para entrar cuando ya no quede nadie.",
+     "timeline":["0:00–0:45 · drones; cuatro suben por Lobby Stairs a Upper Hallway; Glaz al Garden","0:45–1:45 · Ram sobre Kitchen, Sledge sobre Dining, Fuze sobre la puerta; Glaz con humo en Back Entrance","1:45–2:30 · Hibana abre la pared Living–Dining y planta en Dining Room","2:30–3:00 · post-plant desde arriba y desde Glaz"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada del frente","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia y sube por las escaleras","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube pegado a la pared","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso y el pasillo","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Limpia Kid's Bedroom con dron antes de seguir","via":"door"},
+        {"room":"Bathroom","f":2,"do":"Rompe el piso de Bathroom sobre Dining Room y castiga la mesa","via":"door"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":2,"threat":"Roamer tipo Vigil/Lesion esperando arriba de la escalera con gu","how":"Dron arriba, dispara los gu y sube en pareja"},
+        {"room":"Bathroom","f":2,"threat":"Ancla de Dining disparando hacia arriba por los huecos","how":"Rompe desde una esquina y cambia de lugar tras cada hueco"}],
+       "final":"Sostiene Bathroom con el piso abierto y niega Dining Room durante la planta"},
+      {"op":"ram","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra con Sledge","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza a la puerta","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra tras la barricada rota","via":"door"},
+        {"room":"Lobby","f":1,"do":"Cubre la escalera y sube","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Avanza a Master Bedroom cubierto","via":"door"},
+        {"room":"Master Bedroom","f":2,"do":"Lanza el BU-GI cruzando el piso sobre Kitchen para abrirlo completo","via":"door"}],
+       "clear":[
+        {"room":"Upper Hallway","f":2,"threat":"Roamer en Kid's Bedroom o Walk-in","how":"Dron a los dos cuartos y prefire de las puertas"},
+        {"room":"Master Bedroom","f":2,"threat":"Ancla Smoke de Kitchen disparando hacia arriba cuando el BU-GI abre","how":"Lánzalo desde la puerta y quítate del hueco; pelea desde Walk-in"}],
+       "final":"Abre el piso de Master Bedroom sobre Kitchen y niega al ancla desde arriba"},
+      {"op":"fuze","role":"negacion","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra con el grupo","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Sube con el grupo","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Cubre el pasillo","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Avanza a Walk-in","via":"door"},
+        {"room":"Walk-in","f":2,"do":"Cargas de racimo en el piso sobre la puerta Kitchen–Dining y sobre la barra","via":"door"}],
+       "clear":[
+        {"room":"Walk-in","f":2,"threat":"Lesion o Vigil escondido en el Walk-in","how":"Dron dentro y entra con Ram cubriendo desde Master Bedroom"},
+        {"room":"Upper Hallway","f":2,"threat":"Defensor subiendo por Lobby Stairs para robar el vertical","how":"Sledge deja a alguien en el descanso; no des la espalda a la escalera"}],
+       "final":"Detona las cargas sobre la puerta Kitchen–Dining cuando el equipo se junte a defusear"},
+      {"op":"glaz","role":"negacion","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden buscando spawn peek","via":"door"},
+        {"room":"Garden","f":-1,"do":"Humo al Back Porch y se pone en la barda con la térmica","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Rompe la barricada de Back Entrance y ve a través del humo","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Entra sólo cuando el vertical ya limpió Kitchen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Cubre el post-plant desde la puerta trasera","via":"door"}],
+       "clear":[
+        {"room":"Garden","f":-1,"threat":"Spawn peek desde la ventana de Kitchen o desde Back Entrance","how":"Dron y humo antes de cruzar; que ellos te busquen en el humo"},
+        {"room":"Back Entrance","f":1,"threat":"Ancla Smoke con gas en la puerta trasera y Castle en el marco","how":"Térmica a través del humo y mata a quien asome; no entres hasta que Ram abra el piso"}],
+       "final":"Sostiene Back Entrance con humo y térmica y castiga a quien rote por Kitchen"},
+      {"op":"hibana","role":"duro","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra al último","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza a la puerta principal","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra y cubre el Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Cubre las Lobby Stairs mientras los demás suben","via":"door"},
+        {"room":"Living Room","f":1,"do":"X-KAIROS a la pared reforzada de Dining Room cuando el vertical ya presionó","via":"breach"},
+        {"room":"Dining Room","f":1,"do":"Entra y planta pegada a la pared de Living","via":"breach"}],
+       "clear":[
+        {"room":"Living Room","f":1,"threat":"Bandit trickeando la pared y Maestro con Evil Eye","how":"Tira los pellets en tres tandas y cambia de posición; que Fuze detone sobre el Evil Eye"},
+        {"room":"Dining Room","f":1,"threat":"Ancla Maestro/Jäger detrás de la mesa","how":"Sledge abrió el piso de Bathroom; entra cuando volteen hacia arriba"}],
+       "final":"Abre la pared Living–Dining al final y planta en Dining Room"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Thermite y Brava abren la pared Living–Dining mientras Capitão, Gridlock y Dokkaebi entran por Back Entrance. Brava roba el Evil Eye o el ADS para dejar la pared limpia y Dokkaebi hace sonar los teléfonos justo cuando truena la carga. La defensa tiene que elegir entre la pared y la puerta trasera.",
+     "timeline":["0:00–0:45 · drones; Thermite y Brava a Living Room, los otros tres al Garden","0:45–1:30 · Brava roba gadgets, Thermite abre; Capitão humo en Back Entrance; Dokkaebi llama","1:30–2:30 · entrada simultánea; Gridlock cierra Lobby Stairs; planta en Kitchen","2:30–3:00 · post-plant con Capitão quemando la puerta Dining–Kitchen"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea Living Room desde afuera","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza a la puerta principal","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la escalera y gira a Living Room","via":"door"},
+        {"room":"Living Room","f":1,"do":"Carga exotérmica a la pared reforzada de Dining cuando Brava confirme que está limpia","via":"breach"},
+        {"room":"Dining Room","f":1,"do":"Entra por el hueco al mismo tiempo que el otro frente","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer bajando por Lobby Stairs","how":"Dron a la escalera y espera a Gridlock para que ponga Trax"},
+        {"room":"Living Room","f":1,"threat":"Bandit trickeando la pared y Evil Eye de Maestro","how":"Brava kludgea el Evil Eye; pon la carga justo después"},
+        {"room":"Dining Room","f":1,"threat":"Ancla detrás de la mesa","how":"Entra cuando disparen hacia Back Entrance"}],
+       "final":"Sostiene el hueco de la pared mientras plantan en Kitchen"},
+      {"op":"brava","role":"antigadget","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Mete el Kludge por la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza con Thermite","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Kludge hacia Dining Room para robar el Evil Eye o el ADS","via":"door"},
+        {"room":"Living Room","f":1,"do":"Cubre a Thermite y usa el Evil Eye robado para ver el sitio","via":"door"},
+        {"room":"Dining Room","f":1,"do":"Entra tras Thermite y cubre la puerta de Kitchen","via":"breach"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Mozzie con Pest en las puertas esperando tu dron","how":"Dron normal primero para gastar el Pest; Kludge después"},
+        {"room":"Living Room","f":1,"threat":"Maestro con Evil Eye hacia la pared y Jäger con ADS","how":"Roba el Evil Eye y dispara con él a la ancla; el ADS lo hackeas para que le dispare a sus granadas"}],
+       "final":"Cubre el hueco con el Evil Eye robado y sostiene la puerta Dining–Kitchen"},
+      {"op":"capitao","role":"negacion","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Flecha de humo a la puerta trasera","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Rompe la barricada con el humo","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Fuego a la barra de Kitchen para sacar al ancla","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Fuego a la puerta de Dining en la planta","via":"door"}],
+       "clear":[
+        {"room":"Back Porch","f":1,"threat":"Castle en la puerta trasera y ancla Smoke detrás","how":"Humo al marco y que Gridlock rompa la barricada con impacto"},
+        {"room":"Kitchen","f":1,"threat":"Rotación desde Dining Room para el defuse","how":"Fuego a la puerta Dining–Kitchen justo cuando planten"}],
+       "final":"Quema la rotación Dining→Kitchen y cubre el post-plant desde Back Entrance"},
+      {"op":"gridlock","role":"flanco","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Entra con Capitão","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza al porche","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Impacto a la barricada de Castle","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Trax en Back Porch para que nadie salga a flanquear","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Trax a Kitchen Stairs y planta pegada a la barra","via":"door"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Lesion con gu en el marco y Smoke con gas","how":"Dispara los gu y entra tras el humo de Capitão"},
+        {"room":"Kitchen","f":1,"threat":"Defensor subiendo por Kitchen Stairs para el defuse","how":"Trax en la escalera y sostén desde Back Entrance"}],
+       "final":"Bloquea Kitchen Stairs con Trax y planta en Kitchen"},
+      {"op":"dokkaebi","role":"intel","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Llama los teléfonos justo cuando Thermite pone la carga","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Entra tras Capitão","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Hackea el teléfono del primer caído y ve las cams","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Cubre la planta usando las cams de la defensa","via":"door"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Ancla Smoke con gas y Maestro atento al teléfono","how":"Llama en el momento de la carga; cuando vibren, entra"},
+        {"room":"Kitchen","f":1,"threat":"Cam de Valk mirando la planta","how":"Hackea el teléfono y rompe la cam desde dentro"}],
+       "final":"Cubre el post-plant con las cams hackeadas y avisa las rotaciones"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Smoke ancla Kitchen con gas a Back Entrance, Maestro sostiene Dining Room con Evil Eye a la pared de Living. Castle cierra la puerta trasera, Jäger protege los dos cuartos del EMP y las granadas, y Lesion roamea el segundo piso para castigar el vertical. Sitio chico: no lo sobrecargues, dos anclas bastan.",
+     "reinforce":["Pared Dining Room–Living Room ×2","Puerta trasera (Castle)","Escotilla de Kitchen Stairs","Escotilla de Dining Room"],
+     "rotations":["Kitchen↔Dining Room","Kitchen↔Kitchen Stairs (rotación al sótano)","Dining Room↔Lobby (puerta vigilada)"],
+     "ops":[
+      {"op":"smoke","room":"Kitchen","f":1,"role":"ancla","job":"Gas a Back Entrance y a la puerta de Dining en el defuse; se queda detrás de la barra"},
+      {"op":"maestro","room":"Dining Room","f":1,"role":"ancla","job":"Evil Eye a la pared de Living Room y otro hacia el Lobby; sostiene la mesa"},
+      {"op":"castle","room":"Back Entrance","f":1,"role":"flex","job":"Barricada blindada en Back Entrance y en la puerta Dining–Lobby; cubre Kitchen Stairs"},
+      {"op":"jager","room":"Dining Room","f":1,"role":"flex","job":"ADS en Dining Room y en Kitchen; rota entre los dos cuartos y asoma a Living Room"},
+      {"op":"lesion","room":"Master Bedroom","f":2,"role":"roam","job":"Gu en Lobby Stairs y en la ventana de Master Bedroom; castiga el vertical y baja a defender"}
+     ]},
+    {"id":"alt","n":"Anti-vertical","summary":"Contra equipos que hacen vertical desde Master Bedroom y Bathroom. Kaid electrifica la pared de Dining y las escotillas, Azami sella los huecos del techo desde abajo, Warden anula el humo y las candelas en Back Entrance, Noor quema a los escudos en la puerta trasera y Solis roamea arriba para robar a Buck y Sledge.",
+     "reinforce":["Pared Dining Room–Living Room ×2","Escotilla de Kitchen Stairs","Escotilla de Dining Room","Pared Kitchen–Back Entrance (una sola)"],
+     "rotations":["Kitchen↔Dining Room","Dining Room↔Lobby","Kitchen↔Back Entrance (Warden)"],
+     "ops":[
+      {"op":"kaid","room":"Dining Room","f":1,"role":"ancla","job":"Rtila en la pared de Living y en la escotilla de Dining; sostiene la mesa"},
+      {"op":"azami","room":"Kitchen","f":1,"role":"ancla","job":"Kibas a los huecos del techo cuando abran desde Master Bedroom; cubre la barra"},
+      {"op":"warden","room":"Back Entrance","f":1,"role":"flex","job":"Glance para ver a través del humo y las candelas en la puerta trasera; rota a Kitchen"},
+      {"op":"noor","room":"Kitchen","f":1,"role":"flex","job":"Fuego del Horus a Back Entrance y a la puerta de Dining cuando entren Blitz, Montagne u Osa"},
+      {"op":"solis","room":"Upper Hallway","f":2,"role":"roam","job":"Roamea en Upper Hallway y Master Bedroom, ve las cargas de Fuze y castiga a Sledge y Buck por la espalda"}
+     ]}
+   ]
+  },
+  "kids": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Upper Hallway por las Lobby Stairs para abrir la pared reforzada de Workshop, mientras Zero mete Argus por las ventanas de Kid's Bedroom desde Front Porch Top y Buck rompe el techo de Office bajo Kid's Bedroom. Nomad sella Side Stairs para que nadie flanquee por el Garage. Con la pared abierta y la ancla de Kid's Bedroom sin piso, se planta en Workshop.",
+     "timeline":["0:00–0:45 · drones a Workshop y Kid's Bedroom; Zero rappelea a Front Porch Top; Thatcher y Thermite suben por Lobby Stairs","0:45–1:30 · Buck abre el techo de Office; EMP + carga en la pared Upper Hallway–Workshop","1:30–2:30 · entrada por la pared y por Side Stairs; Nomad cierra la escalera; planta en Workshop","2:30–3:00 · post-plant: Buck desde abajo, Thermite sostiene el hueco, Nomad la escalera lateral"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal y las escaleras","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada y limpia el Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina y sube pegado a la pared","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube tras el EMP al descanso","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso y avanza al pasillo","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Carga exotérmica a la pared reforzada de Workshop después del EMP","via":"breach"},
+        {"room":"Workshop","f":2,"do":"Entra por el hueco con humo y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":2,"threat":"Kapkan en la parte alta de la escalera y roamer asomando desde Master Bedroom","how":"Dron arriba de la escalera, EMP de Thatcher y subes en pareja"},
+        {"room":"Upper Hallway","f":2,"threat":"Bandit trickeando la pared de Workshop y Mira con espejo hacia el pasillo","how":"Espera el doble EMP, pon la carga en la esquina que el espejo no cubre y que Buck ya haya roto el techo"},
+        {"room":"Workshop","f":2,"threat":"Ancla Smoke con gas en el hueco y Frost bajo la ventana","how":"Humo antes de cruzar, entra con Zero viendo por la Argus y mira el piso"}],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Workshop desde Upper Hallway"},
+      {"op":"thatcher","role":"antigadget","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal buscando trampas","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza rápido","via":"door"},
+        {"room":"Front Porch","f":1,"do":"EMP al marco de la puerta principal","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de Office","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"EMP a la parte alta de la escalera para quemar Kapkan y gu","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Dos EMP a la pared de Workshop para quemar Bandit, Kaid y Mute","via":"breach"},
+        {"room":"Workshop","f":2,"do":"Entra tras Thermite y cubre la puerta de Kid's Bedroom","via":"breach"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":1,"threat":"Trampa de Kapkan o gu de Lesion arriba de la escalera","how":"EMP antes de subir y dispara los gu que queden"},
+        {"room":"Upper Hallway","f":2,"threat":"Bandit trickeando y Mira con espejo hacia el pasillo","how":"Doble EMP con dos segundos de diferencia y avisa a Thermite"},
+        {"room":"Workshop","f":2,"threat":"Jäger con ADS y Smoke con gas en el hueco","how":"EMP al entrar y cruza con humo"}],
+       "final":"Cubre el hueco y la rotación Kid's Bedroom→Workshop durante la planta"},
+      {"op":"zero","role":"intel","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Dronea la fachada buscando spawn peek desde Kid's Bedroom","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Rappel al techo del porche delantero","via":"rappel"},
+        {"room":"Front Porch Top","f":2,"do":"Argus por la ventana de Kid's Bedroom para ver la ancla y las Frost","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra por la ventana al final cuando la pared ya cayó","via":"window"},
+        {"room":"Workshop","f":2,"do":"Cruza a cubrir la planta","via":"door"}],
+       "clear":[
+        {"room":"Front Yard","f":-1,"threat":"Spawn peek desde las ventanas de Kid's Bedroom","how":"Dron primero y rappelea por el lado del Treehouse Alley"},
+        {"room":"Front Porch Top","f":2,"threat":"Castle en la ventana y Frost debajo; Noor con fuego a la ventana","how":"Argus antes de romper, no entres por donde hay cepo y espera a que la defensa mire la pared"},
+        {"room":"Kid's Bedroom","f":2,"threat":"Ancla Frost/Smoke pegada a la pared de Workshop","how":"Ve por la Argus y entra sólo cuando Buck la haya movido con el techo"}],
+       "final":"Da la info del sitio desde la Argus y entra por la ventana a cubrir la planta en Workshop"},
+      {"op":"buck","role":"vertical","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra con Thermite","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza a la puerta principal","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia y gira a Office","via":"door"},
+        {"room":"Office","f":1,"do":"Skeleton Key al techo de Office bajo Kid's Bedroom para negar la ancla y las Frost","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer tipo Vigil/Cav en Office o bajando por Side Stairs","how":"Dron a Office y a Living Room antes de entrar; avanza en pareja"},
+        {"room":"Office","f":1,"threat":"Ancla de Kid's Bedroom disparando hacia abajo por los huecos o una C4","how":"Rompe el techo desde una esquina, cambia de lugar tras cada hueco y no te quedes bajo el mismo"}],
+       "final":"Rompe el techo de Office bajo Kid's Bedroom y niega la ancla desde abajo durante la planta"},
+      {"op":"nomad","role":"flanco","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Dronea la puerta lateral","via":"door"},
+        {"room":"Side Stairs","f":1,"do":"Rompe la barricada y deja un Airjab en la puerta lateral","via":"door"},
+        {"room":"Side Stairs","f":2,"do":"Sube y deja dos Airjabs en la parte alta hacia Workshop","via":"stairs"},
+        {"room":"Workshop","f":2,"do":"Entra al final para plantar detrás del equipo","via":"door"}],
+       "clear":[
+        {"room":"Side Stairs","f":1,"threat":"Kapkan en la puerta lateral y roamer bajando a Garage","how":"Dron a la barricada, dispara la trampa y prefire de la escalera"},
+        {"room":"Side Stairs","f":2,"threat":"Ancla de Workshop cubriendo la escalera lateral","how":"Airjab a la puerta y espera a que Thermite abra la pared para que volteen"}],
+       "final":"Sella Side Stairs con Airjabs y planta en Workshop cuando el sitio ya está limpio"}
+     ]},
+    {"id":"rush","n":"Rush ventanas","tag":"RUSH","summary":"Rappel directo a Front Porch Top y entrada por las ventanas de Kid's Bedroom antes de que Castle y Frost estén puestas: Ying tira candelas, Ash rompe la barricada, Zofia y Finka entran y Amaru vuela por la otra ventana. Se planta en Kid's Bedroom con la ancla todavía acomodándose.",
+     "timeline":["0:00–0:20 · rappel a Front Porch Top sin drones largos","0:20–0:45 · candelas, breach de las ventanas, Amaru por la otra ventana","0:45–1:30 · limpiar Kid's Bedroom y Workshop, plantar en Kid's Bedroom","1:30–3:00 · post-plant sosteniendo las ventanas y la puerta de Upper Hallway"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Corre al patio delantero","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Front Porch Top","f":2,"do":"Dos candelas por la ventana de Kid's Bedroom cuando Ash la abra","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra ciega con las candelas y planta","via":"window"}],
+       "clear":[
+        {"room":"Front Porch Top","f":2,"threat":"Defensor asomando por la ventana o Frost recién puesta","how":"Candela primero, nadie entra antes de que truene; mira el piso"},
+        {"room":"Kid's Bedroom","f":2,"threat":"Ancla Frost o Smoke pegada a la pared de Workshop","how":"Prefire de la esquina y entra con Zofia"}],
+       "final":"Planta en Kid's Bedroom pegada a la ventana y sostiene la puerta de Workshop"},
+      {"op":"ash","role":"entrada","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Corre al patio","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Breach a la ventana de Kid's Bedroom desde abajo","via":"door"},
+        {"room":"Front Porch Top","f":2,"do":"Rappel y segunda carga si la castlearon","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra tras las candelas y limpia la puerta de Upper Hallway","via":"window"},
+        {"room":"Workshop","f":2,"do":"Cruza a limpiar Workshop","via":"door"}],
+       "clear":[
+        {"room":"Front Yard","f":-1,"threat":"Castle poniendo la barricada blindada en la ventana","how":"El breach de Ash la rompe desde la calle; tíralo apenas la veas"},
+        {"room":"Workshop","f":2,"threat":"Jäger o Smoke cubriendo la puerta Kid's–Workshop","how":"Entra con la candela y con Finka activa"}],
+       "final":"Cubre la planta desde la puerta Kid's Bedroom–Workshop"},
+      {"op":"zofia","role":"entrada","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Corre con Ying","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Front Porch Top","f":2,"do":"Concusión por la ventana y entra","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Limpia la esquina de la puerta del pasillo","via":"window"},
+        {"room":"Workshop","f":2,"do":"Impacto a la puerta si la castlearon y entra","via":"door"}],
+       "clear":[
+        {"room":"Kid's Bedroom","f":2,"threat":"Frost bajo la ventana y ancla en la esquina","how":"Concusión antes de entrar y mira el piso al caer"},
+        {"room":"Workshop","f":2,"threat":"Ancla Smoke con gas en la puerta","how":"Impacto a la puerta y entra con Amaru"}],
+       "final":"Cubre la planta desde Kid's Bedroom y sostiene Workshop"},
+      {"op":"finka","role":"soporte","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Activa el primer Surge al llegar al patio","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Front Porch Top","f":2,"do":"Entra al último y cubre a los que entraron","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Segundo Surge en la planta y revive a quien caiga","via":"window"}],
+       "clear":[
+        {"room":"Front Porch Top","f":2,"threat":"C4 desde Kid's Bedroom al grupo en la ventana","how":"No entren en bola: uno por uno con Surge activo"},
+        {"room":"Kid's Bedroom","f":2,"threat":"Lesion con gu bajo la ventana","how":"Mira el piso y dispara los gu antes de que Ying plante"}],
+       "final":"Sostiene la ventana y revive con Surge en el post-plant"},
+      {"op":"amaru","role":"entrada","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Corre a la fachada","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Garra Hook a la otra ventana de Kid's Bedroom justo cuando truenen las candelas","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra volando y limpia la esquina contraria","via":"window"},
+        {"room":"Workshop","f":2,"do":"Cruza a Workshop a pinchar a la ancla por atrás","via":"door"}],
+       "clear":[
+        {"room":"Front Yard","f":-1,"threat":"Spawn peek desde la ventana o Castle en ella","how":"Ash la rompe primero; entra sólo con la ventana abierta"},
+        {"room":"Workshop","f":2,"threat":"Ancla Mira/Smoke de espaldas viendo hacia Upper Hallway","how":"Entra justo con las candelas y dispárales por la espalda"}],
+       "final":"Limpia Workshop por la espalda y cubre la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma el primer piso (Lobby, Office, Living Room) y desde ahí se revienta el sitio de abajo hacia arriba: Sledge rompe el techo de Office bajo Kid's Bedroom, Fuze y Kali trabajan las ventanas desde Front Porch Top, IQ marca cams y ADS, Capitão quema las esquinas. Se entra por las ventanas cuando ya no quede nadie parado.",
+     "timeline":["0:00–0:45 · drones; Sledge e IQ toman Lobby y Office; Fuze, Kali y Capitão suben a Front Porch Top","0:45–1:45 · Sledge abre el techo, Kali quema Castle y ADS, Fuze detona en Kid's Bedroom","1:45–2:30 · entrada por las ventanas; planta en Kid's Bedroom","2:30–3:00 · post-plant desde abajo y desde las ventanas"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la escalera y gira a Office","via":"door"},
+        {"room":"Office","f":1,"do":"Rompe el techo de Office bajo Kid's Bedroom por pedazos y castiga a la ancla","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Roamer bajando por las Lobby Stairs o desde Side Stairs","how":"Dron a las dos escaleras y que IQ escanee antes de pasar"},
+        {"room":"Office","f":1,"threat":"Ancla de Kid's Bedroom disparando hacia abajo o tirando C4 por el hueco","how":"Rompe desde una esquina, cambia de lugar tras cada hueco y no te pares bajo el mismo"}],
+       "final":"Sostiene Office con el techo abierto y niega Kid's Bedroom desde abajo durante la planta"},
+      {"op":"iq","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Escanea la fachada buscando cams de Valk","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza con Sledge","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra tras la barricada rota","via":"door"},
+        {"room":"Lobby","f":1,"do":"Escanea las escaleras y Living Room","via":"door"},
+        {"room":"Office","f":1,"do":"Marca las Frost, el ADS y el teléfono de la ancla a través del techo para Sledge","via":"door"}],
+       "clear":[
+        {"room":"Lobby","f":1,"threat":"Cam de Valkyrie en el Lobby y Vigil en Living Room","how":"Escáner al entrar, rompe la cam y dronea Living Room"},
+        {"room":"Office","f":1,"threat":"Ancla con teléfono (Maestro/Echo) en Kid's Bedroom","how":"Márcala con el escáner y que Sledge abra justo encima"}],
+       "final":"Marca gadgets y defensores a través del techo de Office para que la vertical sea exacta"},
+      {"op":"fuze","role":"negacion","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Dronea la fachada","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Rappel al techo del porche delantero","via":"rappel"},
+        {"room":"Front Porch Top","f":2,"do":"Cargas de racimo en la barricada de la ventana de Kid's Bedroom y en la pared blanda","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra por la ventana cuando Sledge y las cargas ya limpiaron","via":"window"}],
+       "clear":[
+        {"room":"Front Porch Top","f":2,"threat":"Castle en la ventana y Jäger con ADS dentro","how":"Kali quema el ADS con el lance; pon la carga sobre la barricada de Castle y detona"},
+        {"room":"Kid's Bedroom","f":2,"threat":"Ancla Frost/Smoke pegada a la pared de Workshop","how":"Carga en la pared que IQ marque y entra tras la detonación"}],
+       "final":"Detona sobre Kid's Bedroom y entra por la ventana a cubrir la planta"},
+      {"op":"kali","role":"antigadget","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Lance a la ventana de Kid's Bedroom para quemar Castle, ADS y Frost","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Front Porch Top","f":2,"do":"Sostiene la ventana con el rifle mientras Fuze pone las cargas","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra al final a cubrir la planta","via":"window"}],
+       "clear":[
+        {"room":"Treehouse Alley","f":-1,"threat":"Spawn peek desde la ventana de Kid's Bedroom","how":"Dron y prefire con el rifle desde la esquina del callejón"},
+        {"room":"Front Porch Top","f":2,"threat":"Castle y ADS en la ventana; Noor con fuego","how":"Lance explosivo a la barricada desde lejos y no entres hasta que Fuze detone"}],
+       "final":"Sostiene la ventana de Kid's Bedroom con el rifle y cubre la planta desde Front Porch Top"},
+      {"op":"capitao","role":"negacion","spawn":"APC Area",
+       "path":[
+        {"room":"Treehouse Alley","f":-1,"do":"Dronea la fachada","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Front Porch Top","f":2,"do":"Fuego por la ventana a las esquinas donde IQ marque a la ancla","via":"rappel"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra con humo y planta pegada a la ventana","via":"window"}],
+       "clear":[
+        {"room":"Front Porch Top","f":2,"threat":"Ancla asomando a la ventana desde la esquina","how":"Humo en la ventana y fuego a la esquina"},
+        {"room":"Kid's Bedroom","f":2,"threat":"Rotación desde Workshop para el defuse","how":"Fuego a la puerta Kid's–Workshop justo al plantar"}],
+       "final":"Quema la puerta de Workshop y planta en Kid's Bedroom"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Ace y Brava suben por Side Stairs y abren la pared o la puerta de Workshop, mientras Osa, Dokkaebi y Gridlock entran por Lobby Stairs a Upper Hallway y presionan la puerta de Kid's Bedroom. Gridlock cierra las Lobby Stairs con Trax, Dokkaebi llama al momento de la carga. La defensa no puede cubrir Side Stairs y el pasillo a la vez.",
+     "timeline":["0:00–0:45 · drones; Ace y Brava a Side Stairs, los otros tres por la puerta principal","0:45–1:30 · Brava roba gadgets, Ace abre desde Side Stairs; Osa pone Talon en Upper Hallway","1:30–2:30 · entrada simultánea; Gridlock cierra Lobby Stairs; planta en Workshop","2:30–3:00 · post-plant con los Talon de Osa en el pasillo"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Dronea la puerta lateral","via":"door"},
+        {"room":"Side Stairs","f":1,"do":"Rompe la barricada y sube pegado a la pared","via":"door"},
+        {"room":"Side Stairs","f":2,"do":"SELMA a la pared o a la puerta reforzada de Workshop cuando Brava confirme","via":"stairs"},
+        {"room":"Workshop","f":2,"do":"Entra por el hueco al mismo tiempo que el otro frente","via":"breach"}],
+       "clear":[
+        {"room":"Side Stairs","f":1,"threat":"Kapkan en la puerta lateral y roamer en la escalera","how":"Dron a la barricada, rompe la trampa y sube con Brava"},
+        {"room":"Side Stairs","f":2,"threat":"Bandit trickeando la pared de Workshop y ancla peekeando la escalera","how":"Brava hackea el ADS y tú tiras la SELMA por partes desde el descanso"},
+        {"room":"Workshop","f":2,"threat":"Ancla Mira/Smoke mirando el hueco","how":"Entra cuando el otro frente presione Kid's Bedroom y volteen"}],
+       "final":"Sostiene el hueco desde Side Stairs mientras plantan en Workshop"},
+      {"op":"brava","role":"antigadget","spawn":"Side Street",
+       "path":[
+        {"room":"Side Street","f":-1,"do":"Mete el Kludge por la puerta lateral","via":"door"},
+        {"room":"Side Stairs","f":1,"do":"Kludge hacia Workshop para robar el ADS o el Evil Eye","via":"door"},
+        {"room":"Side Stairs","f":2,"do":"Cubre a Ace desde el descanso","via":"stairs"},
+        {"room":"Workshop","f":2,"do":"Entra tras Ace y cubre la puerta de Kid's Bedroom","via":"breach"}],
+       "clear":[
+        {"room":"Side Stairs","f":1,"threat":"Mozzie con Pest en la escalera esperando tu dron","how":"Dron normal primero para gastar el Pest; Kludge después"},
+        {"room":"Workshop","f":2,"threat":"Jäger con ADS y Mira con espejo hacia Side Stairs","how":"Hackea el ADS para que se coma sus propias granadas y roba el Evil Eye si hay"}],
+       "final":"Cubre el hueco con los gadgets robados y sostiene la puerta Workshop–Kid's Bedroom"},
+      {"op":"osa","role":"soporte","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza con el grupo","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada","via":"door"},
+        {"room":"Lobby","f":1,"do":"Sube con el Talon por delante","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube con el escudo arriba","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Talon en el descanso","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Talon frente a la puerta de Kid's Bedroom y presiona","via":"door"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra tras el Talon cuando Ace abra Workshop","via":"door"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":2,"threat":"Kapkan arriba de la escalera y roamer en Master Bedroom","how":"Dron a la escalera, dispara la trampa y sube con Dokkaebi"},
+        {"room":"Upper Hallway","f":2,"threat":"Ancla de Kid's Bedroom asomando a la puerta del pasillo y Noor con fuego","how":"Talon en la puerta, no te pares en el fuego y presiona cuando truene la SELMA"}],
+       "final":"Sostiene Upper Hallway con los Talon y cubre la planta en Workshop desde la puerta de Kid's Bedroom"},
+      {"op":"dokkaebi","role":"intel","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Llama los teléfonos justo cuando Ace tira la SELMA","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube tras Osa","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Hackea el teléfono del primer caído y ve las cams","via":"door"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra con Osa y cubre la planta","via":"door"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":2,"threat":"Roamer tipo Vigil esperando el descanso","how":"Llama y escucha; cuando vibre, prefire"},
+        {"room":"Kid's Bedroom","f":2,"threat":"Cam de Valk mirando la planta","how":"Hackea el teléfono y rompe la cam desde dentro"}],
+       "final":"Cubre el post-plant con las cams hackeadas y avisa las rotaciones"},
+      {"op":"gridlock","role":"flanco","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra al último","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Trax al pie de la escalera para que nadie salga a flanquear","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Trax en el descanso hacia Master Bedroom","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Cubre la espalda del grupo hacia Bathroom","via":"door"},
+        {"room":"Kid's Bedroom","f":2,"do":"Entra al final y planta","via":"door"}],
+       "clear":[
+        {"room":"Upper Hallway","f":2,"threat":"Roamer saliendo de Master Bedroom o Bathroom por la espalda","how":"Trax en el pasillo hacia Master Bedroom y sostén el ángulo"},
+        {"room":"Kid's Bedroom","f":2,"threat":"Frost bajo las ventanas y ancla en la esquina","how":"Mira el piso y entra tras el Talon de Osa"}],
+       "final":"Bloquea el pasillo hacia Master Bedroom con Trax y planta en Kid's Bedroom"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Frost bajo cada ventana de Kid's Bedroom y Castle en ellas para frenar el rappel. Smoke ancla Workshop con gas a la pared abierta, Mira pone espejos hacia Upper Hallway y Side Stairs. Valkyrie roamea el primer piso con cams en Lobby y Office para avisar el vertical y bajar a pinchar.",
+     "reinforce":["Pared Workshop–Upper Hallway ×2","Ventanas de Kid's Bedroom (Castle)","Puerta Workshop–Side Stairs (una sola)"],
+     "rotations":["Kid's Bedroom↔Workshop","Workshop↔Side Stairs (Valk baja)","Kid's Bedroom↔Upper Hallway (puerta vigilada)"],
+     "ops":[
+      {"op":"frost","room":"Kid's Bedroom","f":2,"role":"ancla","job":"Cepo bajo cada ventana y otro en la puerta del pasillo; sostiene la esquina lejos de las ventanas"},
+      {"op":"castle","room":"Kid's Bedroom","f":2,"role":"flex","job":"Barricadas blindadas en las ventanas de Kid's Bedroom; rota a Workshop cuando abran la pared"},
+      {"op":"smoke","room":"Workshop","f":2,"role":"ancla","job":"Gas al hueco de la pared y a la puerta de Side Stairs en el defuse; se queda en la esquina de la mesa"},
+      {"op":"mira","room":"Workshop","f":2,"role":"ancla","job":"Espejo en la pared reforzada hacia Upper Hallway y otro hacia Side Stairs; controla las dos entradas"},
+      {"op":"valkyrie","room":"Office","f":1,"role":"roam","job":"Cams en Lobby, Office y Living Room; ve el vertical de Buck/Sledge y castiga por la espalda"}
+     ]},
+    {"id":"alt","n":"Anti-rush de ventanas","summary":"Contra equipos que rushean las ventanas o suben por Side Stairs. Mute jammea la puerta lateral y las ventanas contra los drones y Ash, Kaid electrifica la pared de Workshop, Warden ve a través de las candelas de Ying, Noor quema la ventana cuando entren escudos y Vigil roamea Living Room y Side Stairs sin que lo vean.",
+     "reinforce":["Pared Workshop–Upper Hallway ×2","Ventanas de Kid's Bedroom (Castle si hay, si no, barricada normal)","Puerta Workshop–Side Stairs (una sola)"],
+     "rotations":["Kid's Bedroom↔Workshop","Workshop↔Side Stairs","Kid's Bedroom↔Upper Hallway"],
+     "ops":[
+      {"op":"mute","room":"Workshop","f":2,"role":"ancla","job":"Jammers en la puerta de Side Stairs y en la pared reforzada; niega drones y las cargas de Ash"},
+      {"op":"kaid","room":"Workshop","f":2,"role":"ancla","job":"Rtila en la pared Workshop–Upper Hallway y en la puerta de Side Stairs; sostiene la esquina"},
+      {"op":"warden","room":"Kid's Bedroom","f":2,"role":"ancla","job":"Glance para ver a través de las candelas y el humo en las ventanas; se queda en la esquina contraria"},
+      {"op":"noor","room":"Kid's Bedroom","f":2,"role":"flex","job":"Fuego del Horus a las ventanas cuando entren Blitz u Osa; rota a Workshop"},
+      {"op":"vigil","room":"Living Room","f":1,"role":"roam","job":"Roamea Living Room y Side Stairs invisible a los drones; castiga a Nomad y a Ace en la escalera lateral"}
+     ]}
+   ]
+  },
+  "master": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Upper Hallway por las Lobby Stairs para abrir la pared reforzada de Bathroom, mientras Iana rappelea a Back Porch Top y mete el holo por las ventanas de Master Bedroom. Sledge rompe el techo de Kitchen bajo Master Bedroom para negar la ancla y Gridlock cierra las Lobby Stairs para que nadie flanquee. Con Bathroom abierto y Master Bedroom sin piso, se planta en Bathroom.",
+     "timeline":["0:00–0:45 · drones a Master Bedroom y Bathroom; Iana sube a Back Porch Top; Ace y Thatcher suben por Lobby Stairs","0:45–1:30 · Sledge abre el techo de Kitchen; EMP + SELMA en la pared Upper Hallway–Bathroom","1:30–2:30 · entrada por la pared y por la ventana; Gridlock cierra la escalera; planta en Bathroom","2:30–3:00 · post-plant: Sledge desde abajo, Ace sostiene el hueco, Iana la ventana"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal y las escaleras","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada y limpia el Lobby","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de Office y sube","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube tras el EMP","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"SELMA a la pared reforzada de Bathroom después del EMP","via":"breach"},
+        {"room":"Bathroom","f":2,"do":"Entra por el hueco con humo y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":2,"threat":"Kapkan arriba de la escalera y roamer asomando desde Kid's Bedroom","how":"Dron arriba de la escalera, EMP de Thatcher y sube en pareja"},
+        {"room":"Upper Hallway","f":2,"threat":"Bandit trickeando la pared de Bathroom y Mira con espejo hacia el pasillo","how":"Espera el doble EMP, pon la SELMA por partes en la esquina que el espejo no cubre"},
+        {"room":"Bathroom","f":2,"threat":"Ancla Smoke con gas en el hueco y Jäger detrás de la tina","how":"Humo antes de cruzar, entra con Iana viendo por el holo"}],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Bathroom desde Upper Hallway"},
+      {"op":"thatcher","role":"antigadget","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza rápido","via":"door"},
+        {"room":"Front Porch","f":1,"do":"EMP al marco de la puerta principal","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia la esquina de Office","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"EMP arriba de la escalera para quemar Kapkan y gu","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Dos EMP a la pared de Bathroom para quemar Bandit, Kaid y Mute","via":"breach"},
+        {"room":"Bathroom","f":2,"do":"Entra tras Ace y cubre la puerta de Walk-in","via":"breach"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":1,"threat":"Trampa de Kapkan o gu de Lesion arriba de la escalera","how":"EMP antes de subir y dispara los gu que queden"},
+        {"room":"Upper Hallway","f":2,"threat":"Bandit trickeando y Mira con espejo","how":"Doble EMP con dos segundos de diferencia y avisa a Ace"},
+        {"room":"Bathroom","f":2,"threat":"Jäger con ADS y Smoke con gas en el hueco","how":"EMP al entrar y cruza con humo"}],
+       "final":"Cubre el hueco y la rotación Master Bedroom→Bathroom durante la planta"},
+      {"op":"iana","role":"intel","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden buscando spawn peek desde Master Bedroom","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche trasero","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Holo por la ventana de Master Bedroom para ver la ancla y las Frost","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Entra por la ventana con el holo por delante cuando la pared ya cayó","via":"window"},
+        {"room":"Bathroom","f":2,"do":"Cruza por Walk-in a cubrir la planta","via":"door"}],
+       "clear":[
+        {"room":"Garden","f":-1,"threat":"Spawn peek desde las ventanas de Master Bedroom","how":"Dron primero y rappelea por el lado del Jacuzzi"},
+        {"room":"Back Porch Top","f":2,"threat":"Castle en la ventana y Frost debajo","how":"Holo antes de romper y no entres por donde hay cepo"},
+        {"room":"Master Bedroom","f":2,"threat":"Ancla Frost/Smoke pegada a la cama y Walk-in con roamer","how":"Holo por la ventana, que le disparen, y entra sólo cuando Sledge la haya movido con el techo"}],
+       "final":"Da la info del sitio con el holo y entra por la ventana a cubrir la planta en Bathroom"},
+      {"op":"sledge","role":"vertical","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza al porche trasero pegado a la barda","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Rompe la barricada de la puerta trasera","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Limpia el marco y avanza","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Rompe el techo de Kitchen bajo Master Bedroom por pedazos y castiga a la ancla","via":"door"}],
+       "clear":[
+        {"room":"Back Porch","f":1,"threat":"Kapkan en la puerta trasera y roamer en Kitchen","how":"Dron al marco, martillazo desde un lado y prefire de la barra"},
+        {"room":"Kitchen","f":1,"threat":"Ancla de Master Bedroom disparando hacia abajo o C4 por el hueco","how":"Rompe desde una esquina, cambia de lugar tras cada hueco y no te quedes bajo el mismo"}],
+       "final":"Rompe el techo de Kitchen bajo Master Bedroom y niega la ancla desde abajo durante la planta"},
+      {"op":"gridlock","role":"flanco","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Entra al último","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Trax al pie de la escalera para cortar el flanco","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube tras Ace","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Trax en el descanso hacia Kid's Bedroom","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Cubre la espalda del equipo hacia Kid's Bedroom y Workshop","via":"door"},
+        {"room":"Bathroom","f":2,"do":"Entra al final y planta","via":"door"}],
+       "clear":[
+        {"room":"Upper Hallway","f":2,"threat":"Roamer saliendo de Kid's Bedroom o Workshop por la espalda","how":"Trax en el pasillo hacia Kid's Bedroom y sostén el ángulo"},
+        {"room":"Bathroom","f":2,"threat":"Ancla Smoke detrás de la tina","how":"Entra tras el humo y cuando Iana confirme"}],
+       "final":"Bloquea el pasillo hacia Kid's Bedroom con Trax y planta en Bathroom"}
+     ]},
+    {"id":"rush","n":"Rush ventanas traseras","tag":"RUSH","summary":"Rappel directo a Back Porch Top y entrada por las ventanas de Master Bedroom antes de que pongan Castle y Frost: Zofia tira concusión, Ying candelas, Blitz entra primero con Finka activa. Ash sube por Lobby Stairs y pincha por la puerta del pasillo. Se planta en Master Bedroom con la ancla todavía acomodándose.",
+     "timeline":["0:00–0:20 · cuatro rappelean a Back Porch Top; Ash a la puerta principal","0:20–0:45 · concusión, candelas y entrada por las ventanas; Ash rompe la puerta del pasillo","0:45–1:30 · limpiar Master Bedroom y Bathroom, plantar en Master Bedroom","1:30–3:00 · post-plant sosteniendo las ventanas y Walk-in"],
+     "ops":[
+      {"op":"zofia","role":"entrada","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Corre al Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche trasero","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Impacto a la barricada de la ventana y concusión dentro","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Entra tras la concusión y limpia la cama","via":"window"},
+        {"room":"Bathroom","f":2,"do":"Cruza por Walk-in a limpiar Bathroom","via":"door"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Defensor asomando por la ventana o Frost recién puesta","how":"Concusión primero, nadie entra antes de que truene; mira el piso"},
+        {"room":"Master Bedroom","f":2,"threat":"Ancla Frost o Smoke pegada a la cama","how":"Prefire de la cama y entra con Blitz por delante"}],
+       "final":"Limpia Bathroom y cubre la planta desde Walk-in"},
+      {"op":"ying","role":"entrada","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Corre con Zofia","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Dos candelas por la ventana de Master Bedroom","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Entra ciega con las candelas y planta","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Castle en la ventana y Warden anulando la candela","how":"Zofia rompe la barricada con impacto; candela y cruza rápido"},
+        {"room":"Master Bedroom","f":2,"threat":"Lesion con gu bajo la ventana","how":"Mira el piso y dispara los gu antes de plantar"}],
+       "final":"Planta en Master Bedroom pegada a la ventana y sostiene la puerta del pasillo"},
+      {"op":"blitz","role":"soporte","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Corre con el escudo arriba","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Entra primero por la ventana con flash lista","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Flash a la cama y a Walk-in; tanquea la planta","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Noor con fuego a la ventana para escudos","how":"No te pares en el fuego: flash y entra por la otra ventana"},
+        {"room":"Master Bedroom","f":2,"threat":"Smoke con gas en la ventana","how":"Flash y cruza rápido con Finka activa"}],
+       "final":"Tanquea la planta de Ying en Master Bedroom"},
+      {"op":"finka","role":"soporte","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Activa el primer Surge al llegar al Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Entra al último y cubre a los que entraron","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Segundo Surge en la planta y revive a quien caiga","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"C4 desde Master Bedroom al grupo en la ventana","how":"No entren en bola: uno por uno con Surge activo"},
+        {"room":"Master Bedroom","f":2,"threat":"Frost bajo la ventana","how":"Mira el piso, dispara el cepo y sigue"}],
+       "final":"Sostiene la ventana y revive con Surge en el post-plant"},
+      {"op":"ash","role":"flanco","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Corre a la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Breach a la barricada desde lejos","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra por el hueco","via":"door"},
+        {"room":"Lobby","f":1,"do":"Sube corriendo","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Breach a la puerta de Master Bedroom si la castlearon","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Entra por la puerta del pasillo cuando truenen las candelas","via":"door"},
+        {"room":"Master Bedroom","f":2,"do":"Pincha a la ancla por la espalda mientras mira las ventanas","via":"door"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":2,"threat":"Kapkan arriba de la escalera o roamer en Kid's Bedroom","how":"Corre pegado a la pared y prefire del descanso"},
+        {"room":"Upper Hallway","f":2,"threat":"Ancla Smoke de espaldas mirando las ventanas","how":"Entra justo con las candelas y dispárales por la espalda"}],
+       "final":"Pincha por la puerta del pasillo y cubre Upper Hallway durante la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma Kitchen y Back Entrance por el Garden y desde ahí se destruye Master Bedroom hacia arriba: Buck rompe el techo de Kitchen, IQ marca cams y Frost, Fuze y Glaz trabajan las ventanas desde Back Porch Top con humo y térmica, Capitão quema las esquinas. Se entra por las ventanas cuando ya no quede nadie parado.",
+     "timeline":["0:00–0:45 · drones; Buck e IQ toman Back Entrance y Kitchen; Fuze, Glaz y Capitão suben a Back Porch Top","0:45–1:45 · Buck abre el techo, Fuze detona en Master Bedroom, Glaz con humo y térmica en las ventanas","1:45–2:30 · entrada por las ventanas; planta en Master Bedroom","2:30–3:00 · post-plant desde abajo y desde las ventanas"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza al porche trasero","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Rompe la barricada de la puerta trasera","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Limpia el marco","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Skeleton Key al techo de Kitchen bajo Master Bedroom y granadas a la cama","via":"door"}],
+       "clear":[
+        {"room":"Back Porch","f":1,"threat":"Kapkan en la puerta trasera y Mozzie robando drones","how":"Dron al marco, dispara la trampa y entra con IQ escaneando"},
+        {"room":"Kitchen","f":1,"threat":"Ancla de Master Bedroom disparando hacia abajo o roamer en Kitchen Stairs","how":"Dron a Kitchen Stairs y rompe el techo desde una esquina, cambiando de lugar"}],
+       "final":"Sostiene Kitchen con el techo abierto y niega Master Bedroom desde abajo durante la planta"},
+      {"op":"iq","role":"intel","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Escanea el Garden buscando cams de Valk","via":"door"},
+        {"room":"Garden","f":-1,"do":"Cruza con Buck","via":"door"},
+        {"room":"Back Porch","f":1,"do":"Entra tras la barricada rota","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Escanea Kitchen y Kitchen Stairs","via":"door"},
+        {"room":"Kitchen","f":1,"do":"Marca las Frost, el ADS y el teléfono de la ancla a través del techo para Buck","via":"door"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Cam de Valkyrie en Kitchen y Vigil en Kitchen Stairs","how":"Escáner al entrar, rompe la cam y dronea la escalera"},
+        {"room":"Kitchen","f":1,"threat":"Ancla con teléfono (Maestro/Echo) en Master Bedroom","how":"Márcala con el escáner y que Buck abra justo encima"}],
+       "final":"Marca gadgets y defensores a través del techo de Kitchen para que la vertical sea exacta"},
+      {"op":"fuze","role":"negacion","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche trasero","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Cargas de racimo en la barricada de la ventana de Master Bedroom y en la pared blanda","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Entra por la ventana cuando Buck y las cargas ya limpiaron","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Castle en la ventana y Jäger con ADS dentro","how":"Pon la carga sobre la barricada de Castle: la primera detonación se come el ADS"},
+        {"room":"Master Bedroom","f":2,"threat":"Ancla Frost/Smoke pegada a la cama","how":"Carga en la pared que IQ marque y entra tras la detonación"}],
+       "final":"Detona sobre Master Bedroom y entra por la ventana a cubrir la planta"},
+      {"op":"glaz","role":"negacion","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden buscando spawn peek","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche trasero","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Humo en la ventana y térmica a través del humo a Master Bedroom","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Entra al final a cubrir la planta desde la ventana","via":"window"}],
+       "clear":[
+        {"room":"Garden","f":-1,"threat":"Spawn peek desde la ventana de Master Bedroom","how":"Dron y humo antes de rappelear"},
+        {"room":"Back Porch Top","f":2,"threat":"Ancla Smoke con gas a la ventana y Castle en el marco","how":"Térmica a través del humo y mata a quien asome; que Fuze rompa a Castle"}],
+       "final":"Sostiene la ventana con humo y térmica y castiga a quien rote por Master Bedroom"},
+      {"op":"capitao","role":"negacion","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Fuego por la ventana a la cama y a Walk-in donde IQ marque","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Entra con humo y planta pegada a la ventana","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Ancla asomando a la ventana desde la cama","how":"Humo en la ventana y fuego a la cama"},
+        {"room":"Master Bedroom","f":2,"threat":"Rotación desde Bathroom por Walk-in para el defuse","how":"Fuego a la puerta de Walk-in justo al plantar"}],
+       "final":"Quema Walk-in y planta en Master Bedroom"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Thermite y Kali abren la pared reforzada de Bathroom desde Upper Hallway, mientras Montagne, Dokkaebi y Nomad rappelean a Back Porch Top y entran por las ventanas de Master Bedroom. Nomad sella Walk-in, Dokkaebi llama al momento de la carga y Montagne tanquea la ventana. La defensa no puede cubrir Bathroom y las ventanas a la vez.",
+     "timeline":["0:00–0:45 · drones; Thermite y Kali suben por Lobby Stairs, los otros tres a Back Porch Top","0:45–1:30 · Kali quema la pared, Thermite abre; Montagne rompe la ventana; Dokkaebi llama","1:30–2:30 · entrada simultánea; Nomad cierra Walk-in; planta en Master Bedroom","2:30–3:00 · post-plant con Montagne en la ventana y Thermite en el hueco"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza pegado a la barda","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Rompe la barricada","via":"door"},
+        {"room":"Lobby","f":1,"do":"Limpia y sube","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube pegado a la pared","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Carga exotérmica a la pared de Bathroom cuando Kali confirme que está limpia","via":"breach"},
+        {"room":"Bathroom","f":2,"do":"Entra por el hueco al mismo tiempo que el otro frente","via":"breach"}],
+       "clear":[
+        {"room":"Lobby Stairs","f":2,"threat":"Kapkan arriba de la escalera y roamer en Kid's Bedroom","how":"Dron arriba, dispara la trampa y sube con Kali"},
+        {"room":"Upper Hallway","f":2,"threat":"Bandit trickeando la pared y Mira con espejo","how":"Kali quema con el lance; pon la carga justo después desde la esquina"},
+        {"room":"Bathroom","f":2,"threat":"Ancla detrás de la tina","how":"Entra cuando disparen hacia las ventanas de Master Bedroom"}],
+       "final":"Sostiene el hueco de la pared mientras plantan en Master Bedroom"},
+      {"op":"kali","role":"antigadget","spawn":"Construction Site",
+       "path":[
+        {"room":"Front Street","f":-1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Front Yard","f":-1,"do":"Cruza con Thermite","via":"door"},
+        {"room":"Front Porch","f":1,"do":"Entra","via":"door"},
+        {"room":"Lobby","f":1,"do":"Cubre las escaleras","via":"door"},
+        {"room":"Lobby Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Lobby Stairs","f":2,"do":"Lance a la parte alta para quemar Kapkan","via":"stairs"},
+        {"room":"Upper Hallway","f":2,"do":"Lance a la pared reforzada de Bathroom para quemar baterías y ADS; cubre a Thermite","via":"breach"},
+        {"room":"Bathroom","f":2,"do":"Entra al final y sostiene el hueco con el rifle","via":"breach"}],
+       "clear":[
+        {"room":"Upper Hallway","f":2,"threat":"Bandit/Kaid en la pared y Jäger con ADS en Bathroom","how":"Lance explosivo a la pared; con el rifle castiga a quien vuelva a poner batería"},
+        {"room":"Bathroom","f":2,"threat":"Ancla peekeando el hueco desde la tina","how":"Sostén el hueco a distancia con el Sniper hasta que Thermite entre"}],
+       "final":"Sostiene la pared de Bathroom y cubre la planta desde Upper Hallway"},
+      {"op":"montagne","role":"soporte","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche trasero con el escudo","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Rompe la barricada de la ventana y entra primero con el escudo extendido","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Tanquea la ventana y cubre la planta de Dokkaebi","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Noor con fuego a la ventana y Frost debajo","how":"No entres por el fuego: espera a que se apague y que Nomad dispare el cepo"},
+        {"room":"Master Bedroom","f":2,"threat":"Ancla Smoke con gas y C4 a la ventana","how":"Escudo extendido en la ventana y que Dokkaebi entre por el otro lado"}],
+       "final":"Tanquea la ventana de Master Bedroom y cubre la planta"},
+      {"op":"dokkaebi","role":"intel","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Llama los teléfonos justo cuando Thermite pone la carga","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Entra tras Montagne","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Hackea el teléfono del primer caído y planta detrás de Montagne","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Ancla asomando a la ventana","how":"Llama en el momento de la carga; cuando vibren, entra tras el escudo"},
+        {"room":"Master Bedroom","f":2,"threat":"Cam de Valk mirando la planta","how":"Hackea el teléfono y rompe la cam desde dentro"}],
+       "final":"Planta en Master Bedroom y cubre el post-plant con las cams hackeadas"},
+      {"op":"nomad","role":"flanco","spawn":"River Docks",
+       "path":[
+        {"room":"Back Alley","f":-1,"do":"Dronea el Garden","via":"door"},
+        {"room":"Garden","f":-1,"do":"Rappel al techo del porche trasero","via":"rappel"},
+        {"room":"Back Porch Top","f":2,"do":"Airjab en la otra ventana para que nadie salga a flanquear","via":"rappel"},
+        {"room":"Master Bedroom","f":2,"do":"Entra tras Montagne y deja dos Airjabs en la puerta de Walk-in","via":"window"}],
+       "clear":[
+        {"room":"Back Porch Top","f":2,"threat":"Frost bajo la ventana y Lesion con gu","how":"Dispara el cepo desde afuera y entra cuando Montagne ya esté dentro"},
+        {"room":"Master Bedroom","f":2,"threat":"Rotación desde Bathroom por Walk-in para el defuse","how":"Airjabs en la puerta de Walk-in y sostén el ángulo desde la cama"}],
+       "final":"Sella Walk-in con Airjabs y cubre el defuser desde Master Bedroom"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Frost bajo las ventanas de Master Bedroom con Castle encima para frenar el rappel; Smoke ancla Master Bedroom con gas a la ventana y a Walk-in. Jäger sostiene Bathroom con ADS contra las granadas y el EMP. Mozzie roamea Kitchen para robar los drones del vertical y avisar cuando Buck entre.",
+     "reinforce":["Pared Bathroom–Upper Hallway ×2","Ventanas de Master Bedroom (Castle)","Puerta Master Bedroom–Upper Hallway (Castle si sobra)"],
+     "rotations":["Master Bedroom↔Bathroom (por Walk-in)","Master Bedroom↔Upper Hallway (puerta vigilada)","Bathroom↔Upper Hallway (hueco cuando abran)"],
+     "ops":[
+      {"op":"frost","room":"Master Bedroom","f":2,"role":"ancla","job":"Cepo bajo cada ventana y otro en la puerta del pasillo; sostiene la esquina lejos de las ventanas"},
+      {"op":"smoke","room":"Master Bedroom","f":2,"role":"ancla","job":"Gas a la ventana y a Walk-in en el defuse; se queda detrás de la cama"},
+      {"op":"castle","room":"Master Bedroom","f":2,"role":"flex","job":"Barricadas blindadas en las ventanas; rota a Bathroom cuando abran la pared"},
+      {"op":"jager","room":"Bathroom","f":2,"role":"ancla","job":"ADS en Bathroom y en Walk-in; sostiene la tina y asoma a Upper Hallway"},
+      {"op":"mozzie","room":"Kitchen","f":1,"role":"roam","job":"Pest en Back Entrance y Kitchen; roba drones, avisa el vertical y sube por Lobby Stairs a defender"}
+     ]},
+    {"id":"alt","n":"Anti-vertical y anti-escudo","summary":"Contra equipos que hacen vertical desde Kitchen o entran con escudos por las ventanas. Mira pone espejos en Bathroom hacia Upper Hallway, Kaid electrifica la pared, Azami sella los huecos del piso de Master Bedroom, Noor quema las ventanas cuando entren Montagne o Blitz y Solis roamea Living Room y Lobby Stairs para robar a Buck y a los que suben.",
+     "reinforce":["Pared Bathroom–Upper Hallway ×2","Ventanas de Master Bedroom (barricada normal, Noor las cuida)","Puerta Bathroom–Walk-in (una sola, dejar la otra abierta)"],
+     "rotations":["Master Bedroom↔Bathroom (por Walk-in)","Master Bedroom↔Upper Hallway","Bathroom↔Upper Hallway (espejo)"],
+     "ops":[
+      {"op":"mira","room":"Bathroom","f":2,"role":"ancla","job":"Espejo en la pared reforzada hacia Upper Hallway y otro hacia Walk-in; controla las dos entradas"},
+      {"op":"kaid","room":"Bathroom","f":2,"role":"ancla","job":"Rtila en la pared Bathroom–Upper Hallway; sostiene la tina"},
+      {"op":"azami","room":"Master Bedroom","f":2,"role":"ancla","job":"Kibas a los huecos del piso cuando abran desde Kitchen y a la ventana si se cae la barricada; cubre la cama"},
+      {"op":"noor","room":"Master Bedroom","f":2,"role":"flex","job":"Fuego del Horus a las ventanas cuando entren Montagne, Blitz u Osa; rota a Bathroom"},
+      {"op":"solis","room":"Lobby Stairs","f":1,"role":"roam","job":"Roamea Living Room y Lobby Stairs, ve los gadgets de los que suben y castiga a Buck en Kitchen por la espalda"}
+     ]}
+   ]
+  }
+ }
+}

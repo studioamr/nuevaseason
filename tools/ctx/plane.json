@@ -1,0 +1,1085 @@
+{
+ "id": "plane",
+ "name": "Presidential Plane",
+ "pool": "casual",
+ "hasBlueprint": true,
+ "floors": [
+  {
+   "idx": 1,
+   "key": "1",
+   "name": "1st Floor"
+  },
+  {
+   "idx": 2,
+   "key": "2",
+   "name": "2nd Floor"
+  },
+  {
+   "idx": 3,
+   "key": "3",
+   "name": "3rd Floor"
+  },
+  {
+   "idx": 4,
+   "key": "r",
+   "name": "Roof"
+  }
+ ],
+ "rooms": [
+  {
+   "f": 2,
+   "en": "Meeting Room",
+   "es": "Sala de reuniones"
+  },
+  {
+   "f": 2,
+   "en": "Front Hallway",
+   "es": "Pasillo frontal"
+  },
+  {
+   "f": 2,
+   "en": "Executive Office",
+   "es": "Oficina ejecutiva"
+  },
+  {
+   "f": -1,
+   "en": "Main Entrance",
+   "es": "Entrada principal"
+  },
+  {
+   "f": 2,
+   "en": "Front Stairs",
+   "es": "Escalera delantera"
+  },
+  {
+   "f": 2,
+   "en": "Pantry",
+   "es": "Despensa"
+  },
+  {
+   "f": 2,
+   "en": "Kitchen",
+   "es": "Cocina"
+  },
+  {
+   "f": 2,
+   "en": "Executive Hallway",
+   "es": "Pasillo ejecutivo"
+  },
+  {
+   "f": 2,
+   "en": "Executive Bedroom",
+   "es": "Habitación ejecutiva"
+  },
+  {
+   "f": 2,
+   "en": "Change Room",
+   "es": "Vestuario"
+  },
+  {
+   "f": 2,
+   "en": "Laund.",
+   "es": "Lavand."
+  },
+  {
+   "f": -1,
+   "en": "Front Service Entrance",
+   "es": "Entrada frontal de servicio"
+  },
+  {
+   "f": -1,
+   "en": "Right Wing",
+   "es": "Ala derecha"
+  },
+  {
+   "f": -1,
+   "en": "Back Service Entrance",
+   "es": "Entrada trasera de servicio"
+  },
+  {
+   "f": -1,
+   "en": "Reporter Entrance",
+   "es": "Entrada de prensa"
+  },
+  {
+   "f": -1,
+   "en": "Left Wing",
+   "es": "Ala izquierda"
+  },
+  {
+   "f": 2,
+   "en": "Staff Section",
+   "es": "Sección de personal"
+  },
+  {
+   "f": 2,
+   "en": "Security Room",
+   "es": "Sala de seguridad"
+  },
+  {
+   "f": 2,
+   "en": "Press Section A",
+   "es": "Zona de prensa A"
+  },
+  {
+   "f": 2,
+   "en": "Press Section B",
+   "es": "Zona de prensa B"
+  },
+  {
+   "f": 2,
+   "en": "Back Stairs",
+   "es": "Escalera trasera"
+  },
+  {
+   "f": 1,
+   "en": "Back Stairs",
+   "es": "Escalera trasera"
+  },
+  {
+   "f": 2,
+   "en": "Pr.BR",
+   "es": "Ba.Pr"
+  },
+  {
+   "f": 1,
+   "en": "Cargo Hold",
+   "es": "Bodega de carga"
+  },
+  {
+   "f": 1,
+   "en": "Service Corridor",
+   "es": "Pasillo de servicio"
+  },
+  {
+   "f": 1,
+   "en": "Storage",
+   "es": "Almacén"
+  },
+  {
+   "f": 1,
+   "en": "Luggage Hold",
+   "es": "Bodega de equipaje"
+  },
+  {
+   "f": 1,
+   "en": "First Aid Station",
+   "es": "Sala de atención médica"
+  },
+  {
+   "f": 1,
+   "en": "Cargo Front Entrance",
+   "es": "Bodega entrada frontal"
+  },
+  {
+   "f": 1,
+   "en": "Front Stairs",
+   "es": "Escalera delantera"
+  },
+  {
+   "f": 2,
+   "en": "Cockpit Stairs",
+   "es": "Escalera a la cabina"
+  },
+  {
+   "f": 3,
+   "en": "Cockpit Stairs",
+   "es": "Escalera a la cabina"
+  },
+  {
+   "f": 3,
+   "en": "Cabin Staff",
+   "es": "Personal de cabina"
+  },
+  {
+   "f": 3,
+   "en": "Radio Cabin",
+   "es": "Radio de cabina"
+  },
+  {
+   "f": 3,
+   "en": "Cabin",
+   "es": "Cabina"
+  },
+  {
+   "f": 3,
+   "en": "Caterer",
+   "es": "Zona de catering"
+  },
+  {
+   "f": 3,
+   "en": "Server Room A",
+   "es": "Sala del servidor A"
+  },
+  {
+   "f": 3,
+   "en": "Server Room B",
+   "es": "Sala del servidor B"
+  },
+  {
+   "f": 1,
+   "en": "Technical Seating",
+   "es": "Zona de técnicos"
+  },
+  {
+   "f": 2,
+   "en": "Caterer",
+   "es": "Zona de catering"
+  },
+  {
+   "f": 2,
+   "en": "Ladder Room",
+   "es": "Zona de la escalera"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Official Entrance",
+   "es": "Entrada principal"
+  },
+  {
+   "letter": "B",
+   "en": "Reporter Entrance",
+   "es": "Entrada de prensa"
+  },
+  {
+   "letter": "C",
+   "en": "Service Entrance",
+   "es": "Entrada frontal de servicio"
+  }
+ ],
+ "bombSets": {
+  "1": [
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Meeting Room"
+   },
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Executive Office"
+   }
+  ],
+  "2": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Executive Bedroom"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Staff Section"
+   }
+  ],
+  "3": [
+   {
+    "f": 1,
+    "letter": "B",
+    "nearest": "Luggage Hold"
+   },
+   {
+    "f": 1,
+    "letter": "A",
+    "nearest": "Cargo Hold"
+   }
+  ]
+ },
+ "hatches": [
+  {
+   "f": 2,
+   "near": "Staff Section"
+  },
+  {
+   "f": 2,
+   "near": "Laund."
+  },
+  {
+   "f": 2,
+   "near": "Laund."
+  },
+  {
+   "f": 2,
+   "near": "Front Hallway"
+  },
+  {
+   "f": 1,
+   "near": "Luggage Hold"
+  },
+  {
+   "f": 1,
+   "near": "Cargo Hold"
+  },
+  {
+   "f": 1,
+   "near": "Storage"
+  },
+  {
+   "f": 3,
+   "near": "Server Room B"
+  }
+ ],
+ "sites": [
+  {
+   "id": "exec",
+   "name": "Oficina ejecutiva / Sala de reuniones",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Oficina ejecutiva",
+    "Sala de reuniones"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared reforzada → Sala de reuniones",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Sala de reuniones"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical desde arriba → Oficina ejecutiva",
+     "kind": "vertical",
+     "path": [
+      "Arriba",
+      "Oficina ejecutiva"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Puerta exterior → Oficina ejecutiva",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Oficina ejecutiva"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde arriba sobre Oficina ejecutiva. Breach duro en la pared de Sala de reuniones.",
+    "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
+    "Planta en Sala de reuniones. Flanco en el pasillo."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Sala de reuniones–Pasillo ×2",
+     "Puerta Oficina ejecutiva (Castle)"
+    ],
+    "keepSoft": [
+     "Piso de arriba"
+    ],
+    "rotations": [
+     "Oficina ejecutiva↔Sala de reuniones"
+    ],
+    "anchors": "Ancla Sala de reuniones (Smoke), ancla Oficina ejecutiva (Mira). Roam arriba.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Roam arriba obligatorio."
+   }
+  },
+  {
+   "id": "bedroom",
+   "name": "Recámara ejecutiva / Sección de personal",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Recámara ejecutiva",
+    "Sección de personal"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared reforzada → Sección de personal",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Sección de personal"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical desde arriba → Recámara ejecutiva",
+     "kind": "vertical",
+     "path": [
+      "Arriba",
+      "Recámara ejecutiva"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Puerta exterior → Recámara ejecutiva",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Recámara ejecutiva"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde arriba sobre Recámara ejecutiva. Breach duro en la pared de Sección de personal.",
+    "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
+    "Planta en Sección de personal. Flanco en el pasillo."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Sección de personal–Pasillo ×2",
+     "Puerta Recámara ejecutiva (Castle)"
+    ],
+    "keepSoft": [
+     "Piso de arriba"
+    ],
+    "rotations": [
+     "Recámara ejecutiva↔Sección de personal"
+    ],
+    "anchors": "Ancla Sección de personal (Smoke), ancla Recámara ejecutiva (Mira). Roam arriba.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Roam arriba obligatorio."
+   }
+  },
+  {
+   "id": "cargo",
+   "name": "Bodega de carga / Equipaje",
+   "fl": "1",
+   "floorIdx": 1,
+   "rooms": [
+    "Bodega de carga",
+    "Equipaje"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared reforzada → Equipaje",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Equipaje"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical desde arriba → Bodega de carga",
+     "kind": "vertical",
+     "path": [
+      "Arriba",
+      "Bodega de carga"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Puerta exterior → Bodega de carga",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Bodega de carga"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde arriba sobre Bodega de carga. Breach duro en la pared de Equipaje.",
+    "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
+    "Planta en Equipaje. Flanco en el pasillo."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Equipaje–Pasillo ×2",
+     "Puerta Bodega de carga (Castle)"
+    ],
+    "keepSoft": [
+     "Piso de arriba"
+    ],
+    "rotations": [
+     "Bodega de carga↔Equipaje"
+    ],
+    "anchors": "Ancla Equipaje (Smoke), ancla Bodega de carga (Mira). Roam arriba.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Roam arriba obligatorio."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

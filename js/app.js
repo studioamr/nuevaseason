@@ -1,0 +1,349 @@
+/* R6 NUEVA SEASON — controlador de la app */
+(async () => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)]; const E = Store.esc;
+  const R6KEY = { clubhouse: 'club' };
+  // ---------- carga de planos reales ----------
+  let R6 = {}, MAN = {};
+  try { [R6, MAN] = await Promise.all([fetch('js/r6maps.json').then(r => r.json()), fetch('js/floors-manifest.json').then(r => r.json())]); } catch (e) { console.warn('sin r6maps.json', e); }
+  const flKey = n => { n = String((n && n.full) || n || '').toLowerCase(); if (/basement/.test(n)) return 'b'; if (/roof/.test(n)) return 'r'; const m = n.match(/(\d)/); return m ? m[1] : n; };
+  MAPS.forEach(m => { const k = R6KEY[m.id] || m.id; m.r6 = R6[k] || null; if (m.r6) m.r6.floors.forEach(f => { f.fl = flKey(f.name); f.n = Engine.FLN[f.fl] || (f.name && f.name.full) || String(f.fl); }); m.floorImgs = (MAN[m.id] || []).map(x => ({ idx: x.idx, src: x.src })); if (m.r6 && !m.floorImgs.length && m.r6.floors) m.floorImgs = m.r6.floors.map(f => ({ idx: f.index, src: `img/maps/${m.id}/${f.index}.jpg` })); });
+  // planos subidos por el usuario (IndexedDB)
+  try { const keys = await Store.idb.keys(); for (const k of keys) { const [mid, fl] = k.split('|'); const m = MAPS.find(x => x.id === mid); if (m) { m.userImgs = m.userImgs || {}; m.userImgs[fl] = await Store.idb.get(k); } } } catch (e) {}
+
+  // ---------- estrategias (js/strats/<map>.json, generadas y validadas contra los cuartos reales) ----------
+  const STR = {};
+  async function loadStrats(mid) { if (STR[mid] !== undefined) return STR[mid]; STR[mid] = null; try { const r = await fetch(`js/strats/${mid}.json`); if (r.ok) STR[mid] = await r.json(); } catch (e) {} return STR[mid]; }
+  const siteStrats = () => { const st = STR[S.map]; const x = st && st.sites && st.sites[site().id]; return x || null; };
+  const curStrat = () => { const st = siteStrats(); if (!st) return null; const list = S.side === 'atk' ? st.attack : st.defense; if (!list || !list.length) return null; if (S.strat === 'custom') return null; return list.find(x => x.id === S.strat) || list[0]; };
+  const clean = t => String(t || '').replace(/<br\s*\/?>/g, ' ').replace(/\s+/g, ' ').trim();
+  function roomPoint(m, room, f) { // coordenada mundo de un cuarto por nombre exacto (en) y piso
+    if (m.r6) { const fi = f === -1 || f === '-1' ? -1 : +f; let l = m.r6.rooms.find(r => clean(r.en) === room && r.f === fi) || m.r6.rooms.find(r => clean(r.en) === room); if (l) return { x: l.left, y: l.top, f: l.out ? -1 : l.f }; const sp = m.r6.spawns.find(r => clean(r.en) === room); if (sp) return { x: sp.left, y: sp.top, f: -1, spawn: true }; return null; }
+    for (const st of m.sites) for (const [fl, rooms] of Object.entries(st.geo || {})) { const r = rooms.find(x => x.n === room); if (r) return { x: r.c * 100 + r.w * 50, y: r.r * 100 + r.h * 50, f: fl }; }
+    return null;
+  }
+  const short = t => { t = clean(t); return t.length > 34 ? t.slice(0, 32) + '…' : t; };
+  // ---------- identidad ----------
+  let me = Store.get('me', null);
+  const squadOverride = Store.get('squad', {}); SQUAD.forEach(p => Object.assign(p, squadOverride[p.id] || {}));
+  const slotOf = id => SQUAD.find(p => p.id === id);
+  const initials = p => (p.nick || p.id || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
+
+  // ---------- estado ----------
+  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
+  const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
+  const map = () => MAPS.find(m => m.id === S.map) || MAPS[0];
+  const site = () => map().sites.find(s => s.id === S.site) || map().sites[0];
+  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, picks: S.picks, pins: S.pins, notes: S.notes });
+  let syncing = false;
+  function commit(patch) { Object.assign(S, patch); save(); if (Sync.connected && !syncing) { const p = {}; for (const k of Object.keys(patch)) if (k in shared()) p[k] = S[k]; if (Object.keys(p).length) Sync.patch(p); } render(); }
+  Sync.onState = st => { syncing = true; const keep = { ...st }; delete keep.updatedAt; delete keep.by; const jump = (st.map && st.map !== S.map) || (st.site && st.site !== S.site) || (st.side && st.side !== S.side); Object.assign(S, keep); if (st.map !== undefined) S.floorIdx = null; if (jump && S.step < 3) S.step = 3; save(); render(); syncing = false; if (st.by && st.by !== (me && me.name)) Store.toast(`${st.by} actualizó el plan`); };
+  Sync.onPeers = () => { renderSala(); renderSalaChip(); };
+
+  // ---------- helpers ----------
+  const floorList = m => m.r6 ? m.r6.floors.map(f => ({ idx: f.index, n: f.n, key: f.fl })) : m.floors.map(f => ({ idx: f.id, n: f.n, key: f.id }));
+  const siteFloorIdx = (m, s) => m.r6 ? Engine.floorIndex(m, s.fl) : s.fl;
+  const slots = () => SQUAD.map(p => { const pk = S.picks[p.id] || {}; const o = Engine.op(pk.op); const okSide = o && o.side === S.side; return { slot: p.id, name: p.nick || p.id, ...(okSide ? pk : {}) }; });
+  const myPick = () => me && S.picks[me.slot] || {};
+  const pinKey = v => `${S.map}/${site().id}/${v.id}`;
+  const kindIcon = k => { const K = Engine.KIND[k] || { c: '#888', s: '?' }; return `<span class="ic" style="background:${K.c}">${K.s}</span>`; };
+
+  // ---------- render raíz ----------
+  function ensureStratPicks() { const x = curStrat(); if (!x || S.strat === 'custom') return; const key = `${S.map}/${site().id}/${S.side}/${x.id}`; if (S.stratKey === key) return; const picks = {}; SQUAD.forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); S.picks = picks; S.stratKey = key; save(); if (Sync.connected && !syncing) Sync.patch({ picks }); }
+  let renderSeq = 0;
+  function render() { const seq = ++renderSeq; const go = () => { if (seq !== renderSeq) return; ensureStratPicks(); renderMe(); renderSalaChip(); renderBar(); renderWiz(); renderCanvas(); renderPlanPane(); renderOpsPane(); renderDefPane(); }; if (STR[S.map] === undefined) loadStrats(S.map).then(go); else go(); }
+  function renderMe() { const p = me ? slotOf(me.slot) : null; $('#meChip').innerHTML = me ? `<span class="av ${p && p.me ? 'acc' : ''}">${E(initials({ nick: me.name }))}</span><div><div style="font-size:12px">${E(me.name)}</div><div class="k" style="font-size:9px">${E(p ? p.role : 'invitado')}</div></div>` : `<button class="btn sm" id="whoBtn">¿Quién eres?</button>`; ($('#whoBtn') || $('#meChip')).onclick = () => openIdentity(); }
+  function renderSalaChip() { const c = $('#salaCode'); if (Sync.connected) { c.textContent = Sync.code; c.classList.add('live'); $('#salaBtn').textContent = `${Sync.members.length} en línea`; } else { c.textContent = '— sin sala —'; c.classList.remove('live'); $('#salaBtn').textContent = 'Crear / Unirse'; } }
+  function renderMapList() {
+    if (!$('#mapList')) return; const q = Store.norm(($('#mapSearch') || {}).value || ''); const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
+    for (const [g, gn] of groups) { const ms = MAPS.filter(m => m.pool === g && (!q || Store.norm(m.n).includes(q))); if (!ms.length) continue; h += `<div class="grp">${gn}</div>` + ms.map(m => `<button class="mapbtn ${m.id === S.map ? 'on' : ''}" data-map="${m.id}"><span class="n">${E(m.n)}</span><span class="t">${m.r6 ? 'plano' : m.userImgs ? 'tuyo' : 'croquis'}</span></button>`).join(''); }
+    $('#mapList').innerHTML = h; $$('#mapList .mapbtn').forEach(b => b.onclick = () => { S.floorIdx = null; S.selected = null; commit({ map: b.dataset.map, site: MAPS.find(m => m.id === b.dataset.map).sites[0].id }); });
+  }
+  function renderBar() {
+    const m = map(), s = site(); $('#mapName').textContent = m.n; FX.text($('#mapName'), true);
+    $$('#sideSeg button').forEach(b => { b.classList.toggle('on', b.dataset.side === S.side); b.classList.toggle(b.dataset.side, b.dataset.side === S.side); b.onclick = () => { S.selected = null; commit({ side: b.dataset.side }); } });
+    $('#siteBtns').innerHTML = m.sites.map(x => `<button class="${x.id === s.id ? 'on' : ''}" data-site="${x.id}"><span class="fl">${E(Engine.FLN[x.fl] || x.fl)}</span>${E(x.n)}${x.verify ? ' <span title="callouts por confirmar" style="color:var(--mute)">?</span>' : ''}</button>`).join('');
+    $$('#siteBtns button').forEach(b => b.onclick = () => { S.floorIdx = null; S.selected = null; commit({ site: b.dataset.site }); });
+    const st = siteStrats(); const list = st ? (S.side === 'atk' ? st.attack : st.defense) : []; let sb = $('#stratBar'); if (!sb) { sb = document.createElement('div'); sb.id = 'stratBar'; sb.className = 'strats'; $('#stratBarHost').appendChild(sb); }
+    if (list && list.length) { const cur = curStrat(); sb.innerHTML = `<span class="k">Estrategia</span>` + list.map(x => `<button class="${cur && cur.id === x.id ? 'on' : ''}" data-strat="${x.id}"><b>${E(x.tag || x.n)}</b><small>${E(x.n)}</small></button>`).join('') + `<button class="${S.strat === 'custom' ? 'on' : ''}" data-strat="custom"><b>LIBRE</b><small>tú eliges</small></button>`; sb.style.display = ''; sb.querySelectorAll('button').forEach(b => b.onclick = () => applyStrat(b.dataset.strat)); }
+    else { sb.innerHTML = ''; sb.style.display = 'none'; }
+    $('#rNum').textContent = 'Ronda ' + S.round; $('#rMinus').onclick = () => commit({ round: Math.max(1, S.round - 1) }); $('#rPlus').onclick = () => commit({ round: S.round + 1 });
+  }
+  function applyStrat(id) { S.selected = null; if (id === 'custom') { commit({ strat: 'custom' }); return; } const st = siteStrats(); const list = S.side === 'atk' ? st.attack : st.defense; const x = list.find(y => y.id === id); if (!x) return; const picks = { ...S.picks }; SQUAD.forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); commit({ strat: id, picks }); }
+  function stratRoutes() { // rutas de la estrategia activa: spawn → cuartos reales → bomba, con zonas de defensores
+    const m = map(), s = site(), x = curStrat(); if (!x) return null; const out = [];
+    const set = Engine.siteSet(m, s);
+    SQUAD.forEach((p, i) => {
+      const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op) || null; if (!so) return; const o = Engine.op(so.op); if (!o) return;
+      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
+      const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
+      if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); (so.path || []).forEach(stp => { const pt = roomPoint(m, stp.room, stp.f); if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do }); });
+        if (set && pts.length) { const last = pts[pts.length - 1]; const b = set.bombs.reduce((a, c) => (Math.hypot(c.left - last.x, c.top - last.y) < Math.hypot(a.left - last.x, a.top - last.y) ? c : a)); if (Math.hypot(b.left - last.x, b.top - last.y) > 6) pts.push({ x: b.left, y: b.top, f: b.f, bomb: true }); } }
+      if (pts.length < 2) return;
+      const clear = (so.clear || []).map(c => { const pt = roomPoint(m, c.room, c.f); return pt ? { ...pt, short: short(c.threat), threat: c.threat, how: c.how } : null; }).filter(Boolean);
+      out.push({ id: p.id, pts: pts.map(q => ({ ...q })), clear, color: Engine.COLORS[i], label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
+    });
+    return out;
+  }
+  // ---------- canvas ----------
+  let mounted = false;
+  function routes() {
+    const sr = stratRoutes(); if (sr) return sr;
+    const m = map(), s = site(); const out = [];
+    if (S.side === 'atk') {
+      Engine.plan(s, slots()).forEach(p => { if (!p.o || !p.v) return; const key = pinKey(p.v); const pts = Engine.routePoints(m, s, p.v, S.pins[key]); out.push({ id: p.slot, vec: p.v, pts: pts ? pts.map(x => ({ ...x })) : null, color: p.color, label: `${p.o.n}`, tag: initials({ nick: p.name }), key }); });
+    } else {
+      const c = Engine.siteCenter(m, s); const set = Engine.siteSet(m, s);
+      Engine.defPlan(s, slots()).forEach((p, i) => { if (!p.o) return; let pt = null; if (set) { const b = set.bombs[i % set.bombs.length]; pt = { x: b.left + (i > 1 ? 40 : -40), y: b.top + (i % 2 ? 40 : -40), f: b.f }; if (p.role === 'ROAM') pt = { x: c.x + (i - 2) * 90, y: c.y - 180, f: c.f }; } else { pt = { x: 300 + i * 180, y: 300, f: s.fl }; } out.push({ id: p.slot, mark: true, pts: [pt], color: p.color, label: `${p.o.n} · ${p.role}`, tag: initials({ nick: p.name }) }); });
+    }
+    return out;
+  }
+  function renderCanvas() {
+    const m = map(), s = site(); const c = $('#canvas');
+    if (!mounted) { c.innerHTML = ''; MapView.mount(c); mounted = true; }
+    // floor buttons + tools (re-crear sobre el canvas)
+    c.querySelectorAll('.floors,.tools,.legend,.src,.verify,.empty').forEach(x => x.remove());
+    const fls = floorList(m); const sIdx = siteFloorIdx(m, s); if (S.floorIdx == null || !fls.some(f => String(f.idx) === String(S.floorIdx))) S.floorIdx = sIdx;
+    const fb = document.createElement('div'); fb.className = 'floors'; fb.innerHTML = fls.map(f => `<button class="${String(f.idx) === String(S.floorIdx) ? 'on' : ''} ${String(f.idx) === String(sIdx) ? 'site' : ''}" data-f="${f.idx}">${E(f.n)}</button>`).join(''); c.appendChild(fb);
+    fb.querySelectorAll('button').forEach(b => b.onclick = () => { S.floorIdx = m.r6 ? +b.dataset.f : b.dataset.f; renderCanvas(); });
+    const t = document.createElement('div'); t.className = 'tools'; t.innerHTML = `<button class="btn" data-t="in">＋</button><button class="btn" data-t="out">－</button><button class="btn" data-t="fit">Ajustar</button><button class="btn ${S.labels ? '' : 'ghost'}" data-t="lbl">Nombres</button><button class="btn ${S.lang === 'en' ? '' : 'ghost'}" data-t="lang">EN</button><button class="btn ${S.edit ? 'p' : ''}" data-t="edit">${S.edit ? 'Editando rutas' : 'Editar rutas'}</button>${!m.r6 ? '<button class="btn" data-t="up">Subir plano</button>' : ''}`; c.appendChild(t);
+    t.querySelectorAll('button').forEach(b => b.onclick = () => { const k = b.dataset.t; if (k === 'in') MapView.zoom(1.3); else if (k === 'out') MapView.zoom(1 / 1.3); else if (k === 'fit') MapView.fit(); else if (k === 'lbl') { S.labels = !S.labels; save(); renderCanvas(); } else if (k === 'lang') { S.lang = S.lang === 'en' ? 'es' : 'en'; save(); renderCanvas(); } else if (k === 'edit') { S.edit = !S.edit; if (!S.edit) S.selected = null; renderCanvas(); renderPlanPane(); } else if (k === 'up') uploadPlan(); });
+    const lg = document.createElement('div'); lg.className = 'legend'; lg.innerHTML = S.side === 'atk' ? slots().map((p, i) => `<span><i style="background:${Engine.COLORS[i]}"></i>${E(p.name)}</span>`).join('') + `<span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span><span><i style="background:#cfd8e3;height:8px"></i>escotilla</span><span><i style="background:#6aa3ff;height:8px;border-radius:50%"></i>spawn</span><span><i style="background:#ff2e63;height:8px;border-radius:50%"></i>zona de defensores</span>` : `<span><i style="background:#ff4fd8"></i>ancla</span><span><i style="background:#7dff6a"></i>roam</span><span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span>`; c.appendChild(lg);
+    const src = document.createElement('div'); src.className = 'src'; src.textContent = m.r6 ? 'plano: r6maps.com · in-game blueprint' + (['border', 'chalet', 'skyscraper', 'consulate', 'house', 'favela'].includes(m.id) ? ' · versión previa al rework' : '') : m.userImgs ? 'plano subido por ti' : 'croquis esquemático · editable'; c.appendChild(src);
+    if (s.verify || m.verify) { const v = document.createElement('div'); v.className = 'verify'; v.innerHTML = `<span class="chip acc">Callouts por confirmar en el juego</span>`; c.appendChild(v); }
+    // plano subido por el usuario para este piso (mapas sin r6maps)
+    let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
+    MapView.show({ map: mm, site: s, side: S.side, floorIdx: mm === m ? S.floorIdx : 0, routes: routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 4 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
+  }
+  async function uploadPlan() { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async () => { const m = map(); m.userImgs = m.userImgs || {}; m.userImgs[String(S.floorIdx)] = rd.result; await Store.idb.put(`${m.id}|${S.floorIdx}`, rd.result); Store.toast('Plano guardado para ' + m.n); renderMapList(); renderCanvas(); }; rd.readAsDataURL(f); }; inp.click(); }
+
+  // ---------- panel PLAN ----------
+  function renderPlanPane() {
+    const m = map(), s = site(); const isAtk = S.side === 'atk'; const pl = isAtk ? Engine.plan(s, slots()) : Engine.defPlan(s, slots()); const ops = isAtk ? Engine.atk() : Engine.def();
+    const x = curStrat();
+    let h = `<div class="k" style="margin-bottom:8px">${isAtk ? 'Plan de ataque' : 'Plan de defensa'} · <span class="acc">${E(s.n)}</span> · ${E(Engine.FLN[s.fl] || s.fl)}</div>`;
+    if (x) {
+      h += `<div class="stratcard"><div class="sn"><b>${E(x.tag || x.n)}</b> ${E(x.n)}</div><p>${E(x.summary)}</p>${x.timeline ? `<ol class="tl">${x.timeline.map(t => `<li>${E(t)}</li>`).join('')}</ol>` : ''}${x.reinforce ? `<div class="k" style="margin-top:8px">Reforzar</div><ul class="deflist">${x.reinforce.map(r => `<li>${E(r)}</li>`).join('')}${(x.rotations || []).map(r => `<li class="rot">${E(r)}</li>`).join('')}</ul>` : ''}</div>`;
+      const pl2 = isAtk ? Engine.plan(s, slots()) : Engine.defPlan(s, slots());
+      h += `<div class="role-h"><span class="k">Ruta de cada operador</span><small>clic = resaltar${S.edit ? ' · arrastra puntos' : ''}</small></div>`;
+      SQUAD.forEach((p, i) => { const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op); const o = so && Engine.op(so.op); if (!o) return; const sel = S.selected === p.id;
+        h += `<div class="oproute ${sel ? 'on' : ''}" data-sel="${p.id}" style="--c:${Engine.COLORS[i]}"><div class="oh"><span class="dot"></span><b>${E(o.n)}</b><span class="k">${E(so.role || '')}</span><span class="who">${E(p.nick || p.id)}</span></div>`;
+        if (isAtk) { h += `<div class="sp">Spawn · <b>${E(so.spawn)}</b></div><ol class="steps">${(so.path || []).map(stp => `<li><b>${E(stp.room)}</b>${stp.via && stp.via !== 'door' ? ` <i>${E(stp.via)}</i>` : ''}<span>${E(stp.do)}</span></li>`).join('')}</ol>`; if (so.clear && so.clear.length) h += `<div class="k" style="color:var(--red);margin:6px 0 2px">Zonas de defensores · limpiar en orden</div><ol class="cz">${so.clear.map(c => `<li><b>${E(c.room)}</b> · ${E(c.threat)}<span>${E(c.how)}</span></li>`).join('')}</ol>`; h += `<div class="fin">▶ ${E(so.final)}</div>`; }
+        else h += `<div class="sp"><b>${E(so.room)}</b> · ${E(so.role)}</div><div class="fin">${E(so.job)}</div>`;
+        h += `</div>`; });
+    }
+    if (!x && isAtk) h += s.atk.plan.map((p, i) => `<div class="step"><b>0${i + 1}</b><div>${E(p)}</div></div>`).join('');
+    else if (!x) h += `<div class="step"><b>01</b><div><b>Reforzar:</b> ${E(s.def.reinforce.join(' · '))}</div></div><div class="step"><b>02</b><div><b>Roles:</b> ${E(s.def.anchors)}</div></div><div class="step"><b>03</b><div><b>Rotaciones:</b> ${E(s.def.rotations.join(' · '))}${s.def.keepSoft.length ? ` · <b>Dejar blando:</b> ${E(s.def.keepSoft.join(' · '))}` : ''}</div></div>`;
+    // squad picks
+    h += `<div class="role-h"><span class="k">Squad · ronda ${S.round}</span><button class="btn sm" id="autoBtn">Auto-completar</button></div><div class="squad5">`;
+    pl.forEach((p, i) => { const mine = me && me.slot === p.slot; h += `<div class="slot ${mine ? 'me' : ''}"><span class="col" style="background:${p.color}"></span><div class="who">${E(p.name)}${mine ? ' <span class="chip acc" style="height:16px;font-size:8px;padding:0 5px">tú</span>' : ''}<small>${E(p.o ? (isAtk ? (p.v ? p.v.n : '') : `${p.role} · ${p.where}`) : 'sin operador')}</small></div><div style="display:grid;gap:4px;justify-items:end"><select class="in" data-slot="${p.slot}" data-k="op"><option value="">— operador —</option>${ops.map(o => `<option value="${o.id}" ${p.op === o.id ? 'selected' : ''}>${E(o.n)}</option>`).join('')}</select>${isAtk && p.o ? `<select class="in" data-slot="${p.slot}" data-k="vec" style="width:132px;height:24px;font-size:10px"><option value="">auto: entrada</option>${s.atk.vectors.map(v => `<option value="${v.id}" ${p.vec === v.id ? 'selected' : ''}>${E(v.n)}</option>`).join('')}</select>` : ''}</div></div>`; });
+    h += `</div>`;
+    // entradas (atk)
+    if (isAtk && !x) { h += `<div class="role-h"><span class="k">Entradas al sitio</span><small>${S.edit ? 'clic en una para editar su ruta · arrastra puntos · doble clic añade' : ''}</small></div>`; s.atk.vectors.forEach(v => { const who = pl.filter(p => p.v && p.v.id === v.id); const sel = S.selected && who.some(p => p.slot === S.selected); h += `<div class="vec" data-vec="${v.id}" style="${sel ? 'background:var(--acc-dim);margin:0 -14px;padding:10px 14px' : ''}${S.edit && who.length ? ';cursor:pointer' : ''}">${kindIcon(v.kind)}<div><div class="n">${E(v.n)}${v.verify ? ' <span class="chip" style="height:16px;font-size:8px;padding:0 5px">confirmar</span>' : ''}</div><div class="p">${(v.path || []).map(x => `<b>${E(x)}</b>`).join(' → ')}</div>${v.note ? `<div class="note">${E(v.note)}</div>` : ''}</div><div class="who"><span class="risk ${v.risk}">${v.risk}</span>${who.map(p => `<span class="chip" style="border-color:${p.color};color:${p.color}">${E(p.o.n)}</span>`).join('')}${S.pins[pinKey(v)] ? `<button class="btn sm ghost" data-reset="${v.id}">reset ruta</button>` : ''}</div></div>`; }); }
+    h += `<div class="role-h"><span class="k">Notas de la ronda</span></div><textarea class="in" id="notes" rows="3" placeholder="Ej. Bandit en pared de Iglesia, Cav rota por Rojas…">${E(S.notes)}</textarea>`;
+    $('#p-plan').innerHTML = h;
+    $('#autoBtn').onclick = () => { const side = isAtk ? 'atk' : 'def'; const ok = id => { const o = Engine.op(id); return !!o && o.side === side; }; const picks = { ...S.picks }; SQUAD.forEach(p => { if (picks[p.id] && !ok(picks[p.id].op)) picks[p.id] = {}; }); const cur = SQUAD.map(p => picks[p.id] && picks[p.id].op); if (isAtk) { const rec = Engine.recommend(s, cur); let j = 0; SQUAD.forEach(p => { if (!(picks[p.id] && picks[p.id].op) && rec[j]) picks[p.id] = { op: rec[j++] }; }); } else { const used = new Set(cur.filter(Boolean)); const pool = s.def.ops.filter(id => !used.has(id)); let k = 0; SQUAD.forEach(p => { if (!(picks[p.id] && picks[p.id].op) && pool[k]) picks[p.id] = { op: pool[k++] }; }); } commit({ picks, strat: 'custom' }); };
+    $$('#p-plan select').forEach(sel => sel.onchange = () => { const picks = { ...S.picks }; picks[sel.dataset.slot] = { ...(picks[sel.dataset.slot] || {}), [sel.dataset.k]: sel.value || undefined }; if (sel.dataset.k === 'op') delete picks[sel.dataset.slot].vec; commit({ picks }); });
+    $$('#p-plan .vec').forEach(v => v.onclick = e => { if (e.target.dataset.reset) { delete S.pins[pinKey({ id: e.target.dataset.reset })]; commit({ pins: S.pins }); return; } if (!S.edit) return; const who = pl.find(p => p.v && p.v.id === v.dataset.vec); if (!who) { Store.toast('Asigna un operador a esta entrada primero'); return; } S.selected = who.slot; renderCanvas(); renderPlanPane(); });
+    $$('#p-plan .oproute').forEach(d => d.onclick = () => { S.selected = S.selected === d.dataset.sel ? null : d.dataset.sel; renderCanvas(); renderPlanPane(); });
+    let nt; $('#notes').oninput = e => { clearTimeout(nt); nt = setTimeout(() => commit({ notes: e.target.value }), 500); };
+  }
+  // ---------- panel OPERADORES ----------
+  let opSel = null;
+  function renderOpsPane() {
+    const s = site(); const isAtk = S.side === 'atk'; const ops = isAtk ? Engine.atk() : Engine.def(); const rec = new Set(isAtk ? Engine.recommend(s, []) : s.def.ops); slots().forEach(p => p.op && rec.add(p.op));
+    let h = `<div class="k" style="margin-bottom:6px">${isAtk ? 'Todos los atacantes' : 'Todos los defensores'} · ${ops.length} · <span class="acc">resaltados = recomendados para ${E(s.rooms[0])}</span></div>`;
+    if (isAtk) { for (const [rid, R] of Object.entries(ROLES)) { const list = ops.filter(o => o.roles[0] === rid); if (!list.length) continue; h += `<div class="role-h"><span class="k">${E(R.n)}</span><small>${E(R.d)}</small></div><div class="opgrid">` + list.map(o => `<button class="opc ${opSel === o.id ? 'on' : ''} ${rec.has(o.id) ? 'rec' : ''}" data-op="${o.id}"><div class="n">${E(o.n)}</div><div class="r">${o.spd}·${o.hp} ${E(o.roles.map(r => ROLES[r].n).join('/'))}</div><div class="g">${E(o.g)}</div></button>`).join('') + `</div>`; } }
+    else h += `<div class="opgrid">` + ops.map(o => `<button class="opc ${opSel === o.id ? 'on' : ''} ${rec.has(o.id) ? 'rec' : ''}" data-op="${o.id}"><div class="n">${E(o.n)}</div><div class="g">${E(o.g)}</div></button>`).join('') + `</div>`;
+    const o = Engine.op(opSel);
+    if (o) { if (isAtk) { const j = Engine.jobFor(s, o); h += `<div class="opdetail"><b>${E(o.n)}</b> · ${E(o.g)} · ${o.spd} vel / ${o.hp} vida<br>${E(j.base)}<div class="rt">${E(j.where)}</div>${j.v ? `<div class="p" style="font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:6px">${(j.v.path || []).join(' → ')}</div>` : ''}${me ? `<div style="margin-top:10px"><button class="btn sm p" id="pickMe">Elegir para mí</button></div>` : ''}</div>`; } else h += `<div class="opdetail"><b>${E(o.n)}</b> · ${E(o.g)}<br><b>Cómo se juega / se contra:</b> ${E(o.ctr)}${me ? `<div style="margin-top:10px"><button class="btn sm p" id="pickMe">Elegir para mí</button></div>` : ''}</div>`; }
+    $('#p-ops').innerHTML = h;
+    $$('#p-ops .opc').forEach(b => b.onclick = () => { opSel = opSel === b.dataset.op ? null : b.dataset.op; renderOpsPane(); });
+    const pm = $('#pickMe'); if (pm) pm.onclick = () => { const picks = { ...S.picks }; picks[me.slot] = { op: opSel }; commit({ picks }); $$('#sideTabs button')[0].click(); };
+  }
+  // ---------- panel DEFENSA ----------
+  function renderDefPane() {
+    const s = site(); const d = s.def;
+    $('#p-def').innerHTML = `<div class="k" style="margin-bottom:8px">Cómo se defiende <span class="acc">${E(s.n)}</span> (y qué esperar si atacas)</div><ul class="deflist">${d.reinforce.map(x => `<li>${E(x)}</li>`).join('')}${d.keepSoft.map(x => `<li class="soft">Dejar blando: ${E(x)}</li>`).join('')}${d.rotations.map(x => `<li class="rot">${E(x)}</li>`).join('')}</ul><div class="step" style="grid-template-columns:1fr"><div>${E(d.anchors)}</div></div><div class="role-h"><span class="k">Defensores del sitio</span></div><div style="display:flex;gap:6px;flex-wrap:wrap">${d.ops.map(id => { const o = Engine.op(id); return o ? `<span class="chip blue" title="${E(o.ctr)}">${E(o.n)}</span>` : ''; }).join('')}</div><div class="opdetail" style="margin-top:12px"><b>Tip:</b> ${E(d.tip)}</div>`;
+  }
+  // ---------- SQUAD ----------
+  function rankBadge(rp, scale) { const r = RANKS.rankOf(rp, scale); return `<div class="rkb" style="background:${r.color}">${r.tier.n.slice(0, 2).toUpperCase()}</div>`; }
+  function renderSquad() {
+    $('#squadCards').innerHTML = SQUAD.map((p, i) => {
+      const st = p.stats; const mine = me && me.slot === p.id;
+      const latest = st && st.seasons.find(s => s[1] > 0); const lr = latest ? RANKS.rankOf(latest[1], latest[4]) : null; const pk = st ? RANKS.rankOf(st.peak.rp, st.peak.scale) : null;
+      let body = '';
+      if (st) body = `<div class="rk">${rankBadge(latest ? latest[1] : 0, latest ? latest[4] : 3)}<div class="rn">${lr ? E(lr.label) : 'Sin rango'}<small>${latest ? E(latest[0]) + ' · ' + latest[3] + ' partidas' : 'Split Fire · aún sin ranked'}</small></div><div class="rp">${latest ? Store.fmt(latest[1]) : '—'}<small>RP · pico ${Store.fmt(st.peak.rp)} ${E(pk.label)} (${E(st.peak.season)})</small></div></div><div class="kv"><div><b>${st.level}</b><span>Nivel</span></div><div><b>${st.kd.toFixed(2)}</b><span>K/D</span></div><div><b>${st.hs.toFixed(1)}%</b><span>Headshot</span></div><div><b>${st.win.toFixed(1)}%</b><span>Win</span></div><div><b>${Store.fmt(st.matches)}</b><span>Partidas</span></div><div><b>${Store.fmt(st.hours)}h</b><span>Jugadas</span></div><div><b>${Store.fmt(st.kills)}</b><span>Kills</span></div><div><b>${st.kpm.toFixed(2)}</b><span>K/partida</span></div></div><div class="seas"><div class="row h"><span>Season</span><span>RP</span><span>K/D</span><span>Part.</span></div>${st.seasons.map(s => `<div class="row"><b>${E(s[0])}</b><span>${s[1] ? Store.fmt(s[1]) : '—'}</span><span>${s[2].toFixed(2)}</span><span>${s[3]}</span></div>`).join('')}</div>${st.last.length ? `<div class="seas"><div class="k" style="margin-bottom:6px">Últimas ${st.last.length}</div><div class="spark">${st.last.map(l => `<i class="${l[1] === 'W' ? 'w' : 'l'}" style="height:${Math.min(28, 8 + l[3] * 10)}px" title="${E(l[0])} ${l[2]} K/D ${l[3]}"></i>`).join('')}</div><div class="row h" style="grid-template-columns:1fr;margin-top:4px">${st.last.map(l => E(l[0])).join(' · ')}</div></div>` : ''}`;
+      else body = `<div class="empty">Sin perfil todavía. Escribe tu nick de Ubisoft/Xbox y abrimos tu tracker.<input class="in" id="nick-${p.id}" placeholder="nick exacto" value="${E(p.nick || '')}"><div style="margin-top:8px"><button class="btn sm p" data-savenick="${p.id}">Guardar</button></div></div>`;
+      return `<div class="pc ${mine ? 'me' : ''}"><div class="hd"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="nm">${E(p.nick || 'Tu nick')}<small>${E(p.role)}${p.alias ? ' · alias ' + E(p.alias) : ''}</small></div><span class="chip ${p.me ? 'acc' : ''} tag">${E(p.tag)}</span></div>${body}<div class="ft">${p.nick ? `<a class="btn sm" target="_blank" rel="noopener" href="${Store.trackerUrl(p.nick, p.plat)}">R6 Tracker ↗</a>` : ''}<button class="btn sm ghost" data-edit="${p.id}">Editar</button>${!mine ? `<button class="btn sm ghost" data-beme="${p.id}">Soy yo</button>` : '<span class="chip acc dot">tú</span>'}</div></div>`;
+    }).join('');
+    $$('#squadCards .rp').forEach(e => { const n = parseInt(e.firstChild && e.firstChild.textContent.replace(/,/g, '')); if (n) { const t = e.firstChild; FX.count({ set textContent(v) { t.textContent = v; } }, n); } });
+    $$('[data-savenick]').forEach(b => b.onclick = () => { const id = b.dataset.savenick; const v = $('#nick-' + id).value.trim(); if (!v) return; setOverride(id, { nick: v }); if (me && me.slot === id) { me.name = v; Store.set('me', me); } renderSquad(); renderMe(); });
+    $$('[data-edit]').forEach(b => b.onclick = () => editMember(b.dataset.edit));
+    $$('[data-beme]').forEach(b => b.onclick = () => { const p = slotOf(b.dataset.beme); me = { slot: p.id, name: p.nick || p.id }; Store.set('me', me); render(); renderSquad(); });
+  }
+  function setOverride(id, patch) { const o = Store.get('squad', {}); o[id] = { ...(o[id] || {}), ...patch }; Store.set('squad', o); Object.assign(slotOf(id), patch); }
+  function editMember(id) { const p = slotOf(id); openModal(`<h3>Editar ${E(p.nick || p.id)}</h3><div class="sub">Nick exacto como aparece en R6 Tracker.</div><label class="f"><span class="k">Nick</span><input class="in" id="e-nick" value="${E(p.nick || '')}"></label><label class="f"><span class="k">Plataforma</span><select class="in" id="e-plat"><option value="xbl" ${p.plat === 'xbl' ? 'selected' : ''}>Xbox</option><option value="psn" ${p.plat === 'psn' ? 'selected' : ''}>PlayStation</option><option value="ubi" ${p.plat === 'ubi' ? 'selected' : ''}>PC (Ubisoft)</option></select></label><label class="f"><span class="k">Rol en el squad</span><input class="in" id="e-role" value="${E(p.role || '')}"></label><label class="f"><span class="k">Apodo</span><input class="in" id="e-tag" value="${E(p.tag || '')}"></label><div class="row"><button class="btn" data-close>Cancelar</button><button class="btn p" id="e-save">Guardar</button></div>`); $('#e-save').onclick = () => { setOverride(id, { nick: $('#e-nick').value.trim(), plat: $('#e-plat').value, role: $('#e-role').value.trim(), tag: $('#e-tag').value.trim() }); closeModal(); renderSquad(); render(); }; }
+  // ---------- RANGOS ----------
+  function renderRanks() {
+    const base = RANKS.base[3]; let h = '';
+    RANKS.tiers.forEach((t, i) => { const lo = base + i * RANKS.perTier; const who = SQUAD.filter(p => p.stats).map(p => { const l = p.stats.seasons.find(s => s[1] > 0); return l ? { p, r: RANKS.rankOf(l[1], l[4]) } : null; }).filter(x => x && x.r.t === i); h += `<div class="tier" style="--tc:${t.c}"><div class="n">${E(t.n)}</div><div class="rp">${Store.fmt(lo)}${i === 7 ? '+' : ' – ' + Store.fmt(lo + RANKS.perTier - 1)} RP</div><div class="divs">${RANKS.div.map((d, j) => `<span>${t.n.slice(0, 3)} ${d}<i>${Store.fmt(lo + j * RANKS.step)}</i></span>`).join('')}</div><div class="who">${who.map(x => `<span class="av" title="${E(x.p.nick)} · ${E(x.r.label)}">${E(initials(x.p))}</span>`).join('')}</div></div>`; });
+    $('#ladder').innerHTML = h;
+    $('#rules').innerHTML = [
+      ['Cómo se gana RP', 'Cada división son <b>100 RP</b>. Una partida mueve <b>~80 RP</b> ajustados por: el rango del rival, tu rendimiento individual y si vas en <b>5-stack</b>. No hay MMR oculto desde Ranked 3.0: tu RP es tu rango.'],
+      ['Restricción de squad', 'Cobre a Esmeralda: máximo <b>3 tiers</b> de diferencia dentro del squad. Diamante y arriba: <b>2 tiers</b>. Si Valeria está en Champion y Camila en Platino, no pueden ir juntas en ranked.'],
+      ['Champion y Legend', 'Champion tiene divisiones reales <b>V–I</b> (asumimos 3,500+; Ubisoft no publica el corte). <b>Legend</b> (Y11S3) es una división solo-queue por encima de Champion: se entra por invitación de rango, sin squad.'],
+      ['Ranked 2.0 vs 3.0', 'Los picos de Silent Hunt / Deep Freeze eran Ranked 2.0 (arrancaba en 1,000 RP: Champion = 4,500+). Desde System Override (jun-2026) es 3.0 y arranca en 0. Por eso Valeria con 4,567 era Champion y con 4,102 sigue siendo Champion.'],
+      ['Meta del squad esta season', `Peor promedio de K/D del squad: <b>${Math.min(...SQUAD.filter(p => p.stats).map(p => p.stats.kd)).toFixed(2)}</b>. Objetivo realista: todos en <b>Diamante</b> (3,000+) al cierre de Split Fire. Con ~80 RP por partida, de Platino IV (2,133) a Diamante V son <b>~11 victorias netas</b>.`],
+      ['Fuentes', 'Ranked 3.0: <a class="acc" target="_blank" rel="noopener" href="https://www.ubisoft.com/en-us/game/rainbow-six/siege/news-updates/5fzYRZKVVHqqRkkv3m4MyF/ranked-30-update">ubisoft.com · Ranked 3.0 Update</a>. Noor y Split Fire: <a class="acc" target="_blank" rel="noopener" href="https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/noor">ubisoft.com · Noor</a>. Stats: <a class="acc" target="_blank" rel="noopener" href="https://r6.tracker.network">r6.tracker.network</a>. Planos: <a class="acc" target="_blank" rel="noopener" href="https://r6maps.com">r6maps.com</a>.']
+    ].map(([t, b]) => `<div class="card"><div class="h"><span class="k">${t}</span></div><div class="b">${b}</div></div>`).join('');
+  }
+  // ---------- SALA ----------
+  function renderSala() {
+    const on = Sync.connected; const link = location.origin + location.pathname + '#sala=' + (Sync.code || '');
+    $('#salaBox').innerHTML = `<h2 class="h-disp" data-fx style="font-size:20px">Sala en tiempo real</h2><div class="sub" style="color:var(--dim);font-size:13px;margin:4px 0 18px">Uno crea la sala y comparte el código; los demás se unen. Mapa, sitio, lado, operadores, rutas y notas se sincronizan al instante entre todos. Sin cuentas, sin servidor: conexión directa entre navegadores.</div>${on ? `<div class="big">${E(Sync.code)}</div><div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap"><button class="btn" id="copyCode">Copiar código</button><button class="btn" id="copyLink">Copiar link</button><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Sala R6: ' + Sync.code + ' → ' + link)}">Mandar por WhatsApp</a><button class="btn danger" id="leaveBtn">Salir</button></div><div class="members">${Sync.members.map(m => `<div class="m"><span class="av">${E((m.name || '?').slice(0, 2).toUpperCase())}</span>${E(m.name)} ${m.host ? '<span class="chip acc">host</span>' : ''}<span class="st">en línea</span></div>`).join('')}${SQUAD.filter(p => !Sync.members.some(m => m.slot === p.id)).map(p => `<div class="m"><span class="av">${E(initials(p))}</span>${E(p.nick || p.id)}<span class="st off">fuera</span></div>`).join('')}</div>` : `<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn p" id="hostBtn">Crear sala</button><div style="display:flex;gap:6px"><input class="in" id="joinCode" placeholder="CÓDIGO" style="width:140px;letter-spacing:.2em;text-transform:uppercase"><button class="btn" id="joinBtn">Unirse</button></div></div><div class="members" style="margin-top:22px">${SQUAD.map(p => `<div class="m"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span>${E(p.nick || p.id)}<span class="k" style="margin-left:6px">${E(p.role)}</span><span class="st off">sin sala</span></div>`).join('')}</div>`}`;
+    FX.all($('#salaBox')); const big = $('#salaBox .big'); if (big) FX.text(big);
+    const cp = t => navigator.clipboard.writeText(t).then(() => Store.toast('Copiado'));
+    if (on) { $('#copyCode').onclick = () => cp(Sync.code); $('#copyLink').onclick = () => cp(link); $('#leaveBtn').onclick = async () => { await Sync.leave(); renderSala(); renderSalaChip(); }; }
+    else { $('#hostBtn').onclick = () => hostSala(); $('#joinBtn').onclick = () => joinSala($('#joinCode').value); }
+  }
+  async function hostSala() { if (!me) return openIdentity(() => hostSala()); try { Store.toast('Creando sala…'); await Sync.host(shared(), me.name, me.slot); Store.toast('Sala ' + Sync.code + ' lista'); renderSala(); renderSalaChip(); } catch (e) { Store.toast('No se pudo crear: ' + e.message); } }
+  async function joinSala(code) { if (!code) return; if (!me) return openIdentity(() => joinSala(code)); try { Store.toast('Buscando sala ' + code.toUpperCase() + '…'); await Sync.join(code, me.name, me.slot); Store.toast('Dentro de ' + Sync.code); renderSala(); renderSalaChip(); showView('plan'); } catch (e) { Store.toast(e.message || 'No se encontró la sala'); renderSala(); } }
+  // ---------- modal / identidad ----------
+  function openModal(h) { $('#modalBox').innerHTML = h; $('#modal').classList.add('on'); $$('#modal [data-close]').forEach(b => b.onclick = closeModal); }
+  function closeModal() { $('#modal').classList.remove('on'); }
+  function openIdentity(after) {
+    openModal(`<h3>¿Quién eres?</h3><div class="sub">Tu slot en el squad. Se guarda en este navegador.</div><div class="squad5">${SQUAD.map(p => `<button class="slot" data-who="${p.id}" style="cursor:pointer;text-align:left"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="who">${E(p.nick || 'André (pon tu nick)')}<small>${E(p.role)} · ${E(p.tag)}</small></div><span class="rt">→</span></button>`).join('')}</div><div style="margin-top:12px;display:flex;gap:6px"><input class="in" id="guestName" placeholder="…o invitado: tu nombre"><button class="btn" id="guestBtn">Entrar</button></div>`);
+    const pick = (slot, name) => { me = { slot, name }; Store.set('me', me); closeModal(); render(); renderSquad(); if (after) after(); };
+    $$('#modal [data-who]').forEach(b => b.onclick = () => { const p = slotOf(b.dataset.who); if (!p.nick) { const n = prompt('Tu nick exacto de Ubisoft/Xbox:'); if (!n) return; setOverride(p.id, { nick: n.trim() }); } pick(p.id, slotOf(p.id).nick); });
+    $('#guestBtn').onclick = () => { const n = $('#guestName').value.trim(); if (n) pick('guest-' + Store.uid(), n); };
+  }
+
+  // =====================================================================
+  //  MODO RONDA · 4 pasos · pensado para los 45 s de selección de operador
+  // =====================================================================
+  const stepLabels = () => ({ 1: map().n, 2: `${S.side === 'atk' ? 'Ataque' : 'Defensa'} · ${S.side === 'atk' && !S.siteKnown ? 'sitio ?' : site().n}`, 3: (curStrat() ? (curStrat().tag || curStrat().n) : 'libre'), 4: S.live && S.live.playing ? 'en curso' : '' });
+  function goStep(n) { S.step = n; S.selected = null; save(); render(); }
+  function renderWiz() {
+    const lb = stepLabels(); $$('#steps button[data-step]').forEach(b => { const n = +b.dataset.step; b.classList.toggle('on', n === S.step); b.classList.toggle('done', n < S.step); b.querySelector('small').textContent = lb[n] || ''; b.onclick = () => goStep(n); });
+    $$('.screen').forEach(sc => sc.classList.toggle('on', sc.id === 's' + S.step));
+    $('#rNum').textContent = 'Ronda ' + S.round;
+    const cv = $('#canvas'); cv.hidden = !(S.step === 3 || S.step === 4);
+    if (S.step === 1) renderS1(); if (S.step === 2) renderS2(); if (S.step === 3) renderS3(); if (S.step === 4) renderS4();
+    if (S.step === 3) { const host = $('#s3 .mini'); if (host && cv.parentElement !== host) host.appendChild(cv); }
+    if (S.step === 4) { const host = $('#s4 .lv-canvas'); if (host && cv.parentElement !== host) host.appendChild(cv); }
+    if (S.step !== 4) Round.stopTick();
+    else Round.ensureTick();
+  }
+  // ---- paso 1: mapa
+  function renderS1() {
+    const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
+    for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; return `<button class="tile ${m.id === S.map ? 'on' : ''}" data-map="${m.id}">${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${STR[m.id] ? 'estrategias' : m.r6 ? 'plano' : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
+    $('#mapTiles').innerHTML = h;
+    $$('#mapTiles .tile[data-map]').forEach(b => b.onclick = async () => { const m = MAPS.find(x => x.id === b.dataset.map); await loadStrats(m.id); const pk = (PICKS[m.id] || [])[0]; S.floorIdx = null; S.selected = null; S.focus = null; S.step = 2; commit({ map: m.id, site: pk ? pk.site : m.sites[0].id, strat: 'default', siteKnown: S.side === 'def' }); });
+  }
+  // ---- paso 2: lado + sitio
+  function renderS2() {
+    const m = map(); const picks = PICKS[m.id] || []; const isDef = S.side === 'def';
+    const ordered = picks.map(pk => ({ ...pk, s: m.sites.find(x => x.id === pk.site) })).filter(x => x.s).concat(m.sites.filter(x => !picks.some(pk => pk.site === x.id)).map(x => ({ site: x.id, why: '', s: x })));
+    let h = `<div class="h-step"><h2 data-fx>${E(m.n)}</h2><p>${isDef ? 'Qué sitio pedir y qué hacer. Toca el sitio.' : '¿Ya viste el sitio con los drones? Tócalo. Si no, pide la comp flexible.'}</p></div>`;
+    h += `<div class="big-toggle"><button class="${!isDef ? 'on atk' : ''}" data-side="atk">ATAQUE</button><button class="${isDef ? 'on def' : ''}" data-side="def">DEFENSA</button></div>`;
+    h += `<div class="sitegrid">`;
+    if (!isDef) h += `<button class="sitecard unknown ${!S.siteKnown ? 'on' : ''}" data-unknown="1"><div class="fl">Fase de operadores</div><div class="n">Aún no sé el sitio</div><div class="why">Te doy la comp flexible del mapa (sirve para el sitio más probable) y cuando lo veas, lo tocas.</div></button>`;
+    ordered.forEach((x, i) => { h += `<button class="sitecard ${S.siteKnown && x.s.id === site().id ? 'on' : ''}" data-site="${x.s.id}">${i === 0 && picks.length ? `<span class="chip acc rec">${isDef ? 'PEDIR ESTE' : 'MÁS PROBABLE'}</span>` : picks.length ? `<span class="rank">#${i + 1}</span>` : ''}<div class="fl">${E(Engine.FLN[x.s.fl] || x.s.fl)}</div><div class="n">${E(x.s.n)}</div><div class="why">${E(x.why || '')}${x.verify || x.s.verify ? ' <span class="dim">(por confirmar)</span>' : ''}</div></button>`; });
+    h += `</div>`;
+    $('#s2').innerHTML = h; FX.all($('#s2'));
+    $$('#s2 .big-toggle button').forEach(b => b.onclick = () => { S.selected = null; S.focus = null; commit({ side: b.dataset.side, siteKnown: b.dataset.side === 'def' ? true : S.siteKnown, strat: 'default' }); });
+    $$('#s2 .sitecard[data-site]').forEach(b => b.onclick = () => { S.floorIdx = null; S.selected = null; S.focus = null; S.step = 3; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
+    const u = $('#s2 [data-unknown]'); if (u) u.onclick = () => { S.step = 3; const pk = (PICKS[m.id] || [])[0]; commit({ site: pk ? pk.site : m.sites[0].id, siteKnown: false, strat: 'default' }); };
+  }
+  // ---- llamadas por jugador (lo que se dice en voz alta)
+  function callSheet() {
+    const m = map(), s = site(), x = curStrat(); const isAtk = S.side === 'atk';
+    return SQUAD.map((p, i) => {
+      const pick = S.picks[p.id] || {}; const o = Engine.op(pick.op); const c = { slot: p.id, name: p.nick || p.id, color: Engine.COLORS[i], o, op: o ? o.n : '—', role: '', go: '', sub: '', room: '' };
+      if (!o) { c.go = 'Sin operador'; return c; }
+      const so = x && x.ops.find(y => y.op === o.id);
+      if (isAtk) {
+        if (so) { const entry = (so.path || []).find(st => st.f !== -1 && st.f !== '-1') || (so.path || [])[0]; const last = (so.path || [])[(so.path || []).length - 1]; c.role = ROLES[so.role] ? ROLES[so.role].n : so.role; c.go = `${so.spawn} → ${entry ? entry.room : '…'}${last && last !== entry ? ' → ' + last.room : ''}`; c.sub = so.final || ''; c.room = entry ? entry.room : ''; c.so = so; }
+        else { const j = Engine.jobFor(s, o); c.role = ROLES[o.roles[0]].n; c.go = j.where; c.sub = j.base; }
+      } else {
+        if (so) { c.role = String(so.role || '').toUpperCase(); c.go = so.room; c.sub = so.job || ''; c.room = so.room; c.so = so; }
+        else { const d = Engine.defPlan(s, slots()).find(q => q.slot === p.id); c.role = d && d.role || ''; c.go = d && d.where || ''; c.sub = o.ctr || ''; }
+      }
+      return c;
+    });
+  }
+  // ---- paso 3: PLAN (tarjetas grandes + mini mapa)
+  function renderS3() {
+    const m = map(), s = site(), x = curStrat(); const isAtk = S.side === 'atk'; const st = siteStrats(); const list = st ? (isAtk ? st.attack : st.defense) : [];
+    const cards = callSheet(); const ops = isAtk ? Engine.atk() : Engine.def();
+    let h = `<div class="call"><div class="hd"><h2 data-fx>${E(m.n)}</h2><span class="chip ${isAtk ? 'acc' : ''}" style="${isAtk ? '' : 'border-color:var(--mag);color:#ffb3ea'}">${isAtk ? 'ATAQUE' : 'DEFENSA'}</span><span class="chip">R${S.round}</span><span class="chip">${E(Engine.FLN[s.fl] || s.fl)} · ${E(s.n)}${S.siteKnown ? '' : ' · ?'}</span></div>`;
+    if (isAtk && !S.siteKnown) h += `<div class="flexnote"><b>Comp flexible</b> — sitio más probable: <b>${E(s.n)}</b>. Cuando lo veas en drones, tócalo:<div class="sites">${m.sites.map(z => `<button data-site="${z.id}"><span class="fl">${E(Engine.FLN[z.fl] || z.fl)}</span>${E(z.n)}</button>`).join('')}</div></div>`;
+    if (list && list.length) h += `<div class="stratrow">${list.map(z => `<button class="${x && x.id === z.id ? 'on' : ''}" data-strat="${z.id}"><b>${E(z.tag || z.n)}</b><small>${E(z.summary ? z.summary.split('.')[0] : z.n)}</small></button>`).join('')}</div>`;
+    else h += `<div class="flexnote">Este mapa aún no tiene estrategias generadas (se generan después de las 3:30 am). Mientras, plan por entradas: <b>Auto-completar</b> en Detalle.</div>`;
+    h += `<div class="cards5">` + cards.map(c => `<div class="pcard ${S.focus === c.slot ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><div class="bar"></div><div class="who"><b>${E(c.name)}</b>${E(c.role)}</div><div><div class="op">${E(c.op)}</div><div class="go">${E(c.go)}<i>${E(c.sub)}</i></div></div><select class="in" data-slot="${c.slot}"><option value="">— cambiar —</option>${ops.map(o => `<option value="${o.id}" ${c.o && c.o.id === o.id ? 'selected' : ''}>${E(o.n)}</option>`).join('')}</select></div>`).join('') + `</div>`;
+    h += `<div class="actions"><button class="btn p" id="goLive">▶ En vivo</button><button class="btn" id="dictar">🔊 Dictar</button><button class="btn" id="nextRound">Siguiente ronda</button><button class="btn ghost" id="openDrawer">Detalle</button></div></div>`;
+    h += `<div class="mini"></div>`;
+    $('#s3').innerHTML = h; FX.all($('#s3'));
+    $$('#s3 .stratrow button').forEach(b => b.onclick = () => applyStrat(b.dataset.strat));
+    $$('#s3 .flexnote [data-site]').forEach(b => b.onclick = () => { S.floorIdx = null; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
+    $$('#s3 .pcard').forEach(d => d.onclick = e => { if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return; S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS3(); renderCanvas(); });
+    $$('#s3 .pcard select').forEach(sel => { sel.onclick = e => e.stopPropagation(); sel.onchange = () => { const picks = { ...S.picks }; picks[sel.dataset.slot] = { op: sel.value || undefined }; commit({ picks }); }; });
+    $('#goLive').onclick = () => goStep(4); $('#dictar').onclick = dictate; $('#nextRound').onclick = () => { S.step = 2; S.focus = null; commit({ round: S.round + 1, siteKnown: S.side === 'def', live: null }); };
+    $('#openDrawer').onclick = () => $('#drawer').classList.add('on');
+    setTimeout(() => MapView.fit(), 50);
+  }
+  // ---- paso 4: EN VIVO (mapa grande + reloj + instrucción del operador enfocado)
+  const Round = {
+    T: 180, raf: null,
+    phases() { const x = curStrat(); const out = []; (x && x.timeline || []).forEach(t => { const mm = String(t).match(/(\d+):(\d\d)\s*[–\-]\s*(\d+):(\d\d)\s*[·:\-]?\s*(.*)/); if (mm) out.push({ from: +mm[1] * 60 + +mm[2], to: +mm[3] * 60 + +mm[4], label: mm[5] || t }); }); return out; },
+    arrival() { const ph = this.phases(); if (ph.length >= 3) return ph[ph.length - 1].from; return this.T * .75; },
+    t() { if (!S.live) return 0; if (!S.live.playing) return S.live.t || 0; return Math.min(this.T, (Date.now() - S.live.t0) / 1000); },
+    progress() { const t = this.t(); const arr = this.arrival(); const pr = {}; SQUAD.forEach(p => { pr[p.id] = S.live ? Math.min(1, t / arr) : 1; }); return pr; },
+    play() { const t = this.t(); commit({ live: { playing: true, t0: Date.now() - t * 1000 } }); },
+    pause() { commit({ live: { playing: false, t: this.t() } }); },
+    reset() { commit({ live: { playing: false, t: 0 } }); },
+    ensureTick() { if (this.raf) return; const tick = () => { this.raf = requestAnimationFrame(tick); if (S.step !== 4) return; if (S.live && S.side === 'atk') MapView.setProgress(this.progress()); renderLiveClock(); }; this.raf = requestAnimationFrame(tick); },
+    stopTick() { if (this.raf) cancelAnimationFrame(this.raf); this.raf = null; }
+  };
+  const fmtT = t => { t = Math.max(0, Math.round(t)); return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`; };
+  function renderS4() {
+    const cards = callSheet(); const focus = S.focus || (me && cards.some(c => c.slot === me.slot) ? me.slot : cards[0].slot); if (!S.focus) S.focus = focus;
+    const isAtk = S.side === 'atk';
+    $('#s4').innerHTML = `<div class="lv-canvas"></div><aside class="live"><div class="clock ${isAtk ? '' : 'def'}" id="clock">3:00</div><div class="phase" id="phase">${E(site().n)}</div><div class="ctl"><button class="btn p" id="lvPlay">▶</button><button class="btn" id="lvPause">❚❚</button><button class="btn" id="lvReset">↺</button><button class="btn ghost" id="lvBack">Plan</button></div><div class="now" id="now"></div><div class="tl" id="tl"></div><div class="opchips">${cards.map(c => `<button class="${S.focus === c.slot ? 'on' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><i></i><b>${E(c.op)}</b><small>${E(c.name)}</small></button>`).join('')}</div></aside>`;
+    $('#lvPlay').onclick = () => Round.play(); $('#lvPause').onclick = () => Round.pause(); $('#lvReset').onclick = () => Round.reset(); $('#lvBack').onclick = () => goStep(3);
+    $$('#s4 .opchips button').forEach(b => b.onclick = () => { S.focus = b.dataset.slot; save(); renderS4(); renderCanvas(); });
+    renderLiveClock(true); setTimeout(() => MapView.fit(), 50);
+  }
+  let lastNowKey = '';
+  function renderLiveClock(force) {
+    if (S.step !== 4) return; const t = Round.t(); const cl = $('#clock'); if (!cl) return; cl.textContent = fmtT(Round.T - t);
+    const ph = Round.phases(); const cur = ph.find(p => t >= p.from && t < p.to) || (t >= Round.T ? ph[ph.length - 1] : null);
+    const phEl = $('#phase'); if (phEl) phEl.textContent = cur ? cur.label : (S.live ? '' : 'Listo · toca ▶ al empezar la acción');
+    const tl = $('#tl'); if (tl && (force || tl.children.length !== ph.length)) tl.innerHTML = ph.map(p => `<div><b>${fmtT(p.from)}–${fmtT(p.to)}</b><span>${E(p.label)}</span></div>`).join('');
+    if (tl) [...tl.children].forEach((d, i) => d.classList.toggle('on', ph[i] === cur));
+    // instrucción del operador enfocado según el avance
+    const c = callSheet().find(x => x.slot === S.focus); const now = $('#now'); if (!c || !now) return;
+    let key, html;
+    if (S.side === 'atk' && c.so) { const path = c.so.path || []; const pr = Round.progress()[c.slot] || 0; const idx = S.live ? Math.min(path.length - 1, Math.floor(pr * path.length)) : 0; const stp = path[idx]; const cz = (c.so.clear || [])[Math.min((c.so.clear || []).length - 1, Math.floor(pr * ((c.so.clear || []).length + 0.5)))]; key = c.slot + ':' + idx + ':' + (pr >= 1); html = `<div class="k">${E(c.name)} · ${E(c.role)}</div><div class="op" style="--c:${c.color}">${E(c.op)}</div><div class="room">${stp ? E(stp.room) : ''}${stp && stp.via && stp.via !== 'door' ? ' · ' + E(stp.via) : ''}</div><div class="txt">${pr >= 1 ? E(c.so.final || '') : stp ? E(stp.do || '') : ''}</div>${cz && pr < 1 ? `<div class="warn">⚠ ${E(cz.room)}: ${E(cz.threat)}<br><b>${E(cz.how)}</b></div>` : ''}`; }
+    else { key = c.slot + ':def'; html = `<div class="k">${E(c.name)} · ${E(c.role)}</div><div class="op" style="--c:${c.color}">${E(c.op)}</div><div class="room">${E(c.go)}</div><div class="txt">${E(c.sub)}</div>`; }
+    if (key !== lastNowKey || force) { now.innerHTML = html; lastNowKey = key; }
+  }
+  // ---- dictado por voz (para cantar el plan en el lobby)
+  function dictate() {
+    const s = site(), x = curStrat(); const cards = callSheet();
+    const txt = `${S.side === 'atk' ? 'Ataque' : 'Defensa'}, ${s.n}${x ? ', ' + x.n : ''}. ` + cards.filter(c => c.o).map(c => `${c.name.replace(/^o\s+/i, '')}: ${c.op}, ${c.go.replace(/→/g, ', luego ')}.`).join(' ');
+    try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(txt); u.lang = 'es-MX'; const v = speechSynthesis.getVoices().find(v => /es[-_]MX/i.test(v.lang)) || speechSynthesis.getVoices().find(v => /^es/i.test(v.lang)); if (v) u.voice = v; u.rate = 1.05; speechSynthesis.speak(u); } catch (e) { Store.toast('Tu navegador no tiene voz'); }
+  }
+  $('#drawerBtn').onclick = () => $('#drawer').classList.toggle('on'); $('#drawerClose').onclick = () => $('#drawer').classList.remove('on');
+  // ---------- navegación ----------
+  function showView(v) { $$('.view').forEach(x => x.classList.toggle('on', x.id === 'v-' + v)); FX.all($('#v-' + v)); $$('.top .nav button').forEach(b => b.classList.toggle('on', b.dataset.view === v)); if (v === 'squad') renderSquad(); if (v === 'ranks') renderRanks(); if (v === 'sala') renderSala(); if (v === 'plan') setTimeout(() => MapView.fit(), 30); if (v !== 'plan') Round.stopTick(); }
+  $$('.top .nav button').forEach(b => b.onclick = () => showView(b.dataset.view));
+  $$('#sideTabs button').forEach(b => b.onclick = () => { $$('#sideTabs button').forEach(x => x.classList.toggle('on', x === b)); $$('.side .pane').forEach(p => p.classList.toggle('on', p.id === 'p-' + b.dataset.pane)); });
+  if ($('#mapSearch')) $('#mapSearch').oninput = renderMapList; $('#salaBtn').onclick = () => showView('sala'); $('#modal').onclick = e => { if (e.target.id === 'modal') closeModal(); };
+  window.addEventListener('resize', () => MapView.fit());
+  // ---------- arranque ----------
+  const hash = new URLSearchParams(location.hash.slice(1)); if (hash.get('m')) { S.map = hash.get('m'); S.site = hash.get('s') || null; S.step = 3; S.siteKnown = true; }
+  render();
+  if (!me) openIdentity(() => { if (hash.get('sala')) joinSala(hash.get('sala')); }); else if (hash.get('sala')) joinSala(hash.get('sala'));
+})();

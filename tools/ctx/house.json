@@ -1,0 +1,1156 @@
+{
+ "id": "house",
+ "name": "House",
+ "pool": "ranked",
+ "hasBlueprint": true,
+ "floors": [
+  {
+   "idx": 0,
+   "key": "b",
+   "name": "Basement"
+  },
+  {
+   "idx": 1,
+   "key": "1",
+   "name": "1st Floor"
+  },
+  {
+   "idx": 2,
+   "key": "2",
+   "name": "2nd Floor"
+  },
+  {
+   "idx": 3,
+   "key": "r",
+   "name": "Roof"
+  }
+ ],
+ "rooms": [
+  {
+   "f": 0,
+   "en": "Depot",
+   "es": "Almacén"
+  },
+  {
+   "f": 0,
+   "en": "Training Room",
+   "es": "Gimnasio"
+  },
+  {
+   "f": 0,
+   "en": "Kitchen Stairs",
+   "es": "Escaleras de la cocina"
+  },
+  {
+   "f": 0,
+   "en": "Side Stairs",
+   "es": "Escalera lateral"
+  },
+  {
+   "f": 0,
+   "en": "Laundry Room",
+   "es": "Cuarto de lavado"
+  },
+  {
+   "f": 0,
+   "en": "Garage",
+   "es": "Garage"
+  },
+  {
+   "f": 1,
+   "en": "Living Room",
+   "es": "Sala de estar"
+  },
+  {
+   "f": 1,
+   "en": "Side Stairs",
+   "es": "Escalera lateral"
+  },
+  {
+   "f": 1,
+   "en": "Back Entrance",
+   "es": "Entrada posterior"
+  },
+  {
+   "f": 1,
+   "en": "Lobby",
+   "es": "Vestíbulo de entrada"
+  },
+  {
+   "f": 1,
+   "en": "Kitchen Stairs",
+   "es": "Escaleras de la cocina"
+  },
+  {
+   "f": 1,
+   "en": "Kitchen",
+   "es": "Cocina"
+  },
+  {
+   "f": 1,
+   "en": "Office",
+   "es": "Oficina"
+  },
+  {
+   "f": 1,
+   "en": "Dining Room",
+   "es": "Comedor"
+  },
+  {
+   "f": 2,
+   "en": "Workshop",
+   "es": "Taller"
+  },
+  {
+   "f": 2,
+   "en": "Side Stairs",
+   "es": "Escalera lateral"
+  },
+  {
+   "f": 2,
+   "en": "Kid's Bedroom",
+   "es": "Cuarto de los niños"
+  },
+  {
+   "f": 2,
+   "en": "Upper Hallway",
+   "es": "Pasillo superior"
+  },
+  {
+   "f": 2,
+   "en": "Lobby Stairs",
+   "es": "Escalera de entrada"
+  },
+  {
+   "f": 1,
+   "en": "Lobby Stairs",
+   "es": "Escalera de entrada"
+  },
+  {
+   "f": 2,
+   "en": "Walk-in",
+   "es": "Armario vestidor"
+  },
+  {
+   "f": 2,
+   "en": "Master Bedroom",
+   "es": "Dormitorio principal"
+  },
+  {
+   "f": 2,
+   "en": "Bathroom",
+   "es": "Baño"
+  },
+  {
+   "f": -1,
+   "en": "Side Street",
+   "es": "Calle lateral"
+  },
+  {
+   "f": -1,
+   "en": "Garage Entrance",
+   "es": "Entrada del garage"
+  },
+  {
+   "f": -1,
+   "en": "Garden",
+   "es": "Jardín"
+  },
+  {
+   "f": -1,
+   "en": "Back Alley",
+   "es": "Callejón trasero"
+  },
+  {
+   "f": -1,
+   "en": "Patio",
+   "es": "Patio"
+  },
+  {
+   "f": -1,
+   "en": "Jacuzzi",
+   "es": "Jacuzzi"
+  },
+  {
+   "f": -1,
+   "en": "Basement Stairs",
+   "es": "Escaleras del sotano"
+  },
+  {
+   "f": -1,
+   "en": "Treehouse Alley",
+   "es": "Callejón de la casa del árbol"
+  },
+  {
+   "f": -1,
+   "en": "Front Yard",
+   "es": "Patio delantero"
+  },
+  {
+   "f": -1,
+   "en": "Front Street",
+   "es": "Calle delantera"
+  },
+  {
+   "f": 1,
+   "en": "Front Porch",
+   "es": "Porche delantero"
+  },
+  {
+   "f": 1,
+   "en": "Back Porch",
+   "es": "Porche trasero"
+  },
+  {
+   "f": 2,
+   "en": "Back Porch Top",
+   "es": "Tejado del porche trasero"
+  },
+  {
+   "f": 3,
+   "en": "Back Porch Top",
+   "es": "Tejado del porche trasero"
+  },
+  {
+   "f": 2,
+   "en": "Front Porch Top",
+   "es": "Tejado del porche delantero"
+  },
+  {
+   "f": 3,
+   "en": "Front Porch Top",
+   "es": "Tejado del porche delantero"
+  },
+  {
+   "f": 3,
+   "en": "Rooftop",
+   "es": "Tejado"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Construction Site",
+   "es": "Zona de obras"
+  },
+  {
+   "letter": "B",
+   "en": "River Docks",
+   "es": "Embarcaderos del río"
+  },
+  {
+   "letter": "C",
+   "en": "APC Area",
+   "es": "Área de los VTB"
+  },
+  {
+   "letter": "D",
+   "en": "Side Street",
+   "es": "Calle lateral"
+  }
+ ],
+ "bombSets": {
+  "1": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Workshop"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Kid's Bedroom"
+   }
+  ],
+  "2": [
+   {
+    "f": 0,
+    "letter": "A",
+    "nearest": "Training Room"
+   },
+   {
+    "f": 1,
+    "letter": "B",
+    "nearest": "Living Room"
+   }
+  ],
+  "3": [
+   {
+    "f": 0,
+    "letter": "A",
+    "nearest": "Training Room"
+   },
+   {
+    "f": 0,
+    "letter": "B",
+    "nearest": "Garage"
+   }
+  ]
+ },
+ "hatches": [
+  {
+   "f": 0,
+   "near": "Depot"
+  },
+  {
+   "f": 0,
+   "near": "Kitchen Stairs"
+  },
+  {
+   "f": 1,
+   "near": "Kitchen Stairs"
+  },
+  {
+   "f": 1,
+   "near": "Dining Room"
+  }
+ ],
+ "sites": [
+  {
+   "id": "garage",
+   "name": "Garaje / Gimnasio (sótano)",
+   "fl": "b",
+   "floorIdx": 0,
+   "rooms": [
+    "Garaje",
+    "Gimnasio"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Puerta Garaje (exterior)",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Garaje"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared exterior → Garaje",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Garaje"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vertical Cocina → Gimnasio",
+     "kind": "vertical",
+     "path": [
+      "Cocina (arriba)",
+      "Gimnasio"
+     ],
+     "roles": [
+      "blando",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escaleras sótano → Gimnasio (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras sótano",
+      "Gimnasio"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Thermite abre la pared de Garaje desde el exterior; Buck abre el piso de Cocina sobre Gimnasio.",
+    "Entrada por la puerta grande del Garaje con humo + escalera de sótano.",
+    "Planta en Gimnasio. Nomad en la escalera."
+   ],
+   "def": {
+    "reinforce": [
+     "Paredes Garaje exterior",
+     "Escotilla Garaje"
+    ],
+    "keepSoft": [
+     "Piso Cocina"
+    ],
+    "rotations": [
+     "Garaje↔Gimnasio"
+    ],
+    "anchors": "Anclas Garaje (Castle+Mira) y Gimnasio (Smoke). Roam en 1F.",
+    "ops": [
+     "castle",
+     "mira",
+     "smoke",
+     "bandit",
+     "jager"
+    ],
+    "tip": "House modernizado esta season: dronea todo."
+   }
+  },
+  {
+   "id": "kitchen",
+   "name": "Cocina / Comedor",
+   "fl": "1",
+   "floorIdx": 1,
+   "rooms": [
+    "Cocina",
+    "Comedor"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Sala → Comedor",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Sala",
+      "Comedor"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Recámaras → Cocina",
+     "kind": "vertical",
+     "path": [
+      "Recámaras (arriba)",
+      "Cocina"
+     ],
+     "roles": [
+      "blando",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Puerta trasera → Cocina",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Cocina"
+     ],
+     "roles": [
+      "soporte",
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Recámaras (2F). Ace abre la pared de Comedor desde Sala.",
+    "Entrada por Sala + puerta trasera de Cocina.",
+    "Planta en Cocina. Gridlock en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Comedor–Sala ×2",
+     "Puerta trasera (Castle)"
+    ],
+    "keepSoft": [
+     "Piso Recámaras"
+    ],
+    "rotations": [
+     "Cocina↔Comedor"
+    ],
+    "anchors": "Anclas Cocina (Smoke) y Comedor (Maestro). Roam en 2F.",
+    "ops": [
+     "smoke",
+     "maestro",
+     "castle",
+     "jager",
+     "lesion"
+    ],
+    "tip": "Sitio pequeño: no lo sobrecargues."
+   }
+  },
+  {
+   "id": "kids",
+   "name": "Recámara niños / Taller (2F)",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Recámara niños",
+    "Taller"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Recámara niños (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Recámara niños"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Taller",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo 2F",
+      "Taller"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → Recámara (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Recámara niños"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Recámara niños. Thermite abre la pared de Taller desde Pasillo 2F.",
+    "Ying por ventana; Glaz con humo en el pasillo.",
+    "Planta en Taller. Nomad en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Taller–Pasillo ×2",
+     "Ventanas (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Recámara↔Taller"
+    ],
+    "anchors": "Ancla Recámara (Frost), ancla Taller (Smoke). Roam en 1F.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "valkyrie"
+    ],
+    "tip": "Frost bajo cada ventana."
+   }
+  },
+  {
+   "id": "master",
+   "name": "Recámara principal / Baño (2F)",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Recámara principal",
+    "Baño"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Recámara principal (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Recámara principal"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Baño",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo 2F",
+      "Baño"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → Recámara (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Recámara principal"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Recámara principal. Ace abre la pared de Baño desde Pasillo 2F.",
+    "Zofia por ventana + Capitão en Baño.",
+    "Planta en Recámara. Gridlock en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Baño–Pasillo ×2",
+     "Ventanas (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Recámara↔Baño"
+    ],
+    "anchors": "Ancla Recámara (Frost + Smoke), ancla Baño (Mira). Roam en 1F.",
+    "ops": [
+     "frost",
+     "smoke",
+     "castle",
+     "jager",
+     "mozzie"
+    ],
+    "tip": "Confirma callouts del modernizado."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

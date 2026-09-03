@@ -1,0 +1,965 @@
+{
+ "map": "fortress",
+ "sites": {
+  "kitchen": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Abrimos la pared reforzada Pasillo→Salón con Thermite cubierto por Thatcher mientras Buck hace vertical sobre Cocina desde Dormitorio. El sitio es chico y las anclas viven pegadas a la pared de Salón y al espejo de Cocina, así que quitarles el piso de arriba y la pared al mismo tiempo los deja sin dónde pararse. Nomad cierra el flanco por la puerta exterior de Cocina para que el roamer no nos caiga por la espalda.",
+     "timeline":["0:00–0:45 · drones a Salón y Cocina, Buck sube a Dormitorio, Thatcher ubica Bandit/Mute","0:45–1:30 · EMP + carga exotérmica en pared Salón; Buck abre el techo de Cocina y niega la ancla","1:30–2:30 · entrada por la pared con Iana escaneando, Nomad tapa la puerta de Cocina, plant en Salón","2:30–3:00 · post-plant: Buck sostiene desde arriba, Thermite y Thatcher cruzan ángulos en Salón"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dronea Pasillo y confirma Bandit/Mute en la pared de Salón","via":"door"},
+        {"room":"Pasillo","f":1,"do":"tira las 2 EMP contra la pared reforzada y limpia gadgets","via":"door"},
+        {"room":"Salón","f":1,"do":"entra detrás de Thermite y cubre la esquina de Cocina","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Kapkan en la puerta exterior o Ela/Lesion pegados al marco","how":"dron primero al marco, dispara la trampa desde afuera y entra pegado a la pared"},
+        {"room":"Salón","f":1,"threat":"Ancla con Smoke detrás de la barricada esperando el plant","how":"no cruces sin EMP; prefire la esquina de la puerta interior con Thermite a tu lado"}],
+       "final":"cubre la puerta Salón–Cocina mientras se planta"},
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"espera la llamada de Thatcher fuera de la línea de la pared","via":"door"},
+        {"room":"Pasillo","f":1,"do":"pone la carga exotérmica en la pared Salón justo después del EMP","via":"door"},
+        {"room":"Salón","f":1,"do":"entra por el hueco y planta detrás del mueble","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer tipo Vigil/Cav bajando por Arriba a picar la carga","how":"deja a Iana viendo las escaleras y no abras hasta que Buck confirme arriba"},
+        {"room":"Salón","f":1,"threat":"Mira mirando la pared desde Cocina y Jäger pegado a la puerta","how":"flash o humo al espejo, entra en cruzada con Thatcher"},
+        {"room":"Cocina","f":1,"threat":"Ancla con escopeta esperando en la puerta Salón–Cocina","how":"Buck le abre el techo antes de que pises el sitio"}],
+       "final":"planta en Salón pegado a la pared abierta y sostiene desde el hueco"},
+      {"op":"buck","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta del Pasillo con dron adelante","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza rápido hacia la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube la escalera con el dron checando el descanso","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso y limpia el descanso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"avanza al Dormitorio revisando puertas","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"abre el piso sobre Cocina con Skeleton Key y quema la ancla","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer (Vigil/Caveira) esperando el paso en la escalera","how":"dron en el descanso y sube con un compañero cubriendo desde Pasillo"},
+        {"room":"Dormitorio","f":2,"threat":"Pulse o Valk cam mirando el cuarto de arriba","how":"revisa esquinas y rompe cámaras antes de agacharte a abrir"},
+        {"room":"Cocina","f":1,"threat":"Mira en Cocina viendo hacia Salón","how":"abre el techo justo encima del espejo y dispara antes de que se mueva"}],
+       "final":"sostiene el techo de Cocina y niega el retake por la puerta exterior"},
+      {"op":"iana","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"manda la réplica Gemini por la puerta del Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"replica hacia Salón y cuenta defensores mientras la pared abre","via":"door"},
+        {"room":"Salón","f":1,"do":"entra segunda y toma la esquina lejos de la puerta de Cocina","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer bajando de Arriba mientras Thermite pone la carga","how":"réplica hacia la escalera; si aparece, avisa y quédate viendo la escalera"},
+        {"room":"Salón","f":1,"threat":"Ancla agachada tras la barricada de la puerta interior","how":"réplica primero por el hueco; prefire donde la vio caer"}],
+       "final":"cubre el plant desde la esquina y llama rotaciones"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"pone Airjabs en la puerta exterior de Cocina y en el paso hacia Pasillo","via":"door"},
+        {"room":"Cocina","f":1,"do":"entra por la puerta cuando Buck ya abrió el techo y toca la ancla por la espalda","via":"door"}],
+       "clear":[
+        {"room":"Exterior","f":1,"threat":"Defensor haciendo peek de spawn desde la puerta de Cocina","how":"drone la puerta y quédate fuera de línea hasta que la pared truene"},
+        {"room":"Cocina","f":1,"threat":"Ancla con escopeta o Noor cubriendo la puerta exterior","how":"Airjab al marco, entra con Buck disparando desde arriba"}],
+       "final":"sostiene la puerta exterior de Cocina para que nadie regrese por ahí"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Entrada explosiva por la puerta exterior de Cocina antes de que armen el sitio: Ying y Zofia ciegan, Blitz entra primero como pared y Ash abre lo que estorbe. Sledge cierra tumbando el marco de Salón y plantamos en Cocina con los cinco encima del sitio a los 30 segundos.",
+     "timeline":["0:00–0:20 · dron rápido a la puerta de Cocina, Ash tira breach a la barricada","0:20–0:45 · candelas + stun por la puerta, Blitz cruza, todos detrás","0:45–1:30 · limpiar Cocina y Salón en grupo, plant en Cocina","1:30–3:00 · post-plant: Sledge y Zofia en Salón, Ash y Ying en Cocina, Blitz cubre la puerta exterior"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"vuela la barricada de la puerta de Cocina con la breach","via":"door"},
+        {"room":"Cocina","f":1,"do":"entra tercera después de los flashes y limpia esquinas","via":"door"},
+        {"room":"Salón","f":1,"do":"empuja a Salón con Sledge para sacar al ancla","via":"door"}],
+       "clear":[
+        {"room":"Exterior","f":1,"threat":"Ancla peekeando la puerta desde dentro de Cocina","how":"breach desde fuera de la línea y entra cuando reviente la candela"},
+        {"room":"Cocina","f":1,"threat":"Jäger/Lesion parados detrás de la isla de Cocina","how":"prefire la isla al cruzar la puerta detrás de Blitz"}],
+       "final":"cubre la puerta Cocina–Salón durante el plant"},
+      {"op":"blitz","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"se pega al marco de la puerta de Cocina con el escudo cerrado","via":"door"},
+        {"room":"Cocina","f":1,"do":"entra primero flasheando y bloquea la vista de la ancla","via":"door"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Noor con el lanzador de fuego tapando la puerta contra escudos","how":"no te quedes en el marco: flash, entra en diagonal y deja que Ash pase"},
+        {"room":"Salón","f":1,"threat":"Ancla con Smoke disparando desde la puerta interior","how":"flash hacia Salón y deja que Zofia entre por tu costado"}],
+       "final":"planta en Cocina detrás del escudo o cubre al que planta"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"tira 2 candelas por la puerta de Cocina apenas Ash abra","via":"door"},
+        {"room":"Cocina","f":1,"do":"entra segunda detrás de Blitz y limpia la isla","via":"door"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Mira con espejo hacia Salón y Jäger comiendo candelas","how":"tira la candela por el suelo con rebote para que el ADS no la trague"},
+        {"room":"Salón","f":1,"threat":"Ancla retirándose a Salón","how":"candela por la puerta interior antes de que Sledge tire el marco"}],
+       "final":"sostiene Cocina viendo la puerta exterior"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"stun por la puerta de Cocina justo detrás de la candela","via":"door"},
+        {"room":"Cocina","f":1,"do":"cruza hacia la puerta de Salón con Sledge","via":"door"},
+        {"room":"Salón","f":1,"do":"impacto al mueble donde se esconde la ancla y entra","via":"door"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Ancla agachada detrás de la isla","how":"stun al piso y limpia con Blitz ya adentro"},
+        {"room":"Salón","f":1,"threat":"Smoke en la esquina de la puerta interior","how":"impacto a la esquina y entra pegada a Sledge"}],
+       "final":"toma Salón y mira la pared del Pasillo por si rotan"},
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al final del tren por la puerta de Cocina","via":"door"},
+        {"room":"Cocina","f":1,"do":"martilla la puerta Cocina–Salón para abrir doble ancho","via":"door"},
+        {"room":"Salón","f":1,"do":"empuja al ancla con Zofia","via":"breach"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Roamer regresando por la puerta exterior a picar el tren","how":"último del tren checa atrás antes de entrar; Ying deja una candela en la puerta"},
+        {"room":"Salón","f":1,"threat":"Ancla con barricada blindada en la puerta interior","how":"martillazo a la barricada y stun de Zofia adentro"}],
+       "final":"sostiene Salón mirando la pared del Pasillo"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Los cinco suben a Dormitorio y matan el sitio desde arriba: Fuze mete racimos sobre Salón, Ram manda el BU-GI sobre Cocina y Sledge abre el piso para que Twitch y Ace tengan línea. Nadie pisa el sitio hasta que quedan dos defensores; entonces Ace abre la pared de Salón desde Pasillo y bajamos a plantar.",
+     "timeline":["0:00–0:45 · todos por Pasillo→Arriba, Twitch limpia cámaras y ADS del segundo piso","0:45–1:30 · Dormitorio: Fuze racimos sobre Salón, Ram BU-GI sobre Cocina, Sledge abre líneas","1:30–2:30 · Ace baja y abre pared Salón, Lion escanea, entrada por el hueco y plant","2:30–3:00 · post-plant: Fuze y Sledge sostienen desde arriba, Ace y Ram en Salón"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta del Pasillo con dron adelante","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza hacia la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube cubriendo el descanso","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso y despeja","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"avanza al Dormitorio","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"abre el piso sobre Salón y Cocina con el martillo","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer en la escalera esperando pasos","how":"dron primero, sube en pareja con Twitch"},
+        {"room":"Dormitorio","f":2,"threat":"Frost o Kapkan en la puerta de Dormitorio","how":"revisa el marco con dron antes de cruzar"},
+        {"room":"Salón","f":1,"threat":"Ancla debajo pegada a la pared reforzada","how":"abre justo arriba de la esquina y dispara por el hueco"}],
+       "final":"sostiene desde arriba viendo los huecos sobre Salón"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"sigue a Sledge hacia el Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube la escalera","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale y cubre el descanso mientras el resto sube","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"llega a la puerta de Dormitorio","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"pone 3 racimos sobre Salón donde se sienta la ancla","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras","f":2,"threat":"Vigil/Cav esperando en el descanso del segundo piso","how":"entra con Twitch delante y prefire la esquina"},
+        {"room":"Salón","f":1,"threat":"Smoke ancla pegado al mueble junto a la puerta interior","how":"racimo encima; espera al sonido de la carga y escucha las bajas"}],
+       "final":"sostiene desde Dormitorio viendo los huecos y niega el defuser"},
+      {"op":"ram","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo con el grupo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"cruza al Dormitorio","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"lanza el BU-GI hacia la parte que queda sobre Cocina y abre toda la línea","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":2,"threat":"Maestro Evil Eye o Valk cam vigilando el pasillo","how":"Twitch le pega o rompe con el dron antes de cruzar"},
+        {"room":"Cocina","f":1,"threat":"Mira parada frente al espejo bajo el piso de Dormitorio","how":"BU-GI encima y dispara a quien salga corriendo"}],
+       "final":"baja detrás de Ace para tomar Cocina desde la puerta interior"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dron de choque adelante limpiando cámaras del Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube primera con el dron delante","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"limpia Valk/ADS del descanso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"choca gadgets del Pasillo y de la puerta de Dormitorio","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"quema ADS y cámaras para que los racimos entren","via":"door"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer que sube y baja la escalera","how":"dron en el descanso escuchando; si sale, retrocede al Pasillo y llama"},
+        {"room":"Dormitorio","f":2,"threat":"Jäger ADS pegado al techo del sitio","how":"choca los ADS desde la puerta antes de que Fuze ponga la carga"}],
+       "final":"cubre la puerta de Dormitorio contra el retake por Escaleras"},
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"espera fuera de línea mientras el vertical hace daño","via":"door"},
+        {"room":"Pasillo","f":1,"do":"tira SELMA a la pared reforzada de Salón cuando quedan dos defensores","via":"door"},
+        {"room":"Salón","f":1,"do":"entra con Lion escaneando y planta","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Bandit tricking la pared desde Salón","how":"escucha el arco; tira SELMA por arriba y a destiempo, Fuze dispara por el hueco"},
+        {"room":"Salón","f":1,"threat":"Ancla sobreviviente cubriendo la pared","how":"Lion escanea antes de cruzar, Fuze la ve desde arriba"}],
+       "final":"planta en Salón y sostiene desde el hueco de la pared"},
+      {"op":"lion","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"cubre la espalda del grupo y dronea la puerta de Cocina","via":"door"},
+        {"room":"Pasillo","f":1,"do":"se queda con Ace viendo la escalera y la pared de Salón","via":"door"},
+        {"room":"Salón","f":1,"do":"escanea al entrar para que Fuze y Sledge cacen desde arriba","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer bajando de Arriba mientras el grupo está en Dormitorio","how":"sostén la escalera desde el Pasillo con escaneo al primer ruido"},
+        {"room":"Salón","f":1,"threat":"Ancla que se queda quieta esperando el plant","how":"escaneo al entrar; si se mueve, los de arriba la ven"}],
+       "final":"cubre el plant desde la pared y escanea en post-plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes al mismo tiempo: Hibana y Kali abren la pared reforzada de Salón desde el Pasillo mientras Montagne, Glaz y Jackal entran por la puerta exterior de Cocina. La defensa tiene que elegir a quién mirar y Jackal caza al roamer que baje por Arriba a picar la pared.",
+     "timeline":["0:00–0:45 · drones: Jackal escanea huellas del roamer, Kali ubica Bandit","0:45–1:30 · Kali LV a la batería, Hibana abre Salón; al mismo tiempo Monty abre la puerta de Cocina con Glaz atrás","1:30–2:30 · entrada doble, plant en Cocina detrás de Monty","2:30–3:00 · post-plant: Glaz humo y térmica sobre la puerta interior, Hibana y Kali en Salón"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dronea Pasillo y espera a que Kali quite la batería","via":"door"},
+        {"room":"Pasillo","f":1,"do":"dispara X-KAIROS a la pared reforzada de Salón","via":"door"},
+        {"room":"Salón","f":1,"do":"entra por el hueco cuando Monty ya jaló al ancla a Cocina","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Kapkan en la puerta exterior y Ela en el marco de Salón","how":"dron a ras de piso y dispara las trampas desde fuera"},
+        {"room":"Salón","f":1,"threat":"Ancla con Smoke pegada a la barricada de la puerta interior","how":"entra cuando la ancla gire a ver la puerta de Cocina; prefire la esquina"}],
+       "final":"toma Salón y cubre el plant desde la pared"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dispara la LV a la pared de Salón desde la puerta del Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cubre a Hibana viendo la escalera de Arriba","via":"door"},
+        {"room":"Salón","f":1,"do":"entra detrás de Hibana","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer bajando de Arriba a picar la pared","how":"un tiro a la escalera desde la esquina del Pasillo; Jackal te avisa"},
+        {"room":"Salón","f":1,"threat":"Bandit tricking desde adentro","how":"LV justo cuando escuches el arco y Hibana dispara enseguida"}],
+       "final":"sostiene el Pasillo y la escalera contra el retake"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"pega el escudo a la puerta exterior de Cocina con Glaz atrás","via":"door"},
+        {"room":"Cocina","f":1,"do":"entra extendido bloqueando la isla y jala tiros de la ancla","via":"door"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Noor tapando la puerta contra escudos y Jäger en la isla","how":"entra en diagonal, no te quedes en el marco; Glaz limpia desde atrás"},
+        {"room":"Salón","f":1,"threat":"Ancla de Salón rotando por la puerta interior","how":"gira el escudo a la puerta interior y deja que Hibana entre por su espalda"}],
+       "final":"planta en Cocina detrás del escudo"},
+      {"op":"glaz","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"humo en la puerta de Cocina y térmica sobre la isla","via":"door"},
+        {"room":"Cocina","f":1,"do":"entra detrás de Monty y limpia lo que asome","via":"door"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Mira escondida detrás del espejo","how":"humo por delante de Monty y térmica: ve la silueta al abrir el espejo"},
+        {"room":"Salón","f":1,"threat":"Ancla peekeando la puerta interior","how":"humo en la puerta y térmica para negar el retake en post-plant"}],
+       "final":"sostiene Cocina con humo y térmica sobre la puerta interior"},
+      {"op":"jackal","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"escanea huellas en las puertas exteriores para ubicar al roamer","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cubre la escalera de Arriba mientras Hibana abre","via":"door"},
+        {"room":"Arriba","f":1,"do":"si hay huella fresca sube a cazar al roamer","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"caza al roamer en el descanso y regresa","via":"stairs"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Vigil o Caveira esperando en la escalera","how":"escanea huellas y sube solo con el ping activo"},
+        {"room":"Escaleras","f":2,"threat":"Roamer regresando al descanso para bajar al Pasillo","how":"prefire la esquina del descanso al salir de la escalera"}],
+       "final":"vuelve al Pasillo y sostiene la escalera en post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Bandit en la pared de Salón con Smoke ancla detrás; Mira pone espejo en Cocina hacia la puerta exterior y Jäger limpia flashes. Pulse roamea arriba en Dormitorio para castigar el vertical y bajar por Arriba a la espalda de la pared.",
+     "reinforce":["Pared Salón–Pasillo ×2","Puerta exterior de Cocina barricada","Escotilla/piso Dormitorio SIN reforzar para que Pulse baje rápido"],
+     "rotations":["Cocina↔Salón por la puerta interior","Pared rotación Salón→Pasillo (pequeña) para Bandit trick"],
+     "ops":[
+      {"op":"smoke","room":"Salón","f":1,"role":"ancla","job":"Se queda detrás del mueble junto a la puerta interior; gas al hueco de la pared cuando intenten cruzar y al plant"},
+      {"op":"mira","room":"Cocina","f":1,"role":"ancla","job":"Espejo en la pared de Cocina hacia la puerta exterior; vive detrás de la isla y avisa entradas"},
+      {"op":"bandit","room":"Salón","f":1,"role":"flex","job":"Trickea la pared reforzada de Salón con la batería; si abren, se va a Cocina"},
+      {"op":"jager","room":"Cocina","f":1,"role":"flex","job":"ADS en la puerta interior y en Cocina; cubre la puerta exterior cuando Mira abre el espejo"},
+      {"op":"pulse","room":"Dormitorio","f":2,"role":"roam","job":"Sensor arriba para ver el vertical; baja por Escaleras→Arriba a picar al Thermite en el Pasillo"}]},
+    {"id":"alt","n":"Anti-rush con Noor","summary":"Contra equipos que entran por la puerta de Cocina: Castle blinda la puerta exterior, Noor pone fuego para negar escudos y Mute jamea la pared y la puerta. Azami tapa líneas en Salón y Vigil roamea arriba.",
+     "reinforce":["Pared Salón–Pasillo ×2","Puerta exterior de Cocina con Castle","Piso de Dormitorio sobre Salón (una lámina)"],
+     "rotations":["Cocina↔Salón","Rotación Cocina→Pasillo para salir a flanquear"],
+     "ops":[
+      {"op":"castle","room":"Cocina","f":1,"role":"ancla","job":"Barricada blindada en la puerta exterior de Cocina; se para detrás de la isla con la escopeta"},
+      {"op":"noor","room":"Cocina","f":1,"role":"ancla","job":"Horus a la puerta exterior: quema a Blitz/Monty en el marco; segunda carga a la puerta interior en post-plant"},
+      {"op":"mute","room":"Salón","f":1,"role":"flex","job":"Jammers en la pared reforzada de Salón y bajo la barricada de Castle; corta drones y breach"},
+      {"op":"azami","room":"Salón","f":1,"role":"flex","job":"Kibas para tapar el hueco de la pared si la abren y cortar la línea del hueco del techo"},
+      {"op":"vigil","room":"Escaleras","f":2,"role":"roam","job":"Roamea entre Escaleras y Pasillo de arriba; baja por Arriba a la espalda del breach"}]}
+   ]
+  },
+  "hammam": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite abre la pared reforzada Pasillo→Cafetería con Thatcher limpiando la batería mientras Buck sube a Oficina y abre el piso sobre Hammam para sacar a la Mira. Iana da la información desde el Pasillo y Nomad tapa la puerta exterior de Hammam para que el roamer no regrese. Plant en Cafetería pegado a la pared abierta.",
+     "timeline":["0:00–0:45 · drones a Cafetería y Hammam; Buck sube a Oficina; Thatcher confirma Bandit","0:45–1:30 · EMP + carga en pared Cafetería; Buck abre el techo de Hammam","1:30–2:30 · entrada por el hueco con Iana replicando; Nomad tapa la puerta; plant en Cafetería","2:30–3:00 · post-plant: Buck desde arriba, Thermite y Thatcher en Cafetería, Nomad en Hammam"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dronea Pasillo y confirma Bandit/Mute en la pared de Cafetería","via":"door"},
+        {"room":"Pasillo","f":1,"do":"EMP contra la pared reforzada y contra la puerta de Cafetería","via":"door"},
+        {"room":"Cafetería","f":1,"do":"entra detrás de Thermite y cubre la puerta hacia Hammam","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Kapkan en la puerta exterior del Pasillo","how":"dron al marco y dispara la trampa desde afuera"},
+        {"room":"Cafetería","f":1,"threat":"Smoke ancla detrás de la barra viendo la pared","how":"EMP primero; entra en cruzada con Thermite y prefire la barra"}],
+       "final":"cubre la puerta Cafetería–Hammam durante el plant"},
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"espera fuera de la línea de la pared la llamada de Thatcher","via":"door"},
+        {"room":"Pasillo","f":1,"do":"carga exotérmica en la pared Cafetería justo tras el EMP","via":"door"},
+        {"room":"Cafetería","f":1,"do":"entra por el hueco y planta detrás de la barra","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer bajando por Arriba a picar la carga","how":"Iana con la réplica en la escalera; no abras hasta que Buck confirme el piso de arriba"},
+        {"room":"Cafetería","f":1,"threat":"Jäger pegado a la puerta de Hammam y Mira mirando desde Hammam","how":"flash al espejo, entra pegado a la pared abierta"},
+        {"room":"Hammam","f":1,"threat":"Ancla con escopeta en la puerta Cafetería–Hammam","how":"Buck le abre el techo antes de entrar"}],
+       "final":"planta en Cafetería pegado a la pared abierta"},
+      {"op":"buck","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta del Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube con dron en el descanso","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso y limpia","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"cruza hacia Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"abre el piso sobre Hammam y quema a la Mira","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Vigil/Cav esperando en la escalera","how":"dron en el descanso; sube con Iana cubriendo"},
+        {"room":"Oficina","f":2,"threat":"Valk cam o Pulse en el cuarto de arriba","how":"revisa esquinas y rompe cámaras antes de agacharte"},
+        {"room":"Hammam","f":1,"threat":"Mira en Hammam viendo hacia Cafetería","how":"abre justo sobre el espejo y dispara antes de que rote"}],
+       "final":"sostiene el techo de Hammam y niega el retake por la puerta exterior"},
+      {"op":"iana","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"réplica por la puerta del Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"replica a Cafetería y cuenta defensores mientras la pared abre","via":"door"},
+        {"room":"Cafetería","f":1,"do":"entra segunda y toma la esquina lejos de la puerta de Hammam","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer bajando de Arriba","how":"réplica a la escalera; si aparece, avisa y sostén la escalera"},
+        {"room":"Cafetería","f":1,"threat":"Ancla agachada tras la barra","how":"réplica por el hueco primero; prefire donde cayó"}],
+       "final":"cubre el plant desde la esquina y llama rotaciones"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Airjabs en la puerta exterior de Hammam y en el camino al Pasillo","via":"door"},
+        {"room":"Hammam","f":1,"do":"entra cuando Buck abrió el techo y toca a la ancla por la espalda","via":"door"}],
+       "clear":[
+        {"room":"Exterior","f":1,"threat":"Defensor peekeando spawn desde la puerta de Hammam","how":"dron a la puerta y quédate fuera de línea hasta que truene la pared"},
+        {"room":"Hammam","f":1,"threat":"Ancla con escopeta o Noor cubriendo la puerta exterior","how":"Airjab al marco y entra con Buck disparando desde arriba"}],
+       "final":"sostiene la puerta exterior de Hammam"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rush por la puerta exterior de Hammam antes de que Mira termine el setup: Ash abre la barricada, Ying y Zofia ciegan, Blitz entra de pared y Sledge tumba el marco a Cafetería. Plant en Hammam a los 40 segundos con los cinco encima.",
+     "timeline":["0:00–0:20 · dron a la puerta de Hammam, Ash breach","0:20–0:45 · candelas + stun, Blitz entra, tren detrás","0:45–1:30 · limpiar Hammam y Cafetería, plant en Hammam","1:30–3:00 · post-plant: Sledge y Zofia en Cafetería, Ash y Ying en Hammam, Blitz en la puerta"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"breach a la barricada de la puerta de Hammam","via":"door"},
+        {"room":"Hammam","f":1,"do":"entra tras los flashes y limpia esquinas","via":"door"},
+        {"room":"Cafetería","f":1,"do":"empuja con Sledge a la ancla","via":"door"}],
+       "clear":[
+        {"room":"Exterior","f":1,"threat":"Ancla peekeando la puerta desde Hammam","how":"breach fuera de línea, entra cuando reviente la candela"},
+        {"room":"Hammam","f":1,"threat":"Lesion/Jäger detrás de las columnas del baño","how":"prefire las columnas al cruzar detrás de Blitz"}],
+       "final":"cubre la puerta Hammam–Cafetería en el plant"},
+      {"op":"blitz","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"se pega al marco de la puerta de Hammam con el escudo","via":"door"},
+        {"room":"Hammam","f":1,"do":"entra primero flasheando y bloquea la vista","via":"door"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Noor con fuego en la puerta contra escudos","how":"flash, entra en diagonal y deja pasar a Ash"},
+        {"room":"Cafetería","f":1,"threat":"Ancla disparando desde la puerta interior","how":"flash hacia Cafetería y Zofia entra por tu costado"}],
+       "final":"planta en Hammam detrás del escudo"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"2 candelas por la puerta de Hammam apenas abra","via":"door"},
+        {"room":"Hammam","f":1,"do":"entra tras Blitz y limpia las columnas","via":"door"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Mira con espejo hacia Cafetería y Jäger comiendo candelas","how":"candela rebotada por el piso para que el ADS no la trague"},
+        {"room":"Cafetería","f":1,"threat":"Ancla retirándose a Cafetería","how":"candela por la puerta interior antes de que Sledge abra"}],
+       "final":"sostiene Hammam viendo la puerta exterior"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"stun por la puerta de Hammam tras la candela","via":"door"},
+        {"room":"Hammam","f":1,"do":"cruza a la puerta de Cafetería con Sledge","via":"door"},
+        {"room":"Cafetería","f":1,"do":"impacto a la barra y entra","via":"door"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Ancla agachada tras las columnas","how":"stun al piso y limpia con Blitz adentro"},
+        {"room":"Cafetería","f":1,"threat":"Smoke en la esquina de la barra","how":"impacto a la barra y entra pegada a Sledge"}],
+       "final":"toma Cafetería y vigila la pared del Pasillo"},
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al final del tren por la puerta de Hammam","via":"door"},
+        {"room":"Hammam","f":1,"do":"martilla la puerta Hammam–Cafetería para abrir doble ancho","via":"door"},
+        {"room":"Cafetería","f":1,"do":"empuja a la ancla con Zofia","via":"breach"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Roamer regresando por la puerta exterior a picar el tren","how":"último del tren checa atrás; Ying deja candela en la puerta"},
+        {"room":"Cafetería","f":1,"threat":"Barricada blindada en la puerta interior","how":"martillazo y stun de Zofia adentro"}],
+       "final":"sostiene Cafetería mirando la pared del Pasillo"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Los cinco suben a Oficina y matan el sitio desde arriba: Fuze racimos sobre Cafetería, Ram BU-GI sobre Hammam, Sledge abre líneas y Twitch limpia ADS para que todo entre. Cuando quedan dos, Ace abre la pared de Cafetería desde el Pasillo con Lion escaneando y bajamos a plantar.",
+     "timeline":["0:00–0:45 · todos por Pasillo→Arriba; Twitch limpia cámaras y ADS del segundo piso","0:45–1:30 · Oficina: racimos sobre Cafetería, BU-GI sobre Hammam, Sledge abre líneas","1:30–2:30 · Ace baja y abre pared Cafetería; Lion escanea; entrada y plant","2:30–3:00 · post-plant: Fuze y Sledge desde arriba, Ace y Ram en Cafetería"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta del Pasillo con dron adelante","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube cubriendo el descanso","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"cruza hacia Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"abre el piso sobre Cafetería y Hammam","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer en la escalera","how":"dron primero, sube en pareja con Twitch"},
+        {"room":"Oficina","f":2,"threat":"Frost o Kapkan en la puerta de Oficina","how":"revisa el marco con dron antes de cruzar"},
+        {"room":"Cafetería","f":1,"threat":"Ancla debajo pegada a la pared reforzada","how":"abre encima de la esquina y dispara por el hueco"}],
+       "final":"sostiene desde arriba viendo los huecos sobre Cafetería"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"sigue a Sledge al Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"cubre el descanso mientras suben","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"llega a la puerta de Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"3 racimos sobre Cafetería donde se sienta la ancla","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras","f":2,"threat":"Vigil/Cav en el descanso de arriba","how":"entra con Twitch delante y prefire la esquina"},
+        {"room":"Cafetería","f":1,"threat":"Smoke ancla detrás de la barra","how":"racimo encima; escucha las bajas al tronar"}],
+       "final":"sostiene desde Oficina viendo los huecos y niega el defuser"},
+      {"op":"ram","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo con el grupo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"cruza a Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"BU-GI hacia la parte sobre Hammam para abrir toda la línea","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":2,"threat":"Evil Eye o Valk cam en el pasillo","how":"Twitch la rompe antes de cruzar"},
+        {"room":"Hammam","f":1,"threat":"Mira frente al espejo bajo el piso de Oficina","how":"BU-GI encima y dispara a quien salga"}],
+       "final":"baja detrás de Ace para tomar Hammam desde la puerta interior"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dron de choque adelante limpiando cámaras del Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube primera con el dron delante","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"limpia Valk/ADS del descanso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"choca gadgets del Pasillo y de la puerta de Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"quema ADS para que entren los racimos","via":"door"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer subiendo y bajando la escalera","how":"dron en el descanso; si sale, retrocede y llama"},
+        {"room":"Oficina","f":2,"threat":"Jäger ADS pegado al techo del sitio","how":"choca los ADS desde la puerta antes del racimo"}],
+       "final":"cubre la puerta de Oficina contra el retake por Escaleras"},
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"espera fuera de línea mientras el vertical hace daño","via":"door"},
+        {"room":"Pasillo","f":1,"do":"SELMA a la pared reforzada de Cafetería cuando quedan dos","via":"door"},
+        {"room":"Cafetería","f":1,"do":"entra con Lion escaneando y planta","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Bandit tricking desde Cafetería","how":"SELMA a destiempo y Fuze dispara por el hueco"},
+        {"room":"Cafetería","f":1,"threat":"Ancla sobreviviente cubriendo la pared","how":"Lion escanea antes de cruzar"}],
+       "final":"planta en Cafetería y sostiene desde el hueco"},
+      {"op":"lion","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"cubre la espalda y dronea la puerta de Hammam","via":"door"},
+        {"room":"Pasillo","f":1,"do":"se queda con Ace viendo la escalera y la pared","via":"door"},
+        {"room":"Cafetería","f":1,"do":"escanea al entrar para que los de arriba cacen","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer bajando de Arriba mientras el grupo está en Oficina","how":"sostén la escalera desde el Pasillo, escaneo al primer ruido"},
+        {"room":"Cafetería","f":1,"threat":"Ancla quieta esperando el plant","how":"escaneo al entrar; los de arriba la ven moverse"}],
+       "final":"cubre el plant y escanea en post-plant"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Kali abren la pared reforzada de Cafetería desde el Pasillo mientras Montagne, Glaz y Jackal entran por la puerta exterior de Hammam. La defensa tiene que dividir la mirada y Jackal caza al roamer que baje por Arriba a picar la pared.",
+     "timeline":["0:00–0:45 · drones; Jackal escanea huellas; Kali ubica la batería","0:45–1:30 · LV + X-KAIROS en Cafetería; Monty abre la puerta de Hammam con Glaz","1:30–2:30 · entrada doble, plant en Hammam detrás de Monty","2:30–3:00 · post-plant: Glaz humo/térmica en la puerta interior, Hibana y Kali en Cafetería"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dronea Pasillo y espera a que Kali quite la batería","via":"door"},
+        {"room":"Pasillo","f":1,"do":"X-KAIROS a la pared reforzada de Cafetería","via":"door"},
+        {"room":"Cafetería","f":1,"do":"entra cuando Monty jaló a la ancla a Hammam","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Kapkan en la puerta exterior y Ela en el marco","how":"dron a ras de piso y dispara las trampas desde fuera"},
+        {"room":"Cafetería","f":1,"threat":"Smoke pegado a la barra viendo la pared","how":"entra cuando gire a la puerta de Hammam; prefire la barra"}],
+       "final":"toma Cafetería y cubre el plant desde la pared"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"LV a la pared de Cafetería desde la puerta del Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cubre a Hibana viendo la escalera","via":"door"},
+        {"room":"Cafetería","f":1,"do":"entra detrás de Hibana","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":1,"threat":"Roamer bajando de Arriba a picar la pared","how":"un tiro a la escalera desde la esquina; Jackal avisa"},
+        {"room":"Cafetería","f":1,"threat":"Bandit tricking desde dentro","how":"LV al escuchar el arco y Hibana dispara enseguida"}],
+       "final":"sostiene el Pasillo y la escalera contra el retake"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"pega el escudo a la puerta exterior de Hammam con Glaz atrás","via":"door"},
+        {"room":"Hammam","f":1,"do":"entra extendido bloqueando las columnas y jala tiros","via":"door"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Noor en la puerta contra escudos y Jäger tras las columnas","how":"entra en diagonal, no te quedes en el marco; Glaz limpia atrás"},
+        {"room":"Cafetería","f":1,"threat":"Ancla rotando por la puerta interior","how":"gira el escudo y deja que Hibana entre por su espalda"}],
+       "final":"planta en Hammam detrás del escudo"},
+      {"op":"glaz","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"humo en la puerta de Hammam y térmica sobre las columnas","via":"door"},
+        {"room":"Hammam","f":1,"do":"entra tras Monty y limpia lo que asome","via":"door"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Mira tras el espejo","how":"humo delante de Monty y térmica al abrir el espejo"},
+        {"room":"Cafetería","f":1,"threat":"Ancla peekeando la puerta interior","how":"humo en la puerta y térmica en post-plant"}],
+       "final":"sostiene Hammam con humo y térmica sobre la puerta interior"},
+      {"op":"jackal","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"escanea huellas en las puertas exteriores","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cubre la escalera mientras Hibana abre","via":"door"},
+        {"room":"Arriba","f":1,"do":"si hay huella fresca sube a cazar","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"caza al roamer en el descanso y regresa","via":"stairs"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Vigil o Caveira en la escalera","how":"escanea y sube solo con el ping activo"},
+        {"room":"Escaleras","f":2,"threat":"Roamer regresando al descanso","how":"prefire la esquina al salir de la escalera"}],
+       "final":"vuelve al Pasillo y sostiene la escalera en post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Bandit en la pared de Cafetería con Smoke ancla detrás de la barra; Mira pone espejo en Hammam hacia la puerta exterior y Jäger limpia flashes. Pulse roamea arriba en Oficina para castigar el vertical y bajar por Arriba a la espalda de la pared.",
+     "reinforce":["Pared Cafetería–Pasillo ×2","Puerta exterior de Hammam barricada","Piso de Oficina SIN reforzar para que Pulse baje rápido"],
+     "rotations":["Hammam↔Cafetería por la puerta interior","Rotación chica Cafetería→Pasillo para Bandit trick"],
+     "ops":[
+      {"op":"smoke","room":"Cafetería","f":1,"role":"ancla","job":"Detrás de la barra; gas al hueco de la pared cuando crucen y al plant"},
+      {"op":"mira","room":"Hammam","f":1,"role":"ancla","job":"Espejo hacia la puerta exterior de Hammam; vive detrás de las columnas y avisa entradas"},
+      {"op":"bandit","room":"Cafetería","f":1,"role":"flex","job":"Trickea la pared reforzada de Cafetería; si abren se va a Hammam"},
+      {"op":"jager","room":"Hammam","f":1,"role":"flex","job":"ADS en la puerta interior y en Hammam; cubre la puerta exterior cuando Mira abre"},
+      {"op":"pulse","room":"Oficina","f":2,"role":"roam","job":"Sensor arriba para ver el vertical; baja por Escaleras→Arriba a picar al Thermite"}]},
+    {"id":"alt","n":"Anti-rush con Noor","summary":"Contra rush por la puerta de Hammam: Castle blinda la puerta, Noor pone fuego contra escudos y Mute jamea la pared y la puerta. Azami tapa líneas en Cafetería y Vigil roamea arriba.",
+     "reinforce":["Pared Cafetería–Pasillo ×2","Puerta exterior de Hammam con Castle","Piso de Oficina sobre Cafetería (una lámina)"],
+     "rotations":["Hammam↔Cafetería","Rotación Hammam→Pasillo para salir a flanquear"],
+     "ops":[
+      {"op":"castle","room":"Hammam","f":1,"role":"ancla","job":"Barricada blindada en la puerta exterior de Hammam; escopeta detrás de las columnas"},
+      {"op":"noor","room":"Hammam","f":1,"role":"ancla","job":"Horus a la puerta exterior: quema a Blitz/Monty en el marco; segunda carga a la puerta interior en post-plant"},
+      {"op":"mute","room":"Cafetería","f":1,"role":"flex","job":"Jammers en la pared reforzada y bajo la barricada de Castle"},
+      {"op":"azami","room":"Cafetería","f":1,"role":"flex","job":"Kibas para tapar el hueco de la pared y cortar la línea del techo"},
+      {"op":"vigil","room":"Escaleras","f":2,"role":"roam","job":"Roamea Escaleras y Pasillo de arriba; baja por Arriba a la espalda del breach"}]}
+   ]
+  },
+  "commander": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite y Thatcher suben por Arriba→Escaleras y abren la pared reforzada Pasillo→Dormitorio mientras Sledge hace vertical desde Salón abriendo el techo bajo Oficina del comandante. Zero pone Argus por las ventanas para ver a las anclas y Nomad tapa Escaleras para que el roamer de abajo no suba a picarnos. Plant en Oficina del comandante.",
+     "timeline":["0:00–0:45 · Argus por ventanas; Sledge entra a Salón; Thatcher confirma Bandit en Dormitorio","0:45–1:30 · EMP + carga en pared Dormitorio; Sledge abre el techo bajo Oficina del comandante","1:30–2:30 · entrada por el hueco de Dormitorio, Nomad tapa Escaleras, plant en Oficina del comandante","2:30–3:00 · post-plant: Sledge desde abajo, Thermite y Thatcher en Dormitorio, Zero cams vivas"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dronea Pasillo y escalera antes de subir","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera con Thermite","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"limpia el descanso y cubre a Thermite","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"EMP contra la pared reforzada de Dormitorio","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"entra detrás de Thermite y cubre la puerta a Oficina del comandante","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer (Vigil/Cav) en la escalera","how":"dron en el descanso, sube en pareja"},
+        {"room":"Pasillo","f":2,"threat":"Kapkan en la puerta de Dormitorio y Evil Eye en el Pasillo","how":"dron al marco y EMP antes de acercarte"},
+        {"room":"Dormitorio","f":2,"threat":"Mira mirando la pared desde Dormitorio","how":"EMP + flash al espejo y entra en cruzada"}],
+       "final":"cubre la puerta Dormitorio–Oficina del comandante durante el plant"},
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo con Thatcher","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"espera la llamada de Thatcher fuera de la línea","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"carga exotérmica en la pared de Dormitorio tras el EMP","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"entra por el hueco y empuja a Oficina del comandante","via":"breach"},
+        {"room":"Oficina del comandante","f":2,"do":"planta detrás del escritorio","via":"door"}],
+       "clear":[
+        {"room":"Escaleras","f":2,"threat":"Roamer subiendo desde abajo a picar la carga","how":"Nomad pone Airjab en Escaleras antes de que pongas la carga"},
+        {"room":"Dormitorio","f":2,"threat":"Bandit tricking y Smoke detrás de la cama","how":"escucha el arco, carga tras el EMP; prefire la cama"},
+        {"room":"Oficina del comandante","f":2,"threat":"Frost bajo las ventanas y ancla en el escritorio","how":"Zero ya la vio con Argus; Sledge la quema desde abajo"}],
+       "final":"planta en Oficina del comandante y sostiene desde Dormitorio"},
+      {"op":"sledge","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta exterior de Cocina","via":"door"},
+        {"room":"Cocina","f":1,"do":"limpia y cruza a Salón","via":"door"},
+        {"room":"Salón","f":1,"do":"martilla el techo bajo Oficina del comandante y quema a la ancla","via":"breach"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Roamer abajo (Vigil/Cav) esperando en Cocina","how":"dron primero y entra pegado a la pared"},
+        {"room":"Salón","f":1,"threat":"Ancla de arriba disparando por escotilla abierta","how":"revisa la escotilla desde lejos antes de agacharte a martillar"}],
+       "final":"sostiene desde abajo los huecos de Oficina del comandante y niega el defuser"},
+      {"op":"zero","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel a las ventanas de Oficina del comandante y dispara Argus dentro","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"entra por la ventana al final cuando Frost está rota y las anclas caídas","via":"window"}],
+       "clear":[
+        {"room":"Exterior","f":2,"threat":"Ancla peekeando la ventana con Castle en el marco","how":"Argus a través de la barricada blindada; no te asomes"},
+        {"room":"Oficina del comandante","f":2,"threat":"Frost bajo la ventana y Smoke detrás del escritorio","how":"mira la cam, rompe el cepo con un tiro y entra cuando Thermite ya está en Dormitorio"}],
+       "final":"cubre el plant desde la ventana con las Argus vivas"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo detrás del grupo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"Airjab en la puerta del Pasillo","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube al último","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"Airjabs en Escaleras y cubre la puerta a Oficina del comandante","via":"stairs"},
+        {"room":"Oficina del comandante","f":2,"do":"entra por la puerta cuando Thermite empuja desde Dormitorio","via":"door"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer que regresa por la escalera a la espalda del breach","how":"Airjab en la escalera y quédate viendo el descanso"},
+        {"room":"Oficina del comandante","f":2,"threat":"Ancla en la puerta con escopeta","how":"espera a que la ancla gire a Dormitorio y entra por su espalda"}],
+       "final":"sostiene Escaleras contra el retake"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rappel directo a las ventanas de Oficina del comandante antes de que Castle y Frost terminen: Ash abre la barricada, Ying y Zofia ciegan, Blitz entra de pared y Amaru hookea al último para plantar. Todo en la primera ventana, sin tocar el Pasillo.",
+     "timeline":["0:00–0:20 · rappel a las ventanas; Ash breach a la barricada","0:20–0:45 · candelas + stun por la ventana, Blitz entra, Amaru hook","0:45–1:30 · limpiar Oficina del comandante y Dormitorio, plant","1:30–3:00 · post-plant: Zofia y Ash en Dormitorio, Blitz en la puerta de Escaleras, Ying y Amaru en el sitio"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel y breach a la barricada de la ventana","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"entra tras los flashes y limpia el escritorio","via":"window"},
+        {"room":"Dormitorio","f":2,"do":"empuja con Zofia a la ancla de Dormitorio","via":"door"}],
+       "clear":[
+        {"room":"Exterior","f":2,"threat":"Ancla peekeando la ventana","how":"breach de lado y entra cuando reviente la candela"},
+        {"room":"Oficina del comandante","f":2,"threat":"Frost bajo la ventana","how":"entra por arriba del cepo con salto desde el marco o dispara el cepo primero"}],
+       "final":"cubre la puerta Oficina del comandante–Dormitorio en el plant"},
+      {"op":"blitz","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel al marco de la ventana con el escudo","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"entra primero flasheando y tapa la vista de la ancla","via":"window"}],
+       "clear":[
+        {"room":"Oficina del comandante","f":2,"threat":"Noor con fuego en la ventana contra escudos y Smoke en el escritorio","how":"flash, entra en diagonal y deja pasar a Ash"},
+        {"room":"Dormitorio","f":2,"threat":"Ancla disparando desde la puerta interior","how":"flash hacia Dormitorio y Zofia entra por tu costado"}],
+       "final":"cubre la puerta a Escaleras detrás del escudo"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"2 candelas por la ventana apenas abra","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"entra tras Blitz y limpia el escritorio","via":"window"}],
+       "clear":[
+        {"room":"Oficina del comandante","f":2,"threat":"Jäger comiendo candelas y Valk cam en la esquina","how":"candela rebotada por la ventana lateral"},
+        {"room":"Dormitorio","f":2,"threat":"Mira en Dormitorio viendo hacia el sitio","how":"candela por la puerta interior antes de empujar"}],
+       "final":"sostiene Oficina del comandante viendo la puerta de Escaleras"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"stun por la ventana tras la candela","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"cruza a la puerta de Dormitorio","via":"window"},
+        {"room":"Dormitorio","f":2,"do":"impacto a la cama y entra","via":"door"}],
+       "clear":[
+        {"room":"Oficina del comandante","f":2,"threat":"Ancla agachada tras el escritorio","how":"stun al piso y limpia con Blitz adentro"},
+        {"room":"Dormitorio","f":2,"threat":"Smoke detrás de la cama","how":"impacto a la cama y entra pegada a Ash"}],
+       "final":"toma Dormitorio y vigila la pared del Pasillo"},
+      {"op":"amaru","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"hook a la ventana lateral cuando el tren ya entró","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"entra rápido y planta detrás del escritorio","via":"window"}],
+       "clear":[
+        {"room":"Exterior","f":2,"threat":"Roamer saliendo por otra ventana a la espalda","how":"hookea después del tren, no antes"},
+        {"room":"Oficina del comandante","f":2,"threat":"Frost bajo la segunda ventana","how":"dispara el cepo desde el marco antes de caer"}],
+       "final":"planta en Oficina del comandante y sostiene desde el escritorio"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Desde Cocina y Salón matamos el sitio por abajo: Buck abre el techo bajo Oficina del comandante, Fuze pone racimos por el techo de Dormitorio y Ram manda el BU-GI para abrir toda la línea. Twitch limpia ADS y Hibana sube al final por Arriba→Escaleras para abrir la pared y plantar cuando quedan dos.",
+     "timeline":["0:00–0:45 · todos por la puerta de Cocina; Twitch limpia cámaras","0:45–1:30 · Salón: Buck y Ram abren techos; Fuze racimos por el techo de Dormitorio","1:30–2:30 · Hibana sube y abre la pared de Dormitorio; entrada y plant en Oficina del comandante","2:30–3:00 · post-plant: Buck y Fuze desde abajo; Hibana y Ram arriba"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta exterior de Cocina con dron adelante","via":"door"},
+        {"room":"Cocina","f":1,"do":"limpia y cruza a Salón","via":"door"},
+        {"room":"Salón","f":1,"do":"abre el techo bajo Oficina del comandante con Skeleton Key","via":"breach"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Roamer abajo esperando en Cocina","how":"dron primero y entra en pareja con Twitch"},
+        {"room":"Salón","f":1,"threat":"Ancla de arriba disparando por escotilla abierta","how":"revisa la escotilla desde lejos antes de agacharte"},
+        {"room":"Oficina del comandante","f":2,"threat":"Ancla en el escritorio sobre tu cabeza","how":"abre justo debajo del escritorio y dispara los pies"}],
+       "final":"sostiene desde Salón los huecos del sitio y niega el defuser"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra por la puerta de Cocina tras Buck","via":"door"},
+        {"room":"Cocina","f":1,"do":"pone racimos en el techo bajo Dormitorio","via":"breach"},
+        {"room":"Salón","f":1,"do":"segundo racimo bajo Oficina del comandante","via":"door"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Roamer regresando por la puerta exterior","how":"Twitch deja el dron viendo la puerta"},
+        {"room":"Dormitorio","f":2,"threat":"Smoke ancla detrás de la cama","how":"racimo bajo la cama y escucha las bajas"}],
+       "final":"sostiene desde abajo viendo los huecos"},
+      {"op":"ram","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra por la puerta de Cocina con el grupo","via":"door"},
+        {"room":"Cocina","f":1,"do":"cruza a Salón","via":"door"},
+        {"room":"Salón","f":1,"do":"BU-GI apuntando al techo para abrir la línea bajo el sitio","via":"breach"}],
+       "clear":[
+        {"room":"Salón","f":1,"threat":"Escotilla abierta desde arriba con ancla peekeando","how":"BU-GI cubre; dispara a quien se asome"},
+        {"room":"Oficina del comandante","f":2,"threat":"Mira frente al espejo sobre el piso abierto","how":"línea abierta y dispara a quien corra"}],
+       "final":"sube detrás de Hibana para tomar Dormitorio"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dron de choque adelante a la puerta de Cocina","via":"door"},
+        {"room":"Cocina","f":1,"do":"limpia cámaras y ADS de abajo","via":"door"},
+        {"room":"Salón","f":1,"do":"choca ADS del techo de arriba por los huecos","via":"door"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Valk cam o Evil Eye vigilando abajo","how":"dron de choque primero"},
+        {"room":"Oficina del comandante","f":2,"threat":"Jäger ADS pegado al piso del sitio","how":"choca por el hueco antes de que Fuze ponga la carga"}],
+       "final":"cubre la puerta exterior de Cocina contra el roamer"},
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"espera fuera de línea mientras el vertical hace daño","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera cuando quedan dos defensores","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"X-KAIROS a la pared de Dormitorio","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"entra y cruza al sitio","via":"breach"},
+        {"room":"Oficina del comandante","f":2,"do":"planta detrás del escritorio","via":"door"}],
+       "clear":[
+        {"room":"Escaleras","f":2,"threat":"Roamer sobreviviente en el descanso","how":"dron antes de subir; Buck ya lo vio desde abajo"},
+        {"room":"Dormitorio","f":2,"threat":"Ancla sobreviviente en la pared","how":"Fuze la ve por el hueco desde abajo"}],
+       "final":"planta en Oficina del comandante y sostiene desde Dormitorio"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes: Ace y Kali suben por Arriba→Escaleras y abren la pared de Dormitorio desde el Pasillo mientras Montagne y Glaz entran por la ventana de Oficina del comandante con Jackal cazando al roamer abajo. La defensa tiene que elegir entre pared y ventana.",
+     "timeline":["0:00–0:45 · Jackal escanea huellas abajo; Kali ubica Bandit; Monty y Glaz rappel","0:45–1:30 · LV + SELMA en Dormitorio; Monty abre la ventana con humo de Glaz","1:30–2:30 · entrada doble; plant en Oficina del comandante detrás de Monty","2:30–3:00 · post-plant: Glaz humo/térmica en la puerta interior, Ace y Kali en Dormitorio, Jackal en Escaleras"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo con Kali","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"espera a Kali fuera de la línea","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"SELMA a la pared de Dormitorio","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"entra cuando Monty jaló a la ancla al sitio","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer en la escalera","how":"Jackal escanea y sube primero"},
+        {"room":"Dormitorio","f":2,"threat":"Smoke detrás de la cama viendo la pared","how":"entra cuando gire a ver la ventana; prefire la cama"}],
+       "final":"toma Dormitorio y cubre el plant"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"cubre el descanso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"LV a la pared de Dormitorio cuando escuche el arco","via":"door"},
+        {"room":"Dormitorio","f":2,"do":"entra detrás de Ace","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":2,"threat":"Evil Eye o Kapkan en la puerta de Dormitorio","how":"LV a la Evil Eye; dron al marco"},
+        {"room":"Dormitorio","f":2,"threat":"Bandit tricking desde dentro","how":"LV al arco y Ace dispara enseguida"}],
+       "final":"sostiene Escaleras y el Pasillo contra el retake"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel al marco de la ventana con el escudo cerrado","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"entra extendido bloqueando el escritorio","via":"window"}],
+       "clear":[
+        {"room":"Oficina del comandante","f":2,"threat":"Noor en la ventana contra escudos y Frost bajo el marco","how":"Glaz rompe el cepo; entra en diagonal"},
+        {"room":"Dormitorio","f":2,"threat":"Ancla rotando por la puerta interior","how":"gira el escudo y deja que Ace entre por su espalda"}],
+       "final":"planta en Oficina del comandante detrás del escudo"},
+      {"op":"glaz","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"humo en la ventana y térmica sobre el escritorio","via":"rappel"},
+        {"room":"Oficina del comandante","f":2,"do":"entra tras Monty y limpia lo que asome","via":"window"}],
+       "clear":[
+        {"room":"Oficina del comandante","f":2,"threat":"Frost bajo la ventana y Smoke en el escritorio","how":"dispara el cepo desde el rappel; térmica en el humo"},
+        {"room":"Dormitorio","f":2,"threat":"Ancla peekeando la puerta interior","how":"humo en la puerta y térmica en post-plant"}],
+       "final":"sostiene el sitio con humo y térmica sobre la puerta interior"},
+      {"op":"jackal","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"escanea huellas en las puertas exteriores","via":"door"},
+        {"room":"Cocina","f":1,"do":"caza al roamer de abajo","via":"door"},
+        {"room":"Salón","f":1,"do":"limpia abajo y regresa","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sostiene el descanso contra el retake","via":"stairs"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Vigil o Caveira roameando abajo","how":"escanea y caza con el ping activo"},
+        {"room":"Escaleras","f":2,"threat":"Roamer regresando a la escalera","how":"prefire la esquina del descanso"}],
+       "final":"sostiene Escaleras en post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle blinda las ventanas de Oficina del comandante y Frost pone cepos debajo; Smoke ancla en el sitio y Mira pone espejo en Dormitorio hacia la pared del Pasillo. Valkyrie pone cámaras abajo y roamea Cocina/Salón para castigar el vertical.",
+     "reinforce":["Pared Dormitorio–Pasillo ×2","Ventanas Oficina del comandante (Castle)","Escotilla Salón→Oficina del comandante"],
+     "rotations":["Oficina del comandante↔Dormitorio por la puerta interior","Rotación chica Dormitorio→Pasillo para Bandit trick"],
+     "ops":[
+      {"op":"frost","room":"Oficina del comandante","f":2,"role":"ancla","job":"Cepos bajo las ventanas y en la puerta de Escaleras; ancla detrás del escritorio"},
+      {"op":"castle","room":"Oficina del comandante","f":2,"role":"ancla","job":"Barricadas blindadas en las 2 ventanas; se para en la esquina lejos de las ventanas"},
+      {"op":"smoke","room":"Oficina del comandante","f":2,"role":"ancla","job":"Gas a la ventana y al plant; vive junto al escritorio"},
+      {"op":"mira","room":"Dormitorio","f":2,"role":"ancla","job":"Espejo hacia la pared del Pasillo; vive detrás de la cama y avisa el breach"},
+      {"op":"valkyrie","room":"Salón","f":2,"role":"roam","job":"Cams en Cocina y Salón; roamea abajo y castiga a Buck/Sledge en el vertical"}]},
+    {"id":"alt","n":"Anti-vertical con Bandit","summary":"Contra equipos que hacen vertical desde Salón y Cocina: Bandit trickea la pared y reforzamos la escotilla; Noor pone fuego en las ventanas contra rappel con escudo, Mute jamea, Melusi frena en Escaleras y Vigil roamea abajo.",
+     "reinforce":["Pared Dormitorio–Pasillo ×2","Escotilla Salón→Oficina del comandante","Ventanas Oficina del comandante barricadas"],
+     "rotations":["Oficina del comandante↔Dormitorio","Puerta Escaleras→Oficina del comandante con Banshee"],
+     "ops":[
+      {"op":"bandit","room":"Dormitorio","f":2,"role":"flex","job":"Trickea la pared reforzada del Pasillo; se va al sitio si abren"},
+      {"op":"noor","room":"Oficina del comandante","f":2,"role":"ancla","job":"Horus a las ventanas contra Monty/Blitz; segunda carga a la puerta de Escaleras"},
+      {"op":"mute","room":"Oficina del comandante","f":2,"role":"ancla","job":"Jammers en las ventanas y en la pared; corta drones y breach"},
+      {"op":"melusi","room":"Escaleras","f":2,"role":"flex","job":"Banshees en Escaleras y Pasillo; frena la subida y avisa"},
+      {"op":"vigil","room":"Cocina","f":1,"role":"roam","job":"Roamea Cocina y Salón; pica al vertical y sube por Arriba a la espalda del breach"}]}
+   ]
+  },
+  "bedroom": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite y Thatcher suben por Arriba→Escaleras y abren la pared reforzada Pasillo→Oficina mientras Sledge hace vertical desde Hammam abriendo el techo bajo Recámara. Zero pone Argus por las ventanas de Recámara y Nomad tapa Escaleras contra el roamer de abajo. Plant en Recámara.",
+     "timeline":["0:00–0:45 · Argus por ventanas; Sledge entra a Hammam; Thatcher confirma Bandit en Oficina","0:45–1:30 · EMP + carga en pared Oficina; Sledge abre el techo bajo Recámara","1:30–2:30 · entrada por el hueco de Oficina, Nomad tapa Escaleras, plant en Recámara","2:30–3:00 · post-plant: Sledge desde abajo, Thermite y Thatcher en Oficina, Zero cams vivas"],
+     "ops":[
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dronea Pasillo y escalera","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera con Thermite","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"limpia el descanso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"EMP contra la pared reforzada de Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"entra detrás de Thermite y cubre la puerta a Recámara","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer en la escalera","how":"dron en el descanso, sube en pareja"},
+        {"room":"Pasillo","f":2,"threat":"Kapkan en la puerta de Oficina y Evil Eye","how":"dron al marco y EMP antes de acercarte"},
+        {"room":"Oficina","f":2,"threat":"Mira viendo la pared desde Oficina","how":"EMP + flash al espejo y entra en cruzada"}],
+       "final":"cubre la puerta Oficina–Recámara en el plant"},
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo con Thatcher","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"espera la llamada fuera de línea","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"carga exotérmica en la pared de Oficina tras el EMP","via":"door"},
+        {"room":"Oficina","f":2,"do":"entra por el hueco y empuja a Recámara","via":"breach"},
+        {"room":"Recámara","f":2,"do":"planta detrás de la cama","via":"door"}],
+       "clear":[
+        {"room":"Escaleras","f":2,"threat":"Roamer subiendo desde abajo a picar la carga","how":"Nomad pone Airjab en Escaleras antes de la carga"},
+        {"room":"Oficina","f":2,"threat":"Bandit tricking y Smoke tras el escritorio","how":"escucha el arco, carga tras el EMP; prefire el escritorio"},
+        {"room":"Recámara","f":2,"threat":"Frost bajo las ventanas y ancla tras la cama","how":"Zero la vio con Argus; Sledge la quema desde abajo"}],
+       "final":"planta en Recámara y sostiene desde Oficina"},
+      {"op":"sledge","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta exterior de Hammam","via":"door"},
+        {"room":"Hammam","f":1,"do":"limpia y martilla el techo bajo Recámara","via":"breach"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Roamer abajo esperando en Hammam","how":"dron primero y entra pegado a la pared"},
+        {"room":"Recámara","f":2,"threat":"Ancla detrás de la cama sobre tu cabeza","how":"abre justo bajo la cama y dispara los pies"}],
+       "final":"sostiene desde abajo los huecos de Recámara y niega el defuser"},
+      {"op":"zero","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel a las ventanas de Recámara y dispara Argus dentro","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"entra por la ventana al final cuando las anclas cayeron","via":"window"}],
+       "clear":[
+        {"room":"Exterior","f":2,"threat":"Ancla peekeando la ventana con Castle en el marco","how":"Argus a través de la barricada; no te asomes"},
+        {"room":"Recámara","f":2,"threat":"Frost bajo la ventana y Smoke tras la cama","how":"mira la cam, rompe el cepo y entra cuando Thermite ya está en Oficina"}],
+       "final":"cubre el plant desde la ventana con las Argus vivas"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo detrás del grupo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"Airjab en la puerta del Pasillo","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube al último","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"Airjabs en Escaleras y cubre la puerta a Recámara","via":"stairs"},
+        {"room":"Recámara","f":2,"do":"entra por la puerta cuando Thermite empuja desde Oficina","via":"door"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer regresando por la escalera","how":"Airjab en la escalera y vigila el descanso"},
+        {"room":"Recámara","f":2,"threat":"Ancla en la puerta con escopeta","how":"espera a que gire a Oficina y entra por su espalda"}],
+       "final":"sostiene Escaleras contra el retake"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rappel directo a las ventanas de Recámara antes de que Castle y Frost terminen: Ash abre la barricada, Ying y Zofia ciegan, Blitz entra de pared y Amaru hookea al último para plantar. Sin tocar el Pasillo.",
+     "timeline":["0:00–0:20 · rappel a las ventanas; Ash breach","0:20–0:45 · candelas + stun por la ventana, Blitz entra, Amaru hook","0:45–1:30 · limpiar Recámara y Oficina, plant","1:30–3:00 · post-plant: Zofia y Ash en Oficina, Blitz en la puerta de Escaleras, Ying y Amaru en Recámara"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel y breach a la barricada de la ventana","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"entra tras los flashes y limpia la cama","via":"window"},
+        {"room":"Oficina","f":2,"do":"empuja con Zofia a la ancla de Oficina","via":"door"}],
+       "clear":[
+        {"room":"Exterior","f":2,"threat":"Ancla peekeando la ventana","how":"breach de lado y entra con la candela"},
+        {"room":"Recámara","f":2,"threat":"Frost bajo la ventana","how":"dispara el cepo o salta desde el marco"}],
+       "final":"cubre la puerta Recámara–Oficina en el plant"},
+      {"op":"blitz","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel al marco con el escudo","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"entra primero flasheando","via":"window"}],
+       "clear":[
+        {"room":"Recámara","f":2,"threat":"Noor con fuego en la ventana y Smoke tras la cama","how":"flash, entra en diagonal y deja pasar a Ash"},
+        {"room":"Oficina","f":2,"threat":"Ancla disparando desde la puerta interior","how":"flash hacia Oficina y Zofia entra por tu costado"}],
+       "final":"cubre la puerta a Escaleras detrás del escudo"},
+      {"op":"ying","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"2 candelas por la ventana apenas abra","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"entra tras Blitz y limpia la cama","via":"window"}],
+       "clear":[
+        {"room":"Recámara","f":2,"threat":"Jäger comiendo candelas y Valk cam","how":"candela rebotada por la ventana lateral"},
+        {"room":"Oficina","f":2,"threat":"Mira viendo hacia Recámara","how":"candela por la puerta interior antes de empujar"}],
+       "final":"sostiene Recámara viendo la puerta de Escaleras"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"stun por la ventana tras la candela","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"cruza a la puerta de Oficina","via":"window"},
+        {"room":"Oficina","f":2,"do":"impacto al escritorio y entra","via":"door"}],
+       "clear":[
+        {"room":"Recámara","f":2,"threat":"Ancla agachada tras la cama","how":"stun al piso y limpia con Blitz"},
+        {"room":"Oficina","f":2,"threat":"Smoke tras el escritorio","how":"impacto al escritorio y entra pegada a Ash"}],
+       "final":"toma Oficina y vigila la pared del Pasillo"},
+      {"op":"amaru","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"hook a la ventana lateral cuando el tren entró","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"entra rápido y planta tras la cama","via":"window"}],
+       "clear":[
+        {"room":"Exterior","f":2,"threat":"Roamer saliendo por otra ventana","how":"hookea después del tren"},
+        {"room":"Recámara","f":2,"threat":"Frost bajo la segunda ventana","how":"dispara el cepo desde el marco"}],
+       "final":"planta en Recámara y sostiene desde la cama"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Desde Hammam y Cafetería matamos el sitio por abajo: Buck abre el techo bajo Recámara, Fuze racimos por el techo de Oficina, Ram BU-GI para abrir la línea. Twitch limpia ADS y Hibana sube al final por Arriba→Escaleras para abrir la pared y plantar cuando quedan dos.",
+     "timeline":["0:00–0:45 · todos por la puerta de Hammam; Twitch limpia cámaras","0:45–1:30 · Hammam/Cafetería: Buck y Ram abren techos; Fuze racimos bajo Oficina","1:30–2:30 · Hibana sube y abre la pared de Oficina; entrada y plant en Recámara","2:30–3:00 · post-plant: Buck y Fuze desde abajo; Hibana y Ram arriba"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"corre a la puerta exterior de Hammam con dron","via":"door"},
+        {"room":"Hammam","f":1,"do":"abre el techo bajo Recámara con Skeleton Key","via":"breach"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Roamer abajo esperando tras las columnas","how":"dron primero, entra en pareja con Twitch"},
+        {"room":"Recámara","f":2,"threat":"Ancla tras la cama sobre tu cabeza","how":"abre bajo la cama y dispara los pies"}],
+       "final":"sostiene desde Hammam los huecos de Recámara y niega el defuser"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra por la puerta de Hammam tras Buck","via":"door"},
+        {"room":"Hammam","f":1,"do":"cruza a Cafetería","via":"door"},
+        {"room":"Cafetería","f":1,"do":"racimos en el techo bajo Oficina","via":"breach"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Roamer regresando por la puerta exterior","how":"Twitch deja el dron viendo la puerta"},
+        {"room":"Oficina","f":2,"threat":"Smoke ancla tras el escritorio","how":"racimo bajo el escritorio y escucha las bajas"}],
+       "final":"sostiene desde abajo viendo los huecos"},
+      {"op":"ram","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra por la puerta de Hammam","via":"door"},
+        {"room":"Hammam","f":1,"do":"BU-GI apuntando al techo para abrir la línea bajo Recámara","via":"breach"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Escotilla abierta con ancla peekeando","how":"BU-GI cubre; dispara a quien se asome"},
+        {"room":"Recámara","f":2,"threat":"Mira frente al espejo sobre el piso abierto","how":"línea abierta y dispara a quien corra"}],
+       "final":"sube detrás de Hibana para tomar Oficina"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"dron de choque adelante a la puerta de Hammam","via":"door"},
+        {"room":"Hammam","f":1,"do":"limpia cámaras y ADS de abajo","via":"door"},
+        {"room":"Cafetería","f":1,"do":"choca ADS de arriba por los huecos","via":"door"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Valk cam o Evil Eye abajo","how":"dron de choque primero"},
+        {"room":"Recámara","f":2,"threat":"Jäger ADS pegado al piso del sitio","how":"choca por el hueco antes del racimo"}],
+       "final":"cubre la puerta exterior de Hammam contra el roamer"},
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"espera fuera de línea mientras el vertical hace daño","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera cuando quedan dos","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sale al segundo piso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"X-KAIROS a la pared de Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"entra y cruza al sitio","via":"breach"},
+        {"room":"Recámara","f":2,"do":"planta tras la cama","via":"door"}],
+       "clear":[
+        {"room":"Escaleras","f":2,"threat":"Roamer sobreviviente en el descanso","how":"dron antes de subir"},
+        {"room":"Oficina","f":2,"threat":"Ancla sobreviviente en la pared","how":"Fuze la ve por el hueco desde abajo"}],
+       "final":"planta en Recámara y sostiene desde Oficina"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Ace y Kali suben por Arriba→Escaleras y abren la pared de Oficina desde el Pasillo mientras Montagne y Glaz entran por la ventana de Recámara; Jackal caza al roamer abajo y sube a sostener Escaleras. La defensa tiene que elegir entre pared y ventana.",
+     "timeline":["0:00–0:45 · Jackal escanea abajo; Kali ubica Bandit; Monty y Glaz rappel","0:45–1:30 · LV + SELMA en Oficina; Monty abre la ventana con humo de Glaz","1:30–2:30 · entrada doble; plant en Recámara detrás de Monty","2:30–3:00 · post-plant: Glaz humo/térmica en la puerta interior, Ace y Kali en Oficina, Jackal en Escaleras"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo con Kali","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"espera a Kali fuera de línea","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"SELMA a la pared de Oficina","via":"door"},
+        {"room":"Oficina","f":2,"do":"entra cuando Monty jaló a la ancla a Recámara","via":"breach"}],
+       "clear":[
+        {"room":"Arriba","f":1,"threat":"Roamer en la escalera","how":"Jackal escanea y sube primero"},
+        {"room":"Oficina","f":2,"threat":"Smoke tras el escritorio viendo la pared","how":"entra cuando gire a la ventana; prefire el escritorio"}],
+       "final":"toma Oficina y cubre el plant"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"entra al Pasillo","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"cubre el descanso","via":"stairs"},
+        {"room":"Pasillo","f":2,"do":"LV a la pared de Oficina al escuchar el arco","via":"door"},
+        {"room":"Oficina","f":2,"do":"entra detrás de Ace","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo","f":2,"threat":"Evil Eye o Kapkan en la puerta de Oficina","how":"LV a la Evil Eye; dron al marco"},
+        {"room":"Oficina","f":2,"threat":"Bandit tricking desde dentro","how":"LV al arco y Ace dispara enseguida"}],
+       "final":"sostiene Escaleras y el Pasillo contra el retake"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"rappel al marco de la ventana con el escudo cerrado","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"entra extendido bloqueando la cama","via":"window"}],
+       "clear":[
+        {"room":"Recámara","f":2,"threat":"Noor en la ventana contra escudos y Frost bajo el marco","how":"Glaz rompe el cepo; entra en diagonal"},
+        {"room":"Oficina","f":2,"threat":"Ancla rotando por la puerta interior","how":"gira el escudo y deja que Ace entre por su espalda"}],
+       "final":"planta en Recámara detrás del escudo"},
+      {"op":"glaz","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"humo en la ventana y térmica sobre la cama","via":"rappel"},
+        {"room":"Recámara","f":2,"do":"entra tras Monty y limpia lo que asome","via":"window"}],
+       "clear":[
+        {"room":"Recámara","f":2,"threat":"Frost bajo la ventana y Smoke tras la cama","how":"dispara el cepo desde el rappel; térmica en el humo"},
+        {"room":"Oficina","f":2,"threat":"Ancla peekeando la puerta interior","how":"humo en la puerta y térmica en post-plant"}],
+       "final":"sostiene Recámara con humo y térmica sobre la puerta interior"},
+      {"op":"jackal","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"escanea huellas en las puertas exteriores","via":"door"},
+        {"room":"Hammam","f":1,"do":"caza al roamer de abajo","via":"door"},
+        {"room":"Cafetería","f":1,"do":"limpia abajo y regresa","via":"door"},
+        {"room":"Pasillo","f":1,"do":"cruza a la escalera","via":"door"},
+        {"room":"Arriba","f":1,"do":"sube","via":"stairs"},
+        {"room":"Escaleras","f":2,"do":"sostiene el descanso contra el retake","via":"stairs"}],
+       "clear":[
+        {"room":"Hammam","f":1,"threat":"Vigil o Caveira roameando abajo","how":"escanea y caza con el ping activo"},
+        {"room":"Escaleras","f":2,"threat":"Roamer regresando a la escalera","how":"prefire la esquina del descanso"}],
+       "final":"sostiene Escaleras en post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle blinda las ventanas de Recámara y Frost pone cepos debajo; Smoke ancla en Recámara y Mira pone espejo en Oficina hacia la pared del Pasillo. Valkyrie pone cámaras abajo y roamea Hammam/Cafetería para castigar el vertical.",
+     "reinforce":["Pared Oficina–Pasillo ×2","Ventanas Recámara (Castle)","Escotilla Hammam→Recámara"],
+     "rotations":["Recámara↔Oficina por la puerta interior","Rotación chica Oficina→Pasillo para Bandit trick"],
+     "ops":[
+      {"op":"frost","room":"Recámara","f":2,"role":"ancla","job":"Cepos bajo las ventanas y en la puerta de Escaleras; ancla tras la cama"},
+      {"op":"castle","room":"Recámara","f":2,"role":"ancla","job":"Barricadas blindadas en las ventanas; se para en la esquina lejos de las ventanas"},
+      {"op":"smoke","room":"Recámara","f":2,"role":"ancla","job":"Gas a la ventana y al plant; vive junto a la cama"},
+      {"op":"mira","room":"Oficina","f":2,"role":"ancla","job":"Espejo hacia la pared del Pasillo; vive tras el escritorio y avisa el breach"},
+      {"op":"valkyrie","room":"Hammam","f":1,"role":"roam","job":"Cams en Hammam y Cafetería; roamea abajo y castiga a Buck/Sledge en el vertical"}]},
+    {"id":"alt","n":"Anti-vertical con Bandit","summary":"Contra vertical desde Hammam y Cafetería: Bandit trickea la pared y reforzamos la escotilla; Noor pone fuego en las ventanas contra rappel con escudo, Mute jamea, Melusi frena en Escaleras y Vigil roamea abajo.",
+     "reinforce":["Pared Oficina–Pasillo ×2","Escotilla Hammam→Recámara","Ventanas Recámara barricadas"],
+     "rotations":["Recámara↔Oficina","Puerta Escaleras→Recámara con Banshee"],
+     "ops":[
+      {"op":"bandit","room":"Oficina","f":2,"role":"flex","job":"Trickea la pared reforzada del Pasillo; se va a Recámara si abren"},
+      {"op":"noor","room":"Recámara","f":2,"role":"ancla","job":"Horus a las ventanas contra Monty/Blitz; segunda carga a la puerta de Escaleras"},
+      {"op":"mute","room":"Recámara","f":2,"role":"ancla","job":"Jammers en las ventanas y en la pared; corta drones y breach"},
+      {"op":"melusi","room":"Escaleras","f":2,"role":"flex","job":"Banshees en Escaleras y Pasillo; frena la subida y avisa"},
+      {"op":"vigil","room":"Hammam","f":1,"role":"roam","job":"Roamea Hammam y Cafetería; pica al vertical y sube por Arriba a la espalda del breach"}]}
+   ]
+  }
+ }
+}

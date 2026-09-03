@@ -1,0 +1,3456 @@
+{
+ "map": "nighthaven",
+ "sites": {
+  "tank": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thermite abre la pared reforzada Escaleras sótano → Tanque mientras Hibana abre la escotilla de Ensamblaje sobre Almacén. Con Lion activo bajamos por los dos frentes a la vez y Nomad cierra Escaleras 2 para que el roam no nos coma la espalda. Funciona porque el sótano solo tiene dos bajadas: si abrimos pared y escotilla al mismo tiempo, las anclas no pueden cubrir Tanque y Almacén a la vez.",
+     "timeline": [
+      "0:00–0:45 · drones a Escaleras sótano y Escaleras 2, ubicar Kaid/Bandit en la pared de Tanque y el espejo de Mira en Almacén",
+      "0:45–1:30 · EMP + Thermite en la pared de Tanque; Hibana abre la escotilla sobre Almacén; Lion escanea",
+      "1:30–2:30 · entrada por Tanque con humo, Nomad y Lion presionan Escaleras 2",
+      "2:30–3:00 · plant en Almacén pegado a la escotilla, post-plant desde Tanque y Escaleras 2"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron adelantado a Pasillo antes de moverse; revisa la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza pegado a la pared, limpia esquinas y la puerta de Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Baja con el dron adelante, revisa el hueco de la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "do": "Se pega al muro de Tanque y tira el EMP justo cuando Thermite pone la carga",
+         "via": "stairs"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "do": "Entra tras la brecha y limpia la esquina del tanque",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer tipo Pulse/Vigil esperando el paso a Escaleras",
+         "how": "Dron primero, cruzar en pareja con Thermite"
+        },
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "threat": "Kaid/Bandit trickeando la pared de Tanque y Kapkan en la puerta de la escalera",
+         "how": "Dron pegado al muro, disparar la trampa, EMP al momento exacto de la carga"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "threat": "Smoke ancla detrás del tanque con gas listo para la brecha",
+         "how": "Entrar en humo de Thermite y prefire al tanque"
+        }
+       ],
+       "final": "Sostiene Escaleras sótano y la brecha de Tanque durante el plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron hacia Escaleras, sigue a Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Sigue a Thatcher pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Baja con el dron adelante, revisa el hueco de la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "do": "Pone la carga exotérmica en la pared de Tanque apenas cae el EMP",
+         "via": "stairs"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "do": "Cruza con humo, limpia al ancla",
+         "via": "breach"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Rota por la puerta interna y planta pegado a la escotilla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "threat": "Bandit escondido tras el muro esperando ver la carga",
+         "how": "Esperar el EMP; si Bandit trickea, cambiar a la escotilla de Hibana"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "threat": "Smoke ancla en la esquina del tanque y Jäger rotando",
+         "how": "Humo y cruzar en pareja, uno prefirea el tanque"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Mira con espejo a la puerta de Escaleras 2",
+         "how": "Entrar por la espalda del espejo desde Tanque, no por la puerta"
+        }
+       ],
+       "final": "Planta en Almacén y sostiene la puerta interna Tanque↔Almacén"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje para ubicar la escotilla de Almacén",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Entra por la puerta principal, cuidado con la puerta de Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Limpia el cuarto y pone los pellets en la escotilla sobre Almacén",
+         "via": "hatch"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Baja por la escotilla cuando Tanque ya esté abierto y cubre el plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer 1F (Pulse) peekeando desde Ensamblaje",
+         "how": "Dron antes, prefire a la esquina de Ensamblaje"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Jäger con ADS pegado a la escotilla y Kaid con Rtila en la escotilla",
+         "how": "EMP de Thatcher o disparar la Rtila desde arriba antes de poner pellets"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Ancla con Mira en la esquina del Almacén mirando la escotilla",
+         "how": "Bajar solo con humo y con Tanque ya abierto para partirle la atención"
+        }
+       ],
+       "final": "Cubre el plant en Almacén desde la escotilla"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras 2 para ver la puerta de Almacén",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza rápido a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Toma la escalera secundaria y activa el EE-ONE-D antes de bajar",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Baja con el scan activo, castiga al que se mueva",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra por la puerta con Nomad cuando Tanque ya cayó",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer esperando la escalera secundaria",
+         "how": "Scan de Lion y esperar a Nomad"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Kapkan/Ela en la puerta de Almacén y Mira mirando la puerta",
+         "how": "Dron, romper trampa, no entrar sin humo o sin que caiga Tanque"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Ancla atrás del espejo y Smoke rotando desde Tanque",
+         "how": "Scan justo cuando entren por Tanque para que no rote"
+        }
+       ],
+       "final": "Presiona la puerta de Almacén desde Escaleras 2 y mantiene el scan para el post-plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras 2",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja por la escalera secundaria con Lion",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Pone dos Airjabs en la escalera para cerrar el flanco",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra tras Lion y cubre el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer bajando/subiendo por la escalera secundaria",
+         "how": "Dron y Airjab en la salida de la escalera"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Kapkan en la puerta de Almacén",
+         "how": "Disparar la trampa desde lejos"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Mira con espejo a la puerta",
+         "how": "Esperar el humo de Lion/Thermite y entrar pegado a la pared del espejo"
+        }
+       ],
+       "final": "Sostiene Escaleras 2 con Airjabs para el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush Escaleras 2",
+     "tag": "RUSH",
+     "summary": "Los cinco bajan por la escalera secundaria de Ensamblaje y entran a Almacén por UNA puerta con candelas de Ying y la réplica de Iana antes de que Mira/Kaid terminen de armar. Ash abre la barricada, Blitz entra flasheando y Finka nos da el surge para el cruce. Funciona porque en los primeros 30 segundos el sótano casi nunca tiene el espejo de Mira listo.",
+     "timeline": [
+      "0:00–0:30 · réplica de Iana a Escaleras 2, Finka activa surge en Ensamblaje",
+      "0:30–1:00 · Ash rompe la barricada, Ying tira candelas a Almacén, Blitz entra primero",
+      "1:00–1:45 · limpieza de Almacén y Tanque, plant rápido en Almacén",
+      "1:45–3:00 · post-plant desde Escaleras 2 y la puerta de Tanque"
+     ],
+     "ops": [
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre a la puerta principal sin dron",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza directo a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja por la escalera secundaria",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Tira dos candelas a Almacén tras la barricada de Ash",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra tras Blitz y limpia la esquina del espejo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Kapkan/Ela armando la puerta de Almacén",
+         "how": "Ash rompe la barricada, la candela quema la trampa"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Mira armando el espejo y ancla en la esquina",
+         "how": "Candela + Blitz entrando, prefire a la esquina"
+        }
+       ],
+       "final": "Planta en Almacén mientras Blitz y Ash limpian Tanque"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Réplica corriendo a Pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Réplica a Ensamblaje para ver la escalera secundaria",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Réplica baja primero, ella detrás",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Réplica a la puerta de Almacén para sacar el peek",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra con el grupo y cubre el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer que todavía no bajó al sitio",
+         "how": "Réplica primero, ping para el equipo"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Defensor peekeando la escalera desde la puerta de Almacén",
+         "how": "Réplica saca el disparo, Blitz castiga"
+        }
+       ],
+       "final": "Cubre la puerta de Escaleras 2 durante el plant"
+      },
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre a la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Directo a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja por la escalera secundaria",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Breach a la barricada de Almacén desde la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra tras Blitz",
+         "via": "door"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "do": "Limpia Tanque por la puerta interna",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Kapkan en la puerta de Almacén",
+         "how": "El breach de Ash la rompe junto con la barricada"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "threat": "Smoke ancla detrás del tanque",
+         "how": "Entrar en pareja con Finka activa, prefire al tanque"
+        }
+       ],
+       "final": "Limpia Tanque y sostiene la puerta interna para el plant"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre al frente del grupo",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Va primero con el escudo arriba",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja primero por la escalera secundaria",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Se pega a la puerta y flashea al abrir",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra flasheando, castiga a la ancla ciega",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Defensor pegado a la puerta de Almacén",
+         "how": "Flash al abrir y entrar corriendo"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Ancla en la esquina del espejo",
+         "how": "Flash + Ying candela, apuñalar o disparar a corta"
+        }
+       ],
+       "final": "Sostiene Almacén de frente mientras Ying planta"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Activa el surge antes de Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja al último por la escalera secundaria",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Segundo surge al abrir la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra al final y cubre a Ying",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer que salió a pelear el rush",
+         "how": "Surge y pelear en grupo"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Ancla revivible por un compañero caído",
+         "how": "Surge para levantar y seguir"
+        }
+       ],
+       "final": "Cubre Escaleras 2 desde adentro de Almacén durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical desde 1F",
+     "tag": "VERTICAL",
+     "summary": "Buck y Sledge se paran en 1F justo encima de Tanque y Almacén y abren el piso; Fuze mete clusters por la escotilla y Capitão quema con fuego desde arriba. Ace baja al final por la escotilla para plantar. Funciona porque el sótano no tiene techo reforzable completo: si controlamos 1F, las anclas viven en un cuarto sin techo.",
+     "timeline": [
+      "0:00–0:45 · drones a Ensamblaje y Pruebas, ubicar posición exacta de las anclas de Tanque y Almacén",
+      "0:45–1:30 · Buck/Sledge abren el piso, Fuze pega clusters en la escotilla, Capitão quema Almacén",
+      "1:30–2:30 · kills desde arriba, Ace abre la escotilla y baja con humo",
+      "2:30–3:00 · plant en Almacén, post-plant desde los huecos de 1F"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "blando",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje y a la escotilla",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza rápido a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Limpia el cuarto y toma control del piso",
+         "via": "door"
+        },
+        {
+         "room": "1F (arriba)",
+         "f": "b",
+         "do": "Se planta en 1F justo encima de Tanque y abre el piso con la Skeleton Key",
+         "via": "door"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Baja por la escotilla al final para el post-plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer 1F (Pulse/Vigil) defendiendo el piso del sitio",
+         "how": "Dron y pelear en pareja con Sledge"
+        },
+        {
+         "room": "1F (arriba)",
+         "f": "b",
+         "threat": "Jäger con ADS bajo el piso y Kaid con Rtila en la escotilla",
+         "how": "Abrir el piso lejos de la escotilla, castigar por los huecos"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "threat": "Smoke ancla detrás del tanque",
+         "how": "Abrir el piso sobre él y disparar desde arriba"
+        }
+       ],
+       "final": "Controla Tanque desde arriba y baja para el post-plant"
+      },
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza con Buck",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Limpia con Buck",
+         "via": "door"
+        },
+        {
+         "room": "1F (arriba)",
+         "f": "b",
+         "do": "Encima de Almacén: martilla el piso y la escotilla",
+         "via": "door"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Baja al final para cubrir el plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer defendiendo 1F",
+         "how": "Dron y pelear en pareja"
+        },
+        {
+         "room": "1F (arriba)",
+         "f": "b",
+         "threat": "Mira ancla en la esquina de Almacén debajo",
+         "how": "Abrir el piso encima del espejo y disparar"
+        }
+       ],
+       "final": "Cubre el plant de Ace desde los huecos de Almacén"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Sigue a Buck y Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Pone un cluster en la escotilla de Almacén cuando Buck abre el piso",
+         "via": "door"
+        },
+        {
+         "room": "1F (arriba)",
+         "f": "b",
+         "do": "Segundo cluster sobre Tanque desde 1F",
+         "via": "door"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "do": "Baja al final por la brecha de Ace",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Jäger ADS bajo la escotilla comiéndose los clusters",
+         "how": "Primero abrir el piso con Buck para que los ADS gasten"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "threat": "Smoke pegado al tanque",
+         "how": "Cluster encima y esperar el gas"
+        }
+       ],
+       "final": "Sostiene Tanque desde arriba y baja al final"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Quema Almacén con flechas de fuego por los huecos de Buck",
+         "via": "door"
+        },
+        {
+         "room": "1F (arriba)",
+         "f": "b",
+         "do": "Fuego sobre las anclas de Tanque desde arriba",
+         "via": "door"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Baja al final con humo para cubrir el plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer intentando recuperar 1F",
+         "how": "Pelear en grupo con Buck y Sledge"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Ancla en la esquina sin techo",
+         "how": "Fuego por el hueco antes de que baje Ace"
+        }
+       ],
+       "final": "Humo de Capitão al plant y cubre Escaleras 2 desde Almacén"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza al último",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "SELMA en la escotilla de Almacén cuando el piso ya esté abierto",
+         "via": "hatch"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Baja por la escotilla con humo y planta",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Kaid/Bandit trickeando la escotilla",
+         "how": "Buck abre el piso al lado para castigarlo, después la SELMA"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Ancla en la esquina y Mira rotando desde Tanque",
+         "how": "Bajar solo cuando Buck confirme el cuarto limpio desde arriba"
+        }
+       ],
+       "final": "Planta en Almacén y sostiene la puerta a Escaleras 2"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split pared + Escaleras 2",
+     "tag": "SPLIT",
+     "summary": "Dos frentes al mismo tiempo: Maverick y Kali trabajan la pared reforzada de Tanque desde Escaleras sótano mientras Osa, Dokkaebi y Gridlock entran por Escaleras 2 a Almacén con el escudo Talon. Funciona porque la defensa del sótano tiene UNA Mira y UN Kaid: quien cubra la pared deja sola la puerta de Almacén y viceversa.",
+     "timeline": [
+      "0:00–0:45 · drones a las dos bajadas, Dokkaebi hackea cámaras",
+      "0:45–1:30 · Kali revienta Rtila/batería, Maverick abre el boquete; Osa pone escudos en Escaleras 2",
+      "1:30–2:30 · logic bomb, entrada simultánea por pared y puerta",
+      "2:30–3:00 · plant en Almacén detrás del Talon, post-plant desde Tanque y Escaleras 2"
+     ],
+     "ops": [
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron adelantado a Pasillo antes de moverse; revisa la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza pegado a la pared, limpia esquinas y la puerta de Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Baja con el dron adelante, revisa el hueco de la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "do": "Abre boquete de murder-hole y luego el paso completo en la pared de Tanque",
+         "via": "stairs"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "do": "Entra por el boquete cuando el otro grupo ya presiona Almacén",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer esperando la escalera",
+         "how": "Dron y cruzar con Kali"
+        },
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "threat": "Kaid con Rtila en la pared y Kapkan en la puerta",
+         "how": "Kali revienta la Rtila, Maverick abre un boquete chico primero para ver"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "threat": "Smoke ancla mirando la pared",
+         "how": "Murder-hole y castigarlo antes de abrir el paso"
+        }
+       ],
+       "final": "Entra a Tanque y sostiene la puerta interna hacia Almacén"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras sótano",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Sigue a Maverick",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Baja con el dron adelante, revisa el hueco de la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "do": "Lanza LV a la pared de Tanque para reventar Rtila/batería y ADS",
+         "via": "stairs"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "do": "Sostiene el boquete con el sniper",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras sótano",
+         "f": "b",
+         "threat": "Kaid/Bandit trickeando la pared",
+         "how": "LV al muro apenas dron confirme el gadget"
+        },
+        {
+         "room": "Tanque",
+         "f": "b",
+         "threat": "Ancla peekeando el boquete de Maverick",
+         "how": "Prefire con el CSRX por el murder-hole"
+        }
+       ],
+       "final": "Sostiene Escaleras sótano y la línea del boquete durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras 2",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja por la escalera secundaria",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Pone un Talon en la puerta de Almacén para el cruce",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra con el escudo y pone el segundo Talon para el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Kapkan en la puerta y Mira detrás",
+         "how": "Dron rompe trampa, Talon en la puerta para tapar el espejo"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Ancla en la esquina y Smoke rotando desde Tanque",
+         "how": "Talon en el sitio del plant, Dokkaebi hackea justo antes"
+        }
+       ],
+       "final": "Planta detrás del Talon en Almacén"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Logic bomb al inicio para ubicar roamers",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Segunda logic bomb antes de bajar",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Hackea el teléfono de un caído y revisa cámaras",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra tras Osa y cubre el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer con Valkyrie/cámaras viendo la escalera",
+         "how": "Logic bomb y hackear cámaras"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "threat": "Mira y ancla en la esquina",
+         "how": "Entrar justo en el logic bomb para que no puedan rotar"
+        }
+       ],
+       "final": "Cubre la puerta de Escaleras 2 desde Almacén"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras 2",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Trax en el paso de Pasillo a Escaleras para cerrar el flanco",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja al último por la escalera secundaria",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "do": "Trax en la escalera para el post-plant",
+         "via": "stairs"
+        },
+        {
+         "room": "Almacén",
+         "f": "b",
+         "do": "Entra al final",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer 1F rotando por Pasillo",
+         "how": "Trax en el pasillo y pelear con apoyo"
+        },
+        {
+         "room": "Escaleras 2",
+         "f": "b",
+         "threat": "Defensor bajando a cubrir la escalera",
+         "how": "Trax y prefire"
+        }
+       ],
+       "final": "Sostiene Escaleras 2 con Trax para el post-plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Kaid electrifica la pared de Tanque y la escotilla de Almacén; Mira pone el espejo hacia la puerta de Escaleras 2; Smoke ancla en Tanque con gas para la brecha. Pulse roamea en 1F encima del sitio y castiga las verticales.",
+     "reinforce": [
+      "Pared Tanque–Escaleras sótano ×2",
+      "Escotilla Almacén",
+      "Escotilla sobre Tanque"
+     ],
+     "rotations": [
+      "Tanque↔Almacén"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Tanque",
+       "f": "b",
+       "role": "ancla",
+       "job": "Ancla detrás del tanque mirando la pared reforzada; gas a la brecha y a la puerta interna"
+      },
+      {
+       "op": "mira",
+       "room": "Almacén",
+       "f": "b",
+       "role": "ancla",
+       "job": "Espejo hacia la puerta de Escaleras 2; sostiene la esquina del Almacén y cubre la escotilla"
+      },
+      {
+       "op": "kaid",
+       "room": "Escaleras sótano",
+       "f": "b",
+       "role": "flex",
+       "job": "Rtila en la pared de Tanque y en la escotilla de Almacén; peekea la escalera y se retrae a Tanque"
+      },
+      {
+       "op": "jager",
+       "room": "Almacén",
+       "f": "b",
+       "role": "flex",
+       "job": "ADS bajo la escotilla y en la puerta; rota a Tanque cuando cae la pared"
+      },
+      {
+       "op": "pulse",
+       "room": "Ensamblaje",
+       "f": "1",
+       "role": "roam",
+       "job": "Roam en 1F sobre el sitio; escanea con el sensor y castiga a Buck/Sledge cuando se paren sobre Tanque"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush Escaleras 2",
+     "summary": "Setup contra rushes y splits por Escaleras 2: Noor quema la puerta de Almacén para escudos (Blitz/Osa/Monty), Azami cierra ángulos con Kiba, Maestro vigila la escalera con Evil Eye y Bandit trickea la pared de Tanque. Vigil roamea en 1F sin aparecer en drones.",
+     "reinforce": [
+      "Pared Tanque–Escaleras sótano ×2",
+      "Escotilla Almacén"
+     ],
+     "rotations": [
+      "Tanque↔Almacén",
+      "Almacén↔Escaleras 2 (solo peek)"
+     ],
+     "ops": [
+      {
+       "op": "bandit",
+       "room": "Tanque",
+       "f": "b",
+       "role": "ancla",
+       "job": "Trickea la pared de Tanque con batería; ancla detrás del tanque"
+      },
+      {
+       "op": "maestro",
+       "room": "Almacén",
+       "f": "b",
+       "role": "ancla",
+       "job": "Evil Eye mirando la puerta de Escaleras 2 y otra a la escotilla; ancla con el ALDA en la esquina"
+      },
+      {
+       "op": "azami",
+       "room": "Almacén",
+       "f": "b",
+       "role": "flex",
+       "job": "Kiba en la puerta de Escaleras 2 y en la escotilla; tapa el ángulo del plant"
+      },
+      {
+       "op": "noor",
+       "room": "Escaleras 2",
+       "f": "b",
+       "role": "flex",
+       "job": "Horus a la puerta de Almacén y a la escalera para quemar escudos y flashes del rush; se retrae a Almacén"
+      },
+      {
+       "op": "vigil",
+       "room": "Pasillo",
+       "f": "1",
+       "role": "roam",
+       "job": "Roam en 1F entre Pasillo y Ensamblaje; come drones y castiga la escalera secundaria por la espalda"
+      }
+     ]
+    }
+   ]
+  },
+  "assembly": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thermite abre la pared exterior de Pruebas después del EMP de Thatcher, mientras Buck sube por Escaleras y abre el piso de 2F sobre Ensamblaje para quitarle el techo a Maestro. Zero limpia cámaras y Gridlock cierra Pasillo con Trax. Funciona porque el sitio vive de la pared de Pruebas: si cae, Pruebas es un cuarto abierto a la calle y solo queda Ensamblaje, que ya no tiene techo.",
+     "timeline": [
+      "0:00–0:45 · drones a Pruebas y Ensamblaje, ubicar Bandit en la pared y a la ancla de Ensamblaje; Zero pone Argus",
+      "0:45–1:30 · EMP + Thermite en la pared de Pruebas; Buck abre el piso desde 2F",
+      "1:30–2:30 · entrada por Pruebas con humo, Gridlock sostiene Pasillo",
+      "2:30–3:00 · plant en Pruebas pegado a la pared exterior, post-plant desde Exterior y 2F"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a la pared de Pruebas para ver batería/Rtila; se pega al muro",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "EMP a la pared justo cuando Thermite pone la carga; entra tras la brecha",
+         "via": "breach"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Segunda EMP a Maestro/Mute antes de cruzar",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "threat": "Defensor peekeando desde Pasillo la pared de Pruebas",
+         "how": "Dron y cubrirse en las esquinas, Gridlock cubre"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "threat": "Bandit/Kaid trickeando la pared y Smoke ancla detrás",
+         "how": "EMP al momento exacto de la carga y humo de Thermite"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Maestro con Evil Eye mirando Pruebas",
+         "how": "EMP y Buck lo saca desde arriba"
+        }
+       ],
+       "final": "Sostiene la brecha de Pruebas durante el plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron hacia Pruebas y sigue a Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Pone la carga en la pared exterior apenas cae el EMP; cruza con humo y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "threat": "Roamer saliendo por Pasillo a flanquear",
+         "how": "Gridlock tapa Pasillo, Thermite no se separa de Thatcher"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "threat": "Smoke ancla en la esquina de Pruebas con gas listo",
+         "how": "Humo y cruzar en pareja, uno prefirea la esquina"
+        }
+       ],
+       "final": "Planta en Pruebas pegado a la pared exterior y sostiene la puerta a Ensamblaje"
+      },
+      {
+       "op": "buck",
+       "role": "blando",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Pasillo y Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza rápido a Escaleras, no pelea en Pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con dron adelante",
+         "via": "stairs"
+        },
+        {
+         "room": "2F (arriba)",
+         "f": "1",
+         "do": "Se para sobre Ensamblaje y abre el piso con la Skeleton Key encima de Maestro",
+         "via": "stairs"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja por la escotilla al final para el post-plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer esperando el paso a Escaleras",
+         "how": "Dron y prefire, Gridlock apoya"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "threat": "Roamer 2F (Lesion/Vigil) bajando",
+         "how": "Dron arriba primero, esperar apoyo si hay dos"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Maestro ancla en la esquina de Ensamblaje",
+         "how": "Abrir el piso encima de él y disparar por los huecos"
+        }
+       ],
+       "final": "Controla Ensamblaje desde arriba y baja para el post-plant"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Argus en la pared de Pruebas para ver adentro",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Argus en la puerta de Ensamblaje, mata gadgets con el láser",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra por la puerta cuando Pruebas ya cayó",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Cubre el plant desde la puerta interna",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Kapkan en la puerta de Ensamblaje y Maestro mirándola",
+         "how": "Argus mata la trampa y ciega el Evil Eye"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla con Maestro y Jäger rotando",
+         "how": "Entrar solo cuando Buck confirme desde arriba"
+        }
+       ],
+       "final": "Sostiene la puerta Pasillo→Ensamblaje para el post-plant"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Trax en el paso de Pasillo a Escaleras y otra en la puerta de Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra al final con Zero",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer rotando por Pasillo para flanquear a Thermite",
+         "how": "Trax en el pasillo y sostener con el F90"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla en la esquina",
+         "how": "Entrar cuando Buck abra el piso"
+        }
+       ],
+       "final": "Sostiene Pasillo con Trax durante el plant y post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush puerta de Ensamblaje",
+     "tag": "RUSH",
+     "summary": "Entrada rápida por UNA puerta: Pasillo → Ensamblaje. Ash rompe la barricada, Ying mete candelas, Zofia aturde con concusión, Blackbeard toma el peek y Finka da el surge. Funciona porque la puerta de Ensamblaje está a diez segundos de la entrada principal y en los primeros 30 segundos Maestro/Mira no han terminado de armar.",
+     "timeline": [
+      "0:00–0:30 · correr a Pasillo con Finka activa",
+      "0:30–1:00 · Ash breach a la barricada, Ying candelas, Zofia concusión, entrar",
+      "1:00–1:45 · limpiar Ensamblaje y Pruebas, plant rápido en Ensamblaje",
+      "1:45–3:00 · post-plant desde Pasillo y Pruebas"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre a la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Breach a la barricada de Ensamblaje desde la esquina",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra tras las candelas y limpia la esquina de la ancla",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Limpia Pruebas por la puerta interna",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Kapkan en la puerta de Ensamblaje",
+         "how": "El breach de Ash la rompe con la barricada"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla armando el sitio (Maestro/Mira)",
+         "how": "Candela + concusión, entrar corriendo"
+        }
+       ],
+       "final": "Limpia Pruebas y sostiene la puerta interna"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Tira dos candelas a Ensamblaje tras la barricada de Ash",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra primera y planta rápido",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Defensor peekeando Pasillo desde Ensamblaje",
+         "how": "Candela por la barricada rota"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla en la esquina",
+         "how": "Candela + Blackbeard prefirea"
+        }
+       ],
+       "final": "Planta en Ensamblaje mientras Ash limpia Pruebas"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Concusión a Ensamblaje justo tras las candelas",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra tras Ying, impacto a la barricada de Pruebas",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Limpia Pruebas con Ash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla y Jäger reaccionando al rush",
+         "how": "Concusión y entrar en pareja"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "threat": "Smoke en la esquina de Pruebas",
+         "how": "Impacto a la barricada y prefire"
+        }
+       ],
+       "final": "Cubre Pruebas y la pared exterior durante el plant"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Toma el peek de la puerta de Ensamblaje con el escudo",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra y sostiene el ángulo hacia Pruebas",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Defensor peekeando la puerta",
+         "how": "Escudo arriba y peek lento con Ying atrás"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla en la esquina",
+         "how": "Prefire con escudo tras la candela"
+        }
+       ],
+       "final": "Sostiene el ángulo Ensamblaje→Pruebas durante el plant"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Surge antes de entrar",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cubre la espalda del grupo hacia Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra al final, segundo surge en el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer bajando de Escaleras a pelear el rush",
+         "how": "Cubrir Escaleras mientras entran, surge"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Compañero caído en la puerta",
+         "how": "Surge para levantar"
+        }
+       ],
+       "final": "Cubre la puerta de Pasillo desde adentro de Ensamblaje"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical desde 2F",
+     "tag": "VERTICAL",
+     "summary": "Sledge, Ram y Fuze suben por Escaleras a 2F y destrozan el piso sobre Ensamblaje: BU-GI abre todo el techo, Fuze mete clusters y Sledge remata. Twitch mata gadgets con el dron y Hibana abre la pared de Pruebas al final para plantar. Funciona porque el techo de Ensamblaje es blando y la defensa suele dejar 2F con un solo roamer.",
+     "timeline": [
+      "0:00–0:45 · Twitch mata ADS/Evil Eyes, drones a 2F",
+      "0:45–1:30 · subir por Escaleras, BU-GI + Sledge abren el techo de Ensamblaje, Fuze clusters",
+      "1:30–2:30 · kills desde arriba, Hibana abre Pruebas",
+      "2:30–3:00 · plant en Pruebas, post-plant desde 2F y Exterior"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza rápido a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "2F (arriba)",
+         "f": "1",
+         "do": "Sobre Ensamblaje: martilla el piso y remata a la ancla",
+         "via": "stairs"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja al final para el post-plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer esperando el paso a Escaleras",
+         "how": "Dron y prefire en pareja"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "threat": "Roamer 2F bajando (Lesion/Vigil)",
+         "how": "Dron arriba, esperar a Ram"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Maestro ancla en la esquina",
+         "how": "Abrir el piso encima y disparar"
+        }
+       ],
+       "final": "Controla Ensamblaje desde arriba y baja para el post-plant"
+      },
+      {
+       "op": "ram",
+       "role": "blando",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Sigue a Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "2F (arriba)",
+         "f": "1",
+         "do": "Lanza BU-GI cruzando todo el piso sobre Ensamblaje hacia Pruebas",
+         "via": "stairs"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja al final",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "threat": "Roamer en Escaleras",
+         "how": "Subir en pareja con Sledge"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Jäger y ancla bajo el piso",
+         "how": "BU-GI abre todo y Fuze castiga"
+        }
+       ],
+       "final": "Cubre el plant desde los huecos de 2F"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Sigue al grupo",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "2F (arriba)",
+         "f": "1",
+         "do": "Clusters en el piso sobre Ensamblaje y sobre Pruebas",
+         "via": "stairs"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja al final por el hueco",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "threat": "Roamer 2F",
+         "how": "Subir con el grupo"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Jäger ADS comiéndose los clusters",
+         "how": "Sledge abre primero para gastar los ADS"
+        }
+       ],
+       "final": "Sostiene Ensamblaje desde arriba y baja al final"
+      },
+      {
+       "op": "twitch",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron de choque a Pruebas por la pared, mata batería/Evil Eyes",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Dron a Ensamblaje, mata ADS",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra por la puerta cuando el techo ya cayó",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Cubre el plant de Hibana",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Kapkan en la puerta y roamer",
+         "how": "Dron de choque revienta la trampa"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Maestro con Evil Eye",
+         "how": "Dron de choque + vertical de arriba"
+        }
+       ],
+       "final": "Cubre Pruebas durante el plant"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Pruebas; pellets en la pared exterior cuando el techo ya cayó",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Entra por la brecha y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "threat": "Bandit trickeando la pared de Pruebas",
+         "how": "Twitch mata la batería con el dron antes de los pellets"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "threat": "Smoke ancla en la esquina",
+         "how": "Fuze pone cluster sobre Pruebas antes de entrar"
+        }
+       ],
+       "final": "Planta en Pruebas y sostiene la pared exterior"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split pared Pruebas + puerta Ensamblaje",
+     "tag": "SPLIT",
+     "summary": "Maverick y Brava trabajan la pared exterior de Pruebas (Brava hackea Evil Eyes y ADS, Maverick abre) mientras Montagne, Dokkaebi y Jackal entran por Pasillo → Ensamblaje. Funciona porque Bandit/Kaid se quedan en la pared y Maestro/Mira miran la puerta: al presionar las dos, alguien se queda sin cubrir su lado.",
+     "timeline": [
+      "0:00–0:45 · Jackal escanea roamers, Brava hackea gadgets, drones a Pruebas y Ensamblaje",
+      "0:45–1:30 · Maverick abre boquete en Pruebas; Monty presiona la puerta de Ensamblaje",
+      "1:30–2:30 · logic bomb, entrada simultánea por pared y puerta",
+      "2:30–3:00 · plant en Ensamblaje detrás de Monty, post-plant desde Pasillo y Exterior"
+     ],
+     "ops": [
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Se pega a la pared de Pruebas y abre boquete de murder-hole, luego el paso",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Entra por el boquete cuando Monty ya presiona Ensamblaje",
+         "via": "breach"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Cubre el plant por la puerta interna",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "threat": "Defensor peekeando el exterior desde Pasillo",
+         "how": "Brava dronea, Maverick trabaja pegado al muro"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "threat": "Bandit/Kaid en la pared y Smoke ancla",
+         "how": "Murder-hole primero, castigar y después abrir"
+        }
+       ],
+       "final": "Entra a Pruebas y sostiene la puerta interna hacia Ensamblaje"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Kludge a Pruebas por el boquete de Maverick, hackea Evil Eyes/ADS",
+         "via": "door"
+        },
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "do": "Entra con Maverick",
+         "via": "breach"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra al final para el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pruebas",
+         "f": "1",
+         "threat": "Maestro Evil Eye y Jäger ADS cubriendo la pared",
+         "how": "Kludge los convierte antes de que Maverick abra"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla en la esquina",
+         "how": "Entrar por los dos lados a la vez"
+        }
+       ],
+       "final": "Cubre Pruebas durante el plant"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Escudo arriba a la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Se planta en la puerta de Ensamblaje con el escudo extendido",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra y da cover para el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Kapkan en la puerta y Mira mirándola",
+         "how": "Dokkaebi rompe trampa, Monty tapa el espejo"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla en la esquina y Noor quemándolo",
+         "how": "Entrar pegado a la pared, Jackal castiga al que peekee"
+        }
+       ],
+       "final": "Cover del plant en Ensamblaje"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Logic bomb al inicio",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Segunda logic bomb antes de que Monty abra; revisa cámaras",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Entra tras Monty y planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer rotando por Pasillo",
+         "how": "Logic bomb y Jackal lo traza"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Ancla pegada a Monty",
+         "how": "Entrar en el logic bomb para que no roten"
+        }
+       ],
+       "final": "Planta en Ensamblaje detrás de Monty"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Eyenox en el exterior para ubicar al roamer",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Rastrea huellas hacia Escaleras y castiga",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube si el roamer está en 2F, si no se queda en Pasillo",
+         "via": "stairs"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Baja y entra al final por la escotilla o la puerta",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer 2F (Lesion/Solis) bajando por Escaleras",
+         "how": "Eyenox y prefire en la escalera"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "threat": "Roamer escondido en el descanso",
+         "how": "Escanear y pelear con apoyo"
+        }
+       ],
+       "final": "Sostiene Escaleras y Pasillo para el post-plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Bandit trickea la pared exterior de Pruebas, Smoke ancla en Pruebas, Maestro ancla en Ensamblaje con Evil Eye a la puerta de Pasillo. Jäger flex entre los dos cuartos y Lesion roamea en 2F para negar las verticales y las escaleras.",
+     "reinforce": [
+      "Pared Pruebas–Exterior ×2",
+      "Pared Ensamblaje–Pasillo",
+      "Escotilla sobre Pruebas"
+     ],
+     "rotations": [
+      "Ensamblaje↔Pruebas",
+      "Ensamblaje↔Pasillo (solo peek)"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Pruebas",
+       "f": "1",
+       "role": "ancla",
+       "job": "Ancla en la esquina de Pruebas; gas a la pared exterior cuando abran y a la puerta interna"
+      },
+      {
+       "op": "maestro",
+       "room": "Ensamblaje",
+       "f": "1",
+       "role": "ancla",
+       "job": "Evil Eye a la puerta de Pasillo y a Pruebas; ancla con el ALDA cubriendo el plant"
+      },
+      {
+       "op": "bandit",
+       "room": "Pruebas",
+       "f": "1",
+       "role": "flex",
+       "job": "Trickea la pared exterior de Pruebas; rota a Ensamblaje cuando cae"
+      },
+      {
+       "op": "jager",
+       "room": "Ensamblaje",
+       "f": "1",
+       "role": "flex",
+       "job": "ADS en la puerta de Pasillo y en la escotilla; flex entre Ensamblaje y Pruebas"
+      },
+      {
+       "op": "lesion",
+       "room": "Escaleras",
+       "f": "1",
+       "role": "roam",
+       "job": "Gu en Escaleras y Pasillo; roamea entre 1F y 2F para castigar a Buck/Sledge subiendo"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush con Mira",
+     "summary": "Setup contra rush por la puerta de Ensamblaje: Mira pone espejo hacia Pasillo, Warden en la esquina para ver a través de candelas y humos, Thorn con Razorbloom en la puerta y Kaid electrifica la pared de Pruebas. Solis roamea en 2F cazando drones y verticales.",
+     "reinforce": [
+      "Pared Pruebas–Exterior ×2",
+      "Pared Ensamblaje–Pasillo (espejo Mira)"
+     ],
+     "rotations": [
+      "Ensamblaje↔Pruebas"
+     ],
+     "ops": [
+      {
+       "op": "mira",
+       "room": "Ensamblaje",
+       "f": "1",
+       "role": "ancla",
+       "job": "Espejo a la puerta de Pasillo; ancla en la esquina del Ensamblaje"
+      },
+      {
+       "op": "warden",
+       "room": "Ensamblaje",
+       "f": "1",
+       "role": "ancla",
+       "job": "Glance activo en la puerta para ver a través de candelas y humos del rush"
+      },
+      {
+       "op": "thorn",
+       "room": "Pasillo",
+       "f": "1",
+       "role": "flex",
+       "job": "Razorbloom en la puerta de Ensamblaje y en Pasillo; se retrae a Pruebas"
+      },
+      {
+       "op": "kaid",
+       "room": "Pruebas",
+       "f": "1",
+       "role": "ancla",
+       "job": "Rtila en la pared exterior de Pruebas y en la escotilla; ancla en Pruebas"
+      },
+      {
+       "op": "solis",
+       "room": "Escaleras",
+       "f": "2",
+       "role": "roam",
+       "job": "SPEC-IO en 2F; caza drones y castiga la vertical sobre Ensamblaje desde Escaleras"
+      }
+     ]
+    }
+   ]
+  },
+  "server": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Ace abre la pared reforzada Pasillo 2F → Servidores tras el EMP de Thatcher, mientras Zero y Ying entran por las ventanas de Laboratorio en rappel y Nomad cierra Escaleras con Airjabs. Funciona porque Servidores solo tiene dos accesos: la pared del pasillo y la puerta desde Laboratorio; al presionar las dos, Mira y Smoke no pueden cubrir ambas.",
+     "timeline": [
+      "0:00–0:45 · drones a Pasillo 2F y Laboratorio, Zero pone Argus en las ventanas",
+      "0:45–1:30 · EMP + SELMA en la pared de Servidores; Ying y Zero rompen Castle en Laboratorio",
+      "1:30–2:30 · entrada por la pared con humo, Ying presiona desde Laboratorio",
+      "2:30–3:00 · plant en Servidores, post-plant desde Pasillo 2F y Laboratorio"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Pasillo y Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Escaleras pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sale al descanso de 2F con el dron adelante",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "Se pega a la pared de Servidores y tira EMP cuando Ace pone la SELMA",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra tras la brecha y limpia",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer 1F (Valkyrie/Vigil) esperando la escalera",
+         "how": "Dron y cruzar con Ace"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "threat": "Kapkan en la puerta de Laboratorio y defensor peekeando el descanso",
+         "how": "Dron, romper trampa, Nomad cubre"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "threat": "Kaid/Bandit trickeando la pared y Mira con espejo al pasillo",
+         "how": "EMP al momento de la SELMA, humo para cruzar el espejo"
+        }
+       ],
+       "final": "Sostiene Pasillo 2F y la brecha durante el plant"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron hacia Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Sigue a Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sube al descanso de 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "SELMA en la pared de Servidores apenas cae el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Cruza con humo y planta pegado a la pared",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "threat": "Bandit escondido tras la pared esperando la SELMA",
+         "how": "Esperar el EMP; segunda SELMA en la escotilla si trickea"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Smoke ancla entre los racks con gas listo",
+         "how": "Humo y cruzar en pareja, prefire a los racks"
+        }
+       ],
+       "final": "Planta en Servidores y sostiene la puerta a Laboratorio"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Rappel a las ventanas de Laboratorio; Argus adentro para ver el sitio",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra cuando Servidores ya cayó y limpia",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Cubre el plant desde la puerta interna",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "threat": "Frost con cepos bajo las ventanas y Castle",
+         "how": "Argus ve el cepo, Ying rompe el Castle con impactos"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Ancla (Frost/Alibi) en la esquina de Laboratorio mirando ventanas",
+         "how": "Argus y entrar solo con la presión de Ace en la pared"
+        }
+       ],
+       "final": "Sostiene la puerta Laboratorio→Servidores para el post-plant"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Rappel a la ventana de Laboratorio, rompe el Castle y tira candelas",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra en candela y limpia",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Presiona la puerta interna cuando Ace entra por la pared",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "threat": "Defensor peekeando la ventana desde Laboratorio",
+         "how": "Candela por la ventana antes de entrar"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Frost cepos bajo la ventana",
+         "how": "Entrar por la parte alta de la ventana, revisar el suelo"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Mira en Servidores mirando Laboratorio",
+         "how": "Candela y entrar a la vez que Ace"
+        }
+       ],
+       "final": "Presiona Servidores desde Laboratorio y cubre el plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Airjab en Escaleras para el flanco desde 1F",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Airjab en el descanso mirando la puerta de Laboratorio",
+         "via": "stairs"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra por la puerta al final con Ying",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "threat": "Roamer 1F subiendo por la espalda",
+         "how": "Airjab en la escalera y pelear con apoyo"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "threat": "Kapkan/Ela en la puerta de Laboratorio",
+         "how": "Dron y romper trampa desde el descanso"
+        }
+       ],
+       "final": "Sostiene Escaleras con Airjabs para el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush ventanas Laboratorio",
+     "tag": "RUSH",
+     "summary": "Los cinco entran por las ventanas de Laboratorio en rappel: Amaru se gancha primero, Ash rompe Castle con breach, Zofia aturde, Blackbeard toma el peek y Blitz flashea. Funciona porque Laboratorio es el cuarto más lejos de la escalera y en los primeros 30 segundos Castle/Frost no han terminado de armar.",
+     "timeline": [
+      "0:00–0:30 · correr al exterior de 2F y subir en rappel",
+      "0:30–1:00 · Ash rompe Castle, Zofia concusión, Amaru y Blitz entran",
+      "1:00–1:45 · limpiar Laboratorio y Servidores, plant rápido en Laboratorio",
+      "1:45–3:00 · post-plant desde las ventanas y la puerta a Servidores"
+     ],
+     "ops": [
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Garra Hook directo a la ventana de Laboratorio tras el breach de Ash",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra primera y limpia la esquina de la ancla",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Presiona la puerta interna",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "threat": "Castle en las ventanas",
+         "how": "Ash rompe con breach, Amaru entra en el segundo"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Ancla armando (Frost/Alibi)",
+         "how": "Entrar tras la concusión de Zofia"
+        }
+       ],
+       "final": "Limpia Servidores por la puerta interna"
+      },
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Breach al Castle de la ventana de Laboratorio desde el rappel",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra tras Amaru",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Limpia Servidores",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "threat": "Castle y Frost armando las ventanas",
+         "how": "Breach a la barricada, entrar por arriba de la ventana"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Smoke entre los racks",
+         "how": "Entrar en pareja, prefire a los racks"
+        }
+       ],
+       "final": "Sostiene Servidores durante el plant"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Concusión por la ventana rota a Laboratorio",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra y planta rápido",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "threat": "Defensor peekeando la ventana",
+         "how": "Concusión y entrar con Blackbeard"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Ancla en la esquina",
+         "how": "Concusión + Blitz"
+        }
+       ],
+       "final": "Planta en Laboratorio pegado a la ventana"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Rappel y peek con escudo por la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra y sostiene el ángulo hacia Servidores",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "threat": "Defensor peekeando la ventana",
+         "how": "Peek con escudo, Zofia atrás"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Ancla en la esquina",
+         "how": "Prefire con escudo"
+        }
+       ],
+       "final": "Sostiene Laboratorio→Servidores durante el plant"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Rappel y entra flasheando",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Flash a la ancla, castiga",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra flasheando con Ash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Ancla ciega en la esquina",
+         "how": "Flash y disparar a corta"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Smoke entre los racks",
+         "how": "Flash y entrar con Ash"
+        }
+       ],
+       "final": "Sostiene Servidores de frente"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical desde 1F",
+     "tag": "VERTICAL",
+     "summary": "Buck y Sledge se paran en Ensamblaje y abren el techo debajo de Servidores para castigar a las anclas desde abajo; Capitão quema por los huecos y Twitch mata gadgets. Thermite abre la pared de Pasillo 2F al final para entrar. Funciona porque el piso de Servidores es blando y la defensa casi nunca deja a alguien defendiendo 1F debajo del sitio.",
+     "timeline": [
+      "0:00–0:45 · Twitch mata ADS/cámaras, drones a Ensamblaje",
+      "0:45–1:30 · Buck/Sledge abren el techo bajo Servidores, Capitão fuego",
+      "1:30–2:30 · kills desde abajo, Thermite abre Pasillo 2F",
+      "2:30–3:00 · plant en Servidores, post-plant desde abajo y desde Pasillo 2F"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "blando",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Pasillo y Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Se para debajo de Servidores y abre el techo con la Skeleton Key",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube al final por Escaleras",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sale al descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "Entra por la brecha de Thermite",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Cubre el plant",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer 1F esperando",
+         "how": "Dron y prefire en pareja"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer defendiendo debajo del sitio",
+         "how": "Pelear en pareja con Sledge"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Smoke ancla entre los racks",
+         "how": "Abrir el techo debajo y disparar hacia arriba"
+        }
+       ],
+       "final": "Cubre el plant en Servidores"
+      },
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza con Buck",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Martilla el techo bajo Laboratorio y Servidores",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube al final",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sale al descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra por la puerta al final",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer 1F",
+         "how": "Pelear en pareja"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Frost ancla en la esquina",
+         "how": "Abrir el techo debajo y castigar"
+        }
+       ],
+       "final": "Sostiene Laboratorio para el post-plant"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Ensamblaje",
+         "via": "door"
+        },
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "do": "Fuego por los huecos de Buck hacia Servidores",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube al final",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Humo al descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "Humo a la brecha para el plant",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra y cubre",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Ensamblaje",
+         "f": "1",
+         "threat": "Roamer intentando recuperar 1F",
+         "how": "Pelear en grupo"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Ancla sin piso",
+         "how": "Fuego por el hueco antes de la entrada"
+        }
+       ],
+       "final": "Humo al plant y cubre Pasillo 2F"
+      },
+      {
+       "op": "twitch",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron de choque a Escaleras y Pasillo 2F, mata batería/ADS",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Segundo dron a Laboratorio, mata cámaras",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con Thermite",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sale al descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "Cubre a Thermite en la pared",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra tras la brecha",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "threat": "Kapkan en la puerta de Laboratorio",
+         "how": "Dron de choque la revienta"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "threat": "Bandit en la pared",
+         "how": "Dron de choque mata la batería"
+        }
+       ],
+       "final": "Cubre el plant en Servidores"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sale al descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "Carga en la pared de Servidores cuando Buck confirme el sitio limpio",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "threat": "Bandit/Kaid trickeando la pared",
+         "how": "Twitch mata la batería, Buck castiga desde abajo"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Ancla entre los racks",
+         "how": "Solo entrar cuando el vertical confirme"
+        }
+       ],
+       "final": "Planta en Servidores"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split pared Pasillo 2F + ventanas",
+     "tag": "SPLIT",
+     "summary": "Hibana y Kali trabajan la pared reforzada Pasillo 2F → Servidores mientras Osa, Grim y Sens entran por las ventanas de Laboratorio con escudo Talon y las abejas de Grim. Funciona porque Frost/Castle viven en Laboratorio y Kaid/Mira en la pared: al abrir las dos, nadie puede rotar sin cruzar la puerta Laboratorio↔Servidores.",
+     "timeline": [
+      "0:00–0:45 · drones, Grim colmena a Laboratorio",
+      "0:45–1:30 · Kali revienta Rtila, Hibana pellets; Osa Talon en la ventana",
+      "1:30–2:30 · Sens muro de luz en Laboratorio, entrada simultánea",
+      "2:30–3:00 · plant en Servidores, post-plant desde ambas entradas"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Cruza a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sale al descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "Pellets en la pared de Servidores tras el LV de Kali",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "threat": "Roamer 1F",
+         "how": "Dron y cruzar en pareja"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "threat": "Kaid Rtila y Mira al pasillo",
+         "how": "Kali revienta la Rtila, entrar con humo"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Smoke entre los racks",
+         "how": "Entrar a la vez que el grupo de la ventana"
+        }
+       ],
+       "final": "Planta en Servidores"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "1",
+         "do": "Dron a Escaleras",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Sigue a Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Escaleras",
+         "f": "1",
+         "do": "Sube con el dron adelante, revisa el descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "do": "Sale al descanso",
+         "via": "stairs"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "do": "LV a la pared de Servidores; sostiene el pasillo con el sniper",
+         "via": "door"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra al final",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Escaleras",
+         "f": "2",
+         "threat": "Kapkan en la puerta de Laboratorio",
+         "how": "Disparar desde el descanso"
+        },
+        {
+         "room": "Pasillo 2F",
+         "f": "2",
+         "threat": "Kaid/Bandit trickeando",
+         "how": "LV al muro apenas dron confirme"
+        }
+       ],
+       "final": "Sostiene Pasillo 2F durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Rappel a la ventana de Laboratorio con el Talon",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Talon en la ventana y entra con escudo",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Talon en la puerta interna para el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "threat": "Castle en la ventana y Frost cepos",
+         "how": "Grim abejas primero, Talon tapando el ángulo"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Ancla en la esquina",
+         "how": "Entrar detrás del Talon con Sens"
+        }
+       ],
+       "final": "Cover del plant desde Laboratorio"
+      },
+      {
+       "op": "grim",
+       "role": "intel",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Colmena Kawan por la ventana a Laboratorio",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Entra tras Osa",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Colmena a Servidores y cubre",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Ancla (Frost/Alibi) en la esquina",
+         "how": "Abejas la marcan, Osa castiga"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Mira rotando",
+         "how": "Abejas antes de entrar"
+        }
+       ],
+       "final": "Cubre la puerta Laboratorio→Servidores"
+      },
+      {
+       "op": "sens",
+       "role": "negacion",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": "2",
+         "do": "Rappel a la ventana con el grupo",
+         "via": "rappel"
+        },
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "do": "Muro de luz para tapar Servidores",
+         "via": "window"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "do": "Entra al final",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Laboratorio",
+         "f": "2",
+         "threat": "Frost ancla",
+         "how": "Entrar tras Osa con el muro de luz"
+        },
+        {
+         "room": "Servidores",
+         "f": "2",
+         "threat": "Smoke ancla",
+         "how": "Muro de luz al plant"
+        }
+       ],
+       "final": "Muro de luz para el plant en Servidores"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Castle tapa las ventanas de Laboratorio con Frost poniendo cepos debajo; Smoke ancla en Servidores y Mira pone espejo hacia Pasillo 2F. Valkyrie roamea en 1F con cámaras en Escaleras para avisar el flanco.",
+     "reinforce": [
+      "Pared Servidores–Pasillo 2F ×2",
+      "Ventanas Laboratorio (Castle)",
+      "Escotilla Servidores"
+     ],
+     "rotations": [
+      "Servidores↔Laboratorio"
+     ],
+     "ops": [
+      {
+       "op": "frost",
+       "room": "Laboratorio",
+       "f": "2",
+       "role": "ancla",
+       "job": "Cepos bajo las ventanas; ancla en la esquina de Laboratorio"
+      },
+      {
+       "op": "castle",
+       "room": "Laboratorio",
+       "f": "2",
+       "role": "flex",
+       "job": "Barricadas blindadas en las ventanas de Laboratorio; flex a Servidores"
+      },
+      {
+       "op": "smoke",
+       "room": "Servidores",
+       "f": "2",
+       "role": "ancla",
+       "job": "Ancla entre los racks; gas a la pared y a la puerta de Laboratorio"
+      },
+      {
+       "op": "mira",
+       "room": "Servidores",
+       "f": "2",
+       "role": "ancla",
+       "job": "Espejo hacia Pasillo 2F; sostiene el plant"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Escaleras",
+       "f": "1",
+       "role": "roam",
+       "job": "Cámaras en Escaleras y Pasillo; roamea en 1F y castiga la subida"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-vertical Mute",
+     "summary": "Setup contra drones y verticales: Mute jammea la pared de Pasillo 2F y las escotillas, Kaid electrifica pared y escotilla, Melusi frena las ventanas de Laboratorio, Jäger flex y Vigil roamea en 1F cazando a Buck/Sledge debajo del sitio.",
+     "reinforce": [
+      "Pared Servidores–Pasillo 2F ×2",
+      "Escotilla Servidores",
+      "Escotilla Laboratorio"
+     ],
+     "rotations": [
+      "Servidores↔Laboratorio",
+      "Laboratorio↔Escaleras (peek)"
+     ],
+     "ops": [
+      {
+       "op": "kaid",
+       "room": "Servidores",
+       "f": "2",
+       "role": "ancla",
+       "job": "Rtila en la pared de Pasillo 2F y en la escotilla; ancla entre racks"
+      },
+      {
+       "op": "mute",
+       "room": "Pasillo 2F",
+       "f": "2",
+       "role": "flex",
+       "job": "Jammers en la pared reforzada y en la puerta de Laboratorio; se retrae a Servidores"
+      },
+      {
+       "op": "melusi",
+       "room": "Laboratorio",
+       "f": "2",
+       "role": "ancla",
+       "job": "Banshees en las ventanas y en la puerta de Escaleras; ancla en Laboratorio"
+      },
+      {
+       "op": "jager",
+       "room": "Laboratorio",
+       "f": "2",
+       "role": "flex",
+       "job": "ADS en las ventanas y en la puerta interna; flex entre los dos cuartos"
+      },
+      {
+       "op": "vigil",
+       "room": "Ensamblaje",
+       "f": "1",
+       "role": "roam",
+       "job": "Roam en 1F debajo del sitio; caza a Buck/Sledge que abran el techo y flanquea Escaleras"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

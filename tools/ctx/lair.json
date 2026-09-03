@@ -1,0 +1,1089 @@
+{
+ "id": "lair",
+ "name": "Lair",
+ "pool": "ranked",
+ "hasBlueprint": false,
+ "floors": [
+  {
+   "idx": "b",
+   "key": "b",
+   "name": "Sótano"
+  },
+  {
+   "idx": "1",
+   "key": "1",
+   "name": "Planta 1"
+  },
+  {
+   "idx": "2",
+   "key": "2",
+   "name": "Planta 2"
+  }
+ ],
+ "rooms": [
+  {
+   "f": "1",
+   "en": "Warehouse Stairs",
+   "es": "Warehouse Stairs"
+  },
+  {
+   "f": "1",
+   "en": "Control Room Hallway",
+   "es": "Control Room Hallway"
+  },
+  {
+   "f": "1",
+   "en": "Cargo",
+   "es": "Cargo"
+  },
+  {
+   "f": "1",
+   "en": "Control Room",
+   "es": "Control Room"
+  },
+  {
+   "f": "1",
+   "en": "Warehouse",
+   "es": "Warehouse"
+  },
+  {
+   "f": "1",
+   "en": "Warehouse Entrance",
+   "es": "Warehouse Entrance"
+  },
+  {
+   "f": "1",
+   "en": "CC Stairs",
+   "es": "CC Stairs"
+  },
+  {
+   "f": "1",
+   "en": "Cafeteria Hallway",
+   "es": "Cafeteria Hallway"
+  },
+  {
+   "f": "1",
+   "en": "Lounge",
+   "es": "Lounge"
+  },
+  {
+   "f": "1",
+   "en": "Storage",
+   "es": "Storage"
+  },
+  {
+   "f": "1",
+   "en": "Lobby",
+   "es": "Lobby"
+  },
+  {
+   "f": "1",
+   "en": "Cafeteria",
+   "es": "Cafeteria"
+  },
+  {
+   "f": "1",
+   "en": "Vending",
+   "es": "Vending"
+  },
+  {
+   "f": "1",
+   "en": "Vending Stairs",
+   "es": "Vending Stairs"
+  },
+  {
+   "f": "1",
+   "en": "Kitchen",
+   "es": "Kitchen"
+  },
+  {
+   "f": "1",
+   "en": "Pantry",
+   "es": "Pantry"
+  },
+  {
+   "f": "b",
+   "en": "Warehouse Stairs",
+   "es": "Warehouse Stairs"
+  },
+  {
+   "f": "b",
+   "en": "Bunks",
+   "es": "Bunks"
+  },
+  {
+   "f": "b",
+   "en": "Bathroom",
+   "es": "Bathroom"
+  },
+  {
+   "f": "b",
+   "en": "Vending Stairs",
+   "es": "Vending Stairs"
+  },
+  {
+   "f": "b",
+   "en": "Pasillo sótano",
+   "es": "Pasillo sótano"
+  },
+  {
+   "f": "b",
+   "en": "Storage (arriba)",
+   "es": "Storage (arriba)"
+  },
+  {
+   "f": "2",
+   "en": "Exterior",
+   "es": "Exterior"
+  },
+  {
+   "f": "2",
+   "en": "Command Center",
+   "es": "Command Center"
+  },
+  {
+   "f": "2",
+   "en": "Server Room",
+   "es": "Server Room"
+  },
+  {
+   "f": "2",
+   "en": "CC Stairs",
+   "es": "CC Stairs"
+  },
+  {
+   "f": "2",
+   "en": "Pasillo 2F",
+   "es": "Pasillo 2F"
+  },
+  {
+   "f": "2",
+   "en": "Vending Stairs",
+   "es": "Vending Stairs"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Exterior",
+   "es": "Exterior"
+  }
+ ],
+ "sites": [
+  {
+   "id": "storage",
+   "name": "Almacén / Bodega (Storage / Warehouse)",
+   "fl": "1",
+   "floorIdx": "1",
+   "rooms": [
+    "Storage",
+    "Warehouse"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Warehouse Entrance → Warehouse",
+     "kind": "puerta",
+     "path": [
+      "Warehouse Entrance",
+      "Warehouse"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Lounge → Storage",
+     "kind": "reforzada",
+     "path": [
+      "CC Stairs",
+      "Cafeteria Hallway",
+      "Lounge",
+      "Storage"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vertical 2F → Storage",
+     "kind": "vertical",
+     "path": [
+      "2F (arriba)",
+      "Storage"
+     ],
+     "roles": [
+      "blando",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Control Room → Warehouse (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Control Room Hallway",
+      "Control Room",
+      "Warehouse"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    },
+    {
+     "id": "v5",
+     "n": "Vending Stairs → Storage (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Vending",
+      "Vending Stairs",
+      "Storage"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Dronea Warehouse desde Warehouse Entrance. Thatcher + Thermite abren la pared de Storage desde Lounge; Buck abre el piso de 2F sobre Storage.",
+    "Entrada doble: Warehouse Entrance (puerta, con Osa/humo) y Lounge → Storage por la pared. Lion antes de cruzar Lounge.",
+    "Planta en Storage pegado a la pared abierta. Nomad en Control Room Hallway; Gridlock en Vending Stairs."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Storage–Lounge ×2",
+     "Warehouse Entrance (Castle)",
+     "Pared Warehouse–Control Room"
+    ],
+    "keepSoft": [
+     "Piso 2F sobre Storage (Pulse debajo)"
+    ],
+    "rotations": [
+     "Storage↔Warehouse",
+     "Warehouse→Warehouse Stairs"
+    ],
+    "anchors": "Ancla Storage (Smoke), ancla Warehouse detrás de las cajas (Mira a la puerta). Flex en Control Room. Roam en Cafeteria/Lobby.",
+    "ops": [
+     "castle",
+     "smoke",
+     "mira",
+     "bandit",
+     "pulse"
+    ],
+    "tip": "Castle + Mira en Warehouse Entrance: el que entra por ahí no sale."
+   }
+  },
+  {
+   "id": "cafeteria",
+   "name": "Cafetería / Cocina (Cafeteria / Kitchen)",
+   "fl": "1",
+   "floorIdx": "1",
+   "rooms": [
+    "Cafeteria",
+    "Kitchen"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Lobby → Cafeteria",
+     "kind": "puerta",
+     "path": [
+      "Lobby",
+      "Cafeteria"
+     ],
+     "roles": [
+      "entrada",
+      "soporte"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pantry → Kitchen",
+     "kind": "reforzada",
+     "path": [
+      "Pantry",
+      "Kitchen"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vertical 2F → Cafeteria",
+     "kind": "vertical",
+     "path": [
+      "2F (arriba)",
+      "Cafeteria"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Cafeteria Hallway → Cafeteria (flanco)",
+     "kind": "puerta",
+     "path": [
+      "CC Stairs",
+      "Cafeteria Hallway",
+      "Cafeteria"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    },
+    {
+     "id": "v5",
+     "n": "Vending → Kitchen (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Vending Stairs",
+      "Vending",
+      "Kitchen"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Entrada por Lobby (puerta principal, Montagne primero) hacia Cafeteria. Ace abre la pared de Kitchen desde Pantry/exterior.",
+    "Vertical desde 2F sobre Cafeteria con Sledge. Twitch limpia Evil Eye de Cafeteria Hallway.",
+    "Planta en Kitchen. Nomad en Cafeteria Hallway; Gridlock en Vending."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Kitchen–Pantry ×2",
+     "Pared Cafeteria–Lobby",
+     "Escotilla Kitchen"
+    ],
+    "keepSoft": [
+     "Piso 2F sobre Cafeteria"
+    ],
+    "rotations": [
+     "Cafeteria↔Kitchen",
+     "Kitchen→Vending"
+    ],
+    "anchors": "Ancla Kitchen (Smoke), ancla Cafeteria (Maestro a Lobby). Roam en Lounge/Storage.",
+    "ops": [
+     "maestro",
+     "smoke",
+     "kaid",
+     "jager",
+     "lesion"
+    ],
+    "tip": "Lesion en Vending y Cafeteria Hallway."
+   }
+  },
+  {
+   "id": "bunks",
+   "name": "Literas / Baño (Bunks / Bathroom)",
+   "fl": "b",
+   "floorIdx": "b",
+   "rooms": [
+    "Bunks",
+    "Bathroom"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Warehouse Stairs → Bunks",
+     "kind": "reforzada",
+     "path": [
+      "Warehouse Stairs",
+      "Bunks"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Escotilla Warehouse → Sótano",
+     "kind": "escotilla",
+     "path": [
+      "Warehouse (arriba)",
+      "Bathroom"
+     ],
+     "roles": [
+      "duro",
+      "soporte"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vertical desde Storage",
+     "kind": "vertical",
+     "path": [
+      "Storage (arriba)",
+      "Bunks"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Vending Stairs → Bathroom (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Vending Stairs",
+      "Bathroom"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Hibana abre la escotilla de Warehouse sobre el sótano; Thermite la pared de Bunks desde Warehouse Stairs.",
+    "Bajar por Warehouse Stairs y Vending Stairs a la vez con Lion activo.",
+    "Planta en Bunks. Nomad en la escalera que no usaste."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Bunks–Warehouse Stairs ×2",
+     "Escotilla Warehouse",
+     "Escotilla Storage"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Bunks↔Bathroom"
+    ],
+    "anchors": "Anclas en Bunks (Smoke) y Bathroom (Mira). Roam en 1F para negar vertical.",
+    "ops": [
+     "smoke",
+     "mira",
+     "kaid",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Confirma los callouts del sótano."
+   }
+  },
+  {
+   "id": "cc",
+   "name": "Centro de mando / Servidores (Command Center / Server)",
+   "fl": "2",
+   "floorIdx": "2",
+   "rooms": [
+    "Command Center",
+    "Server Room"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Command Center (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Command Center"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared CC Stairs → Server",
+     "kind": "reforzada",
+     "path": [
+      "CC Stairs",
+      "Server Room"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vending Stairs → Command Center (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Vending Stairs",
+      "Command Center"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escotilla Server (techo)",
+     "kind": "escotilla",
+     "path": [
+      "Exterior",
+      "Server Room"
+     ],
+     "roles": [
+      "blando"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Command Center. Ace abre la pared de Server desde el pasillo de CC Stairs.",
+    "Zero/Twitch limpian cámaras y Evil Eye. Ying por ventana, Glaz con humo en el pasillo.",
+    "Planta en Server Room. Gridlock en CC Stairs."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Server–CC Stairs ×2",
+     "Ventanas Command Center (Castle)",
+     "Escotilla Server"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Command Center↔Server"
+    ],
+    "anchors": "Ancla Server (Smoke), ancla Command Center (Frost + Mira). Roam en 1F.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "valkyrie"
+    ],
+    "tip": "Confirma los callouts de 2F."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

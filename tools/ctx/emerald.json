@@ -1,0 +1,966 @@
+{
+ "id": "emerald",
+ "name": "Emerald Plains",
+ "pool": "ranked",
+ "hasBlueprint": false,
+ "floors": [
+  {
+   "idx": "1",
+   "key": "1",
+   "name": "Planta 1"
+  },
+  {
+   "idx": "2",
+   "key": "2",
+   "name": "Planta 2"
+  }
+ ],
+ "rooms": [
+  {
+   "f": "1",
+   "en": "Exterior",
+   "es": "Exterior"
+  },
+  {
+   "f": "1",
+   "en": "Recepción",
+   "es": "Recepción"
+  },
+  {
+   "f": "1",
+   "en": "Bar",
+   "es": "Bar"
+  },
+  {
+   "f": "1",
+   "en": "Lounge",
+   "es": "Lounge"
+  },
+  {
+   "f": "1",
+   "en": "Pasillo",
+   "es": "Pasillo"
+  },
+  {
+   "f": "1",
+   "en": "Salón de baile",
+   "es": "Salón de baile"
+  },
+  {
+   "f": "1",
+   "en": "Oficina CEO (arriba)",
+   "es": "Oficina CEO (arriba)"
+  },
+  {
+   "f": "1",
+   "en": "Pasillo verde",
+   "es": "Pasillo verde"
+  },
+  {
+   "f": "1",
+   "en": "Cocina",
+   "es": "Cocina"
+  },
+  {
+   "f": "1",
+   "en": "Comedor",
+   "es": "Comedor"
+  },
+  {
+   "f": "1",
+   "en": "Biblioteca",
+   "es": "Biblioteca"
+  },
+  {
+   "f": "1",
+   "en": "Escaleras",
+   "es": "Escaleras"
+  },
+  {
+   "f": "1",
+   "en": "Galería (arriba)",
+   "es": "Galería (arriba)"
+  },
+  {
+   "f": "2",
+   "en": "Exterior",
+   "es": "Exterior"
+  },
+  {
+   "f": "2",
+   "en": "Oficina CEO",
+   "es": "Oficina CEO"
+  },
+  {
+   "f": "2",
+   "en": "Reuniones",
+   "es": "Reuniones"
+  },
+  {
+   "f": "2",
+   "en": "Escaleras",
+   "es": "Escaleras"
+  },
+  {
+   "f": "2",
+   "en": "Pasillo 2F",
+   "es": "Pasillo 2F"
+  },
+  {
+   "f": "2",
+   "en": "Galería",
+   "es": "Galería"
+  },
+  {
+   "f": "2",
+   "en": "Administración",
+   "es": "Administración"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Exterior",
+   "es": "Exterior"
+  }
+ ],
+ "sites": [
+  {
+   "id": "bar",
+   "name": "Bar / Lounge",
+   "fl": "1",
+   "floorIdx": "1",
+   "rooms": [
+    "Bar",
+    "Lounge"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Salón → Lounge",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Salón de baile",
+      "Lounge"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical CEO → Bar",
+     "kind": "vertical",
+     "path": [
+      "Oficina CEO (arriba)",
+      "Bar"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Recepción → Bar",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Recepción",
+      "Bar"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Oficina CEO/Reuniones (2F) sobre Bar con Buck. Thermite abre la pared de Lounge desde el Salón de baile.",
+    "Entrada por Salón (pared) + Recepción con Montagne.",
+    "Planta en Lounge. Nomad en Escaleras principales."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Lounge–Salón ×2",
+     "Pared Bar–Recepción"
+    ],
+    "keepSoft": [
+     "Piso CEO"
+    ],
+    "rotations": [
+     "Bar↔Lounge"
+    ],
+    "anchors": "Ancla Lounge (Smoke), ancla Bar (Mira). Roam en 2F.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Mira detrás de la barra mirando Recepción."
+   }
+  },
+  {
+   "id": "kitchen",
+   "name": "Cocina / Comedor",
+   "fl": "1",
+   "floorIdx": "1",
+   "rooms": [
+    "Cocina",
+    "Comedor"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Pasillo verde → Cocina",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo verde",
+      "Cocina"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Galería → Comedor",
+     "kind": "vertical",
+     "path": [
+      "Galería (arriba)",
+      "Comedor"
+     ],
+     "roles": [
+      "blando",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Biblioteca → Comedor",
+     "kind": "puerta",
+     "path": [
+      "Biblioteca",
+      "Comedor"
+     ],
+     "roles": [
+      "soporte",
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Galería/Administración (2F) sobre Comedor. Ace abre la pared de Cocina desde el Pasillo verde.",
+    "Entrada por Pasillo verde (pared) + Biblioteca.",
+    "Planta en Cocina. Gridlock en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Cocina–Pasillo verde ×2",
+     "Pared Comedor–Biblioteca"
+    ],
+    "keepSoft": [
+     "Piso Galería"
+    ],
+    "rotations": [
+     "Cocina↔Comedor"
+    ],
+    "anchors": "Ancla Cocina (Smoke), ancla Comedor (Maestro). Roam en Galería.",
+    "ops": [
+     "smoke",
+     "maestro",
+     "kaid",
+     "jager",
+     "lesion"
+    ],
+    "tip": "Kaid en la pared del Pasillo verde."
+   }
+  },
+  {
+   "id": "ceo",
+   "name": "Oficina CEO / Sala de reuniones",
+   "fl": "2",
+   "floorIdx": "2",
+   "rooms": [
+    "Oficina CEO",
+    "Reuniones"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas CEO (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Oficina CEO"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Reuniones",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo 2F",
+      "Reuniones"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → CEO (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Oficina CEO"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de CEO. Thermite abre la pared de Reuniones desde Pasillo 2F.",
+    "Ying por ventana + Glaz con humo.",
+    "Planta en CEO. Nomad en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Reuniones–Pasillo ×2",
+     "Ventanas CEO (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "CEO↔Reuniones"
+    ],
+    "anchors": "Ancla CEO (Frost + Smoke), ancla Reuniones (Mira). Roam en 1F.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "valkyrie"
+    ],
+    "tip": "Frost bajo las ventanas de CEO."
+   }
+  },
+  {
+   "id": "gallery",
+   "name": "Galería / Administración",
+   "fl": "2",
+   "floorIdx": "2",
+   "rooms": [
+    "Galería",
+    "Administración"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Galería (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Galería"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Administración",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo 2F",
+      "Administración"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → Galería (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Galería"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Galería. Ace abre la pared de Administración desde Pasillo 2F.",
+    "Zofia por ventana + Capitão en Administración.",
+    "Planta en Galería. Gridlock en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Administración–Pasillo ×2",
+     "Ventanas Galería (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Galería↔Administración"
+    ],
+    "anchors": "Ancla Galería (Frost), ancla Administración (Smoke). Roam en 1F.",
+    "ops": [
+     "frost",
+     "smoke",
+     "castle",
+     "jager",
+     "mozzie"
+    ],
+    "tip": "Confirma los callouts."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1278 @@
+{
+ "id": "yacht",
+ "name": "Yacht",
+ "pool": "casual",
+ "hasBlueprint": true,
+ "floors": [
+  {
+   "idx": 1,
+   "key": "1",
+   "name": "1st Floor"
+  },
+  {
+   "idx": 2,
+   "key": "2",
+   "name": "2nd Floor"
+  },
+  {
+   "idx": 3,
+   "key": "3",
+   "name": "3rd Floor"
+  },
+  {
+   "idx": 4,
+   "key": "4",
+   "name": "4th Floor"
+  },
+  {
+   "idx": 5,
+   "key": "r",
+   "name": "Roof"
+  }
+ ],
+ "rooms": [
+  {
+   "f": 4,
+   "en": "Maps Room",
+   "es": "Sala de mapas"
+  },
+  {
+   "f": 4,
+   "en": "Cockpit",
+   "es": "Puente de mando"
+  },
+  {
+   "f": 4,
+   "en": "Cockpit Hallway",
+   "es": "Pasillo a puente de mando"
+  },
+  {
+   "f": 4,
+   "en": "Captain's Office",
+   "es": "Cabina del capitán"
+  },
+  {
+   "f": 4,
+   "en": "Cockpit Balcony",
+   "es": "Balcón de cabina"
+  },
+  {
+   "f": 4,
+   "en": "Top Deck Stairs",
+   "es": "Escaleras cubierta superior"
+  },
+  {
+   "f": 4,
+   "en": "Helipad Entrance",
+   "es": "Entrada del helipuerto"
+  },
+  {
+   "f": 4,
+   "en": "Helipad",
+   "es": "Helipuerto"
+  },
+  {
+   "f": 3,
+   "en": "Spa Deck",
+   "es": "Cubierta del spa"
+  },
+  {
+   "f": 3,
+   "en": "East Deck",
+   "es": "Cubierta de estribor"
+  },
+  {
+   "f": 3,
+   "en": "West Deck",
+   "es": "Cubierta de babor"
+  },
+  {
+   "f": 3,
+   "en": "Front Deck",
+   "es": "Cubierta de proa"
+  },
+  {
+   "f": 3,
+   "en": "King of the World",
+   "es": "El rey del mundo"
+  },
+  {
+   "f": 5,
+   "en": "Roof",
+   "es": "Techo"
+  },
+  {
+   "f": 3,
+   "en": "Master Bedroom",
+   "es": "Camarote principal"
+  },
+  {
+   "f": 3,
+   "en": "Casino",
+   "es": "Casino"
+  },
+  {
+   "f": 3,
+   "en": "Poker Room",
+   "es": "Sala de póker"
+  },
+  {
+   "f": 3,
+   "en": "Bath- room",
+   "es": "Baño"
+  },
+  {
+   "f": 3,
+   "en": "Bedroom Hallway",
+   "es": "Pasillo a camarotes"
+  },
+  {
+   "f": 3,
+   "en": "Casino Hallway",
+   "es": "Pasillo al casino"
+  },
+  {
+   "f": 3,
+   "en": "Globe Hallway",
+   "es": "Sala del globo terráqueo"
+  },
+  {
+   "f": 3,
+   "en": "Lounge",
+   "es": "Sala de espera"
+  },
+  {
+   "f": 3,
+   "en": "Top Deck Stairs",
+   "es": "Top Deck Stairs"
+  },
+  {
+   "f": 2,
+   "en": "Cafeteria",
+   "es": "Cafetería"
+  },
+  {
+   "f": 1,
+   "en": "Engine",
+   "es": "Sala de máquinas"
+  },
+  {
+   "f": 1,
+   "en": "Back Entrance",
+   "es": "Entrada trasera sala de máquinas"
+  },
+  {
+   "f": 1,
+   "en": "Rear Deck",
+   "es": "Cubierta de popa"
+  },
+  {
+   "f": 1,
+   "en": "Server Room",
+   "es": "Sala del servidor"
+  },
+  {
+   "f": 1,
+   "en": "Engine Storage",
+   "es": "Almacén de la sala de máquinas"
+  },
+  {
+   "f": 2,
+   "en": "Engine Control",
+   "es": "control de máquinas"
+  },
+  {
+   "f": 2,
+   "en": "Rear Deck",
+   "es": "Cubierta de popa"
+  },
+  {
+   "f": 1,
+   "en": "Back Stairs",
+   "es": "Escaleras de popa"
+  },
+  {
+   "f": 1,
+   "en": "Emergency Exit",
+   "es": "Salida de emergencia"
+  },
+  {
+   "f": 1,
+   "en": "Engine Hallway",
+   "es": "Pasillo a la sala de máquinas"
+  },
+  {
+   "f": 1,
+   "en": "Front Stairs",
+   "es": "Escaleras de proa"
+  },
+  {
+   "f": 2,
+   "en": "Kitchen",
+   "es": "Cocina"
+  },
+  {
+   "f": 2,
+   "en": "Staff Dormitory",
+   "es": "Camarotes tripulación"
+  },
+  {
+   "f": 4,
+   "en": "West Balcony",
+   "es": "Candelero de babor"
+  },
+  {
+   "f": 4,
+   "en": "East Balcony",
+   "es": "Candelero de estribor"
+  },
+  {
+   "f": 2,
+   "en": "Kitchen Hallway",
+   "es": "Pasillo a la cocina"
+  },
+  {
+   "f": 2,
+   "en": "Back Stairs",
+   "es": "Escaleras de popa"
+  },
+  {
+   "f": 2,
+   "en": "Kitchen Stairs",
+   "es": "Escaleras de la cocina"
+  },
+  {
+   "f": 2,
+   "en": "Kitchen Pantry",
+   "es": "Despensa de la cocina"
+  },
+  {
+   "f": 2,
+   "en": "Infirmary",
+   "es": "Enfermería"
+  },
+  {
+   "f": 2,
+   "en": "Boreal Sub Room",
+   "es": "Sala vehículo submarino aklark"
+  },
+  {
+   "f": 2,
+   "en": "Cafeteria Hallway",
+   "es": "Pasillo a cafetería"
+  },
+  {
+   "f": 2,
+   "en": "Front Stairs",
+   "es": "Escaleras de proa"
+  },
+  {
+   "f": 2,
+   "en": "Engine Utility",
+   "es": "Zona auxiliar"
+  },
+  {
+   "f": 3,
+   "en": "Front Stairs",
+   "es": "Escaleras de proa"
+  },
+  {
+   "f": -1,
+   "en": "Submarine",
+   "es": "Subacuática"
+  },
+  {
+   "f": -1,
+   "en": "West Glacier",
+   "es": "Glaciar oeste"
+  },
+  {
+   "f": -1,
+   "en": "East Hull Breach",
+   "es": "Brecha en el casco a estribor"
+  },
+  {
+   "f": -1,
+   "en": "East Glacier",
+   "es": "Glaciar este"
+  },
+  {
+   "f": -1,
+   "en": "Frozen River",
+   "es": "Río congelado"
+  },
+  {
+   "f": -1,
+   "en": "Zodiac",
+   "es": "Lancha rápida hinchable"
+  },
+  {
+   "f": -1,
+   "en": "West Hull Breach",
+   "es": "Brecha en el casco de babor"
+  },
+  {
+   "f": 2,
+   "en": "Anchor",
+   "es": "Ancla"
+  },
+  {
+   "f": 2,
+   "en": "Aklark Sub Entrance",
+   "es": "Entrada Aklark"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Submarine",
+   "es": "Subacuática"
+  },
+  {
+   "letter": "B",
+   "en": "Zodiak",
+   "es": "Lancha rápida hinchable"
+  },
+  {
+   "letter": "C",
+   "en": "Snow Mobile",
+   "es": "Moto de nieve"
+  }
+ ],
+ "bombSets": {
+  "1": [
+   {
+    "f": 4,
+    "letter": "A",
+    "nearest": "Cockpit"
+   },
+   {
+    "f": 4,
+    "letter": "B",
+    "nearest": "West Balcony"
+   }
+  ],
+  "2": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Engine Control"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Kitchen"
+   }
+  ],
+  "3": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Cafeteria Hallway"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Staff Dormitory"
+   }
+  ],
+  "4": [
+   {
+    "f": 1,
+    "letter": "A",
+    "nearest": "Server Room"
+   },
+   {
+    "f": 1,
+    "letter": "B",
+    "nearest": "Engine Storage"
+   }
+  ]
+ },
+ "hatches": [
+  {
+   "f": 3,
+   "near": "Casino"
+  },
+  {
+   "f": 3,
+   "near": "Poker Room"
+  },
+  {
+   "f": 3,
+   "near": "Bedroom Hallway"
+  },
+  {
+   "f": 2,
+   "near": "Engine Utility"
+  },
+  {
+   "f": 2,
+   "near": "Kitchen Pantry"
+  },
+  {
+   "f": 2,
+   "near": "Cafeteria Hallway"
+  },
+  {
+   "f": 2,
+   "near": "Boreal Sub Room"
+  },
+  {
+   "f": 2,
+   "near": "Boreal Sub Room"
+  },
+  {
+   "f": 1,
+   "near": "Back Entrance"
+  },
+  {
+   "f": 1,
+   "near": "Engine"
+  },
+  {
+   "f": 1,
+   "near": "Front Stairs"
+  }
+ ],
+ "sites": [
+  {
+   "id": "engine",
+   "name": "Almacén de motores / Control de motores",
+   "fl": "1",
+   "floorIdx": 1,
+   "rooms": [
+    "Almacén de motores",
+    "Control de motores"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared reforzada → Control de motores",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Control de motores"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical desde arriba → Almacén de motores",
+     "kind": "vertical",
+     "path": [
+      "Arriba",
+      "Almacén de motores"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Puerta exterior → Almacén de motores",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Almacén de motores"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde arriba sobre Almacén de motores. Breach duro en la pared de Control de motores.",
+    "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
+    "Planta en Control de motores. Flanco en el pasillo."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Control de motores–Pasillo ×2",
+     "Puerta Almacén de motores (Castle)"
+    ],
+    "keepSoft": [
+     "Piso de arriba"
+    ],
+    "rotations": [
+     "Almacén de motores↔Control de motores"
+    ],
+    "anchors": "Ancla Control de motores (Smoke), ancla Almacén de motores (Mira). Roam arriba.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Roam arriba obligatorio."
+   }
+  },
+  {
+   "id": "kitchen",
+   "name": "Cocina / Dormitorio de tripulación",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Cocina",
+    "Dormitorio de tripulación"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared reforzada → Dormitorio de tripulación",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Dormitorio de tripulación"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical desde arriba → Cocina",
+     "kind": "vertical",
+     "path": [
+      "Arriba",
+      "Cocina"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Puerta exterior → Cocina",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Cocina"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde arriba sobre Cocina. Breach duro en la pared de Dormitorio de tripulación.",
+    "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
+    "Planta en Dormitorio de tripulación. Flanco en el pasillo."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Dormitorio de tripulación–Pasillo ×2",
+     "Puerta Cocina (Castle)"
+    ],
+    "keepSoft": [
+     "Piso de arriba"
+    ],
+    "rotations": [
+     "Cocina↔Dormitorio de tripulación"
+    ],
+    "anchors": "Ancla Dormitorio de tripulación (Smoke), ancla Cocina (Mira). Roam arriba.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Roam arriba obligatorio."
+   }
+  },
+  {
+   "id": "master",
+   "name": "Recámara principal / Casino",
+   "fl": "3",
+   "floorIdx": 3,
+   "rooms": [
+    "Recámara principal",
+    "Casino"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared reforzada → Casino",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Casino"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical desde arriba → Recámara principal",
+     "kind": "vertical",
+     "path": [
+      "Arriba",
+      "Recámara principal"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Puerta exterior → Recámara principal",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Recámara principal"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde arriba sobre Recámara principal. Breach duro en la pared de Casino.",
+    "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
+    "Planta en Casino. Flanco en el pasillo."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Casino–Pasillo ×2",
+     "Puerta Recámara principal (Castle)"
+    ],
+    "keepSoft": [
+     "Piso de arriba"
+    ],
+    "rotations": [
+     "Recámara principal↔Casino"
+    ],
+    "anchors": "Ancla Casino (Smoke), ancla Recámara principal (Mira). Roam arriba.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Roam arriba obligatorio."
+   }
+  },
+  {
+   "id": "maps",
+   "name": "Sala de mapas / Cabina",
+   "fl": "4",
+   "floorIdx": 4,
+   "rooms": [
+    "Sala de mapas",
+    "Cabina"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Sala de mapas (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Sala de mapas"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Cabina",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo",
+      "Cabina"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → Sala de mapas (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Sala de mapas"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Sala de mapas. Breach duro en la pared de Cabina desde el pasillo.",
+    "Flash por ventana + humo en el pasillo. Entrada simultánea.",
+    "Planta en Sala de mapas. Flanco en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Cabina–Pasillo ×2",
+     "Ventanas Sala de mapas (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Sala de mapas↔Cabina"
+    ],
+    "anchors": "Ancla Sala de mapas (Frost + Smoke), ancla Cabina (Mira). Roam abajo.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "valkyrie"
+    ],
+    "tip": "Frost bajo las ventanas."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

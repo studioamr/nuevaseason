@@ -1,0 +1,880 @@
+{
+ "id": "nighthaven",
+ "name": "Nighthaven Labs",
+ "pool": "ranked",
+ "hasBlueprint": false,
+ "floors": [
+  {
+   "idx": "b",
+   "key": "b",
+   "name": "Sótano"
+  },
+  {
+   "idx": "1",
+   "key": "1",
+   "name": "Planta 1"
+  },
+  {
+   "idx": "2",
+   "key": "2",
+   "name": "Planta 2"
+  }
+ ],
+ "rooms": [
+  {
+   "f": "b",
+   "en": "Escaleras sótano",
+   "es": "Escaleras sótano"
+  },
+  {
+   "f": "b",
+   "en": "Tanque",
+   "es": "Tanque"
+  },
+  {
+   "f": "b",
+   "en": "Almacén",
+   "es": "Almacén"
+  },
+  {
+   "f": "b",
+   "en": "Escaleras 2",
+   "es": "Escaleras 2"
+  },
+  {
+   "f": "b",
+   "en": "1F (arriba)",
+   "es": "1F (arriba)"
+  },
+  {
+   "f": "1",
+   "en": "Exterior",
+   "es": "Exterior"
+  },
+  {
+   "f": "1",
+   "en": "Pruebas",
+   "es": "Pruebas"
+  },
+  {
+   "f": "1",
+   "en": "Ensamblaje",
+   "es": "Ensamblaje"
+  },
+  {
+   "f": "1",
+   "en": "Pasillo",
+   "es": "Pasillo"
+  },
+  {
+   "f": "1",
+   "en": "Escaleras",
+   "es": "Escaleras"
+  },
+  {
+   "f": "1",
+   "en": "2F (arriba)",
+   "es": "2F (arriba)"
+  },
+  {
+   "f": "2",
+   "en": "Exterior",
+   "es": "Exterior"
+  },
+  {
+   "f": "2",
+   "en": "Laboratorio",
+   "es": "Laboratorio"
+  },
+  {
+   "f": "2",
+   "en": "Servidores",
+   "es": "Servidores"
+  },
+  {
+   "f": "2",
+   "en": "Escaleras",
+   "es": "Escaleras"
+  },
+  {
+   "f": "2",
+   "en": "Pasillo 2F",
+   "es": "Pasillo 2F"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Exterior",
+   "es": "Exterior"
+  }
+ ],
+ "sites": [
+  {
+   "id": "tank",
+   "name": "Tanque / Almacén (sótano)",
+   "fl": "b",
+   "floorIdx": "b",
+   "rooms": [
+    "Tanque",
+    "Almacén"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Escaleras → Tanque",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras sótano",
+      "Tanque"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Escotilla 1F → Almacén",
+     "kind": "escotilla",
+     "path": [
+      "1F (arriba)",
+      "Almacén"
+     ],
+     "roles": [
+      "duro",
+      "soporte"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Vertical 1F → Tanque",
+     "kind": "vertical",
+     "path": [
+      "1F (arriba)",
+      "Tanque"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escaleras secundarias → Almacén (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras 2",
+      "Almacén"
+     ],
+     "roles": [
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Hibana abre la escotilla sobre Almacén; Thermite la pared de Tanque desde Escaleras de sótano.",
+    "Bajar por dos escaleras a la vez con Lion activo.",
+    "Planta en Almacén. Nomad en la escalera libre."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Tanque–Escaleras ×2",
+     "Escotilla Almacén"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Tanque↔Almacén"
+    ],
+    "anchors": "Anclas Tanque (Smoke) y Almacén (Mira). Roam en 1F.",
+    "ops": [
+     "smoke",
+     "mira",
+     "kaid",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Confirma los callouts del sótano."
+   }
+  },
+  {
+   "id": "assembly",
+   "name": "Ensamblaje / Pruebas (1F)",
+   "fl": "1",
+   "floorIdx": "1",
+   "rooms": [
+    "Ensamblaje",
+    "Pruebas"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared exterior → Pruebas",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pruebas"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical 2F → Ensamblaje",
+     "kind": "vertical",
+     "path": [
+      "2F (arriba)",
+      "Ensamblaje"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Pasillo → Ensamblaje",
+     "kind": "puerta",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Ensamblaje"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde 2F sobre Ensamblaje. Thermite abre la pared de Pruebas desde el exterior.",
+    "Entrada por pared + puerta de Ensamblaje con Montagne.",
+    "Planta en Pruebas. Gridlock en Pasillo."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Pruebas–Exterior ×2",
+     "Pared Ensamblaje–Pasillo"
+    ],
+    "keepSoft": [
+     "Piso 2F"
+    ],
+    "rotations": [
+     "Ensamblaje↔Pruebas"
+    ],
+    "anchors": "Anclas en Pruebas (Smoke) y Ensamblaje (Maestro). Roam en 2F.",
+    "ops": [
+     "smoke",
+     "maestro",
+     "bandit",
+     "jager",
+     "lesion"
+    ],
+    "tip": "Confirma los callouts."
+   }
+  },
+  {
+   "id": "server",
+   "name": "Servidores / Laboratorio (2F)",
+   "fl": "2",
+   "floorIdx": "2",
+   "rooms": [
+    "Servidores",
+    "Laboratorio"
+   ],
+   "verify": true,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Laboratorio (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Laboratorio"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Servidores",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo 2F",
+      "Servidores"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → Laboratorio (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Laboratorio"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Laboratorio. Ace abre la pared de Servidores desde Pasillo 2F.",
+    "Zero limpia cámaras; Ying por ventana.",
+    "Planta en Servidores. Nomad en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Servidores–Pasillo ×2",
+     "Ventanas Laboratorio (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Servidores↔Laboratorio"
+    ],
+    "anchors": "Ancla Laboratorio (Frost), ancla Servidores (Smoke). Roam en 1F.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "valkyrie"
+    ],
+    "tip": "Confirma los callouts."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

@@ -1,0 +1,969 @@
+{
+ "map": "villa",
+ "sites": {
+  "living": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma el Pasillo principal para abrir la pared reforzada de Biblioteca y al mismo tiempo Buck destruye el piso de Trofeos para negar toda la Sala. Cuando el ancla de Sala queda sin piso y la pared cae, los defensores se juntan en Biblioteca y ahí los aplastas con la planta pegada a la pared abierta. Funciona porque las dos rotaciones del sitio (Sala↔Biblioteca) quedan expuestas al mismo tiempo.",
+     "timeline":["0:00–0:45 · drones a Sala y Biblioteca, Zero pone Argus en la ventana de Biblioteca, Thatcher y Thermite toman Vestíbulo","0:45–1:30 · Buck abre el piso de Trofeos sobre Sala; EMP + carga en la pared Pasillo–Biblioteca","1:30–2:30 · entrada por la pared y por Vestíbulo→Sala; Nomad tapa la Escalera; planta en Biblioteca","2:30–3:00 · post-plant: Buck desde arriba, Thermite sostiene la pared, Nomad el flanco de Vestíbulo"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Dronea la entrada principal y espera a que Thatcher despeje Vestíbulo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra por la puerta principal, limpia el marco y avanza pegado a la pared","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Coloca la carga exotérmica en la pared reforzada de Biblioteca tras el EMP","via":"door"},
+        {"room":"Biblioteca","f":1,"do":"Entra por el hueco con el humo y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Kapkan o ADS de Jäger en la puerta principal y un roamer que asoma desde la Escalera","how":"Dron a la puerta antes de abrir, Thatcher tira EMP al marco y limpias la esquina de la Escalera con un compañero"},
+        {"room":"Pasillo principal","f":1,"threat":"Bandit trickeando la pared y Mira con espejo hacia el pasillo","how":"Espera el EMP de Thatcher, pon la carga en la esquina que el espejo no cubre y que Buck ya haya roto el piso"},
+        {"room":"Biblioteca","f":1,"threat":"Ancla Smoke con gas listo detrás de la pared reforzada","how":"Humo antes de cruzar y entra con Zero viendo por la Argus de la ventana"}],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Biblioteca desde el Pasillo principal"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Dronea la puerta principal buscando trampas","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"EMP al marco de la puerta y limpia la esquina del Vestíbulo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Tira dos EMP a la pared de Biblioteca para quemar Bandit, Kaid y Mute","via":"door"},
+        {"room":"Biblioteca","f":1,"do":"Entra tras Thermite y cubre el rincón de la ventana","via":"breach"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Trampas de Kapkan en el marco y jammer de Mute","how":"EMP al marco antes de que entre nadie y entra tras el dron"},
+        {"room":"Pasillo principal","f":1,"threat":"Mira mirando por el espejo y Bandit esperando a trickear","how":"Doble EMP con dos segundos de diferencia y Thermite pone la carga al instante"},
+        {"room":"Biblioteca","f":1,"threat":"Ancla Smoke y un Jäger detrás del escritorio","how":"Prefire del rincón del escritorio y entra con humo"}],
+       "final":"Cubre el hueco y la ventana de Biblioteca mientras planta Zero"},
+      {"op":"buck","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Corre a la puerta principal mientras Thatcher limpia el marco","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Dronea la Escalera y sube con cuidado del roamer","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube por la escalera principal cubriendo el descanso","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Sale en el segundo piso y limpia el Pasillo 2F","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Avanza hasta la puerta de Trofeos","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Abre el piso encima de Sala con la Skeleton Key y niega al ancla","via":"door"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer tipo Vigil o Caveira esperando en el descanso de arriba","how":"Dron primero, sube con un compañero y prefire de la esquina del descanso"},
+        {"room":"Pasillo 2F","f":2,"threat":"Cámara de Valkyrie o Pulse pegado al piso de Trofeos","how":"Barre el pasillo con el dron, rompe la cámara y no te pares en el mismo lugar dos veces"},
+        {"room":"Trofeos","f":2,"threat":"Defensor que sube por la rotación para negar el vertical","how":"Pon un claymore en la puerta y abre el piso pegado a la pared"}],
+       "final":"Abre el piso de Trofeos sobre Sala, mata al ancla y niega la rotación durante el post-plant"},
+      {"op":"zero","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Dispara una Argus por la ventana de Biblioteca y otra hacia Sala","via":"window"},
+        {"room":"Vestíbulo","f":1,"do":"Entra con el grupo del Pasillo dando info de las cámaras","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Se queda detrás de Thermite anunciando dónde está Smoke","via":"door"},
+        {"room":"Biblioteca","f":1,"do":"Entra con el paquete y planta pegado a la pared abierta","via":"breach"}],
+       "clear":[
+        {"room":"Biblioteca","f":1,"threat":"Ancla Smoke detrás del escritorio y Mira que rota desde Sala","how":"Con la Argus en la ventana identificas dónde está el ancla y das el callout para el prefire"},
+        {"room":"Pasillo principal","f":1,"threat":"Bandit o Kaid trickeando la pared","how":"Argus mirando la pared por el lado de Biblioteca para avisar cuando pongan la batería"},
+        {"room":"Sala","f":1,"threat":"Ancla Mira que puede rotar a Biblioteca al plantar","how":"Argus en la ventana de Sala y aviso a Buck para que la rompa desde arriba"}],
+       "final":"Planta en Biblioteca pegado a la pared abierta usando las Argus para vigilar Sala"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con el grupo por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Pone un Airjab en la puerta que baja de la Escalera y otro en la puerta de Sala","via":"door"},
+        {"room":"Sala","f":1,"do":"Cuando Buck rompe el piso, presiona por la puerta de Sala y aprieta a Mira","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer que baja por la Escalera para flanquear el Pasillo","how":"Airjab en el pie de la escalera y ángulo cruzado con Thatcher"},
+        {"room":"Sala","f":1,"threat":"Ancla Mira y Jäger detrás de los sillones","how":"Esperas a que Buck rompa el piso y entras cuando el ancla tiene que moverse"}],
+       "final":"Sostiene el flanco del Vestíbulo y entra a Sala para aplastar al ancla cuando explota la planta"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Cinco por la puerta principal y directo a Sala por Vestíbulo antes de que refuercen o Mira ponga espejos. Candelas de Ying al abrir la puerta de Sala, humo de Zofia y planta rápida en Sala pegada a Biblioteca. Funciona porque el sitio apenas fue reworkeado y casi nadie tiene un setup rápido.",
+     "timeline":["0:00–0:20 · Iana dronea con la réplica la puerta principal y Sala","0:20–0:50 · Ash abre la barricada, Ying tira candelas a Sala","0:50–1:30 · entrada y planta en Sala","1:30–3:00 · post-plant apretado en Sala y Biblioteca"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Corre a la puerta principal detrás de Ash","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Tira dos candelas por la puerta de Sala","via":"door"},
+        {"room":"Sala","f":1,"do":"Entra con la candela y limpia los sillones","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Kapkan en la puerta principal y un defensor que asoma desde la Escalera","how":"Ash rompe la barricada desde lejos, tú entras con la candela lanzada primero al Vestíbulo"},
+        {"room":"Sala","f":1,"threat":"Ancla Mira y un Jäger detrás de los sillones","how":"Candela rebotada dentro de Sala y entrada inmediata prefireando los sillones"}],
+       "final":"Limpia Sala y sostiene la puerta a Biblioteca mientras Zofia planta"},
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Dispara la carga a la barricada de la puerta principal desde la reja","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra primero y despeja el marco de Sala","via":"door"},
+        {"room":"Sala","f":1,"do":"Entra tras la candela y abre la pared blanda hacia Biblioteca","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Trampas en el marco y Frost bajo la ventana","how":"Carga de brecha a la puerta desde afuera para reventar cualquier trampa"},
+        {"room":"Sala","f":1,"threat":"Mira con espejo hacia Vestíbulo","how":"No pares en el espejo, cruza en diagonal detrás de la candela"}],
+       "final":"Cubre la rotación Sala→Biblioteca desde dentro de Sala"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Corre con el paquete pegada al grupo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Concusión por la puerta de Sala justo después de las candelas","via":"door"},
+        {"room":"Sala","f":1,"do":"Planta detrás de los sillones pegada a la pared de Biblioteca","via":"door"}],
+       "clear":[
+        {"room":"Sala","f":1,"threat":"Ancla que se refugia detrás de la mesa central","how":"Concusión y luego impacto para abrir línea al rincón"},
+        {"room":"Biblioteca","f":1,"threat":"Smoke rotando desde Biblioteca con gas","how":"Ash y Ying cierran esa puerta mientras plantas"}],
+       "final":"Planta en Sala y se queda en el rincón lejos de la puerta de Biblioteca"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Activa el Adrenal Surge cuando Ash abre la puerta","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra cubriendo la Escalera para que no bajen","via":"door"},
+        {"room":"Sala","f":1,"do":"Entra al final y cubre la ventana de Sala","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer que baja por la Escalera para agarrar por la espalda","how":"Te quedas cinco segundos apuntando a la escalera mientras el grupo entra"},
+        {"room":"Sala","f":1,"threat":"Defensor que sale por la ventana para flanquear","how":"Segundo surge y cubres la ventana desde dentro"}],
+       "final":"Cubre la Escalera y el Vestíbulo durante el post-plant"},
+      {"op":"iana","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Manda la réplica por la puerta principal a Vestíbulo y Sala","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra con el grupo dando callouts","via":"door"},
+        {"room":"Sala","f":1,"do":"Entra y aprieta la puerta a Biblioteca","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Kapkan y ADS en la puerta principal","how":"La réplica activa las trampas de Kapkan y detecta los ADS antes del grupo"},
+        {"room":"Biblioteca","f":1,"threat":"Smoke ancla que rota a Sala para defender la planta","how":"Segunda réplica desde Sala hacia Biblioteca para hacerlo disparar y ubicarlo"}],
+       "final":"Sostiene la puerta Sala→Biblioteca durante el post-plant"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma todo el segundo piso (Trofeos sobre Sala y Estatuas sobre Biblioteca) y se abre el piso con Sledge y Buck mientras Ram limpia la Sala con el BU-GI. Los defensores no tienen dónde anclar; la entrada final es por la escotilla de Trofeos y por la puerta de Sala. Funciona porque en Villa el techo del sitio es madera y los anclas dependen de esquinas fijas.",
+     "timeline":["0:00–0:45 · toma de Escaleras y Pasillo 2F, Gridlock sella el descanso","0:45–1:45 · Sledge y Buck abren el piso, Ram lanza BU-GI sobre Sala","1:45–2:30 · Twitch cae por la escotilla, entrada por Sala","2:30–3:00 · planta en Sala con el resto sosteniendo desde arriba"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal con el grupo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre mientras Twitch dronea la Escalera","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube en cadena con Buck","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Limpia el descanso y el marco del Pasillo 2F","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Avanza hasta Estatuas","via":"door"},
+        {"room":"Estatuas","f":2,"do":"Abre el piso encima de Biblioteca con el martillo","via":"door"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer tipo Caveira o Vigil esperando a que suban","how":"Dron de Twitch adelante y subes pegado a la pared con Buck cubriendo la espalda"},
+        {"room":"Estatuas","f":2,"threat":"Pulse escaneando desde abajo o un defensor que sube a negar","how":"Muévete después de cada agujero y pon un claymore en la puerta del Pasillo 2F"}],
+       "final":"Abre el piso de Estatuas sobre Biblioteca y mata a lo que se esconda abajo"},
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra pegado a Sledge","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la puerta de Sala mientras suben","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube por la principal","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Sale al segundo piso y toma el Pasillo","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Entra a Trofeos","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Abre el piso encima de Sala en línea con los sillones","via":"door"}],
+       "clear":[
+        {"room":"Pasillo 2F","f":2,"threat":"Cámara de Valkyrie en el pasillo y ADS de Jäger","how":"Twitch las rompe con el dron de choque antes de que pases"},
+        {"room":"Trofeos","f":2,"threat":"Ancla de Sala disparando hacia arriba al oírte","how":"Dispara a los sillones desde arriba y abre desde detrás de una pared"}],
+       "final":"Niega toda la Sala desde Trofeos durante la entrada y el post-plant"},
+      {"op":"ram","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra al final del grupo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sube cuando la Escalera esté limpia","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube por la principal","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Sale y sigue a Buck","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Entra a Trofeos","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Lanza el BU-GI cruzando todo Trofeos para abrir el piso completo sobre Sala","via":"door"}],
+       "clear":[
+        {"room":"Trofeos","f":2,"threat":"Piso con Jäger o Wamai debajo que atrapa granadas","how":"El BU-GI no se atrapa; lánzalo pegado a la pared donde el ancla se esconde"},
+        {"room":"Sala","f":1,"threat":"Ancla Mira detrás del espejo mirando Vestíbulo","how":"El BU-GI rompe el piso justo encima del espejo y la sacas de ahí"}],
+       "final":"Baja por la escotilla de Trofeos a Sala y planta cuando el piso esté abierto"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Manda el dron de choque a Vestíbulo y la Escalera","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Rompe ADS y cámaras del Vestíbulo","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube detrás del grupo","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Cubre el descanso mientras abren el piso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Entra a Trofeos con el segundo dron","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Mete el dron por el agujero para quemar los gadgets de Sala y baja por la escotilla","via":"hatch"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"ADS de Jäger y cámara de Valkyrie en la entrada","how":"Dron de choque a cada gadget antes de que pase la escuadra"},
+        {"room":"Sala","f":1,"threat":"Espejos de Mira y Volcán de Goyo en los sillones","how":"Dron por el agujero de Buck y dispara los volcanes antes de bajar"}],
+       "final":"Baja de Trofeos a Sala por la escotilla al final y limpia lo que quede"},
+      {"op":"gridlock","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal con el grupo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Pone Trax en la puerta de Sala hacia Vestíbulo","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube con el grupo","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Pone Trax en el descanso de arriba para que nadie suba por la espalda","via":"stairs"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer que baja por la Escalera mientras el grupo sube","how":"Trax al pie de la escalera y ángulo desde el Vestíbulo"},
+        {"room":"Escaleras principales","f":2,"threat":"Defensor que rota por la Escalera para negar el vertical","how":"Trax en el descanso y lo escuchas venir"}],
+       "final":"Sostiene la Escalera principal para que el vertical no reciba flancos"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Ace y Kali abren la pared reforzada de Biblioteca desde el Pasillo principal mientras Osa, Capitão y Dokkaebi presionan por Vestíbulo a Sala. El defensor de Biblioteca no puede mirar la pared y la puerta de Sala al mismo tiempo, y Dokkaebi obliga a los roamers a mostrarse. Se planta donde el frente encuentre menos resistencia.",
+     "timeline":["0:00–0:45 · drones, Dokkaebi hackea, Kali prepara lanzas desde el Pasillo","0:45–1:30 · Kali limpia la pared, Ace abre; Osa pone el Talon en la puerta de Sala","1:30–2:30 · entrada simultánea, Capitão quema Biblioteca, planta","2:30–3:00 · post-plant con dos ángulos cruzados"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal con Kali","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza rápido al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Lanza el S.E.L.M.A. a la pared de Biblioteca después de las lanzas de Kali","via":"door"},
+        {"room":"Biblioteca","f":1,"do":"Entra por la pared y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Bandit trickeando y Mira con espejo hacia el Pasillo","how":"Lanza el SELMA justo después de la lanza de Kali para que no alcance a trickear"},
+        {"room":"Biblioteca","f":1,"threat":"Ancla Smoke y Lesion con Gu en la entrada","how":"Dispara el Gu con el dron y entra con la granada de humo de Osa"}],
+       "final":"Sostiene la pared abierta y planta en Biblioteca si el frente de Sala aguanta"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Cubre la entrada principal desde la reja","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra detrás de Ace","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Lanza LV a la pared reforzada de Biblioteca para destruir baterías y espejos","via":"door"},
+        {"room":"Biblioteca","f":1,"do":"Entra por el hueco al final cubriendo la ventana","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Baterías de Bandit y Rtila de Kaid en la pared","how":"Dos lanzas seguidas a la pared para que Ace abra sin trick"},
+        {"room":"Biblioteca","f":1,"threat":"Ancla detrás del escritorio con ángulo al hueco","how":"Kali abre línea desde el Pasillo y prefirea el escritorio en cuanto cae la pared"}],
+       "final":"Cubre desde el Pasillo la pared abierta durante el post-plant"},
+      {"op":"osa","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal con el segundo grupo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Pone un Talon en la puerta de Sala para bloquear la línea de Mira","via":"door"},
+        {"room":"Sala","f":1,"do":"Entra tras el Talon y planta detrás del segundo escudo","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer bajando por la Escalera para apretar por la espalda","how":"Dokkaebi hackea y te avisan; Capitão cubre la escalera"},
+        {"room":"Sala","f":1,"threat":"Mira mirando la puerta de Vestíbulo y Jäger en los sillones","how":"Talon plantado en el marco y entras con Capitão quemando los sillones"}],
+       "final":"Planta en Sala detrás del Talon si Biblioteca está muy cargada"},
+      {"op":"capitao","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con Osa por la principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Quema la Escalera para que no bajen mientras entran","via":"door"},
+        {"room":"Sala","f":1,"do":"Quema los sillones y la rotación a Biblioteca","via":"door"}],
+       "clear":[
+        {"room":"Sala","f":1,"threat":"Ancla detrás de los sillones que niega la puerta","how":"Flecha de fuego a los sillones y humo en la puerta a Biblioteca"},
+        {"room":"Biblioteca","f":1,"threat":"Smoke tirando gas a la planta","how":"Fuego en la puerta Sala→Biblioteca para negar la rotación"}],
+       "final":"Cubre la rotación Sala↔Biblioteca con fuego y humo durante el post-plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Lanza el Logic Bomb antes de entrar para sacar a los roamers","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra y cubre la Escalera principal","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube unos escalones y niega que bajen","via":"stairs"},
+        {"room":"Sala","f":1,"do":"Entra al final por Vestíbulo cuando el frente de Sala esté dentro","via":"door"}],
+       "clear":[
+        {"room":"Escaleras principales","f":1,"threat":"Roamer tipo Vigil bajando para flanquear a los dos frentes","how":"Logic Bomb y hackeo de cámaras; lo escuchas apagando el teléfono"},
+        {"room":"Vestíbulo","f":1,"threat":"Defensor rotando de Sala hacia el Pasillo por el Vestíbulo","how":"Ángulo desde la escalera con la cámara hackeada avisando"}],
+       "final":"Sostiene la Escalera y el Vestíbulo entre los dos frentes"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Se refuerza la pared Biblioteca–Pasillo y una de Sala–Vestíbulo; Bandit trickea la pared, Mira ancla Sala con espejo a Vestíbulo y Smoke ancla Biblioteca. Pulse roamea en Trofeos para negar el vertical y avisar. La clave es mantener el piso de Trofeos blando para rotar y escuchar.",
+     "reinforce":["Pared Biblioteca–Pasillo ×2","Pared Sala–Vestíbulo (una)","Escotilla de Trofeos sobre Sala"],
+     "rotations":["Sala↔Biblioteca","Biblioteca↔Trofeos (por la escotilla)"],
+     "ops":[
+      {"op":"smoke","room":"Biblioteca","f":1,"role":"ancla","job":"Ancla detrás del escritorio; gas a la pared abierta y a la ventana cuando planten"},
+      {"op":"mira","room":"Sala","f":1,"role":"ancla","job":"Espejo en la pared Sala–Vestíbulo mirando la puerta; segundo espejo hacia el Pasillo"},
+      {"op":"bandit","room":"Biblioteca","f":1,"role":"flex","job":"Trickea la pared del Pasillo con las baterías y rota a Sala cuando la abran"},
+      {"op":"jager","room":"Sala","f":1,"role":"flex","job":"ADS en la puerta de Sala y en la ventana; juega los sillones"},
+      {"op":"pulse","room":"Trofeos","f":2,"role":"roam","job":"Escanea el Pasillo 2F y baja por la escotilla cuando suban; avisa el vertical"}
+     ]},
+    {"id":"alt","n":"Anti-vertical con Azami","summary":"Setup para cuando el rival abusa del vertical desde Trofeos: Azami tapa los agujeros del techo con Kiba, Kaid electrifica la pared de Biblioteca y la escotilla, Noor quema los escudos que entran por Vestíbulo. Solis vigila drones y Melusi frena el rush por la puerta principal.",
+     "reinforce":["Pared Biblioteca–Pasillo ×2","Escotilla de Trofeos sobre Sala","Pared Sala–Vestíbulo (una)"],
+     "rotations":["Sala↔Biblioteca","Biblioteca→Vestíbulo (agujero de rotación)"],
+     "ops":[
+      {"op":"azami","room":"Sala","f":1,"role":"ancla","job":"Kiba en el techo cuando Buck abra; ancla en los sillones mirando la puerta de Vestíbulo"},
+      {"op":"kaid","room":"Biblioteca","f":1,"role":"ancla","job":"Rtila en la pared del Pasillo y en la escotilla; sostiene el escritorio"},
+      {"op":"noor","room":"Vestíbulo","f":1,"role":"flex","job":"Fuego del Horus a la puerta principal contra Osa y Montagne; cae a Sala cuando entren"},
+      {"op":"melusi","room":"Sala","f":1,"role":"flex","job":"Banshees en la puerta de Sala y en la ventana; ralentiza el rush y avisa"},
+      {"op":"solis","room":"Pasillo 2F","f":2,"role":"roam","job":"Escanea drones y Argus desde el Pasillo 2F; baja por la Escalera para flanquear el Pasillo"}
+     ]}
+   ]
+  },
+  "kitchen": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Ace abre la pared reforzada de Cocina desde el Garaje después del EMP de Thatcher, mientras Buck se sube a Aviador y rompe el piso de Comedor para que Maestro no pueda anclar. Gridlock sella el Pasillo principal para que ninguna rotación llegue al Comedor y se planta en Cocina detrás de la isla. Funciona porque el Garaje es una posición segura para preparar el abre.",
+     "timeline":["0:00–0:45 · Iana dronea el sitio, Ace y Thatcher toman el Garaje","0:45–1:30 · Buck abre el piso de Aviador sobre Comedor; EMP + SELMA en la pared Garaje–Cocina","1:30–2:30 · entrada por la pared, Gridlock tapa el Pasillo, planta en Cocina","2:30–3:00 · post-plant: Buck arriba, Ace en el hueco, Gridlock en Pasillo"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Rodea hasta el Garaje cubriendo las ventanas de Cocina","via":"door"},
+        {"room":"Garaje","f":1,"do":"Lanza el S.E.L.M.A. a la pared reforzada de Cocina tras el EMP","via":"door"},
+        {"room":"Cocina","f":1,"do":"Entra por el hueco y cubre la isla","via":"breach"}],
+       "clear":[
+        {"room":"Garaje","f":1,"threat":"Kapkan o Frost en la puerta del Garaje y un roamer escondido entre los autos","how":"Dron de Iana primero, prefire de los autos y Thatcher EMP a la puerta"},
+        {"room":"Cocina","f":1,"threat":"Kaid con Rtila en la pared y Smoke anclado detrás de la isla","how":"Doble EMP, SELMA inmediato y entras con humo hacia la isla"}],
+       "final":"Sostiene el hueco Garaje–Cocina y cubre la planta detrás de la isla"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Va con Ace hacia el Garaje","via":"door"},
+        {"room":"Garaje","f":1,"do":"Dos EMP a la pared de Cocina para quemar Kaid, Bandit y Mute","via":"door"},
+        {"room":"Cocina","f":1,"do":"Entra tras Ace y limpia el rincón de la alacena","via":"breach"}],
+       "clear":[
+        {"room":"Garaje","f":1,"threat":"Trampas en la puerta y cámara de Valkyrie en el Garaje","how":"EMP al marco y rompe la cámara antes de preparar la pared"},
+        {"room":"Cocina","f":1,"threat":"Rtila de Kaid en la pared y jammer de Mute","how":"EMP con dos segundos de diferencia justo antes del SELMA"}],
+       "final":"Cubre el hueco y la puerta Cocina→Comedor durante la planta"},
+      {"op":"buck","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal mientras el resto va al Garaje","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Dronea la Escalera y sube","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube por la escalera principal","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Limpia el descanso y va directo a Aviador","via":"stairs"},
+        {"room":"Aviador","f":2,"do":"Abre el piso sobre Comedor con la Skeleton Key y niega a Maestro","via":"door"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer tipo Vigil esperando arriba de la escalera","how":"Dron primero y subes con Iana cubriendo; prefire del descanso"},
+        {"room":"Aviador","f":2,"threat":"Roamer en Aviador o Pulse escuchando desde Comedor","how":"Claymore en la puerta de Juegos y abre el piso pegado a la pared"}],
+       "final":"Niega Comedor desde Aviador y remata al ancla durante el post-plant"},
+      {"op":"iana","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Manda la réplica por el Garaje a Cocina y Comedor","via":"door"},
+        {"room":"Garaje","f":1,"do":"Da callouts de Kaid y de las anclas al grupo del abre","via":"door"},
+        {"room":"Cocina","f":1,"do":"Entra tras Ace y planta detrás de la isla","via":"breach"}],
+       "clear":[
+        {"room":"Cocina","f":1,"threat":"Smoke anclado detrás de la isla con gas listo","how":"Réplica por el hueco para hacerlo disparar y saber dónde está"},
+        {"room":"Comedor","f":1,"threat":"Maestro con Evil Eye mirando la puerta de Cocina","how":"Réplica para localizar la Evil Eye; Buck la rompe desde arriba"}],
+       "final":"Planta en Cocina detrás de la isla y se queda en el rincón lejos de Comedor"},
+      {"op":"gridlock","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal con Buck","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Pone un Trax en la puerta de Sala","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Pone Trax en la puerta de Comedor para sellar la rotación","via":"door"},
+        {"room":"Comedor","f":1,"do":"Entra por la puerta cuando Buck ha limpiado el Comedor desde arriba","via":"door"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Lesion con Gu en la puerta de Comedor y Maestro vigilando","how":"Dispara los Gu con el dron y pone el Trax al marco desde lejos"},
+        {"room":"Comedor","f":1,"threat":"Ancla Maestro detrás de la mesa","how":"Esperas que Buck abra el piso y entras cuando se mueve"}],
+       "final":"Sella el Pasillo principal y cubre la puerta de Comedor durante el post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Cinco por la puerta principal, Pasillo principal y directo a la puerta de Comedor con candelas y concusión. Se planta en Comedor pegado a la pared de Cocina antes de que Maestro tenga sus Evil Eyes. Funciona porque la puerta del Comedor es la más cercana al spawn y el setup de este sitio tarda.",
+     "timeline":["0:00–0:20 · Ash rompe la barricada principal, IQ dronea el Pasillo","0:20–0:50 · candelas de Ying a Comedor, concusión de Zofia","0:50–1:30 · entrada y planta en Comedor","1:30–3:00 · post-plant apretando Cocina"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Carga de brecha a la puerta principal desde lejos","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra primero y cruza al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Carga de brecha a la barricada del Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Entra tras la candela y limpia la mesa","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Kapkan en la puerta principal","how":"La carga de brecha revienta la trampa antes de entrar"},
+        {"room":"Comedor","f":1,"threat":"Maestro detrás de la mesa y Lesion en la puerta","how":"Carga de brecha a la barricada y entrada con la candela de Ying"}],
+       "final":"Cubre la puerta Comedor→Cocina durante la planta"},
+      {"op":"ying","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Corre detrás de Ash","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Candela rebotada por la puerta de Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Entra con la candela y presiona hacia Cocina","via":"door"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Gu de Lesion y ADS en el marco de Comedor","how":"Ash revienta el marco y las candelas rebotan por dentro"},
+        {"room":"Cocina","f":1,"threat":"Smoke rotando de Cocina a Comedor","how":"Segunda candela a la puerta de Cocina cuando Zofia planta"}],
+       "final":"Presiona la puerta a Cocina y niega la rotación"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con el paquete","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Concusión por la puerta de Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Planta pegada a la pared de Cocina detrás de la mesa","via":"door"}],
+       "clear":[
+        {"room":"Comedor","f":1,"threat":"Ancla detrás de la mesa y Evil Eye en la esquina","how":"Impacto a la Evil Eye y concusión a la mesa"},
+        {"room":"Cocina","f":1,"threat":"Smoke con gas a la planta","how":"Ying y Ash niegan la puerta de Cocina mientras plantas"}],
+       "final":"Planta en Comedor y se queda en el rincón del Pasillo"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Surge al abrir la puerta","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la Escalera cinco segundos","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Cubre el Pasillo hacia Biblioteca","via":"door"},
+        {"room":"Comedor","f":1,"do":"Entra al final y cubre la ventana","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer que baja por la Escalera","how":"Te quedas viendo la escalera hasta que el grupo entre al Comedor"},
+        {"room":"Pasillo principal","f":1,"threat":"Defensor rotando desde Biblioteca por el Pasillo","how":"Ángulo desde el marco del Comedor"}],
+       "final":"Cubre el Pasillo y la Escalera durante el post-plant"},
+      {"op":"iq","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Dronea la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Escanea electrónicos por la pared","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Detecta Gu, ADS y Evil Eyes en Comedor y los dispara","via":"door"},
+        {"room":"Comedor","f":1,"do":"Entra y aprieta Cocina","via":"door"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Gu de Lesion y ADS de Jäger en la puerta","how":"Detector electrónico y disparo a través de la barricada"},
+        {"room":"Comedor","f":1,"threat":"Evil Eyes de Maestro en las esquinas","how":"Las ubicas con el detector y las rompes con el pistolazo antes de entrar"}],
+       "final":"Sostiene la puerta Comedor→Cocina y detecta a Pulse o Valkyrie durante el post-plant"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma Aviador y Juegos desde arriba (Fuze y Twitch por rappel a las ventanas de Aviador, Sledge y Ram por la Escalera) y se abre todo el piso sobre Comedor y Cocina. Las anclas no tienen dónde esconderse y Dokkaebi obliga a los roamers a mostrarse. Se entra por la puerta de Comedor al final para plantar.",
+     "timeline":["0:00–0:45 · rappel a Aviador, toma de Escalera, Dokkaebi hackea","0:45–1:45 · Sledge y Ram abren el piso, Fuze mete racimos sobre Cocina","1:45–2:30 · Twitch quema gadgets por los agujeros, entrada por Comedor","2:30–3:00 · planta en Comedor con dos arriba"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre mientras Dokkaebi hackea","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube por la principal","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Aviador","f":2,"do":"Abre el piso sobre Comedor con el martillo","via":"door"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer tipo Vigil o Caveira esperando arriba","how":"Dron y subes con Ram cubriendo; prefire del descanso"},
+        {"room":"Aviador","f":2,"threat":"Cámara de Valkyrie y defensor que sube a negar el vertical","how":"Twitch rompe la cámara, tú pones claymore en la puerta de la Escalera"}],
+       "final":"Niega el Comedor desde arriba y baja al final por la Escalera para plantar"},
+      {"op":"ram","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con Sledge","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la puerta de Sala","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Sale y sigue el Pasillo 2F","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Entra a Juegos","via":"door"},
+        {"room":"Juegos","f":2,"do":"Lanza BU-GI cruzando Juegos para abrir el piso sobre Cocina","via":"door"}],
+       "clear":[
+        {"room":"Pasillo 2F","f":2,"threat":"ADS y cámara en el pasillo","how":"Twitch los rompe antes con el dron de choque"},
+        {"room":"Cocina","f":1,"threat":"Smoke anclado detrás de la isla","how":"El BU-GI abre el piso sobre la isla y lo sacas de ahí"}],
+       "final":"Sostiene el piso de Juegos sobre Cocina durante el post-plant"},
+      {"op":"fuze","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la ventana de Aviador","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra por la ventana y pone racimos en el piso sobre Comedor","via":"window"},
+        {"room":"Juegos","f":2,"do":"Segunda carga de racimo sobre Cocina desde Juegos","via":"door"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Frost bajo la ventana y Castle en el marco","how":"Dron primero y rompe la ventana desde el rappel con impacto"},
+        {"room":"Comedor","f":1,"threat":"Maestro detrás de la mesa con Evil Eye","how":"Racimo justo sobre la mesa para que tenga que moverse"}],
+       "final":"Cubre desde Aviador los agujeros sobre Comedor durante la planta"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la ventana de Aviador con Fuze","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra por la ventana y mete el dron por los agujeros","via":"window"},
+        {"room":"Juegos","f":2,"do":"Quema las Evil Eyes y ADS de Cocina desde arriba","via":"door"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Cepos de Frost y ADS de Jäger en la ventana","how":"Dron de choque desde afuera antes de entrar"},
+        {"room":"Cocina","f":1,"threat":"Evil Eyes de Maestro y Gu de Lesion","how":"Dron de choque por el agujero de Ram y disparos a cada gadget"}],
+       "final":"Baja por la Escalera y entra a Comedor al final para plantar con el sitio limpio"},
+      {"op":"dokkaebi","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Logic Bomb antes de entrar","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la Escalera y hackea cámaras","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Sostiene la puerta de Comedor desde el Pasillo","via":"door"},
+        {"room":"Comedor","f":1,"do":"Entra cuando el piso esté abierto y planta","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer bajando por la Escalera a flanquear","how":"Logic Bomb y cámaras hackeadas; lo escuchas antes de que llegue"},
+        {"room":"Comedor","f":1,"threat":"Ancla Maestro y Lesion en la puerta","how":"Espera a que Sledge abra el piso y los saque de la mesa"}],
+       "final":"Planta en Comedor pegado a la pared del Pasillo al final del vertical"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Kali abren la pared Garaje–Cocina mientras Montagne, Capitão y Jackal presionan por el Pasillo principal a la puerta de Comedor. Las anclas tienen que elegir entre la pared y la puerta y Jackal caza al roamer. Se planta en el cuarto que abra primero.",
+     "timeline":["0:00–0:45 · drones, Jackal escanea huellas, Kali prepara lanzas","0:45–1:30 · Kali limpia la pared, Hibana abre; Montagne pone el escudo en la puerta de Comedor","1:30–2:30 · entrada doble, Capitão quema Comedor, planta","2:30–3:00 · post-plant con ángulos cruzados"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Rodea hasta el Garaje","via":"door"},
+        {"room":"Garaje","f":1,"do":"X-KAIROS a la pared de Cocina tras la lanza de Kali","via":"door"},
+        {"room":"Cocina","f":1,"do":"Entra por el hueco y cubre la isla","via":"breach"}],
+       "clear":[
+        {"room":"Garaje","f":1,"threat":"Frost en la puerta y roamer entre los autos","how":"Dron primero y prefire de los autos"},
+        {"room":"Cocina","f":1,"threat":"Kaid con Rtila y Smoke detrás de la isla","how":"Kali limpia la pared y entras con humo"}],
+       "final":"Sostiene el hueco Garaje–Cocina y planta en Cocina si Comedor está cargado"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Va con Hibana al Garaje","via":"door"},
+        {"room":"Garaje","f":1,"do":"Lanzas LV a la pared reforzada de Cocina","via":"door"},
+        {"room":"Cocina","f":1,"do":"Entra tras Hibana cubriendo la alacena","via":"breach"}],
+       "clear":[
+        {"room":"Garaje","f":1,"threat":"Cámara de Valkyrie en el Garaje","how":"Dron y rompe la cámara antes de preparar la pared"},
+        {"room":"Cocina","f":1,"threat":"Rtila de Kaid y espejo de Mira en la pared","how":"Dos lanzas a la pared y Hibana abre al instante"}],
+       "final":"Cubre el hueco desde el Garaje durante el post-plant"},
+      {"op":"montagne","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza al Pasillo con el escudo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Escudo extendido en la puerta de Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Entra primero y da la esquina a Capitão","via":"door"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Noor con el Horus quemando el escudo en la puerta","how":"No te plantes en el marco; Jackal cubre la esquina y entras solo tras el fuego de Capitão"},
+        {"room":"Comedor","f":1,"threat":"Maestro detrás de la mesa","how":"Escudo hacia la mesa y Capitão quema"}],
+       "final":"Cubre la planta en Comedor con el escudo hacia Cocina"},
+      {"op":"capitao","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con Montagne","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Flecha de fuego por la puerta de Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Quema la puerta a Cocina y planta","via":"door"}],
+       "clear":[
+        {"room":"Comedor","f":1,"threat":"Ancla detrás de la mesa","how":"Fuego a la mesa detrás del escudo de Montagne"},
+        {"room":"Cocina","f":1,"threat":"Smoke rotando con gas","how":"Fuego en la puerta Comedor→Cocina cuando plantas"}],
+       "final":"Planta en Comedor y niega la rotación con fuego"},
+      {"op":"jackal","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Escanea huellas en la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sigue las huellas del roamer hacia la Escalera","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sostiene la Escalera para que no bajen","via":"stairs"},
+        {"room":"Pasillo principal","f":1,"do":"Regresa y entra al Comedor con el grupo","via":"door"}],
+       "clear":[
+        {"room":"Escaleras principales","f":1,"threat":"Roamer tipo Vigil bajando a flanquear el Pasillo","how":"Escaneo de huellas y prefire cuando se marca"},
+        {"room":"Vestíbulo","f":1,"threat":"Defensor rotando de Sala por el Vestíbulo","how":"Ángulo desde la escalera hacia la puerta de Sala"}],
+       "final":"Sostiene la Escalera y el Vestíbulo durante el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Kaid electrifica la pared Garaje–Cocina, Smoke ancla Cocina detrás de la isla, Maestro ancla Comedor con Evil Eyes a la puerta del Pasillo y Lesion tapa las puertas. Jäger juega flex entre los dos cuartos y sube a Aviador cuando escucha el vertical.",
+     "reinforce":["Pared Cocina–Garaje ×2","Pared Comedor–Pasillo","Escotilla de Aviador sobre Comedor"],
+     "rotations":["Cocina↔Comedor","Comedor→Pasillo (agujero de rotación)"],
+     "ops":[
+      {"op":"smoke","room":"Cocina","f":1,"role":"ancla","job":"Ancla detrás de la isla; gas al hueco del Garaje y a la puerta de Comedor"},
+      {"op":"maestro","room":"Comedor","f":1,"role":"ancla","job":"Evil Eye a la puerta del Pasillo y otra hacia Cocina; sostiene la mesa"},
+      {"op":"kaid","room":"Cocina","f":1,"role":"flex","job":"Rtila en la pared del Garaje y en la escotilla de Aviador; rota a Comedor"},
+      {"op":"jager","room":"Aviador","f":2,"role":"roam","job":"ADS en las ventanas de Aviador; niega el vertical y baja por la Escalera"},
+      {"op":"lesion","room":"Comedor","f":1,"role":"flex","job":"Gu en la puerta del Pasillo, en el Garaje y bajo el piso de Aviador; juega la puerta"}
+     ]},
+    {"id":"alt","n":"Espejos y anti-escudo","summary":"Mira pone espejos en la pared Garaje–Cocina para ver el abre, Mute jamea la pared y la puerta del Comedor, Aruni sella la puerta del Pasillo y Noor quema escudos que entren por ahí. Vigil roamea en Aviador para negar el vertical y flanquear por la Escalera.",
+     "reinforce":["Pared Cocina–Garaje ×2","Pared Comedor–Pasillo","Escotilla de Aviador sobre Comedor"],
+     "rotations":["Cocina↔Comedor","Cocina→Garaje (espejo)"],
+     "ops":[
+      {"op":"mira","room":"Cocina","f":1,"role":"ancla","job":"Espejos en la pared del Garaje; ancla detrás de la isla"},
+      {"op":"mute","room":"Cocina","f":1,"role":"flex","job":"Jammers en la pared del Garaje y en la puerta de Comedor; rota entre los dos"},
+      {"op":"aruni","room":"Comedor","f":1,"role":"ancla","job":"Surya en la puerta del Pasillo y en la escotilla; sostiene la mesa"},
+      {"op":"noor","room":"Pasillo principal","f":1,"role":"flex","job":"Horus a la puerta principal contra Montagne y Osa; cae a Comedor cuando entren"},
+      {"op":"vigil","room":"Aviador","f":2,"role":"roam","job":"Niega el vertical en Aviador y baja por la Escalera para flanquear el Pasillo"}
+     ]}
+   ]
+  },
+  "aviator": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite y Thatcher suben por la Escalera principal y abren la pared reforzada de Juegos desde el Pasillo 2F mientras Sledge abre el techo de Comedor bajo Aviador para negar a Frost y Smoke. Zero da info por las ventanas de Aviador y Nomad sella la Escalera. Se planta en Juegos porque el hueco de la pared da directo al rincón de planta.",
+     "timeline":["0:00–0:45 · Zero dispara Argus a las ventanas de Aviador; toma de Vestíbulo y Escalera","0:45–1:30 · Sledge abre el techo de Comedor; EMP + carga en la pared Pasillo 2F–Juegos","1:30–2:30 · entrada por la pared, Nomad tapa la Escalera, planta en Juegos","2:30–3:00 · post-plant: Sledge abajo, Thermite en el hueco, Nomad en la Escalera"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal tras el dron","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la puerta de Sala y espera a Thatcher","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube por la principal","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Carga exotérmica en la pared reforzada de Juegos tras el EMP","via":"door"},
+        {"room":"Juegos","f":2,"do":"Entra por el hueco y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer en el descanso y Kapkan en la puerta del Pasillo","how":"Dron de Zero primero, EMP de Thatcher al marco y subes con Nomad"},
+        {"room":"Pasillo 2F","f":2,"threat":"Mira con espejo hacia el pasillo y Bandit trickeando","how":"Doble EMP y carga en la esquina fuera del espejo"},
+        {"room":"Juegos","f":2,"threat":"Ancla Mira detrás de la mesa de billar","how":"Humo y prefire de la mesa al cruzar el hueco"}],
+       "final":"Sostiene el hueco Pasillo 2F–Juegos durante la planta"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con Thermite","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"EMP a la Escalera si hay trampas","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Cubre el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Dos EMP a la pared de Juegos","via":"door"},
+        {"room":"Juegos","f":2,"do":"Entra tras Thermite","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Trampas de Kapkan y ADS en la salida de la escalera","how":"EMP al marco antes de que suba nadie"},
+        {"room":"Pasillo 2F","f":2,"threat":"Baterías de Bandit y jammer de Mute en la pared","how":"EMP con dos segundos de diferencia justo antes de la carga"}],
+       "final":"Cubre el Pasillo 2F hacia Aviador durante el post-plant"},
+      {"op":"sledge","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Entra al Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Abre el techo bajo Aviador con el martillo y dispara hacia arriba a Frost y Smoke","via":"door"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Roamer que baja por la Escalera para tomar el Pasillo","how":"Dron y Nomad cubriendo la Escalera"},
+        {"room":"Comedor","f":1,"threat":"Roamer en Comedor esperando al vertical de abajo","how":"Dronea el Comedor completo antes de entrar y prefirea la mesa"}],
+       "final":"Niega Aviador desde abajo y sube por la Escalera al final si hace falta"},
+      {"op":"zero","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Dispara Argus a las ventanas de Aviador desde la reja","via":"window"},
+        {"room":"Exterior","f":1,"do":"Baja y entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sube con el grupo del abre","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Sale al segundo piso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Da callouts de las anclas por las Argus","via":"door"},
+        {"room":"Juegos","f":2,"do":"Entra tras Thermite y planta en el rincón","via":"breach"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Frost bajo las ventanas y Smoke anclado","how":"Argus en la ventana para ubicar cada gadget y dar callout"},
+        {"room":"Juegos","f":2,"threat":"Ancla Mira que rota a Juegos al abrir la pared","how":"Argus por el hueco y aviso a Sledge para que la saque desde abajo"}],
+       "final":"Planta en Juegos usando las Argus para vigilar Aviador"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con el grupo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Airjab en la puerta de Sala","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Airjab en el descanso y en la puerta de Aviador; sostiene la Escalera","via":"stairs"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Defensor de Aviador que sale por la puerta de la Escalera a flanquear","how":"Airjab en la puerta y ángulo desde el descanso"},
+        {"room":"Vestíbulo","f":1,"threat":"Roamer subiendo desde Sala por la espalda","how":"Airjab al pie de la escalera"}],
+       "final":"Sostiene la Escalera principal entre Aviador y el Vestíbulo durante el post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Cinco en rappel a las ventanas de Aviador antes de que Castle las tape: Ying abre con candelas, Amaru entra primero con el gancho, Glaz cubre desde el rappel con humo. Se planta en Aviador pegado a la pared de Juegos. Funciona porque las ventanas de Aviador son grandes y el defensor tarda en tapar todas.",
+     "timeline":["0:00–0:20 · corren a la fachada de Aviador, Finka surge","0:20–0:50 · candelas de Ying, Amaru entra por la ventana, Glaz con humo","0:50–1:30 · entrada y planta en Aviador","1:30–3:00 · post-plant apretando Juegos"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la ventana de Aviador y candelas por la ventana","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra por la ventana con la candela y limpia el sillón","via":"window"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Frost bajo la ventana y Smoke con gas","how":"Candela por la ventana antes de entrar y mira al piso al caer"},
+        {"room":"Juegos","f":2,"threat":"Mira rotando desde Juegos","how":"Segunda candela a la puerta de Juegos"}],
+       "final":"Limpia Aviador y sostiene la puerta a Juegos"},
+      {"op":"amaru","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Gancho a la ventana de Aviador justo con la candela","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra volando y limpia el rincón de la puerta de la Escalera","via":"window"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Castle en la ventana y ADS de Jäger","how":"Ying revienta el Castle con impacto desde el rappel y entras tras la candela"},
+        {"room":"Escaleras principales","f":2,"threat":"Roamer entrando por la puerta de la Escalera","how":"Cubres esa puerta apenas caes"}],
+       "final":"Sostiene la puerta de la Escalera dentro de Aviador"},
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la segunda ventana de Aviador; impacto al Castle","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra y planta pegada a la pared de Juegos","via":"window"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Ancla detrás del sillón","how":"Concusión por la ventana y entras tras Ying"},
+        {"room":"Juegos","f":2,"threat":"Smoke con gas desde Juegos","how":"Amaru y Ying niegan la puerta mientras plantas"}],
+       "final":"Planta en Aviador y se queda bajo la ventana"},
+      {"op":"glaz","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Humo a la ventana y cubre desde el rappel con la térmica","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra al final cubriendo hacia Juegos","via":"window"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Defensores detrás del humo","how":"Térmica desde la ventana y mata a través del humo"},
+        {"room":"Juegos","f":2,"threat":"Ancla mirando la puerta de Aviador","how":"Humo en la puerta y térmica"}],
+       "final":"Cubre la planta con humo y térmica desde la ventana"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Surge cuando Ying tira las candelas y rappel","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra y cubre la puerta de la Escalera","via":"window"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Frost bajo la ventana","how":"El surge te levanta si caes en un cepo; entras tras Amaru"},
+        {"room":"Escaleras principales","f":2,"threat":"Roamer subiendo por la Escalera","how":"Cubres la puerta desde dentro de Aviador"}],
+       "final":"Cubre la Escalera durante el post-plant"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma Comedor y Cocina desde el primer piso y se abre el techo bajo Aviador y Juegos con Buck y Sledge; Ash revienta los agujeros grandes y Kali limpia los gadgets desde abajo. Los defensores no pueden anclar sobre madera y Twitch quema lo que quede. Se sube por la Escalera al final para plantar.",
+     "timeline":["0:00–0:45 · toma de Vestíbulo, Pasillo y Comedor","0:45–1:45 · Buck y Sledge abren el techo bajo Aviador y Juegos","1:45–2:30 · Kali y Twitch limpian gadgets desde abajo; subida por la Escalera","2:30–3:00 · planta en Aviador con dos abajo sosteniendo"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Entra al Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Abre el techo bajo Aviador con la Skeleton Key","via":"door"}],
+       "clear":[
+        {"room":"Pasillo principal","f":1,"threat":"Roamer bajando por la Escalera al Pasillo","how":"Dron de Twitch y Kali cubriendo la Escalera"},
+        {"room":"Comedor","f":1,"threat":"Roamer escondido en Comedor esperando el vertical","how":"Dronea completo y prefirea la mesa"}],
+       "final":"Niega Aviador desde abajo y sube al final por la Escalera"},
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Rodea al Garaje","via":"door"},
+        {"room":"Garaje","f":1,"do":"Abre la pared blanda o entra por la puerta a Cocina","via":"door"},
+        {"room":"Cocina","f":1,"do":"Abre el techo bajo Juegos con el martillo","via":"door"}],
+       "clear":[
+        {"room":"Garaje","f":1,"threat":"Roamer entre los autos","how":"Dron y prefire"},
+        {"room":"Cocina","f":1,"threat":"Roamer en Cocina esperando al vertical","how":"Dron completo antes de entrar"}],
+       "final":"Niega Juegos desde Cocina durante la planta"},
+      {"op":"ash","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cruza al Pasillo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Entra al Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Cargas de brecha al techo bajo Aviador para abrir agujeros grandes","via":"door"}],
+       "clear":[
+        {"room":"Comedor","f":1,"threat":"Gu de Lesion en la puerta","how":"Dron y disparo antes de entrar"},
+        {"room":"Aviador","f":2,"threat":"Ancla Smoke que busca el agujero","how":"Carga de brecha justo bajo su posición"}],
+       "final":"Sube por la Escalera al final y planta en Aviador"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la Escalera","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Entra al Comedor","via":"door"},
+        {"room":"Comedor","f":1,"do":"Lanzas LV al techo para reventar Frost, ADS y Evil Eyes de Aviador","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer que baja por la Escalera","how":"Ángulo desde el Vestíbulo hasta que Buck entre a Comedor"},
+        {"room":"Aviador","f":2,"threat":"Cepos de Frost y ADS bajo las ventanas","how":"Lanza LV al techo justo debajo de ellos"}],
+       "final":"Cubre desde Comedor los agujeros del techo durante la planta"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Dron de choque por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Rompe ADS y cámaras del Vestíbulo","via":"door"},
+        {"room":"Pasillo principal","f":1,"do":"Sube el dron por la Escalera hacia Juegos y quema gadgets","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube al final con Ash","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Entra a Aviador por la puerta de la Escalera y planta","via":"stairs"}],
+       "clear":[
+        {"room":"Pasillo 2F","f":2,"threat":"Cámara de Valkyrie y ADS en el pasillo","how":"Dron de choque antes de subir"},
+        {"room":"Aviador","f":2,"threat":"Mira mirando la puerta de la Escalera","how":"Buck la saca desde abajo antes de subir"}],
+       "final":"Planta en Aviador al final cuando el sitio está limpio desde abajo"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Ace y Maverick abren la pared de Juegos desde el Pasillo 2F mientras Osa, Capitão y Dokkaebi entran por las ventanas de Aviador en rappel. El defensor de Aviador tiene que elegir entre la ventana y la rotación a Juegos y Dokkaebi saca al roamer. Se planta en el cuarto que abra primero.",
+     "timeline":["0:00–0:45 · drones, Dokkaebi hackea, Osa y Capitão suben al rappel","0:45–1:30 · Maverick abre línea, Ace abre; Osa pone el Talon en la ventana","1:30–2:30 · entrada doble, Capitão quema Aviador, planta","2:30–3:00 · post-plant con dos ángulos"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sube con Maverick","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"S.E.L.M.A. a la pared de Juegos después de que Maverick queme las baterías","via":"door"},
+        {"room":"Juegos","f":2,"do":"Entra por el hueco","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer en el descanso","how":"Dron y subes con Maverick"},
+        {"room":"Pasillo 2F","f":2,"threat":"Bandit trickeando y Mira con espejo","how":"Maverick abre un agujero y quema la batería antes del SELMA"},
+        {"room":"Juegos","f":2,"threat":"Ancla Mira detrás de la mesa","how":"Humo y prefire"}],
+       "final":"Sostiene el hueco y planta en Juegos si aguanta"},
+      {"op":"maverick","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con Ace","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la Escalera","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Cubre el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Soplete a la pared de Juegos para quemar Bandit y Kaid y abrir línea","via":"door"},
+        {"room":"Juegos","f":2,"do":"Entra tras Ace","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo 2F","f":2,"threat":"Baterías de Bandit y Rtila de Kaid","how":"Agujero pequeño con el soplete y quema el gadget"},
+        {"room":"Juegos","f":2,"threat":"Ancla detrás de la mesa mirando el hueco","how":"Línea con el soplete y prefire"}],
+       "final":"Cubre el Pasillo 2F hacia Aviador durante el post-plant"},
+      {"op":"osa","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la ventana de Aviador y pone el Talon en el marco","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra tras el Talon y planta detrás del segundo escudo","via":"window"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Frost bajo la ventana y Noor con el Horus contra el Talon","how":"Dron primero; Capitão quema el rincón de Noor antes de entrar"},
+        {"room":"Juegos","f":2,"threat":"Ancla rotando desde Juegos","how":"Ace abre la pared al mismo tiempo para que no pueda rotar"}],
+       "final":"Planta en Aviador detrás del Talon si Juegos está cargado"},
+      {"op":"capitao","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la ventana de Aviador y flecha de fuego adentro","via":"rappel"},
+        {"room":"Aviador","f":2,"do":"Entra y quema la puerta a Juegos","via":"window"}],
+       "clear":[
+        {"room":"Aviador","f":2,"threat":"Ancla detrás del sillón","how":"Fuego al sillón desde la ventana"},
+        {"room":"Juegos","f":2,"threat":"Smoke con gas desde Juegos","how":"Fuego en la puerta Aviador→Juegos"}],
+       "final":"Niega la rotación Aviador↔Juegos con fuego y humo"},
+      {"op":"dokkaebi","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Logic Bomb antes de entrar","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la Escalera y hackea cámaras","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sostiene la Escalera entre los dos frentes","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Entra a Aviador por la puerta de la Escalera al final","via":"stairs"}],
+       "clear":[
+        {"room":"Escaleras principales","f":1,"threat":"Roamer bajando a flanquear","how":"Logic Bomb y cámaras; lo escuchas apagar el teléfono"},
+        {"room":"Escaleras principales","f":2,"threat":"Defensor de Aviador saliendo a la Escalera","how":"Ángulo desde el descanso"}],
+       "final":"Entra a Aviador por la Escalera al final y sostiene esa puerta"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle tapa las ventanas de Aviador, Frost pone cepos bajo cada ventana y Smoke ancla Aviador. Mira ancla Juegos con espejo a la pared del Pasillo 2F y Valkyrie roamea en 1F con cámaras en Comedor para avisar del vertical.",
+     "reinforce":["Pared Juegos–Pasillo 2F ×2","Escotilla de Juegos","Ventanas de Aviador (Castle)"],
+     "rotations":["Aviador↔Juegos","Juegos→Pasillo 2F (agujero de rotación)"],
+     "ops":[
+      {"op":"frost","room":"Aviador","f":2,"role":"ancla","job":"Cepos bajo cada ventana; sostiene el sillón mirando la puerta de la Escalera"},
+      {"op":"castle","room":"Aviador","f":2,"role":"flex","job":"Barricadas en las ventanas de Aviador; rota a Juegos"},
+      {"op":"smoke","room":"Aviador","f":2,"role":"ancla","job":"Gas a las ventanas y a la puerta de la Escalera cuando planten"},
+      {"op":"mira","room":"Juegos","f":2,"role":"ancla","job":"Espejos en la pared del Pasillo 2F; sostiene la mesa de billar"},
+      {"op":"valkyrie","room":"Comedor","f":1,"role":"roam","job":"Cámaras en Comedor y Pasillo principal; niega el vertical desde abajo y flanquea la Escalera"}
+     ]},
+    {"id":"alt","n":"Anti-rappel con Noor","summary":"Para cuando el rival rushea las ventanas: Noor quema el marco contra Osa y Blackbeard, Azami tapa las ventanas con Kiba, Kaid electrifica la pared de Juegos y Jäger niega candelas. Solis detecta drones y Argus desde Juegos.",
+     "reinforce":["Pared Juegos–Pasillo 2F ×2","Escotilla de Juegos","Ventanas de Aviador (refuerzo)"],
+     "rotations":["Aviador↔Juegos","Aviador→Escaleras (puerta)"],
+     "ops":[
+      {"op":"noor","room":"Aviador","f":2,"role":"ancla","job":"Horus a las ventanas contra los escudos; sostiene el sillón"},
+      {"op":"azami","room":"Aviador","f":2,"role":"flex","job":"Kiba en las ventanas y en los agujeros del piso cuando abran desde Comedor"},
+      {"op":"kaid","room":"Juegos","f":2,"role":"ancla","job":"Rtila en la pared del Pasillo 2F y en la escotilla; sostiene la mesa"},
+      {"op":"jager","room":"Juegos","f":2,"role":"flex","job":"ADS en las ventanas de Aviador y en la puerta de Juegos; rota entre los dos"},
+      {"op":"solis","room":"Comedor","f":1,"role":"roam","job":"Escanea drones desde Comedor y avisa del vertical; sube por la Escalera a flanquear"}
+     ]}
+   ]
+  },
+  "trophy": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Hibana y Thatcher abren la pared reforzada de Trofeos desde el Pasillo 2F mientras Buck abre el techo de Sala bajo Trofeos para negar a Smoke. Dokkaebi saca a los roamers y Nomad sella la Escalera. Se planta en Trofeos pegado a la pared abierta porque el hueco da directo al rincón de planta.",
+     "timeline":["0:00–0:45 · Dokkaebi hackea, drones a Trofeos y Estatuas, toma de Vestíbulo","0:45–1:30 · Buck abre el techo de Sala; EMP + X-KAIROS en la pared Pasillo 2F–Trofeos","1:30–2:30 · entrada por la pared, Nomad tapa la Escalera, planta en Trofeos","2:30–3:00 · post-plant: Buck abajo, Hibana en el hueco"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sube con Thatcher","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"X-KAIROS a la pared de Trofeos tras el EMP","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Entra por el hueco y cubre la planta","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer en el descanso y Kapkan en la puerta del Pasillo","how":"Dron primero, EMP de Thatcher y subes con Nomad"},
+        {"room":"Pasillo 2F","f":2,"threat":"Bandit trickeando y Mozzie con Pest","how":"Doble EMP y X-KAIROS al instante"},
+        {"room":"Trofeos","f":2,"threat":"Ancla Smoke en el rincón detrás de las vitrinas","how":"Humo y prefire; Buck la saca desde abajo"}],
+       "final":"Sostiene el hueco Pasillo 2F–Trofeos durante la planta"},
+      {"op":"thatcher","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con Hibana","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"EMP a la Escalera si hay trampas","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Cubre el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Dos EMP a la pared de Trofeos","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Entra tras Hibana","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Trampas y ADS en la salida de la escalera","how":"EMP al marco antes de subir"},
+        {"room":"Pasillo 2F","f":2,"threat":"Baterías de Bandit y jammer de Mute","how":"EMP con dos segundos de diferencia justo antes del X-KAIROS"}],
+       "final":"Cubre el Pasillo 2F hacia Estatuas durante el post-plant"},
+      {"op":"buck","role":"vertical","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra a Sala por la puerta","via":"door"},
+        {"room":"Sala","f":1,"do":"Abre el techo bajo Trofeos con la Skeleton Key y dispara a Smoke","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer bajando por la Escalera","how":"Dron y Nomad cubriendo"},
+        {"room":"Sala","f":1,"threat":"Roamer en Sala esperando el vertical de abajo","how":"Dronea toda la Sala y prefirea los sillones"}],
+       "final":"Niega Trofeos desde Sala durante la entrada y el post-plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Logic Bomb antes de entrar","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Hackea cámaras y sube","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Cubre el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Da callouts de las cámaras","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Entra tras Hibana y planta en el rincón","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo 2F","f":2,"threat":"Roamer que sale de Estatuas al Pasillo","how":"Logic Bomb y ángulo desde el descanso"},
+        {"room":"Trofeos","f":2,"threat":"Ancla detrás de las vitrinas","how":"Cámaras hackeadas para ubicarla y Buck la saca desde abajo"}],
+       "final":"Planta en Trofeos pegado a la pared abierta"},
+      {"op":"nomad","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con el grupo","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Airjab en la puerta de Sala","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Airjab en el descanso y en la puerta de Estatuas; sostiene la Escalera","via":"stairs"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Defensor de Estatuas saliendo por la puerta de la Escalera","how":"Airjab en la puerta y ángulo desde el descanso"},
+        {"room":"Vestíbulo","f":1,"threat":"Roamer subiendo por la espalda desde Sala","how":"Airjab al pie de la escalera"}],
+       "final":"Sostiene la Escalera principal durante el post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Cinco en rappel a las ventanas de Estatuas antes de que Castle las tape: Zofia con concusión, Ying con candelas, Capitão quema el rincón de Trofeos. Se planta en Estatuas pegado a la pared de Trofeos. Funciona porque las ventanas de Estatuas son varias y el defensor tarda en cubrirlas.",
+     "timeline":["0:00–0:20 · corren a la fachada de Estatuas, Finka surge","0:20–0:50 · candelas de Ying, concusión de Zofia, entrada","0:50–1:30 · planta en Estatuas","1:30–3:00 · post-plant apretando Trofeos"],
+     "ops":[
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la ventana de Estatuas; impacto al Castle y concusión","via":"rappel"},
+        {"room":"Estatuas","f":2,"do":"Entra y planta pegada a la pared de Trofeos","via":"window"}],
+       "clear":[
+        {"room":"Estatuas","f":2,"threat":"Frost bajo la ventana y ancla detrás de las estatuas","how":"Concusión por la ventana y entras tras la candela de Ying"},
+        {"room":"Trofeos","f":2,"threat":"Smoke con gas desde Trofeos","how":"Capitão quema la puerta mientras plantas"}],
+       "final":"Planta en Estatuas y se queda bajo la ventana"},
+      {"op":"ying","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel y candelas por la ventana de Estatuas","via":"rappel"},
+        {"room":"Estatuas","f":2,"do":"Entra con la candela y limpia las estatuas","via":"window"}],
+       "clear":[
+        {"room":"Estatuas","f":2,"threat":"Ancla Frost detrás de las estatuas","how":"Candela por la ventana antes de entrar"},
+        {"room":"Trofeos","f":2,"threat":"Rotación desde Trofeos","how":"Segunda candela a la puerta de Trofeos"}],
+       "final":"Sostiene la puerta a Trofeos"},
+      {"op":"iana","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Réplica por la ventana de Estatuas para activar cepos y ubicar anclas","via":"rappel"},
+        {"room":"Estatuas","f":2,"do":"Entra tras Ying y cubre la puerta de la Escalera","via":"window"}],
+       "clear":[
+        {"room":"Estatuas","f":2,"threat":"Cepos de Frost y Kapkan en la puerta de la Escalera","how":"La réplica activa los cepos y detecta las trampas"},
+        {"room":"Escaleras principales","f":2,"threat":"Roamer entrando por la Escalera","how":"Cubres esa puerta apenas entras"}],
+       "final":"Cubre la puerta de la Escalera dentro de Estatuas"},
+      {"op":"capitao","role":"negacion","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel y flecha de fuego al rincón de Estatuas","via":"rappel"},
+        {"room":"Estatuas","f":2,"do":"Entra y quema la puerta a Trofeos","via":"window"}],
+       "clear":[
+        {"room":"Estatuas","f":2,"threat":"Ancla en el rincón","how":"Fuego desde la ventana"},
+        {"room":"Trofeos","f":2,"threat":"Smoke tirando gas a la planta","how":"Fuego y humo en la puerta Estatuas→Trofeos"}],
+       "final":"Niega la rotación con fuego durante el post-plant"},
+      {"op":"finka","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Surge y rappel a la segunda ventana","via":"rappel"},
+        {"room":"Estatuas","f":2,"do":"Entra al final cubriendo la ventana","via":"window"}],
+       "clear":[
+        {"room":"Estatuas","f":2,"threat":"Frost bajo la ventana","how":"Surge y entras tras el grupo"},
+        {"room":"Pasillo 2F","f":2,"threat":"Defensor rotando por el Pasillo 2F a la puerta de Estatuas","how":"Cubres esa puerta desde dentro"}],
+       "final":"Cubre las ventanas y el Pasillo durante el post-plant"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma Sala y Biblioteca en el primer piso y se abre el techo bajo Trofeos y Estatuas con Sledge y Ash; Kali revienta los gadgets desde abajo y Twitch quema lo que quede. Lion escanea para que nadie rote sin que se vea. Se sube por la Escalera al final para plantar.",
+     "timeline":["0:00–0:45 · toma de Vestíbulo, Sala y Biblioteca","0:45–1:45 · Sledge y Ash abren el techo, Kali limpia gadgets","1:45–2:30 · Lion escanea, subida por la Escalera","2:30–3:00 · planta en Estatuas con dos abajo"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra a Sala","via":"door"},
+        {"room":"Sala","f":1,"do":"Abre el techo bajo Trofeos con el martillo","via":"door"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer bajando por la Escalera","how":"Dron y Lion cubriendo"},
+        {"room":"Sala","f":1,"threat":"Roamer en Sala esperando el vertical","how":"Dronea completo y prefirea los sillones"}],
+       "final":"Niega Trofeos desde Sala durante la planta"},
+      {"op":"ash","role":"blando","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Rompe la barricada de la ventana de Biblioteca desde afuera","via":"window"},
+        {"room":"Biblioteca","f":1,"do":"Entra por la ventana y cargas de brecha al techo bajo Estatuas","via":"window"}],
+       "clear":[
+        {"room":"Biblioteca","f":1,"threat":"Roamer en Biblioteca esperando el vertical","how":"Dron y prefire del escritorio antes de entrar"},
+        {"room":"Estatuas","f":2,"threat":"Ancla Frost sobre el techo","how":"Carga de brecha justo bajo su posición"}],
+       "final":"Sube por la Escalera al final y planta en Estatuas"},
+      {"op":"kali","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Entra a Sala","via":"door"},
+        {"room":"Sala","f":1,"do":"Lanzas LV al techo para reventar los gadgets de Trofeos","via":"door"},
+        {"room":"Biblioteca","f":1,"do":"Pasa a Biblioteca y lanza al techo de Estatuas","via":"door"}],
+       "clear":[
+        {"room":"Sala","f":1,"threat":"Roamer en Sala","how":"Sledge limpia primero"},
+        {"room":"Trofeos","f":2,"threat":"ADS y Pest de Mozzie bajo el techo","how":"Lanza LV al techo justo debajo de ellos"}],
+       "final":"Cubre desde Biblioteca los agujeros del techo durante la planta"},
+      {"op":"twitch","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Dron de choque por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Rompe ADS y cámaras","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube el dron por la Escalera y quema gadgets de Estatuas","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Sube con Ash al final y entra a Estatuas por la puerta","via":"stairs"},
+        {"room":"Estatuas","f":2,"do":"Planta con el sitio limpio desde abajo","via":"door"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Kapkan en la puerta de Estatuas y cámara de Valkyrie","how":"Dron de choque antes de subir"},
+        {"room":"Estatuas","f":2,"threat":"Ancla mirando la puerta de la Escalera","how":"Sledge la saca desde abajo antes de subir"}],
+       "final":"Planta en Estatuas al final"},
+      {"op":"lion","role":"intel","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sostiene la Escalera y escanea cuando abren el techo","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube unos escalones y escanea antes de la entrada","via":"stairs"}],
+       "clear":[
+        {"room":"Vestíbulo","f":1,"threat":"Roamer bajando por la Escalera","how":"Escaneo y ángulo desde el Vestíbulo"},
+        {"room":"Escaleras principales","f":1,"threat":"Defensor rotando por la Escalera al primer piso","how":"Escaneo y prefire"}],
+       "final":"Sostiene la Escalera y escanea durante la planta"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Ace y Maverick abren la pared de Trofeos desde el Pasillo 2F mientras Amaru, Blackbeard y Jackal entran por las ventanas de Estatuas. El defensor de Estatuas tiene que elegir entre la ventana y la rotación y Jackal caza al roamer. Se planta en el cuarto que abra primero.",
+     "timeline":["0:00–0:45 · drones, Jackal escanea, Amaru y Blackbeard a la fachada","0:45–1:30 · Maverick quema baterías, Ace abre; Amaru entra por la ventana","1:30–2:30 · entrada doble y planta","2:30–3:00 · post-plant con dos ángulos"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra por la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sube con Maverick","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Limpia el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"S.E.L.M.A. a la pared de Trofeos después del soplete","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Entra por el hueco","via":"breach"}],
+       "clear":[
+        {"room":"Escaleras principales","f":2,"threat":"Roamer en el descanso","how":"Dron y subes con Maverick"},
+        {"room":"Pasillo 2F","f":2,"threat":"Bandit trickeando","how":"Maverick abre agujero y quema la batería"},
+        {"room":"Trofeos","f":2,"threat":"Ancla Smoke detrás de las vitrinas","how":"Humo y prefire"}],
+       "final":"Sostiene el hueco y planta en Trofeos si aguanta"},
+      {"op":"maverick","role":"antigadget","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Entra con Ace","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Cubre la Escalera","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Cubre el descanso","via":"stairs"},
+        {"room":"Pasillo 2F","f":2,"do":"Soplete a la pared de Trofeos para quemar Bandit y abrir líneas","via":"door"},
+        {"room":"Trofeos","f":2,"do":"Entra tras Ace","via":"breach"}],
+       "clear":[
+        {"room":"Pasillo 2F","f":2,"threat":"Baterías de Bandit y Pest de Mozzie","how":"Agujero pequeño y quema el gadget"},
+        {"room":"Trofeos","f":2,"threat":"Ancla mirando el hueco","how":"Línea con el soplete y prefire"}],
+       "final":"Cubre el Pasillo 2F hacia Estatuas durante el post-plant"},
+      {"op":"amaru","role":"entrada","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Gancho a la ventana de Estatuas justo cuando Ace abre","via":"rappel"},
+        {"room":"Estatuas","f":2,"do":"Entra volando y limpia detrás de las estatuas","via":"window"}],
+       "clear":[
+        {"room":"Estatuas","f":2,"threat":"Frost bajo la ventana y Castle","how":"Blackbeard rompe el Castle con impacto y tú entras al segundo"},
+        {"room":"Trofeos","f":2,"threat":"Ancla rotando desde Trofeos","how":"Ace abre la pared al mismo tiempo para que no pueda rotar"}],
+       "final":"Sostiene la puerta Estatuas→Trofeos"},
+      {"op":"blackbeard","role":"soporte","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":2,"do":"Rappel a la ventana de Estatuas con el escudo y cubre a Amaru","via":"rappel"},
+        {"room":"Estatuas","f":2,"do":"Entra y planta detrás de las estatuas","via":"window"}],
+       "clear":[
+        {"room":"Estatuas","f":2,"threat":"Noor con el Horus quemando el escudo en la ventana","how":"No te quedes en el marco; entra al segundo tras Amaru"},
+        {"room":"Pasillo 2F","f":2,"threat":"Defensor rotando por el Pasillo a la puerta de Estatuas","how":"Maverick lo cubre desde el Pasillo"}],
+       "final":"Planta en Estatuas si Trofeos está cargado"},
+      {"op":"jackal","role":"flanco","spawn":"Exterior",
+       "path":[
+        {"room":"Exterior","f":1,"do":"Escanea huellas en la puerta principal","via":"door"},
+        {"room":"Vestíbulo","f":1,"do":"Sigue las huellas del roamer","via":"door"},
+        {"room":"Escaleras principales","f":1,"do":"Sostiene la Escalera entre los dos frentes","via":"stairs"},
+        {"room":"Escaleras principales","f":2,"do":"Entra a Estatuas por la puerta de la Escalera al final","via":"stairs"}],
+       "clear":[
+        {"room":"Escaleras principales","f":1,"threat":"Roamer tipo Vigil bajando a flanquear","how":"Escaneo y prefire cuando se marca"},
+        {"room":"Escaleras principales","f":2,"threat":"Defensor de Estatuas saliendo a la Escalera","how":"Ángulo desde el descanso"}],
+       "final":"Entra a Estatuas por la Escalera al final y sostiene esa puerta"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle tapa las ventanas de Estatuas, Frost pone cepos debajo, Smoke ancla Trofeos detrás de las vitrinas y Jäger niega candelas. Mozzie roba drones en el Pasillo 2F y roamea en 1F para negar el vertical desde Sala.",
+     "reinforce":["Pared Trofeos–Pasillo 2F ×2","Ventanas de Estatuas (Castle)","Escotilla de Trofeos sobre Sala"],
+     "rotations":["Trofeos↔Estatuas","Estatuas→Escaleras (puerta)"],
+     "ops":[
+      {"op":"frost","room":"Estatuas","f":2,"role":"ancla","job":"Cepos bajo cada ventana; sostiene detrás de las estatuas"},
+      {"op":"smoke","room":"Trofeos","f":2,"role":"ancla","job":"Gas al hueco de la pared y a la puerta de la Escalera cuando planten"},
+      {"op":"castle","room":"Estatuas","f":2,"role":"flex","job":"Barricadas en las ventanas de Estatuas; rota a Trofeos"},
+      {"op":"jager","room":"Trofeos","f":2,"role":"flex","job":"ADS en las ventanas y en el Pasillo 2F; juega las vitrinas"},
+      {"op":"mozzie","room":"Sala","f":1,"role":"roam","job":"Pests en el Vestíbulo y la Escalera; niega el vertical desde Sala y flanquea"}
+     ]},
+    {"id":"alt","n":"Espejos y anti-escudo","summary":"Mira pone espejos en la pared de Trofeos hacia el Pasillo 2F y Bandit la trickea; Azami tapa las ventanas de Estatuas con Kiba y Warden juega las ventanas contra candelas y humo. Vigil roamea en 1F para negar el vertical desde Sala y Biblioteca.",
+     "reinforce":["Pared Trofeos–Pasillo 2F ×2","Ventanas de Estatuas (refuerzo)","Escotilla de Trofeos sobre Sala"],
+     "rotations":["Trofeos↔Estatuas","Trofeos→Pasillo 2F (espejo)"],
+     "ops":[
+      {"op":"mira","room":"Trofeos","f":2,"role":"ancla","job":"Espejos en la pared del Pasillo 2F; sostiene las vitrinas"},
+      {"op":"bandit","room":"Trofeos","f":2,"role":"flex","job":"Trickea la pared del Pasillo 2F; rota a Estatuas cuando la abran"},
+      {"op":"azami","room":"Estatuas","f":2,"role":"ancla","job":"Kiba en las ventanas y en los agujeros del piso; sostiene las estatuas"},
+      {"op":"warden","room":"Estatuas","f":2,"role":"flex","job":"Glance contra candelas y humo en las ventanas; juega la puerta de la Escalera"},
+      {"op":"vigil","room":"Biblioteca","f":1,"role":"roam","job":"Niega el vertical desde Biblioteca y Sala; sube por la Escalera para flanquear"}
+     ]}
+   ]
+  }
+ }
+}

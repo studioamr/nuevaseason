@@ -1,0 +1,1267 @@
+{
+ "id": "kanal",
+ "name": "Kanal",
+ "pool": "ranked",
+ "hasBlueprint": true,
+ "floors": [
+  {
+   "idx": 1,
+   "key": "1",
+   "name": "1st Floor"
+  },
+  {
+   "idx": 2,
+   "key": "2",
+   "name": "2nd Floor"
+  },
+  {
+   "idx": 3,
+   "key": "3",
+   "name": "3rd Floor"
+  },
+  {
+   "idx": 4,
+   "key": "r",
+   "name": "Roof"
+  }
+ ],
+ "rooms": [
+  {
+   "f": 1,
+   "en": "Boat Garage",
+   "es": "Garage de barcas"
+  },
+  {
+   "f": 1,
+   "en": "Boat Supplies",
+   "es": "Suministros de barcas"
+  },
+  {
+   "f": 1,
+   "en": "Pipes",
+   "es": "Tuberias que rezuman"
+  },
+  {
+   "f": 1,
+   "en": "Boat Supplies Hallway",
+   "es": "Pasillo de suministros de barcas"
+  },
+  {
+   "f": 1,
+   "en": "Locker Room",
+   "es": "Taquillas"
+  },
+  {
+   "f": 1,
+   "en": "Coast Guard Stairs",
+   "es": "Escaleras de guardacostas"
+  },
+  {
+   "f": 1,
+   "en": "Showers Corridor",
+   "es": "Pasillo a las duchas"
+  },
+  {
+   "f": 1,
+   "en": "Showers",
+   "es": "Duchas"
+  },
+  {
+   "f": 1,
+   "en": "Loading Dock",
+   "es": "Muelle de carga"
+  },
+  {
+   "f": 1,
+   "en": "Machine Hallway",
+   "es": "Pasillo de maquinaria"
+  },
+  {
+   "f": 1,
+   "en": "Control Center Stairs",
+   "es": "Escalera al centro de control"
+  },
+  {
+   "f": 2,
+   "en": "Holding Room",
+   "es": "Depósito temporal"
+  },
+  {
+   "f": 2,
+   "en": "Holding Room Hallway",
+   "es": "Pasillo a depósito temporal"
+  },
+  {
+   "f": 2,
+   "en": "Radio",
+   "es": "Sala de radio"
+  },
+  {
+   "f": 2,
+   "en": "Coast Guard Office",
+   "es": "Oficina del guardacostas"
+  },
+  {
+   "f": 2,
+   "en": "Archives",
+   "es": "Archivo"
+  },
+  {
+   "f": 2,
+   "en": "Coast Guard Hall",
+   "es": "Pasillo de guardacostas"
+  },
+  {
+   "f": 2,
+   "en": "Main Entrance",
+   "es": "Entrada principal"
+  },
+  {
+   "f": 2,
+   "en": "Lounge",
+   "es": "Sala de espera"
+  },
+  {
+   "f": 2,
+   "en": "Coast Guard Stairs",
+   "es": "Escaleras de guardacostas"
+  },
+  {
+   "f": 2,
+   "en": "Bridge",
+   "es": "Puente"
+  },
+  {
+   "f": 2,
+   "en": "Model Room",
+   "es": "Sala de modelos"
+  },
+  {
+   "f": 2,
+   "en": "Security Room",
+   "es": "Sala de seguridad"
+  },
+  {
+   "f": 2,
+   "en": "Projector Room",
+   "es": "Sala del proyector"
+  },
+  {
+   "f": 2,
+   "en": "Maps Office",
+   "es": "Oficina de mapas"
+  },
+  {
+   "f": 2,
+   "en": "Maps Office Hallway",
+   "es": "Pasillo a la oficina de mapas"
+  },
+  {
+   "f": 2,
+   "en": "Control Center Stairs",
+   "es": "Escalera al centro de control"
+  },
+  {
+   "f": 2,
+   "en": "Kitchen",
+   "es": "Cocina"
+  },
+  {
+   "f": 2,
+   "en": "Cafeteria",
+   "es": "Cafetería"
+  },
+  {
+   "f": 2,
+   "en": "Plants Hallway",
+   "es": "Pasillo de plantas"
+  },
+  {
+   "f": 3,
+   "en": "Coast Guard Stairs",
+   "es": "Escaleras de guardacostas"
+  },
+  {
+   "f": 3,
+   "en": "Third Floor Exit",
+   "es": "Salida de la tercera planta"
+  },
+  {
+   "f": 3,
+   "en": "Control Room",
+   "es": "Sala de control"
+  },
+  {
+   "f": 3,
+   "en": "Electric Room",
+   "es": "Cuarto eléctrico"
+  },
+  {
+   "f": 3,
+   "en": "Control Center Stairs",
+   "es": "Escalera al centro de control"
+  },
+  {
+   "f": 3,
+   "en": "Control Room Hallway",
+   "es": "Pasillo a la sala de control"
+  },
+  {
+   "f": 3,
+   "en": "Server Room",
+   "es": "Sala del servidor"
+  },
+  {
+   "f": -1,
+   "en": "Lockgate",
+   "es": "Compuerta"
+  },
+  {
+   "f": -1,
+   "en": "Quay Containers",
+   "es": "Contenedores del muelledw"
+  },
+  {
+   "f": -1,
+   "en": "Lockgate Tunnel",
+   "es": "Tunel de las compuertas"
+  },
+  {
+   "f": -1,
+   "en": "Water Walkway",
+   "es": "Paserela del agua"
+  },
+  {
+   "f": -1,
+   "en": "Quay Construction",
+   "es": "Zona de obras en el muelle"
+  },
+  {
+   "f": -1,
+   "en": "Construction Site",
+   "es": "Zona de obras"
+  },
+  {
+   "f": 2,
+   "en": "Construction Entrance",
+   "es": "Entrada a la zona de obras"
+  },
+  {
+   "f": -1,
+   "en": "Parking Alley",
+   "es": "Callejón del aparcamiento"
+  },
+  {
+   "f": -1,
+   "en": "Parking Entrance",
+   "es": "Entrada al aparcamiento"
+  },
+  {
+   "f": -1,
+   "en": "Middle Road",
+   "es": "Carretera central"
+  },
+  {
+   "f": -1,
+   "en": "Forklift Alley",
+   "es": "Callejón carretilla elevadora"
+  },
+  {
+   "f": -1,
+   "en": "Front Lawn",
+   "es": "Césped delantero"
+  },
+  {
+   "f": 2,
+   "en": "Map Archives",
+   "es": "Archivo de mapas"
+  },
+  {
+   "f": 1,
+   "en": "Basement Stairs",
+   "es": "Escaleras sótano"
+  },
+  {
+   "f": 4,
+   "en": "Coast Guard Roof",
+   "es": "Tejado de guardacostas"
+  },
+  {
+   "f": 3,
+   "en": "Coast Guard Roof",
+   "es": "Tejado de guardacostas"
+  },
+  {
+   "f": 3,
+   "en": "Bridge Roof",
+   "es": "Techo del puente"
+  },
+  {
+   "f": 4,
+   "en": "Roof Brick Pile",
+   "es": "Pila ladrillos del tejado"
+  },
+  {
+   "f": 3,
+   "en": "Roof Brick Pile",
+   "es": "Pila ladrillos del tejado"
+  },
+  {
+   "f": 4,
+   "en": "Balcony",
+   "es": "Balcón"
+  },
+  {
+   "f": 3,
+   "en": "Balcony",
+   "es": "Balcón"
+  },
+  {
+   "f": 4,
+   "en": "Control Center Roof",
+   "es": "Tejado del centro de control"
+  },
+  {
+   "f": 2,
+   "en": "Dock Stairs",
+   "es": "Escalera del embarcadero"
+  },
+  {
+   "f": -1,
+   "en": "Parking",
+   "es": "Aparcamiento"
+  },
+  {
+   "f": 1,
+   "en": "Boat Crane",
+   "es": "Grua de barcas"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "Floating Dock",
+   "es": "Embarcadero"
+  },
+  {
+   "letter": "B",
+   "en": "Sailboats",
+   "es": "Veleros"
+  },
+  {
+   "letter": "C",
+   "en": "Construction Site",
+   "es": "Zona de obras"
+  }
+ ],
+ "bombSets": {
+  "1": [
+   {
+    "f": 3,
+    "letter": "A",
+    "nearest": "Control Room"
+   },
+   {
+    "f": 3,
+    "letter": "B",
+    "nearest": "Server Room"
+   }
+  ],
+  "2": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Projector Room"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Kitchen"
+   }
+  ],
+  "3": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Archives"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Radio"
+   }
+  ]
+ },
+ "hatches": [
+  {
+   "f": 1,
+   "near": "Boat Supplies"
+  },
+  {
+   "f": 1,
+   "near": "Locker Room"
+  },
+  {
+   "f": 2,
+   "near": "Projector Room"
+  },
+  {
+   "f": 2,
+   "near": "Kitchen"
+  },
+  {
+   "f": 2,
+   "near": "Security Room"
+  }
+ ],
+ "sites": [
+  {
+   "id": "supply",
+   "name": "Suministros / Kayaks",
+   "fl": "b",
+   "rooms": [
+    "Suministros",
+    "Kayaks"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Escaleras → Suministros",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras sótano",
+      "Suministros"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Lounge → Kayaks",
+     "kind": "vertical",
+     "path": [
+      "Lounge (arriba)",
+      "Kayaks"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Túnel → Kayaks (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Túnel",
+      "Kayaks"
+     ],
+     "roles": [
+      "flanco",
+      "soporte"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escotilla Garaje → Suministros",
+     "kind": "escotilla",
+     "path": [
+      "Garaje (arriba)",
+      "Suministros"
+     ],
+     "roles": [
+      "duro",
+      "soporte"
+     ]
+    }
+   ],
+   "plan": [
+    "Thermite abre la pared de Suministros desde Escaleras de sótano (edificio Guardacostas). Buck abre el piso de Lounge sobre Kayaks.",
+    "Bajar por Escaleras + escotilla de Garaje con Lion activo.",
+    "Planta en Suministros. Nomad en Túnel."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Suministros–Escaleras ×2",
+     "Escotilla Garaje",
+     "Pared Kayaks–Túnel"
+    ],
+    "keepSoft": [
+     "Piso Lounge"
+    ],
+    "rotations": [
+     "Suministros↔Kayaks"
+    ],
+    "anchors": "Ancla Suministros (Smoke), ancla Kayaks (Mira). Roam en Lounge.",
+    "ops": [
+     "smoke",
+     "mira",
+     "kaid",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Kaid en la escotilla del Garaje."
+   }
+  },
+  {
+   "id": "coastguard",
+   "name": "Sala de reuniones Guardacostas / Lounge",
+   "fl": "1",
+   "floorIdx": 1,
+   "rooms": [
+    "Reuniones",
+    "Lounge"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Pasillo → Reuniones",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo",
+      "Reuniones"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Radar → Lounge",
+     "kind": "vertical",
+     "path": [
+      "Radar (arriba)",
+      "Lounge"
+     ],
+     "roles": [
+      "blando",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Garaje → Lounge",
+     "kind": "puerta",
+     "path": [
+      "Garaje",
+      "Lounge"
+     ],
+     "roles": [
+      "soporte",
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Radar/Servidores (2F) sobre Lounge. Ace abre la pared de Reuniones desde Puente/Pasillo.",
+    "Entrada por pared + puerta de Lounge desde Garaje con Montagne.",
+    "Planta en Reuniones. Gridlock en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Reuniones–Pasillo ×2",
+     "Pared Lounge–Garaje"
+    ],
+    "keepSoft": [
+     "Piso Radar"
+    ],
+    "rotations": [
+     "Reuniones↔Lounge"
+    ],
+    "anchors": "Ancla Reuniones (Smoke), ancla Lounge (Maestro). Roam en Radar.",
+    "ops": [
+     "smoke",
+     "maestro",
+     "bandit",
+     "jager",
+     "lesion"
+    ],
+    "tip": "Maestro en Lounge mirando Garaje."
+   }
+  },
+  {
+   "id": "radar",
+   "name": "Sala de servidores / Sala de radar",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Servidores",
+    "Radar"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Radar (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Radar"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Servidores",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo 2F",
+      "Servidores"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → Radar (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Radar"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Radar. Thermite abre la pared de Servidores desde Pasillo 2F.",
+    "Zero limpia cámaras; Ying por ventana; Glaz con humo en el pasillo.",
+    "Planta en Servidores. Nomad en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Servidores–Pasillo ×2",
+     "Ventanas Radar (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Servidores↔Radar"
+    ],
+    "anchors": "Ancla Radar (Frost + Smoke), ancla Servidores (Mira). Roam en 1F.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "valkyrie"
+    ],
+    "tip": "Frost bajo las ventanas de Radar."
+   }
+  },
+  {
+   "id": "security",
+   "name": "Sala de seguridad / Sala de mapas",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Seguridad",
+    "Mapas"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Mapas (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Mapas"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Pasillo → Seguridad",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras",
+      "Pasillo 2F",
+      "Seguridad"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "blando"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras → Mapas (flanco)",
+     "kind": "puerta",
+     "path": [
+      "Escaleras",
+      "Mapas"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Mapas. Ace abre la pared de Seguridad desde Pasillo 2F.",
+    "Zofia por ventana + Capitão en Seguridad.",
+    "Planta en Mapas. Gridlock en Escaleras."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Seguridad–Pasillo ×2",
+     "Ventanas Mapas (Castle)"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Seguridad↔Mapas"
+    ],
+    "anchors": "Ancla Mapas (Frost), ancla Seguridad (Smoke). Roam en 1F.",
+    "ops": [
+     "frost",
+     "smoke",
+     "castle",
+     "jager",
+     "mozzie"
+    ],
+    "tip": "Sitio pequeño: 2 anclas."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

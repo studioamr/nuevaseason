@@ -1,0 +1,1030 @@
+{
+ "map": "yacht",
+ "sites": {
+  "engine": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"El sitio de sótano (Engine Storage / Server Room) se gana desde arriba: Buck rompe el piso de Engine Utility y Engine Control para negar el Engine y las anclas de Storage, mientras Thermite y Thatcher abren la pared reforzada de Engine Hallway a Server Room. Con el piso abierto y la pared caída, los defensores se apretan en Storage y ahí planta Thermite pegado a la pared, con Nomad cerrando el flanco de Back Stairs.",
+     "timeline":["0:00–0:45 · drones a Back Entrance y Engine Hallway; IQ escanea Server Room desde Emergency Exit; Buck sube por Rear Deck 2F a Engine Utility","0:45–1:30 · Buck abre el piso sobre Engine y Storage; Thatcher EMP + Thermite en la pared Engine Hallway–Server Room","1:30–2:30 · entrada por la pared abierta y por Emergency Exit; Nomad tapa Back Stairs; planta en Server Room","2:30–3:00 · post-plant: Buck desde arriba, Thermite en el hueco, IQ vigila Engine Hallway"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Dronea Rear Deck y Back Entrance buscando Kapkan y ADS","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Entra por la popa cubierto por Thatcher, limpia las cajas del deck","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Cruza la puerta después del EMP y pega a la pared izquierda","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Coloca la carga exotérmica en la pared reforzada de Server Room","via":"door"},
+        {"room":"Server Room","f":1,"do":"Entra por el hueco con humo y planta detrás de los racks","via":"breach"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Kapkan en la puerta y ADS de Jäger pegado al marco","how":"Dron primero, Thatcher quema el marco con EMP y entras agachado por el lado sin trampa"},
+        {"room":"Engine Hallway","f":1,"threat":"Bandit trickeando la pared y Smoke asomando desde la puerta de Storage","how":"Espera el EMP, pon la carga en la esquina lejana de la puerta y que Buck ya tenga el piso abierto para que no asome"},
+        {"room":"Server Room","f":1,"threat":"Ancla con Mira mirando el hueco desde detrás de los racks","how":"Humo en el hueco antes de cruzar y entra con IQ escaneando la posición del espejo"}],
+       "final":"Planta en Server Room pegado a la pared abierta y sostiene el hueco desde Engine Hallway"},
+      {"op":"thatcher","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Dronea Back Entrance y marca las trampas de la puerta","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Sube a la popa con Thermite y cubre la puerta de Back Entrance","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"EMP al marco para quemar Kapkan y ADS antes de cruzar","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Dos EMP a la pared de Server Room para quemar Bandit, Kaid y Mute","via":"door"},
+        {"room":"Server Room","f":1,"do":"Entra detrás de Thermite y cubre la esquina de Engine Hallway","via":"breach"}],
+       "clear":[
+        {"room":"Rear Deck","f":1,"threat":"Roamer tipo Vigil o Cav esperando en la esquina de las cajas de la popa","how":"Dron a la popa antes de subir, entras en pareja con Thermite y limpias las cajas con prefire"},
+        {"room":"Engine Hallway","f":1,"threat":"Bandit trickeando la pared y Kaid con Rtila en la esquina","how":"Tira el EMP justo cuando Thermite pone la carga, no antes, para que Bandit no la recargue"}],
+       "final":"Sostiene Engine Hallway y cubre la puerta de Storage durante la planta"},
+      {"op":"iq","role":"intel","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Corre pegado al hielo hacia el casco de babor","via":"door"},
+        {"room":"West Hull Breach","f":-1,"do":"Escanea Server Room y Engine Hallway desde fuera, marca Valkyrie y Maestro","via":"door"},
+        {"room":"Emergency Exit","f":1,"do":"Entra por la salida de emergencia y limpia la esquina de la puerta","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Sostiene el pasillo desde el lado oeste mientras Thermite abre","via":"door"},
+        {"room":"Engine Storage","f":1,"do":"Entra a Storage con el piso ya abierto por Buck y limpia las estanterías","via":"door"}],
+       "clear":[
+        {"room":"Emergency Exit","f":1,"threat":"Kapkan en la puerta y Frost detrás de las cajas","how":"Escaneo electrónico antes de abrir, destruye la trampa por la rendija y entra agachado"},
+        {"room":"Engine Storage","f":1,"threat":"Ancla Smoke o Mira detrás de las estanterías con Evil Eye de Maestro en la esquina alta","how":"Escanea el Evil Eye, que Thatcher lo queme y entras después de que Buck abra el techo"}],
+       "final":"Cubre la planta desde Engine Hallway lado oeste y marca electrónicos en Storage"},
+      {"op":"buck","role":"vertical","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la escalera de popa hasta la cubierta de segundo piso","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Dronea Engine Control antes de entrar","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Limpia el cuarto y abre el piso sobre Engine Storage con la Skeleton Key","via":"door"},
+        {"room":"Engine Utility","f":2,"do":"Abre el piso sobre Engine y la escotilla, niega el cuarto grande de máquinas","via":"door"},
+        {"room":"Engine","f":1,"do":"Baja por la escotilla al final para cerrar la planta","via":"hatch"}],
+       "clear":[
+        {"room":"Engine Control","f":2,"threat":"Roamer tipo Vigil o Alibi esperando detrás de las consolas","how":"Dron primero, entra con prefire a las consolas y limpia el rincón de Back Stairs"},
+        {"room":"Engine Utility","f":2,"threat":"Cepo de Frost en la escotilla y ADS de Jäger para bloquear granadas","how":"Rompe el piso desde lejos, tira la frag por el hueco solo después de ver que el ADS ya gastó cargas"}],
+       "final":"Sostiene el piso abierto sobre Storage y baja por la escotilla en post-plant"},
+      {"op":"nomad","role":"flanco","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube a la cubierta trasera junto con Buck","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Cubre a Buck mientras dronea Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Pone un Airjab en la puerta de Kitchen Hallway para cerrar el roam","via":"door"},
+        {"room":"Back Stairs","f":2,"do":"Airjab al pie de la escalera y baja con cuidado","via":"door"},
+        {"room":"Back Stairs","f":1,"do":"Limpia la salida de la escalera y toma Engine Hallway desde atrás","via":"stairs"},
+        {"room":"Engine Hallway","f":1,"do":"Cubre el flanco de Storage durante la planta","via":"door"}],
+       "clear":[
+        {"room":"Back Stairs","f":2,"threat":"Roamer tipo Cav o Vigil rotando de Kitchen a Engine Control","how":"Airjab en la puerta de Kitchen Hallway antes de bajar y escucha pasos en la escalera"},
+        {"room":"Back Stairs","f":1,"threat":"Kapkan en la salida de la escalera y un ancla asomando desde Engine Hallway","how":"Dron por la escalera, destruye la trampa y baja pegado a la pared con Airjab al pie"}],
+       "final":"Sostiene Back Stairs y Engine Hallway para que nadie retome desde arriba"}
+     ]},
+    {"id":"rush","n":"Rush por popa","tag":"RUSH","summary":"Los cinco entran juntos por Back Entrance en los primeros 40 segundos, antes de que Bandit termine de trickear y que Mira ponga espejos. Ying tira Candelas por la puerta, Ash rompe la barricada de Server Room y Blitz entra primero absorbiendo balas. Funciona porque el sitio de sótano depende de que la pared de Server Room aguante y al rush le da igual la pared.",
+     "timeline":["0:00–0:20 · un solo dron a Back Entrance, todos corren a Rear Deck","0:20–0:45 · Ying Candela por la puerta, Ash rompe barricadas, Blitz cruza primero","0:45–1:30 · limpiar Engine Hallway y Storage, planta rápida en Storage","1:30–3:00 · sostener Storage, Sledge abre líneas hacia Server Room"],
+     "ops":[
+      {"op":"blitz","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Corre directo a la popa sin dronear, escudo arriba","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Flashea la puerta de Back Entrance y cruza primero","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Flash a la esquina y avanza empujando a los defensores","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Flash hacia la puerta de Storage y entra pegado a la pared","via":"door"},
+        {"room":"Engine Storage","f":1,"do":"Se planta en la puerta absorbiendo disparos mientras Ash planta","via":"door"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Kapkan en la puerta y defensor rotando desde Engine Hallway","how":"Ying quema la trampa con la Candela; cruzas agachado con flash lista"},
+        {"room":"Engine Storage","f":1,"threat":"Ancla detrás de las estanterías con Smoke listo","how":"Flash al entrar y que Sledge y Finka lo saquen mientras aguantas los tiros"}],
+       "final":"Se para en la puerta de Storage cubriendo la planta con el escudo"},
+      {"op":"ying","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sale corriendo detrás de Blitz","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Lanza Candela a la puerta de Back Entrance para quemar Kapkan y cegar","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Segunda Candela hacia Engine Hallway y entra con Blitz","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Tercera Candela a la puerta de Storage antes de cruzar","via":"door"},
+        {"room":"Engine Storage","f":1,"do":"Limpia el cuarto detrás de Blitz","via":"door"}],
+       "clear":[
+        {"room":"Engine Hallway","f":1,"threat":"Bandit o Kaid pegados a la pared de Server Room que voltean al oír la puerta","how":"Candela por la puerta de Back Entrance y entras junto con el escudo"},
+        {"room":"Engine Storage","f":1,"threat":"Mira con espejo hacia la puerta y Smoke en la esquina","how":"Candela primero, entras con Blitz y limpias la esquina del espejo por atrás"}],
+       "final":"Limpia Storage y sostiene la puerta de Engine Hallway"},
+      {"op":"ash","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Corre a la popa con el grupo","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Breach a la barricada de Back Entrance desde distancia","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Entra después del escudo","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Breach a la barricada o Castle de Storage","via":"door"},
+        {"room":"Engine Storage","f":1,"do":"Planta rápido detrás de las estanterías","via":"door"}],
+       "clear":[
+        {"room":"Rear Deck","f":1,"threat":"Roamer asomando por la puerta de Back Entrance","how":"Breach a la barricada de lejos y prefire a la puerta"},
+        {"room":"Engine Storage","f":1,"threat":"Castle en la puerta y ancla detrás","how":"Breach al Castle desde Engine Hallway y entra tras la Candela"}],
+       "final":"Planta en Storage y sostiene desde la esquina de las estanterías"},
+      {"op":"finka","role":"soporte","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Activa Adrenal Surge cuando el grupo llegue a la popa","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Entra tercero cubriendo la espalda del grupo","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Segundo Surge al cruzar a Engine Hallway","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Sostiene el pasillo mirando a Server Room mientras plantan","via":"door"}],
+       "clear":[
+        {"room":"Engine Hallway","f":1,"threat":"Defensor de Server Room asomando por la puerta a la espalda del rush","how":"Te quedas en el pasillo mirando la puerta de Server Room y prefire cuando abra"}],
+       "final":"Sostiene Engine Hallway mirando Server Room y revive con Surge si cae alguien"},
+      {"op":"sledge","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Cierra el grupo","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Cubre la espalda del rush desde la popa","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Abre la pared blanda a Engine Hallway para tener dos huecos","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Abre líneas hacia Engine y Server Room con el martillo","via":"door"},
+        {"room":"Engine","f":1,"do":"Limpia el cuarto grande de máquinas para que no retomen por ahí","via":"door"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Roamer regresando por Back Stairs a la espalda del grupo","how":"Te quedas último mirando la escalera y prefire al pie"},
+        {"room":"Engine","f":1,"threat":"Ancla Maestro o defensor rotando por Engine hacia Storage","how":"Abre la pared blanda con el martillo y limpia con frag antes de entrar"}],
+       "final":"Sostiene Engine para cortar la rotación a Storage durante la planta"}
+     ]},
+    {"id":"vertical","n":"Vertical desde Engine Control","tag":"VERTICAL","summary":"Todo el equipo toma el segundo piso (Engine Control, Engine Utility y Kitchen Hallway) y destruye el sótano desde arriba: Sledge y Buck abren el piso, Fuze mete racimos por Engine Utility sobre Storage y Ram manda el BU-GI por Engine Control. Los defensores de sótano no tienen a dónde esconderse y bajan a plantar cuando queden dos o menos. Funciona porque el techo del sitio es blando casi entero.",
+     "timeline":["0:00–0:45 · Dokkaebi hackea cámaras y llama, drones a Rear Deck 2F y Engine Control","0:45–1:30 · Sledge y Buck abren el piso, Fuze cargas en Engine Utility, Ram BU-GI en Engine Control","1:30–2:30 · matar desde arriba, Dokkaebi llama de nuevo, bajar por Back Stairs","2:30–3:00 · planta en Storage con dos arriba sosteniendo el piso abierto"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la escalera de la popa","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Dronea Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Abre el piso sobre Server Room con el martillo","via":"door"},
+        {"room":"Back Stairs","f":2,"do":"Baja al final para entrar a plantar","via":"door"},
+        {"room":"Back Stairs","f":1,"do":"Sale de la escalera y toma Engine Hallway","via":"stairs"},
+        {"room":"Engine Storage","f":1,"do":"Entra a plantar con todo el piso ya abierto","via":"door"}],
+       "clear":[
+        {"room":"Engine Control","f":2,"threat":"Roamer esperando detrás de las consolas y Kapkan en la puerta de Back Stairs","how":"Dron primero, prefire a las consolas, revisa la puerta de Back Stairs antes de abrir el piso"},
+        {"room":"Back Stairs","f":1,"threat":"Ancla que sube a pelear al pie de la escalera","how":"Baja solo cuando Dokkaebi tenga las cámaras y con Buck sosteniendo el hueco"}],
+       "final":"Planta en Storage bajo el piso abierto que Buck sostiene"},
+      {"op":"buck","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con Sledge por la popa","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Cubre la entrada a Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Limpia el cuarto con Sledge","via":"door"},
+        {"room":"Engine Utility","f":2,"do":"Abre el piso sobre Storage y la escotilla, mata a los que se pegan a las estanterías","via":"door"},
+        {"room":"Engine","f":1,"do":"Baja por la escotilla cuando el sitio quede vacío","via":"hatch"}],
+       "clear":[
+        {"room":"Engine Utility","f":2,"threat":"Cepo de Frost en la escotilla y roamer en Kitchen Hallway","how":"Skeleton Key al piso desde lejos y que Ram cubra la puerta de Kitchen Hallway"},
+        {"room":"Engine","f":1,"threat":"Ancla Maestro cubriendo la escotilla desde abajo","how":"Frag por el hueco antes de bajar y baja solo con Fuze cubriendo"}],
+       "final":"Sostiene el piso abierto sobre Storage desde Engine Utility hasta que planten"},
+      {"op":"fuze","role":"negacion","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa detrás de los blandos","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Espera a que limpien Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Carga de racimo en el piso sobre Server Room","via":"door"},
+        {"room":"Engine Utility","f":2,"do":"Dos cargas de racimo en el piso sobre Storage, una tras otra","via":"door"}],
+       "clear":[
+        {"room":"Engine Utility","f":2,"threat":"ADS de Jäger o Wamai en Storage que atrapan los racimos","how":"Primera carga para gastar el ADS, segunda en otra esquina para que sí exploten"}],
+       "final":"Se queda en Engine Utility cubriendo el piso abierto en post-plant"},
+      {"op":"ram","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Cubre la retaguardia del grupo","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Lanza el BU-GI hacia el piso de Server Room y Back Stairs","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Cubre la puerta de Kitchen Hallway para que no lleguen roamers de Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Kitchen Hallway","f":2,"threat":"Roamer tipo Vigil o Cav bajando desde Kitchen a flanquear a los verticales","how":"Te paras en la puerta mirando al pasillo y usas el segundo BU-GI para abrir el piso si te presionan"}],
+       "final":"Sostiene Kitchen Hallway como flanco de todo el grupo vertical"},
+      {"op":"dokkaebi","role":"intel","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Hackea cámaras desde el hielo y llama para revelar posiciones","via":"door"},
+        {"room":"West Hull Breach","f":-1,"do":"Llega al casco de babor y dronea Emergency Exit","via":"door"},
+        {"room":"Emergency Exit","f":1,"do":"Entra por la salida de emergencia cuando ya hayan matado arriba","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Toma el pasillo y ve las cámaras de sótano","via":"door"},
+        {"room":"Engine Storage","f":1,"do":"Planta cubierto por el grupo vertical","via":"door"}],
+       "clear":[
+        {"room":"Emergency Exit","f":1,"threat":"Kapkan o Frost en la salida de emergencia","how":"Dron primero, destruye la trampa por la rendija y entra agachado"},
+        {"room":"Engine Hallway","f":1,"threat":"Ancla que se refugia en el pasillo porque arriba le abrieron el techo","how":"Llama con Logic Bomb para escucharlo y entra cuando Buck confirme por el hueco"}],
+       "final":"Planta en Storage y ve cámaras hackeadas en post-plant"}
+     ]},
+    {"id":"split","n":"Split popa + emergencia","tag":"SPLIT","summary":"Dos frentes al mismo tiempo: Ace y Brava por Back Entrance abren la pared de Server Room, mientras Zofia, Jackal y Montagne entran por Emergency Exit de babor y empujan Engine Hallway desde el otro lado. Los defensores no pueden cubrir las dos bocas del pasillo a la vez y quien voltee a un frente muere por el otro. Funciona porque el pasillo del sótano es largo y recto.",
+     "timeline":["0:00–0:45 · drones a Back Entrance y Emergency Exit; Brava hackea cámaras y ADS; Jackal escanea huellas en el hielo","0:45–1:30 · Ace SELMA en Server Room; Zofia impacts a Emergency Exit; Montagne cruza primero por babor","1:30–2:30 · pinza sobre Engine Hallway; planta en Server Room detrás de Montagne","2:30–3:00 · post-plant: Ace en el hueco, Montagne en Server Room, Jackal cuida Back Stairs"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Dronea la popa","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Entra por la popa con Brava","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Cruza tras el dron Kludge de Brava","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"SELMA en la pared reforzada de Server Room, dos cargas","via":"door"},
+        {"room":"Server Room","f":1,"do":"Entra por el hueco cuando Montagne ya esté en el pasillo","via":"breach"}],
+       "clear":[
+        {"room":"Back Entrance","f":1,"threat":"Kapkan en la puerta y ADS en el marco","how":"Kludge de Brava toma el ADS y disparas la trampa por la rendija"},
+        {"room":"Engine Hallway","f":1,"threat":"Bandit trickeando la pared de Server Room","how":"Brava hackea la batería con el Kludge y pones SELMA en cuanto la luz cambie"}],
+       "final":"Sostiene el hueco de Server Room y cubre la planta"},
+      {"op":"brava","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Manda el Kludge por la popa buscando ADS y cámaras","via":"door"},
+        {"room":"Rear Deck","f":1,"do":"Hackea el ADS de Back Entrance y lo pone contra ellos","via":"door"},
+        {"room":"Back Entrance","f":1,"do":"Entra con Ace","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Kludge a la batería de Bandit en la pared de Server Room","via":"door"},
+        {"room":"Server Room","f":1,"do":"Entra tras Ace y limpia la esquina de los racks","via":"breach"}],
+       "clear":[
+        {"room":"Engine Hallway","f":1,"threat":"Bandit y Evil Eye de Maestro cubriendo la pared","how":"Hackea el Evil Eye con el Kludge para que sea tuyo y luego la batería"}],
+       "final":"Cubre a Ace en el hueco y sostiene Engine Hallway lado popa"},
+      {"op":"montagne","role":"soporte","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Camina con Zofia y Jackal hacia babor","via":"door"},
+        {"room":"West Hull Breach","f":-1,"do":"Se planta con el escudo frente a Emergency Exit","via":"door"},
+        {"room":"Emergency Exit","f":1,"do":"Entra primero con escudo extendido","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Avanza por el pasillo empujando hacia Server Room con Zofia atrás","via":"door"},
+        {"room":"Server Room","f":1,"do":"Se planta en la puerta para cubrir la planta de Zofia","via":"door"}],
+       "clear":[
+        {"room":"Emergency Exit","f":1,"threat":"Kapkan en la puerta y Frost detrás","how":"Escudo arriba, que Zofia rompa la trampa con impact y avanzas"},
+        {"room":"Engine Hallway","f":1,"threat":"Ancla Smoke en la puerta de Storage tirando gas al pasillo","how":"Aguanta el escudo extendido, no avances en el gas, deja que Ace abra por el otro lado"}],
+       "final":"Bloquea la puerta de Server Room con el escudo durante la planta"},
+      {"op":"zofia","role":"entrada","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Acompaña a Montagne","via":"door"},
+        {"room":"West Hull Breach","f":-1,"do":"Impact a la barricada de Emergency Exit desde lejos","via":"door"},
+        {"room":"Emergency Exit","f":1,"do":"Concussion a la esquina y entra detrás del escudo","via":"door"},
+        {"room":"Engine Hallway","f":1,"do":"Impact a la puerta de Storage y aturde a quien esté","via":"door"},
+        {"room":"Server Room","f":1,"do":"Planta detrás de Montagne","via":"door"}],
+       "clear":[
+        {"room":"Emergency Exit","f":1,"threat":"Kapkan en la puerta","how":"Impact a la barricada rompe la trampa; entras después del escudo"},
+        {"room":"Engine Hallway","f":1,"threat":"Defensor pegado a la puerta de Storage con Mira mirando el pasillo","how":"Concussion a la puerta y prefire; el espejo no ve el lado de Emergency Exit"}],
+       "final":"Planta en Server Room y sostiene desde detrás de los racks"},
+      {"op":"jackal","role":"flanco","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Escanea huellas en el hielo por si un roamer salió","via":"door"},
+        {"room":"West Hull Breach","f":-1,"do":"Cubre la espalda del grupo de babor","via":"door"},
+        {"room":"Emergency Exit","f":1,"do":"Entra último y escanea huellas hacia Engine","via":"door"},
+        {"room":"Engine","f":1,"do":"Persigue al roamer por Engine y cierra Back Stairs","via":"door"},
+        {"room":"Back Stairs","f":1,"do":"Sostiene el pie de la escalera mirando arriba","via":"door"}],
+       "clear":[
+        {"room":"Engine","f":1,"threat":"Roamer tipo Cav o Vigil escondido entre las máquinas","how":"Escanea huellas al entrar y sigue el ping con prefire a las esquinas"},
+        {"room":"Back Stairs","f":1,"threat":"Roamer regresando desde arriba para flanquear la planta","how":"Te quedas al pie de la escalera mirando hacia arriba con Eyenox activo"}],
+       "final":"Cuida Back Stairs y Engine para que nadie flanquee la planta"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Reforzar la pared Engine Hallway–Server Room y las escotillas de arriba, Kaid las electrifica, Mira pone espejos en Storage mirando el pasillo y Smoke ancla Server Room. Valkyrie sube cámaras a Engine Control y Rear Deck para avisar de la vertical, y Jäger cuida la puerta de Back Entrance. Se gana negando la vertical y castigando cada entrada al pasillo.",
+     "reinforce":["Pared Engine Hallway–Server Room ×2","Escotilla de Engine Utility","Escotilla de Back Entrance","Pared Engine Storage–Emergency Exit"],
+     "rotations":["Engine Storage↔Server Room por Engine Hallway","Engine Storage↔Engine por pared blanda"],
+     "ops":[
+      {"op":"mira","room":"Engine Storage","f":1,"role":"ancla","job":"Dos espejos en la pared de Engine Hallway; mira la puerta de Back Entrance y castiga al que cruce el pasillo"},
+      {"op":"smoke","room":"Server Room","f":1,"role":"ancla","job":"Gas a la pared reforzada y a la puerta en post-plant; sostiene detrás de los racks"},
+      {"op":"kaid","room":"Engine Hallway","f":1,"role":"flex","job":"Rtila en la pared de Server Room y en la escotilla de Engine Utility; luego cae a Engine a jugar la rotación"},
+      {"op":"jager","room":"Back Entrance","f":1,"role":"flex","job":"ADS en la puerta de Back Entrance y en Engine Hallway; juega el primer contacto y rota a Storage"},
+      {"op":"valkyrie","room":"Engine Control","f":2,"role":"roam","job":"Cámaras en Engine Control y Rear Deck 2F; roamea Kitchen Hallway y cae por Back Stairs al ver la vertical"}
+     ]},
+    {"id":"alt","n":"Anti-vertical con Melusi","summary":"Setup para cuando el rival siempre tira vertical: Melusi pone Banshees en Engine Control y Engine Utility para frenarlos arriba, Mute jammea las escotillas y la pared de Server Room, Solis detecta drones y cargas desde Engine, Castle tapa Back Entrance y Vigil roamea el segundo piso invisible a drones.",
+     "reinforce":["Pared Engine Hallway–Server Room ×2","Escotilla de Engine Utility","Escotilla de Back Entrance","Pared Engine Control–Rear Deck"],
+     "rotations":["Engine Storage↔Server Room por Engine Hallway","Engine↔Engine Storage por pared blanda"],
+     "ops":[
+      {"op":"melusi","room":"Engine Utility","f":2,"role":"flex","job":"Banshees en Engine Control y Engine Utility; frena a los verticales y cae por Back Stairs"},
+      {"op":"mute","room":"Server Room","f":1,"role":"ancla","job":"Jammers en la pared reforzada y en la escotilla; ancla Server Room mirando la puerta"},
+      {"op":"solis","room":"Engine Storage","f":1,"role":"ancla","job":"Detecta drones y cargas desde Storage; avisa de la SELMA y del BU-GI"},
+      {"op":"castle","room":"Back Entrance","f":1,"role":"flex","job":"Barricada blindada en Back Entrance y Emergency Exit; juega Engine Hallway"},
+      {"op":"vigil","room":"Kitchen Hallway","f":2,"role":"roam","job":"Roamea Kitchen Hallway y Engine Control con ERC-7 activo; flanquea a los verticales por Back Stairs"}
+     ]}
+   ]
+  },
+  "kitchen": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Engine Control y Kitchen Hallway por la popa para abrir la pared reforzada Kitchen Hallway–Kitchen con Thermite, mientras Sledge sube a Casino y rompe el piso sobre Kitchen y Kitchen Pantry para negar las anclas. Iana dronea Staff Dormitory con la Gemini y Nomad cierra Cafeteria Hallway. Cuando la pared cae, se planta en Kitchen pegado a la pared abierta.",
+     "timeline":["0:00–0:45 · drones a Rear Deck 2F y Engine Control; Sledge sube por Spa Deck a Lounge y Casino Hallway; Iana Gemini a Staff Dormitory","0:45–1:30 · Sledge abre el piso de Casino sobre Kitchen; Thatcher EMP + Thermite en Kitchen Hallway–Kitchen","1:30–2:30 · entrada por la pared; Nomad Airjabs en Cafeteria Hallway; planta en Kitchen","2:30–3:00 · post-plant: Sledge desde Casino, Thermite en el hueco, Iana cuida Staff Dormitory"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la escalera de popa al segundo piso","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Dronea Engine Control y espera a Thatcher","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Limpia el cuarto y avanza a Kitchen Hallway","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Carga exotérmica en la pared reforzada de Kitchen","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Entra por el hueco y planta detrás de la isla de la cocina","via":"breach"}],
+       "clear":[
+        {"room":"Engine Control","f":2,"threat":"Roamer detrás de las consolas y Kapkan en la puerta de Kitchen Hallway","how":"Dron primero, prefire a las consolas y Thatcher quema la trampa"},
+        {"room":"Kitchen Hallway","f":2,"threat":"Bandit trickeando y Mira con espejo desde Kitchen mirando el pasillo","how":"EMP justo al poner la carga; ponla en el lado que el espejo no cubre"},
+        {"room":"Kitchen","f":2,"threat":"Ancla Smoke detrás de la isla y Frost bajo la barra","how":"Humo en el hueco, entra agachado y revisa el suelo bajo la barra antes de plantar"}],
+       "final":"Planta en Kitchen pegado a la pared abierta y sostiene el hueco"},
+      {"op":"thatcher","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con Thermite","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Cubre la puerta de Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"EMP a la puerta de Kitchen Hallway para Kapkan y ADS","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Dos EMP a la pared de Kitchen para Bandit, Kaid y Mute","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Entra tras Thermite y limpia la esquina de Kitchen Pantry","via":"breach"}],
+       "clear":[
+        {"room":"Rear Deck","f":2,"threat":"Roamer tipo Vigil esperando en la cubierta de popa","how":"Dron a la cubierta antes de subir y limpia en pareja"},
+        {"room":"Kitchen Hallway","f":2,"threat":"Bandit trickeando la pared","how":"EMP cuando Thermite ponga la carga, no antes"}],
+       "final":"Sostiene Kitchen Hallway y la puerta de Engine Control durante la planta"},
+      {"op":"iana","role":"intel","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Gemini por la entrada del submarino para ver Boreal Sub Room","via":"door"},
+        {"room":"Aklark Sub Entrance","f":2,"do":"Entra por la puerta del sub cuando el Gemini confirme","via":"door"},
+        {"room":"Boreal Sub Room","f":2,"do":"Limpia el cuarto del sub y manda Gemini a Cafeteria Hallway","via":"door"},
+        {"room":"Cafeteria Hallway","f":2,"do":"Gemini a Staff Dormitory para ver la ancla y las trampas","via":"door"},
+        {"room":"Staff Dormitory","f":2,"do":"Entra al dormitorio cuando la pared de Kitchen caiga","via":"door"}],
+       "clear":[
+        {"room":"Boreal Sub Room","f":2,"threat":"Roamer tipo Cav junto al submarino y Kapkan en la puerta","how":"Gemini primero, entras con prefire a la esquina del submarino"},
+        {"room":"Staff Dormitory","f":2,"threat":"Ancla con Mira y Frost bajo las literas","how":"Gemini para ver las literas, entra solo con la pared abierta y Nomad cubriendo el pasillo"}],
+       "final":"Sostiene Staff Dormitory y cuida el flanco de Cafeteria Hallway"},
+      {"op":"sledge","role":"vertical","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube por la escalera de babor a la cubierta del tercer piso","via":"stairs"},
+        {"room":"West Deck","f":3,"do":"Camina la cubierta de babor hacia la puerta de Lounge","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Limpia Lounge y avanza a Casino Hallway","via":"door"},
+        {"room":"Casino Hallway","f":3,"do":"Abre el piso sobre Kitchen Hallway con el martillo","via":"door"},
+        {"room":"Casino","f":3,"do":"Abre el piso sobre Kitchen y la escotilla, niega la isla","via":"door"}],
+       "clear":[
+        {"room":"Lounge","f":3,"threat":"Roamer tipo Vigil o Alibi esperando en Lounge","how":"Dron primero y entra con prefire a los sillones"},
+        {"room":"Casino","f":3,"threat":"Cepo de Frost en la escotilla y ADS bajo el piso","how":"Rompe el piso a distancia con el martillo y tira frag después de que el ADS gaste cargas"}],
+       "final":"Sostiene el piso abierto sobre Kitchen desde Casino"},
+      {"op":"nomad","role":"flanco","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Acompaña a Iana al sub","via":"door"},
+        {"room":"Aklark Sub Entrance","f":2,"do":"Entra por la puerta del sub","via":"door"},
+        {"room":"Boreal Sub Room","f":2,"do":"Airjab en la puerta de Cafeteria Hallway","via":"door"},
+        {"room":"Cafeteria Hallway","f":2,"do":"Airjab en la puerta de Cafeteria y otro en Front Stairs","via":"door"},
+        {"room":"Staff Dormitory","f":2,"do":"Entra al final para cubrir la planta","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria Hallway","f":2,"threat":"Roamer rotando desde Cafeteria o Front Stairs para flanquear","how":"Airjabs en las dos puertas y espera el disparo"},
+        {"room":"Staff Dormitory","f":2,"threat":"Kapkan en la puerta del dormitorio","how":"Dron a la puerta y rompe la trampa desde el pasillo"}],
+       "final":"Sostiene Cafeteria Hallway cubriendo el flanco de la planta"}
+     ]},
+    {"id":"rush","n":"Rush por Engine Control","tag":"RUSH","summary":"Los cinco suben la escalera de popa y entran por Engine Control a Kitchen Hallway y Kitchen en menos de 45 segundos. Ying ciega el pasillo, Ash rompe la barricada de Kitchen, Blitz cruza primero y Capitão tapa Staff Dormitory con fuego. Funciona porque Kitchen Hallway está a tres puertas de la popa y la pared aún no está trickeada.",
+     "timeline":["0:00–0:20 · sin dronear, todos suben a Rear Deck 2F","0:20–0:45 · Ying Candela a Engine Control, Ash breach a la barricada de Kitchen, Blitz entra","0:45–1:30 · limpiar Kitchen, Capitão fuego a la puerta de Staff Dormitory, planta en Kitchen","1:30–3:00 · sostener Kitchen mirando Kitchen Hallway y Kitchen Pantry"],
+     "ops":[
+      {"op":"blitz","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Corre a la popa y sube","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Flash a Engine Control y cruza","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Flash a las consolas y avanza","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Flash a la puerta de Kitchen y entra primero","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Aguanta en la puerta mientras Ash planta","via":"door"}],
+       "clear":[
+        {"room":"Engine Control","f":2,"threat":"Roamer detrás de las consolas","how":"Flash y avanzas; Ying limpia con la Candela"},
+        {"room":"Kitchen","f":2,"threat":"Ancla detrás de la isla con Smoke listo","how":"Flash al entrar y que Sledge lo saque mientras aguantas"}],
+       "final":"Se para en la puerta de Kitchen con el escudo cubriendo la planta"},
+      {"op":"ying","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube detrás de Blitz","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Candela por la puerta de Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Candela a la puerta de Kitchen Hallway","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Tercera Candela a Kitchen antes de entrar","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Limpia detrás de Blitz","via":"door"}],
+       "clear":[
+        {"room":"Kitchen Hallway","f":2,"threat":"Kapkan en la puerta y Bandit pegado a la pared","how":"Candela por la puerta quema la trampa y ciega al que trickea"},
+        {"room":"Kitchen","f":2,"threat":"Mira con espejo hacia el pasillo","how":"Candela primero y entra por el lado ciego del espejo con Blitz"}],
+       "final":"Limpia Kitchen y sostiene Kitchen Pantry"},
+      {"op":"ash","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con el grupo","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Breach a la barricada de Engine Control desde lejos","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Entra después del escudo","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Breach a la barricada o Castle de Kitchen","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Planta rápido detrás de la isla","via":"door"}],
+       "clear":[
+        {"room":"Kitchen Hallway","f":2,"threat":"Castle en la puerta de Kitchen y ancla detrás","how":"Breach al Castle desde Engine Control y entra tras la Candela"}],
+       "final":"Planta en Kitchen y sostiene desde la isla"},
+      {"op":"capitao","role":"negacion","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con el grupo","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Cubre la retaguardia","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Entra tercero","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Humo al pasillo y flecha de fuego a la puerta de Staff Dormitory","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Fuego a la puerta de Staff Dormitory para que no roten a la planta","via":"door"}],
+       "clear":[
+        {"room":"Kitchen","f":2,"threat":"Ancla de Staff Dormitory rotando a Kitchen por la puerta","how":"Flecha de fuego en la puerta del dormitorio justo antes de plantar"}],
+       "final":"Sostiene la puerta de Staff Dormitory con fuego y humo en post-plant"},
+      {"op":"sledge","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Cierra el grupo","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Cubre la escalera de popa","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Cubre Back Stairs mientras el grupo avanza","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Abre la pared blanda a Kitchen Pantry para tener otra entrada","via":"door"},
+        {"room":"Kitchen Pantry","f":2,"do":"Limpia la despensa y la escalera de Kitchen Stairs","via":"breach"}],
+       "clear":[
+        {"room":"Engine Control","f":2,"threat":"Roamer regresando por Back Stairs a la espalda del rush","how":"Te quedas último mirando Back Stairs y prefire"},
+        {"room":"Kitchen Pantry","f":2,"threat":"Ancla escondida en la despensa o bajando por Kitchen Stairs","how":"Abre la pared con el martillo y limpia con frag antes de entrar"}],
+       "final":"Sostiene Kitchen Pantry y Kitchen Stairs para que no retomen desde arriba"}
+     ]},
+    {"id":"vertical","n":"Vertical desde Casino","tag":"VERTICAL","summary":"Todo el equipo toma el tercer piso (Casino, Poker Room, Casino Hallway y Globe Hallway) y destruye Kitchen y Staff Dormitory desde arriba: Buck y Ram abren el piso de Casino sobre Kitchen, Fuze mete racimos por Globe Hallway sobre Staff Dormitory y Glaz ve por el humo. Zero pone Argus en las escotillas para ver a los que se esconden. Se baja a plantar por Kitchen Stairs cuando queden dos.",
+     "timeline":["0:00–0:45 · subir por West Deck y Spa Deck a Lounge; drones a Casino y Globe Hallway","0:45–1:30 · Buck y Ram abren el piso de Casino; Fuze cargas en Globe Hallway sobre Staff Dormitory","1:30–2:30 · matar desde arriba con Glaz viendo el humo; Zero Argus en las escotillas","2:30–3:00 · bajar por Kitchen Stairs a Kitchen Pantry y plantar en Kitchen"],
+     "ops":[
+      {"op":"buck","role":"blando","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube por la escalera de babor","via":"stairs"},
+        {"room":"West Deck","f":3,"do":"Camina la cubierta a la puerta de Lounge","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Limpia Lounge","via":"door"},
+        {"room":"Casino","f":3,"do":"Abre el piso sobre Kitchen y la escotilla con la Skeleton Key","via":"door"},
+        {"room":"Kitchen Stairs","f":2,"do":"Baja por la escalera de la cocina al final","via":"stairs"},
+        {"room":"Kitchen Pantry","f":2,"do":"Entra a la despensa y luego a plantar","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Planta en Kitchen con el piso abierto sosteniendo","via":"door"}],
+       "clear":[
+        {"room":"Casino","f":3,"threat":"Roamer entre las mesas de Casino y ADS bajo la escotilla","how":"Dron primero y prefire a las mesas; abre el piso a distancia"},
+        {"room":"Kitchen Pantry","f":2,"threat":"Ancla escondida en la despensa cuando le abren el techo","how":"Baja solo con Zero viendo la Argus y Ram cubriendo el hueco"}],
+       "final":"Planta en Kitchen bajo el piso abierto"},
+      {"op":"ram","role":"blando","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube con Buck","via":"stairs"},
+        {"room":"West Deck","f":3,"do":"Cubre la cubierta de babor","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Entra tras Buck","via":"door"},
+        {"room":"Casino Hallway","f":3,"do":"Lanza el BU-GI hacia el piso de Kitchen Hallway","via":"door"},
+        {"room":"Casino","f":3,"do":"Segundo BU-GI cruzando Casino sobre Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Casino Hallway","f":3,"threat":"Kapkan en la puerta y roamer viniendo de Globe Hallway","how":"Dron a la puerta y BU-GI limpia la trampa"}],
+       "final":"Sostiene el piso abierto desde Casino Hallway en post-plant"},
+      {"op":"fuze","role":"negacion","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por la escalera de estribor","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Camina la cubierta a la puerta de Globe Hallway","via":"stairs"},
+        {"room":"Globe Hallway","f":3,"do":"Limpia el pasillo del globo","via":"door"},
+        {"room":"Bedroom Hallway","f":3,"do":"Cargas de racimo en el piso sobre Staff Dormitory, dos seguidas","via":"door"}],
+       "clear":[
+        {"room":"Globe Hallway","f":3,"threat":"Roamer tipo Alibi con prismas en el pasillo","how":"Dron primero y dispara a los prismas antes de entrar"},
+        {"room":"Bedroom Hallway","f":3,"threat":"ADS de Jäger en Staff Dormitory atrapando racimos","how":"Primera carga gasta el ADS, segunda en otra esquina"}],
+       "final":"Se queda sobre Staff Dormitory cubriendo la escotilla de Bedroom Hallway"},
+      {"op":"glaz","role":"negacion","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube con Fuze por estribor","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Cubre la cubierta de estribor","via":"stairs"},
+        {"room":"Globe Hallway","f":3,"do":"Entra tras Fuze","via":"door"},
+        {"room":"Poker Room","f":3,"do":"Humo por el piso abierto y ve a las anclas con la térmica","via":"door"}],
+       "clear":[
+        {"room":"Poker Room","f":3,"threat":"Ancla de Staff Dormitory tirando por el hueco del piso","how":"Humo primero y dispara con la térmica desde ángulo cerrado"}],
+       "final":"Cubre por el humo desde Poker Room en post-plant"},
+      {"op":"zero","role":"intel","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por estribor","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Argus en la cubierta mirando Globe Hallway","via":"stairs"},
+        {"room":"Globe Hallway","f":3,"do":"Argus en la escotilla de Bedroom Hallway para ver Staff Dormitory","via":"door"},
+        {"room":"Casino","f":3,"do":"Argus en la escotilla de Casino para ver Kitchen","via":"door"},
+        {"room":"Kitchen Stairs","f":2,"do":"Baja con Buck a cubrir la planta","via":"stairs"},
+        {"room":"Kitchen","f":2,"do":"Cubre la planta viendo las Argus","via":"door"}],
+       "clear":[
+        {"room":"Casino","f":3,"threat":"Mute jammeando la escotilla y Valkyrie viendo la cámara","how":"Argus a la escotilla que no tenga jammer y dispara la cámara"}],
+       "final":"Cubre la planta en Kitchen viendo las Argus"}
+     ]},
+    {"id":"split","n":"Split popa + submarino","tag":"SPLIT","summary":"Hibana y Brava entran por la popa a Kitchen Hallway y abren la pared de Kitchen, mientras Montagne, Zofia y Jackal entran por Aklark Sub Entrance a Boreal Sub Room y Cafeteria Hallway y empujan Staff Dormitory. Los defensores tienen que dividir a Mira y Smoke entre dos cuartos y el que se quede solo muere. Funciona porque Staff Dormitory y Kitchen tienen entradas opuestas.",
+     "timeline":["0:00–0:45 · drones a Engine Control y Boreal Sub Room; Brava hackea cámaras; Jackal escanea el hielo","0:45–1:30 · Hibana pellets en Kitchen Hallway–Kitchen; Montagne cruza Boreal Sub Room; Zofia impacts a Staff Dormitory","1:30–2:30 · pinza: 2 por Kitchen, 3 por Staff Dormitory; planta en Staff Dormitory tras Montagne","2:30–3:00 · post-plant: Hibana en Kitchen, Montagne en Staff Dormitory, Jackal en Cafeteria Hallway"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Dronea Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Entra tras el Kludge de Brava","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Pellets X-KAIROS en la pared reforzada de Kitchen","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Entra por el hueco cuando el grupo del sub empuje","via":"breach"}],
+       "clear":[
+        {"room":"Engine Control","f":2,"threat":"Kapkan en la puerta a Kitchen Hallway","how":"Kludge de Brava o dron lo marca y lo rompes de lejos"},
+        {"room":"Kitchen Hallway","f":2,"threat":"Bandit trickeando la pared","how":"Brava hackea la batería y disparas los pellets desde la esquina lejana"}],
+       "final":"Sostiene el hueco de Kitchen y cubre la rotación a Staff Dormitory"},
+      {"op":"brava","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Kludge por la popa","via":"stairs"},
+        {"room":"Rear Deck","f":2,"do":"Hackea el ADS de Engine Control","via":"stairs"},
+        {"room":"Engine Control","f":2,"do":"Entra con Hibana","via":"door"},
+        {"room":"Kitchen Hallway","f":2,"do":"Kludge a la batería de Bandit y al Evil Eye","via":"door"},
+        {"room":"Kitchen","f":2,"do":"Entra tras Hibana y limpia la isla","via":"breach"}],
+       "clear":[
+        {"room":"Kitchen Hallway","f":2,"threat":"Evil Eye de Maestro cubriendo la pared y Bandit detrás","how":"Hackea el Evil Eye primero para que apunte a Bandit"}],
+       "final":"Cubre a Hibana en el hueco de Kitchen"},
+      {"op":"montagne","role":"soporte","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Camina con Zofia y Jackal al sub","via":"door"},
+        {"room":"Aklark Sub Entrance","f":2,"do":"Entra primero con escudo extendido","via":"door"},
+        {"room":"Boreal Sub Room","f":2,"do":"Avanza por el cuarto del sub empujando","via":"door"},
+        {"room":"Cafeteria Hallway","f":2,"do":"Se planta en la puerta de Staff Dormitory","via":"door"},
+        {"room":"Staff Dormitory","f":2,"do":"Bloquea la puerta cubriendo la planta de Zofia","via":"door"}],
+       "clear":[
+        {"room":"Boreal Sub Room","f":2,"threat":"Roamer tipo Cav junto al sub y Kapkan en la puerta","how":"Escudo arriba y Zofia rompe la trampa con impact"},
+        {"room":"Staff Dormitory","f":2,"threat":"Ancla Smoke tirando gas a la puerta","how":"Aguanta con escudo extendido y no avances en el gas hasta que Hibana abra por Kitchen"}],
+       "final":"Bloquea la puerta de Staff Dormitory con el escudo durante la planta"},
+      {"op":"zofia","role":"entrada","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Acompaña a Montagne","via":"door"},
+        {"room":"Aklark Sub Entrance","f":2,"do":"Impact a la barricada del sub","via":"door"},
+        {"room":"Boreal Sub Room","f":2,"do":"Concussion a la esquina del sub y entra tras el escudo","via":"door"},
+        {"room":"Cafeteria Hallway","f":2,"do":"Impact a la puerta de Staff Dormitory","via":"door"},
+        {"room":"Staff Dormitory","f":2,"do":"Planta entre las literas detrás de Montagne","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria Hallway","f":2,"threat":"Defensor rotando por Cafeteria a la espalda del grupo","how":"Concussion a la puerta de Cafeteria y Jackal la cuida"},
+        {"room":"Staff Dormitory","f":2,"threat":"Mira con espejo hacia la puerta y Frost bajo las literas","how":"Impact al espejo y revisa las literas antes de plantar"}],
+       "final":"Planta en Staff Dormitory y sostiene desde las literas"},
+      {"op":"jackal","role":"flanco","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Escanea huellas en el hielo","via":"door"},
+        {"room":"Aklark Sub Entrance","f":2,"do":"Entra último","via":"door"},
+        {"room":"Boreal Sub Room","f":2,"do":"Escanea huellas hacia Cafeteria","via":"door"},
+        {"room":"Cafeteria Hallway","f":2,"do":"Cubre Cafeteria y Front Stairs mientras plantan","via":"door"},
+        {"room":"Cafeteria","f":2,"do":"Persigue al roamer por Cafeteria si el ping va ahí","via":"door"}],
+       "clear":[
+        {"room":"Cafeteria","f":2,"threat":"Roamer tipo Vigil o Cav escondido entre las mesas","how":"Escanea huellas y sigue el ping con prefire"},
+        {"room":"Cafeteria Hallway","f":2,"threat":"Roamer regresando por Front Stairs","how":"Te quedas mirando Front Stairs con Eyenox activo"}],
+       "final":"Cuida Cafeteria Hallway y Front Stairs durante la planta"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Reforzar la pared Kitchen Hallway–Kitchen y las escotillas de Casino y Bedroom Hallway; Kaid las electrifica. Mira pone espejos en Kitchen hacia Kitchen Hallway y Smoke ancla Staff Dormitory. Jäger protege la puerta de Cafeteria Hallway y Vigil roamea Casino para frenar la vertical.",
+     "reinforce":["Pared Kitchen Hallway–Kitchen ×2","Escotilla de Casino","Escotilla de Bedroom Hallway","Pared Staff Dormitory–Cafeteria Hallway"],
+     "rotations":["Kitchen↔Staff Dormitory por la puerta interior","Kitchen↔Kitchen Pantry"],
+     "ops":[
+      {"op":"mira","room":"Kitchen","f":2,"role":"ancla","job":"Dos espejos en la pared de Kitchen Hallway; mira la puerta de Engine Control y castiga el pasillo"},
+      {"op":"smoke","room":"Staff Dormitory","f":2,"role":"ancla","job":"Gas a la puerta de Cafeteria Hallway en post-plant; sostiene detrás de las literas"},
+      {"op":"kaid","room":"Kitchen Pantry","f":2,"role":"flex","job":"Rtila en la pared reforzada y en la escotilla de Casino; juega Kitchen Stairs"},
+      {"op":"jager","room":"Cafeteria Hallway","f":2,"role":"flex","job":"ADS en la puerta de Staff Dormitory y en Boreal Sub Room; primer contacto y rota al dormitorio"},
+      {"op":"vigil","room":"Casino","f":3,"role":"roam","job":"Roamea Casino y Lounge con ERC-7; frena a los verticales y cae por Kitchen Stairs"}
+     ]},
+    {"id":"alt","n":"Trampas y anti-vertical","summary":"Setup para ranked cuando el rival tira vertical desde Casino: Melusi pone Banshees en Casino y Globe Hallway, Mute jammea escotillas y la pared de Kitchen, Castle tapa Cafeteria Hallway, Solis detecta drones y cargas desde Kitchen, y Caveira roamea Engine Control para cazar a los de la popa.",
+     "reinforce":["Pared Kitchen Hallway–Kitchen ×2","Escotilla de Casino","Escotilla de Poker Room","Pared Staff Dormitory–Cafeteria Hallway"],
+     "rotations":["Kitchen↔Staff Dormitory por la puerta interior","Kitchen↔Kitchen Pantry↔Kitchen Stairs"],
+     "ops":[
+      {"op":"melusi","room":"Casino","f":3,"role":"flex","job":"Banshees en Casino y Globe Hallway; frena a los verticales y cae por Kitchen Stairs"},
+      {"op":"mute","room":"Kitchen","f":2,"role":"ancla","job":"Jammers en la pared reforzada y en la escotilla de Casino; ancla la isla"},
+      {"op":"castle","room":"Staff Dormitory","f":2,"role":"ancla","job":"Barricada blindada en la puerta de Cafeteria Hallway; ancla las literas"},
+      {"op":"solis","room":"Kitchen Pantry","f":2,"role":"flex","job":"Detecta drones y cargas desde la despensa; avisa de la Skeleton Key y del BU-GI"},
+      {"op":"caveira","room":"Engine Control","f":2,"role":"roam","job":"Roamea Engine Control y Back Stairs; caza al que entre por la popa e interroga"}
+     ]}
+   ]
+  },
+  "master": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se sube por Spa Deck a Lounge y Casino Hallway para abrir la pared reforzada Casino Hallway–Casino con Thermite, mientras Buck sube al cuarto piso y rompe el piso de Cockpit Hallway y Captain's Office sobre Casino. Twitch mata gadgets en Master Bedroom desde Front Deck y Nomad cierra Globe Hallway. Cuando la pared cae, se planta en Casino pegado a la pared abierta.",
+     "timeline":["0:00–0:45 · drones a Lounge y Casino Hallway; Twitch dron de choque por Front Deck a Master Bedroom; Buck sube por Helipad a Cockpit Hallway","0:45–1:30 · Buck abre el piso sobre Casino; Thatcher EMP + Thermite en Casino Hallway–Casino","1:30–2:30 · entrada por la pared; Nomad Airjabs en Globe Hallway; planta en Casino","2:30–3:00 · post-plant: Buck desde arriba, Thermite en el hueco, Twitch cuida Front Deck"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la escalera de popa hasta la cubierta del spa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Dronea Lounge y espera a Thatcher","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Limpia Lounge y avanza a Casino Hallway","via":"door"},
+        {"room":"Casino Hallway","f":3,"do":"Carga exotérmica en la pared reforzada de Casino","via":"door"},
+        {"room":"Casino","f":3,"do":"Entra por el hueco y planta detrás de las mesas","via":"breach"}],
+       "clear":[
+        {"room":"Spa Deck","f":3,"threat":"Roamer tipo Vigil en el jacuzzi o Kapkan en la puerta de Lounge","how":"Dron primero, prefire al jacuzzi y Thatcher quema la trampa"},
+        {"room":"Casino Hallway","f":3,"threat":"Bandit trickeando y Mira con espejo desde Casino","how":"EMP justo al poner la carga; ponla en el lado ciego del espejo"},
+        {"room":"Casino","f":3,"threat":"Ancla Smoke detrás de las mesas de póker","how":"Humo en el hueco, entra agachado y Buck ya tiene el techo abierto"}],
+       "final":"Planta en Casino pegado a la pared abierta y sostiene el hueco"},
+      {"op":"thatcher","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con Thermite por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Cubre la puerta de Lounge","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"EMP a la puerta de Casino Hallway","via":"door"},
+        {"room":"Casino Hallway","f":3,"do":"Dos EMP a la pared de Casino para Bandit, Kaid y Mute","via":"door"},
+        {"room":"Casino","f":3,"do":"Entra tras Thermite y limpia la esquina de Poker Room","via":"breach"}],
+       "clear":[
+        {"room":"Lounge","f":3,"threat":"Roamer tipo Alibi con prismas en los sillones","how":"Dron y dispara a los prismas antes de entrar"},
+        {"room":"Casino Hallway","f":3,"threat":"Bandit trickeando la pared","how":"EMP cuando Thermite ponga la carga"}],
+       "final":"Sostiene Casino Hallway y la puerta de Lounge durante la planta"},
+      {"op":"twitch","role":"intel","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Dron de choque por la proa buscando cámaras y trampas de Master Bedroom","via":"door"},
+        {"room":"King of the World","f":3,"do":"Sube a la punta de la proa y mata gadgets desde afuera","via":"stairs"},
+        {"room":"Front Deck","f":3,"do":"Dron a las ventanas de Master Bedroom, mata ADS y cámaras","via":"door"},
+        {"room":"Master Bedroom","f":3,"do":"Entra por la ventana cuando la pared de Casino caiga","via":"window"},
+        {"room":"Bedroom Hallway","f":3,"do":"Cubre el pasillo de camarotes en post-plant","via":"door"}],
+       "clear":[
+        {"room":"Front Deck","f":3,"threat":"Ancla de Master Bedroom mirando las ventanas y Kapkan en la puerta","how":"Dron de choque mata la trampa y castigas al que asome por la ventana"},
+        {"room":"Master Bedroom","f":3,"threat":"Ancla con Mira y Frost bajo la cama","how":"Dron para ver la cama, entra solo con la pared abierta"}],
+       "final":"Sostiene Master Bedroom y Bedroom Hallway como flanco de la planta"},
+      {"op":"buck","role":"vertical","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube por la escalera exterior al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Dronea Helipad Entrance","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Limpia la entrada y avanza a Cockpit Hallway","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Abre el piso sobre Casino Hallway con la Skeleton Key","via":"door"},
+        {"room":"Captain's Office","f":4,"do":"Abre el piso sobre Casino y niega las mesas","via":"door"}],
+       "clear":[
+        {"room":"Helipad Entrance","f":4,"threat":"Roamer tipo Vigil o Cav esperando en el cuarto piso","how":"Dron primero, prefire a la esquina de Cockpit Hallway"},
+        {"room":"Captain's Office","f":4,"threat":"Cepo de Frost y ADS bajo el piso en Casino","how":"Rompe el piso a distancia y tira frag después del ADS"}],
+       "final":"Sostiene el piso abierto sobre Casino desde Captain's Office"},
+      {"op":"nomad","role":"flanco","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por la escalera de estribor","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Airjab en la puerta de Globe Hallway","via":"stairs"},
+        {"room":"Globe Hallway","f":3,"do":"Airjab en la puerta de Bedroom Hallway y otro en Front Stairs","via":"door"},
+        {"room":"Casino","f":3,"do":"Entra al final para cubrir la planta","via":"door"}],
+       "clear":[
+        {"room":"East Deck","f":3,"threat":"Roamer saliendo por la puerta de estribor","how":"Airjab en la puerta y espera el disparo"},
+        {"room":"Globe Hallway","f":3,"threat":"Roamer rotando desde Bedroom Hallway o Front Stairs","how":"Airjabs en las dos puertas y sostienes desde el globo"}],
+       "final":"Sostiene Globe Hallway cubriendo el flanco de Casino"}
+     ]},
+    {"id":"rush","n":"Rush por proa","tag":"RUSH","summary":"Los cinco entran por las ventanas de Master Bedroom desde Front Deck antes de que pongan Castle: Ying ciega el camarote, Ash rompe las barricadas, Blitz entra primero y Capitão tapa Bedroom Hallway con fuego. Funciona porque Master Bedroom tiene tres ventanas grandes a la proa y la ancla no puede cubrirlas todas.",
+     "timeline":["0:00–0:20 · sin dronear, todos suben a Front Deck","0:20–0:45 · Ash breach a las barricadas, Ying Candela por la ventana, Blitz entra","0:45–1:30 · limpiar Master Bedroom y Bathroom, Capitão fuego a Bedroom Hallway, planta en Master","1:30–3:00 · sostener Master Bedroom mirando Bedroom Hallway y las ventanas"],
+     "ops":[
+      {"op":"blitz","role":"entrada","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Corre a la proa y sube","via":"stairs"},
+        {"room":"Front Deck","f":3,"do":"Flash por la ventana y cruza primero","via":"stairs"},
+        {"room":"Master Bedroom","f":3,"do":"Flash a la cama y avanza empujando","via":"window"},
+        {"room":"Bath- room","f":3,"do":"Limpia el baño para que nadie quede a la espalda","via":"door"}],
+       "clear":[
+        {"room":"Master Bedroom","f":3,"threat":"Ancla detrás de la cama con Smoke listo","how":"Flash al entrar y que Sledge lo saque mientras aguantas"},
+        {"room":"Bath- room","f":3,"threat":"Defensor escondido en el baño","how":"Flash a la puerta y prefire a la regadera"}],
+       "final":"Se para en la puerta de Bedroom Hallway con el escudo cubriendo la planta"},
+      {"op":"ying","role":"entrada","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube detrás de Blitz","via":"stairs"},
+        {"room":"Front Deck","f":3,"do":"Candela por la ventana de Master Bedroom","via":"stairs"},
+        {"room":"Master Bedroom","f":3,"do":"Segunda Candela a la puerta de Bedroom Hallway y entra con Blitz","via":"window"},
+        {"room":"Bedroom Hallway","f":3,"do":"Tercera Candela al pasillo y limpia","via":"door"}],
+       "clear":[
+        {"room":"Master Bedroom","f":3,"threat":"Mira con espejo hacia las ventanas y Frost bajo la cama","how":"Candela ciega al espejo; entras por la ventana lateral y revisas la cama"},
+        {"room":"Bedroom Hallway","f":3,"threat":"Ancla de Casino rotando por el pasillo","how":"Candela al pasillo y prefire"}],
+       "final":"Limpia Bedroom Hallway y sostiene la puerta"},
+      {"op":"ash","role":"entrada","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube con el grupo","via":"stairs"},
+        {"room":"Front Deck","f":3,"do":"Breach a las barricadas de las ventanas desde la proa","via":"stairs"},
+        {"room":"Master Bedroom","f":3,"do":"Planta rápido detrás de la cama","via":"window"}],
+       "clear":[
+        {"room":"Front Deck","f":3,"threat":"Castle en las ventanas y ancla mirando","how":"Breach a los Castle desde lejos y entra tras la Candela"}],
+       "final":"Planta en Master Bedroom y sostiene desde la cama"},
+      {"op":"capitao","role":"negacion","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube con el grupo","via":"stairs"},
+        {"room":"Front Deck","f":3,"do":"Humo a las ventanas para cubrir la entrada","via":"stairs"},
+        {"room":"Master Bedroom","f":3,"do":"Fuego a la puerta de Bedroom Hallway para que no roten","via":"window"}],
+       "clear":[
+        {"room":"Master Bedroom","f":3,"threat":"Ancla de Casino rotando por Bedroom Hallway a la planta","how":"Flecha de fuego en la puerta del pasillo justo antes de plantar"}],
+       "final":"Sostiene la puerta de Bedroom Hallway con fuego y humo en post-plant"},
+      {"op":"sledge","role":"blando","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por estribor mientras el grupo entra por la proa","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Cubre la puerta de estribor","via":"stairs"},
+        {"room":"Globe Hallway","f":3,"do":"Abre la pared blanda a Bedroom Hallway con el martillo","via":"door"},
+        {"room":"Bedroom Hallway","f":3,"do":"Toma el pasillo desde atrás para cerrar la pinza","via":"breach"}],
+       "clear":[
+        {"room":"Globe Hallway","f":3,"threat":"Roamer regresando por Front Stairs a la espalda del rush","how":"Prefire a Front Stairs y abre la pared para tener línea"},
+        {"room":"Bedroom Hallway","f":3,"threat":"Ancla de Casino en el pasillo de camarotes","how":"Abre la pared con el martillo y limpia con frag"}],
+       "final":"Sostiene Bedroom Hallway para cortar la rotación de Casino"}
+     ]},
+    {"id":"vertical","n":"Vertical desde el puente","tag":"VERTICAL","summary":"Todo el equipo toma el cuarto piso (Cockpit Hallway, Captain's Office y Cockpit) y destruye Casino desde arriba: Sledge y Buck abren el piso, Fuze mete racimos sobre las mesas de Casino y Glaz ve por el humo desde Cockpit Balcony hacia Master Bedroom. Zero pone Argus en la escotilla de Casino. Se baja a plantar por Top Deck Stairs cuando queden dos.",
+     "timeline":["0:00–0:45 · subir por Helipad a Helipad Entrance; drones a Cockpit Hallway y Captain's Office","0:45–1:30 · Sledge y Buck abren el piso sobre Casino; Fuze cargas en Captain's Office","1:30–2:30 · matar desde arriba; Glaz humo en Front Deck y térmica a Master; Zero Argus en Casino","2:30–3:00 · bajar por Top Deck Stairs a Lounge y plantar en Casino"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube la escalera exterior al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Dronea Helipad Entrance","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Limpia y avanza","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Abre el piso sobre Casino Hallway y Lounge","via":"door"},
+        {"room":"Top Deck Stairs","f":4,"do":"Baja al final para plantar","via":"door"},
+        {"room":"Top Deck Stairs","f":3,"do":"Sale de la escalera y toma Lounge","via":"stairs"},
+        {"room":"Casino","f":3,"do":"Planta con el piso abierto sosteniendo","via":"door"}],
+       "clear":[
+        {"room":"Helipad Entrance","f":4,"threat":"Roamer tipo Vigil esperando en el cuarto piso","how":"Dron primero, prefire a la esquina"},
+        {"room":"Top Deck Stairs","f":3,"threat":"Ancla que sube a pelear la escalera","how":"Baja solo cuando Zero confirme por la Argus"}],
+       "final":"Planta en Casino bajo el piso abierto"},
+      {"op":"buck","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con Sledge","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Cubre la entrada","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Entra tras Sledge","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Limpia el pasillo","via":"door"},
+        {"room":"Captain's Office","f":4,"do":"Abre el piso sobre Casino y la escotilla con la Skeleton Key","via":"door"}],
+       "clear":[
+        {"room":"Captain's Office","f":4,"threat":"Cepo de Frost en la escotilla y ADS de Jäger en Casino","how":"Skeleton Key al piso desde lejos; frag después del ADS"}],
+       "final":"Sostiene el piso abierto sobre Casino desde Captain's Office"},
+      {"op":"fuze","role":"negacion","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Espera a que limpien","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Entra tercero","via":"door"},
+        {"room":"Captain's Office","f":4,"do":"Dos cargas de racimo en el piso sobre las mesas de Casino","via":"door"}],
+       "clear":[
+        {"room":"Captain's Office","f":4,"threat":"ADS o Wamai en Casino atrapando racimos","how":"Primera carga gasta el ADS, segunda en otra esquina"}],
+       "final":"Se queda en Captain's Office cubriendo el piso abierto"},
+      {"op":"glaz","role":"negacion","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube por la proa","via":"stairs"},
+        {"room":"Front Deck","f":3,"do":"Humo a las ventanas de Master Bedroom y ve con la térmica","via":"stairs"},
+        {"room":"Master Bedroom","f":3,"do":"Entra por la ventana cuando arriba maten a las anclas","via":"window"}],
+       "clear":[
+        {"room":"Front Deck","f":3,"threat":"Ancla de Master Bedroom mirando las ventanas","how":"Humo primero y disparas con la térmica desde la esquina de la proa"}],
+       "final":"Sostiene Master Bedroom por el humo en post-plant"},
+      {"op":"zero","role":"intel","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por estribor","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Argus en la cubierta mirando Globe Hallway","via":"stairs"},
+        {"room":"Globe Hallway","f":3,"do":"Argus en la puerta de Casino para ver las mesas","via":"door"},
+        {"room":"Casino","f":3,"do":"Entra a cubrir la planta viendo las Argus","via":"door"}],
+       "clear":[
+        {"room":"Globe Hallway","f":3,"threat":"Roamer rotando por Front Stairs","how":"Argus mirando la escalera y prefire"},
+        {"room":"Casino","f":3,"threat":"Valkyrie viendo la cámara y Mute jammeando la puerta","how":"Argus a la puerta y dispara la cámara antes de entrar"}],
+       "final":"Cubre la planta en Casino viendo las Argus"}
+     ]},
+    {"id":"split","n":"Split proa + popa","tag":"SPLIT","summary":"Hibana y Brava entran por Spa Deck a Lounge y abren la pared de Casino, mientras Montagne, Zofia y Jackal entran por las ventanas de Master Bedroom desde Front Deck. Master y Casino tienen entradas en extremos opuestos del barco y los defensores tienen que dividir a Mira y Smoke; quien se quede solo muere. Se planta en Master detrás de Montagne.",
+     "timeline":["0:00–0:45 · drones a Lounge y Master Bedroom; Brava hackea cámaras; Jackal escanea el hielo","0:45–1:30 · Hibana pellets en Casino Hallway–Casino; Montagne cruza la ventana de Master; Zofia impacts","1:30–2:30 · pinza: 2 por Casino, 3 por Master; planta en Master tras Montagne","2:30–3:00 · post-plant: Hibana en Casino, Montagne en Master, Jackal en Bedroom Hallway"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Dronea Lounge","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Entra tras el Kludge de Brava","via":"door"},
+        {"room":"Casino Hallway","f":3,"do":"Pellets X-KAIROS en la pared reforzada de Casino","via":"door"},
+        {"room":"Casino","f":3,"do":"Entra por el hueco cuando el grupo de proa empuje","via":"breach"}],
+       "clear":[
+        {"room":"Lounge","f":3,"threat":"Kapkan en la puerta de Casino Hallway","how":"Kludge de Brava o dron lo marca y lo rompes de lejos"},
+        {"room":"Casino Hallway","f":3,"threat":"Bandit trickeando la pared","how":"Brava hackea la batería y disparas desde la esquina lejana"}],
+       "final":"Sostiene el hueco de Casino y cubre la rotación a Master"},
+      {"op":"brava","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Kludge por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Hackea el ADS de Lounge","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Entra con Hibana","via":"door"},
+        {"room":"Casino Hallway","f":3,"do":"Kludge a la batería de Bandit y al Evil Eye","via":"door"},
+        {"room":"Casino","f":3,"do":"Entra tras Hibana y limpia las mesas","via":"breach"}],
+       "clear":[
+        {"room":"Casino Hallway","f":3,"threat":"Evil Eye de Maestro cubriendo la pared","how":"Hackea el Evil Eye primero para que apunte a Bandit"}],
+       "final":"Cubre a Hibana en el hueco de Casino"},
+      {"op":"montagne","role":"soporte","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Camina con Zofia y Jackal a la proa","via":"door"},
+        {"room":"Front Deck","f":3,"do":"Se planta con el escudo frente a la ventana de Master","via":"stairs"},
+        {"room":"Master Bedroom","f":3,"do":"Entra por la ventana con escudo extendido","via":"window"},
+        {"room":"Bedroom Hallway","f":3,"do":"Bloquea la puerta del pasillo cubriendo la planta de Zofia","via":"door"}],
+       "clear":[
+        {"room":"Front Deck","f":3,"threat":"Ancla de Master mirando las ventanas","how":"Escudo arriba, Zofia rompe la barricada con impact"},
+        {"room":"Master Bedroom","f":3,"threat":"Ancla Smoke tirando gas a la ventana","how":"Aguanta con escudo extendido y no avances en el gas hasta que Hibana abra Casino"}],
+       "final":"Bloquea Bedroom Hallway con el escudo durante la planta"},
+      {"op":"zofia","role":"entrada","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Acompaña a Montagne","via":"door"},
+        {"room":"Front Deck","f":3,"do":"Impact a la barricada de la ventana","via":"stairs"},
+        {"room":"Master Bedroom","f":3,"do":"Concussion a la cama y planta detrás de Montagne","via":"window"}],
+       "clear":[
+        {"room":"Master Bedroom","f":3,"threat":"Mira con espejo hacia la ventana y Frost bajo la cama","how":"Impact al espejo y revisa la cama antes de plantar"}],
+       "final":"Planta en Master Bedroom y sostiene desde la cama"},
+      {"op":"jackal","role":"flanco","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Escanea huellas en el hielo","via":"door"},
+        {"room":"East Deck","f":3,"do":"Sube por estribor y entra por Globe Hallway","via":"stairs"},
+        {"room":"Globe Hallway","f":3,"do":"Escanea huellas hacia Front Stairs","via":"door"},
+        {"room":"Bedroom Hallway","f":3,"do":"Cubre Front Stairs mientras plantan en Master","via":"door"}],
+       "clear":[
+        {"room":"Globe Hallway","f":3,"threat":"Roamer tipo Vigil o Cav rotando por Front Stairs","how":"Escanea huellas y sigue el ping con prefire"},
+        {"room":"Bedroom Hallway","f":3,"threat":"Roamer regresando por Front Stairs","how":"Te quedas mirando la escalera con Eyenox activo"}],
+       "final":"Cuida Bedroom Hallway y Front Stairs durante la planta"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Reforzar la pared Casino Hallway–Casino y la pared Master Bedroom–Front Stairs; Kaid electrifica pared y escotilla de Casino. Mira pone espejos en Casino hacia Casino Hallway y Smoke ancla Master Bedroom con gas para las ventanas. Jäger cuida las ventanas de Master y Valkyrie sube cámaras a Cockpit Hallway y Spa Deck para avisar de la vertical.",
+     "reinforce":["Pared Casino Hallway–Casino ×2","Pared Master Bedroom–Front Stairs","Escotilla de Casino","Ventanas de Master Bedroom (Castle si hay)"],
+     "rotations":["Casino↔Master Bedroom por Bedroom Hallway y Globe Hallway","Casino↔Poker Room"],
+     "ops":[
+      {"op":"mira","room":"Casino","f":3,"role":"ancla","job":"Dos espejos en la pared de Casino Hallway; mira la puerta de Lounge y castiga el pasillo"},
+      {"op":"smoke","room":"Master Bedroom","f":3,"role":"ancla","job":"Gas a las ventanas de Front Deck en post-plant; sostiene detrás de la cama"},
+      {"op":"kaid","room":"Poker Room","f":3,"role":"flex","job":"Rtila en la pared reforzada y en la escotilla de Casino; juega Poker Room y rota a Casino"},
+      {"op":"jager","room":"Bedroom Hallway","f":3,"role":"flex","job":"ADS en las ventanas de Master y en Bedroom Hallway; primer contacto y rota a Master"},
+      {"op":"valkyrie","room":"Cockpit Hallway","f":4,"role":"roam","job":"Cámaras en Cockpit Hallway y Spa Deck; roamea el cuarto piso y cae por Top Deck Stairs al ver la vertical"}
+     ]},
+    {"id":"alt","n":"Anti-vertical con Noor","summary":"Para cuando el rival tira vertical desde el puente y rush por proa: Melusi pone Banshees en Cockpit Hallway y Captain's Office, Mute jammea escotilla y pared de Casino, Castle tapa las ventanas de Master, Noor quema Front Deck con el Horus para frenar el rush de escudos, y Vigil roamea Lounge invisible a drones.",
+     "reinforce":["Pared Casino Hallway–Casino ×2","Escotilla de Casino","Pared Master Bedroom–Front Stairs","Pared Poker Room–Globe Hallway"],
+     "rotations":["Casino↔Master Bedroom por Bedroom Hallway y Globe Hallway","Casino↔Poker Room"],
+     "ops":[
+      {"op":"melusi","room":"Captain's Office","f":4,"role":"flex","job":"Banshees en Cockpit Hallway y Captain's Office; frena a los verticales y cae por Top Deck Stairs"},
+      {"op":"mute","room":"Casino","f":3,"role":"ancla","job":"Jammers en la pared reforzada y en la escotilla; ancla detrás de las mesas"},
+      {"op":"castle","room":"Master Bedroom","f":3,"role":"ancla","job":"Barricadas blindadas en las ventanas de Front Deck; ancla detrás de la cama"},
+      {"op":"noor","room":"Bedroom Hallway","f":3,"role":"flex","job":"Horus a Front Deck y a la ventana de Master cuando entren escudos; rota entre Master y Casino"},
+      {"op":"vigil","room":"Lounge","f":3,"role":"roam","job":"Roamea Lounge y Spa Deck con ERC-7; caza al que entre por la popa"}
+     ]}
+   ]
+  },
+  "maps": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se sube por Helipad a Helipad Entrance y Cockpit Hallway para abrir la pared reforzada Cockpit Hallway–Cockpit con Thermite, mientras Buck abre desde Roof el techo de Maps Room y Sledge presiona desde East Balcony las ventanas. Zero pone Argus por las ventanas de Maps Room y Nomad cierra Top Deck Stairs. Cuando la pared cae y el techo está abierto, se planta en Maps Room.",
+     "timeline":["0:00–0:45 · subir por Spa Deck a Helipad; drones a Helipad Entrance y Cockpit Hallway; Zero Argus en East Balcony","0:45–1:30 · Buck abre el techo de Maps Room desde Roof; Thatcher EMP + Thermite en Cockpit Hallway–Cockpit","1:30–2:30 · entrada por la pared y por la ventana de East Balcony; Nomad Airjabs en Top Deck Stairs; planta en Maps Room","2:30–3:00 · post-plant: Buck desde Roof, Thermite en el hueco, Zero viendo Argus"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la escalera de popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube la escalera exterior al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Dronea Helipad Entrance y espera a Thatcher","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Entra tras el EMP y limpia la entrada","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Carga exotérmica en la pared reforzada de Cockpit","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Entra por el hueco y cruza a Maps Room","via":"breach"},
+        {"room":"Maps Room","f":4,"do":"Planta detrás de la mesa de mapas","via":"door"}],
+       "clear":[
+        {"room":"Helipad Entrance","f":4,"threat":"Kapkan en la puerta y Frost en la entrada","how":"Dron primero, Thatcher quema la trampa y entras agachado"},
+        {"room":"Cockpit Hallway","f":4,"threat":"Bandit trickeando y Mira con espejo desde Cockpit","how":"EMP justo al poner la carga; ponla en el lado ciego del espejo"},
+        {"room":"Maps Room","f":4,"threat":"Ancla Smoke detrás de la mesa de mapas y Frost bajo las ventanas","how":"Humo en el hueco, entra agachado y Buck ya tiene el techo abierto"}],
+       "final":"Planta en Maps Room y sostiene desde Cockpit"},
+      {"op":"thatcher","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con Thermite","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"EMP a la puerta de Helipad Entrance","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Limpia y avanza","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Dos EMP a la pared de Cockpit para Bandit, Kaid y Mute","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Entra tras Thermite y limpia el timón","via":"breach"}],
+       "clear":[
+        {"room":"Helipad","f":4,"threat":"Roamer tipo Vigil esperando en el helipuerto","how":"Dron al helipuerto antes de subir y limpia en pareja"},
+        {"room":"Cockpit Hallway","f":4,"threat":"Bandit trickeando la pared","how":"EMP cuando Thermite ponga la carga"}],
+       "final":"Sostiene Cockpit Hallway y la puerta de Helipad Entrance durante la planta"},
+      {"op":"zero","role":"intel","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por la escalera de estribor","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Sube por la escalera exterior al balcón de estribor","via":"stairs"},
+        {"room":"East Balcony","f":4,"do":"Argus por la ventana de Maps Room y otra en Cockpit","via":"stairs"},
+        {"room":"Maps Room","f":4,"do":"Entra por la ventana cuando la pared caiga","via":"window"}],
+       "clear":[
+        {"room":"East Balcony","f":4,"threat":"Ancla de Maps Room mirando las ventanas y Frost bajo ellas","how":"Argus por la ventana para ver el cepo y castigas al que asome"},
+        {"room":"Maps Room","f":4,"threat":"Ancla con Mira y Castle en las ventanas","how":"Argus para ver el espejo; entra solo con la pared abierta"}],
+       "final":"Sostiene Maps Room desde la ventana viendo las Argus"},
+      {"op":"buck","role":"vertical","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Sube por la escalera al techo del puente","via":"stairs"},
+        {"room":"Roof","f":5,"do":"Abre el techo de Maps Room con la Skeleton Key y niega la mesa","via":"stairs"},
+        {"room":"Maps Room","f":4,"do":"Baja por el hueco al final para cerrar la planta","via":"hatch"}],
+       "clear":[
+        {"room":"Roof","f":5,"threat":"ADS de Jäger bajo el techo y ancla mirando el hueco","how":"Rompe el techo a distancia y tira frag después del ADS"},
+        {"room":"Maps Room","f":4,"threat":"Ancla Smoke pegada a la mesa de mapas","how":"Baja solo con Zero confirmando por la Argus"}],
+       "final":"Sostiene el techo abierto sobre Maps Room desde Roof"},
+      {"op":"nomad","role":"flanco","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Sube por la escalera de babor","via":"stairs"},
+        {"room":"West Deck","f":3,"do":"Camina la cubierta a la puerta de Lounge","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Airjab en la puerta de Casino Hallway","via":"door"},
+        {"room":"Top Deck Stairs","f":3,"do":"Airjab al pie de la escalera y sube","via":"door"},
+        {"room":"Top Deck Stairs","f":4,"do":"Airjab en la salida de la escalera y sostiene","via":"stairs"},
+        {"room":"Cockpit Hallway","f":4,"do":"Cubre el flanco de Top Deck Stairs durante la planta","via":"door"}],
+       "clear":[
+        {"room":"Lounge","f":3,"threat":"Roamer tipo Vigil o Cav esperando en Lounge","how":"Dron primero y prefire a los sillones"},
+        {"room":"Top Deck Stairs","f":4,"threat":"Ancla bajando por la escalera a flanquear","how":"Airjab en la salida y espera el disparo"}],
+       "final":"Sostiene Top Deck Stairs para que nadie flanquee la planta"}
+     ]},
+    {"id":"rush","n":"Rush por Helipad","tag":"RUSH","summary":"Los cinco suben corriendo al helipuerto y entran por Helipad Entrance a Cockpit Hallway y Cockpit en menos de 45 segundos. Ying ciega la entrada, Ash rompe las barricadas, Blitz cruza primero y Capitão tapa Top Deck Stairs con fuego. Funciona porque el puente está a dos puertas del helipuerto y la pared aún no está trickeada.",
+     "timeline":["0:00–0:20 · sin dronear, todos suben por Spa Deck al Helipad","0:20–0:45 · Ying Candela a Helipad Entrance, Ash breach a la barricada de Cockpit, Blitz entra","0:45–1:30 · limpiar Cockpit, Capitão fuego a Top Deck Stairs, planta en Cockpit","1:30–3:00 · sostener Cockpit mirando Cockpit Hallway y Maps Room"],
+     "ops":[
+      {"op":"blitz","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Corre a la popa y sube","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto sin parar","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Flash a Helipad Entrance y cruza","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Flash a la esquina y avanza","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Flash a la puerta de Cockpit y entra primero","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Aguanta en la puerta mientras Ash planta","via":"door"}],
+       "clear":[
+        {"room":"Helipad Entrance","f":4,"threat":"Roamer en la entrada","how":"Flash y avanzas; Ying limpia con la Candela"},
+        {"room":"Cockpit","f":4,"threat":"Ancla detrás del timón con Smoke listo","how":"Flash al entrar y que Sledge lo saque mientras aguantas"}],
+       "final":"Se para en la puerta de Cockpit con el escudo cubriendo la planta"},
+      {"op":"ying","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube detrás de Blitz","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Candela por la puerta de Helipad Entrance","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Candela a Cockpit Hallway","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Tercera Candela a Cockpit antes de entrar","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Limpia detrás de Blitz","via":"door"}],
+       "clear":[
+        {"room":"Helipad Entrance","f":4,"threat":"Kapkan en la puerta y Frost detrás","how":"Candela por la puerta quema la trampa y ciega"},
+        {"room":"Cockpit","f":4,"threat":"Mira con espejo hacia el pasillo","how":"Candela primero y entra por el lado ciego con Blitz"}],
+       "final":"Limpia Cockpit y sostiene la puerta de Maps Room"},
+      {"op":"ash","role":"entrada","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con el grupo","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Breach a la barricada de Helipad Entrance desde lejos","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Entra después del escudo","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Breach a la barricada o Castle de Cockpit","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Planta rápido detrás del timón","via":"door"}],
+       "clear":[
+        {"room":"Cockpit Hallway","f":4,"threat":"Castle en la puerta de Cockpit y ancla detrás","how":"Breach al Castle y entra tras la Candela"}],
+       "final":"Planta en Cockpit y sostiene desde el timón"},
+      {"op":"capitao","role":"negacion","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con el grupo","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Cubre la retaguardia","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Entra tercero","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Humo al pasillo y flecha de fuego a Top Deck Stairs","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Fuego a la puerta de Maps Room para que no roten a la planta","via":"door"}],
+       "clear":[
+        {"room":"Cockpit Hallway","f":4,"threat":"Ancla de Maps Room rotando por Top Deck Stairs","how":"Flecha de fuego en la salida de la escalera antes de plantar"}],
+       "final":"Sostiene Top Deck Stairs con fuego y humo en post-plant"},
+      {"op":"sledge","role":"blando","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por estribor mientras el grupo va al helipuerto","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Sube al balcón de estribor","via":"stairs"},
+        {"room":"East Balcony","f":4,"do":"Rompe la barricada de la ventana con el martillo y entra por ahí","via":"stairs"},
+        {"room":"Maps Room","f":4,"do":"Entra por la ventana para cerrar la pinza sobre Maps Room","via":"window"}],
+       "clear":[
+        {"room":"East Balcony","f":4,"threat":"Ancla de Maps Room mirando las ventanas","how":"Rompe la barricada de un golpe y entra con el rush ya dentro de Cockpit"},
+        {"room":"Maps Room","f":4,"threat":"Frost bajo la ventana y Mira mirando la puerta de Cockpit","how":"Salta el cepo revisando el suelo y limpia el espejo por la espalda"}],
+       "final":"Sostiene Maps Room desde la ventana para cortar la rotación"}
+     ]},
+    {"id":"vertical","n":"Vertical desde Roof","tag":"VERTICAL","summary":"Todo el equipo sube a Roof y destruye Maps Room y Cockpit desde arriba: Sledge y Buck abren el techo, Fuze mete racimos sobre la mesa de mapas y Ram lanza el BU-GI sobre Cockpit. Glaz ve por el humo desde East Balcony hacia Maps Room. Cuando queden dos o menos, se baja por el hueco a plantar. Funciona porque el techo del puente es blando casi entero.",
+     "timeline":["0:00–0:45 · subir por Spa Deck a Helipad y a Roof; drones a Maps Room y Cockpit","0:45–1:30 · Sledge y Buck abren el techo; Fuze cargas sobre Maps Room; Ram BU-GI sobre Cockpit","1:30–2:30 · matar desde arriba; Glaz humo y térmica desde East Balcony","2:30–3:00 · bajar por el hueco y plantar en Maps Room"],
+     "ops":[
+      {"op":"sledge","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Sube al techo del puente","via":"stairs"},
+        {"room":"Roof","f":5,"do":"Abre el techo sobre Cockpit Hallway y Cockpit con el martillo","via":"stairs"},
+        {"room":"Cockpit","f":4,"do":"Baja por el hueco al final para plantar","via":"hatch"},
+        {"room":"Maps Room","f":4,"do":"Planta con el techo abierto sosteniendo","via":"door"}],
+       "clear":[
+        {"room":"Roof","f":5,"threat":"ADS de Jäger bajo el techo y ancla tirando por el hueco","how":"Abre a distancia y tira frag después del ADS"},
+        {"room":"Cockpit","f":4,"threat":"Ancla escondida detrás del timón","how":"Baja solo con Buck cubriendo desde el techo"}],
+       "final":"Planta en Maps Room bajo el techo abierto"},
+      {"op":"buck","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube con Sledge","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Cubre la escalera al techo","via":"stairs"},
+        {"room":"Roof","f":5,"do":"Abre el techo sobre Maps Room con la Skeleton Key y niega la mesa","via":"stairs"}],
+       "clear":[
+        {"room":"Roof","f":5,"threat":"Roamer subiendo por Helipad Entrance a flanquear el techo","how":"Deja a Ram cubriendo Helipad y abre el techo desde el borde"}],
+       "final":"Sostiene el techo abierto sobre Maps Room desde Roof"},
+      {"op":"fuze","role":"negacion","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Espera a que los blandos suban","via":"stairs"},
+        {"room":"Roof","f":5,"do":"Dos cargas de racimo en el techo sobre la mesa de Maps Room","via":"stairs"}],
+       "clear":[
+        {"room":"Roof","f":5,"threat":"ADS o Wamai en Maps Room atrapando racimos","how":"Primera carga gasta el ADS, segunda en otra esquina"}],
+       "final":"Se queda en Roof cubriendo el techo abierto"},
+      {"op":"ram","role":"blando","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Cubre Helipad Entrance mientras los demás suben al techo","via":"stairs"},
+        {"room":"Roof","f":5,"do":"Lanza el BU-GI cruzando el techo sobre Cockpit","via":"stairs"}],
+       "clear":[
+        {"room":"Helipad","f":4,"threat":"Roamer saliendo por Helipad Entrance a la espalda del grupo","how":"Te quedas mirando la puerta y prefire"}],
+       "final":"Sostiene Helipad y el techo abierto sobre Cockpit"},
+      {"op":"glaz","role":"negacion","spawn":"Snow Mobile",
+       "path":[
+        {"room":"Frozen River","f":-1,"do":"Sube por estribor","via":"stairs"},
+        {"room":"East Deck","f":3,"do":"Sube al balcón de estribor","via":"stairs"},
+        {"room":"East Balcony","f":4,"do":"Humo por la ventana de Maps Room y ve con la térmica","via":"stairs"},
+        {"room":"Maps Room","f":4,"do":"Entra por la ventana cuando arriba maten a las anclas","via":"window"}],
+       "clear":[
+        {"room":"East Balcony","f":4,"threat":"Ancla de Maps Room mirando la ventana","how":"Humo primero y disparas con la térmica desde el borde del balcón"}],
+       "final":"Sostiene Maps Room por el humo en post-plant"}
+     ]},
+    {"id":"split","n":"Split Helipad + escalera","tag":"SPLIT","summary":"Hibana y Brava entran por Helipad a Cockpit Hallway y abren la pared de Cockpit, mientras Montagne, Zofia y Jackal suben por Top Deck Stairs desde Lounge y empujan Maps Room desde abajo. Los defensores tienen que dividir a Mira y Smoke entre Cockpit y Maps Room y quien se quede solo muere. Se planta en Maps Room detrás de Montagne.",
+     "timeline":["0:00–0:45 · drones a Helipad Entrance y Top Deck Stairs; Brava hackea cámaras; Jackal escanea Lounge","0:45–1:30 · Hibana pellets en Cockpit Hallway–Cockpit; Montagne sube Top Deck Stairs; Zofia impacts a Maps Room","1:30–2:30 · pinza: 2 por Cockpit, 3 por Maps Room; planta en Maps Room tras Montagne","2:30–3:00 · post-plant: Hibana en Cockpit, Montagne en Maps Room, Jackal en Top Deck Stairs"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Dronea Helipad Entrance","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Entra tras el Kludge de Brava","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Pellets X-KAIROS en la pared reforzada de Cockpit","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Entra por el hueco cuando el grupo de la escalera empuje","via":"breach"}],
+       "clear":[
+        {"room":"Helipad Entrance","f":4,"threat":"Kapkan en la puerta","how":"Kludge de Brava o dron lo marca y lo rompes de lejos"},
+        {"room":"Cockpit Hallway","f":4,"threat":"Bandit trickeando la pared","how":"Brava hackea la batería y disparas desde la esquina lejana"}],
+       "final":"Sostiene el hueco de Cockpit y cubre la rotación a Maps Room"},
+      {"op":"brava","role":"antigadget","spawn":"Zodiak",
+       "path":[
+        {"room":"Zodiac","f":-1,"do":"Sube por la popa","via":"stairs"},
+        {"room":"Spa Deck","f":3,"do":"Sube al helipuerto","via":"stairs"},
+        {"room":"Helipad","f":4,"do":"Kludge por Helipad Entrance hackeando ADS y cámaras","via":"stairs"},
+        {"room":"Helipad Entrance","f":4,"do":"Entra con Hibana","via":"door"},
+        {"room":"Cockpit Hallway","f":4,"do":"Kludge a la batería de Bandit y al Evil Eye","via":"door"},
+        {"room":"Cockpit","f":4,"do":"Entra tras Hibana y limpia el timón","via":"breach"}],
+       "clear":[
+        {"room":"Cockpit Hallway","f":4,"threat":"Evil Eye de Maestro cubriendo la pared","how":"Hackea el Evil Eye primero para que apunte a Bandit"}],
+       "final":"Cubre a Hibana en el hueco de Cockpit"},
+      {"op":"montagne","role":"soporte","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Camina con Zofia y Jackal a babor","via":"door"},
+        {"room":"West Deck","f":3,"do":"Sube por la escalera de babor y toma la cubierta","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Entra primero con escudo extendido","via":"door"},
+        {"room":"Top Deck Stairs","f":3,"do":"Sube la escalera con el escudo arriba","via":"door"},
+        {"room":"Top Deck Stairs","f":4,"do":"Sale de la escalera empujando","via":"stairs"},
+        {"room":"Maps Room","f":4,"do":"Bloquea la puerta cubriendo la planta de Zofia","via":"door"}],
+       "clear":[
+        {"room":"Lounge","f":3,"threat":"Roamer tipo Vigil en Lounge y Kapkan en la puerta de la escalera","how":"Escudo arriba y Zofia rompe la trampa con impact"},
+        {"room":"Top Deck Stairs","f":4,"threat":"Ancla Smoke tirando gas a la salida de la escalera","how":"Aguanta con escudo extendido y no avances en el gas hasta que Hibana abra Cockpit"}],
+       "final":"Bloquea la puerta de Maps Room con el escudo durante la planta"},
+      {"op":"zofia","role":"entrada","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Acompaña a Montagne","via":"door"},
+        {"room":"West Deck","f":3,"do":"Sube por babor","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Concussion a los sillones y entra tras el escudo","via":"door"},
+        {"room":"Top Deck Stairs","f":3,"do":"Impact a la barricada de la escalera","via":"door"},
+        {"room":"Top Deck Stairs","f":4,"do":"Concussion a la salida y sube","via":"stairs"},
+        {"room":"Maps Room","f":4,"do":"Planta detrás de la mesa de mapas tras Montagne","via":"door"}],
+       "clear":[
+        {"room":"Top Deck Stairs","f":3,"threat":"Kapkan en la puerta de la escalera","how":"Impact a la barricada rompe la trampa"},
+        {"room":"Maps Room","f":4,"threat":"Mira con espejo hacia la escalera y Frost bajo las ventanas","how":"Impact al espejo y revisa el suelo antes de plantar"}],
+       "final":"Planta en Maps Room y sostiene desde la mesa"},
+      {"op":"jackal","role":"flanco","spawn":"Submarine",
+       "path":[
+        {"room":"Submarine","f":-1,"do":"Escanea huellas en el hielo","via":"door"},
+        {"room":"West Deck","f":3,"do":"Sube por babor último","via":"stairs"},
+        {"room":"Lounge","f":3,"do":"Escanea huellas hacia Casino Hallway","via":"door"},
+        {"room":"Casino Hallway","f":3,"do":"Persigue al roamer si el ping va a Casino","via":"door"},
+        {"room":"Top Deck Stairs","f":3,"do":"Sostiene el pie de la escalera mirando Lounge mientras plantan","via":"door"}],
+       "clear":[
+        {"room":"Casino Hallway","f":3,"threat":"Roamer tipo Cav o Vigil escondido en Casino Hallway","how":"Escanea huellas y sigue el ping con prefire"},
+        {"room":"Top Deck Stairs","f":3,"threat":"Roamer regresando por Lounge a la espalda del grupo","how":"Te quedas al pie de la escalera mirando Lounge con Eyenox activo"}],
+       "final":"Cuida Top Deck Stairs y Lounge para que nadie flanquee la planta"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Reforzar la pared Cockpit Hallway–Cockpit y la pared Maps Room–Top Deck Stairs; dejar las ventanas con Frost debajo. Mira pone espejos en Cockpit hacia Cockpit Hallway y Smoke ancla Maps Room con gas para las ventanas. Jäger cuida las ventanas de East Balcony y Valkyrie sube cámaras a Helipad y Roof para avisar de la vertical.",
+     "reinforce":["Pared Cockpit Hallway–Cockpit ×2","Pared Maps Room–Top Deck Stairs","Pared Captain's Office–Cockpit Hallway"],
+     "rotations":["Maps Room↔Cockpit por la puerta interior","Cockpit↔Captain's Office"],
+     "ops":[
+      {"op":"mira","room":"Cockpit","f":4,"role":"ancla","job":"Dos espejos en la pared de Cockpit Hallway; mira Helipad Entrance y castiga el pasillo"},
+      {"op":"smoke","room":"Maps Room","f":4,"role":"ancla","job":"Gas a las ventanas de East Balcony y a la salida de Top Deck Stairs en post-plant; sostiene detrás de la mesa"},
+      {"op":"frost","room":"Maps Room","f":4,"role":"ancla","job":"Cepos bajo las ventanas de East y West Balcony; juega el rincón de la mesa"},
+      {"op":"jager","room":"Cockpit Hallway","f":4,"role":"flex","job":"ADS en Cockpit Hallway y en las ventanas de Maps Room; primer contacto y rota a Cockpit"},
+      {"op":"valkyrie","room":"Helipad Entrance","f":4,"role":"roam","job":"Cámaras en Helipad y Roof; roamea Lounge y Top Deck Stairs y avisa de la vertical"}
+     ]},
+    {"id":"alt","n":"Castle + Melusi anti-vertical","summary":"Para cuando el rival tira vertical desde Roof: Melusi pone Banshees en Helipad y Roof, Mute jammea la pared de Cockpit y las ventanas, Castle tapa las ventanas de Maps Room, Azami tapa el techo abierto con Kiba, y Vigil roamea Lounge invisible a drones para cazar a los de Top Deck Stairs.",
+     "reinforce":["Pared Cockpit Hallway–Cockpit ×2","Pared Maps Room–Top Deck Stairs","Ventanas de Maps Room (Castle)"],
+     "rotations":["Maps Room↔Cockpit por la puerta interior","Cockpit↔Captain's Office"],
+     "ops":[
+      {"op":"melusi","room":"Helipad Entrance","f":4,"role":"flex","job":"Banshees en Helipad y Roof; frena a los verticales y cae a Cockpit Hallway"},
+      {"op":"mute","room":"Cockpit","f":4,"role":"ancla","job":"Jammers en la pared reforzada y en las ventanas; ancla detrás del timón"},
+      {"op":"castle","room":"Maps Room","f":4,"role":"ancla","job":"Barricadas blindadas en las ventanas de East y West Balcony; ancla detrás de la mesa"},
+      {"op":"azami","room":"Maps Room","f":4,"role":"flex","job":"Kiba para tapar el techo cuando lo abran desde Roof; rota entre Maps Room y Cockpit"},
+      {"op":"vigil","room":"Lounge","f":3,"role":"roam","job":"Roamea Lounge y Top Deck Stairs con ERC-7; caza al que suba por la escalera"}
+     ]}
+   ]
+  }
+ }
+}

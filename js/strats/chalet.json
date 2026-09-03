@@ -1,0 +1,4373 @@
+{
+ "map": "chalet",
+ "sites": {
+  "wine": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Abrimos la pared de Wine Cellar desde Library Stairs (sótano) con Thatcher + Thermite mientras Buck abre el piso de Kitchen para negar Wine Cellar desde arriba. La bomba se planta en Wine Cellar con el Snowmobile Garage aislado por Iana y Nomad cerrando el flanco de Main Garage. Funciona porque el sitio es chico y con dos aperturas simultáneas las anclas no tienen dónde esconderse.",
+     "timeline": [
+      "0:00–0:45 · drones a Wine Cellar y Snowmobile Garage, ubicar Mira y Bandit",
+      "0:45–1:30 · EMP + Thermite en la pared Library Stairs–Wine Cellar, Buck abre piso de Kitchen",
+      "1:30–2:30 · entrada por la pared abierta con soporte vertical, plant en Wine Cellar",
+      "2:30–3:00 · post-plant: Buck arriba, Nomad en Basement Hallway, Thatcher/Thermite en Library Stairs"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron adelantado hacia West Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cruza pegado al muro, ojo a la ventana de Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada y limpia el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Baja con cuidado, dron por delante",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "do": "EMP a la pared reforzada de Wine Cellar",
+         "via": "stairs"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "do": "Entra tras la Thermite y limpia el rincón",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "threat": "Kapkan o Ela en la puerta, roamer esperando la barricada",
+         "how": "Dron antes de abrir, romper la barricada a balazos y checar el marco"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "threat": "Bandit haciendo trick en la pared y ancla asomando por la puerta de Wine Cellar",
+         "how": "EMP justo cuando Thermite pone la carga, no antes"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "threat": "Ancla detrás de los barriles y Mira apuntando a la pared",
+         "how": "Esperar a que Buck abra el piso, entrar en pares"
+        }
+       ],
+       "final": "Entra con Thermite y sostiene el ángulo hacia Wine Stock durante el plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Sale con Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Avanza en segunda posición",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Cubre mientras Thatcher rompe",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Baja tras el dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "do": "Pone la carga exotérmica en la pared de Wine Cellar",
+         "via": "stairs"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "do": "Entra y planta pegado a la pared abierta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "threat": "Kaid o Bandit electrificando desde Wine Cellar",
+         "how": "Poner la carga solo después del EMP; si truquean, Maverick-style con la segunda carga"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "threat": "Smoke con gas listo en el rincón del plant",
+         "how": "Plantar detrás del humo de Iana, lejos del hueco que abrió Buck"
+        }
+       ],
+       "final": "Planta en Wine Cellar y se queda en Library Stairs cubriendo la pared abierta"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube por el bosque hacia el Backyard",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Dron al Backyard Patio",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Checa la puerta de Kitchen y las ventanas de Great Room",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Rompe la barricada de Kitchen",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Abre el piso sobre Wine Cellar con la Skeleton Key",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Hallway",
+         "f": 1,
+         "do": "Baja al final para ayudar en el plant",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "do": "Escalera exterior al sótano",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 0,
+         "do": "Entra al pasillo del sótano",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Roamer (Vigil/Cav) que sube por Backyard Stairs a matar al vertical",
+         "how": "Poner un claymore en Kitchen Hallway antes de abrir el piso"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "threat": "Ancla debajo pegada a la pared para no ser vista desde arriba",
+         "how": "Abrir varios huecos, tirar granada de frag al rincón y disparar a los pies"
+        }
+       ],
+       "final": "Niega Wine Cellar desde arriba durante todo el plant y baja al final por Backyard Stairs"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Manda el Gemini por la puerta del Snowmobile Garage",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Entra con humo, limpia el garage",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "do": "Avanza hacia Wine Cellar",
+         "via": "door"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "do": "Cubre el plant de Thermite",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Castle en la puerta + Mira mirando la entrada",
+         "how": "Nunca entrar de frente: Gemini para ubicar, entrar solo cuando la pared ya está abierta y Mira ocupada"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "threat": "Ancla asomando desde Wine Cellar",
+         "how": "Gemini primero, prefire a la esquina"
+        }
+       ],
+       "final": "Sostiene Snowmobile Garage para que nadie rote al plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron al Main Garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage Entrance",
+         "f": 0,
+         "do": "Rompe la barricada del Main Garage",
+         "via": "door"
+        },
+        {
+         "room": "Main Garage",
+         "f": 0,
+         "do": "Airjab en la escotilla y en la puerta hacia Basement Hallway",
+         "via": "door"
+        },
+        {
+         "room": "Basement Hallway",
+         "f": 0,
+         "do": "Sostiene el pasillo mirando a Storage Room",
+         "via": "door"
+        },
+        {
+         "room": "Storage Room",
+         "f": 0,
+         "do": "Airjab en Great Room Stairs para cerrar la rotación",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Garage",
+         "f": 0,
+         "threat": "Roamer bajando por Main Stairs o por la escotilla del garage",
+         "how": "Airjab en la escotilla, avanzar despacio"
+        },
+        {
+         "room": "Basement Hallway",
+         "f": 0,
+         "threat": "Ancla de Wine Stock asomando por la puerta",
+         "how": "Prefire a la esquina, no cruzar hasta tener humo"
+        }
+       ],
+       "final": "Cierra el flanco de Basement Hallway con Airjabs y aguanta el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Todos por la puerta del Snowmobile Garage desde Lakeside antes de que Castle la cierre y Mira ponga el espejo. Humo + flashes en la puerta y cinco por el mismo hueco: si no hay Castle es plant en 40 segundos.",
+     "timeline": [
+      "0:00–0:20 · sprint desde Lakeside, dron rápido a la puerta",
+      "0:20–0:45 · humo de Ying/flash y ruptura de puerta",
+      "0:45–1:15 · entrada en cadena, plant en Snowmobile Garage",
+      "1:15–3:00 · aguantar dentro con Osa y Zofia"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Carga de brecha a la barricada de la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Entra primera con la flash de Ying",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "do": "Limpia el pasillo hacia Wine Cellar",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Castle en la puerta y Mira detrás",
+         "how": "Si hay Castle: carga de brecha a la barricada blindada y entrar por el humo"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "threat": "Ancla de Wine Cellar disparando por el pasillo",
+         "how": "Prefire y stun de Zofia detrás"
+        }
+       ],
+       "final": "Toma el corredor y mata a quien rote de Wine Cellar"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Candela por la puerta rota justo antes de entrar",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Entra tras Ash y limpia el rincón de las motos",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Ancla detrás de las motos y Jäger comiéndose la Candela",
+         "how": "Rodar la Candela por el suelo desde afuera y entrar en el flash"
+        }
+       ],
+       "final": "Planta detrás de las motos con humo de cobertura"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Impact a la puerta si Ash falla",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Stun al corredor y empuja",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "do": "Aguanta el pasillo con Ash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "threat": "Roamer regresando por Wine Cellar",
+         "how": "Stun al pasillo, disparar a lo que grite"
+        }
+       ],
+       "final": "Sostiene Snowmobile Garage Corridor durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Talon en la puerta para aguantar la entrada",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Pone el Talon tapando la línea desde el corredor",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Mira mirando la puerta desde el corredor",
+         "how": "Talon transparente en la puerta, Ying flashea, Osa lo mueve"
+        }
+       ],
+       "final": "Cubre el plant con el escudo puesto"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Adrenalina al llegar la primera flash",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Entra al último, levanta a quien caiga",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Retake desde la escotilla del garage",
+         "how": "Cubrir la escotilla mirando arriba mientras plantan"
+        }
+       ],
+       "final": "Mira la escotilla del Snowmobile Garage y sostiene el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Sledge abre Kitchen sobre Wine Cellar y Fuze mete racimos desde Gaming Room sobre el Snowmobile Garage: las anclas mueren o salen del sitio. Kali castiga los gadgets desde Library Stairs y al final entramos con dos por Backyard Stairs cuando ya no queda nadie abajo.",
+     "timeline": [
+      "0:00–0:45 · tomar Kitchen y Gaming Room, drones al sótano",
+      "0:45–1:45 · Fuze en Gaming Room, Sledge abre Kitchen, Kali rompe gadgets",
+      "1:45–2:30 · entrada por Backyard Stairs y plant",
+      "2:30–3:00 · post-plant desde arriba y Basement Hallway"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube al Backyard",
+         "via": "door"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Dron a Kitchen",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Abre la barricada de Kitchen",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Martillo al piso encima de Wine Cellar",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Hallway",
+         "f": 1,
+         "do": "Se recoloca a Backyard Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "do": "Baja al sótano",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 0,
+         "do": "Entra al pasillo del sótano",
+         "via": "stairs"
+        },
+        {
+         "room": "Basement Hallway",
+         "f": 0,
+         "do": "Empuja Wine Cellar desde el pasillo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Roamer subiendo por Backyard Stairs para matar el vertical",
+         "how": "Claymore en Kitchen Hallway, abrir el piso desde la esquina lejana"
+        },
+        {
+         "room": "Basement Hallway",
+         "f": 0,
+         "threat": "Ancla de Wine Stock asomando",
+         "how": "Bajar solo cuando Fuze ya tiró y con Kali cubriendo Library Stairs"
+        }
+       ],
+       "final": "Planta en Wine Cellar tras limpiar desde arriba"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron al Wooden Trail",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Rompe la ventana de Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Racimos en el piso sobre Snowmobile Garage",
+         "via": "window"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Segundo racimo sobre el corredor del garage",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "threat": "Frost bajo la ventana y roamer en Gaming Room Hallway",
+         "how": "Dron antes de rappelar, romper el cepo con un tiro"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Roamer en Bar mirando a Gaming Room",
+         "how": "Fuze no pelea: esperar que el racimo suene y avanzar con el equipo"
+        }
+       ],
+       "final": "Sostiene Gaming Room sobre el Snowmobile Garage hasta el final"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Avanza a West Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cubre a Fuze en la ventana",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe la barricada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Baja con lanza lista",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "do": "Lanza LV a la pared de Wine Cellar para matar Bandit/Kaid y ADS",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta",
+         "how": "Dron y disparar a la trampa"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "threat": "Ancla de Wine Cellar asomando por la puerta de la escalera",
+         "how": "Aguantar el ángulo largo con la mira, no bajar del todo"
+        }
+       ],
+       "final": "Aguanta Library Stairs con el rifle mirando la puerta de Wine Cellar"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Argus en la escotilla del Main Garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage Entrance",
+         "f": 0,
+         "do": "Entra por la puerta del garage",
+         "via": "door"
+        },
+        {
+         "room": "Main Garage",
+         "f": 0,
+         "do": "Argus mirando a Basement Hallway",
+         "via": "door"
+        },
+        {
+         "room": "Basement Hallway",
+         "f": 0,
+         "do": "Cubre la rotación de Wine Stock",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Garage",
+         "f": 0,
+         "threat": "Roamer que baja por Main Stairs",
+         "how": "Argus en la puerta a Main Stairs, matar por cámara"
+        },
+        {
+         "room": "Basement Hallway",
+         "f": 0,
+         "threat": "Ancla en Wine Stock",
+         "how": "Argus a través de la puerta, matar la cámara de Valk primero"
+        }
+       ],
+       "final": "Sostiene Basement Hallway y llama todo desde las Argus"
+      },
+      {
+       "op": "grim",
+       "role": "flanco",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Colmena en la puerta del Snowmobile Garage",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Entra cuando Fuze termina",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "do": "Colmena al corredor para marcar al ancla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Castle + Mira en la puerta",
+         "how": "Colmena antes de tocar la puerta, entrar tras los racimos de Fuze"
+        }
+       ],
+       "final": "Marca a los defensores que quedan y cubre el corredor"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes: Ace + Maverick por la pared de Wine Cellar desde Library Stairs y Montagne + Capitão + Dokkaebi por la puerta del Snowmobile Garage. Dokkaebi hackea justo cuando tocamos los dos lados y la defensa no puede cubrir ambos.",
+     "timeline": [
+      "0:00–0:45 · dos grupos en posición, Dokkaebi hackea cámaras",
+      "0:45–1:30 · Ace/Maverick abren la pared mientras Montagne abre la puerta del garage",
+      "1:30–2:30 · entrada simultánea, Capitão quema el rincón del plant",
+      "2:30–3:00 · post-plant a dos lados"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron a West Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Avanza a la puerta",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Baja",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "do": "SELMA a la pared de Wine Cellar",
+         "via": "stairs"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "do": "Entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "threat": "Bandit trickeando la pared",
+         "how": "Maverick abre un agujero de tiro primero y mata a Bandit"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "threat": "Ancla detrás de los barriles",
+         "how": "Entrar cuando Capitão ya prendió el rincón"
+        }
+       ],
+       "final": "Planta en Wine Cellar"
+      },
+      {
+       "op": "maverick",
+       "role": "antigadget",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Sigue a Ace",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cubre la ventana de Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Cubre la entrada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Baja",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "do": "Agujero de soplete para matar Bandit y quemar la Mira",
+         "via": "stairs"
+        },
+        {
+         "room": "Wine Cellar",
+         "f": 0,
+         "do": "Entra con Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library Stairs",
+         "f": 0,
+         "threat": "Mira en la pared y Bandit detrás",
+         "how": "Soplete al cristal de Mira desde abajo, agujero pequeño de tiro"
+        }
+       ],
+       "final": "Sostiene la pared abierta mirando a Wine Stock"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Escudo abierto en la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Entra despacio, deja que Capitão queme",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "do": "Avanza como muro hacia Wine Cellar",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Mira mirando la puerta y Noor con fuego anti-escudo",
+         "how": "Entrar con humo y no pararse frente al espejo; Dokkaebi hackea al mismo tiempo"
+        }
+       ],
+       "final": "Bloquea el corredor mientras Ace planta"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Humo en la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Fuego al rincón de las motos",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "do": "Fuego a la entrada de Wine Cellar durante el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Ancla detrás de las motos",
+         "how": "Flecha de fuego al rincón antes de que Monty entre"
+        }
+       ],
+       "final": "Quema las rotaciones hacia Wine Cellar"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Snowmobiles",
+         "f": -1,
+         "do": "Logic Bomb cuando Ace pone la carga",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "do": "Entra tras Monty y hackea el teléfono del muerto",
+         "via": "door"
+        },
+        {
+         "room": "Snowmobile Garage Corridor",
+         "f": 0,
+         "do": "Cubre la espalda de Monty",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Snowmobile Garage",
+         "f": 0,
+         "threat": "Roamer regresando por la escotilla",
+         "how": "Logic Bomb lo delata, mirar la escotilla"
+        }
+       ],
+       "final": "Post-plant en Snowmobile Garage mirando la escotilla y las cámaras"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Castle + Mira en la puerta del Snowmobile Garage, Smoke ancla en Wine Cellar y Bandit trickea la pared de Library Stairs. Jäger roamea Kitchen para castigar el vertical.",
+     "reinforce": [
+      "Pared Wine Cellar–Library Stairs ×2",
+      "Puerta Snowmobile Garage (Castle)",
+      "Escotilla Snowmobile Garage",
+      "Escotilla Storage Room"
+     ],
+     "rotations": [
+      "Wine Cellar↔Snowmobile Garage por el corredor",
+      "Wine Cellar↔Wine Stock"
+     ],
+     "ops": [
+      {
+       "op": "castle",
+       "room": "Snowmobile Garage",
+       "f": 0,
+       "role": "ancla",
+       "job": "Barricada blindada en la puerta exterior, se pone detrás de las motos"
+      },
+      {
+       "op": "mira",
+       "room": "Snowmobile Garage Corridor",
+       "f": 0,
+       "role": "ancla",
+       "job": "Espejo mirando la puerta del garage, mata a quien la cruce"
+      },
+      {
+       "op": "smoke",
+       "room": "Wine Cellar",
+       "f": 0,
+       "role": "ancla",
+       "job": "Gas en el plant y mira la pared reforzada de Library Stairs"
+      },
+      {
+       "op": "bandit",
+       "room": "Wine Cellar",
+       "f": 0,
+       "role": "flex",
+       "job": "Trick en la pared de Library Stairs, rota a Wine Stock"
+      },
+      {
+       "op": "jager",
+       "room": "Kitchen",
+       "f": 1,
+       "role": "roam",
+       "job": "ADS en Wine Cellar, roamea Kitchen para negar Buck/Sledge"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-vertical",
+     "summary": "Kaid electrifica pared y escotillas, Azami tapa los huecos que abran arriba, Echo cubre plant con Yokai y Noor castiga a los escudos en la puerta del garage. Alibi delata a los que bajan por Basement Hallway.",
+     "reinforce": [
+      "Pared Wine Cellar–Library Stairs ×2",
+      "Escotilla Snowmobile Garage",
+      "Escotilla Basement Hallway",
+      "Puerta Snowmobile Garage"
+     ],
+     "rotations": [
+      "Wine Cellar↔Snowmobile Garage",
+      "Wine Cellar↔Basement Hallway"
+     ],
+     "ops": [
+      {
+       "op": "kaid",
+       "room": "Wine Cellar",
+       "f": 0,
+       "role": "ancla",
+       "job": "Rtila en la pared y la escotilla, ancla los barriles"
+      },
+      {
+       "op": "azami",
+       "room": "Wine Cellar",
+       "f": 0,
+       "role": "flex",
+       "job": "Kiba en el techo cuando Buck abra Kitchen"
+      },
+      {
+       "op": "echo",
+       "room": "Wine Stock",
+       "f": 0,
+       "role": "ancla",
+       "job": "Yokai sobre el plant de Wine Cellar, niega el defuser"
+      },
+      {
+       "op": "noor",
+       "room": "Snowmobile Garage",
+       "f": 0,
+       "role": "ancla",
+       "job": "Fuego Horus a la puerta cuando entren Monty/Osa"
+      },
+      {
+       "op": "alibi",
+       "room": "Basement Hallway",
+       "f": 0,
+       "role": "roam",
+       "job": "Prismas en el pasillo, roamea Main Garage"
+      }
+     ]
+    }
+   ]
+  },
+  "bargame": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Tomamos Dining Room desde Main Entrance y abrimos la pared Dining–Gaming Room con Thatcher + Ace mientras Buck rapela a Master Bedroom y abre el piso sobre Bar. Blackbeard aguanta la ventana de Gaming Room y Gridlock cierra Library Stairs. La defensa queda apretada entre la pared, la ventana y el techo.",
+     "timeline": [
+      "0:00–0:45 · drones a Bar y Gaming Room, ubicar Maestro y Bandit",
+      "0:45–1:30 · EMP + SELMA en la pared de Dining, Buck abre techo de Bar",
+      "1:30–2:30 · entrada por la pared con Blackbeard en la ventana, plant en Gaming Room",
+      "2:30–3:00 · post-plant: Buck arriba, Gridlock en Library Stairs, Ace en Dining"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Main Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Rompe la puerta principal",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Limpia el vestíbulo y Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Great Room",
+         "f": 1,
+         "do": "Cruza pegado a la pared este",
+         "via": "door"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "do": "EMP a la pared reforzada de Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Entra tras Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta y roamer en Main Stairs",
+         "how": "Dron, disparar trampa, checar la escalera antes de cruzar"
+        },
+        {
+         "room": "Great Room",
+         "f": 1,
+         "threat": "Roamer en Fireplace Hallway mirando abajo",
+         "how": "Cruzar con humo, alguien mira arriba"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "threat": "Maestro apuntando a la pared desde Gaming Room y Bandit trickeando",
+         "how": "EMP justo antes de la SELMA"
+        }
+       ],
+       "final": "Cubre Dining Room y la línea hacia Kitchen durante el plant"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Sale con Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Cubre la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Avanza en segunda posición",
+         "via": "door"
+        },
+        {
+         "room": "Great Room",
+         "f": 1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "do": "SELMA a la pared de Gaming Room, dos cargas si truquean",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "threat": "Kaid o Bandit en la pared",
+         "how": "Poner la SELMA tras el EMP, retirarse al marco de Kitchen"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "threat": "Ancla detrás de la mesa de billar",
+         "how": "Entrar cuando Buck ya abrió Bar y Blackbeard mira la ventana"
+        }
+       ],
+       "final": "Planta en Gaming Room detrás de la mesa"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube al Backyard",
+         "via": "door"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Dron a Master Bedroom",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela y rompe la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Abre el piso sobre Bar con la Skeleton Key",
+         "via": "window"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "do": "Claymore hacia Main Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Roamer tipo Vigil o Jäger esperando en Master Bathroom",
+         "how": "Dron antes de rappelar, entrar con la escopeta lista"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "threat": "Roamer que sube por Main Stairs a matar el vertical",
+         "how": "Claymore en la salida de Main Stairs"
+        }
+       ],
+       "final": "Niega Bar desde arriba durante todo el plant"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron a Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Rompe la ventana de Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Escudo en la ventana, aguanta el ángulo",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "threat": "Frost bajo la ventana y ancla en la esquina de Bar",
+         "how": "Dron al cepo, dispararle, no entrar hasta que Ace abra"
+        }
+       ],
+       "final": "Sostiene la ventana y mata a quien intente el retake"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Avanza a West Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cubre a Blackbeard",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Trax en la escalera para cerrar el flanco",
+         "via": "stairs"
+        },
+        {
+         "room": "Gaming Room Hallway",
+         "f": 1,
+         "do": "Sostiene el pasillo hacia Gaming Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "threat": "Ela o Kapkan en la puerta",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Gaming Room Hallway",
+         "f": 1,
+         "threat": "Roamer en Bar asomando al pasillo",
+         "how": "Trax en la puerta, prefire"
+        }
+       ],
+       "final": "Cierra Library Stairs y Gaming Room Hallway con Trax"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por la puerta exterior de Bar desde el Backyard antes de que Castle la cierre. Ying flashea, Osa pone el escudo y plant en Bar en menos de un minuto.",
+     "timeline": [
+      "0:00–0:20 · sprint desde Lakeside al Backyard",
+      "0:20–0:45 · Candela y ruptura de la puerta de Bar",
+      "0:45–1:15 · entrada en cadena y plant en Bar",
+      "1:15–3:00 · aguantar Bar mirando Gaming Room Hallway"
+     ],
+     "ops": [
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Corre al Gazeebo",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Candela por la puerta de Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Entra en el flash y limpia la barra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Ancla detrás de la barra y Castle en la puerta",
+         "how": "Candela rodada, si hay Castle Ash la vuela"
+        }
+       ],
+       "final": "Planta detrás de la barra"
+      },
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Carga de brecha lista",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Vuela la barricada o el Castle",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Entra tras Ying",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room Hallway",
+         "f": 1,
+         "do": "Cubre el pasillo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gaming Room Hallway",
+         "f": 1,
+         "threat": "Roamer regresando de Library Stairs",
+         "how": "Prefire al marco"
+        }
+       ],
+       "final": "Sostiene Gaming Room Hallway"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Stun a Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Entra y empuja Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Limpia la mesa de billar",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "threat": "Maestro y ancla detrás de la mesa",
+         "how": "Stun primero, entrar de a dos"
+        }
+       ],
+       "final": "Aguanta Gaming Room mirando la pared de Dining"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Talon listo",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Talon en la puerta de Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Escudo tapando la línea desde Gaming Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Noor con fuego contra el escudo",
+         "how": "Talon a la puerta, no pararse detrás del escudo quieto"
+        }
+       ],
+       "final": "Cubre el plant con el Talon"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Adrenalina en la Candela",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Entra al último",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Levanta caídos, cubre la escotilla de Bar",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Retake desde la escotilla o desde Master Bedroom arriba",
+         "how": "Mirar el techo durante el plant"
+        }
+       ],
+       "final": "Post-plant en Bar"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Sledge y Fuze desde Master Bedroom sobre Bar; Ram desde Library sobre Gaming Room. Lion escanea cuando abren el techo y Kali revienta los gadgets desde la ventana. Entramos al final por Gaming Room Hallway.",
+     "timeline": [
+      "0:00–0:45 · tomar Master Bedroom y Library, drones abajo",
+      "0:45–1:45 · Fuze/Sledge en Master Bedroom, BU-GI de Ram en Library, Lion",
+      "1:45–2:30 · bajar por Library Stairs y plantar",
+      "2:30–3:00 · post-plant desde arriba"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube al Backyard",
+         "via": "door"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Dron a Master Bedroom",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Martillo al piso sobre Bar",
+         "via": "window"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "do": "Baja al final por Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "Desciende",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "Sale al vestíbulo",
+         "via": "stairs"
+        },
+        {
+         "room": "Great Room",
+         "f": 1,
+         "do": "Entra a plantar por Great Room Stairs hacia Bar",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Roamer en Master Bathroom",
+         "how": "Dron y escopeta"
+        },
+        {
+         "room": "Great Room",
+         "f": 1,
+         "threat": "Ancla de Bar mirando Great Room",
+         "how": "Bajar solo con la cuenta de bajas clara"
+        }
+       ],
+       "final": "Planta en Bar con cobertura desde arriba"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sigue a Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Cubre el rappel",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Racimos al piso sobre Bar",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Jäger comiéndose los racimos desde Bar",
+         "how": "Kali rompe ADS antes, poner racimos en puntos distintos"
+        }
+       ],
+       "final": "Sostiene Master Bedroom sobre Bar"
+      },
+      {
+       "op": "ram",
+       "role": "blando",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron a la biblioteca",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Rapela al balcón",
+         "via": "door"
+        },
+        {
+         "room": "Library Balcony",
+         "f": 2,
+         "do": "Rompe la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Library",
+         "f": 2,
+         "do": "BU-GI hacia Library Hallway sobre Gaming Room",
+         "via": "window"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "do": "Segundo BU-GI, dispara por los huecos",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library",
+         "f": 2,
+         "threat": "Roamer en Library Entrance",
+         "how": "Dron, entrar con la mira lista"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "threat": "Ancla de Gaming Room disparando al techo",
+         "how": "No pararse en los huecos, disparar en diagonal"
+        }
+       ],
+       "final": "Niega Gaming Room desde Library Hallway"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Avanza a West Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cubre a Ram",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Aguanta la escalera, escanea cuando suenen los racimos",
+         "via": "stairs"
+        },
+        {
+         "room": "Gaming Room Hallway",
+         "f": 1,
+         "do": "Empuja al final con Sledge",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "threat": "Kapkan",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Gaming Room Hallway",
+         "f": 1,
+         "threat": "Roamer saliendo de Bar",
+         "how": "Escaneo y prefire"
+        }
+       ],
+       "final": "Empuja Gaming Room con la lectura del escaneo"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Sale al Wooden Trail",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Lanza LV por la ventana de Gaming Room a Maestro y ADS",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Entra al final con Lion",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "threat": "Maestro y Frost en la ventana",
+         "how": "Lanza a la Evil Eye, dron al cepo"
+        }
+       ],
+       "final": "Post-plant desde la ventana de Gaming Room"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Hibana + Maverick por la pared de Dining a Gaming Room, y Montagne + Capitão + Dokkaebi por la puerta de Bar desde el Gazeebo. La defensa tiene que elegir un lado y pierde el otro.",
+     "timeline": [
+      "0:00–0:45 · dos grupos en posición, Dokkaebi hackea",
+      "0:45–1:30 · Hibana abre Dining mientras Monty toca la puerta de Bar",
+      "1:30–2:30 · entrada simultánea, plant en Bar",
+      "2:30–3:00 · post-plant a dos lados"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Main Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Rompe la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Limpia",
+         "via": "door"
+        },
+        {
+         "room": "Great Room",
+         "f": 1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "do": "X-KAIROS a la pared de Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Entra por la pared",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Roamer en Main Stairs",
+         "how": "Dron y humo"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "threat": "Bandit en la pared",
+         "how": "Maverick mata Bandit por el agujero"
+        }
+       ],
+       "final": "Entra por Gaming Room y cubre Bar"
+      },
+      {
+       "op": "maverick",
+       "role": "antigadget",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Sigue a Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Cubre",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Great Room",
+         "f": 1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "do": "Agujero de soplete, mata Bandit y quema Maestro",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Entra con Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "threat": "Maestro apuntando a la pared",
+         "how": "Soplete a la Evil Eye"
+        }
+       ],
+       "final": "Sostiene la pared abierta"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Avanza al Gazeebo",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Escudo en la puerta de Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Entra como muro",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Noor con fuego contra el escudo y ancla detrás de la barra",
+         "how": "Entrar con humo, Capitão quema la barra"
+        }
+       ],
+       "final": "Bloquea Bar mientras Dokkaebi planta"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Humo",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Fuego a la barra",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Fuego a Gaming Room Hallway durante el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Ancla detrás de la barra",
+         "how": "Flecha de fuego antes de que Monty entre"
+        }
+       ],
+       "final": "Quema las rotaciones a Bar"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Logic Bomb al abrir Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Entra tras Monty",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Planta detrás de la barra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Retake por la escotilla de Bar",
+         "how": "Hackear el teléfono y ver cámaras"
+        }
+       ],
+       "final": "Planta en Bar y mira la escotilla"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Maestro ancla Gaming Room mirando la pared de Dining, Smoke ancla Bar, Bandit trickea la pared, Frost pone cepo bajo la ventana y Jäger roamea Master Bedroom para negar el vertical.",
+     "reinforce": [
+      "Pared Gaming Room–Dining Room ×2",
+      "Puerta exterior de Bar (Castle o barricada)",
+      "Escotilla Bar",
+      "Escotilla Gaming Room"
+     ],
+     "rotations": [
+      "Bar↔Gaming Room",
+      "Bar↔Gaming Room Hallway"
+     ],
+     "ops": [
+      {
+       "op": "maestro",
+       "room": "Gaming Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Evil Eyes a la pared de Dining y a la ventana"
+      },
+      {
+       "op": "smoke",
+       "room": "Bar",
+       "f": 1,
+       "role": "ancla",
+       "job": "Gas en la puerta exterior y el plant de Bar"
+      },
+      {
+       "op": "bandit",
+       "room": "Gaming Room",
+       "f": 1,
+       "role": "flex",
+       "job": "Trick en la pared de Dining"
+      },
+      {
+       "op": "frost",
+       "room": "Gaming Room",
+       "f": 1,
+       "role": "flex",
+       "job": "Cepo bajo la ventana, rota a Bar"
+      },
+      {
+       "op": "jager",
+       "room": "Master Bedroom",
+       "f": 2,
+       "role": "roam",
+       "job": "ADS en Bar, roamea arriba contra Buck/Fuze"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-vertical",
+     "summary": "Azami sella techos, Kaid la pared y escotillas, Echo niega el plant, Noor cubre la puerta de Bar contra escudos y Vigil roamea Library.",
+     "reinforce": [
+      "Pared Gaming Room–Dining Room ×2",
+      "Escotilla Bar",
+      "Escotilla Gaming Room Hallway",
+      "Puerta de Bar"
+     ],
+     "rotations": [
+      "Bar↔Gaming Room",
+      "Gaming Room↔Gaming Room Hallway"
+     ],
+     "ops": [
+      {
+       "op": "azami",
+       "room": "Bar",
+       "f": 1,
+       "role": "ancla",
+       "job": "Kiba en el techo de Bar cuando abran arriba"
+      },
+      {
+       "op": "kaid",
+       "room": "Gaming Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Rtila en pared y escotilla"
+      },
+      {
+       "op": "echo",
+       "room": "Gaming Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Yokai sobre el plant"
+      },
+      {
+       "op": "noor",
+       "room": "Bar",
+       "f": 1,
+       "role": "flex",
+       "job": "Fuego Horus a la puerta exterior"
+      },
+      {
+       "op": "vigil",
+       "room": "Library",
+       "f": 2,
+       "role": "roam",
+       "job": "Roamea Library y Master Bedroom"
+      }
+     ]
+    }
+   ]
+  },
+  "kitchen": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thatcher + Thermite abren la pared de Kitchen desde Backyard Stairs mientras Sledge abre Office sobre Trophy Room para matar al ancla desde arriba. Montagne entra por Dining Room y Nomad cierra Main Stairs. Kitchen queda abierto por pared, puerta y techo.",
+     "timeline": [
+      "0:00–0:45 · drones a Kitchen y Trophy Room, ubicar Mira y Pulse",
+      "0:45–1:30 · EMP + Thermite en la pared de Kitchen, Sledge abre Office",
+      "1:30–2:30 · entrada por la pared y Dining Room, plant en Kitchen",
+      "2:30–3:00 · post-plant: Sledge arriba, Nomad en Main Entrance"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube al Backyard",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Dron a Kitchen",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Avanza a la escalera exterior",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "do": "EMP a la pared reforzada de Kitchen",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Entra tras Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "threat": "Ancla de Kitchen asomando por la puerta del patio",
+         "how": "Dron y humo al patio antes de cruzar"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "threat": "Bandit trickeando y Mira mirando la pared",
+         "how": "EMP cuando Thermite pone la carga"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Ancla detrás de la isla",
+         "how": "Entrar cuando Sledge abrió Trophy y Monty toca Dining"
+        }
+       ],
+       "final": "Cubre la pared abierta durante el plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sigue a Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Cubre",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "do": "Carga exotérmica en la pared de Kitchen",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Entra y planta detrás de la isla",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "threat": "Kaid electrificando la pared",
+         "how": "Carga solo tras el EMP, retirarse a la escalera"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Smoke con gas listo para el plant",
+         "how": "Plantar en el lado de Kitchen Hallway con humo propio"
+        }
+       ],
+       "final": "Planta en Kitchen"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Office",
+         "via": "door"
+        },
+        {
+         "room": "Office Balcony",
+         "f": 2,
+         "do": "Rapela al balcón de Office",
+         "via": "rappel"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Martillo al piso sobre Trophy Room",
+         "via": "window"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "do": "Claymore hacia Main Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Roamer en Office o Bedroom Hallway esperando la ventana",
+         "how": "Dron antes de rapelar, entrar con escopeta"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "threat": "Roamer subiendo por Main Stairs",
+         "how": "Claymore en la salida de la escalera"
+        }
+       ],
+       "final": "Niega Trophy Room desde arriba durante el plant"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Avanza a West Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cubre la ventana de Gaming Room",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room Hallway",
+         "f": 1,
+         "do": "Avanza con escudo",
+         "via": "door"
+        },
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "do": "Cruza hacia Dining",
+         "via": "door"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "do": "Escudo en la puerta de Kitchen",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Entra como muro",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gaming Room",
+         "f": 1,
+         "threat": "Roamer en Bar",
+         "how": "Escudo abierto, dron por delante"
+        },
+        {
+         "room": "Dining Room",
+         "f": 1,
+         "threat": "Mira en la puerta de Kitchen y Noor con fuego",
+         "how": "No pararse frente al espejo, entrar solo con la pared ya abierta"
+        }
+       ],
+       "final": "Bloquea la puerta de Dining a Kitchen durante el plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Main Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Rompe la puerta principal",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Airjab en Main Stairs y en la puerta de Trophy Room",
+         "via": "door"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "do": "Empuja al final",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta y roamer en Main Stairs",
+         "how": "Dron, disparar trampa, Airjab a la escalera"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "threat": "Ancla de Trophy Room asomando (Pulse)",
+         "how": "Esperar a que Sledge lo mate desde arriba"
+        }
+       ],
+       "final": "Cierra Main Entrance con Airjabs y aguanta el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por la puerta de Kitchen desde el Backyard Patio antes de que Castle la cierre. Ying flashea, Ash vuela la barricada y plant en Kitchen antes del minuto.",
+     "timeline": [
+      "0:00–0:20 · sprint desde Cliffside al Backyard",
+      "0:20–0:45 · Candela y ruptura de la puerta de Kitchen",
+      "0:45–1:15 · entrada y plant en Kitchen",
+      "1:15–3:00 · aguantar Kitchen mirando Dining y Trophy"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Carga de brecha lista",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Vuela la puerta de Kitchen",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Entra primera",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Castle en la puerta y ancla detrás de la isla",
+         "how": "Carga de brecha al Castle, entrar en el flash"
+        }
+       ],
+       "final": "Toma Kitchen y mira Dining Room"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Candela lista",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Candela por la puerta rota",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Entra y planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Jäger comiéndose la Candela",
+         "how": "Rodar la Candela por el piso"
+        }
+       ],
+       "final": "Planta detrás de la isla de Kitchen"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Stun a Kitchen",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Entra",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Empuja Kitchen Hallway",
+         "via": "door"
+        },
+        {
+         "room": "Kitchen Hallway",
+         "f": 1,
+         "do": "Cubre hacia Trophy Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Kitchen Hallway",
+         "f": 1,
+         "threat": "Ancla de Trophy Room asomando",
+         "how": "Stun y prefire"
+        }
+       ],
+       "final": "Sostiene Kitchen Hallway"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Talon listo",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Talon en la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Talon tapando Dining Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Noor con fuego contra el escudo",
+         "how": "Talon puesto, no quieto detrás"
+        }
+       ],
+       "final": "Cubre el plant con Talon"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Adrenalina",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Entra al último",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Levanta caídos, mira la escotilla de Kitchen Hallway",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Retake por Trophy Room",
+         "how": "Cubrir Kitchen Hallway"
+        }
+       ],
+       "final": "Post-plant en Kitchen"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Buck, Fuze y Ram toman Office por los balcones y destrozan el piso sobre Trophy Room: el ancla no tiene dónde pararse. Lion escanea cuando suenan los racimos y Kali castiga los gadgets de Kitchen desde el patio. Entramos al final por Main Stairs.",
+     "timeline": [
+      "0:00–0:45 · tomar Office por Office Balcony, drones a Trophy",
+      "0:45–1:45 · Fuze y Buck en Office, BU-GI de Ram, Lion escanea",
+      "1:45–2:30 · bajar por Main Stairs y plantar en Trophy Room",
+      "2:30–3:00 · post-plant desde Office"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "blando",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Office",
+         "via": "door"
+        },
+        {
+         "room": "Office Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Abre el piso sobre Trophy Room",
+         "via": "window"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "do": "Baja al final",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "Desciende",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "do": "Planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Roamer en Bedroom Hallway",
+         "how": "Dron y claymore"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "threat": "Ancla de Kitchen asomando por Kitchen Hallway",
+         "how": "Bajar cuando Lion confirme que no queda nadie"
+        }
+       ],
+       "final": "Planta en Trophy Room"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Sigue a Buck",
+         "via": "door"
+        },
+        {
+         "room": "Office Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Racimos al piso sobre Trophy Room",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Jäger comiendo racimos desde Trophy",
+         "how": "Kali rompe ADS primero"
+        }
+       ],
+       "final": "Sostiene Office"
+      },
+      {
+       "op": "ram",
+       "role": "blando",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Bathroom Balcony",
+         "f": 2,
+         "do": "Rapela al balcón del baño",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bathroom",
+         "f": 2,
+         "do": "Entra por la ventana",
+         "via": "window"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "do": "Cruza a Office",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "BU-GI sobre Trophy Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bathroom",
+         "f": 2,
+         "threat": "Roamer en Master Bedroom",
+         "how": "Dron antes de entrar"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "threat": "Roamer subiendo por Main Stairs",
+         "how": "Claymore en la escalera"
+        }
+       ],
+       "final": "Niega Trophy Room desde Office"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Main Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Rompe la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Escanea cuando abran arriba, aguanta Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "do": "Empuja al final con Buck",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "threat": "Ancla de Trophy detrás de la vitrina",
+         "how": "Escaneo y esperar el vertical"
+        }
+       ],
+       "final": "Sostiene Main Entrance"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Lanza LV por la puerta de Kitchen a ADS y Mira",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "do": "Aguanta la puerta con el rifle",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Backyard Patio",
+         "f": 1,
+         "threat": "Ancla de Kitchen asomando por la puerta",
+         "how": "Ángulo largo desde el patio, no entrar"
+        }
+       ],
+       "final": "Aguanta Backyard Patio mirando la puerta de Kitchen"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Hibana + Maverick por la pared de Kitchen desde Backyard Stairs y Blitz + Capitão + Dokkaebi por Main Entrance a Trophy Room. Dos frentes: Kitchen y Trophy a la vez.",
+     "timeline": [
+      "0:00–0:45 · dos grupos, Dokkaebi hackea",
+      "0:45–1:30 · Hibana abre Kitchen mientras Blitz toca Trophy Room",
+      "1:30–2:30 · entrada simultánea, plant en Trophy Room",
+      "2:30–3:00 · post-plant a dos lados"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "do": "X-KAIROS a la pared de Kitchen",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Entra",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "threat": "Bandit en la pared",
+         "how": "Maverick mata Bandit por el agujero"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "threat": "Ancla detrás de la isla",
+         "how": "Entrar con Maverick en pareja"
+        }
+       ],
+       "final": "Toma Kitchen y cubre Kitchen Hallway"
+      },
+      {
+       "op": "maverick",
+       "role": "antigadget",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sigue",
+         "via": "door"
+        },
+        {
+         "room": "Cliffside Stairs",
+         "f": -1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "do": "Soplete: agujero de tiro, mata Bandit y Mira",
+         "via": "stairs"
+        },
+        {
+         "room": "Kitchen",
+         "f": 1,
+         "do": "Entra con Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Backyard Stairs",
+         "f": 1,
+         "threat": "Mira mirando la pared",
+         "how": "Soplete al cristal"
+        }
+       ],
+       "final": "Sostiene la pared abierta"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Main Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Rompe la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Escudo en la puerta de Trophy",
+         "via": "door"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "do": "Flash y entra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "threat": "Noor con fuego y ancla detrás de la vitrina",
+         "how": "Flash y entrar rápido, no quedarse quieto"
+        }
+       ],
+       "final": "Toma Trophy Room"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Sigue a Blitz",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Humo",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Fuego a Trophy Room",
+         "via": "door"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "do": "Fuego a Kitchen Hallway durante el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "threat": "Ancla detrás de la vitrina",
+         "how": "Flecha de fuego antes de que Blitz entre"
+        }
+       ],
+       "final": "Quema las rotaciones"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Logic Bomb al abrir Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Entra tras Blitz",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Cubre Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "do": "Planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Roamer bajando Main Stairs",
+         "how": "Logic Bomb lo delata"
+        }
+       ],
+       "final": "Planta en Trophy Room"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Smoke ancla Trophy Room, Mira ancla Kitchen mirando la puerta de Dining, Kaid electrifica la pared de Backyard Stairs, Pulse lee el vertical en Trophy y Jäger roamea Office.",
+     "reinforce": [
+      "Pared Kitchen–Backyard Stairs ×2",
+      "Pared Trophy Room–Main Stairs",
+      "Escotilla Kitchen Hallway"
+     ],
+     "rotations": [
+      "Kitchen↔Trophy Room por Kitchen Hallway"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Trophy Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Gas en la puerta de Main Entrance y el plant"
+      },
+      {
+       "op": "mira",
+       "room": "Kitchen",
+       "f": 1,
+       "role": "ancla",
+       "job": "Espejo a la puerta de Dining Room"
+      },
+      {
+       "op": "kaid",
+       "room": "Kitchen",
+       "f": 1,
+       "role": "flex",
+       "job": "Rtila en la pared de Backyard Stairs"
+      },
+      {
+       "op": "pulse",
+       "room": "Trophy Room",
+       "f": 1,
+       "role": "flex",
+       "job": "Lee Office arriba y dispara al techo"
+      },
+      {
+       "op": "jager",
+       "room": "Office",
+       "f": 2,
+       "role": "roam",
+       "job": "ADS en Kitchen, roamea Office contra el vertical"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush",
+     "summary": "Castle cierra la puerta de Kitchen, Noor castiga escudos en Dining, Azami sella el techo de Trophy, Melusi frena Main Entrance y Vigil roamea Master Bedroom.",
+     "reinforce": [
+      "Pared Kitchen–Backyard Stairs ×2",
+      "Puerta de Kitchen (Castle)",
+      "Escotilla Kitchen Hallway"
+     ],
+     "rotations": [
+      "Kitchen↔Trophy Room"
+     ],
+     "ops": [
+      {
+       "op": "castle",
+       "room": "Kitchen",
+       "f": 1,
+       "role": "ancla",
+       "job": "Barricada blindada en la puerta del patio"
+      },
+      {
+       "op": "noor",
+       "room": "Kitchen",
+       "f": 1,
+       "role": "ancla",
+       "job": "Fuego Horus a la puerta de Dining"
+      },
+      {
+       "op": "azami",
+       "room": "Trophy Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Kiba en el techo cuando abran Office"
+      },
+      {
+       "op": "melusi",
+       "room": "Main Entrance",
+       "f": 1,
+       "role": "flex",
+       "job": "Banshees en Main Entrance y Main Stairs"
+      },
+      {
+       "op": "vigil",
+       "room": "Master Bedroom",
+       "f": 2,
+       "role": "roam",
+       "job": "Roamea arriba y mata rapeleros"
+      }
+     ]
+    }
+   ]
+  },
+  "master": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thatcher + Thermite abren la pared Library–Office desde la biblioteca mientras Buck rapela a Master Bathroom y abre el piso desde el balcón, y Capitão quema el rincón de Master Bedroom. Jackal cierra Main Stairs rastreando al roamer. Entramos por la pared con la recámara ya sin ancla.",
+     "timeline": [
+      "0:00–0:45 · drones a Master Bedroom y Office, ubicar Mira y Valkyrie",
+      "0:45–1:30 · EMP + Thermite en la pared de Office, Buck abre desde Master Bathroom",
+      "1:30–2:30 · entrada por la pared y ventana, plant en Master Bedroom",
+      "2:30–3:00 · post-plant: Jackal en Main Stairs, Thermite en Library"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron a West Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Avanza a la puerta",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 2,
+         "do": "Sale a la biblioteca",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "do": "Limpia el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Library",
+         "f": 2,
+         "do": "EMP a la pared reforzada de Office",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Entra tras Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "threat": "Roamer (Vigil/Cav) en Library Entrance",
+         "how": "Dron por delante, prefire al marco"
+        },
+        {
+         "room": "Library",
+         "f": 2,
+         "threat": "Bandit trickeando y Mira mirando la pared",
+         "how": "EMP cuando Thermite pone la carga"
+        }
+       ],
+       "final": "Cubre Library durante el plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Sigue a Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 2,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Library",
+         "f": 2,
+         "do": "Carga exotérmica en la pared de Office",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Entra y cruza a Master Bedroom a plantar",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library",
+         "f": 2,
+         "threat": "Kaid en la pared",
+         "how": "Carga tras el EMP"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Ancla de Office detrás del escritorio",
+         "how": "Entrar cuando Buck abrió el baño y Capitão quemó"
+        }
+       ],
+       "final": "Planta en Master Bedroom"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Master Bathroom",
+         "via": "door"
+        },
+        {
+         "room": "Bathroom Balcony",
+         "f": 2,
+         "do": "Rapela al balcón del baño",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bathroom",
+         "f": 2,
+         "do": "Abre la pared blanda hacia Master Bedroom con la Skeleton Key",
+         "via": "window"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra cuando el ancla muera",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bathroom",
+         "f": 2,
+         "threat": "Roamer en el baño y Frost en la ventana",
+         "how": "Dron antes de rapelar, disparar el cepo"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Ancla detrás de la cama con Smoke",
+         "how": "Abrir huecos en la pared del baño, no entrar por la ventana"
+        }
+       ],
+       "final": "Cubre desde Master Bathroom durante el plant"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Dron a Master Bedroom",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela a la ventana de Master Bedroom",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Fuego al rincón de la cama, humo para el plant",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "threat": "Valkyrie afuera de la ventana y Castle en la ventana",
+         "how": "Matar la cámara, entrar solo si Thermite ya abrió"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Ancla detrás de la cama",
+         "how": "Flecha de fuego desde la ventana"
+        }
+       ],
+       "final": "Quema el rincón y humea el plant"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Main Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Rompe la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Escanea huellas del roamer",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "Sube despacio",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "Cierra la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "do": "Sostiene el pasillo hacia Master Bedroom",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Roamer en Bar/Kitchen bajando a flanquear",
+         "how": "Rastrear huellas y matarlo con apoyo"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "threat": "Ancla de Master Bedroom asomando al pasillo",
+         "how": "Prefire, claymore en Main Stairs"
+        }
+       ],
+       "final": "Cierra Main Stairs y Bedroom Hallway en el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco rapelando a las ventanas de Master Bedroom desde el Backyard antes de que Castle las cierre. Ying flashea desde la ventana, Ash rompe Castle, Amaru se lanza y plant detrás de la cama.",
+     "timeline": [
+      "0:00–0:20 · sprint desde Lakeside al Backyard",
+      "0:20–0:45 · rappel a Bedroom Balcony, Candela",
+      "0:45–1:15 · entrada por la ventana y plant",
+      "1:15–3:00 · aguantar Master Bedroom mirando Bedroom Hallway"
+     ],
+     "ops": [
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Garra a la ventana de Master Bedroom",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rompe la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra primera con la flash",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Frost bajo la ventana y ancla detrás de la cama",
+         "how": "Dron rápido, entrar en el flash de Ying"
+        }
+       ],
+       "final": "Toma Master Bedroom"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Corre",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Candela por la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra y planta",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Jäger comiendo la Candela",
+         "how": "Candela en la pared, no al aire"
+        }
+       ],
+       "final": "Planta detrás de la cama"
+      },
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Carga de brecha a la ventana con Castle",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra y empuja Bedroom Hallway",
+         "via": "window"
+        },
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "do": "Cubre Main Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bedroom Hallway",
+         "f": 2,
+         "threat": "Roamer regresando por Main Stairs",
+         "how": "Prefire al marco"
+        }
+       ],
+       "final": "Sostiene Bedroom Hallway"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Stun a la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra y cubre Office",
+         "via": "window"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Limpia el escritorio",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Ancla de Office",
+         "how": "Stun y entrar de a dos"
+        }
+       ],
+       "final": "Aguanta Office"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Adrenalina en la Candela",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela al último",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Levanta caídos",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Retake por Master Bathroom",
+         "how": "Mirar la puerta del baño"
+        }
+       ],
+       "final": "Post-plant en Master Bedroom"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Sitio de segundo piso: el vertical es desde abajo. Sledge y Ram abren el techo de Bar bajo Master Bedroom y el de Trophy Room bajo Office para negar posiciones y reventar gadgets; Fuze mete racimos desde Master Bathroom. Kali limpia la ventana y entramos al final por Library.",
+     "timeline": [
+      "0:00–0:45 · tomar Bar y Trophy Room, drones arriba",
+      "0:45–1:45 · Sledge y Ram abren techos, Fuze desde el baño, Kali",
+      "1:45–2:30 · subir por Library Stairs y plantar en Office",
+      "2:30–3:00 · post-plant desde abajo"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Dron a Bar",
+         "via": "door"
+        },
+        {
+         "room": "Gazeebo",
+         "f": 1,
+         "do": "Rompe la puerta de Bar",
+         "via": "stairs"
+        },
+        {
+         "room": "Bar",
+         "f": 1,
+         "do": "Martillo al techo bajo Master Bedroom",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bar",
+         "f": 1,
+         "threat": "Roamer en Bar o Gaming Room",
+         "how": "Dron y limpiar antes de abrir"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Ancla detrás de la cama disparando al piso",
+         "how": "Abrir en diagonal, no debajo de la cama"
+        }
+       ],
+       "final": "Niega Master Bedroom desde Bar"
+      },
+      {
+       "op": "ram",
+       "role": "blando",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron a Main Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Front Yard Patio",
+         "f": 1,
+         "do": "Rompe la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "do": "Limpia",
+         "via": "door"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "do": "Dispara el techo bajo Office y manda el BU-GI a Kitchen Hallway para cortar el flanco",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": 1,
+         "threat": "Kapkan y roamer en Main Stairs",
+         "how": "Dron, disparar trampa"
+        },
+        {
+         "room": "Trophy Room",
+         "f": 1,
+         "threat": "Roamer en Kitchen",
+         "how": "BU-GI hacia Kitchen Hallway"
+        }
+       ],
+       "final": "Sostiene Trophy Room bajo Office"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Front Yard",
+       "path": [
+        {
+         "room": "Front Yard",
+         "f": -1,
+         "do": "Dron al baño",
+         "via": "door"
+        },
+        {
+         "room": "Bathroom Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bathroom",
+         "f": 2,
+         "do": "Racimos en la pared blanda hacia Master Bedroom",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bathroom",
+         "f": 2,
+         "threat": "Roamer en el baño",
+         "how": "Dron antes de rapelar"
+        }
+       ],
+       "final": "Sostiene Master Bathroom"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Cliffside",
+       "path": [
+        {
+         "room": "Cliffside Woods",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Lanza LV a la ventana de Master Bedroom contra Castle/ADS",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela y aguanta el ángulo de la ventana",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "threat": "Valkyrie afuera y ancla mirando la ventana",
+         "how": "Matar cámara, ángulo largo con la mira"
+        }
+       ],
+       "final": "Aguanta la ventana desde el balcón"
+      },
+      {
+       "op": "twitch",
+       "role": "intel",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron de choque a Library",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 2,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "do": "Dron choca gadgets de Office",
+         "via": "door"
+        },
+        {
+         "room": "Library",
+         "f": 2,
+         "do": "Entra al final a plantar en Office",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "threat": "Roamer en Library Entrance",
+         "how": "Dron de choque primero"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Mira en la puerta de Library",
+         "how": "Dron choca gadgets, esperar a los verticales"
+        }
+       ],
+       "final": "Planta en Office"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Ace + Maverick por la pared Library–Office y Montagne + Blackbeard + Dokkaebi por la ventana de Master Bedroom desde el balcón. Dos frentes: Office y la recámara a la vez.",
+     "timeline": [
+      "0:00–0:45 · dos grupos en posición, Dokkaebi hackea",
+      "0:45–1:30 · Ace abre Office mientras Monty toca la ventana",
+      "1:30–2:30 · entrada simultánea, plant en Office",
+      "2:30–3:00 · post-plant a dos lados"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 2,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Library",
+         "f": 2,
+         "do": "SELMA a la pared de Office",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library",
+         "f": 2,
+         "threat": "Bandit en la pared",
+         "how": "Maverick mata Bandit"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Ancla detrás del escritorio",
+         "how": "Entrar con Maverick"
+        }
+       ],
+       "final": "Planta en Office"
+      },
+      {
+       "op": "maverick",
+       "role": "antigadget",
+       "spawn": "Campfire",
+       "path": [
+        {
+         "room": "Campfire Wood",
+         "f": -1,
+         "do": "Sigue",
+         "via": "door"
+        },
+        {
+         "room": "Wooden Trail",
+         "f": -1,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "West Entrance",
+         "f": 1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Stairs",
+         "f": 2,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Library Hallway",
+         "f": 2,
+         "do": "Cubre",
+         "via": "door"
+        },
+        {
+         "room": "Library",
+         "f": 2,
+         "do": "Soplete: agujero de tiro, mata Bandit y Mira",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "Entra con Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Library",
+         "f": 2,
+         "threat": "Mira mirando la pared",
+         "how": "Soplete al cristal"
+        }
+       ],
+       "final": "Sostiene la pared abierta"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela con escudo",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra como muro",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Noor con fuego contra el escudo y ancla en la cama",
+         "how": "Entrar con humo y Blackbeard detrás"
+        }
+       ],
+       "final": "Bloquea Master Bedroom"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Avanza",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela, escudo en la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra tras Monty",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "threat": "Valkyrie afuera de la ventana",
+         "how": "Matar cámara antes de rapelar"
+        }
+       ],
+       "final": "Aguanta la ventana"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Lakeside",
+       "path": [
+        {
+         "room": "Backyard",
+         "f": -1,
+         "do": "Logic Bomb al abrir Ace",
+         "via": "door"
+        },
+        {
+         "room": "Bedroom Balcony",
+         "f": 2,
+         "do": "Rapela",
+         "via": "rappel"
+        },
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "do": "Entra al último y hackea cámaras",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Master Bedroom",
+         "f": 2,
+         "threat": "Retake por Bedroom Hallway",
+         "how": "Ver cámaras hackeadas"
+        }
+       ],
+       "final": "Post-plant en Master Bedroom"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Frost + Smoke anclan Master Bedroom, Castle cierra las ventanas, Mira ancla Office mirando la pared de Library y Valkyrie pone cámara afuera de la ventana y roamea Bar.",
+     "reinforce": [
+      "Pared Office–Library ×2",
+      "Ventanas Master Bedroom (Castle)",
+      "Escotilla Bar (abajo, para negar el vertical)"
+     ],
+     "rotations": [
+      "Master Bedroom↔Office",
+      "Master Bedroom↔Master Bathroom"
+     ],
+     "ops": [
+      {
+       "op": "frost",
+       "room": "Master Bedroom",
+       "f": 2,
+       "role": "ancla",
+       "job": "Cepos bajo las ventanas"
+      },
+      {
+       "op": "smoke",
+       "room": "Master Bedroom",
+       "f": 2,
+       "role": "ancla",
+       "job": "Gas en el plant detrás de la cama"
+      },
+      {
+       "op": "castle",
+       "room": "Master Bedroom",
+       "f": 2,
+       "role": "flex",
+       "job": "Barricadas blindadas en las ventanas"
+      },
+      {
+       "op": "mira",
+       "room": "Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Espejo a la pared de Library"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Bar",
+       "f": 1,
+       "role": "roam",
+       "job": "Cámara afuera de la ventana de Master Bedroom, roamea Bar"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rappel",
+     "summary": "Kaid electrifica pared y ventanas, Noor castiga escudos en la ventana, Azami sella huecos del baño, Echo niega el plant y Vigil roamea Trophy Room.",
+     "reinforce": [
+      "Pared Office–Library ×2",
+      "Ventanas Master Bedroom",
+      "Pared Master Bathroom–Bedroom parcial"
+     ],
+     "rotations": [
+      "Master Bedroom↔Office",
+      "Office↔Bedroom Hallway"
+     ],
+     "ops": [
+      {
+       "op": "kaid",
+       "room": "Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Rtila en la pared de Library"
+      },
+      {
+       "op": "noor",
+       "room": "Master Bedroom",
+       "f": 2,
+       "role": "ancla",
+       "job": "Fuego Horus a las ventanas"
+      },
+      {
+       "op": "azami",
+       "room": "Master Bathroom",
+       "f": 2,
+       "role": "flex",
+       "job": "Kiba en la ventana del baño"
+      },
+      {
+       "op": "echo",
+       "room": "Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Yokai sobre el plant"
+      },
+      {
+       "op": "vigil",
+       "room": "Trophy Room",
+       "f": 1,
+       "role": "roam",
+       "job": "Roamea Trophy y Main Stairs"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

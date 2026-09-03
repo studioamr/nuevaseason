@@ -1,0 +1,993 @@
+{
+ "map": "coastline",
+ "sites": {
+  "kitchen": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Abrimos la pared exterior de Service desde Back Alley con Thermite+Thatcher mientras Buck destruye el piso de Billiards sobre Kitchen para sacar a la Mira. El sitio es chico y pegado al exterior, así que si la pared cae temprano los defensores quedan atrapados entre el hoyo y el vertical. Nomad cierra la rotación por Blue Bar para que nadie nos flanquee por la escalera de Hookah.",
+     "timeline":["0:00–0:45 · drones a Service y Kitchen, Buck sube a Hookah por rappel, Zero pone Argus en Hallway","0:45–1:30 · EMP + exotérmica en la pared de Service, Buck abre el piso de Billiards sobre Kitchen","1:30–2:30 · entrada por el hoyo de Service con humo, plant en Service pegado a la pared exterior","2:30–3:00 · Nomad tapa Blue Bar, Buck sostiene desde arriba, Zero vigila Hallway"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dronea Back Alley y la puerta de Service antes de moverse","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"se pega a la pared exterior de Service y espera el EMP de Thatcher","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"abre la pared con la exotérmica y entra detrás del humo","via":"breach"},
+        {"room":"Kitchen","f":1,"do":"empuja la puerta Service–Kitchen para tomar el segundo cuarto","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Roamer tipo Vigil/Caveira saliendo por la puerta de Service o asomando desde la ventana de Kitchen","how":"dron primero, un compañero prefirea la esquina de la puerta y luego pega la carga"},
+        {"room":"Service Entrance","f":1,"threat":"Bandit/Kaid electrificando la pared y Smoke con gas detrás del hoyo","how":"Thatcher tira EMP y Thermite pega al segundo; si suena batería otra vez, esperar EMP dos y no asomar sin humo"}],
+       "final":"Planta en Service pegado a la pared exterior y sostiene la puerta Service–Kitchen"},
+      {"op":"thatcher","role":"antigadget","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale junto a Thermite cubriendo Garage Roof","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"tira las EMP a la pared de Service y a la ventana de Kitchen para matar jammers y ADS","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra segundo, limpia la esquina de North Stairs","via":"breach"},
+        {"room":"North Stairs","f":1,"do":"sostiene la escalera para que nadie baje de Hookah","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Kapkan/Ela en la puerta de Service y Mute jammers detrás de la pared","how":"EMP a la pared antes de que Thermite se acerque; dronear la puerta para ver el láser de Kapkan"},
+        {"room":"North Stairs","f":1,"threat":"Roamer bajando de Hookah por North Stairs cuando escucha la exotérmica","how":"prefire la escalera al entrar y deja un dron mirándola"}],
+       "final":"Sostiene North Stairs y la puerta de Service mientras Thermite planta"},
+      {"op":"buck","role":"vertical","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"corre a Back Alley pegado a la pared este","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Hookah lado Back Alley","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra por la ventana y limpia el lounge con dron antes de bajar el arma","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"abre el piso sobre Kitchen con la skeleton key y sostiene los hoyos","via":"door"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Roamer (Vigil/Ela) esperando el rappel y Frost bajo la ventana","how":"asoma y retrocede en el rappel, dron por la ventana, entra solo cuando Zero o el dron confirman vacío"},
+        {"room":"Billiards Room","f":2,"threat":"Ancla que subió por la escalera de Blue Bar y Kapkan en la puerta a Aquarium","how":"mira el láser de Kapkan antes de cruzar, hoyo chico primero para escuchar pasos abajo"}],
+       "final":"Destruye el piso sobre Kitchen y mata a la Mira desde arriba durante el plant"},
+      {"op":"zero","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea el patio y se mueve rápido","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"Argus en la ventana de Main Lobby para ver la puerta de Hallway","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra por la puerta principal con dron adelante","via":"door"},
+        {"room":"Hallway","f":1,"do":"Argus atravesando la pared de Kitchen para ver la Mira y la puerta","via":"door"},
+        {"room":"Kitchen","f":1,"do":"entra al final cuando la Mira está muerta","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer tipo Caveira o Alibi con prismas en el lobby","how":"dron con calma, dispara a los prismas, nunca cruzar el lobby corriendo"},
+        {"room":"Hallway","f":1,"threat":"Mira/Maestro apuntando a la puerta Hallway–Kitchen","how":"Argus a través de la pared y dispara el Evil Eye con el dron; no asomar hasta que Buck abra el piso"}],
+       "final":"Sostiene la puerta Hallway–Kitchen con dos Argus vivos y llama rotaciones"},
+      {"op":"nomad","role":"flanco","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"sale por el lado de la alberca","via":"door"},
+        {"room":"Pool","f":-1,"do":"cruza la alberca pegado a la pared de Cantina","via":"door"},
+        {"room":"Cantina","f":1,"do":"entra al bar abierto y dronea Sunrise","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"airjab en la puerta de Toilets para tapar el flanco","via":"door"},
+        {"room":"Blue Bar","f":1,"do":"airjab en la escalera que baja de Hookah y otra en la puerta a Hallway","via":"door"},
+        {"room":"Kitchen","f":1,"do":"cubre el plant desde la puerta Blue Bar–Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Sunrise Bar","f":1,"threat":"Roamer bajando por el hatch de Bathroom o ancla flex detrás de la barra","how":"dron antes de entrar, prefire la barra y revisa el hatch arriba"},
+        {"room":"Blue Bar","f":1,"threat":"Maestro/ancla de Blue Bar mirando la puerta de Sunrise y la escalera a Hookah","how":"espera a que el vertical de Buck empiece, entra con humo y airjab primero"}],
+       "final":"Sostiene la puerta Blue Bar–Kitchen y la escalera con airjabs durante el post-plant"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Los cinco entran por la puerta de Service desde Back Alley en los primeros 30 segundos, antes de que Bandit ponga baterías y Smoke se acomode. Ash abre la barricada, Zofia y Blitz aturden, Iana pasa el holograma primero y Finka empuja todos. Funciona porque Service es el cuarto más pegado al exterior del mapa.",
+     "timeline":["0:00–0:20 · corren de Ruins a Back Alley sin dron, Iana manda holograma a la puerta","0:20–0:45 · Ash abre puerta y ventana, Zofia concusión adentro, Finka boost","0:45–1:30 · entran en cadena Blitz→Ash→Zofia, plant en Service","1:30–3:00 · sostienen desde Kitchen y North Stairs"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"corre directo sin dronear","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"breach round a la puerta de Service y otro a la ventana de Kitchen","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra segunda detrás de Blitz limpiando la esquina izquierda","via":"door"},
+        {"room":"Kitchen","f":1,"do":"toma Kitchen mientras plantan atrás","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Kapkan en la puerta de Service o Frost en la ventana","how":"la breach round rompe la trampa con la barricada; no cruzar la puerta a pie sin romperla"},
+        {"room":"Kitchen","f":1,"threat":"Ancla armando la Mira en la pared de Hallway","how":"prefire la esquina de la Mira con la concusión de Zofia adentro"}],
+       "final":"Sostiene Kitchen mirando Hallway y Blue Bar"},
+      {"op":"zofia","role":"entrada","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale detrás de Ash","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"concusión por la puerta apenas Ash la abre, impacto a la ventana de Kitchen","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra y planta rápido en la esquina de la pared exterior","via":"door"}],
+       "clear":[
+        {"room":"Service Entrance","f":1,"threat":"Smoke o Kaid acomodándose detrás de la pared","how":"concusión adentro y entrar en cadena con Blitz adelante"},
+        {"room":"North Stairs","f":1,"threat":"Roamer que baja de Hookah al escuchar el rush","how":"un impacto a la escalera y Ash la prefirea"}],
+       "final":"Planta en Service y se queda dentro con el withstand como último recurso"},
+      {"op":"iana","role":"intel","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"activa el holograma y lo manda corriendo","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"holograma entra por la puerta de Service para sacar el primer disparo","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra de verdad cuando el holograma marcó al ancla","via":"door"},
+        {"room":"Kitchen","f":1,"do":"limpia detrás de la isla de Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Service Entrance","f":1,"threat":"Ancla con escopeta pegada a la puerta interior","how":"holograma primero para que gaste el disparo, entra Blitz atrás"},
+        {"room":"Kitchen","f":1,"threat":"Defensor detrás de la isla o en la puerta de Blue Bar","how":"segundo holograma a Kitchen antes de cruzar"}],
+       "final":"Cubre la puerta Kitchen–Blue Bar durante el post-plant"},
+      {"op":"finka","role":"soporte","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"boost al llegar a Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"segundo boost cuando Ash abre; cubre Garage Roof","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra última, revive con boost si cae alguien","via":"door"},
+        {"room":"North Stairs","f":1,"do":"cierra la escalera con humo","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Defensor haciendo peek desde Hookah Deck arriba","how":"un jugador mira arriba mientras el resto entra"},
+        {"room":"North Stairs","f":1,"threat":"Roamer bajando por North Stairs","how":"humo en la escalera y prefire"}],
+       "final":"Sostiene North Stairs y mantiene el boost para el post-plant"},
+      {"op":"blitz","role":"entrada","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"corre primero con el escudo arriba","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"se pone en la puerta de Service esperando a Ash","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra primero flasheando a la esquina del ancla","via":"door"},
+        {"room":"Kitchen","f":1,"do":"flash y empuja al que esté detrás de la isla","via":"door"}],
+       "clear":[
+        {"room":"Service Entrance","f":1,"threat":"Noor con fuego Horus esperando escudos en la puerta","how":"si hay Noor, Blitz NO entra primero: Iana manda holograma y Blitz entra tercero"},
+        {"room":"Kitchen","f":1,"threat":"Ancla con Mira/escopeta en la puerta de Blue Bar","how":"flash y que Ash/Zofia rematen desde atrás"}],
+       "final":"Bloquea la puerta Kitchen–Hallway con el escudo mientras plantan"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Tomamos Hookah y Billiards arriba y destruimos el piso: Sledge y Fuze sobre Service, Ram sobre Kitchen. Los defensores no pueden reforzar todo el techo y cualquiera que se quede en el sitio come clusters. Glaz sostiene Back Alley con humo para que nadie salga y Twitch limpia gadgets desde abajo; entramos por Service al final cuando el sitio está vacío.",
+     "timeline":["0:00–0:45 · rappel a Hookah y Billiards, Twitch dronea Kitchen desde Hallway","0:45–1:30 · Ram BU-GI sobre Kitchen, Sledge abre techo de Service, Fuze clusters","1:30–2:30 · Glaz humo en Back Alley y entra por la puerta de Service, plant","2:30–3:00 · arriba sostienen los hoyos, Twitch en Hallway"],
+     "ops":[
+      {"op":"sledge","role":"vertical","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale con Fuze hacia Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Hookah","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"limpia Hookah y abre el piso sobre Service con el martillo","via":"rappel"},
+        {"room":"DJ Booth (not shown)","f":2,"do":"desde la cabina abre más hoyos sobre la esquina del plant en Service","via":"door"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Roamer en Hookah esperando el rappel, Frost o Kapkan en la ventana","how":"dron por la ventana, revisa cepos, entra en pareja con Fuze"},
+        {"room":"DJ Booth (not shown)","f":2,"threat":"Defensor subiendo por la escalera de Blue Bar","how":"martilla el piso solo cuando Twitch confirma que la escalera está limpia"}],
+       "final":"Sostiene los hoyos sobre Service y dispara a quien intente defusar"},
+      {"op":"ram","role":"vertical","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"va con Sledge","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Billiards","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"lanza el BU-GI hacia Kitchen para abrir el piso completo","via":"rappel"}],
+       "clear":[
+        {"room":"Billiards Room","f":2,"threat":"Ancla flex en Billiards mirando la ventana o Kapkan en puerta Aquarium","how":"dron primero; prefire la esquina del billar antes de bajar el arma"},
+        {"room":"Aquarium","f":2,"threat":"Roamer llegando desde Hall of Fame","how":"cierra la puerta con una mirada de Twitch y sostiene desde detrás de la mesa"}],
+       "final":"Después del BU-GI sostiene los hoyos sobre Kitchen y mata rotaciones"},
+      {"op":"fuze","role":"negacion","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale con Sledge","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Hookah junto a Sledge","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"cluster en el piso sobre Service y otro sobre la puerta Service–Kitchen","via":"rappel"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Jäger ADS en Hookah que come los clusters","how":"Twitch o Sledge tumban el ADS antes; poner el cluster lejos del ADS"},
+        {"room":"Hookah Deck (not shown)","f":2,"threat":"Defensor en la terraza de Hookah viendo el rappel","how":"revisa el deck desde la cuerda antes de entrar"}],
+       "final":"Cluster sobre el defuser para el post-plant y sostiene Hookah"},
+      {"op":"twitch","role":"antigadget","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dron de choque adelante","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"dron entra a Lobby y va a Kitchen quemando ADS y Mira","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra cuando el dron limpió el lobby","via":"door"},
+        {"room":"Hallway","f":1,"do":"segundo dron a Kitchen, sostiene la puerta","via":"door"},
+        {"room":"Kitchen","f":1,"do":"entra al final para el post-plant","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer tipo Caveira o Alibi","how":"dron de choque quema prismas, avanza pegado a la pared"},
+        {"room":"Hallway","f":1,"threat":"Mira mirando la puerta de Kitchen y ADS de Jäger","how":"choque a los ADS y al mecanismo de la Mira, luego humo"}],
+       "final":"Sostiene la puerta Hallway–Kitchen y quema gadgets del post-plant"},
+      {"op":"glaz","role":"soporte","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"se coloca en el borde de Garage Roof","via":"door"},
+        {"room":"Garage Roof","f":-1,"do":"humo a Back Alley y sostiene la puerta de Service con la térmica","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"baja cuando el vertical limpió el sitio","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra con humo propio y planta","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Defensor asomando por la puerta de Service o la ventana de Kitchen","how":"térmica a través del humo; prefire cada asomo"},
+        {"room":"Service Entrance","f":1,"threat":"Ancla que sobrevivió al vertical pegada a la pared","how":"Fuze cluster antes de que Glaz entre; Glaz dispara a través del humo"}],
+       "final":"Planta en Service dentro del humo y sostiene desde la esquina"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes: Hibana y Kali por la pared exterior de Service (Kali mata la batería de Bandit con la lanza desde Back Alley), y Montagne, Dokkaebi y Capitão empujan por Main Lobby → Hallway hasta la puerta de Kitchen. Los defensores no pueden mirar Service y Hallway al mismo tiempo y la Mira solo cubre uno de los dos.",
+     "timeline":["0:00–0:45 · drones, Dokkaebi hackea cámaras, Montagne llega a Lobby","0:45–1:30 · Kali lanza a la pared y Hibana abre Service; Capitão quema Kitchen desde Hallway","1:30–2:30 · entrada doble sincronizada, plant en Kitchen o Service según dónde caigan","2:30–3:00 · Montagne bloquea Hallway, Kali cubre Back Alley"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dronea Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"X-KAIROS a la parte alta de la pared de Service cuando Kali mata la batería","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra por el hoyo con Kali atrás","via":"breach"},
+        {"room":"Kitchen","f":1,"do":"planta en Kitchen detrás de la isla","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Roamer saliendo por la puerta de Service para pelear afuera","how":"dron en la puerta y Kali cubriendo desde atrás"},
+        {"room":"Service Entrance","f":1,"threat":"Smoke con gas en el hoyo y Kaid Rtila en la pared","how":"Kali lanza dos veces (Rtila y batería), Hibana pone los pellets solo cuando ya no chispea"}],
+       "final":"Planta en Kitchen y sostiene desde la esquina de Service"},
+      {"op":"kali","role":"antigadget","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale con Hibana","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"lanza LV a la pared de Service para reventar batería/Rtila y jammers","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra detrás de Hibana y toma North Stairs","via":"breach"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Defensor en Hookah Deck arriba haciendo peek a Back Alley","how":"un vistazo con el rifle antes de dejar a Hibana pegar"},
+        {"room":"North Stairs","f":1,"threat":"Roamer bajando de Hookah","how":"sostiene la escalera con el rifle en el hoyo de Service"}],
+       "final":"Se queda en Back Alley con el rifle cubriendo el hoyo y la puerta de Service"},
+      {"op":"montagne","role":"soporte","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"camina con Dokkaebi","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"escudo extendido en la puerta del lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza el lobby lento con el escudo, Dokkaebi atrás","via":"door"},
+        {"room":"Hallway","f":1,"do":"se para en la puerta de Kitchen extendido para que Capitão y Dokkaebi disparen","via":"door"},
+        {"room":"Kitchen","f":1,"do":"entra cuando cae la pared de Service","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Caveira/Vigil detrás del mostrador del lobby","how":"escudo arriba, Dokkaebi hace sonar celulares para ubicarlo"},
+        {"room":"Hallway","f":1,"threat":"Noor con fuego a la puerta o Mira mirando Hallway","how":"si hay Noor no se queda parado: retrocede al lobby y deja que Capitão queme primero"}],
+       "final":"Bloquea la puerta Hallway–Kitchen con el escudo durante el plant"},
+      {"op":"dokkaebi","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"logic bomb al llegar a Courtyard","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"hackea la cámara del lobby si hay muerto","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"segunda logic bomb justo antes de la entrada doble","via":"door"},
+        {"room":"Hallway","f":1,"do":"dispara detrás de Montagne a la puerta de Kitchen","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer callado que espera el flanco en Toilets","how":"logic bomb para que suene y prefire la puerta de Toilets"},
+        {"room":"Hallway","f":1,"threat":"Ancla de Kitchen asomando la puerta","how":"dispara detrás del escudo, no adelanta a Montagne"}],
+       "final":"Sostiene Hallway y hackea cámaras para el post-plant"},
+      {"op":"capitao","role":"negacion","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"va detrás de Montagne","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cubre la ventana de Theater arriba mientras cruzan","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"humo en la puerta de Toilets","via":"door"},
+        {"room":"Hallway","f":1,"do":"fuego detrás de la isla de Kitchen para sacar al ancla","via":"door"},
+        {"room":"Kitchen","f":1,"do":"entra con la doble y cubre el plant","via":"door"}],
+       "clear":[
+        {"room":"Hallway","f":1,"threat":"Ancla de Kitchen detrás de la isla y Lesion Gu en la puerta","how":"fuego a la isla, humo en la puerta, dispara los Gu antes de cruzar"},
+        {"room":"Kitchen","f":1,"threat":"Defensor rotando desde Blue Bar","how":"fuego en la puerta Blue Bar–Kitchen para cortar la rotación"}],
+       "final":"Fuego en la puerta de Blue Bar y humo sobre el defuser en el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Sitio chico pegado al exterior: reforzamos Service completo y dejamos el piso de Billiards blando para que Pulse escuche arriba. Mira en Kitchen mirando Hallway y Blue Bar, Smoke ancla en Service, Bandit trickea la pared y Jäger limpia flashes. Pulse roam en Blue Bar cubre la escalera y la rotación.",
+     "reinforce":["Pared Service–Back Alley ×2","Pared Kitchen–Hallway (con Mira)","Escotilla de Sunrise Bar","Ventana de Kitchen (Castle no: barricada + jammer)"],
+     "rotations":["Kitchen↔Service (puerta)","Kitchen↔Blue Bar (hoyo rotación)","North Stairs↔Hookah (roam)"],
+     "ops":[
+      {"op":"smoke","room":"Service Entrance","f":1,"role":"ancla","job":"Ancla Service: gas a la pared exterior y a la puerta de North Stairs cuando plantan"},
+      {"op":"mira","room":"Kitchen","f":1,"role":"ancla","job":"Espejo en la pared Kitchen–Hallway y otro a Blue Bar; mata en la puerta de Hallway"},
+      {"op":"bandit","room":"Service Entrance","f":1,"role":"flex","job":"Trickea la pared de Service contra Thermite/Hibana; rota a Kitchen si cae la pared"},
+      {"op":"jager","room":"Kitchen","f":1,"role":"flex","job":"ADS en Kitchen y Service; sostiene la puerta de Blue Bar y rota por el hoyo"},
+      {"op":"pulse","room":"Blue Bar","f":1,"role":"roam","job":"Escanea el piso de Billiards para avisar vertical; roam a la escalera de Hookah y flanquea Back Alley por la puerta de Service"}]},
+    {"id":"alt","n":"Cerrado con Kaid + roam arriba","summary":"Setup para cuando el rival trae Thatcher: Kaid electrifica la pared de Service desde atrás y Mute cubre la ventana de Kitchen y la puerta. Azami tapa los hoyos verticales con Kiba en cuanto Buck abre. Vigil roamea Hookah para pelear el rappel y Valkyrie pone cámaras en Back Alley para ver a Thermite venir.",
+     "reinforce":["Pared Service–Back Alley ×2","Pared Kitchen–Hallway","Escotilla de Sunrise Bar","Piso de Billiards sobre Kitchen (parcial)"],
+     "rotations":["Kitchen↔Service","Blue Bar↔Kitchen","Blue Bar↔Hookah (escalera)"],
+     "ops":[
+      {"op":"kaid","room":"Service Entrance","f":1,"role":"ancla","job":"Rtila en la pared de Service desde atrás de la puerta; ancla mirando el hoyo"},
+      {"op":"mute","room":"Kitchen","f":1,"role":"ancla","job":"Jammers en la ventana de Kitchen y en la pared de Service; sostiene la puerta de Hallway"},
+      {"op":"azami","room":"Kitchen","f":1,"role":"flex","job":"Kiba en los hoyos que abra Buck y en la puerta Blue Bar–Kitchen; rota entre los dos cuartos"},
+      {"op":"vigil","room":"Hookah Lounge","f":2,"role":"roam","job":"Espera el rappel a Hookah invisible a drones y baja por la escalera de Blue Bar para flanquear"},
+      {"op":"valkyrie","room":"Blue Bar","f":1,"role":"flex","job":"Cámaras en Back Alley y en la escalera de Hookah; cubre la rotación Blue Bar–Kitchen"}]}
+   ]
+  },
+  "bluebar": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Ace y Thatcher abren la pared de Sunrise desde Cantina mientras Buck rompe el piso de Billiards sobre Blue Bar. Twitch quema el Maestro y la Mira desde Pool Entrance y Gridlock cierra Hallway y Kitchen para que la rotación no nos llegue por la espalda. Plantamos en Sunrise, que queda lejos de la rotación de Kitchen.",
+     "timeline":["0:00–0:45 · drones, Buck rappel a Billiards, Twitch quema gadgets desde Toilets","0:45–1:30 · EMP y SELMA en la pared de Sunrise, Buck abre piso sobre Blue Bar","1:30–2:30 · entrada por el hoyo de Sunrise con humo, plant detrás de la barra","2:30–3:00 · Gridlock en Hallway, Buck arriba, Twitch en Pool Entrance"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"dronea la alberca y Cantina","via":"door"},
+        {"room":"Pool","f":-1,"do":"cruza pegado a la pared hacia Cantina","via":"door"},
+        {"room":"Cantina","f":1,"do":"lanza la SELMA a la pared de Sunrise después del EMP","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"entra por el hoyo con humo y planta detrás de la barra","via":"breach"}],
+       "clear":[
+        {"room":"Cantina","f":1,"threat":"Roamer saliendo por Pool Entrance para pelear en Cantina, Kapkan en la puerta","how":"dron la puerta de Pool Entrance y un compañero la vigila mientras Ace pega"},
+        {"room":"Sunrise Bar","f":1,"threat":"Bandit en la pared y Smoke detrás de la barra","how":"Thatcher EMP, Ace lanza al segundo; humo antes de cruzar el hoyo"}],
+       "final":"Planta en Sunrise detrás de la barra y sostiene la puerta a Pool Entrance"},
+      {"op":"thatcher","role":"antigadget","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"sale junto a Ace","via":"door"},
+        {"room":"Pool","f":-1,"do":"revisa la ventana de Bathroom arriba","via":"door"},
+        {"room":"Cantina","f":1,"do":"EMP a la pared de Sunrise y a la puerta de Pool Entrance","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"entra segundo y toma la puerta de Blue Bar","via":"breach"}],
+       "clear":[
+        {"room":"Pool","f":-1,"threat":"Defensor en la ventana de Bathroom o VIP viendo la alberca","how":"dron y un compañero mira arriba; cruzar en humo si hay alguien"},
+        {"room":"Sunrise Bar","f":1,"threat":"Mute jammers en la pared y Lesion Gu en el hoyo","how":"EMP antes de la carga, disparar Gu al entrar"}],
+       "final":"Sostiene la puerta Sunrise–Blue Bar durante el plant"},
+      {"op":"buck","role":"vertical","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"corre a Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Billiards","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"abre el piso sobre Blue Bar con la skeleton key y sostiene","via":"rappel"}],
+       "clear":[
+        {"room":"Billiards Room","f":2,"threat":"Roamer esperando el rappel detrás de la mesa de billar, Frost bajo la ventana","how":"dron primero, revisar cepos, entra y limpia la esquina de la puerta a Aquarium"},
+        {"room":"Hookah Lounge","f":2,"threat":"Defensor subiendo por la escalera de Blue Bar para pelear el vertical","how":"hoyo chico primero, escuchar pasos y prefirear la puerta Hookah–Billiards"}],
+       "final":"Rompe el piso sobre Blue Bar y mata a Maestro/ancla desde arriba"},
+      {"op":"twitch","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dron de choque adelante","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"dron entra al lobby y va a Blue Bar","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra cuando el dron limpió","via":"door"},
+        {"room":"Toilets","f":1,"do":"quema el Evil Eye y la Mira desde la puerta de Pool Entrance","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"sostiene la puerta a Sunrise para la entrada","via":"door"}],
+       "clear":[
+        {"room":"Toilets","f":1,"threat":"Lesion o roamer en los baños esperando el flanco","how":"dron de choque adelante, dispara Gu y prefire los cubículos"},
+        {"room":"Pool Entrance","f":1,"threat":"Maestro mirando la puerta de Sunrise y ADS de Jäger","how":"choque al Evil Eye abierto y a los ADS, luego humo de Ace"}],
+       "final":"Sostiene Pool Entrance y quema gadgets del post-plant"},
+      {"op":"gridlock","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"va detrás de Twitch","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cubre la ventana de Theater","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"stinger en la puerta de Security para el flanco largo","via":"door"},
+        {"room":"Hallway","f":1,"do":"stingers en la puerta de Kitchen y en la de Blue Bar","via":"door"},
+        {"room":"Blue Bar","f":1,"do":"entra al final para el post-plant","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer tipo Caveira detrás del mostrador","how":"dron antes de cruzar, stinger para escucharlo"},
+        {"room":"Hallway","f":1,"threat":"Ancla de Blue Bar asomando la puerta o rotación desde Kitchen","how":"stingers antes de asomar; prefire la puerta de Kitchen"}],
+       "final":"Sostiene Hallway con stingers y cubre la rotación Kitchen→Blue Bar"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Todos por la doble puerta de Pool Entrance desde Cantina antes del minuto: Ash abre, Ying tira candelas a Sunrise y Blue Bar, Iana manda el holograma primero, Osa tapa la puerta de Toilets con el Talon y Finka empuja. Sunrise queda a un cuarto del exterior, así que si entramos rápido plantamos antes de que la Mira esté armada.",
+     "timeline":["0:00–0:20 · corren de Pool Side a Cantina sin dron","0:20–0:45 · Ash abre las puertas, candelas de Ying a Sunrise, holograma de Iana","0:45–1:30 · entrada en cadena, Osa pone Talon en Toilets, plant en Sunrise","1:30–3:00 · sostienen Blue Bar y Pool Entrance"],
+     "ops":[
+      {"op":"ying","role":"entrada","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"corre con el grupo","via":"door"},
+        {"room":"Pool","f":-1,"do":"cruza la alberca pegada a la pared","via":"door"},
+        {"room":"Cantina","f":1,"do":"candela por la puerta de Pool Entrance apenas Ash abre","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"segunda candela a Sunrise y entra","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"limpia la barra y planta","via":"door"}],
+       "clear":[
+        {"room":"Pool Entrance","f":1,"threat":"Ancla en la puerta de Sunrise con escopeta y Lesion Gu","how":"candela primero, entra con el holograma de Iana adelante"},
+        {"room":"Sunrise Bar","f":1,"threat":"Smoke detrás de la barra","how":"candela a la barra y prefire mientras el flash dura"}],
+       "final":"Planta en Sunrise detrás de la barra"},
+      {"op":"ash","role":"entrada","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"corre primera","via":"door"},
+        {"room":"Pool","f":-1,"do":"breach round a la puerta de Pool Entrance desde la alberca","via":"door"},
+        {"room":"Cantina","f":1,"do":"segunda breach a la ventana de Sunrise","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"entra segunda detrás del holograma","via":"door"},
+        {"room":"Blue Bar","f":1,"do":"toma Blue Bar para cubrir el plant","via":"door"}],
+       "clear":[
+        {"room":"Cantina","f":1,"threat":"Kapkan/Ela en la puerta de Pool Entrance","how":"la breach round rompe la trampa con la barricada"},
+        {"room":"Blue Bar","f":1,"threat":"Maestro o ancla detrás de la barra azul","how":"entra con la segunda candela de Ying, prefire la barra"}],
+       "final":"Sostiene Blue Bar mirando la puerta de Hallway y la escalera"},
+      {"op":"iana","role":"intel","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"activa el holograma","via":"door"},
+        {"room":"Pool","f":-1,"do":"holograma cruza la alberca y entra por Pool Entrance","via":"door"},
+        {"room":"Cantina","f":1,"do":"cuerpo real llega cuando el holograma ya sacó el primer tiro","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"entra y limpia South Stairs a la izquierda","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"cubre el plant","via":"door"}],
+       "clear":[
+        {"room":"Pool Entrance","f":1,"threat":"Roamer en South Stairs mirando la entrada","how":"holograma a la escalera; prefire cuando dispare"},
+        {"room":"Sunrise Bar","f":1,"threat":"Ancla detrás de la barra","how":"segundo holograma a Sunrise y entra con Ying"}],
+       "final":"Sostiene la puerta Sunrise–Pool Entrance"},
+      {"op":"osa","role":"soporte","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"corre con el Talon en la mano","via":"door"},
+        {"room":"Pool","f":-1,"do":"Talon en la ventana de Sunrise si Ash la abre, como escudo","via":"door"},
+        {"room":"Cantina","f":1,"do":"entra con el grupo","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"Talon tapando la puerta de Toilets para cortar el flanco","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"segundo Talon en la puerta a Blue Bar mientras plantan","via":"door"}],
+       "clear":[
+        {"room":"Pool Entrance","f":1,"threat":"Roamer que llega por Toilets desde Lobby","how":"Talon transparente en la puerta y dispara a través"},
+        {"room":"Sunrise Bar","f":1,"threat":"Ancla de Blue Bar asomando la puerta","how":"Talon en la puerta y prefire"}],
+       "final":"Sostiene Sunrise detrás del Talon durante el post-plant"},
+      {"op":"finka","role":"soporte","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"boost al salir","via":"door"},
+        {"room":"Pool","f":-1,"do":"segundo boost cuando Ash abre","via":"door"},
+        {"room":"Cantina","f":1,"do":"entra última cubriendo la ventana de Bathroom arriba","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"humo en South Stairs","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"tercer boost para el post-plant","via":"door"}],
+       "clear":[
+        {"room":"Pool","f":-1,"threat":"Defensor en la ventana de Bathroom o VIP viendo Cantina","how":"cruzar en cadena rápido; un jugador mira arriba"},
+        {"room":"South Stairs","f":1,"threat":"Roamer bajando de VIP por South Stairs","how":"humo en la escalera y Iana la prefirea"}],
+       "final":"Sostiene Pool Entrance con boost guardado"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Blue Bar tiene Hookah y Billiards encima y Sunrise tiene Bathroom encima: Sledge abre el techo de Blue Bar desde Hookah, Ram manda el BU-GI desde Billiards y Fuze pone clusters sobre Sunrise desde Bathroom. Zero pone Argus en South Hallway para ver rotaciones y Lion escanea justo antes de cada cluster. Entramos por Pool Entrance cuando el sitio está vacío.",
+     "timeline":["0:00–0:45 · rappel a Hookah, Billiards y Bathroom; Zero Argus en South Hallway","0:45–1:30 · Sledge techo Blue Bar, Ram BU-GI, Fuze clusters sobre Sunrise con Lion scan","1:30–2:30 · Lion entra por Toilets → Pool Entrance y planta en Sunrise","2:30–3:00 · arriba sostienen hoyos, Zero cubre South Hallway"],
+     "ops":[
+      {"op":"sledge","role":"vertical","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale con Ram","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Hookah","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"limpia y abre el piso sobre Blue Bar con el martillo","via":"rappel"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Roamer esperando el rappel o Frost bajo la ventana","how":"dron por la ventana, revisa cepos, entra en pareja"},
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla subiendo por la escalera de Blue Bar cuando escucha el martillo","how":"martilla pegado a la pared y Ram cubre la escalera desde Billiards"}],
+       "final":"Sostiene los hoyos sobre Blue Bar y mata al que intente defusar"},
+      {"op":"ram","role":"vertical","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale con Sledge","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Billiards","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"BU-GI hacia Blue Bar para abrir el piso entero","via":"rappel"}],
+       "clear":[
+        {"room":"Billiards Room","f":2,"threat":"Roamer detrás de la mesa de billar y Kapkan en la puerta a Aquarium","how":"dron primero, revisa el láser y prefire la mesa"},
+        {"room":"Aquarium","f":2,"threat":"Rotación llegando desde Hall of Fame","how":"cierra la puerta con un vistazo y sostiene desde el billar"}],
+       "final":"Sostiene los hoyos sobre Blue Bar y la escalera de Hookah"},
+      {"op":"fuze","role":"negacion","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"dronea la ventana de Bathroom","via":"door"},
+        {"room":"Pool","f":-1,"do":"rappel a la ventana de Bathroom","via":"rappel"},
+        {"room":"Bathroom","f":2,"do":"clusters en el piso sobre Sunrise (barra) y sobre la puerta a Pool Entrance","via":"rappel"}],
+       "clear":[
+        {"room":"Bathroom","f":2,"threat":"Roamer en Bathroom mirando la ventana o Frost bajo ella","how":"dron primero; si hay alguien, Lion escanea antes del rappel"},
+        {"room":"South Hallway","f":2,"threat":"Rotación desde VIP/Hall of Fame","how":"Zero Argus avisa; Fuze pone cluster y se aleja de la puerta"}],
+       "final":"Cluster sobre el defuser en el post-plant y sostiene Bathroom"},
+      {"op":"zero","role":"intel","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"va con Fuze","via":"door"},
+        {"room":"Pool","f":-1,"do":"rappel a la ventana de VIP","via":"rappel"},
+        {"room":"VIP Lounge","f":2,"do":"Argus en la pared a South Hallway","via":"rappel"},
+        {"room":"South Hallway","f":2,"do":"segunda Argus mirando Hall of Fame y South Stairs","via":"door"},
+        {"room":"Bathroom","f":2,"do":"cubre a Fuze y ve por los hoyos","via":"door"}],
+       "clear":[
+        {"room":"VIP Lounge","f":2,"threat":"Roamer en VIP esperando el rappel","how":"dron por la ventana, entra solo cuando está limpio"},
+        {"room":"South Hallway","f":2,"threat":"Rotación por South Stairs desde Pool Entrance","how":"Argus en la escalera y dispara con la cámara al que suba"}],
+       "final":"Sostiene South Hallway con dos Argus y llama rotaciones"},
+      {"op":"lion","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea el lobby","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"scan uno cuando Sledge empieza a martillar","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra al lobby y sostiene la puerta de Toilets","via":"door"},
+        {"room":"Toilets","f":1,"do":"scan dos justo antes de los clusters de Fuze","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"entra cuando el sitio está vacío y planta en Sunrise","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"planta detrás de la barra","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer detrás del mostrador o en Security","how":"scan para ubicarlo antes de cruzar"},
+        {"room":"Pool Entrance","f":1,"threat":"Ancla de Sunrise mirando la puerta","how":"entra solo después del cluster de Fuze; tercer scan al plantar"}],
+       "final":"Planta en Sunrise y sostiene desde Pool Entrance con el scan guardado"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Flores abren la pared exterior de Blue Bar desde South Promenade mientras Montagne, Dokkaebi y Nomad llegan por Main Lobby → Toilets → Pool Entrance hasta la puerta de Sunrise. La Mira y el Maestro solo apuntan a un lado; el otro frente entra libre. Nomad deja airjabs en Toilets para que nadie nos flanquee.",
+     "timeline":["0:00–0:45 · drones, Flores quema gadgets de Blue Bar, Montagne llega a Lobby","0:45–1:30 · Hibana abre Blue Bar desde afuera; Nomad airjabs en Toilets","1:30–2:30 · entrada doble sincronizada, plant en Blue Bar o Sunrise","2:30–3:00 · Montagne en Pool Entrance, Flores cubre South Promenade"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"sale con Flores por el paseo","via":"door"},
+        {"room":"South Promenade","f":-1,"do":"X-KAIROS a la parte alta de la pared exterior de Blue Bar","via":"door"},
+        {"room":"Blue Bar","f":1,"do":"entra por el hoyo detrás del dron de Flores y planta detrás de la barra","via":"breach"}],
+       "clear":[
+        {"room":"South Promenade","f":-1,"threat":"Roamer saliendo por Service o asomando la ventana de Billiards arriba","how":"dron y Flores mirando arriba mientras Hibana pega"},
+        {"room":"Blue Bar","f":1,"threat":"Bandit trickeando y Maestro detrás de la barra","how":"Flores dron kamikaze a la batería, Hibana pega justo después"}],
+       "final":"Planta en Blue Bar detrás de la barra y sostiene el hoyo"},
+      {"op":"flores","role":"antigadget","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"primer Ratero adelantado","via":"door"},
+        {"room":"South Promenade","f":-1,"do":"Rateros a la batería de Bandit y al Evil Eye de Blue Bar","via":"door"},
+        {"room":"Blue Bar","f":1,"do":"entra detrás de Hibana y toma la escalera de Hookah","via":"breach"}],
+       "clear":[
+        {"room":"Blue Bar","f":1,"threat":"Bandit en la pared, Maestro y ADS de Jäger","how":"Ratero uno a los ADS, Ratero dos a la batería justo antes de la Hibana"},
+        {"room":"Blue Bar","f":1,"threat":"Roamer bajando por la escalera de Hookah","how":"tercer Ratero por la escalera y prefire"}],
+       "final":"Sostiene la escalera de Hookah y la puerta a Kitchen"},
+      {"op":"montagne","role":"soporte","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"camina con Dokkaebi y Nomad","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"escudo extendido en la puerta del lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza el lobby lento","via":"door"},
+        {"room":"Toilets","f":1,"do":"se para en la puerta de Pool Entrance extendido","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"bloquea la puerta de Sunrise para que Dokkaebi dispare","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Caveira o Vigil detrás del mostrador","how":"escudo arriba, Dokkaebi hace sonar los celulares"},
+        {"room":"Pool Entrance","f":1,"threat":"Noor con fuego Horus a la puerta o Smoke gas","how":"si hay Noor retrocede a Toilets; entra solo cuando Hibana ya abrió el otro frente"}],
+       "final":"Bloquea la puerta Pool Entrance–Sunrise con el escudo"},
+      {"op":"dokkaebi","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"logic bomb al llegar al patio","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"hackea cámaras si hay muerto","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"segunda logic bomb antes de la entrada doble","via":"door"},
+        {"room":"Toilets","f":1,"do":"dispara detrás de Montagne","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"entra a Sunrise con la doble","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer callado en Security esperando el flanco","how":"logic bomb y prefire la puerta de Security"},
+        {"room":"Pool Entrance","f":1,"threat":"Ancla de Sunrise asomando","how":"dispara detrás del escudo"}],
+       "final":"Sostiene Pool Entrance y hackea cámaras para el post-plant"},
+      {"op":"nomad","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"va detrás del grupo","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"airjab en la puerta del lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"airjab en la puerta de Hallway para cortar la rotación de Kitchen","via":"door"},
+        {"room":"Toilets","f":1,"do":"airjab en South Stairs","via":"door"},
+        {"room":"Pool Entrance","f":1,"do":"cubre el plant desde la puerta","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer que rota Kitchen→Hallway→Lobby","how":"airjab en Hallway y espera el sonido"},
+        {"room":"Toilets","f":1,"threat":"Lesion Gu en los baños y roamer en South Stairs","how":"dispara Gu, airjab en la escalera"}],
+       "final":"Sostiene Pool Entrance con airjabs en Hallway y South Stairs"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Reforzamos la pared de Sunrise a Cantina y la de Blue Bar a South Promenade, dejamos el piso de Hookah blando para escuchar. Maestro ancla en Blue Bar con Evil Eyes a Hallway y Sunrise, Smoke ancla en Sunrise, Bandit trickea Sunrise, Jäger en Blue Bar y Lesion roam en Toilets con Gu en las puertas de Pool Entrance.",
+     "reinforce":["Pared Sunrise–Cantina ×2","Pared Blue Bar–South Promenade ×2","Escotilla de Sunrise Bar","Pared Blue Bar–Hallway (rotación abierta)"],
+     "rotations":["Blue Bar↔Sunrise (puerta)","Blue Bar↔Kitchen (puerta)","Sunrise↔Pool Entrance"],
+     "ops":[
+      {"op":"maestro","room":"Blue Bar","f":1,"role":"ancla","job":"Evil Eye a la puerta de Hallway y otro viendo Sunrise; ancla detrás de la barra azul"},
+      {"op":"smoke","room":"Sunrise Bar","f":1,"role":"ancla","job":"Gas al hoyo de Cantina y a la puerta de Pool Entrance cuando plantan"},
+      {"op":"bandit","room":"Sunrise Bar","f":1,"role":"flex","job":"Trickea la pared de Sunrise; batería permanente en Blue Bar exterior"},
+      {"op":"jager","room":"Blue Bar","f":1,"role":"flex","job":"ADS en Blue Bar y Sunrise; sostiene la puerta de Kitchen y la escalera de Hookah"},
+      {"op":"lesion","room":"Toilets","f":1,"role":"roam","job":"Gu en las puertas de Pool Entrance y Toilets; roam Lobby–Toilets y regresa por South Stairs"}]},
+    {"id":"alt","n":"Mira + Kaid con roam arriba","summary":"Mira en Blue Bar con espejos a Hallway y Sunrise para negar la entrada por dentro, Kaid en Sunrise contra Thatcher, Melusi en Pool Entrance para frenar el rush, Thunderbird curando en Sunrise y Vigil roameando Hookah para pelear el vertical antes de que empiece.",
+     "reinforce":["Pared Sunrise–Cantina ×2","Pared Blue Bar–South Promenade ×2","Pared Blue Bar–Hallway (con Mira)","Escotilla de Sunrise Bar"],
+     "rotations":["Blue Bar↔Sunrise","Sunrise↔Pool Entrance","Blue Bar↔Hookah (escalera)"],
+     "ops":[
+      {"op":"mira","room":"Blue Bar","f":1,"role":"ancla","job":"Espejo en la pared Blue Bar–Hallway y otro a la puerta de Sunrise; mata entradas por dentro"},
+      {"op":"kaid","room":"Sunrise Bar","f":1,"role":"ancla","job":"Rtila en la pared de Cantina desde atrás de la barra; ancla Sunrise"},
+      {"op":"melusi","room":"Pool Entrance","f":1,"role":"flex","job":"Banshees en la doble puerta de Pool Entrance y en Toilets; frena el rush y rota a Sunrise"},
+      {"op":"thunderbird","room":"Sunrise Bar","f":1,"role":"flex","job":"Kóna detrás de la barra de Sunrise y en Blue Bar; sostiene la puerta a Pool Entrance"},
+      {"op":"vigil","room":"Hookah Lounge","f":2,"role":"roam","job":"Pelea el rappel a Hookah/Billiards y baja por la escalera de Blue Bar para flanquear"}]}
+   ]
+  },
+  "hookah": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite y Thatcher suben por Penthouse y abren la pared de Billiards desde el Hallway de arriba, mientras Ying entra por las ventanas de Hookah desde Back Alley y Glaz sostiene las ventanas desde Garage Roof con humo. Nomad toma Blue Bar abajo y sube por la escalera para cerrar el roam. Es un sitio de ventanas: presión por dos lados y plant en Billiards lejos de la ventana.",
+     "timeline":["0:00–0:45 · drones a Hookah y Billiards, Thermite/Thatcher rappel a Penthouse, Glaz a Garage Roof","0:45–1:30 · EMP + exotérmica en la pared de Billiards; Glaz humo a Hookah","1:30–2:30 · Ying candela por la ventana, entrada doble y plant en Billiards","2:30–3:00 · Nomad en la escalera, Glaz cubre ventanas, Thatcher en Hallway"],
+     "ops":[
+      {"op":"thermite","role":"duro","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea la terraza","via":"door"},
+        {"room":"Walkway","f":-1,"do":"camina por la acera pegado a la pared","via":"door"},
+        {"room":"Terrace","f":-1,"do":"rappel a la ventana de Penthouse","via":"rappel"},
+        {"room":"Penthouse","f":2,"do":"entra y limpia Penthouse con dron","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"exotérmica en la pared Hallway–Billiards después del EMP","via":"door"},
+        {"room":"Billiards Room","f":2,"do":"entra por el hoyo con humo y planta detrás de la mesa","via":"breach"}],
+       "clear":[
+        {"room":"Penthouse","f":2,"threat":"Roamer en Penthouse esperando el rappel, Frost bajo la ventana","how":"dron por la ventana antes de entrar, revisa cepos y la puerta de Theater"},
+        {"room":"Hallway","f":2,"threat":"Mira en la pared de Billiards mirando el Hallway y Kapkan en la puerta","how":"Thatcher EMP, Thermite pega desde el lado ciego de la Mira; humo antes de cruzar"}],
+       "final":"Planta en Billiards detrás de la mesa y sostiene el hoyo"},
+      {"op":"thatcher","role":"antigadget","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"sale con Thermite","via":"door"},
+        {"room":"Walkway","f":-1,"do":"cubre la ventana de Penthouse mientras Thermite sube","via":"door"},
+        {"room":"Terrace","f":-1,"do":"rappel a la ventana de Penthouse","via":"rappel"},
+        {"room":"Penthouse","f":2,"do":"entra segundo y sostiene la puerta a Hallway","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"EMP a la pared de Billiards y a la puerta de Hookah","via":"door"}],
+       "clear":[
+        {"room":"Penthouse","f":2,"threat":"Roamer saliendo de Theater por la puerta de Penthouse","how":"prefire la puerta al entrar y deja un dron ahí"},
+        {"room":"Hallway","f":2,"threat":"Bandit/Kaid en la pared y Mute jammers detrás","how":"EMP a la pared y otra al pasillo antes de la exotérmica"}],
+       "final":"Sostiene el Hallway mirando North Stairs y Penthouse"},
+      {"op":"ying","role":"entrada","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dronea Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la terraza de Hookah","via":"rappel"},
+        {"room":"Hookah Deck (not shown)","f":2,"do":"candela por la ventana antes de entrar","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra con la segunda candela y limpia el lounge","via":"window"}],
+       "clear":[
+        {"room":"Hookah Deck (not shown)","f":2,"threat":"Frost bajo la ventana y Castle en el marco","how":"candela primero; si hay Castle, Thatcher EMP o breach y entrar por el hoyo de Thermite"},
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla detrás de la barra de Hookah y Smoke gas","how":"candela a la barra y entra mientras el flash dura; Glaz cubre desde afuera"}],
+       "final":"Toma Hookah y sostiene la puerta a Billiards durante el plant"},
+      {"op":"glaz","role":"negacion","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sube a Garage Roof","via":"door"},
+        {"room":"Garage Roof","f":-1,"do":"humo a las ventanas de Hookah y sostiene con la térmica","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"baja cuando Ying entró","via":"door"},
+        {"room":"Hookah Lounge","f":2,"do":"rappel a la ventana y entra para el post-plant","via":"rappel"}],
+       "clear":[
+        {"room":"Garage Roof","f":-1,"threat":"Defensor asomando la ventana de Hookah para pelear el rappel","how":"térmica a través del humo; prefire cada asomo"},
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla que sobrevivió detrás de la barra","how":"Ying candela y Glaz dispara a través del humo antes de entrar"}],
+       "final":"Sostiene las ventanas de Hookah desde afuera y entra al final"},
+      {"op":"nomad","role":"flanco","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"sale por la alberca","via":"door"},
+        {"room":"Pool","f":-1,"do":"cruza a Cantina","via":"door"},
+        {"room":"Cantina","f":1,"do":"entra al bar abierto","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"airjab en la puerta de Toilets","via":"door"},
+        {"room":"Blue Bar","f":1,"do":"airjabs en la escalera que sube a Hookah","via":"door"},
+        {"room":"Hookah Lounge","f":2,"do":"sube por la escalera cuando Ying ya tomó Hookah","via":"stairs"}],
+       "clear":[
+        {"room":"Sunrise Bar","f":1,"threat":"Roamer bajando de Bathroom por el hatch","how":"dron antes de entrar y revisa el hatch"},
+        {"room":"Blue Bar","f":1,"threat":"Roamer que baja por la escalera de Hookah para flanquear Back Alley","how":"airjab en la escalera y espera el sonido"}],
+       "final":"Cierra la escalera de Blue Bar y sube para sostener Hookah"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Los cinco rappelean a las ventanas de Hookah desde Back Alley en los primeros 30 segundos: Ash abre las barricadas, Capitão quema la barra, Blitz entra flasheando, Iana manda el holograma primero y Finka empuja. Hookah tiene tres ventanas grandes y los defensores no las tienen tapadas antes del minuto.",
+     "timeline":["0:00–0:20 · corren de Ruins a Back Alley y rappelean","0:20–0:45 · Ash abre ventanas, Capitão fuego a la barra, Finka boost","0:45–1:30 · entrada en cadena Blitz→Iana→Ash, plant en Hookah","1:30–3:00 · sostienen Billiards y la escalera de Blue Bar"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"corre directo","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"breach round a dos ventanas de Hookah desde abajo y rappel","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra segunda por la ventana y limpia la barra","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"toma Billiards mientras plantan","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Frost o Kapkan en las ventanas de Hookah","how":"breach rounds a las barricadas rompen las trampas"},
+        {"room":"Billiards Room","f":2,"threat":"Ancla de Billiards mirando la puerta de Hookah","how":"prefire la esquina de la mesa con el flash de Blitz"}],
+       "final":"Sostiene Billiards mirando Aquarium y el Hallway"},
+      {"op":"capitao","role":"negacion","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"corre con el grupo","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"fuego por la ventana a la barra de Hookah y humo en la puerta de Billiards","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra y planta detrás de la barra","via":"rappel"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla detrás de la barra de Hookah","how":"fuego a la barra desde el rappel antes de entrar"},
+        {"room":"Hookah Lounge","f":2,"threat":"Defensor subiendo por la escalera de Blue Bar","how":"segundo fuego en la escalera"}],
+       "final":"Planta en Hookah detrás de la barra y sostiene con humo"},
+      {"op":"blitz","role":"entrada","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"corre primero","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana central de Hookah","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra primero flasheando la barra y la puerta de Billiards","via":"rappel"},
+        {"room":"DJ Booth (not shown)","f":2,"do":"limpia la cabina del DJ","via":"door"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Noor con fuego Horus esperando escudos en la ventana","how":"si hay Noor, Blitz entra después del holograma de Iana, no primero"},
+        {"room":"DJ Booth (not shown)","f":2,"threat":"Defensor escondido en la cabina","how":"flash y entra con Ash atrás"}],
+       "final":"Bloquea la puerta Hookah–Hallway con el escudo"},
+      {"op":"iana","role":"intel","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"activa el holograma","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"holograma rappelea y entra por la ventana para sacar el primer tiro","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra de verdad cuando el holograma marcó al ancla","via":"rappel"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla con escopeta pegada a la ventana","how":"holograma primero; el equipo prefirea donde dispare"},
+        {"room":"Hookah Deck (not shown)","f":2,"threat":"Defensor en la terraza viendo el rappel","how":"revisa el deck desde la cuerda"}],
+       "final":"Cubre la puerta Hookah–Billiards durante el plant"},
+      {"op":"finka","role":"soporte","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"boost al llegar a Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"segundo boost al entrar, rappel último","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra última y revive con boost","via":"rappel"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Roamer saliendo por la puerta de Service para pelear a los que rappelean","how":"un jugador mira la puerta de Service mientras suben"},
+        {"room":"Hookah Lounge","f":2,"threat":"Rotación entrando por Hallway","how":"humo en la puerta de Hallway y boost"}],
+       "final":"Sostiene la puerta Hookah–Hallway con boost guardado"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sitio de segundo piso: lo atacamos desde abajo y desde el Hallway. Sledge en Kitchen y Buck en Blue Bar abren el techo debajo de Hookah y Billiards para negar las anclas, Fuze pone clusters en la pared blanda de Hallway a Hookah, Twitch quema gadgets con drones y Glaz sostiene las ventanas desde Garage Roof. Entramos por la escalera de Blue Bar al final.",
+     "timeline":["0:00–0:45 · Sledge por Service, Buck por Sunrise; Fuze rappel a Penthouse; Glaz a Garage Roof","0:45–1:30 · techos abiertos bajo Hookah y Billiards, clusters de Fuze desde Hallway","1:30–2:30 · Buck sube por la escalera de Blue Bar y planta en Hookah","2:30–3:00 · Sledge sostiene desde Kitchen, Glaz ventanas, Fuze Hallway"],
+     "ops":[
+      {"op":"sledge","role":"vertical","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dronea Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"entra por la puerta de Service","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"limpia Service","via":"door"},
+        {"room":"Kitchen","f":1,"do":"abre el techo bajo Hookah con el martillo y dispara hacia arriba","via":"door"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Kapkan en la puerta de Service","how":"dron y revisa el láser antes de cruzar"},
+        {"room":"Kitchen","f":1,"threat":"Roamer bajando por North Stairs o Pulse escaneando","how":"Twitch dronea North Stairs y Sledge martilla lejos de la puerta"}],
+       "final":"Sostiene los hoyos del techo bajo Hookah desde Kitchen"},
+      {"op":"buck","role":"vertical","spawn":"Pool Side",
+       "path":[
+        {"room":"Pool Side","f":-1,"do":"dronea Cantina","via":"door"},
+        {"room":"Pool","f":-1,"do":"cruza a Cantina","via":"door"},
+        {"room":"Cantina","f":1,"do":"entra al bar abierto","via":"door"},
+        {"room":"Sunrise Bar","f":1,"do":"limpia Sunrise","via":"door"},
+        {"room":"Blue Bar","f":1,"do":"abre el techo bajo Billiards con la skeleton key","via":"door"},
+        {"room":"Hookah Lounge","f":2,"do":"sube por la escalera al final y planta","via":"stairs"}],
+       "clear":[
+        {"room":"Sunrise Bar","f":1,"threat":"Roamer que bajó por el hatch de Bathroom","how":"dron antes de entrar, revisa el hatch"},
+        {"room":"Blue Bar","f":1,"threat":"Roamer bajando por la escalera de Hookah o Valkyrie cam","how":"dron la escalera, dispara la cam y abre el techo pegado a la pared"}],
+       "final":"Sube por la escalera de Blue Bar y planta en Hookah detrás de la barra"},
+      {"op":"fuze","role":"negacion","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea la terraza","via":"door"},
+        {"room":"Walkway","f":-1,"do":"camina por la acera","via":"door"},
+        {"room":"Terrace","f":-1,"do":"rappel a la ventana de Penthouse","via":"rappel"},
+        {"room":"Penthouse","f":2,"do":"limpia Penthouse","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"clusters en la pared blanda Hallway–Hookah","via":"door"}],
+       "clear":[
+        {"room":"Penthouse","f":2,"threat":"Roamer en Penthouse o Theater esperando el rappel","how":"dron por la ventana, entra solo cuando está limpio"},
+        {"room":"Hallway","f":2,"threat":"Jäger ADS en Hookah y ancla mirando el pasillo","how":"Twitch quema ADS primero; cluster desde el lado ciego"}],
+       "final":"Cluster sobre el defuser desde Hallway en el post-plant"},
+      {"op":"twitch","role":"antigadget","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dron de choque a Hookah por la ventana","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"quema ADS, cams y la Mira de Billiards con el dron","via":"door"},
+        {"room":"Service Entrance","f":1,"do":"entra con Sledge","via":"door"},
+        {"room":"Kitchen","f":1,"do":"segundo dron a North Stairs y cubre a Sledge","via":"door"},
+        {"room":"North Stairs","f":1,"do":"sostiene la escalera","via":"door"}],
+       "clear":[
+        {"room":"Kitchen","f":1,"threat":"Mira de Kitchen si el rival juega mixto","how":"choque al mecanismo"},
+        {"room":"North Stairs","f":1,"threat":"Roamer bajando de Hallway 2F","how":"dron en la escalera y prefire"}],
+       "final":"Sostiene North Stairs y quema gadgets del post-plant"},
+      {"op":"glaz","role":"soporte","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sube a Garage Roof","via":"door"},
+        {"room":"Garage Roof","f":-1,"do":"humo a las ventanas de Hookah y sostiene con térmica","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"baja cuando el sitio está vacío","via":"door"},
+        {"room":"Hookah Lounge","f":2,"do":"rappel y entra para el post-plant","via":"rappel"}],
+       "clear":[
+        {"room":"Garage Roof","f":-1,"threat":"Defensor asomando la ventana de Hookah","how":"térmica a través del humo"},
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla detrás de la barra","how":"Sledge la saca desde abajo; Glaz entra después"}],
+       "final":"Niega las ventanas de Hookah desde afuera todo el round"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana y Flores llegan por South Stairs → Hall of Fame → Aquarium y abren la pared de Billiards desde Aquarium, mientras Zofia, Blackbeard y Dokkaebi rappelean a las ventanas de Hookah desde Back Alley. Los defensores tienen que mirar la pared de Aquarium y las ventanas al mismo tiempo; el lado que descuiden entra.",
+     "timeline":["0:00–0:45 · drones, Hibana/Flores suben por South Stairs, los tres a Back Alley","0:45–1:30 · Flores quema gadgets, Hibana abre Billiards desde Aquarium","1:30–2:30 · entrada doble: Zofia por ventana con concusión, Hibana por el hoyo; plant en Billiards","2:30–3:00 · Blackbeard en ventana, Flores en Aquarium, Dokkaebi Hallway"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea el lobby","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cruza el patio","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra y va a South Stairs","via":"door"},
+        {"room":"South Stairs","f":1,"do":"sube con Flores","via":"stairs"},
+        {"room":"South Stairs","f":2,"do":"sale de la escalera con dron adelante","via":"stairs"},
+        {"room":"South Hallway","f":2,"do":"cruza pegado a la pared hacia Hall of Fame","via":"door"},
+        {"room":"Hall of Fame","f":2,"do":"limpia y llega a Aquarium","via":"door"},
+        {"room":"Aquarium","f":2,"do":"X-KAIROS a la pared Aquarium–Billiards y entra","via":"breach"}],
+       "clear":[
+        {"room":"South Stairs","f":2,"threat":"Roamer mirando la escalera desde VIP o South Hallway","how":"dron arriba antes de subir y prefire la salida"},
+        {"room":"Aquarium","f":2,"threat":"Mira de Billiards mirando Aquarium, Bandit en la pared","how":"Flores quema la batería, Hibana pega desde la esquina fuera de la Mira"}],
+       "final":"Entra a Billiards por el hoyo y planta detrás de la mesa"},
+      {"op":"flores","role":"antigadget","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"Ratero adelantado al lobby","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cruza con Hibana","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"segundo Ratero limpia Lobby","via":"door"},
+        {"room":"South Stairs","f":1,"do":"sube","via":"stairs"},
+        {"room":"South Stairs","f":2,"do":"sale de la escalera","via":"stairs"},
+        {"room":"South Hallway","f":2,"do":"Ratero a Aquarium quemando ADS y batería","via":"door"},
+        {"room":"Hall of Fame","f":2,"do":"sostiene la puerta a Aquarium para Hibana","via":"door"}],
+       "clear":[
+        {"room":"Hall of Fame","f":2,"threat":"Roamer en Hall of Fame o Alibi prismas","how":"Ratero primero, dispara los prismas"},
+        {"room":"Aquarium","f":2,"threat":"Bandit trickeando y ADS de Jäger en Billiards","how":"Ratero a los ADS y a la batería justo antes de la Hibana"}],
+       "final":"Sostiene Aquarium y Hall of Fame contra rotaciones"},
+      {"op":"zofia","role":"entrada","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dronea Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"impacto a la ventana de Hookah y rappel","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"concusión adentro y entra cuando suena la Hibana","via":"rappel"}],
+       "clear":[
+        {"room":"Back Alley","f":-1,"threat":"Frost bajo la ventana y Castle en el marco","how":"impacto rompe el Castle; dron revisa cepos"},
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla detrás de la barra y Smoke gas","how":"concusión a la barra y entra sincronizada con el hoyo de Aquarium"}],
+       "final":"Toma Hookah y sostiene la puerta a Billiards"},
+      {"op":"blackbeard","role":"soporte","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"va con Zofia","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana lateral de Hookah con el escudo puesto","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"sostiene desde la ventana y entra cuando Zofia limpió","via":"rappel"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Ancla peleando el rappel desde la barra","how":"escudo puesto, asoma corto y Zofia concusiona"},
+        {"room":"Hookah Deck (not shown)","f":2,"threat":"Defensor en la terraza","how":"revisa el deck antes de entrar"}],
+       "final":"Sostiene la ventana de Hookah desde adentro contra el retake"},
+      {"op":"dokkaebi","role":"intel","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"logic bomb al llegar a Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Hookah con los otros dos","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"entra tercera, segunda logic bomb, hackea cámaras","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"toma la puerta de Hookah a Hallway","via":"door"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Roamer callado esperando en DJ Booth","how":"logic bomb y prefire la cabina"},
+        {"room":"Hallway","f":2,"threat":"Rotación desde Penthouse/North Stairs","how":"cámaras hackeadas y prefire el pasillo"}],
+       "final":"Sostiene Hallway y hackea cámaras para el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Sitio de ventanas: Castle tapa las ventanas de Hookah y Frost pone cepos bajo las que quedan abiertas. Smoke ancla Hookah, Mira en Billiards con espejos a Aquarium y Hallway. Valkyrie roam en Blue Bar con cámaras en Back Alley y la escalera. Reforzamos la pared de Billiards a Hallway/Aquarium y dejamos la escalera de Blue Bar como rotación rápida.",
+     "reinforce":["Pared Billiards–Hallway ×2","Pared Billiards–Aquarium (con Mira)","Ventanas Hookah (Castle ×2)","Escotilla de Bathroom"],
+     "rotations":["Hookah↔Billiards (puerta)","Hookah↔Blue Bar (escalera)","Billiards↔Aquarium (rotación)"],
+     "ops":[
+      {"op":"frost","room":"Hookah Lounge","f":2,"role":"ancla","job":"Cepos bajo las ventanas abiertas de Hookah y en la puerta del deck; ancla detrás de la barra"},
+      {"op":"castle","room":"Hookah Lounge","f":2,"role":"flex","job":"Barricadas blindadas en las ventanas más expuestas de Hookah; sostiene la puerta a Hallway"},
+      {"op":"smoke","room":"Hookah Lounge","f":2,"role":"ancla","job":"Gas a las ventanas y a la puerta de Billiards cuando plantan"},
+      {"op":"mira","room":"Billiards Room","f":2,"role":"ancla","job":"Espejo a Aquarium y otro al Hallway; ancla detrás de la mesa"},
+      {"op":"valkyrie","room":"Blue Bar","f":1,"role":"roam","job":"Cámaras en Back Alley y en la escalera; roam Blue Bar–Kitchen y sube por la escalera para flanquear el rappel"}]},
+    {"id":"alt","n":"Kaid + Azami + Noor anti-rappel","summary":"Contra equipos de rappel y escudos: Noor tira fuego a las ventanas de Hookah cuando entran, Azami tapa ventanas y hoyos con Kiba, Kaid electrifica la pared de Billiards contra Thatcher, Alibi en Aquarium confunde el frente de la pared y Solis roamea el Hallway detectando drones y Argus.",
+     "reinforce":["Pared Billiards–Hallway ×2","Pared Billiards–Aquarium","Escotilla de Bathroom","Pared Hookah–Hallway (parcial)"],
+     "rotations":["Hookah↔Billiards","Hookah↔Blue Bar (escalera)","Billiards↔Aquarium"],
+     "ops":[
+      {"op":"noor","room":"Hookah Lounge","f":2,"role":"ancla","job":"Horus a las ventanas de Hookah cuando entran Blitz/Montagne; ancla detrás de la barra"},
+      {"op":"azami","room":"Hookah Lounge","f":2,"role":"flex","job":"Kiba en las ventanas de Hookah y en los hoyos que abran desde Kitchen; rota a Billiards"},
+      {"op":"kaid","room":"Billiards Room","f":2,"role":"ancla","job":"Rtila en la pared Billiards–Hallway desde atrás de la mesa; ancla Billiards"},
+      {"op":"alibi","room":"Aquarium","f":2,"role":"flex","job":"Prismas en Aquarium y Hall of Fame; sostiene la puerta a Billiards"},
+      {"op":"solis","room":"Hallway","f":2,"role":"roam","job":"Detecta drones y Argus en Hallway/Penthouse; pelea el rappel de Penthouse y regresa por North Stairs"}]}
+   ]
+  },
+  "penthouse": {
+   "attack": [
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Ace y Thatcher entran por Billiards y abren la pared de Theater desde el Hallway de arriba, Zofia rappelea a la ventana de Penthouse desde Terrace, Glaz sostiene las ventanas de Theater desde Courtyard con humo y Gridlock tapa South Hallway y VIP para que nadie rote por atrás. Plantamos en Penthouse, que tiene ventanas para cubrir el post-plant desde afuera.",
+     "timeline":["0:00–0:45 · drones, Ace/Thatcher rappel a Billiards, Zofia a Terrace, Glaz a Courtyard","0:45–1:30 · EMP + SELMA en la pared de Theater; Gridlock stingers en South Hallway","1:30–2:30 · Zofia entra por Penthouse con concusión, entrada doble y plant en Penthouse","2:30–3:00 · Glaz ventanas, Gridlock VIP, Thatcher Hallway"],
+     "ops":[
+      {"op":"ace","role":"duro","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dronea Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Billiards","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"limpia Billiards con dron y entra","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"SELMA a la pared Hallway–Theater después del EMP","via":"door"},
+        {"room":"Theater","f":2,"do":"entra por el hoyo con humo","via":"breach"},
+        {"room":"Penthouse","f":2,"do":"cruza a Penthouse y planta junto a la ventana","via":"door"}],
+       "clear":[
+        {"room":"Billiards Room","f":2,"threat":"Roamer detrás de la mesa esperando el rappel, Kapkan en la puerta a Hallway","how":"dron primero, revisa el láser y prefire la mesa"},
+        {"room":"Hallway","f":2,"threat":"Mira en la pared de Theater mirando el pasillo y Mozzie Pest en la puerta","how":"Thatcher EMP, Ace lanza desde el lado ciego; dron para ver Pests"}],
+       "final":"Planta en Penthouse junto a la ventana y sostiene la puerta a Theater"},
+      {"op":"thatcher","role":"antigadget","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"sale con Ace","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Billiards detrás de Ace","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"entra segundo y toma la puerta a Aquarium","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"EMP a la pared de Theater y a la puerta de Penthouse","via":"door"}],
+       "clear":[
+        {"room":"Billiards Room","f":2,"threat":"Rotación desde Aquarium/Hookah","how":"prefire la puerta y deja un dron"},
+        {"room":"Hallway","f":2,"threat":"Bandit/Kaid en la pared y Mute jammers","how":"EMP a la pared antes de la SELMA; segunda EMP a Penthouse"}],
+       "final":"Sostiene el Hallway mirando Hookah y North Stairs"},
+      {"op":"zofia","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea la terraza","via":"door"},
+        {"room":"Walkway","f":-1,"do":"camina pegada a la pared","via":"door"},
+        {"room":"Terrace","f":-1,"do":"impacto a la ventana de Penthouse y rappel","via":"rappel"},
+        {"room":"Penthouse","f":2,"do":"concusión adentro y entra cuando suena la SELMA","via":"rappel"}],
+       "clear":[
+        {"room":"Terrace","f":-1,"threat":"Frost bajo la ventana y Castle en el marco","how":"impacto rompe el Castle; dron revisa cepos"},
+        {"room":"Penthouse","f":2,"threat":"Ancla de Penthouse detrás de la cama/sillón y Smoke gas","how":"concusión adentro y entra sincronizada con el hoyo de Theater"}],
+       "final":"Toma Penthouse y sostiene la puerta a Hallway durante el plant"},
+      {"op":"glaz","role":"negacion","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"sale al patio","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"humo a las ventanas de Theater y sostiene con la térmica","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra al lobby si necesitan retake desde abajo","via":"door"}],
+       "clear":[
+        {"room":"Courtyard","f":-1,"threat":"Defensor asomando la ventana de Theater para pelear el patio","how":"térmica a través del humo, prefire cada asomo"},
+        {"room":"Main Lobby","f":1,"threat":"Roamer detrás del mostrador del lobby","how":"dron antes de entrar"}],
+       "final":"Niega las ventanas de Theater desde Courtyard todo el round"},
+      {"op":"gridlock","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"va detrás de Glaz","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cruza al lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"stinger en la puerta de Security","via":"door"},
+        {"room":"South Stairs","f":1,"do":"sube con dron adelante","via":"stairs"},
+        {"room":"South Stairs","f":2,"do":"sale y pone stinger en la escalera","via":"stairs"},
+        {"room":"South Hallway","f":2,"do":"stingers en Hall of Fame y en la puerta de VIP","via":"door"},
+        {"room":"VIP Lounge","f":2,"do":"sostiene la puerta VIP–Theater","via":"door"}],
+       "clear":[
+        {"room":"South Stairs","f":2,"threat":"Roamer mirando la escalera desde VIP","how":"dron arriba y stinger antes de salir"},
+        {"room":"VIP Lounge","f":2,"threat":"Ancla flex de Theater asomando la puerta de VIP","how":"stinger en la puerta y prefire"}],
+       "final":"Sostiene VIP con stingers y corta la rotación Theater→South Hallway"}
+     ]},
+    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Los cinco a las ventanas de Theater desde Courtyard antes del minuto: Ash abre, Amaru sube con el gancho, Blitz entra flasheando, Iana manda holograma y Finka empuja. Theater tiene ventanas anchas al patio y los defensores tardan en ponerles Castle.",
+     "timeline":["0:00–0:20 · corren de Main Entrance a Courtyard","0:20–0:45 · Ash abre ventanas, Amaru gancho, holograma de Iana","0:45–1:30 · entrada en cadena, plant en Theater","1:30–3:00 · sostienen Penthouse y VIP"],
+     "ops":[
+      {"op":"ash","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"corre directo","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"breach rounds a dos ventanas de Theater y rappel","via":"rappel"},
+        {"room":"Theater","f":2,"do":"entra segunda y limpia detrás de las butacas","via":"rappel"},
+        {"room":"Penthouse","f":2,"do":"toma Penthouse mientras plantan","via":"door"}],
+       "clear":[
+        {"room":"Courtyard","f":-1,"threat":"Frost/Kapkan en las ventanas de Theater","how":"breach rounds rompen las trampas con la barricada"},
+        {"room":"Penthouse","f":2,"threat":"Ancla de Penthouse mirando la puerta de Theater","how":"prefire con el flash de Blitz"}],
+       "final":"Sostiene Penthouse mirando Hallway"},
+      {"op":"amaru","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"corre primera","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"gancho a la ventana de Theater apenas Ash la abre","via":"rappel"},
+        {"room":"Theater","f":2,"do":"entra de golpe y limpia la esquina de VIP","via":"window"}],
+       "clear":[
+        {"room":"Theater","f":2,"threat":"Ancla pegada a la ventana con escopeta","how":"entra después del holograma de Iana, no primera"},
+        {"room":"VIP Lounge","f":2,"threat":"Roamer en VIP mirando la puerta de Theater","how":"prefire la puerta al aterrizar"}],
+       "final":"Planta en Theater detrás de las butacas"},
+      {"op":"blitz","role":"entrada","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"corre con el escudo","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"rappel a la ventana central","via":"rappel"},
+        {"room":"Theater","f":2,"do":"entra flasheando las butacas y la puerta de Penthouse","via":"rappel"}],
+       "clear":[
+        {"room":"Theater","f":2,"threat":"Noor con fuego Horus esperando escudos en la ventana","how":"si hay Noor, Blitz entra después de Iana y Amaru"},
+        {"room":"Theater","f":2,"threat":"Ancla detrás de las butacas","how":"flash y que Ash remate"}],
+       "final":"Bloquea la puerta Theater–Hallway con el escudo"},
+      {"op":"iana","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"activa el holograma","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"holograma rappelea y entra por la ventana primero","via":"rappel"},
+        {"room":"Theater","f":2,"do":"entra de verdad cuando marcó al ancla","via":"rappel"}],
+       "clear":[
+        {"room":"Theater","f":2,"threat":"Ancla esperando el rappel con escopeta","how":"holograma primero y el equipo prefirea"},
+        {"room":"Hallway","f":2,"threat":"Rotación desde Hookah/Billiards","how":"segundo holograma al pasillo"}],
+       "final":"Cubre la puerta Theater–Hallway"},
+      {"op":"finka","role":"soporte","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"boost al salir","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"segundo boost al entrar, rappel última","via":"rappel"},
+        {"room":"Theater","f":2,"do":"entra última y revive con boost","via":"rappel"},
+        {"room":"VIP Lounge","f":2,"do":"humo en la puerta de VIP","via":"door"}],
+       "clear":[
+        {"room":"Courtyard","f":-1,"threat":"Defensor asomando desde Balcony de Penthouse","how":"un jugador mira arriba mientras rappelean"},
+        {"room":"VIP Lounge","f":2,"threat":"Roamer llegando por South Hallway","how":"humo en la puerta y prefire"}],
+       "final":"Sostiene VIP con boost guardado"}
+     ]},
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Penthouse está sobre Security/Office y Theater sobre Main Lobby: Buck abre el techo desde Security Room y la escotilla, Sledge martilla el techo del lobby bajo Theater, Fuze mete clusters por la escotilla de Office desde abajo, Twitch quema gadgets y Lion escanea justo antes de cada cluster. Entramos por North Stairs al final.",
+     "timeline":["0:00–0:45 · todos por Main Lobby; Twitch dronea Penthouse y Theater","0:45–1:30 · techos abiertos bajo Penthouse y Theater, clusters por escotillas con scan de Lion","1:30–2:30 · Lion sube por North Stairs → Hallway y planta en Penthouse","2:30–3:00 · Buck y Sledge sostienen desde abajo, Twitch Hallway"],
+     "ops":[
+      {"op":"buck","role":"vertical","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea el lobby","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cruza al lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra y va a Security","via":"door"},
+        {"room":"Security Room","f":1,"do":"abre el techo bajo Penthouse y la escotilla de Security con la skeleton key","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Roamer detrás del mostrador o Lesion Gu","how":"dron y dispara Gu antes de cruzar"},
+        {"room":"Security Room","f":1,"threat":"Roamer que baja por la escotilla de Security o desde North Stairs","how":"dron la escotilla y abre el techo pegado a la pared"}],
+       "final":"Sostiene los hoyos bajo Penthouse desde Security"},
+      {"op":"sledge","role":"vertical","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"sale con Buck","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cruza al lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"martilla el techo del lobby bajo Theater y abre la escotilla de Lobby","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Ancla de Theater disparando por la escotilla de Lobby","how":"abre el techo lejos de la escotilla y Twitch dronea arriba"},
+        {"room":"Toilets","f":1,"threat":"Roamer en Toilets flanqueando el lobby","how":"Lion scan y prefire la puerta"}],
+       "final":"Sostiene los hoyos bajo Theater desde el lobby"},
+      {"op":"fuze","role":"negacion","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"va detrás de Buck","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"cruza al lobby","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra y va a Security","via":"door"},
+        {"room":"Security Room","f":1,"do":"cruza a Office","via":"door"},
+        {"room":"Office","f":1,"do":"cluster en la escotilla de Office hacia Penthouse desde abajo","via":"door"}],
+       "clear":[
+        {"room":"Security Room","f":1,"threat":"Kapkan en la puerta Security–Office","how":"revisa el láser y dispara la trampa"},
+        {"room":"Office","f":1,"threat":"Defensor arriba disparando por la escotilla","how":"Lion scan antes de pegar el cluster"}],
+       "final":"Cluster por la escotilla sobre el defuser en el post-plant"},
+      {"op":"twitch","role":"antigadget","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dron de choque adelante","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"dron sube y quema ADS y Mira en Theater","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"entra al lobby","via":"door"},
+        {"room":"Security Room","f":1,"do":"segundo dron a Penthouse por la escotilla abierta","via":"door"},
+        {"room":"North Stairs","f":1,"do":"sostiene la escalera para Lion","via":"door"}],
+       "clear":[
+        {"room":"Main Lobby","f":1,"threat":"Alibi prismas en el lobby","how":"choque a los prismas"},
+        {"room":"North Stairs","f":1,"threat":"Roamer bajando de Hallway 2F","how":"dron en la escalera y prefire"}],
+       "final":"Sostiene North Stairs y quema gadgets del post-plant"},
+      {"op":"lion","role":"flanco","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"sale último","via":"door"},
+        {"room":"Courtyard","f":-1,"do":"scan uno cuando Buck empieza a abrir","via":"door"},
+        {"room":"Main Lobby","f":1,"do":"cruza el lobby","via":"door"},
+        {"room":"North Stairs","f":1,"do":"scan dos antes de subir","via":"stairs"},
+        {"room":"North Stairs","f":2,"do":"sale de la escalera con dron","via":"stairs"},
+        {"room":"Hallway","f":2,"do":"cruza el pasillo a Penthouse","via":"door"},
+        {"room":"Penthouse","f":2,"do":"planta junto a la ventana","via":"door"}],
+       "clear":[
+        {"room":"North Stairs","f":2,"threat":"Roamer mirando la escalera desde Hallway","how":"scan y prefire la salida"},
+        {"room":"Hallway","f":2,"threat":"Ancla de Theater asomando la puerta al Hallway","how":"entra solo después de los clusters de Fuze; tercer scan al plantar"}],
+       "final":"Planta en Penthouse y sostiene desde la ventana"}
+     ]},
+    {"id":"split","n":"Split","tag":"SPLIT","summary":"Hibana, Flores y Nomad suben por Billiards y abren la pared de Theater desde el Hallway mientras Blackbeard y Dokkaebi rappelean a las ventanas de Penthouse desde Terrace. La pared y las ventanas están en lados opuestos del sitio; los defensores no pueden cubrir las dos. Nomad deja airjabs en Hookah para que nadie rote por atrás.",
+     "timeline":["0:00–0:45 · drones, tres rappel a Billiards, dos a Terrace","0:45–1:30 · Flores quema gadgets, Hibana abre Theater desde Hallway; Nomad airjabs en Hookah","1:30–2:30 · Blackbeard entra por Penthouse, Hibana por el hoyo; plant en Theater","2:30–3:00 · Dokkaebi Penthouse, Nomad Hallway, Flores Billiards"],
+     "ops":[
+      {"op":"hibana","role":"duro","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"dronea Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Billiards","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"limpia Billiards","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"X-KAIROS a la pared Hallway–Theater cuando Flores quemó la batería","via":"door"},
+        {"room":"Theater","f":2,"do":"entra por el hoyo y planta detrás de las butacas","via":"breach"}],
+       "clear":[
+        {"room":"Billiards Room","f":2,"threat":"Roamer detrás de la mesa esperando el rappel","how":"dron por la ventana antes de entrar"},
+        {"room":"Hallway","f":2,"threat":"Mira mirando el pasillo, Bandit en la pared y Mozzie Pests","how":"Flores quema batería y Pests, Hibana pega desde el lado ciego de la Mira"}],
+       "final":"Planta en Theater detrás de las butacas y sostiene el hoyo"},
+      {"op":"flores","role":"antigadget","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"Ratero adelantado a Back Alley","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a Billiards con Hibana","via":"rappel"},
+        {"room":"Billiards Room","f":2,"do":"Ratero por la puerta hacia el Hallway quemando ADS y batería","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"segundo Ratero a Theater; sostiene North Stairs","via":"door"}],
+       "clear":[
+        {"room":"Billiards Room","f":2,"threat":"Kapkan en la puerta a Hallway","how":"Ratero por la puerta la revienta"},
+        {"room":"Hallway","f":2,"threat":"Jäger ADS y Bandit en la pared de Theater","how":"Ratero uno a los ADS, Ratero dos a la batería justo antes de la Hibana"}],
+       "final":"Sostiene Hallway y Billiards contra rotaciones"},
+      {"op":"nomad","role":"flanco","spawn":"Ruins",
+       "path":[
+        {"room":"Ruins","f":-1,"do":"va detrás de Hibana","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"rappel a la ventana de Hookah","via":"rappel"},
+        {"room":"Hookah Lounge","f":2,"do":"airjabs en la escalera de Blue Bar y en la puerta a Billiards","via":"rappel"},
+        {"room":"Hallway","f":2,"do":"airjab en North Stairs y cubre a Hibana","via":"door"}],
+       "clear":[
+        {"room":"Hookah Lounge","f":2,"threat":"Roamer en Hookah o subiendo por la escalera de Blue Bar","how":"dron por la ventana, airjab en la escalera"},
+        {"room":"Hallway","f":2,"threat":"Roamer subiendo por North Stairs","how":"airjab en la escalera y prefire"}],
+       "final":"Sostiene Hallway con airjabs en North Stairs y la escalera de Hookah"},
+      {"op":"blackbeard","role":"soporte","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"dronea la terraza","via":"door"},
+        {"room":"Walkway","f":-1,"do":"camina pegado a la pared","via":"door"},
+        {"room":"Terrace","f":-1,"do":"rappel a la ventana de Penthouse con el escudo","via":"rappel"},
+        {"room":"Penthouse","f":2,"do":"sostiene desde la ventana y entra cuando suena la Hibana","via":"rappel"},
+        {"room":"Theater","f":2,"do":"cruza a Theater para cubrir el plant","via":"door"}],
+       "clear":[
+        {"room":"Terrace","f":-1,"threat":"Frost bajo la ventana y Castle en el marco","how":"dron revisa cepos; si hay Castle, Dokkaebi lo rompe con la BOSG"},
+        {"room":"Penthouse","f":2,"threat":"Ancla de Penthouse peleando el rappel","how":"escudo puesto, asoma corto y entra sincronizado con la Hibana"}],
+       "final":"Sostiene la puerta Penthouse–Theater desde adentro"},
+      {"op":"dokkaebi","role":"intel","spawn":"Main Entrance",
+       "path":[
+        {"room":"Main Entrance","f":-1,"do":"logic bomb al llegar a la acera","via":"door"},
+        {"room":"Walkway","f":-1,"do":"hackea cámaras si hay muerto","via":"door"},
+        {"room":"Terrace","f":-1,"do":"rappel a la ventana de Balcony/Penthouse","via":"rappel"},
+        {"room":"Balcony (not shown)","f":2,"do":"segunda logic bomb desde el balcón","via":"rappel"},
+        {"room":"Penthouse","f":2,"do":"entra detrás de Blackbeard","via":"door"}],
+       "clear":[
+        {"room":"Balcony (not shown)","f":2,"threat":"Defensor en el balcón viendo Terrace","how":"dron y prefire desde la cuerda"},
+        {"room":"Penthouse","f":2,"threat":"Roamer callado en la esquina de Penthouse","how":"logic bomb y prefire donde suene"}],
+       "final":"Sostiene Penthouse y hackea cámaras para el post-plant"}
+     ]}
+   ],
+   "defense":[
+    {"id":"default","n":"Default","summary":"Castle tapa las ventanas de Penthouse y Frost pone cepos bajo las que quedan abiertas y en Balcony. Smoke ancla Theater con gas a la pared del Hallway, Jäger limpia flashes en Theater y Mozzie roba drones en el Hallway para que no vean el setup. Reforzamos la pared de Theater al Hallway y cerramos las escotillas de Security y Office.",
+     "reinforce":["Pared Theater–Hallway ×2","Ventanas Penthouse (Castle ×2)","Escotilla de Security Room","Escotilla de Office","Escotilla de Main Lobby"],
+     "rotations":["Penthouse↔Theater (puerta)","Theater↔VIP (puerta)","Penthouse↔Hallway"],
+     "ops":[
+      {"op":"frost","room":"Penthouse","f":2,"role":"ancla","job":"Cepos bajo las ventanas abiertas de Penthouse y en la puerta de Balcony; ancla detrás del sillón"},
+      {"op":"castle","room":"Penthouse","f":2,"role":"flex","job":"Barricadas blindadas en las ventanas de Penthouse a Terrace; sostiene la puerta a Hallway"},
+      {"op":"smoke","room":"Theater","f":2,"role":"ancla","job":"Gas al hoyo de la pared del Hallway y a la puerta de VIP cuando plantan"},
+      {"op":"jager","room":"Theater","f":2,"role":"flex","job":"ADS en Theater y Penthouse; sostiene las ventanas de Theater a Courtyard"},
+      {"op":"mozzie","room":"Hallway","f":2,"role":"roam","job":"Pests en Hallway y North Stairs para robar drones; roam Hookah–Hallway y flanquea Billiards"}]},
+    {"id":"alt","n":"Kaid + Noor anti-ventanas","summary":"Contra rush por ventanas: Noor tira fuego a las ventanas de Theater cuando entran escudos, Azami tapa ventanas y escotillas con Kiba, Kaid electrifica la pared de Theater al Hallway contra Thatcher, Alibi confunde en el Hallway y Vigil roamea Hookah y Billiards para pelear el rappel antes de que abran la pared.",
+     "reinforce":["Pared Theater–Hallway ×2","Escotilla de Security Room","Escotilla de Office","Escotilla de Main Lobby"],
+     "rotations":["Penthouse↔Theater","Theater↔VIP","Hallway↔North Stairs"],
+     "ops":[
+      {"op":"noor","room":"Theater","f":2,"role":"ancla","job":"Horus a las ventanas de Theater cuando rappelean Blitz/Montagne; ancla detrás de las butacas"},
+      {"op":"azami","room":"Penthouse","f":2,"role":"flex","job":"Kiba en las ventanas de Penthouse y en las escotillas de Office/Security; rota a Theater"},
+      {"op":"kaid","room":"Theater","f":2,"role":"ancla","job":"Rtila en la pared Theater–Hallway desde atrás; ancla Theater"},
+      {"op":"alibi","room":"Hallway","f":2,"role":"flex","job":"Prismas en el Hallway y North Stairs; sostiene la puerta de Penthouse"},
+      {"op":"vigil","room":"Hookah Lounge","f":2,"role":"roam","job":"Pelea el rappel a Billiards/Hookah invisible a drones y regresa por Hallway a flanquear la pared"}]}
+   ]
+  }
+ }
+}

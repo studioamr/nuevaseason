@@ -1,0 +1,1250 @@
+{
+ "id": "kafe",
+ "name": "Kafe Dostoyevsky",
+ "pool": "ranked",
+ "hasBlueprint": true,
+ "floors": [
+  {
+   "idx": 1,
+   "key": "1",
+   "name": "1st Floor"
+  },
+  {
+   "idx": 2,
+   "key": "2",
+   "name": "2nd Floor"
+  },
+  {
+   "idx": 3,
+   "key": "3",
+   "name": "3rd Floor"
+  },
+  {
+   "idx": 4,
+   "key": "r",
+   "name": "Roof"
+  }
+ ],
+ "rooms": [
+  {
+   "f": 1,
+   "en": "Front Stairs",
+   "es": "Escalera frontal"
+  },
+  {
+   "f": 1,
+   "en": "Bakery",
+   "es": "Obrador de pastelería"
+  },
+  {
+   "f": 1,
+   "en": "Bakery Kitchen",
+   "es": "Cocina del obrador"
+  },
+  {
+   "f": 1,
+   "en": "Main Corridor",
+   "es": "Main Corridor"
+  },
+  {
+   "f": 1,
+   "en": "Kitchen Prep",
+   "es": "Preparación de cocina"
+  },
+  {
+   "f": 1,
+   "en": "Kitchen Grill",
+   "es": "Parrilla de la cocina"
+  },
+  {
+   "f": 1,
+   "en": "Kitchen Pick Up",
+   "es": "Recogida de la cocina"
+  },
+  {
+   "f": 1,
+   "en": "Cold Room Corridor",
+   "es": "Cold Room Corridor"
+  },
+  {
+   "f": 1,
+   "en": "Cold Room",
+   "es": "Cámara fría"
+  },
+  {
+   "f": 1,
+   "en": "Dining Room",
+   "es": "Comedor"
+  },
+  {
+   "f": 1,
+   "en": "Back Stairs",
+   "es": "Escalera trasera"
+  },
+  {
+   "f": 1,
+   "en": "VIP Section",
+   "es": "Sección VIP"
+  },
+  {
+   "f": 1,
+   "en": "Bar Stairs",
+   "es": "Escalera del bar"
+  },
+  {
+   "f": 1,
+   "en": "Storage",
+   "es": "Almacén"
+  },
+  {
+   "f": 2,
+   "en": "Laundry Room",
+   "es": "Sala de lavandería"
+  },
+  {
+   "f": 2,
+   "en": "Front Stairs",
+   "es": "Escalera frontal"
+  },
+  {
+   "f": 2,
+   "en": "Bar Stairs",
+   "es": "Escalera del bar"
+  },
+  {
+   "f": 2,
+   "en": "Museum Entrance",
+   "es": "Entrada al museo"
+  },
+  {
+   "f": 2,
+   "en": "Mining Room",
+   "es": "Sala de minería"
+  },
+  {
+   "f": 2,
+   "en": "Train Museum",
+   "es": "Museo del tren"
+  },
+  {
+   "f": 2,
+   "en": "Pillar Dining Room",
+   "es": "Comedor de las columnas"
+  },
+  {
+   "f": 2,
+   "en": "Back Stairs",
+   "es": "Escalera trasera"
+  },
+  {
+   "f": 2,
+   "en": "Main Corridor",
+   "es": "Pasillo principal"
+  },
+  {
+   "f": 2,
+   "en": "Reading Room Corridor",
+   "es": "Pasillo a la sala de lectura"
+  },
+  {
+   "f": 2,
+   "en": "Reading Room",
+   "es": "Sala de lectura"
+  },
+  {
+   "f": 2,
+   "en": "Fireplace Hall",
+   "es": "Salón de la chimenea"
+  },
+  {
+   "f": 3,
+   "en": "Back Stairs",
+   "es": "Escalera trasera"
+  },
+  {
+   "f": 3,
+   "en": "Front Stairs",
+   "es": "Escalera frontal"
+  },
+  {
+   "f": 3,
+   "en": "Cigar Shop",
+   "es": "Tienda de cigarros"
+  },
+  {
+   "f": 3,
+   "en": "Cigar Lounge",
+   "es": "Sala para fumadores"
+  },
+  {
+   "f": 3,
+   "en": "Bar",
+   "es": "Bar"
+  },
+  {
+   "f": 3,
+   "en": "Bar Backstore",
+   "es": "Parte trasera del bar"
+  },
+  {
+   "f": 3,
+   "en": "Wash- rooms",
+   "es": "Lavavos"
+  },
+  {
+   "f": 3,
+   "en": "Washroom Corridor",
+   "es": "Pasillo de los baños"
+  },
+  {
+   "f": 3,
+   "en": "Cocktail Lounge",
+   "es": "Sala de cócteles"
+  },
+  {
+   "f": 3,
+   "en": "Cocktail Lounge Entrance",
+   "es": "Entrada a la sala de cócteles"
+  },
+  {
+   "f": -1,
+   "en": "West Main Street",
+   "es": "Calle principal zona oeste"
+  },
+  {
+   "f": -1,
+   "en": "Main Street",
+   "es": "Calle principal zona oeste"
+  },
+  {
+   "f": -1,
+   "en": "East Main Street",
+   "es": "Calle principal zona este"
+  },
+  {
+   "f": -1,
+   "en": "Bakery Parking",
+   "es": "Aparcamiento del obrador"
+  },
+  {
+   "f": 2,
+   "en": "Bakery Roof",
+   "es": "Tejado del obrador"
+  },
+  {
+   "f": 3,
+   "en": "Bakery Roof",
+   "es": "Tejado del obrador"
+  },
+  {
+   "f": 4,
+   "en": "Bakery Roof",
+   "es": "Tejado del obrador"
+  },
+  {
+   "f": 4,
+   "en": "Cafe Roof Top",
+   "es": "Parte alta del tejado del café"
+  },
+  {
+   "f": 2,
+   "en": "Terrace",
+   "es": "Terraza"
+  },
+  {
+   "f": 3,
+   "en": "Terrace",
+   "es": "Terraza"
+  },
+  {
+   "f": 4,
+   "en": "Terrace",
+   "es": "Terraza"
+  },
+  {
+   "f": -1,
+   "en": "Back Alley",
+   "es": "Callejón trasero"
+  },
+  {
+   "f": -1,
+   "en": "Garrage",
+   "es": "Garage"
+  },
+  {
+   "f": -1,
+   "en": "Park Alley",
+   "es": "Callejón del parque"
+  }
+ ],
+ "spawns": [
+  {
+   "letter": "A",
+   "en": "River Docks",
+   "es": "Embarcadero del río"
+  },
+  {
+   "letter": "B",
+   "en": "Christmas Market",
+   "es": "Mercadillo navideño"
+  },
+  {
+   "letter": "C",
+   "en": "Park",
+   "es": "Callejón del parque"
+  }
+ ],
+ "bombSets": {
+  "1": [
+   {
+    "f": 3,
+    "letter": "A",
+    "nearest": "Cocktail Lounge"
+   },
+   {
+    "f": 3,
+    "letter": "B",
+    "nearest": "Bar"
+   }
+  ],
+  "2": [
+   {
+    "f": 2,
+    "letter": "A",
+    "nearest": "Mining Room"
+   },
+   {
+    "f": 2,
+    "letter": "B",
+    "nearest": "Fireplace Hall"
+   }
+  ],
+  "3": [
+   {
+    "f": 1,
+    "letter": "A",
+    "nearest": "Bakery"
+   },
+   {
+    "f": 1,
+    "letter": "B",
+    "nearest": "Kitchen Grill"
+   }
+  ]
+ },
+ "hatches": [
+  {
+   "f": 1,
+   "near": "Cold Room"
+  },
+  {
+   "f": 2,
+   "near": "Train Museum"
+  },
+  {
+   "f": 2,
+   "near": "Museum Entrance"
+  },
+  {
+   "f": 2,
+   "near": "Reading Room Corridor"
+  },
+  {
+   "f": 2,
+   "near": "Laundry Room"
+  },
+  {
+   "f": 3,
+   "near": "Cigar Shop"
+  }
+ ],
+ "sites": [
+  {
+   "id": "kitchen",
+   "name": "Cocina / Panadería",
+   "fl": "1",
+   "floorIdx": 1,
+   "rooms": [
+    "Cocina",
+    "Panadería"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Servicio → Panadería",
+     "kind": "reforzada",
+     "path": [
+      "Exterior",
+      "Pasillo Servicio",
+      "Panadería"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Lectura → Cocina",
+     "kind": "vertical",
+     "path": [
+      "Sala de lectura (arriba)",
+      "Cocina"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras Blancas → Cocina",
+     "kind": "puerta",
+     "path": [
+      "Escaleras Blancas",
+      "Cocina"
+     ],
+     "roles": [
+      "soporte",
+      "flanco"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Ventana Panadería (exterior)",
+     "kind": "ventana",
+     "path": [
+      "Exterior",
+      "Panadería"
+     ],
+     "roles": [
+      "soporte",
+      "intel"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Sala de lectura/Chimenea (2F) sobre Cocina con Buck y Ram. Ace abre la pared de Panadería desde el Pasillo de Servicio.",
+    "Entrada por Servicio (pared) y por Escaleras Blancas. Blackbeard aguanta la ventana de Panadería.",
+    "Planta en Panadería. Nomad en Escaleras Rojas."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Panadería–Servicio ×2",
+     "Ventana Panadería (Castle)",
+     "Escotilla Cocina"
+    ],
+    "keepSoft": [
+     "Piso Lectura"
+    ],
+    "rotations": [
+     "Cocina↔Panadería"
+    ],
+    "anchors": "Ancla Panadería (Smoke), ancla Cocina (Mira). Roam en Lectura/Chimenea para negar vertical.",
+    "ops": [
+     "smoke",
+     "mira",
+     "bandit",
+     "jager",
+     "pulse"
+    ],
+    "tip": "Sin roam en 2F, Cocina cae al vertical."
+   }
+  },
+  {
+   "id": "reading",
+   "name": "Sala de lectura / Salón de chimenea",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Sala de lectura",
+    "Chimenea"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Escaleras Blancas → Lectura",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras Blancas",
+      "Sala de lectura"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Cóctel → Chimenea",
+     "kind": "vertical",
+     "path": [
+      "Cóctel (arriba)",
+      "Chimenea"
+     ],
+     "roles": [
+      "blando",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Museo del tren → Chimenea",
+     "kind": "puerta",
+     "path": [
+      "Escaleras Rojas",
+      "Museo del tren",
+      "Chimenea"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Ventanas Lectura (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Sala de lectura"
+     ],
+     "roles": [
+      "soporte"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Cóctel (3F) sobre Chimenea con Sledge. Thermite abre la pared de Lectura desde Escaleras Blancas.",
+    "Entrada por Escaleras Blancas (pared) y por Museo del tren. Twitch limpia Evil Eye de Chimenea.",
+    "Planta en Lectura. Gridlock en Escaleras Rojas."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Lectura–Escaleras ×2",
+     "Ventanas Lectura (Castle)"
+    ],
+    "keepSoft": [
+     "Piso Cóctel"
+    ],
+    "rotations": [
+     "Lectura↔Chimenea"
+    ],
+    "anchors": "Ancla Chimenea (Maestro), ancla Lectura (Smoke). Roam en Cóctel.",
+    "ops": [
+     "maestro",
+     "smoke",
+     "bandit",
+     "jager",
+     "frost"
+    ],
+    "tip": "Maestro en Chimenea mirando Museo."
+   }
+  },
+  {
+   "id": "mining",
+   "name": "Sala de minería / Museo del tren",
+   "fl": "2",
+   "floorIdx": 2,
+   "rooms": [
+    "Minería",
+    "Museo del tren"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Pared Escaleras Rojas → Museo",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras Rojas",
+      "Museo del tren"
+     ],
+     "roles": [
+      "duro",
+      "antigadget",
+      "entrada"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Vertical Bar → Minería",
+     "kind": "vertical",
+     "path": [
+      "Bar (arriba)",
+      "Minería"
+     ],
+     "roles": [
+      "blando",
+      "negacion",
+      "intel"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Chimenea → Museo",
+     "kind": "puerta",
+     "path": [
+      "Escaleras Blancas",
+      "Chimenea",
+      "Museo del tren"
+     ],
+     "roles": [
+      "flanco",
+      "soporte"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Ventana Minería (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Minería"
+     ],
+     "roles": [
+      "soporte"
+     ]
+    }
+   ],
+   "plan": [
+    "Vertical desde Bar (3F) sobre Minería con Buck. Ace abre la pared de Museo desde Escaleras Rojas.",
+    "Entrada por Escaleras Rojas (pared) + Chimenea. Lion antes.",
+    "Planta en Minería. Nomad en Escaleras Blancas."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Museo–Escaleras Rojas ×2",
+     "Ventana Minería (Castle)"
+    ],
+    "keepSoft": [
+     "Piso Bar"
+    ],
+    "rotations": [
+     "Minería↔Museo"
+    ],
+    "anchors": "Ancla Minería (Smoke), ancla Museo (Mira). Roam en Bar.",
+    "ops": [
+     "smoke",
+     "mira",
+     "kaid",
+     "jager",
+     "mozzie"
+    ],
+    "tip": "Kaid en la pared de Escaleras Rojas."
+   }
+  },
+  {
+   "id": "cocktail",
+   "name": "Salón de cócteles / Bar",
+   "fl": "3",
+   "floorIdx": 3,
+   "rooms": [
+    "Cóctel",
+    "Bar"
+   ],
+   "verify": false,
+   "vectors": [
+    {
+     "id": "v1",
+     "n": "Ventanas Cóctel (rappel)",
+     "kind": "rappel",
+     "path": [
+      "Exterior",
+      "Cóctel"
+     ],
+     "roles": [
+      "entrada",
+      "soporte",
+      "negacion"
+     ]
+    },
+    {
+     "id": "v2",
+     "n": "Pared Escaleras Rojas → Bar",
+     "kind": "reforzada",
+     "path": [
+      "Escaleras Rojas",
+      "Bar"
+     ],
+     "roles": [
+      "duro",
+      "antigadget"
+     ]
+    },
+    {
+     "id": "v3",
+     "n": "Escaleras Blancas → Cóctel",
+     "kind": "puerta",
+     "path": [
+      "Escaleras Blancas",
+      "Cóctel"
+     ],
+     "roles": [
+      "flanco",
+      "intel"
+     ]
+    },
+    {
+     "id": "v4",
+     "n": "Escotilla Bar (techo)",
+     "kind": "escotilla",
+     "path": [
+      "Exterior",
+      "Bar"
+     ],
+     "roles": [
+      "blando",
+      "negacion"
+     ]
+    }
+   ],
+   "plan": [
+    "Rappel a las ventanas de Cóctel (lado calle). Thermite abre la pared de Bar desde Escaleras Rojas. Amaru sube a la ventana del Bar.",
+    "Ying por ventana, Glaz con humo en el pasillo. Entrada simultánea.",
+    "Planta en Cóctel. Gridlock en Escaleras Blancas."
+   ],
+   "def": {
+    "reinforce": [
+     "Pared Bar–Escaleras Rojas ×2",
+     "Ventanas Cóctel (Castle)",
+     "Escotilla Bar"
+    ],
+    "keepSoft": [],
+    "rotations": [
+     "Cóctel↔Bar"
+    ],
+    "anchors": "Ancla Cóctel (Frost + Smoke), ancla Bar (Mira). Roam en 2F.",
+    "ops": [
+     "frost",
+     "castle",
+     "smoke",
+     "mira",
+     "valkyrie"
+    ],
+    "tip": "Valkyrie afuera de Cóctel para ver el rappel."
+   }
+  }
+ ],
+ "ops": {
+  "atk": [
+   {
+    "id": "sledge",
+    "n": "Sledge",
+    "roles": [
+     "blando"
+    ],
+    "g": "Martillo de brecha"
+   },
+   {
+    "id": "thatcher",
+    "n": "Thatcher",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Granada EMP"
+   },
+   {
+    "id": "ash",
+    "n": "Ash",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "Lanzador de brecha"
+   },
+   {
+    "id": "thermite",
+    "n": "Thermite",
+    "roles": [
+     "duro"
+    ],
+    "g": "Carga exotérmica"
+   },
+   {
+    "id": "twitch",
+    "n": "Twitch",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron de choque"
+   },
+   {
+    "id": "montagne",
+    "n": "Montagne",
+    "roles": [
+     "soporte",
+     "intel"
+    ],
+    "g": "Escudo extensible"
+   },
+   {
+    "id": "glaz",
+    "n": "Glaz",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "Mira térmica"
+   },
+   {
+    "id": "fuze",
+    "n": "Fuze",
+    "roles": [
+     "negacion",
+     "blando"
+    ],
+    "g": "Carga de racimo"
+   },
+   {
+    "id": "blitz",
+    "n": "Blitz",
+    "roles": [
+     "entrada",
+     "soporte"
+    ],
+    "g": "Escudo flash"
+   },
+   {
+    "id": "iq",
+    "n": "IQ",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Detector electrónico"
+   },
+   {
+    "id": "buck",
+    "n": "Buck",
+    "roles": [
+     "blando"
+    ],
+    "g": "Skeleton Key"
+   },
+   {
+    "id": "blackbeard",
+    "n": "Blackbeard",
+    "roles": [
+     "soporte",
+     "entrada"
+    ],
+    "g": "Escudo de rifle"
+   },
+   {
+    "id": "capitao",
+    "n": "Capitão",
+    "roles": [
+     "negacion"
+    ],
+    "g": "Ballesta táctica"
+   },
+   {
+    "id": "hibana",
+    "n": "Hibana",
+    "roles": [
+     "duro"
+    ],
+    "g": "X-KAIROS"
+   },
+   {
+    "id": "jackal",
+    "n": "Jackal",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "Eyenox"
+   },
+   {
+    "id": "ying",
+    "n": "Ying",
+    "roles": [
+     "entrada",
+     "negacion"
+    ],
+    "g": "Candela"
+   },
+   {
+    "id": "zofia",
+    "n": "Zofia",
+    "roles": [
+     "entrada",
+     "blando"
+    ],
+    "g": "KS79 Lifeline"
+   },
+   {
+    "id": "dokkaebi",
+    "n": "Dokkaebi",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Logic Bomb"
+   },
+   {
+    "id": "lion",
+    "n": "Lion",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "EE-ONE-D"
+   },
+   {
+    "id": "finka",
+    "n": "Finka",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Adrenal Surge"
+   },
+   {
+    "id": "maverick",
+    "n": "Maverick",
+    "roles": [
+     "duro",
+     "antigadget"
+    ],
+    "g": "Soplete"
+   },
+   {
+    "id": "nomad",
+    "n": "Nomad",
+    "roles": [
+     "flanco"
+    ],
+    "g": "Airjab"
+   },
+   {
+    "id": "gridlock",
+    "n": "Gridlock",
+    "roles": [
+     "flanco",
+     "negacion"
+    ],
+    "g": "Trax Stingers"
+   },
+   {
+    "id": "nokk",
+    "n": "Nøkk",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "HEL"
+   },
+   {
+    "id": "amaru",
+    "n": "Amaru",
+    "roles": [
+     "entrada"
+    ],
+    "g": "Garra Hook"
+   },
+   {
+    "id": "kali",
+    "n": "Kali",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "Lanza explosiva LV"
+   },
+   {
+    "id": "iana",
+    "n": "Iana",
+    "roles": [
+     "intel",
+     "entrada"
+    ],
+    "g": "Réplica Gemini"
+   },
+   {
+    "id": "ace",
+    "n": "Ace",
+    "roles": [
+     "duro"
+    ],
+    "g": "S.E.L.M.A."
+   },
+   {
+    "id": "zero",
+    "n": "Zero",
+    "roles": [
+     "intel",
+     "antigadget"
+    ],
+    "g": "Cámaras Argus"
+   },
+   {
+    "id": "flores",
+    "n": "Flores",
+    "roles": [
+     "antigadget"
+    ],
+    "g": "RCE-Ratero"
+   },
+   {
+    "id": "osa",
+    "n": "Osa",
+    "roles": [
+     "soporte"
+    ],
+    "g": "Escudo Talon-8"
+   },
+   {
+    "id": "sens",
+    "n": "Sens",
+    "roles": [
+     "negacion",
+     "soporte"
+    ],
+    "g": "R.O.U."
+   },
+   {
+    "id": "grim",
+    "n": "Grim",
+    "roles": [
+     "intel",
+     "flanco"
+    ],
+    "g": "Colmena Kawan"
+   },
+   {
+    "id": "brava",
+    "n": "Brava",
+    "roles": [
+     "antigadget",
+     "intel"
+    ],
+    "g": "Dron Kludge"
+   },
+   {
+    "id": "ram",
+    "n": "Ram",
+    "roles": [
+     "blando",
+     "negacion"
+    ],
+    "g": "BU-GI"
+   },
+   {
+    "id": "deimos",
+    "n": "Deimos",
+    "roles": [
+     "flanco",
+     "intel"
+    ],
+    "g": "DeathMARK"
+   },
+   {
+    "id": "striker",
+    "n": "Striker",
+    "roles": [
+     "soporte",
+     "flanco"
+    ],
+    "g": "Múltiple (recluta)"
+   }
+  ],
+  "def": [
+   {
+    "id": "smoke",
+    "n": "Smoke",
+    "g": "Gas"
+   },
+   {
+    "id": "mute",
+    "n": "Mute",
+    "g": "Jammer"
+   },
+   {
+    "id": "castle",
+    "n": "Castle",
+    "g": "Barricada blindada"
+   },
+   {
+    "id": "pulse",
+    "n": "Pulse",
+    "g": "Sensor cardiaco"
+   },
+   {
+    "id": "doc",
+    "n": "Doc",
+    "g": "Estimulante"
+   },
+   {
+    "id": "rook",
+    "n": "Rook",
+    "g": "Blindaje"
+   },
+   {
+    "id": "kapkan",
+    "n": "Kapkan",
+    "g": "Trampas de puerta"
+   },
+   {
+    "id": "tachanka",
+    "n": "Tachanka",
+    "g": "Shumikha"
+   },
+   {
+    "id": "jager",
+    "n": "Jäger",
+    "g": "ADS"
+   },
+   {
+    "id": "bandit",
+    "n": "Bandit",
+    "g": "Batería"
+   },
+   {
+    "id": "frost",
+    "n": "Frost",
+    "g": "Cepo"
+   },
+   {
+    "id": "valkyrie",
+    "n": "Valkyrie",
+    "g": "Cámaras"
+   },
+   {
+    "id": "caveira",
+    "n": "Caveira",
+    "g": "Silencio"
+   },
+   {
+    "id": "echo",
+    "n": "Echo",
+    "g": "Yokai"
+   },
+   {
+    "id": "mira",
+    "n": "Mira",
+    "g": "Espejo negro"
+   },
+   {
+    "id": "lesion",
+    "n": "Lesion",
+    "g": "Gu"
+   },
+   {
+    "id": "ela",
+    "n": "Ela",
+    "g": "Grzmot"
+   },
+   {
+    "id": "vigil",
+    "n": "Vigil",
+    "g": "ERC-7"
+   },
+   {
+    "id": "maestro",
+    "n": "Maestro",
+    "g": "Evil Eye"
+   },
+   {
+    "id": "alibi",
+    "n": "Alibi",
+    "g": "Prisma"
+   },
+   {
+    "id": "clash",
+    "n": "Clash",
+    "g": "Escudo CCE"
+   },
+   {
+    "id": "kaid",
+    "n": "Kaid",
+    "g": "Rtila"
+   },
+   {
+    "id": "mozzie",
+    "n": "Mozzie",
+    "g": "Pest"
+   },
+   {
+    "id": "warden",
+    "n": "Warden",
+    "g": "Glance"
+   },
+   {
+    "id": "goyo",
+    "n": "Goyo",
+    "g": "Volcán"
+   },
+   {
+    "id": "wamai",
+    "n": "Wamai",
+    "g": "Mag-NET"
+   },
+   {
+    "id": "oryx",
+    "n": "Oryx",
+    "g": "Remah Dash"
+   },
+   {
+    "id": "melusi",
+    "n": "Melusi",
+    "g": "Banshee"
+   },
+   {
+    "id": "aruni",
+    "n": "Aruni",
+    "g": "Surya"
+   },
+   {
+    "id": "thunderbird",
+    "n": "Thunderbird",
+    "g": "Kóna"
+   },
+   {
+    "id": "thorn",
+    "n": "Thorn",
+    "g": "Razorbloom"
+   },
+   {
+    "id": "azami",
+    "n": "Azami",
+    "g": "Kiba"
+   },
+   {
+    "id": "solis",
+    "n": "Solis",
+    "g": "SPEC-IO"
+   },
+   {
+    "id": "fenrir",
+    "n": "Fenrir",
+    "g": "F-NATT"
+   },
+   {
+    "id": "tubarao",
+    "n": "Tubarão",
+    "g": "Zoto"
+   },
+   {
+    "id": "skopos",
+    "n": "Skopós",
+    "g": "Cuerpos V10"
+   },
+   {
+    "id": "noor",
+    "n": "Noor",
+    "g": "Lanzador Horus (fuego)"
+   },
+   {
+    "id": "sentry",
+    "n": "Sentry",
+    "g": "Múltiple (recluta)"
+   }
+  ]
+ }
+}

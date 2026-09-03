@@ -1,0 +1,4586 @@
+{
+ "map": "bank",
+ "sites": {
+  "lockers": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Abrimos la pared del Túnel (Bank Garage → Lockers) con Ace después del EMP de Thatcher, mientras Buck abre el piso de Open Area sobre CCTV para quitarle el techo a la ancla. Nomad cierra el flanco del Sewer y la réplica de Iana limpia las Main Stairway de sótano. Funciona porque el sitio vive de la pared del Túnel: si cae, Lockers se vuelve un pasillo sin cover.",
+     "timeline": [
+      "0:00–0:45 · dron a Lockers/CCTV, ubicar Kaid/Bandit en el Túnel y la ancla de CCTV",
+      "0:45–1:30 · EMP + Ace en la pared del Túnel; Buck abre el piso de Open Area",
+      "1:30–2:30 · entrada por Lockers con humo, Iana presiona Main Stairway",
+      "2:30–3:00 · plant en CCTV pegado a Lockers, post-plant desde Túnel y Open Area"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron adelantado al Garage antes de moverse",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Cruza pegado a los coches, cuidado con el peek del Garage Ramp",
+         "via": "door"
+        },
+        {
+         "room": "Garage Ramp",
+         "f": -1,
+         "do": "Baja la rampa con el dron adelante",
+         "via": "door"
+        },
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "do": "Se planta en el Túnel y tira EMP a la pared de Lockers",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra tras Ace y limpia esquinas",
+         "via": "breach"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Segunda EMP si hay Mute/Jäger en CCTV",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "threat": "Kaid/Bandit trickeando la pared del Túnel y Kapkan en la puerta de Loading Dock",
+         "how": "Dron primero, EMP al muro justo cuando Ace pone la SELMA, no antes"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Mira mirando el Túnel desde Lockers y Smoke en la esquina",
+         "how": "Humo de Ace/Iana antes de cruzar, prefire a la esquina del espejo"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "threat": "Ancla con Smoke detrás de los monitores",
+         "how": "Buck le quita el techo desde Open Area antes de que entremos"
+        }
+       ],
+       "final": "Sostiene la entrada del Túnel y cubre el plant en CCTV"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron hacia el Garage",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sigue a Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Garage Ramp",
+         "f": -1,
+         "do": "Baja cubierto por el dron",
+         "via": "door"
+        },
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "do": "Pone la SELMA en la pared del Túnel apenas cae el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Cruza con humo, limpia el espejo de Mira",
+         "via": "breach"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Planta pegado a la pared de Lockers",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "threat": "Bandit escondido detrás del muro esperando a ver la carga",
+         "how": "Esperar el EMP de Thatcher; si Bandit trickea, Ace pone otra en la escotilla de Secure Hallway"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Mira con espejo al Túnel y Rook detrás de los casilleros",
+         "how": "Humo de Ace y cruzar en pareja, uno prefirea la esquina"
+        }
+       ],
+       "final": "Planta en CCTV y sostiene la puerta de Main Stairway"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron al Skylight Stairwell para ver roam",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Cruza rápido, la puerta trasera suele tener Kapkan",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Sube con cuidado, revisa el hueco de la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Abre el piso sobre CCTV con la Skeleton Key y castiga a la ancla",
+         "via": "door"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Baja por la escotilla al final para el plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "threat": "Roamer tipo Vigil/Cav bajando de 2F",
+         "how": "Dron arriba primero, ping y esperar apoyo si hay dos"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Pulse/Jäger rotando por Open Area para negar la vertical",
+         "how": "Entrar con drone en mano, prefire a los escritorios"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "threat": "Smoke ancla pegado a la pared de Lockers",
+         "how": "Abrir piso y disparar por los huecos, no bajar hasta que planten"
+        }
+       ],
+       "final": "Controla CCTV desde arriba y baja por la escotilla para el post-plant"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Réplica al Main Entrance para ver el Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza por el costado, evita la ventana de Tellers' Office",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra con la réplica adelante",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Limpia Lobby, revisa ATMs y Elevators",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Baja con réplica primero",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 0,
+         "do": "Réplica al fondo para ver Vault Lobby y CCTV",
+         "via": "stairs"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Entra por la puerta cuando el equipo ya esté en Lockers",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer en ATMs/Elevators esperando el paso al Main Stairway",
+         "how": "Réplica primero, ping y esperar a un compañero para el cruce"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 0,
+         "threat": "Kapkan en la puerta de CCTV y Jäger peekeando desde Vault Lobby",
+         "how": "Réplica al fondo, disparar la trampa, no bajar sin humo"
+        }
+       ],
+       "final": "Presiona la puerta de CCTV desde Main Stairway para partir la atención de la ancla"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron al Sewer antes de bajar",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja a la entrada del Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Airjab en la boca del Sewer y otro hacia Server Room",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra por la puerta del Sewer coordinado con la pared del Túnel",
+         "via": "door"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Cubre el plant desde la puerta de Lockers",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Sewer",
+         "f": 0,
+         "threat": "Roamer (Cav/Vigil) esperando en la curva del Sewer",
+         "how": "Dron primero, airjab en la entrada para que nadie te siga"
+        },
+        {
+         "room": "Server Room",
+         "f": 0,
+         "threat": "Rotación de defensores por Server Room Stairs",
+         "how": "Airjab en la puerta del Server Room y checar con dron"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Ancla detrás de los casilleros mirando la puerta del Sewer",
+         "how": "Esperar el humo de Ace y entrar cuando la pared caiga"
+        }
+       ],
+       "final": "Cierra el flanco del Sewer y sostiene Lockers durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush por Sewer",
+     "tag": "RUSH",
+     "summary": "Cinco por el Sewer antes de que armen: Ying candelea la puerta de Lockers, Ash rompe la barricada y entramos con Zofia. IQ limpia el Kapkan de la puerta al vuelo y Capitão tapa Main Stairway con fuego para el plant rápido. Funciona en los primeros 40 segundos, cuando Kaid y Mira todavía están poniendo gadgets en el Túnel.",
+     "timeline": [
+      "0:00–0:20 · sin drones, bajada directa al Sewer",
+      "0:20–0:40 · Ash rompe la puerta, IQ detecta trampas, Ying candelea Lockers",
+      "0:40–1:10 · entrada y plant en Lockers pegado al Sewer",
+      "1:10–3:00 · post-plant con fuego de Capitão en Main Stairway y CCTV"
+     ],
+     "ops": [
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Corre directo, sin dron",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Candela por la puerta de Lockers",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra tras el flash y limpia",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Sewer",
+         "f": 0,
+         "threat": "Defensor peekeando la puerta del Sewer mientras refuerza",
+         "how": "Candela rodada por la puerta antes de asomarte"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Mira/Kaid armando la pared del Túnel de espaldas",
+         "how": "Entrar con el flash activo y pegar primero"
+        }
+       ],
+       "final": "Limpia Lockers y sostiene la puerta a CCTV"
+      },
+      {
+       "op": "ash",
+       "role": "blando",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Corre con Ying",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Carga de brecha a la barricada de Lockers desde lejos",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra segunda, busca la ancla",
+         "via": "door"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Empuja la puerta a CCTV",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Sewer",
+         "f": 0,
+         "threat": "Kapkan puesto en la puerta del Sewer",
+         "how": "Brecha desde distancia: revienta trampa y barricada juntas"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "threat": "Smoke ancla en la esquina de los monitores",
+         "how": "Entrar en pareja después de la Candela"
+        }
+       ],
+       "final": "Cubre CCTV mientras Zofia planta"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Corre tercero",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Concusión hacia CCTV por la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Planta en Lockers pegada al Sewer",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Rook/ancla detrás de los casilleros",
+         "how": "Concusión rebotada y entrada tras Ying"
+        }
+       ],
+       "final": "Planta en Lockers y sostiene desde la puerta del Sewer"
+      },
+      {
+       "op": "iq",
+       "role": "antigadget",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Escáner encendido desde el spawn",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Ubica Kapkan/Valk y los destruye a través de la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Busca el celular de Pulse por las paredes",
+         "via": "door"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Entra al final",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Sewer",
+         "f": 0,
+         "threat": "Kapkan en la puerta y cámara de Valk",
+         "how": "Escáner y disparo a través de la puerta antes de que Ash rompa"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Pulse escaneando desde CCTV",
+         "how": "Detectarlo con el escáner y wallbangear"
+        }
+       ],
+       "final": "Cubre la puerta del Sewer para que nadie nos flanquee"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Último en bajar",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Humo a la puerta de Lockers si el flash falla",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Fuego a la puerta de CCTV para tapar la rotación",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Rotación de CCTV a Lockers por la puerta",
+         "how": "Flecha de fuego en la puerta y humo sobre el plant"
+        }
+       ],
+       "final": "Fuego en Main Stairway y CCTV, sostiene el post-plant desde el Sewer"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical desde Open Area",
+     "tag": "VERTICAL",
+     "summary": "El techo de Lockers/CCTV es madera: Sledge y Buck abren Open Area y Staff Room y castigan a las anclas desde 1F, Ram tira BU-GI para arrasar el piso completo. Dokkaebi hackea cámaras para ver dónde se esconden y Thermite entra al final por el Túnel cuando ya no queda nadie parado. Ideal contra setups pesados de Kaid+Mira que no suben a negar la vertical.",
+     "timeline": [
+      "0:00–0:45 · drones a Open Area/Staff Room, Dokkaebi hackea",
+      "0:45–1:30 · Sledge/Buck abren piso, Ram BU-GI sobre CCTV",
+      "1:30–2:30 · kills desde arriba, Thermite abre el Túnel",
+      "2:30–3:00 · entrada y plant en CCTV con techo abierto"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron a Staff Room",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra por la puerta trasera",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Limpia el hueco de escalera",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Abre el piso sobre Lockers con el martillo",
+         "via": "door"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Sigue abriendo sobre los casilleros",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "threat": "Roamer subiendo a negar la vertical",
+         "how": "Dron y cruzar con Buck en pareja"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Jäger/Pulse esperando detrás de los escritorios",
+         "how": "Prefire a los escritorios y granada si hay dos"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "threat": "Kapkan en la puerta de Staff Room",
+         "how": "Dron a la puerta antes de cruzar"
+        }
+       ],
+       "final": "Dispara por los huecos sobre Lockers y sostiene Staff Room"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron a Open Area",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra con Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Sube y limpia",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Skeleton Key sobre CCTV: abre huecos justo sobre los monitores",
+         "via": "door"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Baja por el hueco/escotilla para el plant",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Defensor peekeando la escalera desde Office Hallway",
+         "how": "Dron a Office Hallway y bloquear con el cuerpo de Sledge"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "threat": "Smoke/Rook ancla debajo",
+         "how": "Abrir el piso en franjas y disparar en diagonal"
+        }
+       ],
+       "final": "Baja al final y planta en CCTV con el techo abierto"
+      },
+      {
+       "op": "ram",
+       "role": "negacion",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Rappel a la ventana de Printer Room",
+         "via": "rappel"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "do": "Entra por la ventana con cuidado",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "BU-GI cruzando Open Area hacia CCTV",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "threat": "Cámara de Valk o defensor peekeando desde Printer Room",
+         "how": "Dron a la ventana y rappel escondido"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "threat": "Kapkan en la puerta a Open Area",
+         "how": "Dron y disparo a la trampa"
+        }
+       ],
+       "final": "Arrasa el piso de Open Area y castiga a la ancla de CCTV desde arriba"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Hackea celulares desde el spawn",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Hackea la cámara y llama al pin a mitad de la vertical",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Baja en silencio",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 0,
+         "do": "Sostiene la puerta de CCTV",
+         "via": "stairs"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Entra cuando avisen desde arriba",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer en Elevators/ATMs",
+         "how": "Llamar al pin y escuchar el celular"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 0,
+         "threat": "Kapkan en la puerta de CCTV y Jäger en Vault Lobby",
+         "how": "Dron a la trampa y esperar el ruido de la vertical"
+        }
+       ],
+       "final": "Cierra la puerta de CCTV desde Main Stairway y ve cámaras para el post-plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Cruza a la rampa",
+         "via": "door"
+        },
+        {
+         "room": "Garage Ramp",
+         "f": -1,
+         "do": "Baja al Garage",
+         "via": "door"
+        },
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "do": "Espera en el Túnel; abre la pared cuando la vertical ya hizo kills",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra por la pared",
+         "via": "breach"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Planta con el techo abierto",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "threat": "Kaid en la pared del Túnel",
+         "how": "Esperar a que la vertical mate a Kaid o poner la carga en la escotilla de Secure Hallway"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Mira al Túnel",
+         "how": "Sledge le abre el techo del espejo antes de cruzar"
+        }
+       ],
+       "final": "Planta en CCTV y sostiene el Túnel"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split Túnel + Sewer",
+     "tag": "SPLIT",
+     "summary": "Dos frentes al mismo tiempo: Kali revienta los gadgets del Túnel desde el Garage y Hibana abre la pared mientras Montagne y Gridlock empujan Lockers por la puerta del Sewer. Lion escanea justo antes de la entrada doble para que nadie rote. Con dos puertas abiertas la Mira de Lockers solo puede mirar una.",
+     "timeline": [
+      "0:00–0:45 · drones por Sewer y Túnel, ubicar Mira y Kaid",
+      "0:45–1:30 · Kali limpia el muro, Hibana abre, Gridlock trax en Server Room",
+      "1:30–2:30 · Lion escanea y entramos por ambos lados a la vez",
+      "2:30–3:00 · plant en Lockers cubierto desde Túnel y Sewer"
+     ],
+     "ops": [
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Cruza a la rampa",
+         "via": "door"
+        },
+        {
+         "room": "Garage Ramp",
+         "f": -1,
+         "do": "Baja cubierta",
+         "via": "door"
+        },
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "do": "Lanza LV a la pared del Túnel para tronar Kaid/Bandit",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra tras Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "threat": "Kaid con Rtila y Jäger ADS en el Túnel",
+         "how": "LV desde el fondo del Garage, dron confirmando"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Mira mirando el Túnel",
+         "how": "LV al espejo para reventar el cristal antes de cruzar"
+        }
+       ],
+       "final": "Cubre la pared abierta del Túnel durante el plant"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Sigue a Kali",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Cruza con dron adelante",
+         "via": "door"
+        },
+        {
+         "room": "Garage Ramp",
+         "f": -1,
+         "do": "Baja",
+         "via": "door"
+        },
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "do": "Pellets en la pared del Túnel apenas cae el gadget",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra al mismo tiempo que Montagne por el Sewer",
+         "via": "breach"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Limpia CCTV y cubre",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Bank Garage",
+         "f": 0,
+         "threat": "Bandit trickeando",
+         "how": "Esperar la LV, poner pellets en dos tandas"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "threat": "Ancla Smoke en CCTV",
+         "how": "Entrar cuando Montagne ya tenga la atención"
+        }
+       ],
+       "final": "Planta en Lockers pegada al Túnel"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Escudo extendido en la puerta de Lockers",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra abriendo el escudo, Gridlock atrás",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Sewer",
+         "f": 0,
+         "threat": "Roamer detrás en el Sewer o Noor con fuego a la puerta",
+         "how": "Gridlock cubre la espalda; si hay Noor, esperar a que el Túnel caiga"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Mira/Rook detrás de los casilleros",
+         "how": "Escudo abierto, Gridlock dispara por encima"
+        }
+       ],
+       "final": "Bloquea la puerta del Sewer con el escudo durante el plant"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron a Server Room",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Baja al Sewer",
+         "via": "door"
+        },
+        {
+         "room": "Sewer",
+         "f": 0,
+         "do": "Trax hacia Server Room para tapar la rotación",
+         "via": "door"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "do": "Entra detrás de Montagne",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Server Room",
+         "f": 0,
+         "threat": "Rotación desde Server Room Stairs a Lockers",
+         "how": "Trax en la puerta del Server Room"
+        },
+        {
+         "room": "Lockers",
+         "f": 0,
+         "threat": "Ancla detrás de los casilleros",
+         "how": "Disparar por encima del escudo de Montagne"
+        }
+       ],
+       "final": "Trax en Main Stairway de sótano y sostiene el post-plant"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Escanea justo antes de la entrada doble",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Baja al sótano",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 0,
+         "do": "Segundo escaneo en el plant",
+         "via": "stairs"
+        },
+        {
+         "room": "CCTV Room",
+         "f": 0,
+         "do": "Entra al final",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer en ATMs",
+         "how": "Escaneo y esperar"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 0,
+         "threat": "Kapkan en la puerta de CCTV",
+         "how": "Dron a la trampa"
+        }
+       ],
+       "final": "Cierra Main Stairway y escanea para el post-plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Kaid en la pared del Túnel obliga a llevar Thatcher; Mira mira el Túnel desde Lockers y Smoke ancla CCTV. Pulse vigila la vertical de Open Area desde abajo y Jäger cubre el Sewer con ADS. Rotación Lockers↔CCTV abierta y Server Room como salida.",
+     "reinforce": [
+      "Pared Lockers–Túnel ×2",
+      "Escotilla Tellers→CCTV",
+      "Pared CCTV–Main Stairway",
+      "Escotilla Secure Hallway"
+     ],
+     "rotations": [
+      "Lockers↔CCTV",
+      "CCTV→Server Room",
+      "Lockers→Sewer (rotación de emergencia)"
+     ],
+     "ops": [
+      {
+       "op": "kaid",
+       "room": "Lockers",
+       "f": 0,
+       "role": "ancla",
+       "job": "Rtila en la pared del Túnel y escotilla; sostiene la esquina de casilleros mirando la puerta del Sewer"
+      },
+      {
+       "op": "mira",
+       "room": "Lockers",
+       "f": 0,
+       "role": "ancla",
+       "job": "Espejo al Túnel y otro a la puerta del Sewer; castiga cualquier entrada"
+      },
+      {
+       "op": "smoke",
+       "room": "CCTV Room",
+       "f": 0,
+       "role": "ancla",
+       "job": "Gas en la puerta de Main Stairway y en el plant; ancla detrás de los monitores"
+      },
+      {
+       "op": "pulse",
+       "room": "Server Room",
+       "f": 0,
+       "role": "flex",
+       "job": "Escanea Open Area desde abajo, avisa vertical y cubre Server Room Stairs"
+      },
+      {
+       "op": "jager",
+       "room": "Sewer",
+       "f": 0,
+       "role": "roam",
+       "job": "ADS en la puerta del Sewer y Lockers; roam corto por Sewer y Bank Garage"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush Sewer",
+     "summary": "Contra equipos que rushean por el Sewer o empujan con Montagne: Bandit trickea el Túnel, Noor quema la puerta del Sewer con Horus, Maestro mira Lockers desde CCTV y Mute apaga drones. Vigil roamea por Open Area para negar la vertical.",
+     "reinforce": [
+      "Pared Lockers–Túnel ×2",
+      "Escotilla Tellers→CCTV",
+      "Pared CCTV–Main Stairway"
+     ],
+     "rotations": [
+      "Lockers↔CCTV",
+      "CCTV→Main Stairway (rotación abierta con Maestro cubriendo)"
+     ],
+     "ops": [
+      {
+       "op": "bandit",
+       "room": "Bank Garage",
+       "f": 0,
+       "role": "ancla",
+       "job": "Trickea la pared del Túnel desde el lado de Lockers; se retira a Lockers cuando caiga"
+      },
+      {
+       "op": "noor",
+       "room": "Lockers",
+       "f": 0,
+       "role": "ancla",
+       "job": "Fuego Horus en la puerta del Sewer contra escudos y rush; sostiene Lockers"
+      },
+      {
+       "op": "maestro",
+       "room": "CCTV Room",
+       "f": 0,
+       "role": "ancla",
+       "job": "Evil Eyes en Lockers mirando Túnel y Sewer; ancla en CCTV"
+      },
+      {
+       "op": "mute",
+       "room": "CCTV Room",
+       "f": 0,
+       "role": "flex",
+       "job": "Jammers en la pared del Túnel y puerta de Main Stairway; niega drones"
+      },
+      {
+       "op": "vigil",
+       "room": "Open Area",
+       "f": 1,
+       "role": "roam",
+       "job": "Roam en Open Area/Staff Room, niega a Buck y Sledge la vertical; baja por Server Room Stairs"
+      }
+     ]
+    }
+   ]
+  },
+  "tellers": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Montagne toma el Lobby y detrás de él Thatcher y Thermite abren la pared de Archives; Sledge sube por Main Stairway a Conference Room y abre el piso sobre Tellers para quitarle el mostrador a Rook; Jackal entra por la ventana de Tellers' Office y corta el roam por Loan Office. El sitio se cae cuando el Lobby es nuestro: sin esa pared, Archives no tiene dónde esconderse y Tellers queda a dos fuegos.",
+     "timeline": [
+      "0:00–0:45 · drones al Lobby y Tellers, ubicar Maestro, Bandit y Mozzie",
+      "0:45–1:30 · Montagne toma Lobby, EMP + Thermite en la pared de Archives",
+      "1:30–2:30 · Sledge abre Conference sobre Tellers, Jackal presiona desde Tellers' Office",
+      "2:30–3:00 · plant en Archives pegado a la pared del Lobby, post-plant desde Lobby y 2F"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Dron adelantado al Main Entrance para ver Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared, ojo con la ventana de Tellers' Office",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Dron a la puerta principal antes de entrar",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "EMP a la pared de Archives justo cuando Thermite pone la carga",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Entra por la pared tras Montagne y limpia la esquina",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "threat": "Kapkan en la puerta principal",
+         "how": "Dron a la puerta y disparar la trampa desde afuera"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro Evil Eye desde Archives y Mozzie cazando drones en ATMs",
+         "how": "EMP apaga el Evil Eye, cruzar detrás del escudo de Montagne"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "threat": "Smoke ancla detrás de los archiveros",
+         "how": "Humo antes de entrar por la pared, entrar en pareja"
+        }
+       ],
+       "final": "Cubre el plant en Archives desde la pared abierta"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared, ojo con la ventana de Tellers' Office",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Dron a la puerta principal antes de entrar",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Carga exotérmica en la pared de Archives apenas cae el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Planta pegado a la pared del Lobby",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Bandit trickeando la pared de Archives desde adentro",
+         "how": "EMP de Thatcher y carga inmediata; si trickea, segunda carga en la otra placa"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "threat": "Rook/Smoke ancla mirando la pared",
+         "how": "Montagne entra primero con el escudo, Thermite atrás"
+        }
+       ],
+       "final": "Planta en Archives y sostiene la pared del Lobby"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby mientras avanza",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza con el escudo arriba, es spawn peek de Tellers' Office",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Abre la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Se planta en medio del Lobby dando cobertura a la pared de Archives",
+         "via": "door"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Entra por la puerta de Tellers cuando caiga la pared",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Defensores peekeando desde Tellers y Main Stairway",
+         "how": "Escudo extendido en el centro, el equipo dispara por los costados"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Rook detrás del mostrador de Tellers",
+         "how": "Escudo abierto de frente mientras Jackal entra por Tellers' Office"
+        }
+       ],
+       "final": "Bloquea la puerta de Tellers con el escudo y cubre el plant"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza rápido",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra tras Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Sube pegado a la pared de Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron adelante",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "Sale a 2F, revisa Hallway",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "Limpia Janitor Closet y sigue",
+         "via": "door"
+        },
+        {
+         "room": "Conference Room",
+         "f": 2,
+         "do": "Abre el piso sobre el mostrador de Tellers con el martillo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Roamer tipo Vigil bajando de 2F o esperando en Hallway",
+         "how": "Dron arriba primero y subir con apoyo"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Janitor Closet",
+         "how": "Dron a la puerta y disparar"
+        },
+        {
+         "room": "Conference Room",
+         "f": 2,
+         "threat": "Roamer negando la vertical desde Executive Hallway",
+         "how": "Prefire a la puerta y granada frag"
+        }
+       ],
+       "final": "Dispara por el piso sobre Tellers y niega el retake desde arriba"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Escanea huellas en la ventana de Tellers' Office",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Entra por la ventana y sigue las huellas del roamer",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Entra cuando caiga la pared de Archives",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "threat": "Kapkan en la ventana y roamer detrás del escritorio",
+         "how": "Dron a la ventana, Eyenox para ver huellas antes de entrar"
+        },
+        {
+         "room": "Loan Office",
+         "f": 1,
+         "threat": "Roamer rotando desde Office Hallway",
+         "how": "Seguir las huellas y prefire en la puerta"
+        }
+       ],
+       "final": "Presiona Tellers desde Tellers' Office y corta las rotaciones por Loan Office"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush ventana Tellers' Office",
+     "tag": "RUSH",
+     "summary": "Cinco por la ventana de Tellers' Office desde Jewelry Front, sin dronear: IQ revienta el Kapkan de la ventana, Ash rompe la barricada, Ying candelea Tellers y Blitz entra con flash; Finka boostea a todos. Tellers cae en 30 segundos si nadie tiene el spawn peek, porque la defensa todavía está reforzando la pared del Lobby.",
+     "timeline": [
+      "0:00–0:20 · rappel directo a la ventana de Tellers' Office",
+      "0:20–0:40 · IQ detecta, Ash rompe, Ying candelea Tellers",
+      "0:40–1:10 · entrada y plant en Tellers detrás del mostrador",
+      "1:10–3:00 · post-plant desde Tellers' Office y Loan Office"
+     ],
+     "ops": [
+      {
+       "op": "iq",
+       "role": "antigadget",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Escáner encendido apuntando a la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Rompe Kapkan/Valk a través de la ventana antes de entrar",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Entra detrás de Blitz",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "threat": "Kapkan en la ventana y cámara de Valk",
+         "how": "Escáner y disparo desde afuera, sin asomarse"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Maestro Evil Eye en la esquina",
+         "how": "Detectarlo con el escáner y reventarlo"
+        }
+       ],
+       "final": "Cubre Tellers' Office para que nadie nos flanquee por Loan Office"
+      },
+      {
+       "op": "ash",
+       "role": "blando",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Carga de brecha a la barricada de la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Entra segunda",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Brecha a la puerta y entra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Rook detrás del mostrador",
+         "how": "Entrar con la Candela activa, no antes"
+        }
+       ],
+       "final": "Limpia Tellers y sostiene la puerta al Lobby"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Rappel a la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Candela por la puerta a Tellers",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Entra tras el flash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Ancla en Tellers y Smoke con gas",
+         "how": "Candela y entrada en pareja con Blitz"
+        }
+       ],
+       "final": "Planta en Tellers detrás del mostrador"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Rappel",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Flash a la puerta de Tellers",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Entra primero con el escudo",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Empuja Archives si el sitio está débil",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Rook detrás del mostrador",
+         "how": "Flash y entrada frontal"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "threat": "Smoke ancla y Noor con fuego Horus",
+         "how": "Si hay Noor, no entrar: dejar que Finka plante en Tellers"
+        }
+       ],
+       "final": "Sostiene la puerta de Archives"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Boost al momento del rappel",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Entra última",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Planta y cubre",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Ancla en Tellers",
+         "how": "Boost y entrada detrás de Blitz"
+        }
+       ],
+       "final": "Segundo boost para el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical desde 2F",
+     "tag": "VERTICAL",
+     "summary": "Buck y Sledge suben por CEO (rappel) y abren Executive Lounge y Conference Room sobre Archives y Tellers; Ram tira BU-GI desde Conference y Zero pone Argus en el Lobby para ver la pared. Ace entra al final por el Lobby cuando las anclas ya no tienen piso.",
+     "timeline": [
+      "0:00–0:45 · drones y Argus, ubicar anclas",
+      "0:45–1:30 · rappel a CEO, abrir pisos sobre Tellers/Archives",
+      "1:30–2:30 · kills desde arriba, BU-GI",
+      "2:30–3:00 · Ace abre Archives y planta"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Dron a CEO antes del rappel",
+         "via": "door"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "do": "Entra por la ventana con cuidado con Frost",
+         "via": "rappel"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Abre el piso sobre Archives con la Skeleton Key",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "threat": "Roamer en CEO y cepos de Frost bajo la ventana",
+         "how": "Dron y entrada con Sledge en pareja"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "threat": "Roamer esperando en la puerta a Executive Hallway",
+         "how": "Prefire y granada"
+        }
+       ],
+       "final": "Dispara sobre Archives y niega la rotación"
+      },
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Rappel a CEO",
+         "via": "door"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "do": "Entra tras Buck",
+         "via": "rappel"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Limpia el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Conference Room",
+         "f": 2,
+         "do": "Abre el piso sobre el mostrador de Tellers",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "threat": "Kapkan en la puerta y roamer",
+         "how": "Dron y disparar la trampa"
+        },
+        {
+         "room": "Conference Room",
+         "f": 2,
+         "threat": "Roamer negando vertical",
+         "how": "Granada frag por la puerta"
+        }
+       ],
+       "final": "Dispara sobre Tellers desde Conference Room"
+      },
+      {
+       "op": "ram",
+       "role": "negacion",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Sube por Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "Sale con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Conference Room",
+         "f": 2,
+         "do": "BU-GI cruzando el piso sobre Tellers",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro Evil Eye desde Archives",
+         "how": "Dron y esperar a que Zero lo apague"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Roamer bajando",
+         "how": "Subir con apoyo"
+        }
+       ],
+       "final": "Arrasa el piso de Tellers desde arriba"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Argus en la pared de Archives para ver el sitio",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Entra al final tras Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro Evil Eye",
+         "how": "Argus desde el Lobby lo revienta"
+        }
+       ],
+       "final": "Cubre el plant con las cámaras Argus"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "SELMA en la pared de Archives cuando la vertical ya hizo kills",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Planta en Archives",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Bandit trickeando",
+         "how": "La vertical mata a Bandit primero"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "threat": "Smoke ancla",
+         "how": "Techo abierto, Buck la castiga"
+        }
+       ],
+       "final": "Planta en Archives y sostiene la pared"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split Lobby + Tellers' Office",
+     "tag": "SPLIT",
+     "summary": "Hibana y Brava trabajan la pared de Archives desde el Lobby (Brava roba el Evil Eye y los Pest) mientras Osa, Iana y Nomad empujan por la ventana de Tellers' Office. Dos entradas a la vez: Rook mira Tellers' Office, Smoke mira la pared, y el que se voltea muere.",
+     "timeline": [
+      "0:00–0:45 · drones a Lobby y Tellers' Office",
+      "0:45–1:30 · Brava hackea, Hibana abre; Osa pone Talon en la ventana",
+      "1:30–2:30 · entrada doble al mismo tiempo",
+      "2:30–3:00 · plant en Tellers detrás del mostrador"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Pellets en la pared de Archives tras el hackeo de Brava",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Entra al mismo tiempo que Osa por Tellers",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro Evil Eye y Bandit en la pared",
+         "how": "Brava hackea el Evil Eye y tumba a Bandit"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "threat": "Smoke ancla",
+         "how": "Humo y entrada doble"
+        }
+       ],
+       "final": "Sostiene la pared del Lobby durante el plant"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Kludge adelantado al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Hackea Evil Eye y Pest, apaga a Bandit",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Entra tras Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro Evil Eye mirando el Lobby",
+         "how": "Kludge lo convierte en cámara nuestra"
+        }
+       ],
+       "final": "Cubre el plant desde la pared abierta"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Talon en la ventana de Tellers' Office",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Entra detrás del Talon",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Talon en la puerta de Tellers y planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "threat": "Kapkan en la ventana",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Rook detrás del mostrador",
+         "how": "Talon de frente e Iana empuja"
+        }
+       ],
+       "final": "Planta en Tellers detrás del Talon"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Réplica por la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Entra tras Osa",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Entra y limpia",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "threat": "Roamer en Loan Office",
+         "how": "Réplica primero"
+        }
+       ],
+       "final": "Cubre a Osa en el plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Rappel",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Airjab en la puerta de Loan Office",
+         "via": "window"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Entra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loan Office",
+         "f": 1,
+         "threat": "Rotación desde Office Hallway",
+         "how": "Airjab en la puerta"
+        }
+       ],
+       "final": "Cierra el flanco de Loan Office"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Smoke ancla Archives y gasea la pared, Rook ancla Tellers detrás del mostrador, Bandit trickea la pared del Lobby, Maestro mira el Lobby con Evil Eye desde Archives y Mozzie caza drones en Tellers' Office. Rotación abierta Tellers↔Archives.",
+     "reinforce": [
+      "Pared Archives–Lobby ×2",
+      "Pared Tellers–Tellers' Office",
+      "Escotilla Tellers→CCTV"
+     ],
+     "rotations": [
+      "Tellers↔Archives",
+      "Archives→Office Hallway (salida)"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Archives",
+       "f": 1,
+       "role": "ancla",
+       "job": "Gas en la pared del Lobby y en el plant; ancla detrás de los archiveros"
+      },
+      {
+       "op": "rook",
+       "room": "Tellers",
+       "f": 1,
+       "role": "ancla",
+       "job": "Blindaje al inicio, ancla detrás del mostrador mirando Tellers' Office"
+      },
+      {
+       "op": "bandit",
+       "room": "Archives",
+       "f": 1,
+       "role": "flex",
+       "job": "Trickea la pared del Lobby; si no viene Thatcher, batería fija"
+      },
+      {
+       "op": "maestro",
+       "room": "Archives",
+       "f": 1,
+       "role": "ancla",
+       "job": "Evil Eye al Lobby y otro a la puerta de Tellers"
+      },
+      {
+       "op": "mozzie",
+       "room": "Tellers' Office",
+       "f": 1,
+       "role": "roam",
+       "job": "Pests en la ventana de Tellers' Office, roam corto Loan Office/Office Hallway"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Mira + Noor",
+     "summary": "Mira con espejo al Lobby desde Archives, Noor quema la ventana de Tellers' Office contra rush y escudos, Kapkan trampas en ventana y Main Entrance, Valkyrie cams en Plaza y Lobby, Jäger ADS en Tellers.",
+     "reinforce": [
+      "Pared Archives–Lobby ×2",
+      "Pared Tellers–Tellers' Office"
+     ],
+     "rotations": [
+      "Tellers↔Archives",
+      "Archives→Office Hallway"
+     ],
+     "ops": [
+      {
+       "op": "mira",
+       "room": "Archives",
+       "f": 1,
+       "role": "ancla",
+       "job": "Espejo al Lobby y otro a Tellers"
+      },
+      {
+       "op": "noor",
+       "room": "Tellers",
+       "f": 1,
+       "role": "ancla",
+       "job": "Fuego Horus a la ventana de Tellers' Office cuando escuche rappel"
+      },
+      {
+       "op": "kapkan",
+       "room": "Tellers' Office",
+       "f": 1,
+       "role": "flex",
+       "job": "Trampas en la ventana y Main Entrance, luego ancla en Tellers"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Lobby",
+       "f": 1,
+       "role": "roam",
+       "job": "Cams en Plaza y Lobby, roam por Elevators y Main Stairway"
+      },
+      {
+       "op": "jager",
+       "room": "Tellers",
+       "f": 1,
+       "role": "flex",
+       "job": "ADS en Tellers y Archives, cubre la puerta del Lobby"
+      }
+     ]
+    }
+   ]
+  },
+  "open": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Ace y Thatcher entran por la ventana de Printer Room desde el Garage Roof y abren la pared a Open Area; Buck sube a Stock Trading y abre el piso sobre los escritorios de Open Area; Osa tapa la puerta del Skylight Stairwell con el Talon y Lion corta el flanco por Office Hallway. Open Area es enorme y sin techo se vuelve intransitable para la defensa.",
+     "timeline": [
+      "0:00–0:45 · drones a Open Area y Staff Room, ubicar Mira y Kapkan",
+      "0:45–1:30 · pared de Printer + piso de Stock Trading",
+      "1:30–2:30 · entrada doble por Printer y Skylight",
+      "2:30–3:00 · plant en Staff Room pegado a Open Area"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Rappel a la ventana de Printer Room",
+         "via": "rappel"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "do": "SELMA en la pared de Open Area tras el EMP",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra por la pared con humo",
+         "via": "breach"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Planta en Staff Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "threat": "Cámara de Valk y peek desde la ventana de Printer",
+         "how": "Dron a la ventana y rappel escondido"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "threat": "Kapkan en la puerta y Bandit en la pared",
+         "how": "Dron a la trampa, EMP antes de la SELMA"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Mira detrás de los escritorios",
+         "how": "Humo y cruce en pareja"
+        }
+       ],
+       "final": "Planta en Staff Room y sostiene la puerta a Open Area"
+      },
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Rappel a la ventana de Printer Room",
+         "via": "rappel"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "do": "EMP a la pared de Open Area",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra tras Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "threat": "Kapkan en la puerta a Open Area",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Jäger ADS y Mute jammers",
+         "how": "EMP los apaga antes de la brecha"
+        }
+       ],
+       "final": "Sostiene Open Area desde la pared de Printer"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Sube al nivel superior del techo",
+         "via": "rappel"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 2,
+         "do": "Rappel a Terrace",
+         "via": "rappel"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Entra por la Terrace",
+         "via": "window"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Limpia el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Stock Trading Room",
+         "f": 2,
+         "do": "Abre el piso sobre los escritorios de Open Area",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 2,
+         "threat": "Roamer esperando en Terrace o Pulse escaneando",
+         "how": "Dron y prefire a la esquina"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Terrace",
+         "how": "Dron a la trampa"
+        },
+        {
+         "room": "Stock Trading Room",
+         "f": 2,
+         "threat": "Pulse/roamer negando vertical",
+         "how": "Prefire a la puerta, granada si hay dos"
+        }
+       ],
+       "final": "Dispara sobre Open Area y niega el retake"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron al Skylight Stairwell",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra por la puerta trasera",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Talon en la puerta a Open Area",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra detrás del Talon",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "threat": "Kapkan en la puerta trasera y roamer bajando",
+         "how": "Dron a la puerta, esperar a Gridlock/Lion"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Ancla mirando la puerta del Skylight",
+         "how": "Talon de frente"
+        }
+       ],
+       "final": "Talon en la puerta de Staff Room y cubre el plant"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Rappel a Tellers' Office",
+         "via": "door"
+        },
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "do": "Entra por la ventana",
+         "via": "window"
+        },
+        {
+         "room": "Loan Office",
+         "f": 1,
+         "do": "Cruza en silencio",
+         "via": "door"
+        },
+        {
+         "room": "Office Hallway",
+         "f": 1,
+         "do": "Escanea justo antes de la entrada doble",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra cuando el equipo ya esté adentro",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers' Office",
+         "f": 1,
+         "threat": "Kapkan en la ventana",
+         "how": "Dron y disparar"
+        },
+        {
+         "room": "Office Hallway",
+         "f": 1,
+         "threat": "Roamer rotando entre Loan Office y Open Area",
+         "how": "Escaneo y prefire"
+        }
+       ],
+       "final": "Cierra Office Hallway y escanea para el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush ventana Staff Room",
+     "tag": "RUSH",
+     "summary": "Cinco por la ventana de cocina/Staff Room desde Back Alley: Sledge revienta la barricada y el Kapkan de un martillazo, Ying candelea Staff Room, Blitz entra primero, Zofia limpia Electrical Room y Finka boostea. Antes de los 40 segundos la defensa sigue en Open Area reforzando Printer.",
+     "timeline": [
+      "0:00–0:20 · directo a la ventana de Staff Room",
+      "0:20–0:40 · Sledge rompe, Ying candelea",
+      "0:40–1:10 · entrada y plant en Staff Room",
+      "1:10–3:00 · post-plant desde Electrical y la ventana"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Rompe la barricada de la ventana con el martillo",
+         "via": "door"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Entra tras Blitz",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Empuja la puerta a Open Area",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "threat": "Kapkan en la ventana",
+         "how": "Martillazo desde afuera revienta trampa y barricada"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Mira detrás de los escritorios",
+         "how": "Flash de Blitz y entrada"
+        }
+       ],
+       "final": "Sostiene la puerta a Open Area"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Candela por la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Entra tras el flash",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "threat": "Smoke ancla en la esquina",
+         "how": "Candela y entrada en pareja"
+        }
+       ],
+       "final": "Planta en Staff Room"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Concusión por la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Entra",
+         "via": "window"
+        },
+        {
+         "room": "Electrical Room",
+         "f": 1,
+         "do": "Limpia Electrical Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Electrical Room",
+         "f": 1,
+         "threat": "Roamer escondido en Electrical",
+         "how": "Concusión y prefire"
+        }
+       ],
+       "final": "Cubre Electrical y la ventana"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Flash al entrar",
+         "via": "door"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Entra primero con el escudo",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Empuja Open Area",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Open Area",
+         "f": 1,
+         "threat": "Noor con fuego Horus a la puerta",
+         "how": "Si hay Noor, no cruzar: planta en Staff Room"
+        }
+       ],
+       "final": "Sostiene la puerta a Open Area"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Boost al entrar",
+         "via": "door"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Entra última",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "threat": "Ancla en Staff Room",
+         "how": "Boost y entrada"
+        }
+       ],
+       "final": "Cubre el plant desde la ventana"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical desde Terrace",
+     "tag": "VERTICAL",
+     "summary": "Buck, Sledge y Ram trabajan Executive Hallway y Stock Trading sobre Open Area desde Terrace y Skylight, Grim tira Kawan sobre Open Area para marcar a las anclas y Thermite entra al final por Printer cuando ya no hay nadie parado abajo.",
+     "timeline": [
+      "0:00–0:45 · drones a 2F y Open Area",
+      "0:45–1:30 · abrir piso de Executive Hallway y Stock Trading",
+      "1:30–2:30 · kills desde arriba, Kawan",
+      "2:30–3:00 · Thermite abre Printer y planta en Open Area"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Sube al nivel alto",
+         "via": "rappel"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 2,
+         "do": "Rappel a Terrace",
+         "via": "rappel"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Entra",
+         "via": "window"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Abre el piso sobre Open Area",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 2,
+         "threat": "Roamer en Terrace",
+         "how": "Dron y prefire"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "threat": "Kapkan y Lesion Gu",
+         "how": "Dron y disparar"
+        }
+       ],
+       "final": "Dispara sobre Open Area desde el pasillo"
+      },
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron al Skylight",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "do": "Sale con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Stock Trading Room",
+         "f": 2,
+         "do": "Abre el piso sobre los escritorios",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "threat": "Roamer en la escalera",
+         "how": "Dron y subir con Grim"
+        },
+        {
+         "room": "Stock Trading Room",
+         "f": 2,
+         "threat": "Pulse escaneando",
+         "how": "Prefire a la esquina"
+        }
+       ],
+       "final": "Dispara sobre Open Area desde Stock Trading"
+      },
+      {
+       "op": "ram",
+       "role": "negacion",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Sube",
+         "via": "rappel"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 2,
+         "do": "Rappel a Terrace",
+         "via": "rappel"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "BU-GI cruzando el piso hacia Open Area",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 2,
+         "threat": "Roamer y Valk cam",
+         "how": "Dron a la Terrace"
+        }
+       ],
+       "final": "Arrasa el piso de Open Area con BU-GI"
+      },
+      {
+       "op": "grim",
+       "role": "intel",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Kawan preparado",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Kawan a Open Area para marcar anclas",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra al final",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "threat": "Kapkan en la puerta trasera",
+         "how": "Dron y disparar"
+        }
+       ],
+       "final": "Cubre la entrada del Skylight y marca para el post-plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Rappel a la ventana de Printer Room",
+         "via": "rappel"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "do": "Carga en la pared cuando la vertical ya mató",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Planta en Open Area",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "threat": "Bandit en la pared",
+         "how": "La vertical lo castiga primero; si no, carga en la escotilla de Admin Office"
+        }
+       ],
+       "final": "Planta en Open Area con el techo abierto"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split Printer + Skylight",
+     "tag": "SPLIT",
+     "summary": "Hibana y Twitch abren la pared de Printer Room (Twitch shockea a Bandit y el Kapkan) mientras Montagne, Gridlock e Iana empujan por la puerta trasera del Skylight Stairwell. Entrada simultánea: la Mira de Open Area no puede mirar los dos lados.",
+     "timeline": [
+      "0:00–0:45 · drones por los dos frentes",
+      "0:45–1:30 · Twitch limpia, Hibana abre; Gridlock trax en Skylight",
+      "1:30–2:30 · entrada doble al mismo tiempo",
+      "2:30–3:00 · plant en Staff Room"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Rappel a la ventana de Printer Room",
+         "via": "rappel"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "do": "Pellets en la pared de Open Area",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra al mismo tiempo que Montagne",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "threat": "Bandit en la pared y Kapkan",
+         "how": "Twitch los quita antes de los pellets"
+        }
+       ],
+       "final": "Sostiene la pared de Printer"
+      },
+      {
+       "op": "twitch",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Garage Roof",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Rappel a la ventana de Printer Room",
+         "via": "rappel"
+        },
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "do": "Shock a Bandit y al Kapkan por la ventana",
+         "via": "window"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra tras Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Printer Room",
+         "f": 1,
+         "threat": "Kapkan y Bandit",
+         "how": "Dron de choque antes de entrar"
+        }
+       ],
+       "final": "Cubre a Hibana"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron a la puerta trasera",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Escudo extendido en la puerta a Open Area",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra cuando caiga la pared de Printer",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "threat": "Noor con fuego a la puerta o Melusi",
+         "how": "Si hay Noor, esperar la pared y entrar por Printer"
+        }
+       ],
+       "final": "Bloquea la puerta del Skylight"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Trax hacia el hueco de escalera",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra tras Montagne",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "threat": "Roamer bajando de 2F",
+         "how": "Trax en la escalera"
+        }
+       ],
+       "final": "Cubre el flanco desde el Skylight"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Réplica adelantada",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Réplica a Open Area",
+         "via": "door"
+        },
+        {
+         "room": "Open Area",
+         "f": 1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "do": "Planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Staff Room",
+         "f": 1,
+         "threat": "Smoke ancla",
+         "how": "Réplica y humo"
+        }
+       ],
+       "final": "Planta en Staff Room"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Smoke ancla Staff Room y gasea la ventana, Mira detrás de los escritorios de Open Area mirando Printer y Skylight, Jäger ADS en Open Area, Kapkan trampas en Skylight y Printer, Pulse arriba en Terrace escaneando la vertical.",
+     "reinforce": [
+      "Pared Open Area–Printer Room",
+      "Pared Staff Room–Electrical Room",
+      "Escotilla Open Area"
+     ],
+     "rotations": [
+      "Open Area↔Staff Room",
+      "Staff Room→Skylight Stairwell (salida)"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Staff Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Gas en la ventana y en la puerta a Open Area; ancla en la esquina"
+      },
+      {
+       "op": "mira",
+       "room": "Open Area",
+       "f": 1,
+       "role": "ancla",
+       "job": "Espejos a Printer y a la puerta del Skylight desde los escritorios"
+      },
+      {
+       "op": "jager",
+       "room": "Open Area",
+       "f": 1,
+       "role": "flex",
+       "job": "ADS en Open Area y Staff Room, sostiene Office Hallway"
+      },
+      {
+       "op": "kapkan",
+       "room": "Skylight Stairwell",
+       "f": 1,
+       "role": "roam",
+       "job": "Trampas en la puerta trasera y Printer; roam Office Hallway"
+      },
+      {
+       "op": "pulse",
+       "room": "Terrace",
+       "f": 2,
+       "role": "roam",
+       "job": "Escanea 2F para negar la vertical, baja por Skylight"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Kaid + Melusi",
+     "summary": "Kaid electrifica la pared de Printer y la escotilla, Mute apaga drones en Staff Room, Melusi frena el Skylight, Lesion Gu en Office Hallway y Valkyrie con cams en Executive Hallway para ver la vertical.",
+     "reinforce": [
+      "Pared Open Area–Printer Room",
+      "Escotilla Open Area",
+      "Escotilla Admin Office"
+     ],
+     "rotations": [
+      "Open Area↔Staff Room",
+      "Staff Room→Skylight Stairwell"
+     ],
+     "ops": [
+      {
+       "op": "kaid",
+       "room": "Open Area",
+       "f": 1,
+       "role": "ancla",
+       "job": "Rtila en la pared de Printer y escotilla; ancla detrás de los escritorios"
+      },
+      {
+       "op": "mute",
+       "room": "Staff Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Jammers en la ventana y pared de Printer"
+      },
+      {
+       "op": "melusi",
+       "room": "Skylight Stairwell",
+       "f": 1,
+       "role": "flex",
+       "job": "Banshees en la puerta trasera y escalera"
+      },
+      {
+       "op": "lesion",
+       "room": "Office Hallway",
+       "f": 1,
+       "role": "roam",
+       "job": "Gu en Office Hallway y Loan Office, roam corto"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Executive Hallway",
+       "f": 2,
+       "role": "roam",
+       "job": "Cams en Terrace y Stock Trading, roam 2F"
+      }
+     ]
+    }
+   ]
+  },
+  "ceo": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thermite y Thatcher suben por Main Stairway y abren la pared de Executive Lounge; Amaru sube a CEO por la ventana con la garra para partir la atención; Dokkaebi hackea celulares y Glaz cubre Executive Hallway con humo desde el Skylight. Con la pared de Main Stairway abierta y CEO presionado, la ancla no tiene dónde plantarse.",
+     "timeline": [
+      "0:00–0:45 · drones a Lounge y CEO, ubicar Mira, Castle y Frost",
+      "0:45–1:30 · EMP + Thermite en la pared de Main Stairway",
+      "1:30–2:30 · Amaru entra por CEO, entrada por la pared con humo de Glaz",
+      "2:30–3:00 · plant en CEO detrás del escritorio"
+     ],
+     "ops": [
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "Carga en la pared de Executive Lounge tras el EMP",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra por la pared con humo",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer en ATMs/Elevators",
+         "how": "Dron y cruzar con Thatcher"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Bandit/Kaid en la pared y Jäger ADS",
+         "how": "EMP y carga inmediata"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "threat": "Mira mirando la pared",
+         "how": "Humo de Glaz antes de cruzar"
+        }
+       ],
+       "final": "Cubre el plant desde la pared abierta"
+      },
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "EMP a la pared de Executive Lounge",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra tras Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Jäger ADS y Kaid",
+         "how": "EMP justo antes de la carga"
+        }
+       ],
+       "final": "Sostiene Main Stairway durante el plant"
+      },
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Dron a CEO antes de subir",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Garra a la ventana de CEO",
+         "via": "door"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "do": "Entra por la ventana cuando caiga la pared",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Plaza",
+         "f": -1,
+         "threat": "Cámara de Valk y defensor peekeando la ventana",
+         "how": "Dron a la ventana, subir por la ventana ciega"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "threat": "Cepos de Frost bajo la ventana y Castle",
+         "how": "Revisar con dron, entrar disparando la barricada"
+        }
+       ],
+       "final": "Planta en CEO detrás del escritorio"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Hackea celulares desde el spawn",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra por la puerta trasera",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "do": "Sale con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Cruza con el humo de Glaz",
+         "via": "door"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra al mismo tiempo que la pared",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "threat": "Roamer bajando de 2F",
+         "how": "Llamar al pin y escuchar"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "threat": "Kapkan en la puerta y Lesion",
+         "how": "Dron y disparar"
+        }
+       ],
+       "final": "Cubre el plant y ve cámaras hackeadas"
+      },
+      {
+       "op": "glaz",
+       "role": "soporte",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron al Skylight",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "do": "Sale",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Humo en el pasillo y térmica",
+         "via": "door"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra al final a cubrir el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "threat": "Lesion Gu y roamer en el pasillo",
+         "how": "Térmica a través del humo"
+        }
+       ],
+       "final": "Cubre el plant a través del humo"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush ventanas CEO",
+     "tag": "RUSH",
+     "summary": "Cinco por las ventanas de CEO y Executive Lounge desde Plaza: IQ detecta Frost y Kapkan, Ash revienta los Castle, Ying candelea CEO y Blackbeard sube con el escudo a Lounge; Finka boostea. Antes de los 40 segundos Castle apenas está poniendo barricadas.",
+     "timeline": [
+      "0:00–0:20 · rappel a las ventanas de CEO y Lounge",
+      "0:20–0:40 · IQ detecta, Ash abre Castle, Ying candelea",
+      "0:40–1:10 · entrada y plant en CEO",
+      "1:10–3:00 · post-plant desde las ventanas"
+     ],
+     "ops": [
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Rappel directo",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Sube a la ventana de CEO",
+         "via": "door"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "do": "Candela por la ventana y entra",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "threat": "Smoke ancla y Frost",
+         "how": "Candela y entrada tras Ash"
+        }
+       ],
+       "final": "Planta en CEO"
+      },
+      {
+       "op": "ash",
+       "role": "blando",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Rappel",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Brecha a la barricada de Castle",
+         "via": "door"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "do": "Entra primera",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "threat": "Castle en las ventanas",
+         "how": "Brecha desde el rappel"
+        }
+       ],
+       "final": "Sostiene la puerta a Lounge"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Rappel",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Sube a la ventana de Executive Lounge",
+         "via": "door"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra con el escudo",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "threat": "Noor con fuego Horus a la ventana",
+         "how": "Si hay Noor, cambiar a la ventana de CEO"
+        }
+       ],
+       "final": "Cubre Lounge"
+      },
+      {
+       "op": "iq",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Escáner",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Detecta Frost y Kapkan y los revienta",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "threat": "Frost bajo la ventana",
+         "how": "Escáner y disparo desde el rappel"
+        }
+       ],
+       "final": "Cubre Lounge"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Boost",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "do": "Entra última",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "threat": "Ancla en CEO",
+         "how": "Boost y entrada"
+        }
+       ],
+       "final": "Cubre el plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical desde Archives + Fuze",
+     "tag": "VERTICAL",
+     "summary": "El sitio está en el último piso, así que la vertical es desde abajo: Buck abre el techo de Archives bajo Executive Lounge y castiga a la ancla, Fuze tira cluster desde Main Stairway, Zero pone Argus y Maverick abre en silencio la pared; Ash entra al final por CEO.",
+     "timeline": [
+      "0:00–0:45 · drones y Argus",
+      "0:45–1:30 · Buck abre el techo de Archives, Fuze cluster",
+      "1:30–2:30 · kills desde abajo, Maverick abre",
+      "2:30–3:00 · Ash planta en CEO"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Tellers",
+         "via": "door"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "do": "Abre el techo bajo Executive Lounge y dispara hacia arriba",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer en ATMs",
+         "how": "Dron"
+        },
+        {
+         "room": "Archives",
+         "f": 1,
+         "threat": "Roamer en Archives",
+         "how": "Prefire a la esquina"
+        }
+       ],
+       "final": "Dispara hacia arriba y sube al final por Main Stairway"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "Cluster en la pared de Executive Lounge",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra tras Maverick",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Jäger ADS",
+         "how": "Cluster los satura"
+        }
+       ],
+       "final": "Cubre la pared"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "Argus a la pared para ver Lounge",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra al final",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Kapkan en la puerta",
+         "how": "Argus y disparar"
+        }
+       ],
+       "final": "Cubre con las cámaras"
+      },
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "Soplete en silencio en la pared",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra por el agujero",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Bandit en la pared",
+         "how": "El soplete lo ignora"
+        }
+       ],
+       "final": "Planta en Lounge"
+      },
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Jewelry Front",
+       "path": [
+        {
+         "room": "Jewelry Front",
+         "f": -1,
+         "do": "Dron a CEO",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Rappel a CEO",
+         "via": "door"
+        },
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "do": "Entra cuando la vertical haya matado",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "CEO Office",
+         "f": 2,
+         "threat": "Castle y Frost",
+         "how": "Brecha a la barricada"
+        }
+       ],
+       "final": "Planta en CEO"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split Main Stairway + Terrace",
+     "tag": "SPLIT",
+     "summary": "Hibana y Kali abren la pared de Main Stairway (Kali revienta Kaid/Bandit desde la escalera) mientras Osa, Lion y Gridlock empujan por Terrace y Skylight hacia Executive Hallway. La Mira de Lounge mira la pared y le entramos por el pasillo.",
+     "timeline": [
+      "0:00–0:45 · drones por los dos frentes",
+      "0:45–1:30 · Kali limpia, Hibana abre; Osa en Terrace",
+      "1:30–2:30 · entrada doble",
+      "2:30–3:00 · plant en Lounge"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "Pellets en la pared tras la LV de Kali",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra al mismo tiempo que Osa",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Bandit/Kaid en la pared",
+         "how": "Kali los revienta"
+        }
+       ],
+       "final": "Sostiene la pared"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Plaza",
+         "f": -1,
+         "do": "Cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Main Entrance",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Cruza a Main Stairway",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 1,
+         "do": "Sube a 2F con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "do": "LV a la pared de Lounge",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra tras Hibana",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairway",
+         "f": 2,
+         "threat": "Kaid Rtila y Jäger",
+         "how": "LV desde la escalera"
+        }
+       ],
+       "final": "Cubre la pared"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Boulevard",
+       "path": [
+        {
+         "room": "Boulevard",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Parking Lot",
+         "f": -1,
+         "do": "Sube al techo del garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 1,
+         "do": "Sube",
+         "via": "rappel"
+        },
+        {
+         "room": "Garage Roof",
+         "f": 2,
+         "do": "Rappel a Terrace",
+         "via": "rappel"
+        },
+        {
+         "room": "Terrace",
+         "f": 2,
+         "do": "Talon en la puerta",
+         "via": "window"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Talon avanzando por el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra y planta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Terrace",
+         "f": 2,
+         "threat": "Roamer en Terrace",
+         "how": "Talon de frente"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "threat": "Kapkan y Lesion",
+         "how": "Dron y disparar"
+        }
+       ],
+       "final": "Planta en Lounge detrás del Talon"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Sube",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "do": "Escanea antes de la entrada doble",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "threat": "Roamer",
+         "how": "Escaneo y prefire"
+        }
+       ],
+       "final": "Cubre y escanea para el post-plant"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Back Alley",
+       "path": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "Dron",
+         "via": "door"
+        },
+        {
+         "room": "Alley Access",
+         "f": -1,
+         "do": "Entra",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 1,
+         "do": "Trax en la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Skylight Stairwell",
+         "f": 2,
+         "do": "Trax arriba",
+         "via": "stairs"
+        },
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "do": "Cruza",
+         "via": "door"
+        },
+        {
+         "room": "Executive Lounge",
+         "f": 2,
+         "do": "Entra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Executive Hallway",
+         "f": 2,
+         "threat": "Rotación desde Front Desk",
+         "how": "Trax en el pasillo"
+        }
+       ],
+       "final": "Cierra el flanco del pasillo"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Castle en las ventanas de CEO, Frost con cepos bajo las ventanas, Smoke ancla CEO, Mira en Lounge con espejo a Main Stairway y Valkyrie con cams afuera de las ventanas para ver el rappel antes de que abran.",
+     "reinforce": [
+      "Pared Executive Lounge–Main Stairway ×2",
+      "Ventanas CEO (Castle)",
+      "Escotilla Terrace"
+     ],
+     "rotations": [
+      "Executive Lounge↔CEO Office",
+      "CEO Office→Executive Hallway (salida)"
+     ],
+     "ops": [
+      {
+       "op": "castle",
+       "room": "CEO Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Barricadas en las ventanas de CEO; ancla detrás del escritorio"
+      },
+      {
+       "op": "frost",
+       "room": "CEO Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Cepos bajo las ventanas y en la puerta a Lounge"
+      },
+      {
+       "op": "smoke",
+       "room": "CEO Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Gas en el plant y en la puerta de Lounge"
+      },
+      {
+       "op": "mira",
+       "room": "Executive Lounge",
+       "f": 2,
+       "role": "ancla",
+       "job": "Espejo a Main Stairway y otro a Executive Hallway"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Executive Hallway",
+       "f": 2,
+       "role": "roam",
+       "job": "Cams en Plaza y Terrace, roam Front Desk/Skylight"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush ventanas",
+     "summary": "Bandit trickea la pared de Main Stairway, Jäger ADS en CEO, Noor quema las ventanas de CEO contra escudos y rush, Echo con Yokai en el techo de Lounge y Vigil roameando en Open Area para cazar a los que suben por Skylight.",
+     "reinforce": [
+      "Pared Executive Lounge–Main Stairway ×2",
+      "Escotilla Terrace"
+     ],
+     "rotations": [
+      "Executive Lounge↔CEO Office"
+     ],
+     "ops": [
+      {
+       "op": "bandit",
+       "room": "Executive Lounge",
+       "f": 2,
+       "role": "ancla",
+       "job": "Trickea la pared de Main Stairway"
+      },
+      {
+       "op": "jager",
+       "room": "CEO Office",
+       "f": 2,
+       "role": "flex",
+       "job": "ADS en CEO y Lounge"
+      },
+      {
+       "op": "noor",
+       "room": "CEO Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Fuego Horus a las ventanas cuando escuche rappel o escudo"
+      },
+      {
+       "op": "echo",
+       "room": "Executive Lounge",
+       "f": 2,
+       "role": "ancla",
+       "job": "Yokai en el techo de Lounge, niega el plant"
+      },
+      {
+       "op": "vigil",
+       "room": "Open Area",
+       "f": 1,
+       "role": "roam",
+       "job": "Roam Open Area/Skylight Stairwell, sube a cerrar por Executive Hallway"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

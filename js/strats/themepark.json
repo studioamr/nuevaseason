@@ -1,0 +1,4973 @@
+{
+ "map": "themepark",
+ "sites": {
+  "armory": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Armory (Gargoyle Storage) y Throne (Haunted Dining) se ganan con dos presiones a la vez: la pared Lab→Armory abierta con Thermite y Buck comiéndose el piso de Initiation sobre Throne. Con el techo abierto las anclas de Throne no pueden quedarse y el plant en Armory se vuelve seguro. Montagne por Gallery obliga a la defensa a mirar tres lados.",
+     "timeline": [
+      "0:00–0:45 · drones a Gargoyle Storage y Haunted Dining, Thatcher/Thermite llegan a Drug Lab",
+      "0:45–1:30 · EMP + Thermite abre la pared Lab→Armory, Buck abre piso de Initiation sobre Throne",
+      "1:30–2:30 · Montagne empuja Gallery→Throne, plant en Armory con vertical cubriendo",
+      "2:30–3:00 · post-plant: Buck cuida Throne desde arriba, Nomad tapa el flanco de Loading Deck"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "dronea Arcade Entrance antes de entrar",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "entra por la puerta grande, limpia Arcade Toilet de reojo",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "avanza pegado a la pared derecha",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "espera a Thermite y revisa Lab con dron",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "tira EMP sobre la pared reforzada de Armory",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "do": "entra detrás de Thermite tras la brecha",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer tipo Vigil/Cav escondido en Arcade Toilet o Locker Room",
+         "how": "dron primero, un compañero cubre la puerta mientras revisas el baño"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Bandit/Kaid electrificando la pared de Armory y un Kapkan en la puerta de Barrel",
+         "how": "revisa el marco de la puerta con dron, EMP pegado a la pared antes de que Thermite ponga la carga"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "threat": "Ancla con Mira mirando la pared desde el rincón del sitio",
+         "how": "no cruces la brecha de frente: flash o humo y entrada en pareja"
+        }
+       ],
+       "final": "cubre la brecha desde Drug Lab y entra a plantar en Armory cuando el vertical confirme Throne limpio"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "camina detrás de Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "cubre Locker Room mientras Thatcher limpia el baño",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "avanza sin correr, escucha Barrel",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "prefire la esquina hacia Lab",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "pone la exotérmica en la pared de Armory después del EMP",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "do": "entra a plantar con el difusor",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "threat": "Roamer con escopeta esperando en el rincón de barriles",
+         "how": "dron a la esquina y entra en pareja, nunca solo"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Mute jammer pegado a la pared de Armory",
+         "how": "dron al ras del piso, si hay jammer que Thatcher lo apague con EMP"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "threat": "Ancla Smoke detrás del despliegue tirando gas a la brecha",
+         "how": "no plantes con el gas activo: espera 10 segundos y planta detrás de un escudo o humo"
+        }
+       ],
+       "final": "planta en Armory pegado a la pared de Lab, lejos de la puerta a Throne"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "dronea la entrada encantada",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "revisa el marco de la puerta con dron",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "do": "entra callado, sin correr",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 1,
+         "do": "sube escuchando pasos arriba",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "sale de la escalera y revisa Control Room",
+         "via": "stairs"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "cruza rápido hacia Initiation",
+         "via": "door"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "abre el piso sobre Throne con Skeleton Key",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "threat": "Kapkan o Ela en la puerta de entrada",
+         "how": "dron por debajo de la puerta y revienta la trampa a bala"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Roamer (Vigil/Pulse) bajando por Haunted Stairs",
+         "how": "escucha, prefire la salida de la escalera y pide dron de Thatcher"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "threat": "Roamer con Maestro cam o Valk cam vigilando el piso",
+         "how": "dispara la cámara antes de abrir el piso, luego abre desde una esquina"
+        }
+       ],
+       "final": "controla Throne desde el piso abierto de Initiation y mata a quien intente retomar Armory por la puerta de Throne"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina hasta la puerta de Loading Deck",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "entra extendido, revisa la escotilla",
+         "via": "door"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "do": "avanza lento con el escudo abierto",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "do": "empuja la puerta de Throne para dar intel y ocupar a la ancla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "threat": "Roamer saliendo por la puerta de Service Corridor",
+         "how": "revisa con dron y pide que Nomad ponga Airjab en la puerta"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "threat": "Ancla de Throne asomando por la puerta con Smoke o Lesion (Gu en el marco)",
+         "how": "dron al piso para ver Gu, avanza con escudo y deja que Nomad dispare por encima"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "threat": "Noor con lanzador Horus quemando escudos en la puerta",
+         "how": "no te quedes en el marco: entra y sal, deja que Buck la castigue desde arriba"
+        }
+       ],
+       "final": "sostiene la puerta Gallery→Throne con el escudo mientras plantan en Armory"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sigue a Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "Airjab en la puerta de Service Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Fuel Storage",
+         "f": 1,
+         "do": "limpia el cuarto y deja Airjab en la puerta hacia Prop Storage",
+         "via": "door"
+        },
+        {
+         "room": "Prop Storage",
+         "f": 1,
+         "do": "revisa con dron y cubre la espalda",
+         "via": "door"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "do": "se coloca detrás de Montagne para disparar sobre el escudo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Fuel Storage",
+         "f": 1,
+         "threat": "Roamer tipo Cav rondando entre Fuel y Prop Storage",
+         "how": "dron, Airjab en puerta y avanza con prefire a las esquinas"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "threat": "Ancla de Throne peekeando la puerta desde el trono",
+         "how": "dispara por encima del escudo de Montagne, nunca peekees solo"
+        }
+       ],
+       "final": "cubre Gallery y Loading Deck contra el flanco durante plant y post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por Haunted Entrance antes de que el sitio esté armado: Coffin→Execution→Crypt→Gargoyle y directo a Armory por la puerta. Candelas de Ying al entrar y Zofia reventando Gargoyle. Funciona porque la defensa reparte tiempo en reforzar Lab y Initiation y deja la puerta de Gargoyle blanda.",
+     "timeline": [
+      "0:00–0:20 · corren a Haunted Entrance, dron adelantado de Finka",
+      "0:20–0:50 · Ying tira candela en Crypt/Gargoyle, Ash abre barricadas",
+      "0:50–1:20 · entrada en cadena a Armory y plant rápido",
+      "1:20–3:00 · post-plant defensivo: Blitz y Zofia cubren Throne, Finka cura"
+     ],
+     "ops": [
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "corre pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "revisa trampa en la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "do": "entra primera, candela lista",
+         "via": "door"
+        },
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "do": "cruza sin detenerse",
+         "via": "door"
+        },
+        {
+         "room": "Execution Room",
+         "f": 1,
+         "do": "prefire la esquina",
+         "via": "door"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "do": "candela hacia Gargoyle",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "do": "segunda candela dentro de Armory",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "do": "entra a limpiar tras el flash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta de entrada",
+         "how": "dron rápido de Finka y bala a la trampa"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "threat": "Roamer ancla lateral esperando en el rincón de la cripta",
+         "how": "candela adelantada y entra en pareja"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "threat": "Ancla armando el sitio, Smoke o Jäger cerca de la puerta",
+         "how": "candela dentro y entrada doble: Ying y Ash a la vez"
+        }
+       ],
+       "final": "limpia Armory y cubre la puerta a Throne mientras Zofia planta"
+      },
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "corre junto a Ying",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "breach a la barricada de entrada si está puesta",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "do": "entra segunda",
+         "via": "door"
+        },
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "do": "cubre la puerta de Haunted Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Execution Room",
+         "f": 1,
+         "do": "breach a cualquier barricada a Crypt",
+         "via": "door"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "do": "avanza detrás de la candela",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "do": "breach a la puerta de Armory",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "do": "entra y limpia el rincón contrario a Ying",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "threat": "Roamer bajando por Haunted Stairs a la espalda",
+         "how": "una mirada rápida a la escalera y sigue, Blitz la cubre"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "threat": "Lesion con Gu en el marco de la puerta de Armory",
+         "how": "dispara al piso del marco antes de cruzar"
+        }
+       ],
+       "final": "cubre la puerta Lab→Armory desde dentro del sitio"
+      },
+      {
+       "op": "zofia",
+       "role": "blando",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "dispara impacto a la barricada si hace falta",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "do": "entra tercera",
+         "via": "door"
+        },
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "do": "avanza",
+         "via": "door"
+        },
+        {
+         "room": "Execution Room",
+         "f": 1,
+         "do": "cubre Crypt",
+         "via": "door"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "do": "conmoción hacia Gargoyle",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "do": "entra detrás de Ash",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "do": "planta pegada a la pared de Lab",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Execution Room",
+         "f": 1,
+         "threat": "Ancla lateral peekeando desde Crypt",
+         "how": "conmoción antes de cruzar la puerta"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "threat": "Defensor retomando por la puerta de Throne",
+         "how": "impacto a la puerta y Blitz la flashea"
+        }
+       ],
+       "final": "planta en Armory y se queda en el rincón de Lab cubriendo la puerta de Throne"
+      },
+      {
+       "op": "blitz",
+       "role": "soporte",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "corre detrás",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "escudo arriba",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "do": "entra cuarto y cubre Haunted Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "do": "se queda un segundo mirando la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Execution Room",
+         "f": 1,
+         "do": "avanza",
+         "via": "door"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "do": "entra a Gargoyle flasheando",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "do": "flash a Armory y a Throne",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "do": "empuja Throne flasheando para sacar a la ancla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "threat": "Roamer regresando por Haunted Stairs",
+         "how": "flash y espera un segundo antes de seguir"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "threat": "Ancla de Throne y Noor quemando el escudo",
+         "how": "flash desde la puerta, entra solo cuando Zofia ya plantó"
+        }
+       ],
+       "final": "sostiene la puerta Armory→Throne con flashes durante el post-plant"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "dron adelantado a Haunted Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "revisa trampas con dron",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "do": "entra última, boost en cuanto Ying tira candela",
+         "via": "door"
+        },
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "do": "cubre la espalda",
+         "via": "door"
+        },
+        {
+         "room": "Execution Room",
+         "f": 1,
+         "do": "segundo boost al entrar al sitio",
+         "via": "door"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "do": "cubre Gargoyle",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "do": "sostiene la puerta de Crypt",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "threat": "Kapkan/Ela en la puerta",
+         "how": "dron adelante y bala"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "threat": "Roamer regresando desde Crypt por la espalda del rush",
+         "how": "ponte de espaldas al sitio cubriendo Crypt con boost activo"
+        }
+       ],
+       "final": "cubre Gargoyle contra el flanco y levanta caídos con el boost en post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Tomar Initiation y Office arriba y jugar el sitio desde el techo: Buck abre el piso sobre Throne, Sledge sobre Armory desde Office/Cash Stash y Fuze mete racimos sobre las anclas. Las anclas no pueden quedarse en ningún cuarto y el plant se hace al final por Gallery. Gridlock tapa Haunted Stairs para que no suban a pelear el segundo piso.",
+     "timeline": [
+      "0:00–0:45 · dos grupos suben: por South Exit y por Rail Ramp, drones a Initiation y Office",
+      "0:45–1:30 · Buck y Sledge abren pisos, Fuze racimo sobre Throne",
+      "1:30–2:30 · limpieza desde arriba, Twitch baja a plantar por Gallery",
+      "2:30–3:00 · post-plant desde arriba, Gridlock cuida Haunted Stairs"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "camina a la escalera exterior sur",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube la escalera exterior a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "abre la barricada y revisa con dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "limpia la salida de la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "cruza a Initiation",
+         "via": "door"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "abre el piso sobre Throne",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "South Exit",
+         "f": 2,
+         "threat": "Kapkan o barricada Castle en la puerta sur",
+         "how": "dron por debajo y revienta la trampa antes de abrir"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Roamer (Vigil/Cav) subiendo desde 1F",
+         "how": "Gridlock pone Trax en la escalera y tú prefire la salida"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "threat": "Pulse o Valk cam mirando el piso desde el rincón",
+         "how": "dispara cámaras, abre el piso desde el borde para no comer disparos de abajo"
+        }
+       ],
+       "final": "abre y sostiene el piso sobre Throne, mata anclas y cubre a Twitch cuando plante"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a la rampa del tren",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "sube la rampa con dron adelante",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "revisa Rail Platform",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "cruza al pasillo del tren",
+         "via": "door"
+        },
+        {
+         "room": "Rail Corridor",
+         "f": 2,
+         "do": "abre la puerta a Cash Stash",
+         "via": "door"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "do": "abre el piso sobre Armory con el martillo",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "agujeros sobre Armory y sobre la puerta Armory→Throne",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Roamer peekeando desde Rail Corridor o Lift Car",
+         "how": "dron primero, prefire la esquina de Rail Corridor"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "threat": "Roamer con escopeta esperando en Office",
+         "how": "dron a Office antes de abrir el piso, Fuze cubre la puerta"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Ancla de Armory disparando hacia arriba por los agujeros",
+         "how": "abre desde el borde y muévete, nunca te quedes parado sobre un agujero"
+        }
+       ],
+       "final": "controla Armory desde arriba y castiga la puerta Armory→Throne en post-plant"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "sigue a Buck",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "cubre a Buck mientras abre",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "revisa Haunted Balcony",
+         "via": "door"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "racimo en el piso sobre Execution si hay ancla",
+         "via": "door"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "racimos sobre Throne cuando Buck abra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Defensor rotando por Haunted Balcony hacia South Exit",
+         "how": "revisa el balcón con dron y deja a Gridlock cubrirlo"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "threat": "Jäger ADS en el sitio comiéndose los racimos",
+         "how": "primero un racimo de sacrificio y luego el segundo sobre la ancla"
+        }
+       ],
+       "final": "vacía racimos sobre Throne y Armory y sostiene Initiation contra la retoma"
+      },
+      {
+       "op": "twitch",
+       "role": "intel",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "dron de choque a Loading Deck",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "quema gadgets con el dron y espera",
+         "via": "door"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "do": "avanza cuando arriba confirmen anclas muertas",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "do": "cruza Throne con el techo abierto cubriéndola",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "do": "planta en Armory",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "threat": "Roamer saliendo de Service Corridor o Fuel Storage",
+         "how": "dron de choque adelante y pide a Sledge que escuche desde arriba"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "threat": "Maestro Evil Eye o Gu de Lesion en la puerta de Throne",
+         "how": "choca los gadgets con el dron antes de entrar"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "threat": "Ancla Smoke escondida detrás del trono",
+         "how": "Buck la revisa desde el piso abierto antes de que cruces"
+        }
+       ],
+       "final": "planta en Armory bajo los agujeros de Sledge y se queda en el rincón"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "última del grupo sur",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "Trax en la puerta sur para cubrir la espalda",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "Trax en la salida de la escalera desde 1F",
+         "via": "door"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "sostiene el pasillo mirando Haunted Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Roamer subiendo desde Haunted Entrance por la escalera",
+         "how": "Trax en el descanso y prefire desde Control Room"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "threat": "Defensor rotando desde Office hacia Initiation",
+         "how": "escucha y avisa a Sledge, que lo tiene de frente"
+        }
+       ],
+       "final": "sostiene Control Room y Haunted Stairs para que nadie suba a retomar el vertical"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes: Ace y Kali por la pared Lab→Armory mientras Glaz, Capitão y Jackal presionan Throne desde Gallery con humo. La ancla de Armory tiene que elegir entre mirar la pared o la puerta de Throne y pierde una de las dos. Jackal además caza al roamer que baje de Initiation.",
+     "timeline": [
+      "0:00–0:45 · drones, Ace a Drug Lab, grupo Gallery cubierto por Glaz",
+      "0:45–1:30 · Kali quita el Bandit, Ace abre la pared; Capitão humo en Throne",
+      "1:30–2:30 · presión doble, entrada por la brecha y por Throne, plant en Armory",
+      "2:30–3:00 · post-plant con Glaz mirando Throne desde Gallery y Jackal cuidando Lab"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "dronea Arcade Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "entra con Kali",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "avanza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "cubre Lab y espera a Kali",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "SELMA sobre la pared de Armory tras el disparo de Kali",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "do": "entra por la brecha cuando Throne esté presionado",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "threat": "Roamer esperando en Locker Room o Arcade Toilet",
+         "how": "dron y un compañero mirando las puertas mientras cruzas"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Kaid/Bandit en la pared y Mira mirando desde Armory",
+         "how": "Kali rompe el gadget desde Barrel, tú no te pares frente al espejo"
+        },
+        {
+         "room": "Gargoyle Storage",
+         "f": 1,
+         "threat": "Ancla en el rincón del sitio mirando la brecha",
+         "how": "cruza la brecha solo cuando Capitão confirme humo en la puerta de Throne"
+        }
+       ],
+       "final": "planta en Armory y sostiene el rincón de Lab"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "camina con Ace",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "revisa Arcade Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "avanza",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "lanza LV a la pared de Armory a través de la puerta de Lab",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "cubre la brecha a distancia con el rifle",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer bajando por Arcade Stairs a la espalda",
+         "how": "revisa la escalera y avisa a Jackal"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Mira espejo en la pared y Bandit cargando",
+         "how": "LV al espejo o al Bandit desde lejos, sin exponerte al espejo"
+        }
+       ],
+       "final": "sostiene la brecha desde Drug Lab a distancia y mata a quien retome por la pared"
+      },
+      {
+       "op": "glaz",
+       "role": "negacion",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "dronea Loading Deck",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "entra y cubre Service Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "do": "se coloca al fondo con línea a la puerta de Throne",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "do": "entra solo en post-plant para cubrir desde el humo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "threat": "Defensor rotando por Service Corridor",
+         "how": "dron y pide a Capitão que lo cubra"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "threat": "Ancla de Throne peekeando la puerta desde el trono",
+         "how": "humo de Capitão en la puerta y tú ves con la térmica"
+        }
+       ],
+       "final": "mira la puerta Gallery→Throne con térmica a través del humo y castiga la retoma"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina con Glaz",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "cubre Fuel Storage",
+         "via": "door"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "do": "humo en la puerta de Throne, fuego al rincón de la ancla",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "do": "fuego en la puerta Throne→Armory para tapar la retoma",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "threat": "Roamer regresando por Fuel Storage",
+         "how": "dron y fuego en la puerta si insiste"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "threat": "Smoke o Maestro en el rincón del trono",
+         "how": "fuego al rincón antes de que Glaz entre"
+        }
+       ],
+       "final": "quema la puerta Throne→Armory en post-plant y cubre a Glaz"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "dronea Haunted Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "revisa trampa",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "do": "escanea huellas del roamer",
+         "via": "door"
+        },
+        {
+         "room": "Coffin Room",
+         "f": 1,
+         "do": "sigue las huellas",
+         "via": "door"
+        },
+        {
+         "room": "Execution Room",
+         "f": 1,
+         "do": "cubre Crypt",
+         "via": "door"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "do": "presiona Gargoyle en el momento de la brecha",
+         "via": "door"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "do": "sostiene la puerta de Armory como tercer frente",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta",
+         "how": "dron y bala"
+        },
+        {
+         "room": "Crypt",
+         "f": 1,
+         "threat": "Roamer tipo Vigil/Cav escondido en la cripta",
+         "how": "escanea y prefire donde marque el Eyenox"
+        },
+        {
+         "room": "Gargoyle",
+         "f": 1,
+         "threat": "Lesion con Gu en la puerta de Armory",
+         "how": "dispara el Gu en el piso antes de asomar"
+        }
+       ],
+       "final": "caza al roamer y sostiene Gargoyle contra la retoma por Crypt"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Pared Lab→Armory reforzada con Bandit, Mira sobre esa misma pared para ver Lab, Smoke ancla en Throne cerrando Gallery. Pulse roamea arriba en Initiation para castigar el vertical y Jäger limpia granadas en la puerta de Gallery.",
+     "reinforce": [
+      "Pared Armory–Drug Lab ×2 (Bandit)",
+      "Pared Throne–Gallery ×1",
+      "Escotilla de Gallery",
+      "Escotilla de Execution Room"
+     ],
+     "rotations": [
+      "Armory↔Throne (puerta abierta)",
+      "Rotación Gargoyle→Crypt con impacto"
+     ],
+     "ops": [
+      {
+       "op": "mira",
+       "room": "Gargoyle Storage",
+       "f": 1,
+       "role": "ancla",
+       "job": "espejo en la pared de Lab, ve Barrel Room y la puerta; cubre la brecha con la pared ya electrificada"
+      },
+      {
+       "op": "smoke",
+       "room": "Haunted Dining",
+       "f": 1,
+       "role": "ancla",
+       "job": "gas en la puerta de Gallery y en la puerta Throne→Armory en post-plant; se esconde detrás del trono"
+      },
+      {
+       "op": "bandit",
+       "room": "Drug Lab",
+       "f": 1,
+       "role": "flex",
+       "job": "electrifica la pared de Armory, hace bandit trick contra Thermite y luego juega la puerta Barrel→Lab"
+      },
+      {
+       "op": "jager",
+       "room": "Gallery",
+       "f": 1,
+       "role": "flex",
+       "job": "ADS en la puerta de Throne y en Armory; juega Gallery/Loading Deck para retrasar al grupo de Bumper Cars"
+      },
+      {
+       "op": "pulse",
+       "room": "Initiation Room",
+       "f": 2,
+       "role": "roam",
+       "job": "detecta al vertical en Initiation/Office y baja por Haunted Stairs a matar por la espalda"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Kaid + Noor anti-escudo",
+     "summary": "Setup anti-Montagne/Blitz: Kaid electrifica pared y escotillas, Maestro con Evil Eye mirando Gallery y Noor quema escudos en la puerta de Throne. Azami cierra líneas del vertical y Vigil roamea Fuel/Prop Storage.",
+     "reinforce": [
+      "Pared Armory–Drug Lab ×2 (Kaid)",
+      "Pared Throne–Gallery ×1",
+      "Escotilla de Gallery (Kaid)",
+      "Escotilla de Loading Deck"
+     ],
+     "rotations": [
+      "Armory↔Throne",
+      "Throne→Crypt por Gargoyle"
+     ],
+     "ops": [
+      {
+       "op": "kaid",
+       "room": "Gargoyle Storage",
+       "f": 1,
+       "role": "ancla",
+       "job": "Rtila en la pared de Lab y en la escotilla de Gallery; ancla el rincón del sitio"
+      },
+      {
+       "op": "maestro",
+       "room": "Haunted Dining",
+       "f": 1,
+       "role": "ancla",
+       "job": "Evil Eye mirando la puerta de Gallery y otro en Armory; juega detrás del trono"
+      },
+      {
+       "op": "noor",
+       "room": "Haunted Dining",
+       "f": 1,
+       "role": "flex",
+       "job": "quema escudos que entren por Gallery o por la puerta Armory→Throne con el Horus; rota entre ambos"
+      },
+      {
+       "op": "azami",
+       "room": "Initiation Room",
+       "f": 2,
+       "role": "flex",
+       "job": "Kiba en los agujeros del piso de Initiation cuando abran; luego baja a jugar Gargoyle"
+      },
+      {
+       "op": "vigil",
+       "room": "Fuel Storage",
+       "f": 1,
+       "role": "roam",
+       "job": "invisible a drones en Fuel/Prop Storage, mata al grupo de Bumper Cars por la espalda al pasar Loading Deck"
+      }
+     ]
+    }
+   ]
+  },
+  "lab": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "El sitio Lab/Storage cae cuando abres la pared Cafe Stairs→Drug Storage con Ace y al mismo tiempo Buck abre el piso de Bunk sobre Lab. Zero entra por Service Corridor para dar intel de Storage y Gridlock cierra el flanco de Barrel Room. Plant en Drug Storage, que queda cubierto por el vertical y la brecha.",
+     "timeline": [
+      "0:00–0:45 · drones a Lab y Storage, Buck sube por Cafe Terrace",
+      "0:45–1:30 · Thatcher EMP + Ace abre la pared de Storage, Buck abre Bunk",
+      "1:30–2:30 · entrada por la brecha con vertical cubriendo, plant en Storage",
+      "2:30–3:00 · post-plant: Buck arriba, Zero cams en Service Corridor, Gridlock en Barrel"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "dronea Arcade Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "entra detrás de Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "do": "SELMA en la pared de Drug Storage tras el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "do": "entra a plantar por la brecha",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer en Arcade Toilet o Locker Room",
+         "how": "dron a los dos cuartos antes de pisar Cafe Stairs"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "threat": "Kaid Rtila en la pared y defensor peekeando desde arriba de la escalera",
+         "how": "EMP de Thatcher, y Gridlock cubre la escalera hacia 2F"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "threat": "Maestro Evil Eye o Mira en el rincón de Storage mirando la pared",
+         "how": "dron dentro, dispara el Evil Eye y entra con humo"
+        }
+       ],
+       "final": "planta en Drug Storage pegado a la pared de Cafe Stairs"
+      },
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "camina con Ace",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "limpia Arcade Toilet y Locker Room",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "do": "EMP a la pared de Storage y a la puerta de Lab",
+         "via": "door"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "do": "entra segundo cubriendo la puerta a Lab",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer con Cav/Vigil en Locker Room",
+         "how": "dron y entra en pareja con Ace"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "threat": "Bandit trick en la pared de Storage",
+         "how": "EMP justo cuando Ace pone la carga, no antes"
+        }
+       ],
+       "final": "cubre la puerta Storage→Lab mientras Ace planta"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube la escalera exterior a Cafe Terrace",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "abre la barricada del Cafe con dron adelante",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "limpia el Cafe",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "cruza a Day Care con cuidado del pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "revisa la escotilla y avanza",
+         "via": "door"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "do": "abre el piso sobre Drug Lab",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Cafe Terrace",
+         "how": "dron por debajo y bala"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer (Ela/Vigil) esperando en Upper Arcade o Arcade Stairs",
+         "how": "dron, prefire la esquina y avanza con el pasillo cubierto"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "threat": "Roamer con escopeta jugando Bunk Toilet y Lift Car",
+         "how": "dron a Bunk Toilet antes de abrir el piso, abre desde una esquina"
+        }
+       ],
+       "final": "sostiene Bunk con el piso abierto sobre Lab, mata anclas y cubre la puerta Lab→Storage"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a Loading Deck",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "Argus en el techo mirando Service Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Service Corridor",
+         "f": 1,
+         "do": "Argus a través de la pared hacia Drug Storage",
+         "via": "door"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "do": "entra por la puerta de servicio cuando la brecha abra",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "threat": "Roamer saliendo por Gallery o Fuel Storage",
+         "how": "Argus en el techo y espera a ver movimiento antes de cruzar"
+        },
+        {
+         "room": "Service Corridor",
+         "f": 1,
+         "threat": "Kapkan o Ela en la puerta Service→Storage",
+         "how": "Argus en la pared muestra la trampa, dispara desde lejos"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "threat": "Ancla Smoke pegada a la puerta de servicio",
+         "how": "Argus la marca, entra con Ace cruzando la brecha"
+        }
+       ],
+       "final": "cams en Storage y Service Corridor, sostiene la puerta de servicio en post-plant"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "entra con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "Trax al pie de Arcade Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "avanza a Barrel",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "Trax en la puerta Barrel→Lab y sostiene",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer bajando por Arcade Stairs a la espalda de Ace",
+         "how": "Trax en la escalera y mira ahí durante la brecha"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "threat": "Ancla de Lab peekeando la puerta de Barrel",
+         "how": "Trax en la puerta y cubre desde atrás de los barriles"
+        }
+       ],
+       "final": "sostiene Barrel Room y mata la retoma que salga de Lab hacia Storage"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por Arcade Entrance directo a la puerta Barrel→Drug Lab en menos de 40 segundos, antes de que Lab tenga reforzadas y gadgets. Ying flashea Lab, Ash rompe la barricada e Iana fintea desde Joint Corridor para jalar al ancla. Amaru puede entrar por la ventana de Lab desde Village para partir la atención.",
+     "timeline": [
+      "0:00–0:20 · corren a Arcade Entrance, Amaru a la ventana de Lab",
+      "0:20–0:45 · Ash abre Barrel→Lab, Ying candela, Amaru engancha",
+      "0:45–1:15 · entrada y plant en Lab",
+      "1:15–3:00 · post-plant: Finka boost, cubren Storage y Gargoyle Storage"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "corre a la puerta grande",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "breach a la barricada de entrada",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "cruza sin parar",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "breach a la puerta de Lab",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "entra detrás de la candela y limpia",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer en Arcade Toilet peekeando la entrada",
+         "how": "pasa rápido, Finka cubre esa puerta"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "threat": "Kapkan en la puerta Barrel→Lab",
+         "how": "el breach rompe la barricada y la trampa a la vez, si no, bala"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Ancla armando Lab (Smoke/Jäger) detrás de las mesas",
+         "how": "candela de Ying primero, entra con Iana"
+        }
+       ],
+       "final": "limpia Lab y cubre la puerta a Gargoyle Storage mientras plantan"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "corre con Ash",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "entra segunda",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "candela lista",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "candela dentro de Lab por la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "entra y limpia el rincón contrario a Ash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "threat": "Roamer en Locker Room a la espalda",
+         "how": "no te pares, Finka mira esa puerta"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Defensor retomando por la puerta Storage→Lab",
+         "how": "segunda candela a Storage y prefire la puerta"
+        }
+       ],
+       "final": "cubre la puerta Lab→Storage y planta si Ash está ocupado"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "manda la Gemini adelante por Joint Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "la réplica finta la entrada, ella entra detrás",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "entra tercera",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "planta en Lab detrás de las mesas",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "threat": "Ancla peekeando el pasillo desde Barrel",
+         "how": "la réplica come el primer disparo y Ash lo castiga"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Maestro cam o Valk cam en el techo",
+         "how": "dispárala mientras pasas, no te entretengas"
+        }
+       ],
+       "final": "planta en Lab y sostiene el rincón de Barrel"
+      },
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "corre por afuera hacia Village",
+         "via": "door"
+        },
+        {
+         "room": "Village",
+         "f": -1,
+         "do": "engancha a la ventana de Drug Lab",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "entra por la ventana justo cuando Ying tira candela",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Village",
+         "f": -1,
+         "threat": "Defensor spawnpeekeando la ventana de Lab",
+         "how": "engancha desde un ángulo lateral, no de frente a la ventana"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Ancla mirando la puerta de Barrel de espaldas a la ventana",
+         "how": "entra cuando la candela explote y dispárale por la espalda"
+        }
+       ],
+       "final": "entra por la ventana y cubre la puerta a Storage"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "dron adelantado a Arcade Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "cubre Arcade Toilet y Arcade Stairs mientras pasan",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "boost al entrar Lab",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "sostiene la puerta de Lab desde Barrel",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer regresando por Arcade Stairs o Cafe Stairs",
+         "how": "quédate un segundo mirando ambas escaleras antes de seguir"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "threat": "Retoma por Joint Corridor a la espalda del rush",
+         "how": "boost y cubre el pasillo desde los barriles"
+        }
+       ],
+       "final": "cubre Barrel Room contra la retoma y levanta caídos con el boost"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Tomar Day Care y Bunk arriba por Cafe Terrace y jugar Lab/Storage desde el techo: Ram manda el BU-GI por el piso de Bunk sobre Lab, Sledge abre Day Care sobre Storage y Fuze mete racimos por la escotilla. La entrada final es por la escotilla de Day Care a Storage. Nomad cierra Cafe Corridor y Arcade Stairs.",
+     "timeline": [
+      "0:00–0:45 · todos suben por Cafe Terrace, drones a Day Care y Bunk",
+      "0:45–1:30 · Ram abre Bunk, Sledge abre Day Care, Fuze racimo por la escotilla",
+      "1:30–2:30 · mata anclas desde arriba, Twitch baja por la escotilla a plantar",
+      "2:30–3:00 · post-plant desde arriba, Nomad en Cafe Corridor"
+     ],
+     "ops": [
+      {
+       "op": "ram",
+       "role": "vertical",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube la escalera exterior a Cafe Terrace",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "abre la barricada",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "limpia el Cafe",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "cruza a Day Care",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "avanza a Bunk",
+         "via": "door"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "do": "BU-GI cruzando Bunk para abrir todo el piso sobre Lab",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Frost cepo detrás de la barricada de Cafe Terrace",
+         "how": "dron por debajo y dispara el cepo"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer peekeando desde Upper Arcade",
+         "how": "Nomad pone Airjab en la puerta de Upper Arcade y tú cruzas"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "threat": "Mute jammer o Aruni en la puerta Day Care→Bunk",
+         "how": "Twitch choca el jammer, entra después"
+        }
+       ],
+       "final": "sostiene Bunk con el piso abierto y mata anclas de Lab desde arriba"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sigue a Ram",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "cubre la puerta del Cafe",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "revisa Cafe Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "cruza a Day Care",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "abre el piso sobre Drug Storage y la escotilla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer en Cafe Stairs subiendo desde Storage",
+         "how": "prefire la escalera y deja que Nomad ponga Airjab"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Ancla de Storage disparando hacia arriba por la escotilla",
+         "how": "abre el piso desde el rincón contrario a la escotilla"
+        }
+       ],
+       "final": "controla Storage desde arriba y cubre la escotilla en post-plant"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "cubre la espalda",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "racimo en la escotilla y en el piso sobre Storage",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Kapkan en la puerta Cafe→Cafe Corridor",
+         "how": "dron y bala"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Jäger ADS en Storage comiéndose los racimos",
+         "how": "racimo de sacrificio primero, luego el bueno sobre la ancla"
+        }
+       ],
+       "final": "vacía racimos sobre Storage y sostiene Day Care"
+      },
+      {
+       "op": "twitch",
+       "role": "intel",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "dron de choque adelantado a Cafe",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "entra última",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "choca gadgets de Storage desde la escotilla",
+         "via": "door"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "do": "baja por la escotilla y planta",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Cams de Valk o Maestro mirando la escotilla",
+         "how": "choca con el dron antes de bajar"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "threat": "Ancla Smoke detrás de los estantes de Storage",
+         "how": "Sledge la mata desde arriba antes de que bajes"
+        }
+       ],
+       "final": "planta en Storage bajo la escotilla y se queda pegado a la pared"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "Airjab en la puerta exterior",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "Airjab en la puerta de Upper Arcade y en Cafe Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Upper Arcade",
+         "f": 2,
+         "do": "revisa Arcade Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer subiendo por Cafe Stairs",
+         "how": "Airjab en la salida de la escalera"
+        },
+        {
+         "room": "Upper Arcade",
+         "f": 2,
+         "threat": "Roamer subiendo por Arcade Stairs",
+         "how": "Airjab en la escalera y cubre desde el rincón"
+        }
+       ],
+       "final": "sostiene Cafe Corridor y Upper Arcade para que el vertical no reciba retoma"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes a la vez: Thermite y Kali por la pared Cafe Stairs→Storage, mientras Hibana abre la escotilla de Day Care y Capitão con Dokkaebi entran por Service Corridor a la puerta de Storage. La ancla de Storage no puede mirar pared, escotilla y puerta al mismo tiempo.",
+     "timeline": [
+      "0:00–0:45 · Thermite/Kali a Cafe Stairs, Hibana sube por Cafe Terrace, Capitão/Dokkaebi a Service Corridor",
+      "0:45–1:30 · Kali quita el Kaid, Thermite abre, Hibana escotilla, Dokkaebi llama",
+      "1:30–2:30 · entrada por brecha y puerta con humo de Capitão, plant en Storage",
+      "2:30–3:00 · post-plant con Kali mirando la brecha e Hibana la escotilla"
+     ],
+     "ops": [
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "dronea la entrada",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "entra con Kali",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "do": "exotérmica en la pared de Storage tras el disparo de Kali",
+         "via": "door"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "do": "entra a plantar",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer en Locker Room o Arcade Toilet",
+         "how": "dron y limpia con Kali cubriendo"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "threat": "Kaid Rtila y defensor peekeando desde arriba de la escalera",
+         "how": "Kali rompe el Rtila, tú pones la carga con la escalera cubierta"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "threat": "Ancla en el rincón de Storage mirando la brecha",
+         "how": "cruza solo cuando Dokkaebi confirme que la puerta de servicio está presionada"
+        }
+       ],
+       "final": "planta en Storage pegado a la pared"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "camina con Thermite",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "revisa Arcade Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "do": "LV al Rtila/Bandit de la pared de Storage",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer bajando por Arcade Stairs",
+         "how": "revisa la escalera y cubre a Thermite"
+        },
+        {
+         "room": "Cafe Stairs",
+         "f": 1,
+         "threat": "Kaid en la pared y Mute jammer",
+         "how": "LV desde lejos a cada gadget antes de la carga"
+        }
+       ],
+       "final": "sostiene la brecha desde Cafe Stairs a distancia en post-plant"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube la escalera exterior",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "abre la barricada",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "limpia el Cafe",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "X-KAIROS en la escotilla a Storage",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Frost cepo en la puerta de Cafe Terrace",
+         "how": "dron y dispara el cepo"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Roamer en Bunk esperando que abras",
+         "how": "dron a Bunk primero, pon las cargas desde el rincón"
+        }
+       ],
+       "final": "abre la escotilla y sostiene Day Care mirando Storage desde arriba"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a Service Entry",
+         "via": "door"
+        },
+        {
+         "room": "Service Entry",
+         "f": -1,
+         "do": "dronea Service Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Service Corridor",
+         "f": 1,
+         "do": "humo en la puerta de Storage, fuego dentro",
+         "via": "door"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "do": "entra con el humo cuando abra la brecha",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Service Corridor",
+         "f": 1,
+         "threat": "Kapkan o Ela en la puerta Service→Storage",
+         "how": "dron por debajo y bala"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "threat": "Ancla pegada a la puerta de servicio",
+         "how": "fuego en el rincón de la puerta antes de entrar"
+        }
+       ],
+       "final": "quema la puerta Storage→Lab en post-plant"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina con Capitão",
+         "via": "door"
+        },
+        {
+         "room": "Service Entry",
+         "f": -1,
+         "do": "Logic Bomb cuando Thermite ponga la carga",
+         "via": "door"
+        },
+        {
+         "room": "Service Corridor",
+         "f": 1,
+         "do": "cubre a Capitão y Loading Deck",
+         "via": "door"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "do": "entra segundo por la puerta de servicio",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Service Corridor",
+         "f": 1,
+         "threat": "Roamer saliendo de Loading Deck a la espalda",
+         "how": "Logic Bomb lo delata, prefire la puerta de Loading Deck"
+        },
+        {
+         "room": "Drug Storage",
+         "f": 1,
+         "threat": "Ancla Smoke retomando desde Lab",
+         "how": "hackea cams cuando muera un defensor y ve la retoma"
+        }
+       ],
+       "final": "cubre la puerta de servicio y usa cams hackeadas en post-plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Pared Cafe Stairs→Storage con Kaid, Maestro ancla Storage con Evil Eye a la pared, Smoke ancla Lab cerrando Barrel. Lesion pone Gu en Gargoyle Storage y Barrel y roamea cerca, Jäger limpia granadas y juega Bunk arriba contra el vertical.",
+     "reinforce": [
+      "Pared Storage–Cafe Stairs ×2 (Kaid)",
+      "Pared Lab–Gargoyle Storage ×1",
+      "Escotilla de Day Care→Storage",
+      "Escotilla de Loading Deck"
+     ],
+     "rotations": [
+      "Lab↔Storage (puerta)",
+      "Rotación Storage→Service Corridor con impacto"
+     ],
+     "ops": [
+      {
+       "op": "smoke",
+       "room": "Drug Lab",
+       "f": 1,
+       "role": "ancla",
+       "job": "gas en la puerta Barrel→Lab y en la ventana de Lab; en post-plant gasea el difusor desde el rincón"
+      },
+      {
+       "op": "maestro",
+       "room": "Drug Storage",
+       "f": 1,
+       "role": "ancla",
+       "job": "Evil Eye mirando la pared de Cafe Stairs y otro a la puerta de servicio; ancla detrás de los estantes"
+      },
+      {
+       "op": "kaid",
+       "room": "Drug Storage",
+       "f": 1,
+       "role": "flex",
+       "job": "Rtila en la pared de Cafe Stairs y en la escotilla de Day Care; rota Lab↔Storage"
+      },
+      {
+       "op": "jager",
+       "room": "Bunk",
+       "f": 2,
+       "role": "flex",
+       "job": "ADS en Lab y Storage; juega Bunk/Day Care los primeros 60 segundos contra el vertical y baja por Cafe Stairs"
+      },
+      {
+       "op": "lesion",
+       "room": "Gargoyle Storage",
+       "f": 1,
+       "role": "roam",
+       "job": "Gu en las puertas de Barrel, Gargoyle Storage y Service Corridor; roamea Armory y Gallery y regresa por Gargoyle Storage"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Mira + Bandit trick",
+     "summary": "Setup de pared: Mira con doble espejo en Storage a Cafe Stairs, Bandit haciendo trick contra Thermite/Ace, Mute tapando la escotilla de Day Care y la puerta de servicio contra drones. Ela roamea Cafe Corridor arriba y Azami cierra los agujeros de Bunk cuando abran.",
+     "reinforce": [
+      "Pared Storage–Cafe Stairs ×2 (Mira + Bandit)",
+      "Pared Lab–Gargoyle Storage ×1",
+      "Escotilla de Day Care→Storage (Mute)",
+      "Escotilla de Loading Deck"
+     ],
+     "rotations": [
+      "Lab↔Storage",
+      "Storage→Cafe Stairs por rotación de Mira"
+     ],
+     "ops": [
+      {
+       "op": "mira",
+       "room": "Drug Storage",
+       "f": 1,
+       "role": "ancla",
+       "job": "espejos en la pared de Cafe Stairs mirando la escalera y Arcade Entrance; ancla el rincón"
+      },
+      {
+       "op": "bandit",
+       "room": "Drug Storage",
+       "f": 1,
+       "role": "flex",
+       "job": "bandit trick en la pared de Cafe Stairs; después juega la puerta de servicio"
+      },
+      {
+       "op": "mute",
+       "room": "Drug Lab",
+       "f": 1,
+       "role": "ancla",
+       "job": "jammers en la puerta de Barrel, en la ventana de Lab y bajo la escotilla de Day Care; ancla Lab"
+      },
+      {
+       "op": "ela",
+       "room": "Cafe Corridor",
+       "f": 2,
+       "role": "roam",
+       "job": "Grzmot en Cafe Terrace y Cafe Stairs; roamea Cafe y Upper Arcade y castiga al vertical"
+      },
+      {
+       "op": "azami",
+       "room": "Bunk",
+       "f": 2,
+       "role": "flex",
+       "job": "Kiba en los agujeros del piso de Bunk y en la puerta Day Care→Bunk; baja a Lab si el vertical no llega"
+      }
+     ]
+    }
+   ]
+  },
+  "initiation": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Initiation/Office cae con la pared Control Room→Initiation abierta por Thermite y Montagne rappelando a las ventanas de Office para dar intel y sacar la ancla. Sledge abre el techo desde Haunted Dining para que las anclas de Initiation no tengan piso seguro y Dokkaebi vigila Rail Corridor para el flanco.",
+     "timeline": [
+      "0:00–0:45 · drones, Thatcher/Thermite suben por South Exit, Montagne rappela a Office",
+      "0:45–1:30 · EMP + Thermite abre Initiation, Sledge abre techo desde Throne",
+      "1:30–2:30 · Montagne empuja Office, entrada por la brecha y plant en Initiation",
+      "2:30–3:00 · post-plant: Sledge cubre desde abajo, Dokkaebi hackea cams"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "dronea la escalera sur",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube la escalera exterior a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "abre la barricada con dron adelante",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "limpia la salida de la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "EMP a la pared de Initiation",
+         "via": "door"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "entra detrás de Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "South Exit",
+         "f": 2,
+         "threat": "Kapkan en la puerta sur y Castle",
+         "how": "dron por debajo, bala a la trampa, Thermite rompe el Castle"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Roamer subiendo desde Haunted Entrance",
+         "how": "dron a la escalera y prefire, Dokkaebi cubre"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "threat": "Bandit/Kaid en la pared y Mira mirando Control Room",
+         "how": "EMP pegado a la pared cuando Thermite tenga la carga lista"
+        }
+       ],
+       "final": "cubre la brecha desde Control Room y entra a plantar cuando Office esté presionado"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "camina con Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "cubre a Thatcher",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "revisa Haunted Balcony",
+         "via": "door"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "exotérmica en la pared de Initiation tras el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "entra a plantar",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Defensor peekeando desde Haunted Balcony",
+         "how": "dron al balcón y cubre la puerta mientras Thatcher avanza"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "threat": "Ancla Smoke en el rincón de Initiation tirando gas a la brecha",
+         "how": "espera que el gas se disipe, entra con Montagne presionando Office"
+        }
+       ],
+       "final": "planta en Initiation pegado a la pared de Control Room"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a Loading Deck",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "entra y cubre Service Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "do": "limpia y abre agujeros al techo de Office",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "do": "abre el techo bajo Initiation con el martillo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "threat": "Roamer en Fuel Storage o Service Corridor",
+         "how": "dron y avanza en pareja con Dokkaebi"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "threat": "Roamer (Vigil) escondido en Prop Storage",
+         "how": "dron a Prop Storage antes de martillar"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "threat": "Ancla de Initiation disparando hacia abajo por los agujeros",
+         "how": "abre desde debajo de una pared y muévete tras cada golpe"
+        }
+       ],
+       "final": "abre el techo de Initiation y mata anclas desde abajo, cubre el plant"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a la fachada de Office con dron",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "rappela y entra por la ventana con escudo extendido",
+         "via": "rappel"
+        },
+        {
+         "room": "Office Toilet",
+         "f": 2,
+         "do": "revisa el baño y sostiene la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "empuja a Initiation cuando abra la brecha",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "threat": "Defensor spawnpeekeando las ventanas de Office o Cash Stash",
+         "how": "escudo arriba desde afuera y dron antes de rappelar"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Frost cepos bajo las ventanas y Castle en la ventana",
+         "how": "dron a los cepos, Thatcher EMP no ayuda: dispara los cepos desde el rappel"
+        },
+        {
+         "room": "Office Toilet",
+         "f": 2,
+         "threat": "Ancla Noor quemando el escudo desde el baño",
+         "how": "no entres al baño de frente, deja que Dokkaebi dispare sobre el escudo"
+        }
+       ],
+       "final": "sostiene Office con el escudo mientras plantan en Initiation"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "flanco",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube por la rampa del tren",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "dron adelantado",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "Logic Bomb cuando Montagne rappele",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "cubre Rail Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Rail Corridor",
+         "f": 2,
+         "do": "sostiene la puerta de Cash Stash",
+         "via": "door"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "do": "entra a cubrir a Montagne por la espalda",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Roamer saliendo de Lift Car",
+         "how": "dron a Lift Car y Logic Bomb para ubicarlo"
+        },
+        {
+         "room": "Rail Corridor",
+         "f": 2,
+         "threat": "Kapkan en la puerta a Cash Stash",
+         "how": "dron por debajo y bala"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "threat": "Ancla de Office rotando a Cash Stash",
+         "how": "escucha el teléfono y prefire la puerta"
+        }
+       ],
+       "final": "sostiene Cash Stash y Rail Corridor contra la retoma y hackea cams en post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por las ventanas de Office desde Robot Circuit: Amaru engancha primero, Ying tira candela dentro, Ash abre Castle, Zofia y Blitz entran detrás. Office es cuarto pequeño y si entras antes de que Frost ponga cepos y Castle las ventanas, planta rápido en Office y la defensa se queda mirando Initiation.",
+     "timeline": [
+      "0:00–0:20 · corren a la fachada de Office por Robot Circuit",
+      "0:20–0:45 · Amaru engancha, Ying candela por la ventana, Ash rompe barricadas",
+      "0:45–1:15 · entrada en cadena y plant en Office",
+      "1:15–3:00 · post-plant: Blitz flashea Initiation, Zofia cubre Cash Stash"
+     ],
+     "ops": [
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "corre a la ventana de Office",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "engancha y entra primera justo tras la candela",
+         "via": "window"
+        },
+        {
+         "room": "Office Toilet",
+         "f": 2,
+         "do": "limpia el baño",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "threat": "Spawnpeek desde las ventanas de Office o Cash Stash",
+         "how": "corre pegado a la pared y engancha desde el lado"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Frost cepo bajo la ventana",
+         "how": "Ying candela primero y entra pegada al marco, mira el piso"
+        }
+       ],
+       "final": "limpia Office Toilet y sostiene la puerta de Initiation"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "candela por la ventana de Office",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "rappela y entra segunda",
+         "via": "rappel"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "do": "segunda candela y limpia",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Ancla de Office detrás del escritorio",
+         "how": "candela primero, entra con Amaru a la vez"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "threat": "Defensor rotando desde Rail Corridor",
+         "how": "candela hacia Cash Stash y prefire la puerta"
+        }
+       ],
+       "final": "cubre Cash Stash y la puerta de Rail Corridor"
+      },
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "breach a la ventana de Office si tiene Castle",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "rappela y entra tercera",
+         "via": "rappel"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "breach a la puerta de Initiation y presiona",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Castle en la ventana",
+         "how": "breach desde afuera antes de rappelar"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "threat": "Ancla Smoke en Initiation mirando la puerta de Office",
+         "how": "breach a la puerta y Blitz flashea antes de entrar"
+        }
+       ],
+       "final": "sostiene la puerta Office→Initiation mientras Zofia planta"
+      },
+      {
+       "op": "zofia",
+       "role": "blando",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "impacto a la barricada de la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "rappela y entra cuarta con conmoción hacia Initiation",
+         "via": "rappel"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "conmoción a Initiation y cubre la puerta desde Office",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "threat": "Valk cam afuera de las ventanas",
+         "how": "dispárala mientras corres"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Retoma desde Initiation por la puerta",
+         "how": "conmoción a la puerta y planta detrás del escritorio"
+        }
+       ],
+       "final": "planta en Office detrás del escritorio y cubre la puerta de Initiation"
+      },
+      {
+       "op": "blitz",
+       "role": "soporte",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "corre detrás del grupo",
+         "via": "door"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "rappela y entra último con escudo",
+         "via": "rappel"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "flashea Initiation para sacar a la ancla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Noor quemando el escudo en la ventana",
+         "how": "entra cuando Ying confirme Office limpio, no primero"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "threat": "Ancla y roamer retomando por Control Room",
+         "how": "flash a la puerta y deja que Ash y Amaru disparen"
+        }
+       ],
+       "final": "sostiene la puerta Office→Initiation con flashes en post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Presión desde abajo y desde arriba: Buck abre el techo de Initiation desde Haunted Dining mientras Hibana abre la escotilla de Haunted Roof a Cash Stash y Fuze mete racimos por ahí. Glaz mira Initiation desde South Exit con humo y Gridlock tapa Haunted Stairs. Las anclas no tienen piso ni techo seguro y la entrada final es por la escotilla del techo.",
+     "timeline": [
+      "0:00–0:45 · Buck a Throne por Gallery, Hibana/Fuze rappelan a Haunted Roof, Glaz a South Exit",
+      "0:45–1:30 · Buck abre techo, Hibana escotilla, Fuze racimos sobre Cash Stash/Office",
+      "1:30–2:30 · Glaz humo y mata desde South Exit, Hibana baja por la escotilla a plantar en Office",
+      "2:30–3:00 · post-plant: Buck abajo, Fuze en el techo, Gridlock en Haunted Stairs"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a Loading Deck",
+         "via": "door"
+        },
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "do": "dronea Gallery",
+         "via": "door"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "do": "abre el techo bajo Cash Stash",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "do": "abre el techo bajo Initiation con Skeleton Key",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Loading Deck",
+         "f": 1,
+         "threat": "Roamer en Service Corridor o Fuel Storage",
+         "how": "dron y limpia antes de entrar a Gallery"
+        },
+        {
+         "room": "Gallery",
+         "f": 1,
+         "threat": "Roamer bajando de Initiation por Haunted Stairs a Crypt",
+         "how": "Gridlock lo detiene en la escalera, tú escucha"
+        },
+        {
+         "room": "Haunted Dining",
+         "f": 1,
+         "threat": "Ancla de Initiation disparando por los agujeros",
+         "how": "abre desde debajo del marco y cambia de posición"
+        }
+       ],
+       "final": "controla Initiation desde abajo y castiga a quien defienda el difusor"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "camina al rappel del techo encantado",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Roof",
+         "f": 3,
+         "do": "rappela al techo y X-KAIROS en la escotilla de Cash Stash",
+         "via": "rappel"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "do": "baja por la escotilla cuando Fuze termine",
+         "via": "hatch"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "do": "planta en Office",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Roof",
+         "f": 3,
+         "threat": "Defensor disparando la escotilla desde Cash Stash",
+         "how": "pon las cargas desde el borde y no te pares sobre la escotilla"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "threat": "Ancla de Office peekeando la puerta de Cash Stash",
+         "how": "Fuze racimo primero, baja cuando Buck confirme desde abajo"
+        },
+        {
+         "room": "Office",
+         "f": 2,
+         "threat": "Frost cepo bajo las ventanas de Office",
+         "how": "mira el piso al entrar y dispara los cepos"
+        }
+       ],
+       "final": "planta en Office y se queda en Cash Stash cubriendo la escotilla"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "sigue a Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Roof",
+         "f": 3,
+         "do": "rappela al techo y racimo en la escotilla de Cash Stash",
+         "via": "rappel"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "do": "baja detrás de Hibana",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Roof",
+         "f": 3,
+         "threat": "Defensor peekeando desde Haunted Balcony hacia el techo",
+         "how": "Glaz lo tiene desde South Exit, tú agáchate"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "threat": "Jäger ADS en Office comiéndose los racimos",
+         "how": "racimo de sacrificio y luego el bueno hacia Office"
+        }
+       ],
+       "final": "vacía racimos sobre Cash Stash y Office y sostiene el techo"
+      },
+      {
+       "op": "glaz",
+       "role": "negacion",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "camina a la escalera sur",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube la escalera exterior",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "humo hacia Haunted Stairs y mira con térmica",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "avanza al final para cubrir Control Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "South Exit",
+         "f": 2,
+         "threat": "Kapkan en la puerta sur",
+         "how": "dron por debajo y bala"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Ancla de Initiation peekeando desde Control Room",
+         "how": "humo y térmica, deja que se asome"
+        }
+       ],
+       "final": "mira Control Room y Haunted Stairs con térmica durante el plant"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "camina con Glaz",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "Trax en la puerta sur",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "Trax en la salida de la escalera desde 1F",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Roamer subiendo desde Haunted Entrance",
+         "how": "Trax en el descanso y prefire desde arriba"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "threat": "Defensor rotando por Haunted Balcony hacia South Exit",
+         "how": "Trax en la puerta y escucha"
+        }
+       ],
+       "final": "sostiene Haunted Stairs y South Exit contra la retoma"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Ace y Kali por la pared Control Room→Initiation, mientras Capitão, IQ y Nøkk entran por Rail Ramp→Rail Corridor→Cash Stash a la puerta de Office. La defensa tiene que partirse entre Initiation y Office y el que pierda su lado pierde el sitio.",
+     "timeline": [
+      "0:00–0:45 · Ace/Kali suben por South Exit, grupo Rail sube la rampa",
+      "0:45–1:30 · Kali quita el Bandit, Ace abre Initiation; Nøkk llega callada a Cash Stash",
+      "1:30–2:30 · entrada doble con humo de Capitão en Office, plant en Initiation",
+      "2:30–3:00 · post-plant: Kali cubre la brecha, IQ busca cams, Capitão quema Cash Stash"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "dronea la escalera sur",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "abre la barricada",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "limpia la salida",
+         "via": "door"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "SELMA en la pared de Initiation tras el LV de Kali",
+         "via": "door"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "do": "entra a plantar cuando Office esté presionado",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "South Exit",
+         "f": 2,
+         "threat": "Kapkan o Castle en la puerta sur",
+         "how": "dron y bala, Kali rompe el Castle con LV"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "threat": "Kaid/Bandit en la pared y Mira mirando Control Room",
+         "how": "Kali rompe el gadget, tú no cruces frente al espejo"
+        },
+        {
+         "room": "Initiation Room",
+         "f": 2,
+         "threat": "Ancla en el rincón mirando la brecha",
+         "how": "cruza cuando Capitão confirme humo en Office"
+        }
+       ],
+       "final": "planta en Initiation y sostiene la brecha"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Teacups",
+       "path": [
+        {
+         "room": "Haunted Shop",
+         "f": -1,
+         "do": "camina con Ace",
+         "via": "door"
+        },
+        {
+         "room": "Haunted Entrance",
+         "f": -1,
+         "do": "sube a South Exit",
+         "via": "door"
+        },
+        {
+         "room": "South Exit",
+         "f": 2,
+         "do": "cubre la espalda",
+         "via": "stairs"
+        },
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "do": "LV a la pared de Initiation desde el pasillo",
+         "via": "door"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "do": "sostiene la brecha a distancia",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Haunted Stairs",
+         "f": 2,
+         "threat": "Roamer subiendo desde 1F",
+         "how": "mira la escalera mientras Ace avanza"
+        },
+        {
+         "room": "Control Room",
+         "f": 2,
+         "threat": "Rtila/Bandit en la pared y jammer de Mute",
+         "how": "LV a cada gadget desde Haunted Stairs"
+        }
+       ],
+       "final": "sostiene la brecha desde Control Room en post-plant"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube por la rampa",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "dron adelantado",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "revisa Rail Platform",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Rail Corridor",
+         "f": 2,
+         "do": "humo en la puerta de Cash Stash",
+         "via": "door"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "do": "fuego en la puerta de Office para sacar a la ancla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Roamer en Lift Car",
+         "how": "dron y prefire, IQ revisa gadgets"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "threat": "Ancla de Office peekeando desde la puerta",
+         "how": "humo primero, fuego al rincón de la puerta"
+        }
+       ],
+       "final": "quema la puerta Office→Cash Stash en post-plant"
+      },
+      {
+       "op": "iq",
+       "role": "intel",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube con Capitão",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "escanea la rampa",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "busca Valk cams afuera",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "escanea Rail Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Rail Corridor",
+         "f": 2,
+         "do": "detecta Kapkan/Ela en la puerta de Cash Stash",
+         "via": "door"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "do": "escanea Office y cubre a Capitão",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Corridor",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Cash Stash",
+         "how": "detector y bala a través de la pared"
+        },
+        {
+         "room": "Cash Stash",
+         "f": 2,
+         "threat": "Ancla con teléfono de Pulse mirando Cash Stash",
+         "how": "detector lo marca y lo disparas a través de la puerta"
+        }
+       ],
+       "final": "cubre Cash Stash y mata gadgets de post-plant (Evil Eye, cams)"
+      },
+      {
+       "op": "nokk",
+       "role": "flanco",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube callada por la rampa",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "HEL activo",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "entra a Lift Car para flanquear por Bunk Toilet",
+         "via": "door"
+        },
+        {
+         "room": "Lift Car",
+         "f": 2,
+         "do": "cruza el vagón",
+         "via": "door"
+        },
+        {
+         "room": "Bunk Toilet",
+         "f": 2,
+         "do": "espera al roamer que regrese por Bunk",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lift Car",
+         "f": 2,
+         "threat": "Roamer (Vigil/Cav) usando el vagón para rotar",
+         "how": "HEL activo y espera que él pase, dispara por la espalda"
+        },
+        {
+         "room": "Bunk Toilet",
+         "f": 2,
+         "threat": "Roamer en Bunk mirando Lift Car",
+         "how": "ángulo desde el marco, no te pares en la puerta"
+        }
+       ],
+       "final": "caza al roamer y cubre la espalda del grupo Rail durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Castle en las ventanas de Office con Frost detrás, Mira mirando Control Room desde Initiation, Smoke ancla Initiation y Valkyrie cams afuera de las ventanas de Office y en Rail Corridor. Se juega el sitio cerrado y con intel exterior.",
+     "reinforce": [
+      "Pared Initiation–Control Room ×2",
+      "Ventanas de Office (Castle ×2)",
+      "Escotilla de Cash Stash (Roof)",
+      "Pared Office–Cash Stash ×1"
+     ],
+     "rotations": [
+      "Initiation↔Office (puerta)",
+      "Rotación Office→Office Toilet con impacto"
+     ],
+     "ops": [
+      {
+       "op": "frost",
+       "room": "Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "cepos bajo las ventanas de Office y en la puerta de Office Toilet; ancla detrás del escritorio"
+      },
+      {
+       "op": "castle",
+       "room": "Office",
+       "f": 2,
+       "role": "flex",
+       "job": "Castle en las ventanas de Office; después juega Cash Stash mirando Rail Corridor"
+      },
+      {
+       "op": "smoke",
+       "room": "Initiation Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "gas en la brecha de Control Room y en la puerta de Office en post-plant; se esconde en el rincón"
+      },
+      {
+       "op": "mira",
+       "room": "Initiation Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "espejos en la pared de Control Room viendo Haunted Stairs; cubre la brecha"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Cash Stash",
+       "f": 2,
+       "role": "roam",
+       "job": "cams afuera de las ventanas de Office, en Rail Corridor y Haunted Stairs; roamea Cash Stash/Rail Platform"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Noor + Vigil abajo",
+     "summary": "Anti-rush y anti-vertical: Noor quema escudos y rappels en las ventanas de Office, Aruni cierra la puerta Initiation↔Control Room, Melusi ralentiza South Exit y Haunted Stairs. Kapkan en las puertas y Vigil roamea Haunted Dining abajo para castigar al vertical.",
+     "reinforce": [
+      "Pared Initiation–Control Room ×2",
+      "Ventanas de Office (barricadas + Surya)",
+      "Escotilla de Cash Stash (Roof)",
+      "Pared Office–Cash Stash ×1"
+     ],
+     "rotations": [
+      "Initiation↔Office",
+      "Office→Cash Stash por la puerta"
+     ],
+     "ops": [
+      {
+       "op": "noor",
+       "room": "Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Horus a las ventanas de Office cuando rappelen Montagne/Blitz; ancla detrás del escritorio"
+      },
+      {
+       "op": "aruni",
+       "room": "Initiation Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "Surya en la puerta Initiation↔Control Room y en una ventana de Office; ancla Initiation"
+      },
+      {
+       "op": "melusi",
+       "room": "Control Room",
+       "f": 2,
+       "role": "flex",
+       "job": "Banshee en South Exit y Haunted Stairs; juega Control Room los primeros 60 segundos y rota a Initiation"
+      },
+      {
+       "op": "kapkan",
+       "room": "Cash Stash",
+       "f": 2,
+       "role": "flex",
+       "job": "trampas en Rail Corridor→Cash Stash, South Exit y Office Toilet; juega Cash Stash mirando Rail Corridor"
+      },
+      {
+       "op": "vigil",
+       "room": "Haunted Dining",
+       "f": 1,
+       "role": "roam",
+       "job": "roamea Haunted Stairs y Gallery abajo, castiga al vertical de Throne y regresa por Haunted Stairs"
+      }
+     ]
+    }
+   ]
+  },
+  "bunk": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Bunk/Day Care es sitio chico: Ace abre la pared Cafe Corridor→Bunk tras el EMP de Thatcher, Blackbeard rappela a la ventana de Day Care desde Back Alley para sacar a la ancla, Zero pone Argus desde Lift Car y Nomad cierra Rail Platform para que no regrese el roamer. Plant en Day Care con la ventana cubierta.",
+     "timeline": [
+      "0:00–0:45 · drones a Bunk/Day Care, Ace/Thatcher suben por Cafe Terrace",
+      "0:45–1:30 · EMP + Ace abre la pared de Bunk, Blackbeard presiona la ventana de Day Care",
+      "1:30–2:30 · entrada por la brecha y por la ventana, plant en Day Care",
+      "2:30–3:00 · post-plant: Zero cams, Nomad en Rail Platform, Blackbeard en la ventana"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube la escalera exterior",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "abre la barricada con dron adelante",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "limpia el Cafe",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "SELMA en la pared de Bunk tras el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "do": "entra por la brecha",
+         "via": "breach"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "planta en Day Care",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Frost cepo en la puerta de Cafe Terrace y roamer en el Cafe",
+         "how": "dron y limpia con Thatcher"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Kaid/Bandit en la pared de Bunk y roamer en Upper Arcade",
+         "how": "EMP de Thatcher y Nomad Airjab en Upper Arcade"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "threat": "Ancla Smoke detrás de las literas",
+         "how": "cruza con humo o cuando Blackbeard confirme presión en Day Care"
+        }
+       ],
+       "final": "planta en Day Care lejos de la puerta de Cafe Corridor"
+      },
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "camina con Ace",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "cubre la puerta",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "revisa Cafe Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "EMP a la pared de Bunk y a la puerta de Day Care",
+         "via": "door"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "do": "entra segundo",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer subiendo por Cafe Stairs",
+         "how": "prefire la salida de la escalera, Nomad la cubre después"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "threat": "Mute jammer y Aruni en la puerta Bunk→Day Care",
+         "how": "EMP los apaga, entra tras Ace"
+        }
+       ],
+       "final": "cubre Bunk Toilet y Lift Car mientras Ace planta"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a Back Alley con dron",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "revisa la ventana de Day Care",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "rappela y sostiene la ventana con el escudo de rifle",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "threat": "Spawnpeek desde la ventana de Day Care",
+         "how": "dron primero y asoma con el escudo puesto"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Ancla de Day Care detrás de las cunas y Frost cepo bajo la ventana",
+         "how": "peek con escudo, dispara los cepos, entra solo cuando abra la brecha"
+        }
+       ],
+       "final": "sostiene la ventana de Day Care durante plant y post-plant"
+      },
+      {
+       "op": "zero",
+       "role": "intel",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube por la rampa",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "Argus en la rampa mirando Rail Overlook",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "revisa Rail Platform",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "Argus a través de la pared de Lift Car",
+         "via": "door"
+        },
+        {
+         "room": "Lift Car",
+         "f": 2,
+         "do": "Argus a Bunk Toilet y Bunk",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Roamer peekeando desde Rail Corridor",
+         "how": "Argus primero y avanza con Nomad"
+        },
+        {
+         "room": "Lift Car",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Bunk Toilet",
+         "how": "Argus muestra la trampa, dispárala"
+        }
+       ],
+       "final": "cams en Lift Car y Bunk Toilet, sostiene el vagón en post-plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube con Zero",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "cubre",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "Airjab en la puerta de Rail Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "Airjab en la puerta de Rail Corridor y sostiene",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "threat": "Roamer saliendo por Rail Corridor hacia la rampa",
+         "how": "Airjab en la puerta y prefire"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Retoma desde Cash Stash por Rail Corridor",
+         "how": "Airjab y ángulo desde detrás de la columna"
+        }
+       ],
+       "final": "sostiene Rail Platform contra la retoma por Rail Corridor"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por Cafe Terrace directo a la puerta Cafe Corridor→Day Care antes de que pongan Castle y cepos. Sens tira ROU cruzando Cafe Corridor, Ying candela dentro de Day Care, Ash rompe barricadas y Blitz flashea Bunk. Finka boost al entrar.",
+     "timeline": [
+      "0:00–0:25 · corren por Palms a Cafe Terrace",
+      "0:25–0:50 · Ash abre, Sens ROU en Cafe Corridor, Ying candela en Day Care",
+      "0:50–1:20 · entrada en cadena y plant en Day Care",
+      "1:20–3:00 · post-plant: Blitz flashea Bunk, Finka boost, Sens tapa Cafe Corridor"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "corre a la escalera exterior",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "breach a la barricada del Cafe",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cruza sin parar",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "breach a la puerta de Day Care",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "entra tras la candela y limpia",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Kapkan o cepo detrás de la barricada",
+         "how": "el breach la revienta, mira el piso al entrar"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer en Upper Arcade a la espalda",
+         "how": "Sens pone ROU tapando Upper Arcade, tú sigue"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Ancla armando Day Care detrás de las cunas",
+         "how": "candela de Ying y entrada doble"
+        }
+       ],
+       "final": "limpia Day Care y cubre la puerta de Bunk mientras plantan"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "corre con Ash",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "entra segunda",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "candela por la puerta de Day Care",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "entra y planta detrás de las cunas",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer subiendo por Cafe Stairs",
+         "how": "no te pares, Finka mira la escalera"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Ancla de Bunk retomando por la puerta Bunk→Day Care",
+         "how": "segunda candela a Bunk y Blitz flashea"
+        }
+       ],
+       "final": "planta en Day Care y cubre la ventana"
+      },
+      {
+       "op": "sens",
+       "role": "negacion",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "entra tercera",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "ROU cruzando Cafe Corridor para tapar Upper Arcade y Cafe Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "cruza detrás de la pared de luz",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "segundo ROU tapando la puerta de Bunk en post-plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Ancla peekeando desde Upper Arcade el pasillo",
+         "how": "ROU y cruza, no dispares al muro de luz"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Retoma desde Bunk",
+         "how": "ROU en la puerta y prefire lo que cruce"
+        }
+       ],
+       "final": "tapa Cafe Corridor y la puerta de Bunk con ROU en post-plant"
+      },
+      {
+       "op": "blitz",
+       "role": "soporte",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "corre detrás",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "escudo arriba",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "entra a Day Care flasheando",
+         "via": "door"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "cruza a Bunk flasheando",
+         "via": "door"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "do": "flash a la ancla de Bunk",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Noor quemando el escudo desde Bunk",
+         "how": "flash antes de cruzar la puerta y entra en pareja"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "threat": "Ancla Smoke detrás de las literas",
+         "how": "flash y deja que Ash y Ying disparen"
+        }
+       ],
+       "final": "sostiene la puerta Day Care→Bunk con flashes"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "dron adelantado a Cafe Terrace",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "entra última",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cubre Cafe Terrace a la espalda",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "boost y mira Cafe Stairs y Upper Arcade",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Roamer rotando por Cafe Terrace por fuera",
+         "how": "escucha el rappel y prefire la puerta"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Roamer subiendo por Cafe Stairs",
+         "how": "boost, ángulo a la escalera desde el rincón"
+        }
+       ],
+       "final": "cubre Cafe Corridor contra la retoma y levanta caídos"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Presión desde abajo y arriba: Sledge e IQ abren el techo de Drug Lab bajo Bunk mientras Buck y Fuze rappelan a Arcade Roof y abren la escotilla del techo a Day Care. Las anclas de Bunk no pueden pisar el centro y las de Day Care comen racimos por la escotilla. Buck baja por la escotilla a plantar al final. Gridlock cierra Cafe Corridor.",
+     "timeline": [
+      "0:00–0:45 · Sledge/IQ a Drug Lab por Barrel, Buck/Fuze rappelan a Arcade Roof",
+      "0:45–1:30 · Sledge abre techo de Lab, Buck abre escotilla, Fuze racimos",
+      "1:30–2:30 · mata anclas, Buck baja por la escotilla y planta en Day Care",
+      "2:30–3:00 · post-plant: Sledge abajo, Fuze en el techo, Gridlock en Cafe Corridor"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "dronea Arcade Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "entra con IQ",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "avanza",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "abre la puerta de Lab",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "abre el techo bajo Bunk con el martillo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "threat": "Roamer en Arcade Toilet o Locker Room",
+         "how": "dron e IQ escanea gadgets"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "threat": "Roamer (Cav) esperando en Barrel",
+         "how": "dron a las esquinas y entra en pareja"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Ancla de Bunk disparando por los agujeros hacia abajo",
+         "how": "abre desde debajo de una pared y cambia de posición"
+        }
+       ],
+       "final": "controla Bunk desde abajo y castiga a quien retome por Bunk Toilet"
+      },
+      {
+       "op": "iq",
+       "role": "intel",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Sweet Shop",
+         "f": -1,
+         "do": "camina con Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Entrance",
+         "f": 1,
+         "do": "escanea gadgets",
+         "via": "door"
+        },
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "do": "avanza",
+         "via": "door"
+        },
+        {
+         "room": "Barrel Room",
+         "f": 1,
+         "do": "escanea Lab",
+         "via": "door"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "do": "escanea el techo: teléfonos, cams y gadgets de Bunk",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Joint Corridor",
+         "f": 1,
+         "threat": "Kapkan en la puerta de Barrel",
+         "how": "detector y bala"
+        },
+        {
+         "room": "Drug Lab",
+         "f": 1,
+         "threat": "Pulse mirando por el piso de Bunk hacia abajo",
+         "how": "detector lo marca por el techo y lo disparas por el agujero de Sledge"
+        }
+       ],
+       "final": "mata anclas por los agujeros y cubre Lab contra la retoma por Storage"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "camina a Back Alley",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "rappela al techo de los recreativos",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Roof",
+         "f": 3,
+         "do": "abre la escotilla a Day Care con Skeleton Key",
+         "via": "rappel"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "do": "baja por la escotilla y planta",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "threat": "Spawnpeek desde la ventana de Day Care",
+         "how": "dron y rappela desde el lado, no de frente"
+        },
+        {
+         "room": "Arcade Roof",
+         "f": 3,
+         "threat": "Defensor disparando la escotilla desde abajo",
+         "how": "abre desde el borde, Fuze racimo antes de bajar"
+        },
+        {
+         "room": "Day Care",
+         "f": 2,
+         "threat": "Ancla de Day Care detrás de las cunas",
+         "how": "Fuze la saca, tú bajas cuando Sledge confirme Bunk limpio"
+        }
+       ],
+       "final": "planta en Day Care bajo la escotilla y sostiene el rincón"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sigue a Buck",
+         "via": "door"
+        },
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "do": "rappela al techo",
+         "via": "door"
+        },
+        {
+         "room": "Arcade Roof",
+         "f": 3,
+         "do": "racimos en la escotilla de Day Care",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Alley",
+         "f": -1,
+         "threat": "Valk cam en la fachada de Day Care",
+         "how": "dispárala mientras rappelas"
+        },
+        {
+         "room": "Arcade Roof",
+         "f": 3,
+         "threat": "Jäger ADS en Day Care comiéndose los racimos",
+         "how": "racimo de sacrificio primero"
+        }
+       ],
+       "final": "vacía racimos por la escotilla y sostiene el techo cubriendo a Buck"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube la escalera exterior",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "Trax en la puerta exterior",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "cubre Cafe Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "Trax en Cafe Stairs y en la puerta de Day Care",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Frost cepo detrás de la barricada",
+         "how": "dron y bala"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Ancla de Day Care saliendo a pelear el pasillo",
+         "how": "Trax en la puerta y ángulo desde el Cafe"
+        }
+       ],
+       "final": "sostiene Cafe Corridor para que Day Care no reciba retoma por el pasillo"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Hibana y Kali por la pared Cafe Corridor→Bunk mientras Capitão, Jackal y Deimos suben por Rail Ramp y entran por Lift Car→Bunk Toilet→Bunk. La ancla de Bunk tiene la brecha y la puerta del baño en ángulos opuestos y pierde uno. Deimos marca al roamer para que nadie regrese por Rail Platform.",
+     "timeline": [
+      "0:00–0:45 · Hibana/Kali suben por Cafe Terrace, grupo Rail sube la rampa",
+      "0:45–1:30 · Kali quita el Kaid, Hibana abre Bunk; Capitão humo en Bunk Toilet",
+      "1:30–2:30 · entrada doble y plant en Bunk",
+      "2:30–3:00 · post-plant: Kali cubre la brecha, Jackal Bunk Toilet, Deimos marca la retoma"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "sube la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "abre la barricada",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "limpia",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "X-KAIROS en la pared de Bunk tras el LV",
+         "via": "door"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "do": "entra a plantar cuando el baño esté presionado",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Cafe Terrace",
+         "how": "dron y bala"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Kaid Rtila en la pared y roamer en Upper Arcade",
+         "how": "Kali rompe el Rtila, tú cubres Upper Arcade"
+        },
+        {
+         "room": "Bunk",
+         "f": 2,
+         "threat": "Ancla Smoke detrás de las literas mirando la brecha",
+         "how": "cruza con el humo de Capitão activo en el baño"
+        }
+       ],
+       "final": "planta en Bunk pegada a la pared de Cafe Corridor"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Main Entrance",
+       "path": [
+        {
+         "room": "Palms",
+         "f": -1,
+         "do": "camina con Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Terrace",
+         "f": 2,
+         "do": "cubre",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafe",
+         "f": 2,
+         "do": "LV a la pared de Bunk desde el Cafe",
+         "via": "door"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "do": "sostiene la brecha a distancia",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Cafe",
+         "f": 2,
+         "threat": "Roamer en Upper Arcade peekeando el Cafe",
+         "how": "prefire y cubre a Hibana"
+        },
+        {
+         "room": "Cafe Corridor",
+         "f": 2,
+         "threat": "Rtila/Bandit y jammer en la pared de Bunk",
+         "how": "LV desde el Cafe a cada gadget"
+        }
+       ],
+       "final": "sostiene la brecha desde Cafe Corridor en post-plant"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube por la rampa",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "dron adelantado",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "cruza a Lift Car",
+         "via": "door"
+        },
+        {
+         "room": "Lift Car",
+         "f": 2,
+         "do": "humo en la puerta de Bunk Toilet",
+         "via": "door"
+        },
+        {
+         "room": "Bunk Toilet",
+         "f": 2,
+         "do": "fuego en la puerta de Bunk para sacar a la ancla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Roamer saliendo por Rail Corridor",
+         "how": "dron y Deimos lo marca"
+        },
+        {
+         "room": "Bunk Toilet",
+         "f": 2,
+         "threat": "Ancla de Bunk peekeando la puerta del baño",
+         "how": "humo primero, fuego al rincón de la puerta"
+        }
+       ],
+       "final": "quema la puerta Bunk→Bunk Toilet en post-plant"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube con Capitão",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "escanea huellas",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "cubre",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "escanea huellas hacia Rail Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Lift Car",
+         "f": 2,
+         "do": "cubre a Capitão",
+         "via": "door"
+        },
+        {
+         "room": "Bunk Toilet",
+         "f": 2,
+         "do": "entra a Bunk con Capitão",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Roamer rotando por Rail Corridor",
+         "how": "Eyenox y prefire donde marque"
+        },
+        {
+         "room": "Lift Car",
+         "f": 2,
+         "threat": "Kapkan en la puerta de Bunk Toilet",
+         "how": "dron por debajo y bala"
+        }
+       ],
+       "final": "cubre Bunk Toilet y caza al roamer que regrese por Rail Platform"
+      },
+      {
+       "op": "deimos",
+       "role": "intel",
+       "spawn": "Bumper Cars",
+       "path": [
+        {
+         "room": "Robot Circuit",
+         "f": -1,
+         "do": "sube último",
+         "via": "door"
+        },
+        {
+         "room": "Rail Ramp",
+         "f": 2,
+         "do": "DeathMARK al roamer cuando el grupo llegue arriba",
+         "via": "stairs"
+        },
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "do": "sostiene mirando Rail Platform",
+         "via": "door"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "do": "cubre Rail Corridor a la espalda del grupo",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Rail Overlook",
+         "f": 2,
+         "threat": "Roamer saliendo de Rail Corridor hacia la rampa",
+         "how": "DeathMARK lo ubica y lo esperas en el marco"
+        },
+        {
+         "room": "Rail Platform",
+         "f": 2,
+         "threat": "Retoma desde Cash Stash por Rail Corridor",
+         "how": "ángulo desde detrás de la columna, marca y dispara"
+        }
+       ],
+       "final": "sostiene Rail Platform y marca al defensor que intente retomar"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Sitio chico: Castle en la ventana de Day Care con Frost detrás, Smoke ancla Bunk mirando la pared de Cafe Corridor, Jäger limpia granadas y juega Bunk Toilet, Mozzie roba drones en Cafe Corridor y Lift Car y roamea Rail Platform. Máximo 2 anclas.",
+     "reinforce": [
+      "Pared Bunk–Cafe Corridor ×2",
+      "Ventana de Day Care (Castle)",
+      "Escotilla de Day Care (Roof)",
+      "Pared Day Care–Cafe Corridor ×1"
+     ],
+     "rotations": [
+      "Bunk↔Day Care (puerta)",
+      "Rotación Bunk→Bunk Toilet con impacto"
+     ],
+     "ops": [
+      {
+       "op": "frost",
+       "room": "Day Care",
+       "f": 2,
+       "role": "ancla",
+       "job": "cepos bajo la ventana de Day Care y bajo la escotilla; ancla detrás de las cunas"
+      },
+      {
+       "op": "smoke",
+       "room": "Bunk",
+       "f": 2,
+       "role": "ancla",
+       "job": "gas en la brecha de Cafe Corridor y en la puerta de Bunk Toilet en post-plant; se esconde entre las literas"
+      },
+      {
+       "op": "castle",
+       "room": "Day Care",
+       "f": 2,
+       "role": "flex",
+       "job": "Castle en la ventana de Day Care; después juega la puerta Day Care→Cafe Corridor"
+      },
+      {
+       "op": "jager",
+       "room": "Bunk Toilet",
+       "f": 2,
+       "role": "flex",
+       "job": "ADS en Bunk y Day Care; juega Bunk Toilet mirando Lift Car"
+      },
+      {
+       "op": "mozzie",
+       "room": "Cafe Corridor",
+       "f": 2,
+       "role": "roam",
+       "job": "Pest en Cafe Corridor y Lift Car; roamea Cafe y Rail Platform y regresa por Lift Car"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Kaid + Mira anti-vertical",
+     "summary": "Contra split y vertical: Kaid electrifica pared y escotilla, Mira mira Cafe Corridor desde Bunk, Azami cierra los agujeros del piso de Bunk y la escotilla de Day Care, Ela roamea Cafe/Upper Arcade y Thunderbird sana en el sitio.",
+     "reinforce": [
+      "Pared Bunk–Cafe Corridor ×2 (Kaid + Mira)",
+      "Escotilla de Day Care (Kaid)",
+      "Ventana de Day Care (barricada + Kiba)",
+      "Pared Day Care–Cafe Corridor ×1"
+     ],
+     "rotations": [
+      "Bunk↔Day Care",
+      "Bunk→Lift Car por Bunk Toilet"
+     ],
+     "ops": [
+      {
+       "op": "kaid",
+       "room": "Day Care",
+       "f": 2,
+       "role": "ancla",
+       "job": "Rtila en la pared de Bunk y en la escotilla de Day Care; ancla Day Care"
+      },
+      {
+       "op": "mira",
+       "room": "Bunk",
+       "f": 2,
+       "role": "ancla",
+       "job": "espejos en la pared de Cafe Corridor viendo el pasillo y Cafe Stairs; ancla entre las literas"
+      },
+      {
+       "op": "azami",
+       "room": "Bunk",
+       "f": 2,
+       "role": "flex",
+       "job": "Kiba en los agujeros del piso de Bunk cuando abran desde Lab y en la ventana de Day Care; rota entre ambos cuartos"
+      },
+      {
+       "op": "ela",
+       "room": "Cafe",
+       "f": 2,
+       "role": "roam",
+       "job": "Grzmot en Cafe Terrace y Cafe Stairs; roamea Cafe/Upper Arcade y castiga al grupo de Cafe Terrace"
+      },
+      {
+       "op": "thunderbird",
+       "room": "Bunk Toilet",
+       "f": 2,
+       "role": "flex",
+       "job": "Kóna en Bunk y Day Care; juega Bunk Toilet mirando Lift Car y rota a Bunk"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

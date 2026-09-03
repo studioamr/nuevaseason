@@ -1,0 +1,1281 @@
+{
+ "map": "plane",
+ "sites": {
+  "exec": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thermite abre la pared de Meeting Room desde Front Hallway con el EMP de Thatcher, mientras Buck sube por Cockpit Stairs y le quita el techo a Executive Office desde Cabin. Montagne empuja por Pantry para partir la atención de la ancla y Jackal cierra Front Stairs desde abajo para que nadie flanquee. Funciona porque el sitio es angosto: sin techo ni pared, la Mira de Executive Office se queda sin ángulos.",
+     "timeline": [
+      "0:00–0:45 · drones a Front Hallway y Meeting Room, ubicar Mira/Kapkan y al roamer de Cockpit Stairs",
+      "0:45–1:30 · EMP + Thermite en la pared Meeting Room–Front Hallway; Buck abre el piso de Cabin sobre Executive Office",
+      "1:30–2:30 · Montagne entra por Pantry, Thatcher y Thermite cruzan la pared, Jackal sube por Front Stairs",
+      "2:30–3:00 · plant en Meeting Room pegado a la pared, post-plant desde Front Hallway y Cabin"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Dron adelantado a Front Hallway antes de abrir la barricada", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Se pega a la esquina y tira EMP a la pared de Meeting Room cuando Thermite avisa", "via": "door"},
+        {"room": "Meeting Room", "f": 2, "do": "Entra tras Thermite y limpia la esquina del fondo", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Main Entrance", "f": -1, "threat": "Kapkan o Frost en la puerta principal y peek de Alibi desde Front Hallway", "how": "Dron primero, dispara la trampa desde afuera y abre la barricada con un cuchillazo desde el lado"},
+        {"room": "Front Hallway", "f": 2, "threat": "Roamer tipo Vigil bajando por Cockpit Stairs para pegar por la espalda", "how": "Dron mirando Cockpit Stairs mientras espera el breach, no cruzar sin Jackal en Front Stairs"},
+        {"room": "Meeting Room", "f": 2, "threat": "Ancla con Smoke atrás de la mesa y Mira mirando la puerta de Front Hallway", "how": "EMP al muro, esperar el humo de Thermite y entrar solo después del breach"}
+       ],
+       "final": "Sostiene la pared abierta desde Front Hallway y cubre el plant en Meeting Room"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra detrás de Thatcher, dron en mano", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Pone la carga en la pared reforzada de Meeting Room justo después del EMP", "via": "door"},
+        {"room": "Meeting Room", "f": 2, "do": "Cruza con humo y planta pegado a la pared abierta", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Bandit trickeando la pared y Jäger con ADS en la esquina", "how": "Thatcher tira EMP en el segundo exacto que se pone la carga, no antes; si truquean, cambiar a Buck arriba"},
+        {"room": "Meeting Room", "f": 2, "threat": "Ancla con Smoke atrás de la mesa que tira gas al breach", "how": "Buck le abre el techo desde Cabin antes de cruzar; entrar con humo propio"}
+       ],
+       "final": "Planta en Meeting Room del lado de la pared y se queda en Front Hallway"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra con el equipo y se separa hacia la escalera de la cabina", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza rápido hacia Cockpit Stairs, no se queda en el pasillo", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube dron adelante para checar la escalera", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Sale arriba y limpia la esquina", "via": "stairs"},
+        {"room": "Cabin Staff", "f": 3, "do": "Pasa hacia la cabina sin hacer ruido", "via": "door"},
+        {"room": "Cabin", "f": 3, "do": "Abre el piso sobre Executive Office con la Skeleton Key y pica a la ancla", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Cockpit Stairs", "f": 3, "threat": "Roamer tipo Vigil o Caveira escondido en la escalera de la cabina", "how": "Dron primero y subir con la escopeta lista, prefire la esquina de arriba"},
+        {"room": "Cabin", "f": 3, "threat": "Pulse escaneando desde Executive Office para sacarle un tiro por el piso", "how": "Abrir agujeros pequeños y moverse entre cada uno, nunca quedarse parado sobre un hueco"}
+       ],
+       "final": "Sostiene el techo abierto de Executive Office y niega la rotación durante el plant"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Abre la puerta de servicio con escudo extendido", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Entra lento con escudo, dron detrás del equipo", "via": "door"},
+        {"room": "Pantry", "f": 2, "do": "Absorbe el fuego de la ancla y presiona hacia Front Hallway", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Se planta en la puerta de Executive Office como pared para el equipo", "via": "door"},
+        {"room": "Executive Office", "f": 2, "do": "Entra con escudo para partir la atención mientras plantan en Meeting Room", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Kitchen", "f": 2, "threat": "Lesion con Gu en la puerta de servicio y roamer detrás de la barra", "how": "Dron para marcar los Gu, escudo arriba y esperar a que el equipo los rompa"},
+        {"room": "Pantry", "f": 2, "threat": "Ancla de Executive Office asomando por la puerta", "how": "Avanzar lento con escudo extendido, que Thatcher o Jackal peguen por atrás"},
+        {"room": "Executive Office", "f": 2, "threat": "Mira en la pared hacia Front Hallway y Castle en la puerta", "how": "Buck ya le abrió el techo; pedir que rompan el Castle con un explosivo antes de empujar"}
+       ],
+       "final": "Bloquea la puerta de Executive Office con el escudo mientras se planta"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Baja por el lado de la bodega, escaneando huellas", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra al piso de abajo y escanea al roamer", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Cruza entre los asientos con dron adelante", "via": "door"},
+        {"room": "Front Stairs", "f": 1, "do": "Sube por la escalera delantera y sigue las huellas", "via": "stairs"},
+        {"room": "Front Stairs", "f": 2, "do": "Sale arriba y cubre Front Hallway desde la escalera", "via": "stairs"},
+        {"room": "Front Hallway", "f": 2, "do": "Se une al equipo y cierra el flanco desde Pantry", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Technical Seating", "f": 1, "threat": "Roamer tipo Caveira o Vigil que baja por Front Stairs a flanquear", "how": "Escanear huellas apenas entra, cazarlo con el equipo avisado"},
+        {"room": "Front Stairs", "f": 2, "threat": "Jäger o Pulse cubriendo la escalera desde Front Hallway", "how": "Subir con dron adelante, prefire la salida de la escalera"}
+       ],
+       "final": "Sostiene Front Stairs y Pantry para que nadie flanquee durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por Main Entrance directo a Executive Office antes de que Mira termine de poner el espejo. Ash abre la puerta de Executive Office, Ying tira Candelas por Front Hallway y Blitz entra primero flasheando. Funciona porque Front Hallway está a dos pasos de la puerta principal y a las 2:45 la defensa todavía está reforzando.",
+     "timeline": [
+      "0:00–0:20 · dron rápido a Front Hallway, checar trampas en Main Entrance",
+      "0:20–0:40 · Ash abre la barricada, Candelas a Front Hallway y Executive Office",
+      "0:40–1:15 · Blitz y Zofia entran a Executive Office, Iana presiona Meeting Room",
+      "1:15–3:00 · plant rápido en Executive Office, post-plant desde Front Hallway"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Dispara la carga a la barricada de la puerta principal", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Abre la puerta de Executive Office con la segunda carga", "via": "door"},
+        {"room": "Executive Office", "f": 2, "do": "Entra tras el flash de Blitz y limpia el escritorio", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Main Entrance", "f": -1, "threat": "Kapkan en la puerta principal", "how": "La carga de Ash rompe barricada y trampa a la vez; dron para confirmar"},
+        {"room": "Executive Office", "f": 2, "threat": "Ancla con Smoke detrás del escritorio poniendo el gas", "how": "Entrar justo después del flash de Blitz, no dar tiempo a que tire la lata"}
+       ],
+       "final": "Planta en Executive Office detrás del escritorio"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Primero en la fila con el escudo listo", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza el pasillo flasheando la puerta de Executive Office", "via": "door"},
+        {"room": "Executive Office", "f": 2, "do": "Flash y empuja a la ancla contra la pared", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Noor con el Horus esperando escudos en el pasillo", "how": "No entrar solo; Ying tira Candela primero y Blitz entra cuando la ancla está cegada"},
+        {"room": "Executive Office", "f": 2, "threat": "Mira en la pared hacia Front Hallway", "how": "Flash pegado a la puerta y entrada pegada a la pared del espejo, no de frente"}
+       ],
+       "final": "Cubre la puerta de Executive Office con el escudo durante el plant"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Tira una Candela a Front Hallway por la barricada rota", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Segunda Candela a Executive Office por la puerta", "via": "door"},
+        {"room": "Meeting Room", "f": 2, "do": "Entra a Meeting Room con la última Candela para negar la rotación", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Peek de la ancla de Meeting Room por la puerta", "how": "Candela a Front Hallway antes de asomar, cruzar mientras revienta"},
+        {"room": "Meeting Room", "f": 2, "threat": "Ancla con Smoke atrás de la mesa", "how": "Candela dentro y prefire a la esquina de la mesa"}
+       ],
+       "final": "Sostiene Meeting Room y niega la rotación hacia Executive Office"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra detrás de Blitz con concusión lista", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Concusión a Executive Office justo antes de que entre Blitz", "via": "door"},
+        {"room": "Executive Office", "f": 2, "do": "Entra y limpia el lado contrario a Ash", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Jäger o Wamai en la esquina comiéndose los proyectiles", "how": "Tirar el impacto primero para gastar el ADS, después la concusión"},
+        {"room": "Executive Office", "f": 2, "threat": "Ancla con Rook o Doc peleando desde el fondo", "how": "Concusión al fondo, entrar en pareja con Ash por los dos lados de la puerta"}
+       ],
+       "final": "Cubre el plant desde dentro de Executive Office"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Manda la réplica a Front Hallway antes de que abra Ash", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Réplica a Pantry para ver si viene alguien de Kitchen", "via": "door"},
+        {"room": "Pantry", "f": 2, "do": "Se planta en la puerta de Pantry cerrando el flanco de Kitchen", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Roamer bajando de Cockpit Stairs a pegar por la espalda", "how": "Réplica a la escalera, avisar y prefire si baja"},
+        {"room": "Pantry", "f": 2, "threat": "Roamer de Kitchen (Vigil/Ela) que regresa a defender", "how": "Cerrar la puerta de Pantry con la réplica adelante y sostener el ángulo"}
+       ],
+       "final": "Sostiene Pantry y Front Hallway durante el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Todo desde arriba y abajo: Sledge y Ram destruyen el piso de Cabin sobre Executive Office, Fuze cocina Meeting Room desde Radio Cabin, y Ace abre la escotilla de Front Hallway desde Technical Seating para tener ángulo desde abajo. Twitch quita ADS y cámaras antes de que caigan las cargas. La entrada final es por Cockpit Stairs cuando el sitio ya está vacío.",
+     "timeline": [
+      "0:00–0:45 · dron de Twitch a Meeting Room y Executive Office, todos suben a Cabin por Cockpit Stairs",
+      "0:45–1:30 · Ace abre la escotilla de Front Hallway desde abajo, Sledge y Ram rompen el piso de Cabin",
+      "1:30–2:30 · Fuze tira cargas a Meeting Room desde Radio Cabin, Sledge caza a la ancla por los huecos",
+      "2:30–3:00 · bajan por Cockpit Stairs y plantan en Executive Office bajo los huecos"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra rápido, dron adelante", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza directo a la escalera de la cabina", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube en silencio", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Limpia la salida de la escalera", "via": "stairs"},
+        {"room": "Cabin Staff", "f": 3, "do": "Pasa hacia la cabina", "via": "door"},
+        {"room": "Cabin", "f": 3, "do": "Martilla el piso sobre Executive Office y pica por los huecos", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Cockpit Stairs", "f": 3, "threat": "Roamer tipo Vigil esperando en la escalera de la cabina", "how": "Dron de Twitch primero, subir en pareja con Ram"},
+        {"room": "Cabin", "f": 3, "threat": "Pulse desde Executive Office tirando por el piso", "how": "Abrir huecos pequeños y cambiar de posición después de cada martillazo"}
+       ],
+       "final": "Sostiene los huecos de Cabin y remata a la ancla de Executive Office desde arriba"
+      },
+      {
+       "op": "ram",
+       "role": "negacion",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra con Sledge", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza a Cockpit Stairs", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube cubriendo a Sledge", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Limpia hacia Cabin Staff", "via": "stairs"},
+        {"room": "Cabin Staff", "f": 3, "do": "Lanza un BU-GI hacia Cabin para abrir el piso en línea sobre Executive Office", "via": "door"},
+        {"room": "Cabin", "f": 3, "do": "Segundo BU-GI cruzado y sostiene la línea abierta", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Cabin Staff", "f": 3, "threat": "Jäger ADS o Wamai en la cabina que se comería el BU-GI", "how": "Twitch limpia gadgets con el dron antes de soltar el BU-GI"},
+        {"room": "Cabin", "f": 3, "threat": "Ancla de Executive Office disparando hacia arriba por los huecos", "how": "Soltar el BU-GI desde atrás y esperar a que termine antes de asomarse"}
+       ],
+       "final": "Niega Executive Office desde arriba durante el plant"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Sube detrás de los blandos", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza a Cockpit Stairs sin detenerse", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube con el escudo si lo lleva", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Sale arriba y se va a Radio Cabin", "via": "stairs"},
+        {"room": "Radio Cabin", "f": 3, "do": "Pone las cargas de racimo en el piso sobre Meeting Room", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Radio Cabin", "f": 3, "threat": "Roamer que sube por Cockpit Stairs a cazar al vertical", "how": "Sledge cubre la escalera mientras Fuze pone las cargas"},
+        {"room": "Meeting Room", "f": 2, "threat": "Ancla con Smoke y Mira pegados a la pared de Front Hallway", "how": "Cargas de Fuze sobre la mesa y la esquina del espejo, avisar antes de activarlas"}
+       ],
+       "final": "Cocina Meeting Room y después baja a cubrir Cockpit Stairs"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Baja hacia la bodega, dron adelante", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra al piso de abajo", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Pone la SELMA en la escotilla de Front Hallway desde abajo", "via": "door"},
+        {"room": "First Aid Station", "f": 1, "do": "Se cubre en First Aid y pica hacia arriba por la escotilla abierta", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Technical Seating", "f": 1, "threat": "Roamer de abajo (Caveira) esperando entre los asientos", "how": "Dron primero, entrar con el equipo avisado y prefire las esquinas"},
+        {"room": "Front Hallway", "f": 2, "threat": "Defensor cubriendo la escotilla desde arriba o Bandit en la escotilla", "how": "Poner SELMA y retirarse a First Aid; si truquean, esperar el EMP o la segunda carga"}
+       ],
+       "final": "Sostiene la escotilla desde abajo para negar Front Hallway durante el plant"
+      },
+      {
+       "op": "twitch",
+       "role": "antigadget",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Dron de choque a Front Hallway, mata cámaras y ADS", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Segundo dron a Executive Office y Meeting Room para limpiar gadgets", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube al final para cubrir la escalera", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Sostiene la escalera para que nadie suba a cazar al vertical", "via": "stairs"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Cámara de Valkyrie y ADS de Jäger en el pasillo", "how": "Dron de choque desde Main Entrance antes de que entre nadie"},
+        {"room": "Executive Office", "f": 2, "threat": "Espejo de Mira y Evil Eye de Maestro cubriendo Front Hallway", "how": "Chocar el Evil Eye y avisar la posición del espejo a Sledge para el hueco"}
+       ],
+       "final": "Cubre Cockpit Stairs y baja al final para plantar en Executive Office"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes al mismo tiempo: Maverick y Blackbeard abren líneas en la pared de Meeting Room desde Main Entrance, mientras Hibana, Capitão y Nøkk entran por Front Service Entrance, cruzan Kitchen y Pantry y presionan Executive Office. La ancla no puede cubrir las dos puertas y Nøkk entra sin que Mira la vea.",
+     "timeline": [
+      "0:00–0:45 · drones a las dos puertas, ubicar espejo de Mira y trampas de Kitchen",
+      "0:45–1:30 · Maverick abre líneas en la pared de Meeting Room; Hibana abre la escotilla o la pared de Pantry",
+      "1:30–2:30 · Capitão quema Executive Office, Nøkk entra por Pantry, Blackbeard presiona Meeting Room",
+      "2:30–3:00 · plant en Executive Office, post-plant desde Pantry y Front Hallway"
+     ],
+     "ops": [
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Abre la barricada en silencio con el soplete", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Quema líneas en la pared de Meeting Room a la altura de la ancla", "via": "door"},
+        {"room": "Meeting Room", "f": 2, "do": "Entra al final por el hueco grande cuando el sitio está vacío", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Bandit o Kaid en la pared de Meeting Room", "how": "Quemar líneas pequeñas primero (no activan la batería) y tirar por ahí"},
+        {"room": "Meeting Room", "f": 2, "threat": "Ancla con Smoke atrás de la mesa", "how": "Blackbeard pica por las líneas mientras Maverick abre el hueco grande"}
+       ],
+       "final": "Sostiene Front Hallway y la pared abierta durante el plant"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Cubre a Maverick mientras quema", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Pica por las líneas de Maverick con el escudo del rifle", "via": "door"},
+        {"room": "Meeting Room", "f": 2, "do": "Entra tras el hueco y limpia Meeting Room", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Peek de Mira por el espejo hacia Front Hallway", "how": "Pegarse a la pared fuera de la línea del espejo, pedir que Maverick queme el espejo por atrás"},
+        {"room": "Meeting Room", "f": 2, "threat": "Noor esperando el escudo en la puerta", "how": "Entrar solo por el hueco de Maverick, nunca por la puerta principal"}
+       ],
+       "final": "Cubre Meeting Room y la rotación a Executive Office"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Abre la puerta de servicio con dron adelante", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Cruza la cocina limpiando trampas", "via": "door"},
+        {"room": "Pantry", "f": 2, "do": "Dispara X-KAIROS a la pared reforzada de Pantry hacia Executive Office o a la puerta con Castle", "via": "door"},
+        {"room": "Executive Office", "f": 2, "do": "Entra por el hueco y planta", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Kitchen", "f": 2, "threat": "Gu de Lesion y roamer detrás de la barra", "how": "Dron para marcar los Gu, dispararlos y cruzar en pareja con Capitão"},
+        {"room": "Pantry", "f": 2, "threat": "Ancla de Executive Office mirando la puerta de Pantry", "how": "Capitão tira fuego a la puerta antes de poner los pellets"}
+       ],
+       "final": "Planta en Executive Office pegada a la pared de Pantry"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Entra tras Hibana", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Humo de ballesta hacia Pantry si hay ángulo", "via": "door"},
+        {"room": "Pantry", "f": 2, "do": "Fuego a la puerta de Executive Office para sacar a la ancla", "via": "door"},
+        {"room": "Executive Office", "f": 2, "do": "Entra con humo y cubre el plant", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Pantry", "f": 2, "threat": "Ancla con Rook/Doc pegada a la puerta de Executive Office", "how": "Fuego a la esquina de la puerta y humo para cruzar"},
+        {"room": "Executive Office", "f": 2, "threat": "Smoke tirando gas al plant", "how": "Fuego a la posición de Smoke detrás del escritorio, plantar con humo propio"}
+       ],
+       "final": "Cubre el plant con humo y sostiene Executive Office"
+      },
+      {
+       "op": "nokk",
+       "role": "flanco",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Activa HEL y entra en silencio", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Cruza invisible a las cámaras", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Se esconde en Executive Hallway y espera al roamer que regresa", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Regresa a Kitchen cuando empieza el push", "via": "door"},
+        {"room": "Pantry", "f": 2, "do": "Entra detrás de Hibana sin que Mira la vea", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Executive Hallway", "f": 2, "threat": "Roamer tipo Vigil o Ela escondido en el pasillo ejecutivo", "how": "HEL activo, esperar en esquina y matarlo cuando vuelva al sitio"},
+        {"room": "Pantry", "f": 2, "threat": "Cámara de Valkyrie o Evil Eye de Maestro en Pantry", "how": "HEL activo para cruzar sin que la vean, avisar a Hibana"}
+       ],
+       "final": "Cierra el flanco de Executive Hallway y Kitchen durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Se refuerza la pared de Meeting Room hacia Front Hallway y se castlea la puerta de Executive Office; Mira pone un espejo en Executive Office hacia Front Hallway y Smoke ancla Meeting Room. Bandit truquea la pared, Jäger cubre Pantry y Pulse roamea desde Cockpit Stairs para castigar la vertical.",
+     "reinforce": ["Pared Meeting Room–Front Hallway ×2", "Pared Executive Office–Pantry", "Escotilla de Front Hallway", "Puerta Executive Office (Castle)"],
+     "rotations": ["Executive Office↔Meeting Room (rotación en la pared del fondo)", "Meeting Room↔Front Hallway (agujero de Mira)"],
+     "ops": [
+      {"op": "smoke", "room": "Meeting Room", "f": 2, "role": "ancla", "job": "Ancla atrás de la mesa, gas a la pared cuando se abra y al plant en los últimos 30s"},
+      {"op": "mira", "room": "Executive Office", "f": 2, "role": "ancla", "job": "Espejo hacia Front Hallway y otro hacia Pantry; mata a los que cruzan el pasillo"},
+      {"op": "bandit", "room": "Front Hallway", "f": 2, "role": "flex", "job": "Truquea la pared de Meeting Room desde dentro y cae a Front Hallway a pelear si entran por Main Entrance"},
+      {"op": "jager", "room": "Pantry", "f": 2, "role": "flex", "job": "ADS en Front Hallway y Meeting Room; cubre Pantry y Kitchen para que no entren por servicio"},
+      {"op": "pulse", "room": "Cockpit Stairs", "f": 3, "role": "roam", "job": "Roamea la cabina: escanea al vertical de Cabin y baja por Cockpit Stairs a pegar por la espalda en Front Hallway"}
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush con Noor",
+     "summary": "Setup para cuando el rival rushea Main Entrance: Noor quema la entrada de Front Hallway y anula escudos, Azami cierra la puerta de Executive Office con Kiba, Melusi frena en Pantry, Valkyrie vigila Main Entrance y Cockpit Stairs, y Fenrir siembra F-NATT en Front Hallway para que la entrada sea un infierno.",
+     "reinforce": ["Pared Meeting Room–Front Hallway ×2", "Escotilla de Front Hallway", "Pared Executive Office–Pantry"],
+     "rotations": ["Executive Office↔Meeting Room", "Meeting Room↔Cockpit Stairs (rotación de escape)"],
+     "ops": [
+      {"op": "noor", "room": "Meeting Room", "f": 2, "role": "ancla", "job": "Horus a Front Hallway cuando entren; quema escudos de Blitz/Montagne y sostiene la puerta de Meeting Room"},
+      {"op": "azami", "room": "Executive Office", "f": 2, "role": "ancla", "job": "Kiba en la puerta de Executive Office y en el techo si abren desde Cabin; ancla detrás del escritorio"},
+      {"op": "melusi", "room": "Pantry", "f": 2, "role": "flex", "job": "Banshees en Pantry y Front Hallway para frenar el rush y avisar; pelea desde Pantry"},
+      {"op": "valkyrie", "room": "Front Hallway", "f": 2, "role": "flex", "job": "Cámara afuera en Main Entrance y otra en Cockpit Stairs; pica desde Front Hallway y se repliega a Meeting Room"},
+      {"op": "fenrir", "room": "Kitchen", "f": 2, "role": "roam", "job": "F-NATT en Front Hallway y Kitchen; roamea Kitchen–Executive Hallway y regresa por Pantry cuando escuche el plant"}
+     ]
+    }
+   ]
+  },
+  "bedroom": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Entrada por atrás: Thatcher y Thermite llegan por Reporter Entrance, cruzan Press Section A y Security Room y abren la pared de Staff Section. Buck sube a Server Room A y le quita el techo a Executive Bedroom, Montagne empuja por Kitchen y Executive Hallway, y Jackal cierra Change Room desde Right Wing. Funciona porque Staff Section no aguanta sin la pared de Security Room y la Mira de Bedroom pierde el techo.",
+     "timeline": [
+      "0:00–0:45 · drones a Security Room y Executive Hallway, ubicar Mira/Kapkan y al roamer de Laund.",
+      "0:45–1:30 · EMP + Thermite en la pared Security Room–Staff Section; Buck abre el piso de Server Room A sobre Executive Bedroom",
+      "1:30–2:30 · Montagne presiona Executive Hallway, Jackal toma Change Room, entrada por la pared",
+      "2:30–3:00 · plant en Staff Section pegado a Security Room, post-plant desde Security Room y Server Room A"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Dron adelantado a Press Section A", "via": "door"},
+        {"room": "Press Section A", "f": 2, "do": "Cruza los asientos de prensa limpiando trampas", "via": "door"},
+        {"room": "Security Room", "f": 2, "do": "EMP a la pared de Staff Section cuando Thermite avisa", "via": "door"},
+        {"room": "Staff Section", "f": 2, "do": "Entra tras el breach y limpia la esquina", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Press Section A", "f": 2, "threat": "Kapkan en la puerta de prensa y Frost entre los asientos", "how": "Dron primero, disparar las trampas desde afuera antes de cruzar"},
+        {"room": "Security Room", "f": 2, "threat": "Roamer tipo Vigil escondido en Security Room o llegando de Press Section B", "how": "Dron mirando Press Section B mientras espera el breach, cruzar en pareja con Thermite"},
+        {"room": "Staff Section", "f": 2, "threat": "Ancla con Smoke en la esquina y Mira mirando Security Room", "how": "EMP, esperar el humo y entrar después del breach, nunca por la puerta"}
+       ],
+       "final": "Sostiene la pared abierta desde Security Room y cubre el plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Entra detrás de Thatcher", "via": "door"},
+        {"room": "Press Section A", "f": 2, "do": "Cruza pegado al lado de Security Room", "via": "door"},
+        {"room": "Security Room", "f": 2, "do": "Pone la carga en la pared reforzada de Staff Section justo tras el EMP", "via": "door"},
+        {"room": "Staff Section", "f": 2, "do": "Cruza con humo y planta pegado a la pared", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Security Room", "f": 2, "threat": "Bandit trickeando la pared y Jäger con ADS", "how": "EMP en el segundo exacto de poner la carga; si truquean, cambiar al techo de Buck"},
+        {"room": "Staff Section", "f": 2, "threat": "Ancla con Smoke tirando gas al breach", "how": "Buck ya abrió Executive Bedroom; entrar con humo y prefire la esquina"}
+       ],
+       "final": "Planta en Staff Section del lado de la pared y se queda en Security Room"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra por la puerta principal, dron adelante", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza a la escalera de la cabina", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube dron adelante", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Limpia la salida", "via": "stairs"},
+        {"room": "Cabin Staff", "f": 3, "do": "Cruza hacia atrás por el piso de arriba", "via": "door"},
+        {"room": "Caterer", "f": 3, "do": "Pasa el catering en silencio", "via": "door"},
+        {"room": "Server Room A", "f": 3, "do": "Abre el piso sobre Executive Bedroom con la Skeleton Key y pica a la ancla", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Cockpit Stairs", "f": 3, "threat": "Roamer que sube por Cockpit Stairs a esperar", "how": "Dron primero, subir con escopeta y prefire"},
+        {"room": "Caterer", "f": 3, "threat": "Roamer tipo Caveira que sube por Ladder Room a cazar al vertical", "how": "Dron cubriendo Server Room A mientras cruza, no correr"},
+        {"room": "Server Room A", "f": 3, "threat": "Pulse o Mira disparando hacia arriba desde Executive Bedroom", "how": "Huecos pequeños y cambiar de posición tras cada uno"}
+       ],
+       "final": "Sostiene el techo de Executive Bedroom abierto y niega la rotación durante el plant"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Abre la puerta de servicio con escudo", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Entra lento, dron detrás", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Se planta en el pasillo como pared hacia la puerta de Executive Bedroom", "via": "door"},
+        {"room": "Executive Bedroom", "f": 2, "do": "Entra con escudo para partir la atención mientras plantan en Staff Section", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Kitchen", "f": 2, "threat": "Gu de Lesion y roamer en la cocina", "how": "Dron marca los Gu, escudo arriba y esperar a que los rompan"},
+        {"room": "Executive Hallway", "f": 2, "threat": "Mira en la pared de Executive Bedroom mirando el pasillo y Castle en la puerta", "how": "Escudo extendido pegado al espejo, que Buck le abra el techo antes de empujar"}
+       ],
+       "final": "Bloquea la puerta de Executive Bedroom con el escudo mientras se planta"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Rodea por el ala derecha escaneando huellas", "via": "door"},
+        {"room": "Right Wing", "f": -1, "do": "Camina el ala hasta la puerta de Change Room", "via": "door"},
+        {"room": "Change Room", "f": 2, "do": "Entra por la puerta del ala y escanea al roamer", "via": "door"},
+        {"room": "Laund.", "f": 2, "do": "Toma Laund. y cierra la rotación de Staff Section", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Change Room", "f": 2, "threat": "Roamer tipo Caveira o Vigil en Change Room que usa la puerta del ala", "how": "Escanear huellas apenas entra, cazarlo con dron adelante"},
+        {"room": "Laund.", "f": 2, "threat": "Defensor cubriendo las escotillas de Laund. o rotando de Staff Section", "how": "Entrar con dron y prefire la puerta de Staff Section"}
+       ],
+       "final": "Sostiene Laund. y Change Room para que nadie flanquee durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por Front Service Entrance: Kitchen, Executive Hallway y directo a Executive Bedroom antes de que armen el sitio. Ash abre la puerta de Bedroom, Ying tira Candelas por el pasillo, Blitz entra primero y Zofia limpia el fondo. Iana cubre Change Room para que no roten. Funciona porque la puerta de servicio queda a un pasillo de la cama.",
+     "timeline": [
+      "0:00–0:20 · dron rápido a Kitchen, checar Gu y trampas",
+      "0:20–0:40 · Ash abre la puerta de servicio, Candelas a Executive Hallway",
+      "0:40–1:15 · Blitz y Zofia entran a Executive Bedroom, Iana cierra Change Room",
+      "1:15–3:00 · plant rápido en Executive Bedroom, post-plant desde Executive Hallway"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Carga a la barricada de la puerta de servicio", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Cruza la cocina corriendo", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Segunda carga a la puerta de Executive Bedroom", "via": "door"},
+        {"room": "Executive Bedroom", "f": 2, "do": "Entra tras el flash de Blitz y limpia la cama", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Kitchen", "f": 2, "threat": "Gu de Lesion y Kapkan en la puerta de servicio", "how": "La carga rompe la trampa, dron marca los Gu y se disparan corriendo"},
+        {"room": "Executive Bedroom", "f": 2, "threat": "Ancla con Smoke detrás de la cama", "how": "Entrar justo tras el flash, prefire la cama"}
+       ],
+       "final": "Planta en Executive Bedroom detrás de la cama"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Primero en la fila con escudo", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Cruza flasheando la barra", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Flash a la puerta de Executive Bedroom", "via": "door"},
+        {"room": "Executive Bedroom", "f": 2, "do": "Entra flasheando y empuja a la ancla", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Executive Hallway", "f": 2, "threat": "Noor con el Horus esperando escudos en el pasillo", "how": "Ying tira la Candela primero, Blitz entra cuando ya están cegados"},
+        {"room": "Executive Bedroom", "f": 2, "threat": "Mira mirando el pasillo y Castle en la puerta", "how": "Flash pegado a la puerta, entrada pegada a la pared del espejo"}
+       ],
+       "final": "Cubre la puerta de Executive Bedroom con el escudo durante el plant"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Candela a Kitchen por la puerta rota", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Segunda Candela a Executive Hallway", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Última Candela dentro de Executive Bedroom", "via": "door"},
+        {"room": "Executive Bedroom", "f": 2, "do": "Entra y limpia el baño y las esquinas", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Executive Hallway", "f": 2, "threat": "Peek de la ancla de Bedroom por la puerta del pasillo", "how": "Candela antes de asomar, cruzar mientras revienta"},
+        {"room": "Executive Bedroom", "f": 2, "threat": "Ancla con Rook/Doc en la esquina del fondo", "how": "Candela dentro y prefire al fondo"}
+       ],
+       "final": "Sostiene Executive Bedroom y niega la rotación a Staff Section"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Entra detrás de Blitz", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Impacto a la barra si hay alguien", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Concusión a Executive Bedroom antes de que entre Blitz", "via": "door"},
+        {"room": "Executive Bedroom", "f": 2, "do": "Entra y limpia el lado contrario a Ash", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Kitchen", "f": 2, "threat": "Jäger o Wamai en la cocina comiéndose los proyectiles", "how": "Impacto primero para gastar el ADS, luego concusión"},
+        {"room": "Executive Bedroom", "f": 2, "threat": "Ancla peleando desde el fondo con Rook", "how": "Concusión al fondo y entrar en pareja con Ash"}
+       ],
+       "final": "Cubre el plant desde dentro de Executive Bedroom"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Réplica a Kitchen antes de que abra Ash", "via": "door"},
+        {"room": "Kitchen", "f": 2, "do": "Réplica a Executive Hallway y Change Room", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Cruza y se planta en la puerta de Change Room", "via": "door"},
+        {"room": "Change Room", "f": 2, "do": "Cierra Change Room para que no roten de Staff Section", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Executive Hallway", "f": 2, "threat": "Roamer que regresa desde Change Room a pegar por la espalda", "how": "Réplica adelante, avisar y prefire la puerta"},
+        {"room": "Change Room", "f": 2, "threat": "Ancla de Staff Section rotando por Laund. hacia Change Room", "how": "Sostener la puerta de Laund. con la réplica de señuelo"}
+       ],
+       "final": "Sostiene Change Room y Executive Hallway durante el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Sledge y Ram abren el piso de Server Room A sobre Executive Bedroom, Fuze cocina Staff Section desde Server Room B por la escotilla, y Ace abre las escotillas de Laund. desde Storage para tener líneas desde abajo. Kali revienta gadgets en Staff Section desde afuera. Entrada final por la escotilla de Server Room B directo a Staff Section.",
+     "timeline": [
+      "0:00–0:45 · drones a Staff Section y Executive Bedroom, todos suben a Server Room por Cockpit Stairs",
+      "0:45–1:30 · Ace abre las escotillas de Laund. desde Storage, Sledge y Ram rompen el piso de Server Room A",
+      "1:30–2:30 · Fuze tira cargas a Staff Section desde Server Room B, Kali revienta gadgets desde Left Wing",
+      "2:30–3:00 · bajan por la escotilla de Server Room B y plantan en Staff Section bajo los huecos"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra rápido con dron", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Directo a Cockpit Stairs", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube en silencio", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Limpia la salida de la escalera", "via": "stairs"},
+        {"room": "Cabin Staff", "f": 3, "do": "Cruza hacia atrás", "via": "door"},
+        {"room": "Caterer", "f": 3, "do": "Pasa el catering cubriendo Ladder Room", "via": "door"},
+        {"room": "Server Room A", "f": 3, "do": "Martilla el piso sobre Executive Bedroom y pica por los huecos", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Caterer", "f": 3, "threat": "Roamer que sube por Ladder Room a cazar al vertical", "how": "Ram cubre la subida de Ladder Room mientras Sledge abre"},
+        {"room": "Server Room A", "f": 3, "threat": "Ancla de Executive Bedroom tirando por el piso", "how": "Huecos pequeños y moverse tras cada martillazo"}
+       ],
+       "final": "Sostiene los huecos sobre Executive Bedroom y remata a la ancla desde arriba"
+      },
+      {
+       "op": "ram",
+       "role": "negacion",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra con Sledge", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza a Cockpit Stairs", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube cubriendo", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Limpia y avanza", "via": "stairs"},
+        {"room": "Cabin Staff", "f": 3, "do": "Cruza hacia el catering", "via": "door"},
+        {"room": "Caterer", "f": 3, "do": "Suelta un BU-GI hacia Server Room A para abrir una línea sobre Executive Hallway y Bedroom", "via": "door"},
+        {"room": "Server Room A", "f": 3, "do": "Segundo BU-GI y sostiene la línea abierta", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Caterer", "f": 3, "threat": "Jäger ADS o Wamai arriba que se comerían el BU-GI", "how": "Kali o dron limpian gadgets antes de soltar el BU-GI"},
+        {"room": "Server Room A", "f": 3, "threat": "Ancla disparando hacia arriba desde Executive Bedroom", "how": "Soltar el BU-GI desde atrás y no asomarse hasta que termine"}
+       ],
+       "final": "Niega Executive Bedroom y Executive Hallway desde arriba durante el plant"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Sube detrás de los blandos", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza a Cockpit Stairs", "via": "door"},
+        {"room": "Cockpit Stairs", "f": 2, "do": "Sube", "via": "stairs"},
+        {"room": "Cockpit Stairs", "f": 3, "do": "Sale y cruza hacia atrás", "via": "stairs"},
+        {"room": "Cabin Staff", "f": 3, "do": "Pasa hacia el catering", "via": "door"},
+        {"room": "Caterer", "f": 3, "do": "Cruza a Server Room B", "via": "door"},
+        {"room": "Server Room A", "f": 3, "do": "Pasa detrás de Sledge", "via": "door"},
+        {"room": "Server Room B", "f": 3, "do": "Cargas de racimo en el piso junto a la escotilla sobre Staff Section", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Server Room B", "f": 3, "threat": "Defensor cubriendo la escotilla desde Staff Section o Bandit en la escotilla", "how": "Poner las cargas alrededor de la escotilla, no sobre ella; avisar antes de activar"},
+        {"room": "Staff Section", "f": 2, "threat": "Ancla con Smoke y Mira pegadas a la pared de Security Room", "how": "Cargas sobre la esquina de Smoke, activarlas cuando Sledge ya tenga huecos"}
+       ],
+       "final": "Cocina Staff Section y baja por la escotilla al final para plantar"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Baja hacia la bodega, dron adelante", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra al piso de abajo", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Cruza los asientos con dron", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Camina el pasillo de servicio hacia Storage", "via": "door"},
+        {"room": "Storage", "f": 1, "do": "SELMA en las escotillas de Laund. desde abajo y pica hacia arriba", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Technical Seating", "f": 1, "threat": "Roamer de abajo (Caveira/Vigil) entre los asientos", "how": "Dron primero, prefire esquinas y no correr"},
+        {"room": "Service Corridor", "f": 1, "threat": "Roamer bajando por Back Stairs a flanquear", "how": "Dron mirando Luggage Hold mientras cruza"},
+        {"room": "Laund.", "f": 2, "threat": "Defensor cubriendo las escotillas desde Laund. o Bandit en la escotilla", "how": "Poner SELMA y retirarse a Service Corridor; segunda carga si truquean"}
+       ],
+       "final": "Sostiene las escotillas de Laund. desde Storage para negar la rotación durante el plant"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Dron a Press Section A", "via": "door"},
+        {"room": "Left Wing", "f": -1, "do": "Camina el ala izquierda hasta tener ángulo a la puerta de Staff Section", "via": "door"},
+        {"room": "Staff Section", "f": 2, "do": "Lanza LV a la pared o ventana de Staff Section para reventar gadgets; entra al final por la puerta del ala", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Left Wing", "f": -1, "threat": "Peek de un defensor por la puerta del ala izquierda", "how": "Rappel o ángulo desde lejos con la mira, no acercarse a la puerta hasta el final"},
+        {"room": "Staff Section", "f": 2, "threat": "Bandit/Kaid en la pared y ADS de Jäger en la esquina", "how": "Lanza LV en la pared de Staff Section para reventar baterías y ADS antes de las cargas de Fuze"}
+       ],
+       "final": "Sostiene el ángulo a la puerta del ala y entra a plantar en Staff Section al final"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes: Maverick y Osa entran por Back Service Entrance, cruzan Press Section B y A y queman la pared de Staff Section desde Security Room; Hibana, Capitão y Dokkaebi entran por Right Wing a Change Room y presionan Executive Bedroom por Laund. y Executive Hallway. Dokkaebi hackea teléfonos para que la ancla no escuche por dónde viene el push.",
+     "timeline": [
+      "0:00–0:45 · drones a Security Room y Change Room, ubicar Mira y trampas de las puertas de ala",
+      "0:45–1:30 · Maverick abre líneas en la pared de Staff Section; Hibana abre la pared reforzada de Laund. o Executive Hallway",
+      "1:30–2:30 · Dokkaebi hackea, Capitão quema Executive Bedroom, Osa cierra Security Room con escudo",
+      "2:30–3:00 · plant en Executive Bedroom, post-plant desde Change Room y Security Room"
+     ],
+     "ops": [
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Rodea por atrás con dron", "via": "door"},
+        {"room": "Back Service Entrance", "f": -1, "do": "Abre la puerta trasera de servicio con el soplete", "via": "door"},
+        {"room": "Press Section B", "f": 2, "do": "Cruza los asientos de prensa", "via": "door"},
+        {"room": "Press Section A", "f": 2, "do": "Avanza a Security Room", "via": "door"},
+        {"room": "Security Room", "f": 2, "do": "Quema líneas en la pared de Staff Section a la altura de la ancla", "via": "door"},
+        {"room": "Staff Section", "f": 2, "do": "Entra por el hueco al final cuando el sitio está vacío", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Press Section B", "f": 2, "threat": "Kapkan en la puerta trasera y roamer en Pr.BR", "how": "Dron primero, disparar trampas, checar Pr.BR antes de avanzar"},
+        {"room": "Security Room", "f": 2, "threat": "Bandit o Kaid en la pared de Staff Section", "how": "Líneas pequeñas primero (no activan la batería), tirar por ahí"},
+        {"room": "Staff Section", "f": 2, "threat": "Ancla con Smoke en la esquina", "how": "Osa pica por las líneas mientras Maverick abre el hueco grande"}
+       ],
+       "final": "Sostiene Security Room y la pared abierta durante el plant"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Cubre a Maverick", "via": "door"},
+        {"room": "Back Service Entrance", "f": -1, "do": "Entra detrás", "via": "door"},
+        {"room": "Press Section B", "f": 2, "do": "Pone un Talon en la puerta de Pr.BR para cerrar el flanco", "via": "door"},
+        {"room": "Press Section A", "f": 2, "do": "Avanza cubriendo", "via": "door"},
+        {"room": "Security Room", "f": 2, "do": "Talon en la puerta de Staff Section y pica por las líneas de Maverick", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Press Section A", "f": 2, "threat": "Roamer entrando por Reporter Entrance detrás del equipo", "how": "Talon en la puerta de prensa y checar con dron antes de avanzar"},
+        {"room": "Security Room", "f": 2, "threat": "Noor o Mira esperando el escudo en la puerta de Staff Section", "how": "Talon en la puerta y disparar solo por las líneas, no entrar por la puerta"}
+       ],
+       "final": "Sostiene Security Room con escudos para el post-plant"
+      },
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Rodea por el ala derecha con dron", "via": "door"},
+        {"room": "Right Wing", "f": -1, "do": "Camina el ala hasta la puerta de Change Room", "via": "door"},
+        {"room": "Change Room", "f": 2, "do": "Entra por la puerta del ala y dispara X-KAIROS a la pared reforzada hacia Executive Hallway", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Cruza el hueco y presiona la puerta de Executive Bedroom", "via": "breach"},
+        {"room": "Executive Bedroom", "f": 2, "do": "Entra y planta", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Change Room", "f": 2, "threat": "Kapkan en la puerta del ala y roamer en Change Room", "how": "Dron primero, disparar la trampa desde afuera y entrar con Capitão"},
+        {"room": "Executive Hallway", "f": 2, "threat": "Mira mirando el pasillo desde Executive Bedroom", "how": "Capitão tira fuego a la puerta y humo antes de cruzar"}
+       ],
+       "final": "Planta en Executive Bedroom pegada a la pared del pasillo"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Entra tras Hibana", "via": "door"},
+        {"room": "Right Wing", "f": -1, "do": "Cubre el ala mientras Hibana abre", "via": "door"},
+        {"room": "Change Room", "f": 2, "do": "Fuego a Laund. para negar la rotación de Staff Section", "via": "door"},
+        {"room": "Executive Hallway", "f": 2, "do": "Fuego a la puerta de Executive Bedroom y humo para cruzar", "via": "breach"},
+        {"room": "Executive Bedroom", "f": 2, "do": "Entra con humo y cubre el plant", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Laund.", "f": 2, "threat": "Rotación de la ancla de Staff Section por Laund.", "how": "Fuego a la puerta de Laund. justo cuando empieza el push"},
+        {"room": "Executive Bedroom", "f": 2, "threat": "Smoke tirando gas al plant", "how": "Fuego a la posición de Smoke y plantar con humo propio"}
+       ],
+       "final": "Cubre el plant con humo y sostiene Executive Bedroom"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "intel",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Hackea teléfonos cuando empiezan las dos aperturas", "via": "door"},
+        {"room": "Right Wing", "f": -1, "do": "Cubre el ala y entra al final", "via": "door"},
+        {"room": "Change Room", "f": 2, "do": "Entra y hackea cámaras si mata a alguien", "via": "door"},
+        {"room": "Laund.", "f": 2, "do": "Toma Laund. y cierra la rotación de Staff Section", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Change Room", "f": 2, "threat": "Roamer que regresa por la puerta del ala", "how": "Segunda Logic Bomb y prefire la puerta"},
+        {"room": "Laund.", "f": 2, "threat": "Ancla de Staff Section rotando por Laund. hacia Bedroom", "how": "Sostener la puerta de Staff Section desde Laund. con las cámaras hackeadas"}
+       ],
+       "final": "Sostiene Laund. y Change Room durante el post-plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Se refuerza la pared de Staff Section hacia Security Room y la de Executive Bedroom hacia Executive Hallway; Mira pone espejo en Bedroom hacia el pasillo, Smoke ancla Staff Section, Bandit truquea Security Room, Jäger cubre Change Room y Laund., y Pulse roamea abajo en Storage para castigar la vertical de Laund. y flanquear por Back Stairs.",
+     "reinforce": ["Pared Staff Section–Security Room ×2", "Pared Executive Bedroom–Executive Hallway", "Escotillas de Laund. ×2", "Escotilla de Staff Section (Server Room B)", "Puerta Executive Bedroom (Castle)"],
+     "rotations": ["Executive Bedroom↔Change Room (pared blanda)", "Change Room↔Laund.↔Staff Section"],
+     "ops": [
+      {"op": "smoke", "room": "Staff Section", "f": 2, "role": "ancla", "job": "Ancla en la esquina, gas a la pared de Security Room cuando se abra y al plant al final"},
+      {"op": "mira", "room": "Executive Bedroom", "f": 2, "role": "ancla", "job": "Espejo hacia Executive Hallway y otro hacia Change Room; mata a los que cruzan el pasillo"},
+      {"op": "bandit", "room": "Staff Section", "f": 2, "role": "flex", "job": "Truquea la pared de Security Room desde dentro y cae a Laund. a pelear la rotación"},
+      {"op": "jager", "room": "Change Room", "f": 2, "role": "flex", "job": "ADS en Executive Hallway y Staff Section; cubre Change Room y la puerta del ala derecha"},
+      {"op": "pulse", "room": "Storage", "f": 1, "role": "roam", "job": "Roamea abajo: escanea al que abra las escotillas de Laund. y flanquea por Back Stairs a Press Section B"}
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Kiba + Maestro",
+     "summary": "Setup para aguantar la vertical: Azami tapa los huecos del techo de Executive Bedroom, Maestro pone Evil Eyes en Staff Section mirando Security Room y Laund., Kaid electrifica pared y escotillas, Mozzie roba drones en Kitchen para que el rival entre ciego y Vigil roamea Press Section para pegar por la espalda al que entra por atrás.",
+     "reinforce": ["Pared Staff Section–Security Room ×2", "Pared Executive Bedroom–Executive Hallway", "Escotilla de Staff Section", "Escotillas de Laund. ×2"],
+     "rotations": ["Executive Bedroom↔Change Room", "Staff Section↔Laund."],
+     "ops": [
+      {"op": "kaid", "room": "Staff Section", "f": 2, "role": "ancla", "job": "Rtila en la pared de Security Room y en la escotilla de Server Room B; ancla en la esquina"},
+      {"op": "azami", "room": "Executive Bedroom", "f": 2, "role": "ancla", "job": "Kiba en el techo cuando abran desde Server Room A y en la puerta del pasillo; ancla detrás de la cama"},
+      {"op": "maestro", "room": "Laund.", "f": 2, "role": "flex", "job": "Evil Eye en Staff Section hacia Security Room y otro en Laund. hacia Change Room; pelea desde Laund."},
+      {"op": "mozzie", "room": "Kitchen", "f": 2, "role": "flex", "job": "Pests en Kitchen y Executive Hallway para robar drones; pica desde Kitchen y se repliega a Executive Bedroom"},
+      {"op": "vigil", "room": "Press Section B", "f": 2, "role": "roam", "job": "Roamea Press Section y Pr.BR; espera a que pasen a Security Room y pega por la espalda"}
+     ]
+    }
+   ]
+  },
+  "cargo": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thatcher y Thermite entran por Cargo Front Entrance, cruzan Technical Seating y abren la pared de Luggage Hold desde Service Corridor. Buck abre el piso de Laund. sobre Storage y Luggage para picar a la ancla, Montagne baja por Back Stairs a Cargo Hold y Jackal cierra Front Stairs. Funciona porque el sótano es un tubo: sin la pared de Service Corridor y sin techo, la ancla de Luggage no tiene dónde esconderse.",
+     "timeline": [
+      "0:00–0:45 · drones a Service Corridor y Luggage Hold, ubicar Mira/Kapkan y al roamer de Back Stairs",
+      "0:45–1:30 · EMP + Thermite en la pared Service Corridor–Luggage Hold; Buck abre el piso de Laund.",
+      "1:30–2:30 · Montagne baja por Back Stairs, Jackal toma Front Stairs, entrada por la pared",
+      "2:30–3:00 · plant en Luggage Hold pegado a Service Corridor, post-plant desde Service Corridor y Laund."
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Dron adelantado a la bodega delantera", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Abre la barricada y limpia la entrada", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Cruza los asientos pegado a la pared", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "EMP a la pared de Luggage Hold cuando Thermite avisa", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Entra tras el breach y limpia entre las maletas", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Cargo Front Entrance", "f": 1, "threat": "Kapkan en la puerta de la bodega y Frost tras la barricada", "how": "Dron primero, disparar trampas desde afuera antes de abrir"},
+        {"room": "Technical Seating", "f": 1, "threat": "Roamer tipo Vigil entre los asientos o bajando por Front Stairs", "how": "Dron mirando Front Stairs, cruzar en pareja con Thermite"},
+        {"room": "Luggage Hold", "f": 1, "threat": "Ancla con Smoke entre las maletas y Mira mirando Service Corridor", "how": "EMP, esperar el humo y entrar solo por el breach"}
+       ],
+       "final": "Sostiene la pared abierta desde Service Corridor y cubre el plant"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Entra detrás de Thatcher", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Cruza rápido la entrada", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Avanza a Service Corridor con dron", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Carga en la pared reforzada de Luggage Hold justo tras el EMP", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Cruza con humo y planta pegado a la pared", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Service Corridor", "f": 1, "threat": "Bandit trickeando la pared y Jäger con ADS en el pasillo", "how": "EMP en el segundo exacto de poner la carga; si truquean, cambiar al techo de Buck"},
+        {"room": "Luggage Hold", "f": 1, "threat": "Ancla con Smoke tirando gas al breach", "how": "Buck ya abrió el techo; entrar con humo y prefire las maletas"}
+       ],
+       "final": "Planta en Luggage Hold del lado de la pared y se queda en Service Corridor"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Rodea por el ala derecha con dron", "via": "door"},
+        {"room": "Right Wing", "f": -1, "do": "Camina el ala hasta la puerta de Change Room", "via": "door"},
+        {"room": "Change Room", "f": 2, "do": "Entra y limpia el vestuario", "via": "door"},
+        {"room": "Laund.", "f": 2, "do": "Abre el piso y las escotillas sobre Storage y Luggage Hold con la Skeleton Key", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Change Room", "f": 2, "threat": "Roamer tipo Caveira en Change Room usando la puerta del ala", "how": "Dron primero, entrar con escopeta lista y prefire la esquina"},
+        {"room": "Laund.", "f": 2, "threat": "Pulse desde Luggage Hold disparando hacia arriba por las escotillas", "how": "Huecos pequeños alrededor de las escotillas y cambiar de posición tras cada uno"}
+       ],
+       "final": "Sostiene el techo de Luggage Hold abierto y niega la rotación durante el plant"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Rodea por atrás con escudo", "via": "door"},
+        {"room": "Back Service Entrance", "f": -1, "do": "Abre la puerta trasera de servicio", "via": "door"},
+        {"room": "Press Section B", "f": 2, "do": "Entra lento, dron detrás", "via": "door"},
+        {"room": "Back Stairs", "f": 2, "do": "Baja la escalera trasera con escudo extendido", "via": "stairs"},
+        {"room": "Back Stairs", "f": 1, "do": "Sale abajo y absorbe el fuego de Cargo Hold", "via": "stairs"},
+        {"room": "Cargo Hold", "f": 1, "do": "Entra con escudo para partir la atención mientras plantan en Luggage Hold", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Press Section B", "f": 2, "threat": "Kapkan en la puerta trasera y roamer en Pr.BR", "how": "Dron para marcar la trampa, escudo arriba y checar Pr.BR"},
+        {"room": "Back Stairs", "f": 1, "threat": "Ancla de Cargo Hold mirando la salida de la escalera y Castle en la puerta", "how": "Bajar lento con escudo extendido, pedir explosivo para el Castle"},
+        {"room": "Cargo Hold", "f": 1, "threat": "Mira en la pared hacia Back Stairs", "how": "Escudo extendido pegado al espejo hasta que Buck o Jackal peguen por atrás"}
+       ],
+       "final": "Bloquea la puerta de Cargo Hold con el escudo mientras se planta"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Official Entrance",
+       "path": [
+        {"room": "Main Entrance", "f": -1, "do": "Entra por la puerta principal escaneando huellas", "via": "door"},
+        {"room": "Front Hallway", "f": 2, "do": "Cruza a la escalera delantera", "via": "door"},
+        {"room": "Front Stairs", "f": 2, "do": "Baja siguiendo las huellas", "via": "stairs"},
+        {"room": "Front Stairs", "f": 1, "do": "Sale abajo y cubre Technical Seating", "via": "stairs"},
+        {"room": "Technical Seating", "f": 1, "do": "Se une al equipo y cierra el flanco de Front Stairs", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Front Hallway", "f": 2, "threat": "Roamer tipo Vigil o Cav que sube por Front Stairs a flanquear", "how": "Escanear huellas apenas entra, cazarlo con el equipo avisado"},
+        {"room": "Front Stairs", "f": 1, "threat": "Jäger o Pulse cubriendo la escalera desde Technical Seating", "how": "Bajar con dron adelante, prefire la salida de la escalera"}
+       ],
+       "final": "Sostiene Front Stairs y Technical Seating para que nadie flanquee durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Cinco por Cargo Front Entrance directo a Luggage Hold por Service Corridor antes de que refuercen. Ash abre la barricada y la puerta de Luggage, Ying tira Candelas por el pasillo, Blitz entra primero y Zofia limpia entre las maletas. Iana cubre Back Stairs para que no roten de Cargo Hold. Funciona porque el sótano se refuerza tarde y la puerta de la bodega está a un pasillo del sitio.",
+     "timeline": [
+      "0:00–0:20 · dron rápido a Technical Seating, checar trampas en Cargo Front Entrance",
+      "0:20–0:40 · Ash abre la barricada, Candelas a Service Corridor",
+      "0:40–1:15 · Blitz y Zofia entran a Luggage Hold, Iana cierra Cargo Hold desde Service Corridor",
+      "1:15–3:00 · plant rápido en Luggage Hold, post-plant desde Service Corridor"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Carga a la barricada de la bodega", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra corriendo", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Cruza los asientos", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Segunda carga a la puerta de Luggage Hold", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Entra tras el flash y limpia las maletas", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Cargo Front Entrance", "f": 1, "threat": "Kapkan en la puerta de la bodega", "how": "La carga rompe barricada y trampa; dron confirma"},
+        {"room": "Luggage Hold", "f": 1, "threat": "Ancla con Smoke entre las maletas", "how": "Entrar justo tras el flash de Blitz, prefire las maletas"}
+       ],
+       "final": "Planta en Luggage Hold entre las maletas"
+      },
+      {
+       "op": "blitz",
+       "role": "entrada",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Primero en la fila con escudo", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra con escudo", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Cruza flasheando los asientos", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Flash a la puerta de Luggage Hold", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Entra flasheando y empuja a la ancla", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Service Corridor", "f": 1, "threat": "Noor con el Horus esperando escudos en el pasillo", "how": "Ying tira la Candela primero, Blitz entra cegados"},
+        {"room": "Luggage Hold", "f": 1, "threat": "Mira mirando Service Corridor y Castle en la puerta", "how": "Flash pegado a la puerta, entrada pegada a la pared del espejo"}
+       ],
+       "final": "Cubre la puerta de Luggage Hold con el escudo durante el plant"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Candela a la bodega por la barricada rota", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra tras Blitz", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Segunda Candela a Service Corridor", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Última Candela dentro de Luggage Hold", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Entra y limpia el fondo hacia Cargo Hold", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Service Corridor", "f": 1, "threat": "Peek de la ancla de Luggage por la puerta del pasillo", "how": "Candela antes de asomar, cruzar mientras revienta"},
+        {"room": "Luggage Hold", "f": 1, "threat": "Ancla con Rook/Doc en el fondo hacia Cargo Hold", "how": "Candela dentro y prefire al fondo"}
+       ],
+       "final": "Sostiene Luggage Hold y niega la rotación de Cargo Hold"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Entra detrás de Blitz", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Cruza la entrada", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Impacto a los asientos si hay alguien", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Concusión a Luggage Hold antes de que entre Blitz", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Entra y limpia el lado contrario a Ash", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Technical Seating", "f": 1, "threat": "Jäger o Wamai comiéndose los proyectiles", "how": "Impacto primero para gastar el ADS, luego concusión"},
+        {"room": "Luggage Hold", "f": 1, "threat": "Ancla peleando desde el fondo con Rook", "how": "Concusión al fondo y entrar en pareja con Ash"}
+       ],
+       "final": "Cubre el plant desde dentro de Luggage Hold"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Réplica a la bodega antes de que abra Ash", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra al final", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Réplica a Service Corridor y Storage", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Se planta en el pasillo cubriendo Storage y la puerta de Cargo Hold", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Technical Seating", "f": 1, "threat": "Roamer bajando por Front Stairs a pegar por la espalda", "how": "Réplica a la escalera, avisar y prefire"},
+        {"room": "Storage", "f": 1, "threat": "Roamer en Storage o defensor cayendo por las escotillas de Laund.", "how": "Réplica de señuelo a Storage y sostener la puerta"}
+       ],
+       "final": "Sostiene Service Corridor y Storage durante el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Todo desde el piso principal: Sledge abre Laund. sobre Storage y Luggage Hold, Ram suelta BU-GI en Staff Section sobre Cargo Hold, Fuze cocina Cargo Hold por la escotilla de Staff Section y Brava convierte los gadgets del sótano. Gridlock tapa Back Stairs con Trax para que la ancla no salga a cazar y la entrada final es por Back Stairs cuando el sitio está vacío.",
+     "timeline": [
+      "0:00–0:45 · dron de Brava al sótano, convertir Evil Eye/ADS; todos suben a Laund. y Staff Section",
+      "0:45–1:30 · Sledge abre el piso de Laund., Ram suelta BU-GI en Staff Section, Gridlock tapa Back Stairs",
+      "1:30–2:30 · Fuze tira cargas a Cargo Hold por la escotilla, Sledge caza a la ancla por los huecos",
+      "2:30–3:00 · bajan por Back Stairs y plantan en Cargo Hold bajo los huecos"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "blando",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Rodea por el ala derecha con dron", "via": "door"},
+        {"room": "Right Wing", "f": -1, "do": "Camina hasta la puerta de Change Room", "via": "door"},
+        {"room": "Change Room", "f": 2, "do": "Entra y limpia", "via": "door"},
+        {"room": "Laund.", "f": 2, "do": "Martilla el piso sobre Storage y Luggage Hold y pica por los huecos", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Change Room", "f": 2, "threat": "Roamer tipo Caveira en Change Room", "how": "Dron primero, prefire la esquina al entrar"},
+        {"room": "Laund.", "f": 2, "threat": "Pulse desde Luggage Hold tirando hacia arriba", "how": "Huecos pequeños y moverse tras cada martillazo"}
+       ],
+       "final": "Sostiene los huecos de Laund. y remata a la ancla de Luggage Hold desde arriba"
+      },
+      {
+       "op": "ram",
+       "role": "negacion",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Entra por prensa con dron", "via": "door"},
+        {"room": "Press Section A", "f": 2, "do": "Cruza los asientos", "via": "door"},
+        {"room": "Security Room", "f": 2, "do": "Avanza a Staff Section", "via": "door"},
+        {"room": "Staff Section", "f": 2, "do": "Suelta BU-GI en el piso sobre Cargo Hold y sostiene la línea abierta", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Press Section A", "f": 2, "threat": "Kapkan en la puerta de prensa y roamer en Security Room", "how": "Dron primero, disparar trampas y cruzar en pareja con Gridlock"},
+        {"room": "Staff Section", "f": 2, "threat": "Defensor cubriendo la escotilla desde Cargo Hold y Jäger ADS arriba", "how": "Brava convierte el ADS, soltar el BU-GI desde atrás y no asomarse hasta que termine"}
+       ],
+       "final": "Niega Cargo Hold desde arriba durante el plant"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Entra detrás de Ram", "via": "door"},
+        {"room": "Press Section A", "f": 2, "do": "Cruza cubriendo", "via": "door"},
+        {"room": "Security Room", "f": 2, "do": "Avanza a Staff Section", "via": "door"},
+        {"room": "Staff Section", "f": 2, "do": "Cargas de racimo junto a la escotilla sobre Cargo Hold", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Security Room", "f": 2, "threat": "Roamer tipo Vigil escondido en Security Room", "how": "Dron mirando Security Room mientras Ram cruza, prefire"},
+        {"room": "Cargo Hold", "f": 1, "threat": "Ancla con Smoke y Mira pegadas a la pared de Back Stairs", "how": "Cargas alrededor de la escotilla, activarlas cuando Sledge ya tenga huecos en Laund."}
+       ],
+       "final": "Cocina Cargo Hold y baja por Back Stairs al final para plantar"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Dron Kludge a la bodega, convierte gadgets del sótano", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra con el segundo Kludge", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Convierte ADS y Evil Eye de Service Corridor y Luggage Hold", "via": "door"},
+        {"room": "Front Stairs", "f": 1, "do": "Se cubre en la escalera delantera y sostiene Technical Seating", "via": "stairs"}
+       ],
+       "clear": [
+        {"room": "Technical Seating", "f": 1, "threat": "Roamer entre los asientos y Gu de Lesion", "how": "Kludge primero, prefire esquinas y entrar con el equipo avisado"},
+        {"room": "Service Corridor", "f": 1, "threat": "Evil Eye de Maestro y ADS de Jäger cubriendo el pasillo", "how": "Convertirlos con el Kludge para que trabajen para nosotros"}
+       ],
+       "final": "Sostiene Technical Seating y Front Stairs para que nadie salga por adelante"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Rodea por atrás", "via": "door"},
+        {"room": "Back Service Entrance", "f": -1, "do": "Abre la puerta trasera de servicio", "via": "door"},
+        {"room": "Press Section B", "f": 2, "do": "Trax en Press Section B hacia Pr.BR", "via": "door"},
+        {"room": "Back Stairs", "f": 2, "do": "Trax en la escalera trasera para que la ancla no suba a cazar; baja al final", "via": "stairs"},
+        {"room": "Back Stairs", "f": 1, "do": "Sale abajo cuando el sitio está vacío", "via": "stairs"},
+        {"room": "Cargo Hold", "f": 1, "do": "Entra y planta bajo los huecos", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Press Section B", "f": 2, "threat": "Kapkan en la puerta trasera y roamer en Pr.BR", "how": "Dron primero, disparar trampas, Trax hacia Pr.BR"},
+        {"room": "Back Stairs", "f": 2, "threat": "Ancla de Cargo Hold subiendo por Back Stairs a cazar al vertical", "how": "Trax en la escalera y sostener desde Press Section B"}
+       ],
+       "final": "Baja por Back Stairs al final y planta en Cargo Hold"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes: Ace, Blackbeard y Finka entran por Cargo Front Entrance y abren la pared de Luggage Hold desde Service Corridor; Maverick y Lion bajan por Back Stairs desde Press Section B y queman la pared de Cargo Hold. Lion escanea justo cuando caen las dos aperturas para que la ancla no pueda rotar sin que la vean.",
+     "timeline": [
+      "0:00–0:45 · drones a Service Corridor y Back Stairs, ubicar espejo de Mira y trampas",
+      "0:45–1:30 · Ace abre la pared de Luggage Hold; Maverick quema líneas en Cargo Hold desde Back Stairs",
+      "1:30–2:30 · Lion escanea, Finka activa, Blackbeard presiona Luggage Hold, Maverick entra a Cargo Hold",
+      "2:30–3:00 · plant en Luggage Hold, post-plant desde Service Corridor y Back Stairs"
+     ],
+     "ops": [
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Dron a la bodega", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Abre la barricada", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Cruza a Service Corridor", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "SELMA en la pared reforzada de Luggage Hold", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Entra por el hueco y planta", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Technical Seating", "f": 1, "threat": "Roamer entre los asientos y Kapkan en la entrada", "how": "Dron primero, disparar trampas y cruzar en pareja"},
+        {"room": "Service Corridor", "f": 1, "threat": "Bandit trickeando la pared de Luggage Hold", "how": "Poner la SELMA cuando Lion escanea; si truquean, segunda carga en otro panel"}
+       ],
+       "final": "Planta en Luggage Hold pegado a la pared abierta"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Cubre a Ace", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Entra con escudo del rifle", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Sostiene los asientos mientras Ace avanza", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Pica por el hueco de Ace con el escudo del rifle", "via": "door"},
+        {"room": "Luggage Hold", "f": 1, "do": "Entra y limpia las maletas", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Service Corridor", "f": 1, "threat": "Mira mirando el pasillo desde Luggage Hold", "how": "Pegarse fuera de la línea del espejo, esperar el hueco de Ace"},
+        {"room": "Luggage Hold", "f": 1, "threat": "Noor esperando el escudo en la puerta", "how": "Entrar solo por el hueco de Ace, nunca por la puerta"}
+       ],
+       "final": "Cubre Luggage Hold y la rotación a Cargo Hold"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Service Entrance",
+       "path": [
+        {"room": "Front Service Entrance", "f": -1, "do": "Entra al final del grupo delantero", "via": "door"},
+        {"room": "Cargo Front Entrance", "f": 1, "do": "Cruza la entrada", "via": "door"},
+        {"room": "Technical Seating", "f": 1, "do": "Activa Adrenal Surge cuando abren las dos paredes", "via": "door"},
+        {"room": "Service Corridor", "f": 1, "do": "Cubre Storage y la puerta de Cargo Hold", "via": "door"},
+        {"room": "Storage", "f": 1, "do": "Toma Storage para cerrar la rotación por las escotillas", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Service Corridor", "f": 1, "threat": "Roamer saliendo de Storage por la espalda del grupo", "how": "Dron a Storage antes de cruzar, prefire la puerta"},
+        {"room": "Storage", "f": 1, "threat": "Defensor cayendo por las escotillas de Laund. a flanquear", "how": "Sostener Storage mirando las escotillas con el segundo surge listo"}
+       ],
+       "final": "Sostiene Storage y Service Corridor durante el plant"
+      },
+      {
+       "op": "maverick",
+       "role": "duro",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Rodea por atrás con dron", "via": "door"},
+        {"room": "Back Service Entrance", "f": -1, "do": "Abre la puerta trasera con el soplete", "via": "door"},
+        {"room": "Press Section B", "f": 2, "do": "Cruza a la escalera trasera", "via": "door"},
+        {"room": "Back Stairs", "f": 2, "do": "Baja en silencio", "via": "stairs"},
+        {"room": "Back Stairs", "f": 1, "do": "Quema líneas en la pared de Cargo Hold a la altura de la ancla", "via": "stairs"},
+        {"room": "Cargo Hold", "f": 1, "do": "Entra por el hueco al final cuando el sitio está vacío", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Press Section B", "f": 2, "threat": "Kapkan en la puerta trasera y roamer en Pr.BR", "how": "Dron primero, disparar trampas, checar Pr.BR"},
+        {"room": "Back Stairs", "f": 1, "threat": "Kaid o Bandit en la pared de Cargo Hold y ancla mirando la escalera", "how": "Líneas pequeñas primero, tirar por ahí con el escaneo de Lion"}
+       ],
+       "final": "Sostiene Back Stairs y la pared abierta de Cargo Hold durante el plant"
+      },
+      {
+       "op": "lion",
+       "role": "intel",
+       "spawn": "Reporter Entrance",
+       "path": [
+        {"room": "Reporter Entrance", "f": -1, "do": "Cubre a Maverick", "via": "door"},
+        {"room": "Back Service Entrance", "f": -1, "do": "Entra detrás", "via": "door"},
+        {"room": "Press Section B", "f": 2, "do": "Escanea cuando caen las dos aperturas", "via": "door"},
+        {"room": "Back Stairs", "f": 2, "do": "Cubre la escalera desde arriba", "via": "stairs"},
+        {"room": "Back Stairs", "f": 1, "do": "Baja detrás de Maverick y pica por las líneas", "via": "stairs"},
+        {"room": "Cargo Hold", "f": 1, "do": "Entra al final con el segundo escaneo", "via": "breach"}
+       ],
+       "clear": [
+        {"room": "Press Section B", "f": 2, "threat": "Roamer en Pr.BR o Caterer que pega por la espalda", "how": "Escaneo antes de bajar, checar Pr.BR y Caterer con dron"},
+        {"room": "Cargo Hold", "f": 1, "threat": "Ancla con Smoke atrás de los contenedores", "how": "Segundo escaneo y prefire los contenedores con Maverick"}
+       ],
+       "final": "Cubre Cargo Hold y Back Stairs durante el post-plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Se refuerza la pared de Luggage Hold hacia Service Corridor y la de Cargo Hold hacia Back Stairs, más las escotillas de Laund. y Staff Section; Mira pone espejo en Cargo Hold hacia Back Stairs, Smoke ancla Luggage Hold, Bandit truquea las paredes, Jäger cubre Storage y Service Corridor, y Pulse roamea arriba en Laund. para castigar la vertical y bajar por Front Stairs.",
+     "reinforce": ["Pared Luggage Hold–Service Corridor ×2", "Pared Cargo Hold–Back Stairs", "Escotillas de Laund. ×2", "Escotilla de Staff Section", "Puerta Cargo Hold (Castle)"],
+     "rotations": ["Cargo Hold↔Luggage Hold (rotación entre contenedores)", "Luggage Hold↔Storage (pared blanda)"],
+     "ops": [
+      {"op": "smoke", "room": "Luggage Hold", "f": 1, "role": "ancla", "job": "Ancla entre las maletas, gas a la pared de Service Corridor cuando se abra y al plant al final"},
+      {"op": "mira", "room": "Cargo Hold", "f": 1, "role": "ancla", "job": "Espejo hacia Back Stairs y otro hacia Luggage Hold; mata a los que bajan la escalera"},
+      {"op": "bandit", "room": "Luggage Hold", "f": 1, "role": "flex", "job": "Truquea la pared de Service Corridor y rota a Cargo Hold a pelear Back Stairs"},
+      {"op": "jager", "room": "Storage", "f": 1, "role": "flex", "job": "ADS en Service Corridor y Luggage Hold; cubre Storage y las escotillas de Laund."},
+      {"op": "pulse", "room": "Laund.", "f": 2, "role": "roam", "job": "Roamea arriba: escanea al vertical de Laund. y Staff Section y baja por Front Stairs a pegar por la espalda en Technical Seating"}
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Aruni + Echo",
+     "summary": "Setup para aguantar Back Stairs y la vertical: Aruni pone Surya en Back Stairs y en la puerta de Luggage Hold, Echo con Yokai en Cargo Hold y Service Corridor para negar el plant, Kaid electrifica pared y escotillas, Warden aguanta los flashes del rush en Service Corridor y Caveira roamea arriba en Change Room para cazar al vertical de Laund.",
+     "reinforce": ["Pared Luggage Hold–Service Corridor ×2", "Pared Cargo Hold–Back Stairs", "Escotillas de Laund. ×2", "Escotilla de Staff Section"],
+     "rotations": ["Cargo Hold↔Luggage Hold", "Luggage Hold↔Storage"],
+     "ops": [
+      {"op": "kaid", "room": "Luggage Hold", "f": 1, "role": "ancla", "job": "Rtila en la pared de Service Corridor y en las escotillas de Laund.; ancla entre las maletas"},
+      {"op": "echo", "room": "Cargo Hold", "f": 1, "role": "ancla", "job": "Yokai en Cargo Hold y Service Corridor; niega el plant con sónico y ancla atrás de los contenedores"},
+      {"op": "aruni", "room": "Back Stairs", "f": 1, "role": "flex", "job": "Surya en Back Stairs y en la puerta de Luggage Hold; pelea la escalera y se repliega a Cargo Hold"},
+      {"op": "warden", "room": "Service Corridor", "f": 1, "role": "flex", "job": "Sostiene Service Corridor con Glance contra los flashes y humos del rush; se repliega a Luggage Hold"},
+      {"op": "caveira", "room": "Change Room", "f": 2, "role": "roam", "job": "Roamea Change Room y Laund.; caza al vertical que entra por el ala y interroga para ubicar al resto"}
+     ]
+    }
+   ]
+  }
+ }
+}

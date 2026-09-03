@@ -1,0 +1,5141 @@
+{
+ "map": "consulate",
+ "sites": {
+  "garage": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Abrimos la pared reforzada de Cafeteria desde Service Stairs con Thatcher + Thermite mientras Buck rompe el piso de Lobby sobre Cafeteria para negar la ancla. La puerta grande del Garage se presiona con Osa para que la defensa tenga que partirse en dos. Funciona porque el sitio es largo y la rotación Garage↔Cafeteria queda expuesta a la vertical.",
+     "timeline": [
+      "0:00–0:45 · drones abajo por Garage Way y Visa Entrance; Buck sube a Lobby",
+      "0:45–1:30 · Thatcher EMP + Thermite en pared Cafeteria; Buck abre piso Lobby",
+      "1:30–2:30 · Osa empuja puerta Garage, Lion escanea, entrada por pared",
+      "2:30–3:00 · plant en Cafeteria, Nomad cuida Exit Stairs"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dronea Visa Entrance y Service Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cruza pegado a la pared, ojo a la ventana de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "baja con cuidado, revisa el hueco de escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "do": "EMP contra la pared de Cafeteria (Bandit/Kaid/Mute)",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "do": "entra detrás de Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer tipo Vigil/Cav esperando en el corredor de Visa",
+         "how": "dron antes de cruzar, entrar en pareja, no rushear la puerta"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "threat": "Bandit trickeando la pared o Kapkan en la puerta de abajo",
+         "how": "revisar marco de puerta con dron, EMP justo antes de que Thermite pegue la carga"
+        }
+       ],
+       "final": "sostiene la pared abierta y cubre la rotación Locker Hallway"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "acompaña a Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "revisa Dumpster antes de cruzar",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "limpia esquinas",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "baja tras el dron",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "do": "pega la carga en la pared de Cafeteria tras el EMP",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "do": "entra por el hueco con humo de apoyo",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "threat": "Ancla de Cafeteria pre-apuntando el hueco de la pared",
+         "how": "abrir y no entrar de inmediato; esperar el flash o el humo de Osa/Lion"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "threat": "Smoke con gas en la entrada y Mira mirando desde la barra",
+         "how": "dron confirma espejo, romper canister o entrar por el lado ciego cuando Buck abra arriba"
+        }
+       ],
+       "final": "planta en Cafeteria pegado a la pared abierta"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dronea la entrada principal",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza rápido, ojo a ventanas de Press Room",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe barricada de la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra y limpia Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "abre el piso sobre Cafeteria con Skeleton Key y revisa escotilla",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "baja al final para rematar",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 0,
+         "do": "entra a Cafeteria por escaleras",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer subiendo por Main Stairs a flanquear",
+         "how": "dron en la escalera, Claymore en Main Stairs antes de ponerse a abrir piso"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "threat": "Ancla con Smoke escondida bajo el piso de Lobby",
+         "how": "abrir agujeros pequeños, escuchar, disparar a través antes de bajar"
+        }
+       ],
+       "final": "mata la ancla desde arriba y baja a cubrir el plant"
+      },
+      {
+       "op": "osa",
+       "role": "entrada",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "dronea el Garage por debajo de la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "coloca el Talon en la puerta grande del Garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "entra detrás del escudo, revisa detrás de los autos",
+         "via": "door"
+        },
+        {
+         "room": "Basement Corridor",
+         "f": 0,
+         "do": "presiona el corredor hacia Cafeteria",
+         "via": "door"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "do": "cubre el plant",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage",
+         "f": 0,
+         "threat": "Castle en la puerta + Mira detrás de los autos + Kapkan",
+         "how": "Talon como cobertura, dron confirma trampas, no cruzar hasta que Lion escanee"
+        },
+        {
+         "room": "Basement Corridor",
+         "f": 0,
+         "threat": "Ancla de Garage retrocediendo a Security Room",
+         "how": "prefire de la esquina de Security, avanzar en pareja"
+        }
+       ],
+       "final": "sostiene Garage y la rotación desde Basement Corridor"
+      },
+      {
+       "op": "lion",
+       "role": "intel/flanco",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "junto a Osa",
+         "via": "door"
+        },
+        {
+         "room": "Back Courtyard",
+         "f": -1,
+         "do": "Claymore en Emergency Exit",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "escanea cuando Osa abra la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "entra segundo, limpia el ángulo de Exit Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Exit Stairs",
+         "f": 0,
+         "do": "cierra el flanco de las escaleras de salida",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "threat": "Defensor asomando por la puerta del Garage a spawnpeek",
+         "how": "no pararse frente a la puerta, entrar solo tras el escaneo"
+        },
+        {
+         "room": "Exit Stairs",
+         "f": 0,
+         "threat": "Roamer bajando por Exit Stairs a la espalda de Garage",
+         "how": "escaneo + Claymore en la escalera, revisar antes del plant"
+        }
+       ],
+       "final": "escanea en el plant y cuida Exit Stairs"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Todos por la puerta grande del Garage con Ash rompiéndola de lejos y Ying cegando el sitio antes de que terminen de reforzar. La idea es pillar a Castle y Mira a medio setup: en Consulate el Garage se arma lento porque hay mucha pared.",
+     "timeline": [
+      "0:00–0:20 · Ash rompe la puerta del Garage desde Garage Way",
+      "0:20–0:40 · Candelas de Ying al Garage, Zofia flashea Basement Corridor",
+      "0:40–1:10 · entrada en bloque, Blitz al frente",
+      "1:10–1:40 · plant rápido en Garage detrás de los autos"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "corre pegado a la barda",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "breach round a la puerta grande del Garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "entra primera, limpia detrás de los autos",
+         "via": "breach"
+        },
+        {
+         "room": "Basement Corridor",
+         "f": 0,
+         "do": "asegura la conexión a Cafeteria",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage",
+         "f": 0,
+         "threat": "Defensor armando Castle o Bandit en la puerta",
+         "how": "breach round desde lejos y entrar cuando las Candelas exploten"
+        },
+        {
+         "room": "Basement Corridor",
+         "f": 0,
+         "threat": "Rotación de Cafeteria llegando por el corredor",
+         "how": "prefire de la puerta, Zofia impacta primero"
+        }
+       ],
+       "final": "sostiene Basement Corridor mientras plantan"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "sigue a Ash",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "Candelas dentro del Garage por el hueco",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "entra ciega a los defensores",
+         "via": "breach"
+        },
+        {
+         "room": "Security Room",
+         "f": 0,
+         "do": "limpia la esquina de Security",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage",
+         "f": 0,
+         "threat": "Mira detrás de los autos y Kapkan",
+         "how": "Candela detrás de los autos y luego pushear"
+        },
+        {
+         "room": "Security Room",
+         "f": 0,
+         "threat": "Ancla retrasada cubriendo el corredor",
+         "how": "segunda Candela y flanco a dos"
+        }
+       ],
+       "final": "planta en Garage detrás de los autos"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "tercera en la fila",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "impact a la puerta si sigue cerrada",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "conmoción a Basement Corridor",
+         "via": "breach"
+        },
+        {
+         "room": "Exit Stairs",
+         "f": 0,
+         "do": "cierra la escalera con Claymore",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage",
+         "f": 0,
+         "threat": "Frost con cepos bajo los autos",
+         "how": "revisar el piso con dron o disparar a los cepos antes de cruzar"
+        },
+        {
+         "room": "Exit Stairs",
+         "f": 0,
+         "threat": "Roamer bajando por la espalda",
+         "how": "Claymore en la escalera y mirar hacia arriba"
+        }
+       ],
+       "final": "cuida Exit Stairs y Basement Corridor en el post-plant"
+      },
+      {
+       "op": "blitz",
+       "role": "soporte",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "escudo al frente en la puerta abierta",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "flash y push detrás de los autos",
+         "via": "breach"
+        },
+        {
+         "room": "Basement Corridor",
+         "f": 0,
+         "do": "empuja hacia Cafeteria con el flash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage",
+         "f": 0,
+         "threat": "Noor con fuego en la entrada contra escudos",
+         "how": "no pararse en la puerta, entrar en diagonal y flashear de inmediato"
+        },
+        {
+         "room": "Basement Corridor",
+         "f": 0,
+         "threat": "Ancla con escopeta en la esquina",
+         "how": "flash y que Ash/Zofia rematen"
+        }
+       ],
+       "final": "bloquea Basement Corridor con el escudo mientras plantan"
+      },
+      {
+       "op": "finka",
+       "role": "soporte",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "activa boost al llegar a la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "cubre la retaguardia",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "entra última, revisa Exit Stairs",
+         "via": "breach"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "do": "presiona Cafeteria si el sitio ya cayó",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "threat": "Spawnpeek desde la puerta o ventana de Press Room arriba",
+         "how": "correr en zigzag y no parar en el patio"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "threat": "Smoke tirando gas al plant desde Cafeteria",
+         "how": "boost para revivir y empujar el gas desde Basement Corridor"
+        }
+       ],
+       "final": "cubre plant con boost y revive lo que caiga"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Sledge y Fuze trabajan desde Lobby y Press Room encima de Cafeteria y Garage: las anclas del sótano no tienen techo reforzado y las escotillas de Lobby y Press Room caen fácil. Entramos al final por Main Stairs cuando el sitio ya quedó vacío.",
+     "timeline": [
+      "0:00–0:45 · toma de Lobby y Press Room por la puerta principal",
+      "0:45–1:30 · Sledge abre piso, Fuze pone cargas sobre Cafeteria",
+      "1:30–2:30 · Jackal caza al roamer, Kali abre escotilla Lobby",
+      "2:30–3:00 · bajan por Main Stairs y plantan"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza por el jardín",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "limpia el pasillo de entrada",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "abre el piso sobre la barra de Cafeteria",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "baja para rematar",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 0,
+         "do": "entra a Cafeteria",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Kapkan o Ela en la puerta principal",
+         "how": "dron por debajo de la barricada, disparar trampa"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer en Antechamber o Main Stairs",
+         "how": "limpiar en pareja con Jackal antes de ponerse a martillar"
+        }
+       ],
+       "final": "controla Cafeteria desde arriba y baja para el plant"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Press Room",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza el jardín",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "sigue a Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "cargas de racimo sobre Cafeteria",
+         "via": "door"
+        },
+        {
+         "room": "West Corridor",
+         "f": 1,
+         "do": "pasa a Press Room",
+         "via": "door"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "do": "carga sobre el Garage y abre la escotilla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer con Mozzie robando drones y peek de Antechamber",
+         "how": "limpiar Antechamber con dron antes de poner cargas"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "threat": "Roamer esperando en Exit Stairs",
+         "how": "Claymore en Exit Stairs y cargas rápidas"
+        }
+       ],
+       "final": "cae por escotilla de Press Room al Garage al final"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "revisa ventanas de Press Room",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cubre a Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "cubre Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "lanza abre la escotilla de Lobby a Cafeteria y quita Bandit",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "cubre la escalera hacia el sótano",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "threat": "Spawnpeek desde ventanas de Press Room",
+         "how": "peek con la sniper desde lejos antes de cruzar"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "threat": "Ancla peekeando la escalera desde abajo",
+         "how": "mantener ángulo largo, no bajar sin drones"
+        }
+       ],
+       "final": "sostiene Main Stairs con ángulo largo hacia el sótano"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Visa Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "escanea huellas del roamer",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "limpia Tellers y East Corridor",
+         "via": "door"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "do": "cierra el flanco hacia Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "se une al grupo vertical",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer tipo Vigil/Cav cerca de Service Stairs",
+         "how": "escanear huellas y cazar con apoyo"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Roamer subiendo por Service Stairs",
+         "how": "Claymore en la salida de Service Stairs"
+        }
+       ],
+       "final": "cuida los flancos de 1F mientras el resto juega vertical"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "dron al Garage por la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Back Courtyard",
+         "f": -1,
+         "do": "Trax en Emergency Exit",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "Trax frente a la puerta del Garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "do": "entra al final cuando el sitio esté limpio",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Back Courtyard",
+         "f": -1,
+         "threat": "Roamer saliendo por Emergency Exit a flanquear",
+         "how": "Trax en la puerta y esperar a escuchar"
+        },
+        {
+         "room": "Garage",
+         "f": 0,
+         "threat": "Ancla retrasada detrás de los autos",
+         "how": "esperar a que Fuze limpie desde arriba, entrar en el 2:30"
+        }
+       ],
+       "final": "planta en Garage con el sitio ya vacío"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes: Hibana + Brava por la pared de Cafeteria desde Service Stairs, y Ram + Iana + Nomad por Main Stairs desde Lobby. Los defensores del sótano no pueden mirar Locker Hallway y la pared al mismo tiempo, y Ram abre el piso de Lobby para castigar cualquier rotación.",
+     "timeline": [
+      "0:00–0:45 · drones por Visa Entrance y Front Door",
+      "0:45–1:30 · Brava hackea Bandit/Kaid, Hibana abre pared",
+      "1:30–2:30 · Ram tira BU-GI sobre Cafeteria; entrada doble",
+      "2:30–3:00 · plant en Cafeteria, Nomad en Main Stairs"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Service Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cruza al lateral",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra y limpia",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "baja al sótano",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "do": "pellets en la pared de Cafeteria",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "do": "entra por el hueco",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "threat": "Kapkan en la puerta de abajo y Bandit trickeando",
+         "how": "dron a la puerta, Brava convierte la batería"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "threat": "Ancla con Mira apuntando el hueco",
+         "how": "esperar a que Ram abra arriba y entrar cuando la ancla se mueva"
+        }
+       ],
+       "final": "planta en Cafeteria"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "Kludge por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cubre a Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "dron Kludge baja por la escalera",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "hackea Bandit/Kaid detrás de la pared",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "do": "cubre la pared mientras Hibana abre",
+         "via": "stairs"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "do": "entra segunda",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer tipo Vigil en Tellers",
+         "how": "Kludge revisa Tellers, no dejar la espalda abierta"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "threat": "Mute jammer en la pared",
+         "how": "Kludge lo hackea o lo rompe a bala por el hueco"
+        }
+       ],
+       "final": "cubre el plant desde la pared abierta"
+      },
+      {
+       "op": "ram",
+       "role": "vertical",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza al frente",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "abre la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "limpia el hall",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "BU-GI de Lobby hacia Main Stairs para abrir piso sobre Cafeteria",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "baja con Iana",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 0,
+         "do": "entra al sótano",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Roamer en Antechamber peekeando Lobby",
+         "how": "dron y limpiar Antechamber con Iana antes del BU-GI"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 0,
+         "threat": "Ancla de Cafeteria vigilando la escalera",
+         "how": "BU-GI abre el piso primero para forzarla a moverse"
+        }
+       ],
+       "final": "entra a Cafeteria por Main Stairs y cubre el plant"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "Gemini a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "con Ram",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "limpia",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Gemini baja por Main Stairs a ver Cafeteria",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "baja tras el holograma",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 0,
+         "do": "presiona Cafeteria",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 0,
+         "threat": "Ela con Grzmot en la escalera",
+         "how": "Gemini detona las minas primero"
+        },
+        {
+         "room": "Cafeteria",
+         "f": 0,
+         "threat": "Smoke pegado a la pared de Main Stairs",
+         "how": "Gemini localiza, Ram y Iana pushean juntos"
+        }
+       ],
+       "final": "entra con Ram y limpia Cafeteria"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "acompaña al grupo de la pared",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "Airjab en la ventana de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "Airjab en la puerta de Tellers",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "Airjab en lo alto de la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 0,
+         "do": "cubre la espalda de Hibana",
+         "via": "stairs"
+        },
+        {
+         "room": "Archives Corridor",
+         "f": 0,
+         "do": "cierra el flanco desde Archives",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Roamer saliendo de Tellers a la espalda",
+         "how": "Airjab en la puerta y escuchar"
+        },
+        {
+         "room": "Archives Corridor",
+         "f": 0,
+         "threat": "Roamer llegando desde Archives",
+         "how": "peek con ángulo, Airjab en el pasillo"
+        }
+       ],
+       "final": "cuida los flancos de Service Stairs durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Castle cierra la puerta del Garage, Mira abre espejos hacia Basement Corridor y la puerta grande, Bandit trickea la pared de Cafeteria desde Service Stairs. Smoke ancla Cafeteria con gas para el plant y Jäger limpia flashes. El sitio se defiende bloqueando la puerta y castigando la vertical.",
+     "reinforce": [
+      "Pared Cafeteria–Service Stairs ×2",
+      "Puerta del Garage (Castle)",
+      "Escotilla Press Room sobre Garage",
+      "Escotilla Lobby sobre Cafeteria"
+     ],
+     "rotations": [
+      "Garage↔Basement Corridor↔Cafeteria",
+      "Cafeteria↔Main Stairs (rotación a Lobby)"
+     ],
+     "ops": [
+      {
+       "op": "castle",
+       "room": "Garage",
+       "f": 0,
+       "role": "ancla",
+       "job": "Castle en la puerta grande del Garage y cubre detrás de los autos"
+      },
+      {
+       "op": "mira",
+       "room": "Basement Corridor",
+       "f": 0,
+       "role": "ancla",
+       "job": "Espejos en Basement Corridor hacia Garage y hacia Security Room; sostiene con la escopeta"
+      },
+      {
+       "op": "smoke",
+       "room": "Cafeteria",
+       "f": 0,
+       "role": "ancla",
+       "job": "Gas para el plant en Cafeteria; mira la pared reforzada y Main Stairs"
+      },
+      {
+       "op": "bandit",
+       "room": "Service Stairs",
+       "f": 0,
+       "role": "flex",
+       "job": "Trickea la pared de Cafeteria desde Service Stairs; luego rota a Locker Hallway"
+      },
+      {
+       "op": "jager",
+       "room": "Lobby",
+       "f": 1,
+       "role": "roam",
+       "job": "ADS en Cafeteria y Garage al inicio; roamea Lobby y Antechamber para castigar la vertical"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rush con Kapkan + Noor",
+     "summary": "Setup contra el rush por la puerta del Garage: Kapkan pone trampas en todas las puertas del sótano, Noor quema la entrada del Garage contra Blitz/Osa, Melusi ralentiza Basement Corridor y Valkyrie da info desde arriba para que Vigil cace en Lobby.",
+     "reinforce": [
+      "Pared Cafeteria–Service Stairs ×2",
+      "Escotilla Lobby sobre Cafeteria",
+      "Escotilla Press Room sobre Garage"
+     ],
+     "rotations": [
+      "Garage↔Basement Corridor↔Cafeteria",
+      "Cafeteria↔Locker Hallway↔Service Stairs"
+     ],
+     "ops": [
+      {
+       "op": "kapkan",
+       "room": "Garage",
+       "f": 0,
+       "role": "ancla",
+       "job": "Trampas en puerta Garage–Basement Corridor, Exit Stairs y Security Room; ancla detrás de los autos"
+      },
+      {
+       "op": "noor",
+       "room": "Garage",
+       "f": 0,
+       "role": "ancla",
+       "job": "Fuego en la puerta grande del Garage cuando entren escudos; segunda línea junto a Kapkan"
+      },
+      {
+       "op": "melusi",
+       "room": "Cafeteria",
+       "f": 0,
+       "role": "ancla",
+       "job": "Banshees en Main Stairs y la pared de Cafeteria; sostiene la barra"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Locker Hallway",
+       "f": 0,
+       "role": "flex",
+       "job": "Cámaras en Garage Way, Service Stairs y Lobby; rota entre Cafeteria y Locker Hallway"
+      },
+      {
+       "op": "vigil",
+       "room": "Antechamber",
+       "f": 1,
+       "role": "roam",
+       "job": "Roamea Antechamber y Lobby, castiga a los que suben a hacer vertical y baja por Main Stairs tarde"
+      }
+     ]
+    }
+   ]
+  },
+  "lobby": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Ace abre la pared de Press Room desde Visa Office con Thatcher quitando Bandit, mientras Sledge trabaja el piso de Consulate Office sobre Lobby para sacar a Maestro. Montagne entra por la puerta principal para fijar al Lobby y Twitch limpia Evil Eyes. Funciona porque Lobby es enorme y la defensa depende de gadgets electrónicos que Thatcher y Twitch apagan.",
+     "timeline": [
+      "0:00–0:45 · drones a Lobby y Press Room; Sledge sube por Main Stairs",
+      "0:45–1:30 · Thatcher EMP + Ace pared Press Room; Twitch mata Evil Eyes",
+      "1:30–2:30 · Montagne fija Lobby desde Front Door, entrada por la pared",
+      "2:30–3:00 · plant en Press Room detrás del podio"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "revisa la ventana de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "EMP contra la pared de Press Room",
+         "via": "door"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "do": "entra tras Ace",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer en Service Stairs o Tellers",
+         "how": "dron primero, Claymore en Service Stairs"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Kapkan en la puerta y Bandit trickeando la pared",
+         "how": "disparar trampa, EMP justo cuando Ace lance el SELMA"
+        }
+       ],
+       "final": "sostiene Visa Office y la pared abierta"
+      },
+      {
+       "op": "ace",
+       "role": "duro",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "con Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cruza pegado a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "limpia esquinas",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "SELMA en la pared de Press Room tras el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "do": "entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Mira mirando Visa Office desde Press Room",
+         "how": "dron confirma espejo; abrir el panel de a lado, no de frente"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "threat": "Smoke ancla detrás del podio con gas listo",
+         "how": "esperar a que Sledge presione desde arriba y entrar con humo de Montagne"
+        }
+       ],
+       "final": "planta en Press Room detrás del podio"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby y a Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza al frente",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra rápido con Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube a 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cruza al Hallway",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "entra a Consul Front Desk",
+         "via": "door"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "abre el piso sobre Lobby y Maestro",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "threat": "Roamer esperando en Hallway o Meeting Room",
+         "how": "dron arriba antes de subir, Claymore en Main Stairs"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Roamer con Valkyrie cams en Consulate Office",
+         "how": "revisar esquinas y romper cámaras antes de martillar"
+        }
+       ],
+       "final": "controla Lobby desde arriba y castiga la rotación"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Front Door",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza con el escudo extendido",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe la barricada de la puerta principal",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "escudo extendido en la puerta",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "fija al Lobby desde la entrada, humo a Press Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Castle en la puerta principal + Kapkan",
+         "how": "Twitch mata trampa, romper Castle con impact desde fuera"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro con Evil Eye y Noor con fuego contra el escudo",
+         "how": "no avanzar sin Twitch; si hay fuego, retroceder a Front Door"
+        }
+       ],
+       "final": "sostiene Front Door y Lobby para el post-plant"
+      },
+      {
+       "op": "twitch",
+       "role": "intel",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron de choque a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza el jardín",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "mata Evil Eyes desde el dron",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra detrás de Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "limpia Lobby con Monty",
+         "via": "door"
+        },
+        {
+         "room": "West Corridor",
+         "f": 1,
+         "do": "presiona la puerta de Press Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Evil Eyes de Maestro en las esquinas de Lobby",
+         "how": "dron de choque los rompe antes de entrar"
+        },
+        {
+         "room": "West Corridor",
+         "f": 1,
+         "threat": "Ancla en Press Room mirando la puerta del corredor",
+         "how": "esperar la entrada por la pared antes de abrir la puerta"
+        }
+       ],
+       "final": "cubre West Corridor y Lobby en el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Rush por la puerta principal al Lobby con Ash rompiendo la barricada y Ying cegando el sitio. Lobby es un espacio abierto: si entramos los cinco antes de que Castle cierre y Mira ponga espejos, ganamos las peleas por número y plantamos detrás del mostrador.",
+     "timeline": [
+      "0:00–0:20 · Ash rompe Front Door desde Fountain",
+      "0:20–0:40 · Ying Candelas al Lobby, Zofia conmoción a Antechamber",
+      "0:40–1:10 · Blitz y Blackbeard entran, Lobby limpio",
+      "1:10–1:40 · plant en Lobby detrás del mostrador"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "corre al frente",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza sin parar",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "breach round a Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra primera",
+         "via": "breach"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "limpia el mostrador y Main Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Castle cerrando la puerta y Kapkan",
+         "how": "breach round rompe Castle y la trampa a la vez"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro en el mostrador con Evil Eye",
+         "how": "Candelas de Ying primero, prefire al mostrador"
+        }
+       ],
+       "final": "sostiene Main Stairs durante el plant"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "sigue a Ash",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "Candela por la puerta rota al Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra ciega",
+         "via": "breach"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "segunda Candela hacia Press Room",
+         "via": "door"
+        },
+        {
+         "room": "West Corridor",
+         "f": 1,
+         "do": "presiona Press Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Ancla detrás del mostrador",
+         "how": "Candela y push en bloque"
+        },
+        {
+         "room": "West Corridor",
+         "f": 1,
+         "threat": "Ancla de Press Room asomando al corredor",
+         "how": "Candela por la puerta y prefire"
+        }
+       ],
+       "final": "planta en Lobby detrás del mostrador"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "corre por el otro jardín",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "impact a la puerta si Ash falla",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "conmoción a Antechamber",
+         "via": "breach"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "limpia Antechamber y East Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "cierra el flanco",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "threat": "Roamer en Antechamber (piano) peekeando Lobby",
+         "how": "conmoción y push a dos"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "threat": "Rotación desde Tellers",
+         "how": "Claymore en East Corridor"
+        }
+       ],
+       "final": "cubre Antechamber y East Corridor"
+      },
+      {
+       "op": "blitz",
+       "role": "soporte",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "corre con Ash",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "escudo al frente",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "flash y entra",
+         "via": "breach"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "flashea el mostrador y Main Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Noor con fuego en la entrada contra escudos",
+         "how": "entrar en diagonal, no pararse en el marco"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Ancla con escopeta pegada al mostrador",
+         "how": "flash y que Ash remate"
+        }
+       ],
+       "final": "bloquea Main Stairs con el escudo mientras plantan"
+      },
+      {
+       "op": "blackbeard",
+       "role": "soporte",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "con Zofia",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "cubre la puerta desde fuera",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra último",
+         "via": "breach"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "sostiene ángulo largo hacia West Corridor",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Fountain",
+         "f": -1,
+         "threat": "Spawnpeek desde la ventana de Lobby",
+         "how": "escudo de rifle arriba y peek lento"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Ancla de Press Room saliendo por West Corridor",
+         "how": "ángulo largo desde el mostrador"
+        }
+       ],
+       "final": "sostiene West Corridor desde Lobby en el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Buck abre el piso de Consulate Office y Consul Front Desk sobre Lobby, Fuze pone cargas desde Break Room sobre Press Room y Kali abre la escotilla de Press Room. Las anclas de este sitio se paran justo bajo cuartos blandos, así que las matamos desde arriba y bajamos al final por Main Stairs.",
+     "timeline": [
+      "0:00–0:45 · subida a 2F por Main Stairs con Montagne",
+      "0:45–1:30 · Buck abre piso sobre Lobby; Fuze cargas sobre Press Room",
+      "1:30–2:30 · Grim y Kali castigan rotaciones; Fuze rompe escotilla",
+      "2:30–3:00 · bajan por Main Stairs y plantan en Lobby"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Lobby y Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra con Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "limpia Hallway",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "pasa a Consul Front Desk",
+         "via": "door"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "do": "Skeleton Key al piso sobre el mostrador de Lobby",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "threat": "Roamer en Hallway esperando la subida",
+         "how": "dron y limpiar con Montagne al frente"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "threat": "Cámaras de Valkyrie y roamer en Waiting Room",
+         "how": "revisar Waiting Room y esquinas antes de abrir piso"
+        }
+       ],
+       "final": "mata la ancla de Lobby desde arriba y baja para plantar"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Press Room",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "sigue a Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cruza a Break Room",
+         "via": "stairs"
+        },
+        {
+         "room": "Break Room",
+         "f": 2,
+         "do": "cargas de racimo sobre Press Room",
+         "via": "door"
+        },
+        {
+         "room": "Exit Stairs",
+         "f": 2,
+         "do": "cubre la escalera del flanco",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Break Room",
+         "f": 2,
+         "threat": "Roamer entrando por Exit Stairs",
+         "how": "Claymore en Exit Stairs antes de poner cargas"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "threat": "Ancla con Smoke detrás del podio",
+         "how": "cargas justo sobre el podio, escuchar dónde se mueve"
+        }
+       ],
+       "final": "rompe la escotilla de Press Room al final y cubre desde arriba"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "peek largo a ventanas de Press Room",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "pasa a Break Room",
+         "via": "stairs"
+        },
+        {
+         "room": "Break Room",
+         "f": 2,
+         "do": "lanza LV a la escotilla de Press Room y a Bandit de la pared",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "threat": "Spawnpeek desde ventanas de Press Room",
+         "how": "peek con la sniper desde lejos"
+        },
+        {
+         "room": "Break Room",
+         "f": 2,
+         "threat": "Roamer en Front Office",
+         "how": "revisar Front Office con dron antes de disparar la lanza"
+        }
+       ],
+       "final": "sostiene ángulo largo desde Break Room hacia Exit Stairs"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Front Door",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza con escudo extendido",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "escudo al frente",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube primero como escudo",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "sostiene el rellano",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "escudo hacia Meeting Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Kapkan o Ela en la puerta",
+         "how": "dron y disparar trampa"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "threat": "Roamer saliendo de Meeting Room",
+         "how": "escudo extendido y esperar a Buck"
+        }
+       ],
+       "final": "baja por Main Stairs como escudo para el plant"
+      },
+      {
+       "op": "grim",
+       "role": "intel",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Visa Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "Kawan a la ventana de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "Kawan a East Corridor",
+         "via": "door"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "do": "cierra el flanco",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer tipo Vigil en Service Stairs",
+         "how": "Kawan en la escalera y esperar el marcado"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "threat": "Rotación de Lobby hacia Tellers",
+         "how": "Kawan en el corredor, Claymore en Tellers"
+        }
+       ],
+       "final": "cuida el flanco de 1F y marca rotaciones"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes: Hibana + Brava por la pared de Press Room desde Visa Office, y Ram + Iana + Nomad por Front Door al Lobby. La defensa no puede mirar Visa Office y la puerta principal a la vez, y Ram abre el mostrador de Lobby con el BU-GI para negar la ancla.",
+     "timeline": [
+      "0:00–0:45 · drones por Visa Entrance y Front Door",
+      "0:45–1:30 · Brava hackea Bandit, Hibana abre pared Press Room",
+      "1:30–2:30 · Ram BU-GI al Lobby; entrada doble simultánea",
+      "2:30–3:00 · plant en Press Room, Nomad en West Corridor"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "pellets en la pared de Press Room",
+         "via": "door"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "do": "entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Kapkan en la puerta y Bandit detrás de la pared",
+         "how": "dron, Brava convierte la batería antes de disparar"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "threat": "Ancla con Smoke detrás del podio",
+         "how": "entrar cuando Ram presione desde Lobby"
+        }
+       ],
+       "final": "planta en Press Room"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "Kludge por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cubre a Hibana",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "Kludge revisa Tellers",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "hackea Bandit/Kaid y Evil Eyes",
+         "via": "door"
+        },
+        {
+         "room": "Press Room",
+         "f": 1,
+         "do": "entra segunda",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer en Tellers",
+         "how": "Kludge primero, no dar la espalda"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Mute jammer en la pared",
+         "how": "Kludge lo hackea o disparo por el hueco"
+        }
+       ],
+       "final": "cubre el plant desde Visa Office"
+      },
+      {
+       "op": "ram",
+       "role": "vertical",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "BU-GI hacia el mostrador de Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "entra tras el BU-GI",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Castle + Kapkan en la puerta principal",
+         "how": "impact a Castle, BU-GI limpia trampas"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Maestro detrás del mostrador",
+         "how": "BU-GI rompe el mostrador y Evil Eyes"
+        }
+       ],
+       "final": "sostiene Lobby y Main Stairs"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "Gemini a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "con Ram",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "Gemini entra primero",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Gemini revisa Antechamber y Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "West Corridor",
+         "f": 1,
+         "do": "presiona Press Room por la puerta",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Ela con Grzmot en la entrada",
+         "how": "Gemini detona minas"
+        },
+        {
+         "room": "West Corridor",
+         "f": 1,
+         "threat": "Ancla de Press Room mirando el corredor",
+         "how": "Gemini fake, entrada real por la pared"
+        }
+       ],
+       "final": "entra a Press Room por West Corridor al mismo tiempo que Hibana"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a East Corridor",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "Airjab en Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Airjab en East Corridor",
+         "via": "door"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "cierra Antechamber",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "threat": "Roamer bajando de 2F a la espalda",
+         "how": "Airjab en la escalera"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "threat": "Roamer en Antechamber",
+         "how": "peek con ángulo y Airjab"
+        }
+       ],
+       "final": "cuida flancos de Lobby durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Maestro ancla Lobby con Evil Eyes hacia Front Door, Smoke ancla Press Room detrás del podio, Castle cierra la puerta principal y Bandit trickea la pared de Press Room desde Visa Office. Valkyrie da info de 2F para castigar la vertical.",
+     "reinforce": [
+      "Pared Press Room–Visa Office ×2",
+      "Puerta principal (Castle)",
+      "Escotilla Press Room",
+      "Escotilla Lobby"
+     ],
+     "rotations": [
+      "Lobby↔West Corridor↔Press Room",
+      "Press Room↔Exit Stairs (escape)"
+     ],
+     "ops": [
+      {
+       "op": "maestro",
+       "room": "Lobby",
+       "f": 1,
+       "role": "ancla",
+       "job": "Evil Eyes en Lobby hacia Front Door y Main Stairs; ancla detrás del mostrador"
+      },
+      {
+       "op": "smoke",
+       "room": "Press Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Gas para el plant detrás del podio; mira la pared reforzada"
+      },
+      {
+       "op": "castle",
+       "room": "Front Door",
+       "f": 1,
+       "role": "flex",
+       "job": "Castle en Front Door y ventana de Lobby; rota a West Corridor"
+      },
+      {
+       "op": "bandit",
+       "room": "Visa Office",
+       "f": 1,
+       "role": "flex",
+       "job": "Trickea la pared de Press Room; después rota a Exit Stairs"
+      },
+      {
+       "op": "valkyrie",
+       "room": "Consulate Office",
+       "f": 2,
+       "role": "roam",
+       "job": "Cámaras en 2F y Main Stairs; roamea Consulate Office para bajar a los que hacen vertical"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Roam pesado + Mira",
+     "summary": "Mira pone espejos en Press Room hacia Visa Office y West Corridor, Mute bloquea drones y la pared, Kaid electrifica la escotilla de Press Room. Vigil y Caveira roamean 2F y Antechamber para cazar a los que suben por Main Stairs.",
+     "reinforce": [
+      "Pared Press Room–Visa Office ×2",
+      "Escotilla Press Room (Kaid)",
+      "Escotilla Lobby"
+     ],
+     "rotations": [
+      "Press Room↔West Corridor↔Lobby",
+      "Lobby↔Main Stairs↔2F (roam)"
+     ],
+     "ops": [
+      {
+       "op": "mira",
+       "room": "Press Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Espejos hacia Visa Office y West Corridor; sostiene detrás del podio"
+      },
+      {
+       "op": "mute",
+       "room": "Lobby",
+       "f": 1,
+       "role": "ancla",
+       "job": "Jammers en la pared de Press Room y Front Door; ancla el mostrador de Lobby"
+      },
+      {
+       "op": "kaid",
+       "room": "Press Room",
+       "f": 1,
+       "role": "ancla",
+       "job": "Rtila en escotilla de Press Room y pared; segunda ancla"
+      },
+      {
+       "op": "vigil",
+       "room": "Hallway",
+       "f": 2,
+       "role": "roam",
+       "job": "Roamea Hallway y Consulate Office, baja por Main Stairs tarde"
+      },
+      {
+       "op": "caveira",
+       "room": "Antechamber",
+       "f": 1,
+       "role": "roam",
+       "job": "Cazar en Antechamber y Visa Office a los que entran por Visa Entrance"
+      }
+     ]
+    }
+   ]
+  },
+  "piano": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thermite abre la pared exterior de Visa Office desde Courtyard con Thatcher quitando Bandit, mientras Sledge trabaja el piso de Meeting Room sobre Antechamber (piano) para sacar la ancla. Montagne presiona desde Lobby y Capitão quema el rincón del piano. Funciona porque Visa Office tiene pared directa al exterior y el piano no tiene techo reforzable.",
+     "timeline": [
+      "0:00–0:45 · drones a Visa Office y Antechamber; Sledge sube a Meeting Room",
+      "0:45–1:30 · Thatcher EMP + Thermite pared exterior de Visa Office",
+      "1:30–2:30 · Sledge abre piso sobre el piano, Capitão quema, entrada doble",
+      "2:30–3:00 · plant en Visa Office pegado a la pared abierta"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron por la puerta lateral a Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "EMP a la pared exterior de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "entra tras Thermite",
+         "via": "breach"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "presiona el piano",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "threat": "Defensor peekeando la ventana de Visa Office o la puerta de Visa Entrance",
+         "how": "dron antes de exponerse, Claymore en Visa Entrance"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Bandit trickeando y Kapkan en la puerta a Antechamber",
+         "how": "EMP al momento de la carga, dron confirma trampa"
+        }
+       ],
+       "final": "sostiene la pared abierta y cubre Visa Entrance"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "con Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "carga en la pared exterior de Visa Office tras el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "entra por el hueco",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "threat": "Roamer saliendo por Visa Entrance a spawnkill",
+         "how": "Claymore en Visa Entrance y mirar la puerta mientras coloca"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Ancla con Mira mirando el hueco desde el piano",
+         "how": "no entrar de frente; esperar a Sledge arriba y el humo de Capitão"
+        }
+       ],
+       "final": "planta en Visa Office pegado a la pared exterior"
+      },
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Lobby y Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra con Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cruza a Hallway",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "entra a Meeting Room",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "abre el piso sobre el piano",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "threat": "Roamer esperando en Hallway",
+         "how": "dron arriba, Claymore en Main Stairs"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "threat": "Roamer entrando por Service Stairs / Administration Office",
+         "how": "Claymore en la puerta de Administration Office antes de martillar"
+        }
+       ],
+       "final": "mata la ancla del piano desde arriba y cubre el plant"
+      },
+      {
+       "op": "montagne",
+       "role": "soporte",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Front Door",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza con el escudo",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe barricada",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "escudo al frente",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "fija la puerta de Antechamber desde Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "entra al piano cuando caiga la ancla",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Ancla del piano asomando a Lobby",
+         "how": "escudo extendido, humo a la puerta de Antechamber"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "threat": "Noor con fuego en la puerta contra escudos",
+         "how": "no pararse en el marco, entrar tras el fuego de Capitão"
+        }
+       ],
+       "final": "sostiene Lobby y la puerta del piano en el post-plant"
+      },
+      {
+       "op": "capitao",
+       "role": "negacion",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "sigue a Montagne",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "fuego al rincón del piano y humo para el plant",
+         "via": "door"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "do": "cierra el flanco de Tellers",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Kapkan en la puerta",
+         "how": "dron y disparar trampa"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "threat": "Roamer de Tellers rotando a Lobby",
+         "how": "Claymore en East Corridor"
+        }
+       ],
+       "final": "humo sobre el plant y cubre East Corridor"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Ash abre la barricada de Visa Entrance desde Courtyard y entramos los cinco a Visa Office con Candelas antes de que refuercen la pared exterior. Visa Office está a diez metros del spawn lateral: si la defensa arma lento, el sitio cae en el primer minuto.",
+     "timeline": [
+      "0:00–0:20 · Ash rompe Visa Entrance desde Courtyard",
+      "0:20–0:40 · Ying Candelas a Visa Office, Zofia conmoción al piano",
+      "0:40–1:10 · Blitz y Amaru entran, limpieza en bloque",
+      "1:10–1:40 · plant en Visa Office"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "corre pegada a la pared",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "breach round a la barricada de Visa Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra primera",
+         "via": "breach"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "limpia el escritorio",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Castle cerrando la puerta lateral y Kapkan",
+         "how": "breach round rompe ambos"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Ancla en la esquina del escritorio",
+         "how": "Candela de Ying primero, prefire"
+        }
+       ],
+       "final": "sostiene la puerta a Antechamber durante el plant"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "sigue a Ash",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "Candela por la puerta rota",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra ciega",
+         "via": "breach"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "segunda Candela al piano",
+         "via": "door"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "limpia el piano",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Mira mirando desde Antechamber",
+         "how": "Candela y push por el lado ciego del espejo"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "threat": "Ancla detrás del piano",
+         "how": "Candela y entrada a dos"
+        }
+       ],
+       "final": "planta en Visa Office"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "tercera en fila",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "impact a la ventana de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "conmoción a Service Stairs",
+         "via": "breach"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "Claymore en la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "cierra el flanco",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "threat": "Roamer subiendo del sótano",
+         "how": "conmoción y Claymore"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Roamer en Tellers a la espalda de Visa Office",
+         "how": "prefire de la esquina y Claymore"
+        }
+       ],
+       "final": "cuida Tellers y Service Stairs en el post-plant"
+      },
+      {
+       "op": "blitz",
+       "role": "soporte",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "corre con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "escudo al frente",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "flash y entra",
+         "via": "breach"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "flashea al piano",
+         "via": "door"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "push al piano con flash",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Noor con fuego en la puerta contra escudos",
+         "how": "entrar en diagonal, no pararse"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "threat": "Ancla con escopeta detrás del piano",
+         "how": "flash y que Ash remate"
+        }
+       ],
+       "final": "bloquea la puerta Antechamber–Lobby con el escudo"
+      },
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "Garra a la ventana de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "gancho a la ventana",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "entra por ventana al mismo tiempo que Ash por la puerta",
+         "via": "window"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "threat": "Defensor mirando la ventana de Visa Office",
+         "how": "entrar solo cuando Ash rompa la puerta y la atención esté ahí"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Ancla pegada a la ventana",
+         "how": "Candela de Ying antes de gancho"
+        }
+       ],
+       "final": "cubre plant desde Visa Office"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Buck y Fuze trabajan desde Meeting Room y Hallway sobre Antechamber (piano) y Visa Office: las dos anclas se paran bajo techo blando. Kali abre la escotilla de Visa Office desde 2F y entramos por ella y por Main Stairs al final.",
+     "timeline": [
+      "0:00–0:45 · subida a 2F por Main Stairs con Osa",
+      "0:45–1:30 · Buck abre piso sobre el piano; Fuze cargas sobre Visa Office",
+      "1:30–2:30 · Kali abre escotilla Visa Office, Dokkaebi llama teléfonos",
+      "2:30–3:00 · caen por la escotilla y plantan en Visa Office"
+     ],
+     "ops": [
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra con Osa",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "limpia el rellano",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "pasa a Meeting Room",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "Skeleton Key al piso sobre el piano",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "threat": "Roamer en Hallway",
+         "how": "dron y Osa al frente"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "threat": "Roamer llegando desde Administration Office",
+         "how": "Claymore en la puerta de Administration Office"
+        }
+       ],
+       "final": "mata la ancla del piano desde arriba y baja por Main Stairs"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "sigue a Osa",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cruza",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "pasa a Meeting Room",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "cargas sobre Visa Office y el piano",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Hallway",
+         "f": 2,
+         "threat": "Roamer peekeando desde Consul Front Desk",
+         "how": "dron y limpiar con Osa"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "threat": "Cámaras de Valkyrie en Meeting Room",
+         "how": "romper cams antes de poner cargas"
+        }
+       ],
+       "final": "cae por la escotilla de Visa Office al final"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "peek largo a las ventanas de Lobby",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cruza",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "pasa a Meeting Room",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "LV a la escotilla de Visa Office y a Bandit",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "threat": "Spawnpeek desde la ventana de Lobby",
+         "how": "peek con sniper desde lejos"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "threat": "Roamer entrando por Service Stairs a Meeting Room",
+         "how": "Claymore en la puerta de Administration Office"
+        }
+       ],
+       "final": "sostiene ángulo largo en Meeting Room hacia Administration Office"
+      },
+      {
+       "op": "osa",
+       "role": "soporte",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Front Door",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "Talon en la puerta de Antechamber desde Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "sostiene la puerta del piano",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "segundo Talon en Main Stairs",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cubre el rellano de 2F",
+         "via": "stairs"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Ancla del piano peekeando Lobby",
+         "how": "Talon en la puerta de Antechamber"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "threat": "Roamer bajando por Main Stairs",
+         "how": "Talon en la escalera y mirar hacia arriba"
+        }
+       ],
+       "final": "baja por Main Stairs con Talon para el plant"
+      },
+      {
+       "op": "dokkaebi",
+       "role": "flanco",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Visa Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "Logic Bomb cuando Buck abra el piso",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "do": "cierra el flanco de Tellers",
+         "via": "door"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "do": "presiona hacia Lobby",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer en Service Stairs",
+         "how": "Claymore en la escalera y Logic Bomb para escucharlo"
+        },
+        {
+         "room": "Tellers",
+         "f": 1,
+         "threat": "Roamer en Tellers",
+         "how": "hackear cámaras y limpiar con ángulo"
+        }
+       ],
+       "final": "cuida flancos de 1F y hackea cams al plant"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Hibana + Brava abren la pared exterior de Visa Office desde Courtyard mientras Ram + Iana + Nomad entran por Front Door al Lobby y Ram tira el BU-GI a la puerta del piano. Dos frentes opuestos: la ancla del piano tiene que elegir entre la pared y Lobby.",
+     "timeline": [
+      "0:00–0:45 · drones a Visa Office y Antechamber",
+      "0:45–1:30 · Brava hackea Bandit, Hibana abre pared exterior",
+      "1:30–2:30 · Ram BU-GI al piano; entrada doble",
+      "2:30–3:00 · plant en Visa Office, Nomad en Visa Entrance"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "pellets en la pared exterior de Visa Office",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "entra y planta",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "threat": "Roamer saliendo por Visa Entrance",
+         "how": "Claymore en Visa Entrance"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Ancla mirando el hueco desde el escritorio",
+         "how": "entrar cuando Ram presione desde Lobby"
+        }
+       ],
+       "final": "planta en Visa Office"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "Kludge por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "Kludge entra por Visa Entrance y hackea Bandit/Kaid",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "cubre la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "do": "entra segunda",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Kapkan en la puerta lateral",
+         "how": "Kludge lo desactiva o disparo"
+        },
+        {
+         "room": "Visa Office",
+         "f": 1,
+         "threat": "Mute jammer detrás de la pared",
+         "how": "Kludge lo hackea"
+        }
+       ],
+       "final": "cubre el plant desde Visa Entrance"
+      },
+      {
+       "op": "ram",
+       "role": "vertical",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "BU-GI hacia la puerta del piano",
+         "via": "door"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "entra tras el BU-GI",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Front Door",
+         "f": 1,
+         "threat": "Castle + Kapkan",
+         "how": "impact y BU-GI"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "threat": "Ancla detrás del piano",
+         "how": "BU-GI rompe cobertura, entrar a dos con Iana"
+        }
+       ],
+       "final": "sostiene el piano y la puerta a Lobby"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "Gemini a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "con Ram",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "Gemini entra primero",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Gemini revisa Antechamber",
+         "via": "door"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "do": "entra con Ram",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Lobby",
+         "f": 1,
+         "threat": "Ela con Grzmot en la puerta del piano",
+         "how": "Gemini detona"
+        },
+        {
+         "room": "Antechamber",
+         "f": 1,
+         "threat": "Smoke ancla detrás del piano",
+         "how": "Gemini localiza, push a dos"
+        }
+       ],
+       "final": "limpia Antechamber y cubre el plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a East Corridor",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "Airjab en Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Lobby",
+         "f": 1,
+         "do": "Airjab en East Corridor",
+         "via": "door"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "do": "cierra Tellers",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "threat": "Roamer bajando de 2F",
+         "how": "Airjab en la escalera"
+        },
+        {
+         "room": "East Corridor",
+         "f": 1,
+         "threat": "Roamer de Tellers",
+         "how": "Airjab y peek con ángulo"
+        }
+       ],
+       "final": "cuida flancos de Lobby durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Mira en Antechamber con espejos hacia Lobby y Visa Office, Smoke ancla Visa Office, Bandit trickea la pared exterior, Lesion siembra Gu en Visa Entrance y Lobby, Jäger limpia flashes y roamea Tellers.",
+     "reinforce": [
+      "Pared exterior de Visa Office ×2",
+      "Pared Antechamber–Lobby",
+      "Escotilla Visa Office"
+     ],
+     "rotations": [
+      "Antechamber↔Visa Office",
+      "Visa Office↔Visa Entrance↔Service Stairs"
+     ],
+     "ops": [
+      {
+       "op": "mira",
+       "room": "Antechamber",
+       "f": 1,
+       "role": "ancla",
+       "job": "Espejos hacia Lobby y Visa Office; sostiene detrás del piano"
+      },
+      {
+       "op": "smoke",
+       "room": "Visa Office",
+       "f": 1,
+       "role": "ancla",
+       "job": "Gas para el plant; mira la pared exterior y Visa Entrance"
+      },
+      {
+       "op": "bandit",
+       "room": "Visa Office",
+       "f": 1,
+       "role": "flex",
+       "job": "Trickea la pared exterior; rota a Antechamber"
+      },
+      {
+       "op": "lesion",
+       "room": "Visa Entrance",
+       "f": 1,
+       "role": "flex",
+       "job": "Gu en Visa Entrance, Lobby y Main Stairs; flex entre Tellers y Visa Office"
+      },
+      {
+       "op": "jager",
+       "room": "Tellers",
+       "f": 1,
+       "role": "roam",
+       "job": "ADS en Visa Office y piano; roamea Tellers y Service Stairs"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-vertical con Azami",
+     "summary": "Azami tapa los agujeros de Meeting Room sobre el piano, Mute bloquea la pared exterior, Kaid electrifica escotilla Visa Office, Thunderbird sostiene el piano y Vigil roamea 2F para cazar a Buck/Sledge antes de que abran.",
+     "reinforce": [
+      "Pared exterior de Visa Office ×2",
+      "Escotilla Visa Office (Kaid)",
+      "Pared Antechamber–Lobby"
+     ],
+     "rotations": [
+      "Antechamber↔Visa Office",
+      "Visa Office↔Visa Entrance"
+     ],
+     "ops": [
+      {
+       "op": "azami",
+       "room": "Antechamber",
+       "f": 1,
+       "role": "ancla",
+       "job": "Kiba en el techo del piano y la puerta a Lobby; ancla detrás del piano"
+      },
+      {
+       "op": "mute",
+       "room": "Visa Office",
+       "f": 1,
+       "role": "ancla",
+       "job": "Jammers en la pared exterior y Visa Entrance; ancla el escritorio"
+      },
+      {
+       "op": "kaid",
+       "room": "Visa Office",
+       "f": 1,
+       "role": "flex",
+       "job": "Rtila en escotilla de Visa Office y pared; flex a Visa Entrance"
+      },
+      {
+       "op": "thunderbird",
+       "room": "Antechamber",
+       "f": 1,
+       "role": "ancla",
+       "job": "Kóna en el piano; segunda ancla con Azami"
+      },
+      {
+       "op": "vigil",
+       "room": "Meeting Room",
+       "f": 2,
+       "role": "roam",
+       "job": "Roamea Meeting Room y Hallway; castiga la vertical y baja por Service Stairs"
+      }
+     ]
+    }
+   ]
+  },
+  "consul": {
+   "attack": [
+    {
+     "id": "default",
+     "n": "Default lento",
+     "tag": "DEFAULT",
+     "summary": "Thatcher + Thermite abren la pared de Meeting Room desde Hallway (subiendo por Main Stairs), mientras Glaz y Ying rapelean a las ventanas de Consulate Office con humo. Gridlock cierra Service Stairs. Funciona porque el sitio está en 2F y tiene ventanas por dos lados: la defensa no puede cubrir ventanas y pared a la vez.",
+     "timeline": [
+      "0:00–0:45 · drones a Hallway y Consulate Office; rappel a ventanas",
+      "0:45–1:30 · Thatcher EMP + Thermite pared Meeting Room desde Hallway",
+      "1:30–2:30 · Glaz humo + Ying Candelas por ventana; entrada simultánea",
+      "2:30–3:00 · plant en Consulate Office detrás del escritorio"
+     ],
+     "ops": [
+      {
+       "op": "thatcher",
+       "role": "antigadget",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby y Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube con Thermite",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "limpia el rellano",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "EMP contra la pared de Meeting Room",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "entra tras Thermite",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "threat": "Roamer peekeando el rellano desde Hallway o Break Room",
+         "how": "dron arriba, Claymore en Main Stairs de 1F"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "threat": "Bandit trickeando la pared y Kapkan en la puerta de Meeting Room",
+         "how": "EMP al colocar la carga; dron a la puerta"
+        }
+       ],
+       "final": "sostiene Hallway y la pared abierta"
+      },
+      {
+       "op": "thermite",
+       "role": "duro",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "con Thatcher",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "limpia Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cruza a Hallway",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "carga en la pared de Meeting Room tras el EMP",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "entra por el hueco",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Hallway",
+         "f": 2,
+         "threat": "Mira mirando Hallway desde Meeting Room",
+         "how": "dron confirma espejo, abrir el panel de a lado"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "threat": "Ancla de Meeting Room con Smoke",
+         "how": "entrar cuando Ying ciegue Consulate Office y la ancla mire a la ventana"
+        }
+       ],
+       "final": "planta en Consulate Office detrás del escritorio"
+      },
+      {
+       "op": "glaz",
+       "role": "soporte",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Consulate Office",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza al jardín",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "rappel a la ventana de Consulate Office, humo dentro",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "entra por ventana con térmica entre el humo",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gardens",
+         "f": -1,
+         "threat": "Defensor peekeando las ventanas del Cónsul desde dentro",
+         "how": "humo antes de rapelear, no colgarse sin drones"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Frost bajo las ventanas y Castle en la ventana",
+         "how": "disparar cepos con la térmica, Ying rompe Castle con impact"
+        }
+       ],
+       "final": "cubre el plant con térmica a través del humo"
+      },
+      {
+       "op": "ying",
+       "role": "entrada",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron a Consulate Office",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "rappel a la segunda ventana del Cónsul",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "Candelas dentro y entra por ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "do": "limpia el mostrador",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Ancla detrás del escritorio del Cónsul",
+         "how": "Candela por ventana y entrar en el flash"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "threat": "Ancla en Consul Front Desk mirando la puerta del Cónsul",
+         "how": "segunda Candela y push con Thermite desde Meeting Room"
+        }
+       ],
+       "final": "sostiene Consul Front Desk en el post-plant"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Visa Entrance",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra por la puerta lateral",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "Trax en la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 2,
+         "do": "Trax en la salida de 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Copy Room",
+         "f": 2,
+         "do": "cierra el flanco de Copy Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "threat": "Roamer subiendo o bajando por Service Stairs",
+         "how": "Trax en la escalera y esperar"
+        },
+        {
+         "room": "Copy Room",
+         "f": 2,
+         "threat": "Roamer en Copy Room / Administration Office",
+         "how": "peek con ángulo, Trax en la puerta"
+        }
+       ],
+       "final": "cuida Service Stairs y Copy Room durante el plant"
+      }
+     ]
+    },
+    {
+     "id": "rush",
+     "n": "Rush",
+     "tag": "RUSH",
+     "summary": "Rush por las ventanas de Consulate Office: Amaru y Blitz entran de golpe con Ying cegando, Ash rompe Castle de las ventanas desde Gardens y Zofia cubre. Antes de que Frost ponga cepos bajo las ventanas, el Cónsul es una entrada de 5 segundos.",
+     "timeline": [
+      "0:00–0:20 · Ash rompe barricadas de las ventanas desde Gardens",
+      "0:20–0:40 · Ying Candelas por ventana, Amaru entra",
+      "0:40–1:10 · Blitz y Zofia entran, Consulate Office limpio",
+      "1:10–1:40 · plant en Consulate Office"
+     ],
+     "ops": [
+      {
+       "op": "ash",
+       "role": "entrada",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "corre al jardín",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "breach round a la ventana del Cónsul",
+         "via": "door"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "rappel y entra",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gardens",
+         "f": -1,
+         "threat": "Castle en las ventanas y defensor peekeando",
+         "how": "breach round desde el jardín"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Frost bajo la ventana",
+         "how": "disparar el cepo desde la cuerda antes de entrar"
+        }
+       ],
+       "final": "sostiene la puerta a Consul Front Desk"
+      },
+      {
+       "op": "ying",
+       "role": "negacion",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "con Ash",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "rappel y Candela por la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "entra ciega",
+         "via": "rappel"
+        },
+        {
+         "room": "Private Bathroom",
+         "f": 2,
+         "do": "limpia el baño",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Ancla detrás del escritorio",
+         "how": "Candela y push"
+        },
+        {
+         "room": "Private Bathroom",
+         "f": 2,
+         "threat": "Roamer escondido en Private Bathroom",
+         "how": "Candela y prefire"
+        }
+       ],
+       "final": "planta en Consulate Office"
+      },
+      {
+       "op": "amaru",
+       "role": "entrada",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "corre",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "Garra a la ventana del Cónsul",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "entra de golpe con la Candela",
+         "via": "window"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "do": "limpia el mostrador",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Ancla pegada a la ventana",
+         "how": "entrar en el flash de Ying"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "threat": "Rotación desde Hallway",
+         "how": "prefire de la puerta"
+        }
+       ],
+       "final": "sostiene Consul Front Desk"
+      },
+      {
+       "op": "blitz",
+       "role": "soporte",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "corre",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "rappel a la ventana",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "flash y entra",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gardens",
+         "f": -1,
+         "threat": "Noor con fuego bajo la ventana contra escudos",
+         "how": "entrar por la ventana contraria al fuego"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Ancla con escopeta en la esquina",
+         "how": "flash y que Ash remate"
+        }
+       ],
+       "final": "bloquea la puerta a Consul Front Desk con el escudo"
+      },
+      {
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "corre",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "conmoción por la ventana, rappel",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "entra última",
+         "via": "rappel"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "do": "Claymore en Hallway",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Kapkan en la puerta al mostrador",
+         "how": "disparar trampa"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "threat": "Rotación de Meeting Room por Hallway",
+         "how": "Claymore y conmoción"
+        }
+       ],
+       "final": "cuida Hallway en el post-plant"
+      }
+     ]
+    },
+    {
+     "id": "vertical",
+     "n": "Vertical",
+     "tag": "VERTICAL",
+     "summary": "Sledge y Fuze desde Building Roof sobre Consulate Office (la escotilla del techo del Cónsul) y Buck desde Copy Room / Administration Office sobre Meeting Room. Kali abre la escotilla reforzada del techo. Bajamos por la escotilla al final para plantar.",
+     "timeline": [
+      "0:00–0:45 · Sledge y Fuze suben a Building Roof; Buck a 2F por Service Stairs",
+      "0:45–1:30 · Kali abre escotilla del techo, Fuze cargas al Cónsul",
+      "1:30–2:30 · Buck abre Meeting Room desde Copy Room; Jackal caza",
+      "2:30–3:00 · caen por la escotilla y plantan"
+     ],
+     "ops": [
+      {
+       "op": "sledge",
+       "role": "vertical",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "dron al techo",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "sube al techo del garage",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": -1,
+         "do": "rappel al techo del edificio",
+         "via": "rappel"
+        },
+        {
+         "room": "Building Roof",
+         "f": 3,
+         "do": "martilla el techo blando del Cónsul junto a la escotilla",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "cae por la escotilla al final",
+         "via": "hatch"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage Roof",
+         "f": -1,
+         "threat": "Defensor peekeando desde Balcony",
+         "how": "dron a Balcony, subir en pareja"
+        },
+        {
+         "room": "Building Roof",
+         "f": 3,
+         "threat": "Roamer subiendo a Balcony a cazar",
+         "how": "Claymore en Balcony"
+        }
+       ],
+       "final": "cae por la escotilla y planta en Consulate Office"
+      },
+      {
+       "op": "fuze",
+       "role": "negacion",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "con Sledge",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "sube",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": -1,
+         "do": "rappel al techo",
+         "via": "rappel"
+        },
+        {
+         "room": "Building Roof",
+         "f": 3,
+         "do": "cargas de racimo sobre Consulate Office",
+         "via": "rappel"
+        },
+        {
+         "room": "Balcony",
+         "f": 3,
+         "do": "cubre el balcón",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Building Roof",
+         "f": 3,
+         "threat": "Cámaras de Valkyrie en el techo",
+         "how": "revisar y romper cams"
+        },
+        {
+         "room": "Balcony",
+         "f": 3,
+         "threat": "Roamer saliendo a Balcony",
+         "how": "Claymore y ángulo"
+        }
+       ],
+       "final": "cubre desde el techo y cae al final"
+      },
+      {
+       "op": "kali",
+       "role": "antigadget",
+       "spawn": "Gas Station",
+       "path": [
+        {
+         "room": "Parking",
+         "f": -1,
+         "do": "con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "do": "sube",
+         "via": "door"
+        },
+        {
+         "room": "Garage Roof",
+         "f": -1,
+         "do": "rappel al techo",
+         "via": "rappel"
+        },
+        {
+         "room": "Building Roof",
+         "f": 3,
+         "do": "LV a la escotilla reforzada del Cónsul y a Bandit",
+         "via": "rappel"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Garage Way",
+         "f": -1,
+         "threat": "Spawnpeek desde la puerta del Garage",
+         "how": "no pasar frente a la puerta"
+        },
+        {
+         "room": "Building Roof",
+         "f": 3,
+         "threat": "Kaid/Bandit en la escotilla del techo",
+         "how": "LV abre y quita la batería a la vez"
+        }
+       ],
+       "final": "sostiene el techo y cubre la escotilla abierta"
+      },
+      {
+       "op": "buck",
+       "role": "vertical",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "dron a Service Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "sube a 2F",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 2,
+         "do": "limpia la salida",
+         "via": "stairs"
+        },
+        {
+         "room": "Copy Room",
+         "f": 2,
+         "do": "pasa a Administration Office",
+         "via": "door"
+        },
+        {
+         "room": "Administration Office",
+         "f": 2,
+         "do": "Skeleton Key a la pared blanda de Meeting Room",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Service Stairs",
+         "f": 2,
+         "threat": "Roamer en Copy Room esperando la subida",
+         "how": "dron y Claymore en la escalera"
+        },
+        {
+         "room": "Administration Office",
+         "f": 2,
+         "threat": "Ancla de Meeting Room mirando la puerta",
+         "how": "abrir la pared blanda, no entrar por la puerta"
+        }
+       ],
+       "final": "presiona Meeting Room desde Administration Office"
+      },
+      {
+       "op": "jackal",
+       "role": "flanco",
+       "spawn": "Side Entrance",
+       "path": [
+        {
+         "room": "Side Entrance",
+         "f": -1,
+         "do": "escanea huellas",
+         "via": "door"
+        },
+        {
+         "room": "Courtyard",
+         "f": -1,
+         "do": "con Buck",
+         "via": "door"
+        },
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Service Stairs",
+         "f": 2,
+         "do": "Claymore en la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Copy Room",
+         "f": 2,
+         "do": "cierra Copy Room y Cabinet",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Visa Entrance",
+         "f": 1,
+         "threat": "Roamer tipo Vigil/Cav en Tellers",
+         "how": "escaneo y cazar en pareja"
+        },
+        {
+         "room": "Copy Room",
+         "f": 2,
+         "threat": "Roamer en Cabinet",
+         "how": "revisar Cabinet con dron"
+        }
+       ],
+       "final": "cuida Service Stairs y Copy Room"
+      }
+     ]
+    },
+    {
+     "id": "split",
+     "n": "Split",
+     "tag": "SPLIT",
+     "summary": "Dos frentes: Hibana + Brava por la pared de Meeting Room desde Hallway (Main Stairs), y Ram + Iana + Nomad por las ventanas del Cónsul con Ram tirando el BU-GI desde la ventana hacia Consul Front Desk. La defensa se parte entre Hallway y las ventanas.",
+     "timeline": [
+      "0:00–0:45 · drones a Hallway y Cónsul",
+      "0:45–1:30 · Brava hackea Bandit, Hibana abre pared Meeting Room",
+      "1:30–2:30 · Ram BU-GI por ventana; entrada doble",
+      "2:30–3:00 · plant en Consulate Office, Nomad en Main Stairs"
+     ],
+     "ops": [
+      {
+       "op": "hibana",
+       "role": "duro",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "rompe Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "entra",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "limpia rellano",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "pellets en la pared de Meeting Room",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "entra",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "threat": "Roamer en Break Room peekeando el rellano",
+         "how": "dron y Claymore"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "threat": "Ancla con Smoke en Meeting Room",
+         "how": "entrar cuando Ram presione por la ventana"
+        }
+       ],
+       "final": "planta en Consulate Office"
+      },
+      {
+       "op": "brava",
+       "role": "antigadget",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "Kludge a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "Kludge sube por Main Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "sube",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cruza",
+         "via": "stairs"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "do": "hackea Bandit/Kaid y Evil Eyes",
+         "via": "door"
+        },
+        {
+         "room": "Meeting Room",
+         "f": 2,
+         "do": "entra segunda",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "threat": "Ela con Grzmot en la escalera",
+         "how": "Kludge o disparar la mina"
+        },
+        {
+         "room": "Hallway",
+         "f": 2,
+         "threat": "Mute jammer en la pared",
+         "how": "Kludge lo hackea"
+        }
+       ],
+       "final": "cubre el plant desde Meeting Room"
+      },
+      {
+       "op": "ram",
+       "role": "vertical",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "dron al Cónsul",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "rappel a la ventana del Cónsul",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "BU-GI desde la ventana hacia Consul Front Desk",
+         "via": "rappel"
+        },
+        {
+         "room": "Consul Front Desk",
+         "f": 2,
+         "do": "entra tras el BU-GI",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Gardens",
+         "f": -1,
+         "threat": "Castle en la ventana y Frost debajo",
+         "how": "impact a Castle, BU-GI limpia cepos"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Ancla detrás del escritorio del Cónsul",
+         "how": "BU-GI rompe cobertura, Iana entra con él"
+        }
+       ],
+       "final": "sostiene Consul Front Desk"
+      },
+      {
+       "op": "iana",
+       "role": "intel",
+       "spawn": "Police Line",
+       "path": [
+        {
+         "room": "Police Line",
+         "f": -1,
+         "do": "Gemini al Cónsul por ventana",
+         "via": "door"
+        },
+        {
+         "room": "East Front Yard",
+         "f": -1,
+         "do": "con Ram",
+         "via": "door"
+        },
+        {
+         "room": "Gardens",
+         "f": -1,
+         "do": "rappel",
+         "via": "rappel"
+        },
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "do": "entra con Ram",
+         "via": "rappel"
+        },
+        {
+         "room": "Private Bathroom",
+         "f": 2,
+         "do": "limpia el baño",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Consulate Office",
+         "f": 2,
+         "threat": "Kapkan en la ventana o Frost",
+         "how": "Gemini detona"
+        },
+        {
+         "room": "Private Bathroom",
+         "f": 2,
+         "threat": "Roamer en Private Bathroom",
+         "how": "Gemini revisa, prefire"
+        }
+       ],
+       "final": "limpia el Cónsul y cubre el plant"
+      },
+      {
+       "op": "nomad",
+       "role": "flanco",
+       "spawn": "Riot Barricade",
+       "path": [
+        {
+         "room": "Riot Barracade",
+         "f": -1,
+         "do": "dron a Lobby",
+         "via": "door"
+        },
+        {
+         "room": "West Front Yard",
+         "f": -1,
+         "do": "cruza",
+         "via": "door"
+        },
+        {
+         "room": "Fountain",
+         "f": -1,
+         "do": "entra por Front Door",
+         "via": "door"
+        },
+        {
+         "room": "Front Door",
+         "f": 1,
+         "do": "Airjab en Lobby",
+         "via": "door"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "do": "Airjab en la escalera",
+         "via": "stairs"
+        },
+        {
+         "room": "Main Stairs",
+         "f": 2,
+         "do": "cierra Break Room",
+         "via": "stairs"
+        },
+        {
+         "room": "Break Room",
+         "f": 2,
+         "do": "Airjab en Exit Stairs",
+         "via": "door"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Main Stairs",
+         "f": 1,
+         "threat": "Roamer bajando a Lobby",
+         "how": "Airjab en la escalera"
+        },
+        {
+         "room": "Break Room",
+         "f": 2,
+         "threat": "Roamer llegando por Exit Stairs",
+         "how": "Airjab en la puerta y ángulo"
+        }
+       ],
+       "final": "cuida Main Stairs y Break Room durante el plant"
+      }
+     ]
+    }
+   ],
+   "defense": [
+    {
+     "id": "default",
+     "n": "Default",
+     "summary": "Frost pone cepos bajo las ventanas del Cónsul, Castle cierra las ventanas, Smoke ancla Consulate Office, Mira ancla Meeting Room con espejos hacia Hallway y Jäger limpia flashes y roamea Lobby para castigar la subida por Main Stairs.",
+     "reinforce": [
+      "Pared Meeting Room–Hallway ×2",
+      "Ventanas Consulate Office (Castle)",
+      "Escotilla del techo del Cónsul"
+     ],
+     "rotations": [
+      "Consulate Office↔Consul Front Desk↔Hallway↔Meeting Room",
+      "Meeting Room↔Administration Office (escape)"
+     ],
+     "ops": [
+      {
+       "op": "frost",
+       "room": "Consulate Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Cepos bajo las ventanas del Cónsul; ancla detrás del escritorio"
+      },
+      {
+       "op": "castle",
+       "room": "Consulate Office",
+       "f": 2,
+       "role": "flex",
+       "job": "Castle en las ventanas del Cónsul; rota a Consul Front Desk"
+      },
+      {
+       "op": "smoke",
+       "room": "Consul Front Desk",
+       "f": 2,
+       "role": "ancla",
+       "job": "Gas para el plant; mira la puerta del Cónsul y Hallway"
+      },
+      {
+       "op": "mira",
+       "room": "Meeting Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "Espejos hacia Hallway y Administration Office; sostiene Meeting Room"
+      },
+      {
+       "op": "jager",
+       "room": "Lobby",
+       "f": 1,
+       "role": "roam",
+       "job": "ADS en Cónsul y Meeting Room; roamea Lobby y Main Stairs para castigar la subida"
+      }
+     ]
+    },
+    {
+     "id": "alt",
+     "n": "Anti-rappel con Noor + Kaid",
+     "summary": "Setup contra el rush por ventanas: Noor quema a los que cuelgan del Cónsul, Kaid electrifica la escotilla del techo y la pared de Meeting Room, Mute bloquea drones y las ventanas, Melusi ralentiza Hallway y Vigil roamea Copy Room / Service Stairs.",
+     "reinforce": [
+      "Pared Meeting Room–Hallway ×2 (Kaid)",
+      "Escotilla del techo del Cónsul (Kaid)",
+      "Ventanas Consulate Office"
+     ],
+     "rotations": [
+      "Consulate Office↔Consul Front Desk↔Hallway",
+      "Meeting Room↔Administration Office↔Copy Room"
+     ],
+     "ops": [
+      {
+       "op": "noor",
+       "room": "Consulate Office",
+       "f": 2,
+       "role": "ancla",
+       "job": "Fuego en las ventanas del Cónsul cuando cuelguen escudos; ancla detrás del escritorio"
+      },
+      {
+       "op": "kaid",
+       "room": "Meeting Room",
+       "f": 2,
+       "role": "ancla",
+       "job": "Rtila en escotilla del techo y pared de Meeting Room; ancla Meeting Room"
+      },
+      {
+       "op": "mute",
+       "room": "Consul Front Desk",
+       "f": 2,
+       "role": "ancla",
+       "job": "Jammers en ventanas del Cónsul y pared; ancla el mostrador"
+      },
+      {
+       "op": "melusi",
+       "room": "Hallway",
+       "f": 2,
+       "role": "flex",
+       "job": "Banshees en Hallway y Main Stairs; flex entre Hallway y Waiting Room"
+      },
+      {
+       "op": "vigil",
+       "room": "Copy Room",
+       "f": 2,
+       "role": "roam",
+       "job": "Roamea Copy Room y Service Stairs; baja a cazar a los que suben por Service Stairs"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
