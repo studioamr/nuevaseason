@@ -27,6 +27,7 @@
  ],
  "rooms": [
   {
+   "f": -1,
    "en": "Construction Site",
    "es": "Zona de obras"
   },
@@ -36,30 +37,37 @@
    "es": "Contenedor"
   },
   {
+   "f": -1,
    "en": "Graffiti Area",
    "es": "Pared de grafitis"
   },
   {
+   "f": -1,
    "en": "Recreation Area",
    "es": "Área de descanso"
   },
   {
+   "f": -1,
    "en": "Junkyard",
    "es": "Zona de chatarra"
   },
   {
+   "f": -1,
    "en": "VIP Parking",
    "es": "Aparcamiento VIP"
   },
   {
+   "f": -1,
    "en": "Main Gate",
    "es": "Puerta principal"
   },
   {
+   "f": -1,
    "en": "Parking",
    "es": "Aparcamiento"
   },
   {
+   "f": -1,
    "en": "Kennels",
    "es": "Perreras"
   },

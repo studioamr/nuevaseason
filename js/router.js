@@ -35,11 +35,16 @@ window.Router = (() => {
   }
   function los(m, a, b) { // línea de vista sin cruzar pared (Bresenham)
     let [x0, y0] = a; const [x1, y1] = b; const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let err = dx + dy;
-    for (;;) { const v = m.grid[y0 * m.w + x0]; if (v === 0) return false; if (x0 === x1 && y0 === y1) return true; const e2 = 2 * err; if (e2 >= dy) { err += dy; x0 += sx; } if (e2 <= dx) { err += dx; y0 += sy; } }
+    for (;;) { const v = m.grid[y0 * m.w + x0]; if (v === 0 || v === 128) return false; if (x0 === x1 && y0 === y1) return true; const e2 = 2 * err; if (e2 >= dy) { err += dy; x0 += sx; } if (e2 <= dx) { err += dx; y0 += sy; } }
   }
-  function pull(m, path) { // string pulling: quita puntos intermedios cuando hay línea de vista (respeta rompibles como paso caro pero visible)
+  const zone = v => (v === 64 ? 1 : 0); // 1 = dentro del edificio, 0 = fuera
+  function pull(m, path) { // string pulling: solo endereza un tramo si hay línea de vista limpia Y no cambia de zona
     if (!path || path.length < 3) return path; const out = [path[0]]; let i = 0;
-    while (i < path.length - 1) { let j = path.length - 1; while (j > i + 1 && !los(m, path[i], path[j])) j--; out.push(path[j]); i = j; }
+    while (i < path.length - 1) {
+      let j = i + 1;
+      for (let k = path.length - 1; k > i + 1; k--) { const zi = zone(m.grid[path[i][1] * m.w + path[i][0]]), zk = zone(m.grid[path[k][1] * m.w + path[k][0]]); if (zi === zk && los(m, path[i], path[k])) { j = k; break; } }
+      out.push(path[j]); i = j;
+    }
     return out;
   }
   // Ruta en coordenadas mundo entre dos puntos del mismo piso. floor = {index,left,top}. Devuelve [{x,y}] o null.
@@ -57,7 +62,13 @@ window.Router = (() => {
     const s = nearestFree(m, ...toCell(from)), g = nearestFree(m, ...toCell(to));
     let raw = astar(m, s, g, cost); if ((!raw || raw.partial) && cost !== baseCost) raw = astar(m, s, g); if (!raw) return null;
     const pts = pull(m, raw).map(([x, y]) => ({ x: floor.left + x * c + c / 2, y: floor.top + y * c + c / 2 }));
-    pts[0] = { x: from.x, y: from.y }; if (raw.partial) { pts.push({ x: to.x, y: to.y, jump: true }); pts.partial = true; } else pts[pts.length - 1] = { x: to.x, y: to.y }; return pts;
+    // Los extremos solo se pegan a la coordenada real del cuarto si se puede llegar en línea recta
+    // sin cruzar muro; si el label cae dentro de una pared, se deja el punto libre más cercano.
+    const cellOf = p => [Math.min(m.w - 1, Math.max(0, Math.round((p.x - floor.left) / c))), Math.min(m.h - 1, Math.max(0, Math.round((p.y - floor.top) / c)))];
+    if (los(m, cellOf(from), s)) pts[0] = { x: from.x, y: from.y };
+    if (raw.partial) { pts.push({ x: to.x, y: to.y, jump: true }); pts.partial = true; }
+    else if (los(m, g, cellOf(to))) pts[pts.length - 1] = { x: to.x, y: to.y };
+    return pts;
   }
   return { route, loadMask, manifest, _astar: astar, _pull: pull, _los: los, _nearestFree: nearestFree };
 })();

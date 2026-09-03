@@ -4,8 +4,8 @@
   "library": {
    "n": "Lower Library / Reading Room (1F)",
    "attack": [
-    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Lobby y Archway Hall para abrir la pared reforzada de Reading Room mientras Buck quita el piso de Upper Library sobre Lower Library y Nomad cierra el flanco de Central Hallway. Cuando la pared cae y el ancla de Lower Library ya no tiene techo, los defensores se apretujan en Reading Room y ahí entras con humo por dos lados. Funciona porque la única rotación del sitio (Reading Room↔Lower Library) queda expuesta al mismo tiempo desde arriba y desde Archway.",
-     "timeline":["0:00–0:45 · drones a Reading Room y Lower Library; Twitch quema ADS y Evil Eyes desde Lobby; Buck sube por Garden Pass","0:45–1:30 · Buck abre el piso de Upper Library sobre Lower Library; EMP + carga exotérmica en la pared Archway–Reading Room","1:30–2:30 · entrada por la pared abierta con humo; Nomad tapa Central Hallway; planta en Reading Room pegado a la pared de Lobby","2:30–3:00 · post-plant: Buck desde arriba, Thermite sostiene el hueco, Nomad el flanco de Central Hallway"],
+    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Lobby y Archway Hall para abrir la pared reforzada de Reading Room mientras Buck toma el balcón de Upper Library, que da directo sobre Lower Library y Nomad cierra el flanco de Central Hallway. Cuando la pared cae y a la ancla de Lower Library le disparan desde la barandilla, los defensores se apretujan en Reading Room y ahí entras con humo por dos lados. Funciona porque la única rotación del sitio (Reading Room↔Lower Library) queda expuesta al mismo tiempo desde arriba y desde Archway.",
+     "timeline":["0:00–0:45 · drones a Reading Room y Lower Library; Twitch quema ADS y Evil Eyes desde Lobby; Buck sube por Garden Pass","0:45–1:30 · Buck toma el balcón de Upper Library y abre los tablones sobre Lower Library; EMP + carga exotérmica en la pared Archway–Reading Room","1:30–2:30 · entrada por la pared abierta con humo; Nomad tapa Central Hallway; planta en Reading Room pegado a la pared de Lobby","2:30–3:00 · post-plant: Buck desde arriba, Thermite sostiene el hueco, Nomad el flanco de Central Hallway"],
      "ops":[
       {"op":"thermite","role":"duro","spawn":"Festival",
        "path":[
@@ -18,7 +18,7 @@
        "clear":[
         {"room":"Front Entrance","f":-1,"threat":"Kapkan en la puerta principal y Evil Eye de Maestro mirando Lobby","how":"Dron primero, Thatcher quema la trampa con EMP y Twitch revienta el Evil Eye antes de que asomes"},
         {"room":"Archway Hall","f":1,"threat":"Bandit trickeando la pared de Reading Room y Mira con espejo hacia los arcos","how":"Espera el doble EMP, pega la carga en cuanto brille y no te pares frente al espejo"},
-        {"room":"Reading Room","f":1,"threat":"Ancla Smoke con gas a la pared y Castle en la puerta de Lower Library","how":"Buck ya quitó el techo de Lower Library; entra tras el humo de Thatcher y prefirea el rincón de los libreros"}],
+        {"room":"Reading Room","f":1,"threat":"Ancla Smoke con gas a la pared y Castle en la puerta de Lower Library","how":"Buck ya quitó el techo de Lower Library; entra tras el humo de Thatcher y prefire el rincón de los libreros"}],
        "final":"Sostiene el hueco de la pared y cubre la planta en Reading Room desde Archway Hall"},
       {"op":"thatcher","role":"antigadget","spawn":"Festival",
        "path":[
@@ -51,13 +51,13 @@
         {"room":"Campus Field","f":-1,"do":"Dronea Garden Pass buscando Frost y Kapkan","via":"door"},
         {"room":"Garden Pass","f":1,"do":"Entra por la puerta oeste y sube pegado a la barandilla","via":"door"},
         {"room":"Garden Pass","f":2,"do":"Sale de la escalera y limpia hacia Upper Library","via":"stairs"},
-        {"room":"Upper Library","f":2,"do":"Abre el piso sobre Lower Library con la Skeleton Key y quita la ancla de abajo","via":"door"},
-        {"room":"Lower Library","f":1,"do":"Baja por el hueco al final para el post-plant","via":"hatch"}],
+        {"room":"Upper Library","f":2,"do":"Toma el balcón: dispara por la barandilla a Lower Library y abre los tablones del balcón con la Skeleton Key para sacar a la ancla","via":"door"},
+        {"room":"Lower Library","f":1,"do":"Baja por el hueco del balcón al final para cubrir el defuse","via":"hatch"}],
        "clear":[
         {"room":"Garden Pass","f":1,"threat":"Frost bajo la ventana y Kapkan en la puerta de Campus Field","how":"Dron primero, dispara la trampa desde afuera y salta el cepo"},
         {"room":"Upper Library","f":2,"threat":"Roamer tipo Vigil o Ela esperando en la barandilla de Upper Library","how":"Sube con el dron adelantado y prefire la barandilla; si hay Grzmot espera que truene"},
-        {"room":"Lower Library","f":1,"threat":"Ancla Mira o Smoke pegada a los libreros de abajo","how":"Abre el piso encima de ella y dispara por los huecos, no bajes hasta que suelte el cuarto"}],
-       "final":"Sostiene el piso abierto sobre Lower Library y baja al final para cubrir el defuse"},
+        {"room":"Lower Library","f":1,"threat":"Ancla Mira o Smoke pegada a los libreros de abajo","how":"Desde la barandilla y los tablones abiertos dispárale desde arriba; no bajes hasta que suelte el cuarto"}],
+       "final":"Sostiene el balcón de Upper Library sobre Lower Library y baja al final para cubrir el defuse"},
       {"op":"nomad","role":"flanco","spawn":"Main Gate",
        "path":[
         {"room":"Main Gate","f":-1,"do":"Dronea Parking y la puerta de Service Room","via":"door"},
@@ -65,7 +65,7 @@
         {"room":"Service Room","f":1,"do":"Entra por la puerta trasera y deja un Airjab en la puerta","via":"door"},
         {"room":"East Corridor","f":1,"do":"Avanza pegado a la pared hacia Central Hallway","via":"door"},
         {"room":"Central Hallway","f":1,"do":"Dos Airjabs en el pasillo para cerrar el flanco de Dining y Lounge","via":"door"},
-        {"room":"Archway Hall","f":1,"do":"Se junta con el equipo para la entrada","via":"door"},
+        {"room":"Archway Hall","f":1,"do":"Se pega al arco de Archway mirando Lobby y avisa cuando cae la pared","via":"door"},
         {"room":"Reading Room","f":1,"do":"Entra último y cubre el defuse desde la puerta de Archway","via":"breach"}],
        "clear":[
         {"room":"Service Room","f":1,"threat":"Roamer tipo Caveira o Vigil esperando el flanco por Parking","how":"Dron antes de abrir la puerta y Airjab pegado al marco"},
@@ -127,7 +127,7 @@
         {"room":"Reading Room","f":1,"threat":"Smoke con gas listo en la puerta de Lower Library","how":"Rompe la pared por otro lado y no cruces la puerta con gas"}],
        "final":"Sostiene Reading Room contra los que vengan de Archway Hall"}
      ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"El equipo sube por Garden Pass a Upper Library y Classroom para matar Lower Library y Reading Room desde arriba: Sledge y Buck abren el piso, Fuze mete cargas por la escotilla de Reading Room y Ram manda el BU-GI sobre Lower Library. Lion revela cada rotación. Funciona porque las dos salas del sitio tienen techo blando y el defensor no puede anclar sin que le disparen por el piso.",
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"El equipo sube por Garden Pass a Upper Library y Classroom para matar Lower Library y Reading Room desde arriba: Sledge y Buck abren el piso, Fuze mete cargas por la escotilla de Reading Room y Ram manda el BU-GI sobre Lower Library. Lion revela cada rotación. Funciona porque Reading Room tiene techo blando y Lower Library queda a la vista desde el balcón de Upper Library: el defensor no puede anclar sin que le disparen desde arriba.",
      "timeline":["0:00–0:45 · Lion escanea; el equipo sube por Garden Pass a Upper Library y Classroom","0:45–1:30 · Sledge y Buck abren el piso; Fuze en la escotilla de Reading Room; Ram sobre Lower Library","1:30–2:30 · matan a las anclas por arriba; Buck baja por el hueco y planta en Lower Library","2:30–3:00 · post-plant desde arriba, todos cubriendo los huecos"],
      "ops":[
       {"op":"lion","role":"intel","spawn":"Festival",
@@ -159,12 +159,12 @@
         {"room":"Campus Field","f":-1,"do":"Cubre la ventana de Upper Library","via":"door"},
         {"room":"Garden Pass","f":1,"do":"Sube","via":"door"},
         {"room":"Garden Pass","f":2,"do":"Cruza a Upper Library","via":"stairs"},
-        {"room":"Upper Library","f":2,"do":"Abre el piso sobre Lower Library con la Skeleton Key","via":"door"},
+        {"room":"Upper Library","f":2,"do":"Abre los tablones del balcón sobre Lower Library con la Skeleton Key y dispara por la barandilla","via":"door"},
         {"room":"Lower Library","f":1,"do":"Baja por el hueco cuando el sitio esté limpio y planta","via":"hatch"}],
        "clear":[
-        {"room":"Upper Library","f":2,"threat":"Bandit o Kaid en la barandilla cuidando la escotilla","how":"Entra con Lion escaneando y limpia antes de abrir el piso"},
-        {"room":"Lower Library","f":1,"threat":"Ancla Mira detrás de los libreros","how":"Abre el piso encima y dispárale desde arriba hasta que suelte"}],
-       "final":"Planta en Lower Library bajo el hueco y sostiene desde el piso de arriba"},
+        {"room":"Upper Library","f":2,"threat":"Bandit o Kaid en la barandilla cuidando la puerta de Garden Pass","how":"Entra con Lion escaneando y limpia antes de abrir el piso"},
+        {"room":"Lower Library","f":1,"threat":"Ancla Mira detrás de los libreros","how":"Dispárale desde la barandilla y por los tablones abiertos hasta que suelte"}],
+       "final":"Planta en Lower Library bajo el balcón y sostiene desde arriba"},
       {"op":"fuze","role":"negacion","spawn":"Festival",
        "path":[
         {"room":"Festival","f":-1,"do":"Entra último del grupo oeste","via":"door"},
@@ -183,11 +183,11 @@
         {"room":"Campus Field","f":-1,"do":"Cubre Garden Pass","via":"door"},
         {"room":"Garden Pass","f":1,"do":"Sube","via":"door"},
         {"room":"Garden Pass","f":2,"do":"Cruza a Upper Library","via":"stairs"},
-        {"room":"Upper Library","f":2,"do":"Manda el BU-GI cruzando Upper Library para abrir todo el piso sobre Lower Library","via":"door"}],
+        {"room":"Upper Library","f":2,"do":"Manda el BU-GI por el balcón de Upper Library para abrir los tablones sobre Lower Library","via":"door"}],
        "clear":[
-        {"room":"Upper Library","f":2,"threat":"Refuerzos parciales y ADS en el piso de Upper Library","how":"El BU-GI se los come; manda dos si hace falta"},
-        {"room":"Lower Library","f":1,"threat":"Anclas debajo del piso abierto","how":"Dispara por los huecos con Buck y espera que salgan a Reading Room"}],
-       "final":"Sostiene Upper Library mirando los huecos en el post-plant"}
+        {"room":"Upper Library","f":2,"threat":"Refuerzos parciales y ADS en los tablones del balcón de Upper Library","how":"El BU-GI se los come; manda dos si hace falta"},
+        {"room":"Lower Library","f":1,"threat":"Anclas debajo del piso abierto","how":"Dispara por la barandilla con Buck y espera que salgan a Reading Room"}],
+       "final":"Sostiene el balcón de Upper Library mirando Lower Library en el post-plant"}
      ]},
     {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Ace e IQ abren la pared de Archway Hall hacia Reading Room mientras Osa, Ying y Dokkaebi entran por Garden Pass a Lower Library con candelas. Funciona porque el defensor no puede cubrir Archway y Garden Pass con las mismas dos anclas y las rotaciones se cruzan en medio del sitio.",
      "timeline":["0:00–0:45 · Dokkaebi hackea cámaras; IQ revisa la pared de Archway; Osa dronea Garden Pass","0:45–1:30 · Ace abre la pared de Reading Room; Osa pone el Talon en la puerta de Lower Library","1:30–2:30 · Ying candela en Lower Library y entrada simultánea por los dos lados; planta en Lower Library","2:30–3:00 · post-plant cruzado: Ace en Archway, Osa en Garden Pass"],
@@ -196,7 +196,7 @@
        "path":[
         {"room":"Festival","f":-1,"do":"Dronea Front Entrance","via":"door"},
         {"room":"Front Patio","f":-1,"do":"Cruza con IQ","via":"door"},
-        {"room":"Front Entrance","f":-1,"do":"Entra tras el dron","via":"door"},
+        {"room":"Front Entrance","f":-1,"do":"Entra tras el dron pegado a la pared de Coat Room","via":"door"},
         {"room":"Lobby","f":1,"do":"Toma la esquina de Archway","via":"door"},
         {"room":"Archway Hall","f":1,"do":"SELMA a la pared reforzada de Reading Room cuando IQ diga que no hay Bandit","via":"breach"},
         {"room":"Reading Room","f":1,"do":"Entra por el hueco al mismo tiempo que Ying entra por Lower Library","via":"breach"}],
@@ -289,9 +289,9 @@
         {"room":"Pantry","f":1,"do":"X-KAIROS a la pared reforzada de Kitchen después del EMP","via":"breach"},
         {"room":"Kitchen","f":1,"do":"Entra por el hueco tras el humo y cubre la planta","via":"breach"}],
        "clear":[
-        {"room":"Service Room","f":1,"threat":"Kapkan en la puerta de Parking y roamer tipo Vigil","how":"Dron primero, Thatcher quema la trampa y prefirea la esquina"},
+        {"room":"Service Room","f":1,"threat":"Kapkan en la puerta de Parking y roamer tipo Vigil","how":"Dron primero, Thatcher quema la trampa y prefire la esquina"},
         {"room":"Pantry","f":1,"threat":"Bandit trickeando la pared de Kitchen y Mira mirando Pantry","how":"Espera el doble EMP, tira los pellets en cuanto brille y no te pares frente al espejo"},
-        {"room":"Kitchen","f":1,"threat":"Ancla Smoke con gas detrás de la isla","how":"Sledge ya quitó el techo; entra tras el humo de Thatcher y prefirea la isla"}],
+        {"room":"Kitchen","f":1,"threat":"Ancla Smoke con gas detrás de la isla","how":"Sledge ya quitó el techo; entra tras el humo de Thatcher y prefire la isla"}],
        "final":"Sostiene el hueco de Pantry y cubre la planta en Kitchen"},
       {"op":"thatcher","role":"antigadget","spawn":"Main Gate",
        "path":[
@@ -569,7 +569,7 @@
         {"room":"Front Entrance","f":-1,"threat":"Kapkan en la puerta principal y Evil Eye mirando Lobby","how":"Dron primero, Thatcher quema la trampa y Zero revienta el Evil Eye"},
         {"room":"Compass Hallway","f":2,"threat":"Roamer tipo Vigil o Caveira esperando en lo alto de la escalera","how":"Dron adelantado y prefire el descanso; sube con Thatcher"},
         {"room":"West Corridor","f":2,"threat":"Bandit trickeando la pared de Classroom y Mira con espejo al pasillo","how":"Espera el doble EMP, tira SELMA en cuanto brille y no te pares frente al espejo"},
-        {"room":"Classroom","f":2,"threat":"Ancla Smoke con gas detrás de los pupitres","how":"Buck ya le quitó el piso; entra tras el humo y prefirea los pupitres"}],
+        {"room":"Classroom","f":2,"threat":"Ancla Smoke con gas detrás de los pupitres","how":"Buck ya le quitó el piso; entra tras el humo y prefire los pupitres"}],
        "final":"Sostiene el hueco de West Corridor y cubre la planta en Classroom"},
       {"op":"thatcher","role":"antigadget","spawn":"Festival",
        "path":[
@@ -604,7 +604,7 @@
         {"room":"Lobby","f":1,"do":"Se va a Archway","via":"door"},
         {"room":"Archway Hall","f":1,"do":"Cruza a Reading Room","via":"door"},
         {"room":"Reading Room","f":1,"do":"Abre el techo bajo Classroom con la Skeleton Key y dispara a la ancla de arriba","via":"door"},
-        {"room":"Lower Library","f":1,"do":"Abre el techo bajo Upper Library en el post-plant","via":"door"}],
+        {"room":"Lower Library","f":1,"do":"Cubre el balcón de Upper Library desde abajo por el hueco de la biblioteca en el post-plant","via":"door"}],
        "clear":[
         {"room":"Archway Hall","f":1,"threat":"Roamer tipo Caveira escondido en Archway o Reading Room","how":"Dron y prefire los arcos antes de entrar"},
         {"room":"Reading Room","f":1,"threat":"Kapkan en la puerta y ancla de Classroom arriba escuchando","how":"Dispara la trampa, abre el techo desde una esquina y muévete después de cada ráfaga"}],
@@ -671,7 +671,7 @@
         {"room":"Garden Pass","f":2,"threat":"Roamer subiendo por Garden Pass 2F","how":"Candela a la puerta de Garden Pass y prefire"}],
        "final":"Sostiene la puerta de Garden Pass 2F desde Upper Library"}
      ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"El equipo toma Reading Room y Lower Library debajo del sitio: Buck y Sledge abren el techo bajo Classroom y Upper Library, Capitão mete fuego por los huecos y Grim siembra las rotaciones. Fuze sube por la escalera principal y mete cargas por la pared de West Corridor. Funciona porque el piso de Classroom es blando y las anclas no pueden pararse encima sin que les disparen desde abajo.",
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"El equipo toma Reading Room y Lower Library debajo del sitio: Buck abre el techo bajo Classroom, Sledge rompe los tablones del balcón de Upper Library desde Lower Library, Capitão mete fuego por los huecos y Grim siembra las rotaciones. Fuze sube por la escalera principal y mete cargas por la pared de West Corridor. Funciona porque el piso de Classroom es blando y las anclas no pueden pararse encima sin que les disparen desde abajo.",
      "timeline":["0:00–0:45 · Grim dronea; el equipo toma Archway, Reading Room y Lower Library","0:45–1:30 · Buck y Sledge abren el techo; Capitão fuego por los huecos; Fuze en la pared de West Corridor","1:30–2:30 · matan a las anclas por abajo; Sledge sube por Garden Pass y planta en Upper Library","2:30–3:00 · post-plant desde abajo cubriendo los huecos"],
      "ops":[
       {"op":"grim","role":"intel","spawn":"Festival",
@@ -688,8 +688,8 @@
       {"op":"buck","role":"blando","spawn":"Festival",
        "path":[
         {"room":"Festival","f":-1,"do":"Corre con Grim","via":"door"},
-        {"room":"Front Patio","f":-1,"do":"Cruza","via":"door"},
-        {"room":"Front Entrance","f":-1,"do":"Entra","via":"door"},
+        {"room":"Front Patio","f":-1,"do":"Cruza el patio pegado a Grim","via":"door"},
+        {"room":"Front Entrance","f":-1,"do":"Entra tras el EMP de la puerta","via":"door"},
         {"room":"Lobby","f":1,"do":"Pasa a Archway","via":"door"},
         {"room":"Archway Hall","f":1,"do":"Cruza a Reading Room","via":"door"},
         {"room":"Reading Room","f":1,"do":"Abre el techo bajo Classroom con la Skeleton Key y dispara a la ancla","via":"door"}],
@@ -702,13 +702,13 @@
         {"room":"Festival","f":-1,"do":"Corre al oeste","via":"door"},
         {"room":"Campus Field","f":-1,"do":"Dronea Garden Pass","via":"door"},
         {"room":"Garden Pass","f":1,"do":"Entra por la puerta oeste","via":"door"},
-        {"room":"Lower Library","f":1,"do":"Rompe el techo bajo Upper Library con el martillo","via":"door"},
+        {"room":"Lower Library","f":1,"do":"Rompe los tablones del balcón de Upper Library desde abajo con el martillo y dispara hacia arriba por el hueco de la biblioteca","via":"door"},
         {"room":"Garden Pass","f":1,"do":"Regresa y sube por la escalera cuando el sitio esté limpio","via":"door"},
         {"room":"Garden Pass","f":2,"do":"Sale de la escalera","via":"stairs"},
         {"room":"Upper Library","f":2,"do":"Planta pegado a la barandilla","via":"door"}],
        "clear":[
         {"room":"Garden Pass","f":1,"threat":"Frost y Kapkan en la puerta de Campus Field","how":"Dron, dispara la trampa y salta el cepo"},
-        {"room":"Lower Library","f":1,"threat":"Ancla de Upper Library arriba escuchando el martillo","how":"Rompe desde una esquina y cámbiate después de cada golpe"},
+        {"room":"Lower Library","f":1,"threat":"Ancla de Upper Library asomando por la barandilla del balcón","how":"Rompe desde una esquina fuera de la vista de la barandilla y cámbiate después de cada golpe"},
         {"room":"Upper Library","f":2,"threat":"Ancla Mira detrás de los libreros","how":"Sube sólo cuando Buck y Capitão la hayan sacado por abajo"}],
        "final":"Planta en Upper Library y sostiene desde la barandilla"},
       {"op":"capitao","role":"negacion","spawn":"Festival",
@@ -716,10 +716,10 @@
         {"room":"Festival","f":-1,"do":"Corre con Sledge","via":"door"},
         {"room":"Campus Field","f":-1,"do":"Cubre la ventana de Upper Library","via":"door"},
         {"room":"Garden Pass","f":1,"do":"Entra tras Sledge","via":"door"},
-        {"room":"Lower Library","f":1,"do":"Flechas de fuego por los huecos del techo hacia Upper Library","via":"door"},
+        {"room":"Lower Library","f":1,"do":"Flechas de fuego por el hueco de la biblioteca al balcón de Upper Library","via":"door"},
         {"room":"Reading Room","f":1,"do":"Se junta con Buck y mete fuego bajo Classroom","via":"door"}],
        "clear":[
-        {"room":"Lower Library","f":1,"threat":"Ancla de Upper Library disparando por los huecos","how":"Fuego por el hueco antes de asomar; humo si necesitas cruzar"},
+        {"room":"Lower Library","f":1,"threat":"Ancla de Upper Library disparando desde la barandilla del balcón","how":"Fuego por el hueco antes de asomar; humo si necesitas cruzar"},
         {"room":"Reading Room","f":1,"threat":"Roamer rotando de Archway a Reading Room","how":"Flecha de humo a la puerta de Archway y prefire"}],
        "final":"Sostiene Lower Library y Reading Room con fuego a los huecos en el defuse"},
       {"op":"fuze","role":"negacion","spawn":"Festival",
@@ -813,7 +813,7 @@
       {"op":"maestro","room":"Classroom","f":2,"role":"ancla","job":"Evil Eye mirando West Corridor y otro a Compass Hallway; sostiene Classroom"},
       {"op":"noor","room":"Upper Library","f":2,"role":"flex","job":"Fuego del Horus a la ventana de Upper Library cuando rapeleen escudos; cubre el defuse"},
       {"op":"kapkan","room":"Reading Room","f":1,"role":"roam","job":"Trampas en Archway Hall y Garden Pass 1F; roamea Reading Room contra los verticales"},
-      {"op":"pulse","room":"Lower Library","f":1,"role":"roam","job":"Sensor en Lower Library escuchando a Buck y Sledge; C4 por el techo cuando los ve"}
+      {"op":"pulse","room":"Lower Library","f":1,"role":"roam","job":"Sensor en Lower Library escuchando a Buck y Sledge; C4 por el techo de Reading Room cuando los ve y cuida el hueco de la biblioteca"}
      ]}
    ]
   },
@@ -837,7 +837,7 @@
         {"room":"Front Entrance","f":-1,"threat":"Kapkan en la puerta principal","how":"Dron primero, Thatcher quema la trampa con EMP"},
         {"room":"Vista Hallway","f":2,"threat":"Roamer tipo Vigil o Caveira y Evil Eye en Vista Hallway","how":"Dron adelantado, Twitch revienta el Evil Eye y prefires la esquina"},
         {"room":"Model Hall","f":2,"threat":"Bandit trickeando la pared de Trophy y Mira con espejo a Model Hall","how":"Espera el doble EMP, pega la carga en cuanto brille y no te pares frente al espejo"},
-        {"room":"Trophy Room","f":2,"threat":"Ancla Smoke con gas detrás de las vitrinas","how":"Buck ya le quitó el piso; entra tras el humo y prefirea las vitrinas"}],
+        {"room":"Trophy Room","f":2,"threat":"Ancla Smoke con gas detrás de las vitrinas","how":"Buck ya le quitó el piso; entra tras el humo y prefire las vitrinas"}],
        "final":"Sostiene el hueco de Model Hall y cubre la planta en Trophy Room"},
       {"op":"thatcher","role":"antigadget","spawn":"Festival",
        "path":[
@@ -994,7 +994,7 @@
         {"room":"Dining Room","f":1,"do":"Flechas de fuego por los huecos del techo hacia Trophy Room","via":"door"},
         {"room":"Kitchen","f":1,"do":"Se junta con Buck y mete fuego bajo Trophy","via":"door"}],
        "clear":[
-        {"room":"Central Hallway","f":1,"threat":"Roamer tipo Caveira en Central Hallway o Bath- room","how":"Dron y prefire el pasillo antes de cruzar"},
+        {"room":"Central Hallway","f":1,"threat":"Roamer tipo Caveira en Central Hallway o el baño","how":"Dron y prefire el pasillo antes de cruzar"},
         {"room":"Dining Room","f":1,"threat":"Kapkan en la puerta de Kitchen","how":"Dispara la trampa desde Dining antes de cruzar"},
         {"room":"Kitchen","f":1,"threat":"Ancla de Trophy disparando por los huecos","how":"Fuego por el hueco antes de asomar; humo si necesitas cruzar"}],
        "final":"Sostiene Kitchen y Dining Room con fuego a los huecos en el defuse"},

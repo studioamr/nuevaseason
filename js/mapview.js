@@ -67,10 +67,12 @@ window.MapView = (() => {
   function inFloorImg(f, p) { const src = cur.map.floorImgs.find(x => x.idx === f.index)?.src; const d = src && sizes[src]; if (!d) return false; return p.x >= f.left && p.y >= f.top && p.x <= f.left + d.w && p.y <= f.top + d.h; }
   function segFloor(a, b) { // en qué piso se calcula el tramo a→b (null = cambio de piso: línea directa)
     const r = cur.map.r6; if (!r) return null; const F = i => r.floors.find(f => f.index === i);
-    if (a.f >= 0 && b.f >= 0) return a.f === b.f ? F(a.f) : null;
-    const bg = bgFloor();
-    if (a.f < 0 && b.f < 0) return bg || r.floors.find(f => f.def) || r.floors[0];
-    const fl = F(a.f >= 0 ? a.f : b.f), ext = a.f < 0 ? a : b; if (fl && inFloorImg(fl, ext)) return fl; return bg || fl;
+    if (a.f >= 0 && b.f >= 0) return a.f === b.f ? F(a.f) : null;               // mismo piso
+    const bg = bgFloor() || r.floors.find(f => f.def) || r.floors[0];
+    if (a.f < 0 && b.f < 0) return bg;                                          // exterior puro: plano de fondo (trae el terreno)
+    const fl = F(a.f >= 0 ? a.f : b.f), ext = a.f < 0 ? a : b;
+    if (fl && fl !== bg && inFloorImg(fl, ext)) return fl;                      // el punto exterior cae dentro de ese plano
+    return bg;                                                                   // entrada al edificio: se traza en el plano de fondo
   }
   async function geometry(rt, fast) {
     const pts = rt.pts; if (!pts || pts.length < 2) return null;
@@ -80,9 +82,14 @@ window.MapView = (() => {
     for (let i = 0; i < pts.length - 1; i++) {
       const a = pts[i], b = pts[i + 1]; const via = b.via || ''; const jumpVia = ((via === 'rappel' || via === 'window') && b.f >= 0 && a.f !== b.f) || (a.f !== b.f && a.f >= 0 && b.f >= 0 && (via === 'hatch' || via === 'stairs')) || (a.f < 0 && b.f > 1 && !via);
       const fl = jumpVia ? null : segFloor(a, b); let line = null, kind = 'walk';
-      if (fl && !fast) { const mode = a.f < 0 && b.f < 0 ? 'outdoor' : a.f >= 0 && b.f >= 0 ? 'indoor' : 'enter'; try { line = await Router.route(cur.map.id, fl, a, b, { mode }); } catch (e) { line = null; } }
+      if (fl && !fast) {
+        const mode = a.f < 0 && b.f < 0 ? 'outdoor' : a.f >= 0 && b.f >= 0 ? 'indoor' : 'enter';
+        try { line = await Router.route(cur.map.id, fl, a, b, { mode }); } catch (e) { line = null; }
+        const bg = bgFloor(); // si no hay camino en ese plano, reintenta en el plano de fondo antes de rendirse
+        if (!line && bg && bg !== fl) { try { line = await Router.route(cur.map.id, bg, a, b, { mode }); } catch (e) { line = null; } }
+      }
       if (!line) { line = [{ x: a.x, y: a.y }, { x: b.x, y: b.y }]; kind = fl ? 'straight' : 'level'; }
-      segs.push({ line, f: fl ? fl.index : null, kind, via: jumpVia ? via : null, up: fl ? null : (b.f > a.f ? 'up' : 'down') });
+      segs.push({ line, f: fl ? fl.index : null, kind, ext: a.f < 0 || b.f < 0, via: jumpVia ? via : null, up: fl ? null : (b.f > a.f ? 'up' : 'down') });
     }
     rt._geo = segs; rt._geoKey = key; return segs;
   }
@@ -107,14 +114,16 @@ window.MapView = (() => {
       const segs = geoms[ri] || []; const rg = el('g', { class: 'rt', 'data-slot': rt.id, opacity: dim }); g.appendChild(rg);
       const rec = { paths: [], total: 0, color: rt.color }; routeEls[rt.id] = rec; let cum = 0;
       segs.forEach((sg, si) => {
-        const here = sg.f === floorIdx || sg.f === null; const op = here ? 1 : .18;
+        const here = sg.f === floorIdx || sg.f === null || sg.ext; const op = here ? 1 : .3;
         const solid = sg.line.filter(p => !p.jump); const len = polyLen(solid); const d = solid.map((p, i) => (i ? 'L' : 'M') + X(p.x) + ' ' + Y(p.y)).join(' ');
-        const pe = el('path', { class: 'route' + (sg.kind !== 'walk' && !anim ? ' ghost' : ''), d, stroke: rt.color, 'stroke-width': w, opacity: op }); rg.appendChild(pe);
+        const sw = sg.kind === 'walk' ? w : Math.max(2.5, w - 2);
+        if (anim) rg.appendChild(el('path', { class: 'route base' + (sg.kind !== 'walk' ? ' ghost' : ''), d, stroke: rt.color, 'stroke-width': sw, opacity: op * .3 })); // plan completo, tenue
+        const pe = el('path', { class: 'route' + (sg.kind !== 'walk' ? ' ghost' : ''), d, stroke: rt.color, 'stroke-width': sw, opacity: op }); rg.appendChild(pe);
         if (anim) { pe.setAttribute('stroke-dasharray', len); pe.setAttribute('stroke-dashoffset', len); }
-        rec.paths.push({ el: pe, len, start: cum, pts: solid, here }); cum += len;
+        rec.paths.push({ el: pe, len, start: cum, pts: solid, here, f2: sg.f }); cum += len;
         const jp = sg.line.find(p => p.jump); if (jp && solid.length) { const lp = solid[solid.length - 1]; rg.appendChild(el('path', { class: 'route ghost', d: `M${X(lp.x)} ${Y(lp.y)} L${X(jp.x)} ${Y(jp.y)}`, stroke: rt.color, 'stroke-width': 3, opacity: op * .8 })); }
         if (sg.kind === 'level') { const m = sg.line[sg.line.length - 1]; const lbl = sg.via === 'rappel' ? '↗ rappel' : sg.via === 'window' ? '↗ ventana' : sg.via === 'hatch' ? (sg.up === 'up' ? '▲ escotilla' : '▼ escotilla') : sg.via === 'stairs' ? (sg.up === 'up' ? '▲ escaleras' : '▼ escaleras') : (sg.up === 'up' ? '▲ sube' : '▼ baja'); pill(rg, X(m.x) + 14, Y(m.y) - 14, lbl, rt.color, false); }
-        if (si === segs.length - 1 && solid.length >= 2 && !anim) { const a = solid[solid.length - 2], b = solid[solid.length - 1]; const ang = Math.atan2(b.y - a.y, b.x - a.x), L = 16; const p1 = { x: b.x - L * Math.cos(ang - .5), y: b.y - L * Math.sin(ang - .5) }, p2 = { x: b.x - L * Math.cos(ang + .5), y: b.y - L * Math.sin(ang + .5) }; rg.appendChild(el('path', { d: `M${X(p1.x)} ${Y(p1.y)} L${X(b.x)} ${Y(b.y)} L${X(p2.x)} ${Y(p2.y)}`, fill: 'none', stroke: rt.color, 'stroke-width': w, 'stroke-linecap': 'round', opacity: op })); }
+        if (si === segs.length - 1 && solid.length >= 2) { const a = solid[solid.length - 2], b = solid[solid.length - 1]; const ang = Math.atan2(b.y - a.y, b.x - a.x), L = 16; const p1 = { x: b.x - L * Math.cos(ang - .5), y: b.y - L * Math.sin(ang - .5) }, p2 = { x: b.x - L * Math.cos(ang + .5), y: b.y - L * Math.sin(ang + .5) }; rg.appendChild(el('path', { d: `M${X(p1.x)} ${Y(p1.y)} L${X(b.x)} ${Y(b.y)} L${X(p2.x)} ${Y(p2.y)}`, fill: 'none', stroke: rt.color, 'stroke-width': w, 'stroke-linecap': 'round', opacity: op })); }
       });
       rec.total = cum;
       // zonas de defensores: punto rojo numerado (texto solo si está seleccionada)
@@ -136,9 +145,11 @@ window.MapView = (() => {
     for (const [id, rec] of Object.entries(routeEls)) { const p = Math.max(0, Math.min(1, prog[id] == null ? 1 : prog[id])); const d = rec.total * p; let head = null;
       rec.paths.forEach(ph => { if (!ph.len) return; const end = ph.start + ph.len; if (d >= end) { ph.el.setAttribute('stroke-dashoffset', 0); head = ph.pts[ph.pts.length - 1]; } else if (d <= ph.start) ph.el.setAttribute('stroke-dashoffset', ph.len); else { ph.el.setAttribute('stroke-dashoffset', ph.len - (d - ph.start)); head = pointAt(ph.pts, d - ph.start); } });
       if (rec.head && head) { rec.head.setAttribute('transform', `translate(${X(head.x)},${Y(head.y)})`); rec.head.style.display = p > 0 ? '' : 'none'; }
+      rec.headFloor = null; { let d2 = rec.total * p; for (const ph of rec.paths) { if (!ph.len) continue; if (d2 <= ph.start + ph.len) { rec.headFloor = ph.f2; break; } } }
     }
   }
   function setFloor(idx) { if (!cur) return; show({ ...cur, floorIdx: idx }); }
   function zoom(k) { const r = root.getBoundingClientRect(); const mx = r.width / 2, my = r.height / 2; const ns = Math.min(4, Math.max(0.12, s * k)); tx = mx - (mx - tx) * (ns / s); ty = my - (my - ty) * (ns / s); s = ns; apply(); }
-  return { mount, show, setFloor, fit: () => cur && show({ ...cur, refit: true }), zoom, redraw: () => cur && drawRoutes(), setProgress, get cur() { return cur; } };
+  function headFloor(id) { const r = routeEls[id]; return r ? r.headFloor : null; }
+  return { mount, show, setFloor, headFloor, fit: () => cur && show({ ...cur, refit: true }), zoom, redraw: () => cur && drawRoutes(), setProgress, get cur() { return cur; } };
 })();

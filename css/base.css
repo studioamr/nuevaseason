@@ -97,3 +97,15 @@ label.f>span{display:block;margin-bottom:6px}
 .scanline{position:fixed;left:0;right:0;top:0;height:90px;pointer-events:none;z-index:98;background:linear-gradient(180deg,transparent,rgba(94,231,255,.035),transparent);animation:scan 9s linear infinite;opacity:.6}
 .h-disp{font-family:var(--disp);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 @media (prefers-reduced-motion:reduce){.fx .g,.brand .r6,.scanline,.flick{animation:none!important}}
+/* ===== tema R6: el acento sigue al lado (azul ataque / naranja defensa) ===== */
+:root{--atk:#2f9dff;--def:#ff8a1f;--font-scale:1.15}
+:root[data-font="barlow"] .k,:root[data-font="saira"] .k,:root[data-font="oswald"] .k{font-size:11px;letter-spacing:.16em;font-weight:600}
+:root[data-font="barlow"] .btn,:root[data-font="saira"] .btn,:root[data-font="oswald"] .btn{font-size:12px;letter-spacing:.1em;font-weight:700}
+:root[data-font="barlow"] .steps>button[data-step] span,:root[data-font="saira"] .steps>button[data-step] span,:root[data-font="oswald"] .steps>button[data-step] span{font-size:12px}
+:root[data-font="barlow"] .pcard .op,:root[data-font="saira"] .pcard .op,:root[data-font="oswald"] .pcard .op{font-size:26px;letter-spacing:.03em}
+:root[data-font="barlow"] .live .clock,:root[data-font="saira"] .live .clock,:root[data-font="oswald"] .live .clock{font-size:64px}
+:root[data-font="barlow"] .tile .n,:root[data-font="barlow"] .sitecard .n,:root[data-font="barlow"] .call .hd h2,:root[data-font="barlow"] .stage .bar h1,:root[data-font="barlow"] .pagewrap h2{letter-spacing:.03em}
+/* franja de peligro icónica (objetivo) */
+.hazard{background:repeating-linear-gradient(135deg,#f2c318 0 8px,#0a0b0d 8px 16px);height:4px;border-radius:2px}
+.sideico{display:inline-flex;width:18px;height:18px;vertical-align:middle;margin-right:6px}
+.sideico svg{width:100%;height:100%}

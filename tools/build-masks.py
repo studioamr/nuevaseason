@@ -33,13 +33,14 @@ for mid in sorted(os.listdir(f'{ROOT}/img/maps')):
         out = np.full(w.shape, 255, np.uint8)
         out[b > 0.20] = 128
         out[w > 0.22] = 0
-        # huella del edificio: componente de pared más grande, cerrar huecos de puertas, rellenar → interior = 64
-        wallc = out == 0
-        lab, n = ndi.label(wallc, structure=np.ones((3, 3), bool))
-        if n:
-            sizes = ndi.sum(wallc, lab, range(1, n + 1)); big = lab == (int(np.argmax(sizes)) + 1)
-            closed = ndi.binary_dilation(big, structure=np.ones((5, 5), bool)); filled = ndi.binary_fill_holes(closed); foot = ndi.binary_erosion(filled, structure=np.ones((5, 5), bool)) | big
-            out[(out == 255) & foot] = 64
+        # INTERIOR del edificio = celda no-pared a la que NO se llega desde el borde de la imagen
+        # sin cruzar una pared. Se engrosan las paredes antes para cerrar huecos de puertas/ventanas.
+        solid = ndi.binary_dilation(out == 0, structure=np.ones((3, 3), bool), iterations=2)
+        free = ~solid
+        seed = np.zeros_like(free); seed[0, :] = free[0, :]; seed[-1, :] = free[-1, :]; seed[:, 0] = free[:, 0]; seed[:, -1] = free[:, -1]
+        outside = ndi.binary_propagation(seed, mask=free)
+        interior = (~outside) & (out != 0)
+        out[interior] = 64
         Image.fromarray(out, 'L').save(f'{ROOT}/img/masks/{mid}/{idx}.png', optimize=True)
         manifest.setdefault(mid, {})[idx] = {'w': int(out.shape[1]), 'h': int(out.shape[0]), 'cell': CELL, 'imgW': img.width, 'imgH': img.height}
 import time

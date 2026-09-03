@@ -322,11 +322,11 @@
  "sites": [
   {
    "id": "library",
-   "name": "Biblioteca / Sala de lectura",
+   "name": "Biblioteca inferior / Sala de lectura",
    "fl": "1",
    "floorIdx": 1,
    "rooms": [
-    "Biblioteca",
+    "Biblioteca inferior",
     "Sala de lectura"
    ],
    "verify": true,
@@ -348,11 +348,11 @@
     },
     {
      "id": "v2",
-     "n": "Vertical desde arriba → Biblioteca",
+     "n": "Vertical desde arriba → Biblioteca inferior",
      "kind": "vertical",
      "path": [
       "Arriba",
-      "Biblioteca"
+      "Biblioteca inferior"
      ],
      "roles": [
       "blando",
@@ -362,11 +362,11 @@
     },
     {
      "id": "v3",
-     "n": "Puerta exterior → Biblioteca",
+     "n": "Puerta exterior → Biblioteca inferior",
      "kind": "puerta",
      "path": [
       "Exterior",
-      "Biblioteca"
+      "Biblioteca inferior"
      ],
      "roles": [
       "soporte",
@@ -375,22 +375,22 @@
     }
    ],
    "plan": [
-    "Vertical desde arriba sobre Biblioteca. Breach duro en la pared de Sala de lectura.",
+    "Vertical desde arriba sobre Biblioteca inferior. Breach duro en la pared de Sala de lectura.",
     "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
     "Planta en Sala de lectura. Flanco en el pasillo."
    ],
    "def": {
     "reinforce": [
      "Pared Sala de lectura–Pasillo ×2",
-     "Puerta Biblioteca (Castle)"
+     "Puerta Biblioteca inferior (Castle)"
     ],
     "keepSoft": [
      "Piso de arriba"
     ],
     "rotations": [
-     "Biblioteca↔Sala de lectura"
+     "Biblioteca inferior↔Sala de lectura"
     ],
-    "anchors": "Ancla Sala de lectura (Smoke), ancla Biblioteca (Mira). Roam arriba.",
+    "anchors": "Ancla Sala de lectura (Smoke), ancla Biblioteca inferior (Mira). Roam arriba.",
     "ops": [
      "smoke",
      "mira",
@@ -403,23 +403,23 @@
   },
   {
    "id": "kitchen",
-   "name": "Cocina / Sala de trofeos",
+   "name": "Cocina / Sala del piano",
    "fl": "1",
    "floorIdx": 1,
    "rooms": [
     "Cocina",
-    "Sala de trofeos"
+    "Sala del piano"
    ],
    "verify": true,
    "vectors": [
     {
      "id": "v1",
-     "n": "Pared reforzada → Sala de trofeos",
+     "n": "Pared reforzada → Sala del piano",
      "kind": "reforzada",
      "path": [
       "Exterior",
       "Pasillo",
-      "Sala de trofeos"
+      "Sala del piano"
      ],
      "roles": [
       "duro",
@@ -456,22 +456,22 @@
     }
    ],
    "plan": [
-    "Vertical desde arriba sobre Cocina. Breach duro en la pared de Sala de trofeos.",
+    "Vertical desde arriba sobre Cocina. Breach duro en la pared de Sala del piano.",
     "Entrada por pared + puerta con escudo primero. Escaneo antes de cruzar.",
-    "Planta en Sala de trofeos. Flanco en el pasillo."
+    "Planta en Sala del piano. Flanco en el pasillo."
    ],
    "def": {
     "reinforce": [
-     "Pared Sala de trofeos–Pasillo ×2",
+     "Pared Sala del piano–Pasillo ×2",
      "Puerta Cocina (Castle)"
     ],
     "keepSoft": [
      "Piso de arriba"
     ],
     "rotations": [
-     "Cocina↔Sala de trofeos"
+     "Cocina↔Sala del piano"
     ],
-    "anchors": "Ancla Sala de trofeos (Smoke), ancla Cocina (Mira). Roam arriba.",
+    "anchors": "Ancla Sala del piano (Smoke), ancla Cocina (Mira). Roam arriba.",
     "ops": [
      "smoke",
      "mira",
@@ -484,12 +484,12 @@
   },
   {
    "id": "classroom",
-   "name": "Aula / Oficina",
+   "name": "Aula / Biblioteca superior",
    "fl": "2",
    "floorIdx": 2,
    "rooms": [
     "Aula",
-    "Oficina"
+    "Biblioteca superior"
    ],
    "verify": true,
    "vectors": [
@@ -509,12 +509,12 @@
     },
     {
      "id": "v2",
-     "n": "Pared Pasillo → Oficina",
+     "n": "Pared Pasillo → Biblioteca superior",
      "kind": "reforzada",
      "path": [
       "Escaleras",
       "Pasillo",
-      "Oficina"
+      "Biblioteca superior"
      ],
      "roles": [
       "duro",
@@ -537,20 +537,20 @@
     }
    ],
    "plan": [
-    "Rappel a las ventanas de Aula. Breach duro en la pared de Oficina desde el pasillo.",
+    "Rappel a las ventanas de Aula. Breach duro en la pared de Biblioteca superior desde el pasillo.",
     "Flash por ventana + humo en el pasillo. Entrada simultánea.",
     "Planta en Aula. Flanco en Escaleras."
    ],
    "def": {
     "reinforce": [
-     "Pared Oficina–Pasillo ×2",
+     "Pared Biblioteca superior–Pasillo ×2",
      "Ventanas Aula (Castle)"
     ],
     "keepSoft": [],
     "rotations": [
-     "Aula↔Oficina"
+     "Aula↔Biblioteca superior"
     ],
-    "anchors": "Ancla Aula (Frost + Smoke), ancla Oficina (Mira). Roam abajo.",
+    "anchors": "Ancla Aula (Frost + Smoke), ancla Biblioteca superior (Mira). Roam abajo.",
     "ops": [
      "frost",
      "castle",
@@ -563,22 +563,22 @@
   },
   {
    "id": "piano",
-   "name": "Sala de piano / Salón de baile",
+   "name": "Sala de trofeos / Museo del remo",
    "fl": "2",
    "floorIdx": 2,
    "rooms": [
-    "Sala de piano",
-    "Salón de baile"
+    "Sala de trofeos",
+    "Museo del remo"
    ],
    "verify": true,
    "vectors": [
     {
      "id": "v1",
-     "n": "Ventanas Sala de piano (rappel)",
+     "n": "Ventanas Sala de trofeos (rappel)",
      "kind": "rappel",
      "path": [
       "Exterior",
-      "Sala de piano"
+      "Sala de trofeos"
      ],
      "roles": [
       "entrada",
@@ -588,12 +588,12 @@
     },
     {
      "id": "v2",
-     "n": "Pared Pasillo → Salón de baile",
+     "n": "Pared Pasillo → Museo del remo",
      "kind": "reforzada",
      "path": [
       "Escaleras",
       "Pasillo",
-      "Salón de baile"
+      "Museo del remo"
      ],
      "roles": [
       "duro",
@@ -603,11 +603,11 @@
     },
     {
      "id": "v3",
-     "n": "Escaleras → Sala de piano (flanco)",
+     "n": "Escaleras → Sala de trofeos (flanco)",
      "kind": "puerta",
      "path": [
       "Escaleras",
-      "Sala de piano"
+      "Sala de trofeos"
      ],
      "roles": [
       "flanco",
@@ -616,20 +616,20 @@
     }
    ],
    "plan": [
-    "Rappel a las ventanas de Sala de piano. Breach duro en la pared de Salón de baile desde el pasillo.",
+    "Rappel a las ventanas de Sala de trofeos. Breach duro en la pared de Museo del remo desde el pasillo.",
     "Flash por ventana + humo en el pasillo. Entrada simultánea.",
-    "Planta en Sala de piano. Flanco en Escaleras."
+    "Planta en Sala de trofeos. Flanco en Escaleras."
    ],
    "def": {
     "reinforce": [
-     "Pared Salón de baile–Pasillo ×2",
-     "Ventanas Sala de piano (Castle)"
+     "Pared Museo del remo–Pasillo ×2",
+     "Ventanas Sala de trofeos (Castle)"
     ],
     "keepSoft": [],
     "rotations": [
-     "Sala de piano↔Salón de baile"
+     "Sala de trofeos↔Museo del remo"
     ],
-    "anchors": "Ancla Sala de piano (Frost + Smoke), ancla Salón de baile (Mira). Roam abajo.",
+    "anchors": "Ancla Sala de trofeos (Frost + Smoke), ancla Museo del remo (Mira). Roam abajo.",
     "ops": [
      "frost",
      "castle",

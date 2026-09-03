@@ -32,14 +32,16 @@
   const initials = p => (p.nick || p.id || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
 
   // ---------- estado ----------
-  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [] }, hint: null, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
+  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [], active: false }, hint: null, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
   const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
   const map = () => MAPS.find(m => m.id === S.map) || MAPS[0];
   const site = () => map().sites.find(s => s.id === S.site) || map().sites[0];
-  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes });
+  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, season: SEASON });
+  let SEASON = Store.get('season', { matches: [] });
+  const saveSeason = () => { Store.set('season', SEASON); if (Sync.connected && !syncing) Sync.patch({ season: SEASON }); };
   let syncing = false;
   function commit(patch) { Object.assign(S, patch); save(); if (Sync.connected && !syncing) { const p = {}; for (const k of Object.keys(patch)) if (k in shared()) p[k] = S[k]; if (Object.keys(p).length) Sync.patch(p); } render(); }
-  Sync.onState = st => { syncing = true; const keep = { ...st }; delete keep.updatedAt; delete keep.by; const jump = (st.map && st.map !== S.map) || (st.site && st.site !== S.site) || (st.side && st.side !== S.side); Object.assign(S, keep); if (st.map !== undefined) S.floorIdx = null; if (jump && S.step < 3) S.step = 3; save(); render(); syncing = false; if (st.by && st.by !== (me && me.name)) Store.toast(`${st.by} actualizó el plan`); };
+  Sync.onState = st => { syncing = true; const keep = { ...st }; delete keep.updatedAt; delete keep.by; if (keep.season) { SEASON = keep.season; Store.set('season', SEASON); delete keep.season; } const jump = (st.map && st.map !== S.map) || (st.site && st.site !== S.site) || (st.side && st.side !== S.side); Object.assign(S, keep); if (st.map !== undefined) S.floorIdx = null; if (jump && S.step < 3) S.step = 3; save(); render(); syncing = false; if (st.by && st.by !== (me && me.name)) Store.toast(`${st.by} actualizó el plan`); };
   Sync.onPeers = () => { renderSala(); renderSalaChip(); };
 
   // ---------- helpers ----------
@@ -53,7 +55,7 @@
   // ---------- render raíz ----------
   function ensureStratPicks() { const x = curStrat(); if (!x || S.strat === 'custom') return; const key = `${S.map}/${site().id}/${S.side}/${x.id}`; if (S.stratKey === key) return; const picks = {}; SQUAD.forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); S.picks = picks; S.stratKey = key; save(); if (Sync.connected && !syncing) Sync.patch({ picks }); }
   let renderSeq = 0;
-  function render() { const seq = ++renderSeq; const go = () => { if (seq !== renderSeq) return; ensureStratPicks(); renderMe(); renderSalaChip(); renderBar(); renderWiz(); renderCanvas(); renderPlanPane(); renderOpsPane(); renderDefPane(); }; if (STR[S.map] === undefined) loadStrats(S.map).then(go); else go(); }
+  function render() { Theme.apply(S.side); const seq = ++renderSeq; const go = () => { if (seq !== renderSeq) return; ensureStratPicks(); renderMe(); renderSalaChip(); renderBar(); renderWiz(); renderCanvas(); renderPlanPane(); renderOpsPane(); renderDefPane(); }; if (STR[S.map] === undefined) loadStrats(S.map).then(go); else go(); }
   function renderMe() { const p = me ? slotOf(me.slot) : null; $('#meChip').innerHTML = me ? `<span class="av ${p && p.me ? 'acc' : ''}">${E(initials({ nick: me.name }))}</span><div><div style="font-size:12px">${E(me.name)}</div><div class="k" style="font-size:9px">${E(p ? p.role : 'invitado')}</div></div>` : `<button class="btn sm" id="whoBtn">¿Quién eres?</button>`; ($('#whoBtn') || $('#meChip')).onclick = () => openIdentity(); }
   function renderSalaChip() { const c = $('#salaCode'); if (Sync.connected) { c.textContent = Sync.code; c.classList.add('live'); $('#salaBtn').textContent = `${Sync.members.length} en línea`; } else { c.textContent = '— sin sala —'; c.classList.remove('live'); $('#salaBtn').textContent = 'Crear / Unirse'; } }
   function renderMapList() {
@@ -185,9 +187,23 @@
       return `<div class="pc ${mine ? 'me' : ''}"><div class="hd"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="nm">${E(p.nick || 'Tu nick')}<small>${E(p.role)}${p.alias ? ' · alias ' + E(p.alias) : ''}</small></div><span class="chip ${p.me ? 'acc' : ''} tag">${E(p.tag)}</span></div>${body}<div class="ft">${p.nick ? `<a class="btn sm" target="_blank" rel="noopener" href="${Store.trackerUrl(p.nick, p.plat)}">R6 Tracker ↗</a>` : ''}<button class="btn sm ghost" data-edit="${p.id}">Editar</button>${!mine ? `<button class="btn sm ghost" data-beme="${p.id}">Soy yo</button>` : '<span class="chip acc dot">tú</span>'}</div></div>`;
     }).join('');
     $$('#squadCards .rp').forEach(e => { const n = parseInt(e.firstChild && e.firstChild.textContent.replace(/,/g, '')); if (n) { const t = e.firstChild; FX.count({ set textContent(v) { t.textContent = v; } }, n); } });
+    renderSeason();
     $$('[data-savenick]').forEach(b => b.onclick = () => { const id = b.dataset.savenick; const v = $('#nick-' + id).value.trim(); if (!v) return; setOverride(id, { nick: v }); if (me && me.slot === id) { me.name = v; Store.set('me', me); } renderSquad(); renderMe(); });
     $$('[data-edit]').forEach(b => b.onclick = () => editMember(b.dataset.edit));
     $$('[data-beme]').forEach(b => b.onclick = () => { const p = slotOf(b.dataset.beme); me = { slot: p.id, name: p.nick || p.id }; Store.set('me', me); render(); renderSquad(); });
+  }
+
+  function renderSeason() {
+    let host = $('#seasonBox'); if (!host) { host = document.createElement('div'); host.id = 'seasonBox'; host.className = 'season'; $('#squadCards').after(host); }
+    const ms = SEASON.matches; const w = ms.filter(m => m.result === 'W').length, l = ms.filter(m => m.result === 'L').length;
+    const rows = SQUAD.map(p => ({ p, st: seasonStats(p.id) })); const champs = rows.filter(r => r.st.rp != null && r.st.rp >= CHAMP_RP).length;
+    const pct = rows.length ? Math.round(rows.reduce((a, r) => a + Math.min(1, (r.st.rp || 0) / CHAMP_RP), 0) / rows.length * 100) : 0;
+    host.innerHTML = `<div class="k" style="margin-bottom:8px">Temporada Split Fire · registro del squad</div><div class="goal"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b class="h-disp" style="font-size:15px">Meta: todos Champion</b><div class="dim" style="font-size:12px">${champs}/${rows.length} en Champion (≥ ${Store.fmt(CHAMP_RP)} RP) · partidos registrados ${ms.length} · <b class="acc">${w}W – ${l}L</b></div></div><div class="k">${pct}% del camino</div></div><div class="bar"><i style="width:${pct}%"></i></div></div>
+    <table><thead><tr><th>Jugador</th><th>RP ahora</th><th>Rango</th><th>Faltan p/ Champion</th><th>K/D temp.</th><th>K · D · A</th><th>Partidos</th><th>Progreso RP</th></tr></thead><tbody>${rows.map(({ p, st }) => { const r = st.rp != null ? RANKS.rankOf(st.rp, 3) : null; const falta = st.rp != null ? Math.max(0, CHAMP_RP - st.rp) : null; const mx = Math.max(1, ...st.rps); return `<tr><td><b>${E(p.nick || p.id)}</b></td><td class="rp">${st.rp != null ? Store.fmt(st.rp) : '—'}</td><td>${r ? `<span class="chip" style="border-color:${r.color};color:${r.color}">${E(r.label)}</span>` : '<span class="dim">sin dato</span>'}</td><td class="rp">${falta == null ? '—' : falta === 0 ? '<span style="color:var(--green)">CHAMPION</span>' : Store.fmt(falta) + ' RP · ~' + Math.ceil(falta / 80) + ' victorias'}</td><td><b>${st.n ? st.kd.toFixed(2) : '—'}</b></td><td class="rp">${st.n ? `${st.k} · ${st.d} · ${st.a}` : '—'}</td><td>${st.n}</td><td><div class="spark">${st.rps.map(v => `<i style="height:${Math.max(3, Math.round(v / mx * 22))}px;background:${v >= CHAMP_RP ? 'var(--green)' : 'var(--acc)'}" title="${v}"></i>`).join('') || '<span class="dim">—</span>'}</div></td></tr>`; }).join('')}</tbody></table>
+    ${ms.length ? `<div class="k" style="margin-top:16px">Historial</div><div class="hist">${ms.slice().reverse().map(m => `<div><b>${new Date(m.date).toLocaleDateString('es-MX', { day: '2-digit', month: 'short' })}</b><span>${E((MAPS.find(x => x.id === m.map) || {}).n || m.map)} · ${m.result === 'W' ? '<b style="color:var(--green)">W</b>' : '<b style="color:var(--red)">L</b>'} ${m.w}–${m.l}</span><span class="rp">${Object.entries(m.players || {}).filter(([, v]) => v.k != null).map(([id, v]) => `${E((slotOf(id) || {}).nick || id).split(' ')[0]} ${v.k}/${v.d}`).join(' · ')}</span><button class="btn sm ghost" data-delm="${m.id}">×</button></div>`).join('')}</div><div style="margin-top:10px;display:flex;gap:8px"><button class="btn sm" id="expSeason">Exportar JSON</button><button class="btn sm ghost" id="impSeason">Importar</button></div>` : '<div class="dim" style="margin-top:10px;font-size:13px">Aún no hay partidos registrados. Toca <b>Iniciar ranked</b> en PLAN y al terminar captura las stats.</div>'}`;
+    $$('#seasonBox [data-delm]').forEach(b => b.onclick = () => { if (!confirm('¿Borrar este partido?')) return; SEASON.matches = SEASON.matches.filter(m => m.id !== b.dataset.delm); saveSeason(); renderSeason(); });
+    const ex = $('#expSeason'); if (ex) ex.onclick = () => { navigator.clipboard.writeText(JSON.stringify(SEASON)).then(() => Store.toast('Temporada copiada (JSON)')); };
+    const im = $('#impSeason'); if (im) im.onclick = () => { const t = prompt('Pega el JSON de la temporada:'); try { const j = JSON.parse(t); if (j && Array.isArray(j.matches)) { SEASON = j; saveSeason(); renderSeason(); } } catch (e) { Store.toast('JSON inválido'); } };
   }
   function setOverride(id, patch) { const o = Store.get('squad', {}); o[id] = { ...(o[id] || {}), ...patch }; Store.set('squad', o); Object.assign(slotOf(id), patch); }
   function editMember(id) { const p = slotOf(id); openModal(`<h3>Editar ${E(p.nick || p.id)}</h3><div class="sub">Nick exacto como aparece en R6 Tracker.</div><label class="f"><span class="k">Nick</span><input class="in" id="e-nick" value="${E(p.nick || '')}"></label><label class="f"><span class="k">Plataforma</span><select class="in" id="e-plat"><option value="xbl" ${p.plat === 'xbl' ? 'selected' : ''}>Xbox</option><option value="psn" ${p.plat === 'psn' ? 'selected' : ''}>PlayStation</option><option value="ubi" ${p.plat === 'ubi' ? 'selected' : ''}>PC (Ubisoft)</option></select></label><label class="f"><span class="k">Rol en el squad</span><input class="in" id="e-role" value="${E(p.role || '')}"></label><label class="f"><span class="k">Apodo</span><input class="in" id="e-tag" value="${E(p.tag || '')}"></label><div class="row"><button class="btn" data-close>Cancelar</button><button class="btn p" id="e-save">Guardar</button></div>`); $('#e-save').onclick = () => { setOverride(id, { nick: $('#e-nick').value.trim(), plat: $('#e-plat').value, role: $('#e-role').value.trim(), tag: $('#e-tag').value.trim() }); closeModal(); renderSquad(); render(); }; }
@@ -234,7 +250,7 @@
   function renderWiz() {
     const lb = stepLabels(); $$('#steps button[data-step]').forEach(b => { const n = +b.dataset.step; b.classList.toggle('on', n === S.step); b.classList.toggle('done', n < S.step); b.querySelector('small').textContent = lb[n] || ''; b.onclick = () => goStep(n); });
     $$('.screen').forEach(sc => sc.classList.toggle('on', sc.id === 's' + S.step));
-    $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [] }, hint: null, round: 1, live: null, siteKnown: true }); };
+    renderScore(); $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, round: 1, live: null, siteKnown: true }); };
     const cv = $('#canvas'); cv.hidden = !(S.step === 3 || S.step === 4);
     if (S.step === 1) renderS1(); if (S.step === 2) renderS2(); if (S.step === 3) renderS3(); if (S.step === 4) renderS4();
     if (S.step === 3) { const host = $('#s3 .mini'); if (host && cv.parentElement !== host) host.appendChild(cv); }
@@ -278,13 +294,47 @@
     let res = null; const tags = new Set();
     $$('#modal [data-res]').forEach(b => b.onclick = () => { res = b.dataset.res; $$('#modal [data-res]').forEach(x => { x.classList.toggle('on', x === b); x.classList.toggle('atk', x === b && b.dataset.res === 'W'); }); $('#resGo').disabled = false; });
     $$('#modal [data-tag]').forEach(b => b.onclick = () => { const t = b.dataset.tag; tags.has(t) ? tags.delete(t) : tags.add(t); b.classList.toggle('acc', tags.has(t)); });
-    $('#resGo').onclick = () => { const plan = nextRoundPlan(res, [...tags]); closeModal(); S.step = 2; S.focus = null; S.selected = null; S.floorIdx = null; const patch = { match: { rounds: plan.rounds }, hint: plan.hint, round: plan.n, side: plan.side, live: null, strat: plan.hint.strat || 'default' }; if (plan.hint.site) { patch.site = plan.hint.site; patch.siteKnown = true; } else patch.siteKnown = false; commit(patch); if (plan.flip) Store.toast(`Ronda ${plan.n}: cambio de lado → ${plan.side === 'atk' ? 'ATAQUE' : 'DEFENSA'}`); };
+    $('#resGo').onclick = () => { const plan = nextRoundPlan(res, [...tags]); closeModal(); const over = S.match.active ? matchOver(plan.rounds) : null; if (over) { S.match = { ...S.match, rounds: plan.rounds }; save(); openMatchEnd(over); return; } S.step = 2; S.focus = null; S.selected = null; S.floorIdx = null; const patch = { match: { ...S.match, rounds: plan.rounds }, hint: plan.hint, round: plan.n, side: plan.side, live: null, strat: plan.hint.strat || 'default' }; if (plan.hint.site) { patch.site = plan.hint.site; patch.siteKnown = true; } else patch.siteKnown = false; commit(patch); if (plan.flip) Store.toast(`Ronda ${plan.n}: cambio de lado → ${plan.side === 'atk' ? 'ATAQUE' : 'DEFENSA'}`); };
+  }
+
+  // ---------- PARTIDO RANKED: inicio, marcador, fin y captura de stats ----------
+  const CHAMP_RP = 3500; // Ranked 3.0 · Champion V (asumido: Ubisoft no publica el corte exacto)
+  function matchOver(rounds) { // ranked: a 4 rondas; 3-3 → 3 de prórroga (a 5, o 2 de diferencia)
+    const w = rounds.filter(r => r.result === 'W').length, l = rounds.filter(r => r.result === 'L').length;
+    if (w >= 4 && l <= 2) return 'W'; if (l >= 4 && w <= 2) return 'L';
+    if (w >= 5 || l >= 5) return w > l ? 'W' : 'L';
+    return null;
+  }
+  function startMatch() { S.step = 1; S.focus = null; commit({ match: { rounds: [], active: true, id: Store.uid(), startedAt: Date.now() }, hint: null, round: 1, live: null, siteKnown: true }); Store.toast('Partido ranked iniciado · ronda 1'); }
+  function renderScore() {
+    let el = $('#scoreChip'); if (!el) { el = document.createElement('div'); el.id = 'scoreChip'; el.className = 'scorebar'; const sp = $('#steps .sp'); if (!sp) return; sp.after(el); }
+    const sc = score(); if (S.match && S.match.active) { el.innerHTML = `<small>RANKED</small><b class="w">${sc.w}</b><small>–</small><b class="l">${sc.l}</b><small>R${S.round}</small>`; el.style.display = ''; } else el.style.display = 'none';
+  }
+  const lastRP = slot => { for (let i = SEASON.matches.length - 1; i >= 0; i--) { const v = SEASON.matches[i].players && SEASON.matches[i].players[slot]; if (v && v.rp != null) return v.rp; } return null; };
+  function seasonStats(slot) {
+    const ms = SEASON.matches.filter(m => m.players && m.players[slot] && (m.players[slot].k != null || m.players[slot].rp != null));
+    const k = ms.reduce((a, m) => a + (m.players[slot].k || 0), 0), d = ms.reduce((a, m) => a + (m.players[slot].d || 0), 0), as = ms.reduce((a, m) => a + (m.players[slot].a || 0), 0);
+    const w = SEASON.matches.filter(m => m.result === 'W').length, l = SEASON.matches.filter(m => m.result === 'L').length;
+    const rps = SEASON.matches.map(m => m.players && m.players[slot] && m.players[slot].rp).filter(v => v != null);
+    return { n: ms.length, k, d, a: as, kd: d ? k / d : k, w, l, rp: rps.length ? rps[rps.length - 1] : null, rps, best: rps.length ? Math.max(...rps) : null };
+  }
+  function openMatchEnd(result) {
+    const sc = score();
+    openModal(`<h3>${result === 'W' ? '🏆 GANAMOS' : '💀 PERDIMOS'} ${sc.w} – ${sc.l}</h3><div class="sub">${E(map().n)} · captura el scoreboard (K / D / A) y tu RP actual. Con esto se lleva la temporada.</div><div class="statgrid"><span></span><span class="hh">Kills</span><span class="hh">Muertes</span><span class="hh">Asist.</span><span class="hh">RP ahora</span>${SQUAD.map(p => `<span class="nm">${E(p.nick || p.id)}</span><input class="in" data-k="k" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="d" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="a" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="rp" data-slot="${p.id}" inputmode="numeric" placeholder="${lastRP(p.id) || ''}">`).join('')}</div><div class="row"><button class="btn" id="skipStats">Sin stats</button><button class="btn p" id="saveStats">Guardar partido</button></div>`);
+    const finish = withStats => {
+      const players = {};
+      if (withStats) SQUAD.forEach(p => { const g = k => { const el = $(`#modal [data-k="${k}"][data-slot="${p.id}"]`); const n = el && el.value.trim() !== '' ? +el.value : null; return Number.isFinite(n) ? n : null; }; players[p.id] = { k: g('k'), d: g('d'), a: g('a'), rp: g('rp') }; });
+      SEASON.matches.push({ id: (S.match && S.match.id) || Store.uid(), date: Date.now(), map: S.map, result, w: sc.w, l: sc.l, rounds: (S.match && S.match.rounds) || [], players });
+      saveSeason(); closeModal(); S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, round: 1, live: null }); Store.toast('Partido guardado en la temporada'); showView('squad');
+    };
+    $('#saveStats').onclick = () => finish(true); $('#skipStats').onclick = () => finish(false);
   }
   // ---- paso 1: mapa
   function renderS1() {
     const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
     for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; return `<button class="tile ${m.id === S.map ? 'on' : ''}" data-map="${m.id}">${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${STR[m.id] ? 'estrategias' : m.r6 ? 'plano' : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
-    $('#mapTiles').innerHTML = h;
+    const sc = score(); const sb = `<div class="startbar"><div class="t">${S.match.active ? `Partido en curso · ${sc.w} – ${sc.l} · ronda ${S.round}` : 'Ranked'}<small>${S.match.active ? 'Elige el mapa que tocó (o sigue en el mismo).' : 'Toca INICIAR RANKED al entrar a la cola: la app lleva marcador, rondas, sugerencias y al final captura las stats.'}</small></div><div style="display:flex;gap:8px">${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Iniciar ranked</button>`}</div></div>`;
+    $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = startMatch; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, round: 1, live: null }); };
     $$('#mapTiles .tile[data-map]').forEach(b => b.onclick = async () => { const m = MAPS.find(x => x.id === b.dataset.map); await loadStrats(m.id); const pk = (PICKS[m.id] || [])[0]; S.floorIdx = null; S.selected = null; S.focus = null; S.step = 2; commit({ map: m.id, site: pk ? pk.site : m.sites[0].id, strat: 'default', siteKnown: S.side === 'def' }); });
   }
   // ---- paso 2: lado + sitio
@@ -293,7 +343,7 @@
     const ordered = picks.map(pk => ({ ...pk, s: m.sites.find(x => x.id === pk.site) })).filter(x => x.s).concat(m.sites.filter(x => !picks.some(pk => pk.site === x.id)).map(x => ({ site: x.id, why: '', s: x })));
     const sc = score(); let h = `<div class="h-step"><h2 data-fx>${E(m.n)}</h2><p>${isDef ? 'Qué sitio pedir y qué hacer. Toca el sitio.' : '¿Ya viste el sitio con los drones? Tócalo. Si no, pide la comp flexible.'}${sc.w + sc.l ? ` · <b class="acc">${sc.w} – ${sc.l}</b>` : ''}</p></div>`;
     if (S.hint && S.hint.n === S.round) { const hs = S.hint.site ? m.sites.find(z => z.id === S.hint.site) : null; h += `<div class="hintbar"><div><span class="k">Ronda ${S.round} · sugerencia</span><div class="ht">${S.hint.flip ? '<b>CAMBIO DE LADO → ' + (S.hint.side === 'atk' ? 'ATAQUE' : 'DEFENSA') + '</b> · ' : ''}${hs ? 'Pedir <b>' + E(hs.n) + '</b>' : 'Comp flexible'}${S.hint.strat ? ' · setup <b>' + E(String(S.hint.strat).toUpperCase()) + '</b>' : ''}</div><div class="hw">${E(S.hint.why)}</div></div><button class="btn p" id="applyHint">Aplicar</button></div>`; }
-    h += `<div class="big-toggle"><button class="${!isDef ? 'on atk' : ''}" data-side="atk">ATAQUE</button><button class="${isDef ? 'on def' : ''}" data-side="def">DEFENSA</button></div>`;
+    h += `<div class="big-toggle"><button class="${!isDef ? 'on atk' : ''}" data-side="atk">${ICO.atk}ATAQUE</button><button class="${isDef ? 'on def' : ''}" data-side="def">${ICO.def}DEFENSA</button></div>`;
     h += `<div class="sitegrid">`;
     if (!isDef) h += `<button class="sitecard unknown ${!S.siteKnown ? 'on' : ''}" data-unknown="1"><div class="fl">Fase de operadores</div><div class="n">Aún no sé el sitio</div><div class="why">Te doy la comp flexible del mapa (sirve para el sitio más probable) y cuando lo veas, lo tocas.</div></button>`;
     ordered.forEach((x, i) => { const r = siteRecord(x.s.id); const recBadge = S.hint && S.hint.n === S.round && S.hint.site === x.s.id; h += `<button class="sitecard ${S.siteKnown && x.s.id === site().id ? 'on' : ''}" data-site="${x.s.id}">${recBadge ? `<span class="chip acc rec">SUGERIDO</span>` : i === 0 && picks.length ? `<span class="chip rec">${isDef ? 'PEDIR ESTE' : 'MÁS PROBABLE'}</span>` : picks.length ? `<span class="rank">#${i + 1}</span>` : ''}<div class="fl">${E(Engine.FLN[x.s.fl] || x.s.fl)}${r.w + r.l ? ` · <b style="color:${r.w >= r.l ? 'var(--green)' : 'var(--red)'}">${r.w}W ${r.l}L</b>` : ''}</div><div class="n">${E(x.s.n)}</div><div class="why">${E(x.why || '')}${x.verify || x.s.verify ? ' <span class="dim">(por confirmar)</span>' : ''}</div></button>`; });
@@ -325,12 +375,12 @@
   function renderS3() {
     const m = map(), s = site(), x = curStrat(); const isAtk = S.side === 'atk'; const st = siteStrats(); const list = st ? (isAtk ? st.attack : st.defense) : [];
     const cards = callSheet(); const ops = isAtk ? Engine.atk() : Engine.def();
-    let h = `<div class="call"><div class="hd"><h2 data-fx>${E(m.n)}</h2><span class="chip ${isAtk ? 'acc' : ''}" style="${isAtk ? '' : 'border-color:var(--mag);color:#ffb3ea'}">${isAtk ? 'ATAQUE' : 'DEFENSA'}</span><span class="chip">R${S.round}</span><span class="chip">${E(Engine.FLN[s.fl] || s.fl)} · ${E(s.n)}${S.siteKnown ? '' : ' · ?'}</span></div>`;
+    let h = `<div class="call"><div class="hd"><h2 data-fx>${E(m.n)}</h2><span class="chip acc">${ICO[isAtk ? 'atk' : 'def']}${isAtk ? 'ATAQUE' : 'DEFENSA'}</span><span class="chip">R${S.round}</span><span class="chip">${E(Engine.FLN[s.fl] || s.fl)} · ${E(s.n)}${S.siteKnown ? '' : ' · ?'}</span></div><div class="hazard"></div>`;
     if (isAtk && !S.siteKnown) h += `<div class="flexnote"><b>Comp flexible</b> — sitio más probable: <b>${E(s.n)}</b>. Cuando lo veas en drones, tócalo:<div class="sites">${m.sites.map(z => `<button data-site="${z.id}"><span class="fl">${E(Engine.FLN[z.fl] || z.fl)}</span>${E(z.n)}</button>`).join('')}</div></div>`;
     if (list && list.length) h += `<div class="stratrow">${list.map(z => `<button class="${x && x.id === z.id ? 'on' : ''}" data-strat="${z.id}"><b>${E(z.tag || z.n)}</b><small>${E(z.summary ? z.summary.split('.')[0] : z.n)}</small></button>`).join('')}</div>`;
     if (x) h += `<div class="setup"><div class="sm">${E(x.summary || '')}</div>${!isAtk && x.reinforce ? `<div class="rl"><b>Reforzar:</b> ${E(x.reinforce.join(' · '))}${x.rotations && x.rotations.length ? ` &nbsp;<b>Rotar:</b> ${E(x.rotations.join(' · '))}` : ''}</div>` : ''}${x.sources && x.sources.length ? `<div class="src">Basado en: ${x.sources.slice(0, 4).map(u => `<a target="_blank" rel="noopener" href="${E(u)}">${E(String(u).replace(/^https?:\/\/(www\.)?/, '').split('/')[0])}</a>`).join(' · ')}${x.basis ? ' · ' + E(x.basis) : ''}</div>` : ''}</div>`;
     else h += `<div class="flexnote">Este mapa aún no tiene estrategias generadas (se generan después de las 3:30 am). Mientras, plan por entradas: <b>Auto-completar</b> en Detalle.</div>`;
-    h += `<div class="cards5">` + cards.map(c => `<div class="pcard ${S.focus === c.slot ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><div class="bar"></div><div class="who"><b>${E(c.name)}</b>${E(c.role)}</div><div><div class="op">${E(c.op)}</div><div class="go">${E(c.go)}<i>${E(c.sub)}</i></div></div><select class="in" data-slot="${c.slot}"><option value="">— cambiar —</option>${ops.map(o => `<option value="${o.id}" ${c.o && c.o.id === o.id ? 'selected' : ''}>${E(o.n)}</option>`).join('')}</select></div>`).join('') + `</div>`;
+    h += `<div class="cards5">` + cards.map(c => `<div class="pcard ${S.focus === c.slot ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><div class="bar"></div><div class="who"><b>${E(c.name)}</b>${E(c.role)}</div><div><div class="op">${E(c.op)}</div><div class="go">${E(c.go)}<i>${E(c.sub)}</i></div></div><span></span></div>`).join('') + `</div>`;
     h += `<div class="actions"><button class="btn p" id="goLive">▶ En vivo</button><button class="btn" id="dictar">🔊 Dictar</button><button class="btn" id="nextRound">Terminó la ronda</button><button class="btn ghost" id="openDrawer">Detalle</button></div></div>`;
     h += `<div class="mini"></div>`;
     $('#s3').innerHTML = h; FX.all($('#s3'));
@@ -352,7 +402,11 @@
     play() { const t = this.t(); commit({ live: { playing: true, t0: Date.now() - t * 1000 } }); },
     pause() { commit({ live: { playing: false, t: this.t() } }); },
     reset() { commit({ live: { playing: false, t: 0 } }); },
-    ensureTick() { if (this.raf) return; const tick = () => { this.raf = requestAnimationFrame(tick); if (S.step !== 4) return; if (S.live && S.side === 'atk') MapView.setProgress(this.progress()); renderLiveClock(); }; this.raf = requestAnimationFrame(tick); },
+    ensureTick() { if (this.raf) return; const tick = () => { this.raf = requestAnimationFrame(tick); if (S.step !== 4) return; if (S.live && S.side === 'atk') { MapView.setProgress(this.progress()); this.followFloor(); } renderLiveClock(); }; this.raf = requestAnimationFrame(tick); },
+    followFloor() { // el mapa sigue el piso donde va el operador enfocado
+      if (!S.live || !S.live.playing || !S.focus) return; const f = MapView.headFloor(S.focus);
+      if (f == null || f === S.floorIdx) return; S.floorIdx = f; renderCanvas();
+    },
     stopTick() { if (this.raf) cancelAnimationFrame(this.raf); this.raf = null; }
   };
   const fmtT = t => { t = Math.max(0, Math.round(t)); return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`; };
@@ -384,6 +438,16 @@
     const txt = `${S.side === 'atk' ? 'Ataque' : 'Defensa'}, ${s.n}${x ? ', ' + x.n : ''}. ` + cards.filter(c => c.o).map(c => `${c.name.replace(/^o\s+/i, '')}: ${c.op}, ${c.go.replace(/→/g, ', luego ')}.`).join(' ');
     try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(txt); u.lang = 'es-MX'; const v = speechSynthesis.getVoices().find(v => /es[-_]MX/i.test(v.lang)) || speechSynthesis.getVoices().find(v => /^es/i.test(v.lang)); if (v) u.voice = v; u.rate = 1.05; speechSynthesis.speak(u); } catch (e) { Store.toast('Tu navegador no tiene voz'); }
   }
+
+  // ---------- panel de tema ----------
+  const ICO = { atk: '<span class="sideico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 20 9l-9.5 9.5L5 13z"/><path d="M5 13l-2 2 2 2 2-2M9 17l-2 2"/></svg></span>', def: '<span class="sideico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg></span>' };
+  function openTheme() {
+    const t = Theme.cur;
+    openModal(`<h3>Tema</h3><div class="sub">Colores de ataque/defensa como en R6 (azul / naranja), fuente y estilo. Se guarda en este navegador.</div><div class="themepanel"><div class="sw">${Object.entries(Theme.PRESETS).map(([id, pr]) => `<button class="${t.preset === id ? 'on' : ''}" data-preset="${id}"><i><s style="background:${pr.atk}"></s><s style="background:${pr.def}"></s></i>${E(pr.n)}</button>`).join('')}</div><div class="row2"><label class="f"><span class="k">Color ataque</span><input type="color" id="thAtk" value="${t.atk}"></label><label class="f"><span class="k">Color defensa</span><input type="color" id="thDef" value="${t.def}"></label></div><label class="f"><span class="k">Fuente</span><select class="in" id="thFont">${Object.entries(Theme.FONTN).map(([id, n]) => `<option value="${id}" ${t.font === id ? 'selected' : ''}>${E(n)}</option>`).join('')}</select></label><label class="f"><span class="k">Brillo</span><input type="range" id="thGlow" min="0" max="0.6" step="0.05" value="${t.glow}" style="width:100%"></label><div class="row"><button class="btn p" data-close>Listo</button></div></div>`);
+    $$('#modal [data-preset]').forEach(b => b.onclick = () => { Theme.set({ preset: b.dataset.preset }); openTheme(); });
+    $('#thAtk').oninput = e => Theme.set({ atk: e.target.value, preset: 'custom' }); $('#thDef').oninput = e => Theme.set({ def: e.target.value, preset: 'custom' }); $('#thFont').onchange = e => Theme.set({ font: e.target.value }); $('#thGlow').oninput = e => Theme.set({ glow: +e.target.value });
+  }
+  $('#themeBtn').onclick = openTheme;
   $('#drawerBtn').onclick = () => $('#drawer').classList.toggle('on'); $('#drawerClose').onclick = () => $('#drawer').classList.remove('on');
   // ---------- navegación ----------
   function showView(v) { $$('.view').forEach(x => x.classList.toggle('on', x.id === 'v-' + v)); FX.all($('#v-' + v)); $$('.top .nav button').forEach(b => b.classList.toggle('on', b.dataset.view === v)); if (v === 'squad') renderSquad(); if (v === 'ranks') renderRanks(); if (v === 'sala') renderSala(); if (v === 'plan') setTimeout(() => MapView.fit(), 30); if (v !== 'plan') Round.stopTick(); }
