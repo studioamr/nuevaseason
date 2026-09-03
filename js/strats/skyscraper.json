@@ -10,7 +10,7 @@
      "summary": "Se abre la pared reforzada de BBQ desde Sand Garden con Thatcher + Thermite mientras Buck destruye el piso de Karaoke encima de Kitchen. El ancla de BBQ no puede mirar el hoyo y a la vez cuidar Kitchen, que se vuelve inhabitable con el vertical. Nomad tapa Reception/Main Stairs para que nadie flanquee por Restaurant y Iana da intel desde la puerta de Restaurant.",
      "timeline": [
       "0:00–0:45 · drones: Iana mete Gemini por Restaurant a Kitchen, Buck sube a Karaoke por Terrace y quita el piso encima de Kitchen",
-      "0:45–1:30 · Thatcher EMP + Thermite abren Sand Garden→BBQ; Buck abre la escotilla de Karaoke y niega Kitchen desde arriba",
+      "0:45–1:30 · Thatcher EMP + Thermite abren Sand Garden→BBQ; Buck abre el piso de Karaoke alrededor de la escotilla (la escotilla va reforzada, no la toca) y niega Kitchen desde arriba",
       "1:30–2:30 · Thermite/Thatcher entran por el hoyo a BBQ, Nomad aguanta Reception con Airjabs en Main Stairs, Iana presiona Kitchen desde Restaurant",
       "2:30–3:00 · plant en BBQ pegado a la barra; post-plant desde Sand Garden y desde Karaoke por el piso abierto"
      ],
@@ -71,14 +71,14 @@
         {"room": "North Garden", "f": -1, "do": "Baja y rapela a Terrace sin asomarse a las ventanas de Tea Room", "via": "door"},
         {"room": "Terrace", "f": 2, "do": "Entra por la ventana de Tea Room con dron adelante", "via": "rappel"},
         {"room": "Tea Room", "f": 2, "do": "Limpia y pasa a Karaoke", "via": "window"},
-        {"room": "Karaoke", "f": 2, "do": "Skeleton Key al piso sobre Kitchen y abre la escotilla", "via": "door"}
+        {"room": "Karaoke", "f": 2, "do": "Skeleton Key al piso alrededor de la escotilla, encima de la isla de Kitchen; la escotilla reforzada no se toca", "via": "door"}
        ],
        "clear": [
         {"room": "Terrace", "f": 2, "threat": "Cam de Valkyrie y roamer asomando desde Tea Room", "how": "Dron primero, romper la cam, entrar con flash"},
         {"room": "Tea Room", "f": 2, "threat": "Cepo de Frost bajo la ventana", "how": "Mirar el piso al vaultear, dron dentro"},
         {"room": "Karaoke", "f": 2, "threat": "Roamer tipo Cav esperando al vertical", "how": "Prefire esquinas, escuchar el hatch antes de agacharse"}
        ],
-       "final": "Niega Kitchen desde arriba con el piso abierto y castiga el plant desde Karaoke"
+       "final": "Niega Kitchen desde arriba por el piso abierto; baja por Back Stairs para el post-plant, nunca por la escotilla"
       },
       {
        "op": "nomad",
@@ -133,7 +133,7 @@
        "path": [
         {"room": "North Garden", "f": -1, "do": "Corre detrás de Ash", "via": "door"},
         {"room": "Delivery Room", "f": 1, "do": "Entra, prepara Candela", "via": "door"},
-        {"room": "Pantry", "f": 1, "do": "Candela ruedando a Kitchen", "via": "door"},
+        {"room": "Pantry", "f": 1, "do": "Candela rodando a Kitchen", "via": "door"},
         {"room": "Kitchen", "f": 1, "do": "Entra detrás del flash con Blitz", "via": "door"}
        ],
        "clear": [
@@ -200,7 +200,7 @@
      "summary": "Todo el daño viene de 2F: Sledge y Ram destruyen el piso de Karaoke y Tea Room encima de Kitchen y Restaurant, Fuze mete racimo por la escotilla y Zero pone Argus por los hoyos. Los defensores no pueden anclar en Kitchen y se amontonan en BBQ; Capitão entra al final por Restaurant con fuego en BBQ.",
      "timeline": [
       "0:00–0:45 · rapel a Terrace, limpiar Tea Room y Karaoke, Zero pone Argus en la escotilla",
-      "0:45–1:30 · Sledge abre el piso de Karaoke sobre Kitchen, Ram tira BU-GI desde Tea Room, Fuze racimo por la escotilla",
+      "0:45–1:30 · Sledge abre el piso de Karaoke sobre Kitchen, Ram tira BU-GI desde Tea Room, Fuze racimo en el piso blando (la escotilla reforzada no acepta cargas)",
       "1:30–2:30 · matar desde arriba a los que rotan, Capitão entra por Restaurant a Kitchen",
       "2:30–3:00 · plant en Kitchen bajo el hoyo con cobertura vertical"
      ],
@@ -219,14 +219,14 @@
         {"room": "Terrace", "f": 2, "threat": "Roamer asomando por la ventana de Tea Room", "how": "Dron a la ventana, entrar con flash"},
         {"room": "Karaoke", "f": 2, "threat": "Roamer Cav/Vigil esperando arriba y Kiba de Azami tapando el hoyo", "how": "Prefire esquinas, martillar el Kiba y seguir"}
        ],
-       "final": "Niega Kitchen desde arriba y baja por la escotilla al final para el post-plant"
+       "final": "Niega Kitchen desde arriba y baja por Back Stairs al final para el post-plant (la escotilla reforzada no se abre sin duro)"
       },
       {
        "op": "ram",
        "role": "negacion",
        "spawn": "Helipad",
        "path": [
-        {"room": "North Garden", "f": -1, "do": "Rapela con Sledge", "via": "door"},
+        {"room": "North Garden", "f": -1, "do": "Corre con Sledge hacia Contemplation Garden", "via": "door"},
         {"room": "Terrace", "f": 2, "do": "Entra a Tea Room", "via": "rappel"},
         {"room": "Tea Room", "f": 2, "do": "Tira BU-GI hacia la pared de Karaoke para abrir Restaurant/Kitchen desde arriba", "via": "window"}
        ],
@@ -244,10 +244,11 @@
         {"room": "North Garden", "f": -1, "do": "Rapela al final del grupo", "via": "door"},
         {"room": "Terrace", "f": 2, "do": "Entra a Tea Room", "via": "rappel"},
         {"room": "Tea Room", "f": 2, "do": "Pasa a Karaoke", "via": "window"},
-        {"room": "Karaoke", "f": 2, "do": "Racimo en la escotilla y en el piso sobre BBQ", "via": "door"}
+        {"room": "Karaoke", "f": 2, "do": "Racimo en el piso blando junto a la escotilla (sobre la isla de Kitchen) y otro sobre la barra de BBQ", "via": "door"}
        ],
        "clear": [
-        {"room": "Karaoke", "f": 2, "threat": "Jäger ADS abajo comiéndose los racimos", "how": "Primer racimo para gastar el ADS, segundo para matar"}
+        {"room": "Karaoke", "f": 2, "threat": "Jäger ADS abajo comiéndose los racimos", "how": "Primer racimo para gastar el ADS, segundo para matar"},
+        {"room": "Karaoke", "f": 2, "threat": "Mute jammer o Kiba de Azami tapando el piso donde va el racimo", "how": "Zero lo ve con Argus, Sledge lo martilla antes de poner la carga"}
        ],
        "final": "Cubre Back Stairs desde Karaoke durante el plant"
       },
@@ -393,7 +394,7 @@
       {"op": "smoke", "room": "BBQ", "f": 1, "role": "ancla", "job": "Detrás de la barra, gas a la pared de Sand Garden y al hoyo en el plant"},
       {"op": "mira", "room": "Kitchen", "f": 1, "role": "ancla", "job": "Espejo a Restaurant, mira la puerta y la escotilla desde detrás de la isla"},
       {"op": "bandit", "room": "BBQ", "f": 1, "role": "flex", "job": "Trickea la pared de Sand Garden, se retira a Back Hallway si abren"},
-      {"op": "jager", "room": "Kitchen", "f": 1, "role": "flex", "job": "ADS en Kitchen y Pantry, cubre la puerta de Delivery"},
+      {"op": "jager", "room": "Kitchen", "f": 1, "role": "flex", "job": "ADS en Kitchen y Pantry, cubre la puerta Pantry↔Delivery Room"},
       {"op": "pulse", "room": "Karaoke", "f": 2, "role": "roam", "job": "Lee el vertical en Karaoke, baja por Back Stairs a flanquear Sand Garden"}
      ]
     },
@@ -419,11 +420,11 @@
      "id": "default",
      "n": "Default lento",
      "tag": "DEFAULT",
-     "summary": "Ace abre la pared reforzada de Bathroom desde House Lobby con EMP de Thatcher mientras Buck destruye el piso de Exhibition encima de Bedroom. El ancla de Bedroom queda sin techo y la de Bathroom sin pared. Twitch quema gadgets y Gridlock cierra Back Hallway para que Back Stairs/BBQ no flanqueen.",
+     "summary": "Ace abre la pared reforzada de Bathroom desde House Lobby con EMP de Thatcher mientras Buck destruye el piso de Exhibition encima de Bedroom. El ancla de Bedroom queda sin techo y la de Bathroom sin pared. Twitch quema gadgets y Gridlock siembra House Stairs y la puerta de Back Hallway desde House Lobby para que Lounge y BBQ no flanqueen.",
      "timeline": [
-      "0:00–0:45 · drones: Twitch quema ADS y Evil Eye en Bedroom, Buck rapela a House Balcony 2F y entra a Exhibition",
+      "0:00–0:45 · drones: Twitch quema ADS y Evil Eye en Bedroom, Buck rodea por Contemplation Garden y rapela a House Balcony 2F",
       "0:45–1:30 · Thatcher EMP + Ace SELMA en la pared Lobby→Bathroom; Buck abre el piso sobre Bedroom",
-      "1:30–2:30 · entrada por el hoyo a Bathroom, Gridlock siembra Back Hallway, Twitch presiona House Lobby",
+      "1:30–2:30 · entrada por el hoyo a Bathroom, Gridlock siembra House Stairs y Back Hallway desde House Lobby, Twitch presiona House Lobby",
       "2:30–3:00 · plant en Bedroom detrás de la cama con cobertura vertical"
      ],
      "ops": [
@@ -483,7 +484,8 @@
        "role": "blando",
        "spawn": "Helipad",
        "path": [
-        {"room": "North Garden", "f": -1, "do": "Rapela a House Balcony 2F", "via": "door"},
+        {"room": "North Garden", "f": -1, "do": "Corre pegado a la pared hacia Contemplation Garden", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Dron a Exhibition y entra por la ventana", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Skeleton Key al piso encima de Bedroom", "via": "window"}
        ],
@@ -491,24 +493,22 @@
         {"room": "House Balcony", "f": 2, "threat": "Roamer en Exhibition mirando las ventanas", "how": "Dron primero, entrar con flash"},
         {"room": "Exhibition", "f": 2, "threat": "Roamer Vigil/Cav y Kiba de Azami en el piso", "how": "Prefire esquinas, romper Kiba con escopeta"}
        ],
-       "final": "Niega Bedroom desde arriba y baja por la escotilla de Closet al final"
+       "final": "Niega Bedroom desde arriba por el hoyo; baja por House Stairs al final (la escotilla de Closet va reforzada)"
       },
       {
        "op": "gridlock",
        "role": "flanco",
-       "spawn": "Ventilation Units",
+       "spawn": "Helipad",
        "path": [
-        {"room": "Bridge", "f": -1, "do": "Cruza al Main Entrance", "via": "door"},
-        {"room": "Main Entrance", "f": 1, "do": "Entra y limpia", "via": "door"},
-        {"room": "Reception", "f": 1, "do": "Trax en Main Stairs", "via": "door"},
-        {"room": "Back Hallway", "f": 1, "do": "Trax hacia BBQ y Back Stairs, sostiene", "via": "door"},
-        {"room": "House Lobby", "f": 1, "do": "Se une al push cuando abren Bathroom", "via": "door"}
+        {"room": "West Garden", "f": -1, "do": "Cruza al último detrás de Ace y Thatcher", "via": "door"},
+        {"room": "House Entrance", "f": 1, "do": "Trax en la puerta para que nadie salga a flanquear el jardín", "via": "door"},
+        {"room": "House Lobby", "f": 1, "do": "Trax en el pie de House Stairs y en la puerta de Back Hallway, sostiene el Lobby", "via": "door"}
        ],
        "clear": [
-        {"room": "Reception", "f": 1, "threat": "Roamer detrás del mostrador", "how": "Dron y prefire"},
-        {"room": "Back Hallway", "f": 1, "threat": "Roamer viniendo de BBQ o bajando por Back Stairs", "how": "Trax en ambas puertas y sostener ángulo largo"}
+        {"room": "House Stairs", "f": 1, "threat": "Roamer bajando de Lounge/Clearance a flanquear el Lobby", "how": "Trax en el descanso y sostener desde la esquina del Lobby"},
+        {"room": "Back Hallway", "f": 1, "threat": "Roamer viniendo de BBQ o bajando por Back Stairs", "how": "Trax en la puerta Lobby↔Back Hallway y ángulo largo desde el Lobby"}
        ],
-       "final": "Sostiene Back Hallway y House Lobby en post-plant"
+       "final": "Sostiene House Lobby mirando House Stairs y Back Hallway en post-plant"
       }
      ]
     },
@@ -535,7 +535,7 @@
         {"room": "Bedroom", "f": 1, "do": "Entra detrás de Blitz", "via": "window"}
        ],
        "clear": [
-        {"room": "House Balcony", "f": 1, "threat": "Cepo de Frost bajo la ventana", "how": "Ver el piso al vaultear, Candela lo revela"},
+        {"room": "House Balcony", "f": 1, "threat": "Cepo de Frost bajo la ventana", "how": "Dron por la ventana antes de vaultear y mirar al piso al caer; si hay cepo, dispararle desde fuera"},
         {"room": "Bedroom", "f": 1, "threat": "Ancla armando el sitio detrás de la cama", "how": "Entrar en el flash de Ying"}
        ],
        "final": "Limpia Bedroom y cubre la puerta de House Lobby"
@@ -612,10 +612,10 @@
      "id": "vertical",
      "n": "Vertical Exhibition",
      "tag": "VERTICAL",
-     "summary": "Todo desde 2F: Sledge y Ram abren el piso de Exhibition y Lounge encima de Bedroom y Closet, Fuze mete racimo por la escotilla de Closet y Dokkaebi obliga a los defensores a sonar. Capitão entra al final por House Entrance con fuego en Bathroom.",
+     "summary": "Todo desde 2F: Sledge y Ram abren el piso de Exhibition y Lounge encima de Bedroom y Closet, Fuze mete racimo por el piso blando de Lounge sobre Closet y Dokkaebi obliga a los defensores a sonar. Capitão entra al final por House Entrance con fuego en Bathroom.",
      "timeline": [
-      "0:00–0:45 · rapel a House Balcony 2F, limpiar Exhibition y Lounge, Dokkaebi llama",
-      "0:45–1:30 · Sledge abre el piso sobre Bedroom, Ram BU-GI desde Lounge sobre Closet, Fuze racimo por la escotilla",
+      "0:00–0:45 · rodear por Contemplation Garden, rapel a House Balcony 2F, limpiar Exhibition y Lounge, Dokkaebi llama",
+      "0:45–1:30 · Sledge abre el piso sobre Bedroom, Ram BU-GI desde Lounge sobre Closet, Fuze racimo en el piso blando de Lounge (la escotilla reforzada no acepta cargas)",
       "1:30–2:30 · matar desde arriba a los que rotan a Bathroom, Capitão entra por House Lobby",
       "2:30–3:00 · plant en Bedroom bajo el hoyo con cobertura de Exhibition"
      ],
@@ -625,7 +625,8 @@
        "role": "blando",
        "spawn": "Helipad",
        "path": [
-        {"room": "North Garden", "f": -1, "do": "Rapela a House Balcony 2F con dron adelante", "via": "door"},
+        {"room": "North Garden", "f": -1, "do": "Corre pegado a la pared hacia Contemplation Garden", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F con dron adelante", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Entra por la ventana de Exhibition", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Martillo al piso encima de la cama de Bedroom", "via": "window"}
        ],
@@ -633,7 +634,7 @@
         {"room": "House Balcony", "f": 2, "threat": "Roamer mirando las ventanas desde Exhibition", "how": "Dron primero, flash al entrar"},
         {"room": "Exhibition", "f": 2, "threat": "Roamer Cav/Vigil y Kiba de Azami en el piso", "how": "Prefire, martillar el Kiba y seguir abriendo"}
        ],
-       "final": "Niega Bedroom desde arriba y baja por la escotilla de Closet al final"
+       "final": "Niega Bedroom desde arriba y baja por House Stairs al final para el post-plant"
       },
       {
        "op": "ram",
@@ -641,6 +642,7 @@
        "spawn": "Helipad",
        "path": [
         {"room": "North Garden", "f": -1, "do": "Rapela con Sledge", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F con Sledge", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Entra a Exhibition", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Pasa a Lounge", "via": "window"},
         {"room": "Lounge", "f": 2, "do": "BU-GI hacia Exhibition para abrir Closet y Bedroom desde arriba", "via": "door"}
@@ -656,13 +658,15 @@
        "role": "negacion",
        "spawn": "Helipad",
        "path": [
-        {"room": "North Garden", "f": -1, "do": "Rapela al final del grupo", "via": "door"},
+        {"room": "North Garden", "f": -1, "do": "Corre al final del grupo hacia Contemplation Garden", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F al final del grupo", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Entra a Exhibition", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Pasa a Lounge", "via": "window"},
-        {"room": "Lounge", "f": 2, "do": "Racimo en la escotilla de Closet y en el piso sobre Bathroom", "via": "door"}
+        {"room": "Lounge", "f": 2, "do": "Racimo en el piso blando de Lounge junto a la escotilla de Closet y otro sobre la puerta Bedroom↔Bathroom", "via": "door"}
        ],
        "clear": [
-        {"room": "Lounge", "f": 2, "threat": "Jäger ADS abajo comiéndose los racimos", "how": "Primer racimo para gastar el ADS, segundo para matar"}
+        {"room": "Lounge", "f": 2, "threat": "Jäger ADS abajo comiéndose los racimos", "how": "Primer racimo para gastar el ADS, segundo para matar"},
+        {"room": "Lounge", "f": 2, "threat": "Kiba de Azami o jammer de Mute donde va el racimo", "how": "Dokkaebi lo ve por cams, Sledge lo martilla antes de poner la carga"}
        ],
        "final": "Cubre House Stairs desde Lounge durante el plant"
       },
@@ -672,6 +676,7 @@
        "spawn": "Helipad",
        "path": [
         {"room": "North Garden", "f": -1, "do": "Logic Bomb antes de rapelar", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Entra a Exhibition", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Hackea el teléfono del primer muerto y usa cams", "via": "window"}
        ],
@@ -679,7 +684,7 @@
         {"room": "House Balcony", "f": 2, "threat": "Cam de Valkyrie en el balcón", "how": "Dispararla antes de rapelar"},
         {"room": "Exhibition", "f": 2, "threat": "Mute jammer tapando el hoyo", "how": "Dron para verlo y romperlo antes del racimo"}
        ],
-       "final": "Da callouts desde cams para el plant y segunda Logic Bomb en post-plant"
+       "final": "Da callouts desde cams para el plant y segunda Logic Bomb en post-plant; sostiene Lounge mirando House Stairs"
       },
       {
        "op": "capitao",
@@ -706,7 +711,7 @@
      "id": "split",
      "n": "Split Lobby + Ventana",
      "tag": "SPLIT",
-     "summary": "Hibana + Maverick abren la pared de Bathroom desde House Lobby mientras Montagne y Jackal entran por la ventana de Bedroom desde House Balcony. Nomad tapa House Stairs y Back Hallway. El ancla de Bedroom mira la ventana, el de Bathroom la pared: ninguno puede ayudar al otro.",
+     "summary": "Hibana + Maverick abren la pared de Bathroom desde House Lobby mientras Montagne y Jackal entran por la ventana de Bedroom desde House Balcony 1F. Nomad tapa House Stairs y la puerta de Back Hallway desde el Lobby. El ancla de Bedroom mira la ventana, el de Bathroom la pared: ninguno puede ayudar al otro.",
      "timeline": [
       "0:00–0:45 · drones a Bedroom y Bathroom, Jackal escanea en West Garden",
       "0:45–1:30 · Maverick abre línea a Bandit, Hibana truena la pared; Montagne se pone en la ventana con Jackal",
@@ -849,6 +854,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza y dronea Main Entrance", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra con Thermite", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube con dron adelante", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Limpia el descanso y Geisha Room", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "EMP a la pared de Tea Room", "via": "door"},
@@ -868,6 +874,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza con Thatcher", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra y limpia", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube detrás de Thatcher", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Sostiene Geisha Room mientras Thatcher dronea", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "Exotérmica a la pared de Tea Room tras el EMP", "via": "door"},
@@ -917,12 +924,12 @@
         {"room": "East Garden", "f": -1, "do": "Dronea Sand Garden", "via": "door"},
         {"room": "Sand Garden", "f": 1, "do": "Entra a BBQ por la puerta del jardín", "via": "door"},
         {"room": "BBQ", "f": 1, "do": "Limpia y pasa a Back Hallway", "via": "door"},
-        {"room": "Back Hallway", "f": 1, "do": "Airjab en la puerta de Kitchen", "via": "door"},
+        {"room": "Back Hallway", "f": 1, "do": "Airjab en la puerta BBQ↔Back Hallway para que nadie venga del sitio de abajo", "via": "door"},
         {"room": "Back Stairs", "f": 1, "do": "Airjab en el descanso y sube", "via": "door"},
         {"room": "Back Stairs", "f": 2, "do": "Sostiene la puerta de Karaoke", "via": "stairs"}
        ],
        "clear": [
-        {"room": "BBQ", "f": 1, "threat": "Roamer de 1F detrás de la barra", "how": "Dron y prefire"},
+        {"room": "BBQ", "f": 1, "threat": "Roamer de 1F detrás de la barra o Kapkan en la puerta del jardín", "how": "Dron y prefire, disparar la trampa desde fuera"},
         {"room": "Back Stairs", "f": 1, "threat": "Roamer bajando de Karaoke", "how": "Airjab en el descanso y esperar"},
         {"room": "Back Stairs", "f": 2, "threat": "Defensor rotando de Karaoke a flanquear", "how": "Sostener la puerta desde el descanso, no entrar"}
        ],
@@ -952,7 +959,7 @@
         {"room": "Karaoke", "f": 2, "do": "Entra detrás de Blitz", "via": "window"}
        ],
        "clear": [
-        {"room": "Rest. Balcony", "f": 2, "threat": "Cepo de Frost bajo la ventana", "how": "Candela lo revela, vaultear viendo el piso"},
+        {"room": "Rest. Balcony", "f": 2, "threat": "Cepo de Frost bajo la ventana", "how": "Dron por la ventana antes de vaultear y mirar al piso al caer; si hay cepo, dispararle desde fuera"},
         {"room": "Karaoke", "f": 2, "threat": "Ancla armando el sitio detrás del sofá", "how": "Entrar en el flash"}
        ],
        "final": "Limpia Karaoke y cubre la puerta de Back Stairs"
@@ -1013,7 +1020,7 @@
         {"room": "Karaoke", "f": 2, "do": "Segundo boost para el plant, cubre Back Stairs", "via": "window"}
        ],
        "clear": [
-        {"room": "Rest. Balcony", "f": 2, "threat": "Roamer saliendo a Taiko a flanquear el rapel", "how": "Cubrir desde el balcón mientras vaultean"},
+        {"room": "Rest. Balcony", "f": 2, "threat": "Defensor asomando por la ventana de Karaoke al balcón mientras rapelan", "how": "Cubrir desde el rapel con boost activo mientras vaultean"},
         {"room": "Karaoke", "f": 2, "threat": "Rotación desde Back Stairs", "how": "Boost y sostener la puerta"}
        ],
        "final": "Sostiene la puerta Karaoke↔Back Stairs en post-plant"
@@ -1024,12 +1031,12 @@
      "id": "vertical",
      "n": "Vertical desde Kitchen",
      "tag": "VERTICAL",
-     "summary": "Se juega desde abajo: Buck y Sledge abren el techo de Kitchen y Restaurant para disparar hacia Karaoke y Tea Room, Ace abre la escotilla reforzada de Karaoke desde Kitchen, Zero pone Argus por los hoyos. Montagne entra al final por Main Stairs a Hallway con el equipo detrás.",
+     "summary": "Se juega desde abajo: Buck y Sledge abren el techo de Kitchen y Restaurant para disparar hacia Karaoke y Tea Room, Ace abre la escotilla reforzada de Karaoke desde Kitchen y Zero pone Argus por los hoyos. Nadie sube por la escotilla (no se puede trepar): Buck sube por Back Stairs y Montagne por Main Stairs para el plant.",
      "timeline": [
       "0:00–0:45 · entrar por Main Entrance, limpiar Restaurant y Kitchen, Zero Argus a la escotilla",
       "0:45–1:30 · Buck/Sledge abren el techo de Kitchen bajo Karaoke, Ace abre la escotilla",
       "1:30–2:30 · matar desde abajo a los que caminan en Karaoke, Montagne sube Main Stairs",
-      "2:30–3:00 · plant en Karaoke subiendo por la escotilla con cobertura de Hallway"
+      "2:30–3:00 · Buck sube por BBQ → Back Hallway → Back Stairs y planta en Karaoke; Montagne aguanta Hallway y Sledge/Zero cubren desde abajo por los hoyos"
      ],
      "ops": [
       {
@@ -1041,14 +1048,19 @@
         {"room": "Main Entrance", "f": 1, "do": "Entra y limpia", "via": "door"},
         {"room": "Reception", "f": 1, "do": "Cruza mirando Main Stairs", "via": "door"},
         {"room": "Restaurant", "f": 1, "do": "Skeleton Key al techo bajo Tea Room", "via": "door"},
-        {"room": "Kitchen", "f": 1, "do": "Abre el techo bajo Karaoke y sube por la escotilla al final", "via": "door"},
-        {"room": "Karaoke", "f": 2, "do": "Sube por la escotilla para el plant", "via": "hatch"}
+        {"room": "Kitchen", "f": 1, "do": "Abre el techo bajo Karaoke y niega desde abajo", "via": "door"},
+        {"room": "BBQ", "f": 1, "do": "Cruza el sitio de abajo ya limpio", "via": "door"},
+        {"room": "Back Hallway", "f": 1, "do": "Pasa a Back Stairs con dron adelante", "via": "door"},
+        {"room": "Back Stairs", "f": 1, "do": "Sube", "via": "door"},
+        {"room": "Back Stairs", "f": 2, "do": "Descanso: escucha Karaoke, entra con el callout de Zero", "via": "stairs"},
+        {"room": "Karaoke", "f": 2, "do": "Entra y planta junto a la escotilla con Sledge cubriendo por el hoyo", "via": "door"}
        ],
        "clear": [
         {"room": "Reception", "f": 1, "threat": "Roamer detrás del mostrador o bajando Main Stairs", "how": "Dron y prefire"},
-        {"room": "Kitchen", "f": 1, "threat": "Roamer de 1F y Kiba de Azami tapando el techo", "how": "Escopeta al Kiba, limpiar Pantry antes de abrir"}
+        {"room": "Kitchen", "f": 1, "threat": "Roamer de 1F y Kiba de Azami tapando el techo", "how": "Escopeta al Kiba, limpiar Pantry antes de abrir"},
+        {"room": "Back Stairs", "f": 2, "threat": "Ancla de Karaoke mirando la escalera", "how": "Sledge la niega desde abajo por el hoyo antes de que Buck cruce"}
        ],
-       "final": "Planta en Karaoke junto a la escotilla con Sledge cubriendo desde abajo"
+       "final": "Planta en Karaoke junto a la escotilla con Sledge y Zero cubriendo desde abajo"
       },
       {
        "op": "sledge",
@@ -1080,7 +1092,7 @@
        "clear": [
         {"room": "Kitchen", "f": 1, "threat": "Bandit/Kaid en la escotilla", "how": "Esperar a que Zero vea la batería con Argus y lanzar SELMA justo después"}
        ],
-       "final": "Cubre la escotilla abierta desde Kitchen y sube al final"
+       "final": "Cubre la escotilla abierta desde Kitchen y sigue a Buck por Back Stairs al final"
       },
       {
        "op": "zero",
@@ -1106,6 +1118,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza con escudo arriba", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube cuando el vertical ya suena", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Escudo extendido en el descanso", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "Sostiene la puerta de Tea Room", "via": "door"}
@@ -1137,6 +1150,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra con Kali", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube droneando", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Limpia Geisha Room", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "X-KAIROS a la pared de Tea Room tras la LV", "via": "door"},
@@ -1156,6 +1170,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza detrás de Hibana", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Sostiene Geisha Room", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "LV a la pared de Tea Room para tronar batería y ADS", "via": "door"}
@@ -1212,12 +1227,12 @@
        "path": [
         {"room": "East Garden", "f": -1, "do": "Cruza al último", "via": "door"},
         {"room": "Sand Garden", "f": 1, "do": "Trax en la puerta de BBQ", "via": "door"},
-        {"room": "BBQ", "f": 1, "do": "Trax hacia Kitchen", "via": "door"},
-        {"room": "Back Hallway", "f": 1, "do": "Sostiene la puerta de Kitchen", "via": "door"},
+        {"room": "BBQ", "f": 1, "do": "Trax en la puerta BBQ↔Kitchen", "via": "door"},
+        {"room": "Back Hallway", "f": 1, "do": "Sostiene la puerta BBQ↔Back Hallway", "via": "door"},
         {"room": "Back Stairs", "f": 1, "do": "Trax en la escalera y sostiene", "via": "door"}
        ],
        "clear": [
-        {"room": "BBQ", "f": 1, "threat": "Roamer viniendo de Kitchen", "how": "Trax y sostener ángulo largo"},
+        {"room": "BBQ", "f": 1, "threat": "Roamer viniendo de Kitchen por la puerta del sitio", "how": "Trax en la puerta BBQ↔Kitchen y ángulo largo"},
         {"room": "Back Stairs", "f": 1, "threat": "Roamer bajando de Karaoke a flanquear", "how": "Trax en el descanso"}
        ],
        "final": "Sostiene Back Stairs y Back Hallway en post-plant"
@@ -1277,6 +1292,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza y dronea Main Entrance", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra con Ace", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube con dron adelante", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Limpia Geisha Room", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "EMP a la pared de Work Office", "via": "door"},
@@ -1296,6 +1312,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza con Thatcher", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Sostiene Geisha Room", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "SELMA a la pared de Work Office tras el EMP", "via": "door"},
@@ -1361,7 +1378,7 @@
        ],
        "clear": [
         {"room": "House Lobby", "f": 1, "threat": "Roamer viniendo de Bedroom o Back Hallway", "how": "Trax en las puertas y sostener"},
-        {"room": "Clearance", "f": 2, "threat": "Roamer rotando de Geisha Room a flanquear Lounge", "how": "Trax en Clearance y prefire"}
+        {"room": "Clearance", "f": 2, "threat": "Roamer rotando desde Hallway/Dragon Statue a flanquear Lounge", "how": "Trax en Clearance y prefire"}
        ],
        "final": "Sostiene House Stairs y Clearance en post-plant"
       }
@@ -1371,9 +1388,9 @@
      "id": "rush",
      "n": "Rush ventanas Exhibition",
      "tag": "RUSH",
-     "summary": "Cinco por las ventanas de Exhibition desde House Balcony 2F antes de que pongan Castle. Zofia y Ying flashean adentro, Blitz vaultea primero, Osa pone Talon en la ventana como cobertura y Dokkaebi hace sonar a los defensores para saber dónde están.",
+     "summary": "Cinco por las ventanas de Exhibition desde House Balcony 2F (rapel desde Contemplation Garden) antes de que pongan Castle. Zofia y Ying flashean adentro, Blitz vaultea primero, Osa pone Talon en la ventana como cobertura y Dokkaebi hace sonar a los defensores para saber dónde están.",
      "timeline": [
-      "0:00–0:25 · correr de Helipad a North Garden y rapelar a House Balcony 2F",
+      "0:00–0:25 · correr de Helipad por North Garden a Contemplation Garden y rapelar a House Balcony 2F",
       "0:25–0:50 · Zofia abre la ventana con impacto, Candela adentro, Blitz vaultea",
       "0:50–1:30 · limpiar Exhibition y empujar a Work Office",
       "1:30–3:00 · plant en Exhibition, post-plant desde las ventanas con Talon"
@@ -1384,12 +1401,13 @@
        "role": "entrada",
        "spawn": "Helipad",
        "path": [
-        {"room": "North Garden", "f": -1, "do": "Impacto a la ventana de Exhibition desde abajo", "via": "door"},
+        {"room": "North Garden", "f": -1, "do": "Corre pegado a la pared hacia Contemplation Garden", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Impacto a la ventana de Exhibition desde abajo y rapela a House Balcony 2F", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Rapela y concusión adentro", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Entra detrás de Blitz y remata", "via": "window"}
        ],
        "clear": [
-        {"room": "House Balcony", "f": 2, "threat": "Cepo de Frost bajo la ventana", "how": "Candela lo revela, vaultear viendo el piso"},
+        {"room": "House Balcony", "f": 2, "threat": "Cepo de Frost bajo la ventana", "how": "Dron por la ventana antes de vaultear y mirar al piso al caer; si hay cepo, dispararle desde fuera"},
         {"room": "Exhibition", "f": 2, "threat": "Ancla armando el sitio detrás de la vitrina", "how": "Concusión y entrar en el flash"}
        ],
        "final": "Limpia Exhibition y cubre la puerta de Lounge"
@@ -1400,6 +1418,7 @@
        "spawn": "Helipad",
        "path": [
         {"room": "North Garden", "f": -1, "do": "Corre detrás de Zofia", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Rapela y Candela por la ventana abierta", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Entra en el flash, segunda Candela a Work Office", "via": "window"},
         {"room": "Work Office", "f": 2, "do": "Limpia detrás del escritorio", "via": "door"}
@@ -1416,6 +1435,7 @@
        "spawn": "Helipad",
        "path": [
         {"room": "North Garden", "f": -1, "do": "Corre con escudo arriba", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Rapela y vaultea primero", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Flash de escudo y empuja Office", "via": "window"},
         {"room": "Work Office", "f": 2, "do": "Limpia con Ying", "via": "door"}
@@ -1431,7 +1451,8 @@
        "role": "soporte",
        "spawn": "Helipad",
        "path": [
-        {"room": "North Garden", "f": -1, "do": "Corre con el Talon en mano", "via": "door"},
+        {"room": "North Garden", "f": -1, "do": "Corre con el Talon en mano hacia Contemplation Garden", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Rapela y pone Talon en la ventana como cobertura", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Entra y pone segundo Talon en la puerta de Lounge", "via": "window"}
        ],
@@ -1447,6 +1468,7 @@
        "spawn": "Helipad",
        "path": [
         {"room": "North Garden", "f": -1, "do": "Logic Bomb antes de rapelar", "via": "door"},
+        {"room": "Contemplation Garden", "f": -1, "do": "Rapela a House Balcony 2F", "via": "door"},
         {"room": "House Balcony", "f": 2, "do": "Rapela al último", "via": "rappel"},
         {"room": "Exhibition", "f": 2, "do": "Hackea el primer teléfono y usa cams para el post-plant", "via": "window"}
        ],
@@ -1462,12 +1484,12 @@
      "id": "vertical",
      "n": "Vertical desde Bedroom",
      "tag": "VERTICAL",
-     "summary": "Se juega desde abajo: Buck y Sledge abren el techo de Bedroom y Closet para disparar hacia Exhibition y Lounge, Hibana abre la escotilla reforzada de Closet, Zero pone Argus por los hoyos. Blackbeard sube House Stairs al final y entra a Lounge con el escudo de rifle.",
+     "summary": "Se juega desde abajo: Buck y Sledge abren el techo de Bedroom y Closet para disparar hacia Exhibition y Lounge, Hibana abre la escotilla reforzada de Closet desde abajo y Zero pone Argus por los hoyos. Nadie trepa por la escotilla: Blackbeard sube por House Stairs a Lounge con el escudo de rifle y planta en Exhibition con la cobertura de abajo.",
      "timeline": [
       "0:00–0:45 · entrar por House Entrance, limpiar House Lobby y Bedroom, Zero Argus a la escotilla",
       "0:45–1:30 · Buck/Sledge abren el techo de Bedroom bajo Exhibition, Hibana abre la escotilla de Closet",
       "1:30–2:30 · matar desde abajo a los que caminan en Exhibition, Blackbeard sube House Stairs",
-      "2:30–3:00 · plant en Exhibition subiendo por la escotilla con cobertura de Lounge"
+      "2:30–3:00 · Blackbeard planta en Exhibition entrando desde Lounge; Buck/Sledge/Zero niegan Exhibition y Office desde abajo por los hoyos"
      ],
      "ops": [
       {
@@ -1478,15 +1500,14 @@
         {"room": "West Garden", "f": -1, "do": "Dronea House Entrance", "via": "door"},
         {"room": "House Entrance", "f": 1, "do": "Entra y limpia", "via": "door"},
         {"room": "House Lobby", "f": 1, "do": "Cruza mirando House Stairs", "via": "door"},
-        {"room": "Bedroom", "f": 1, "do": "Skeleton Key al techo bajo Exhibition", "via": "door"},
-        {"room": "Closet", "f": 1, "do": "Sube por la escotilla al final", "via": "door"},
-        {"room": "Lounge", "f": 2, "do": "Sale de la escotilla y planta en Exhibition con cobertura", "via": "hatch"}
+        {"room": "Bedroom", "f": 1, "do": "Skeleton Key al techo bajo Exhibition, lado de la vitrina", "via": "door"},
+        {"room": "Closet", "f": 1, "do": "Abre el techo bajo Lounge junto a la escotilla y niega desde abajo", "via": "door"}
        ],
        "clear": [
         {"room": "House Lobby", "f": 1, "threat": "Roamer en Bathroom o bajando House Stairs", "how": "Dron y prefire"},
         {"room": "Bedroom", "f": 1, "threat": "Roamer de 1F y Kiba de Azami tapando el techo", "how": "Escopeta al Kiba, limpiar Bathroom antes de abrir"}
        ],
-       "final": "Sube por la escotilla y planta en Exhibition con Sledge cubriendo desde abajo"
+       "final": "Niega Exhibition y Lounge desde abajo por los hoyos mientras Blackbeard planta; sube por House Stairs solo si hace falta rematar"
       },
       {
        "op": "sledge",
@@ -1518,7 +1539,7 @@
        "clear": [
         {"room": "Closet", "f": 1, "threat": "Bandit/Kaid en la escotilla", "how": "Esperar a que Zero vea la batería con Argus y disparar pellets justo después"}
        ],
-       "final": "Cubre la escotilla abierta desde Closet y sube al final"
+       "final": "Cubre la escotilla abierta desde Closet y sube por House Stairs al final si hay que rematar"
       },
       {
        "op": "zero",
@@ -1547,13 +1568,15 @@
         {"room": "House Lobby", "f": 1, "do": "Sostiene House Stairs mientras abren", "via": "door"},
         {"room": "House Stairs", "f": 1, "do": "Sube cuando el vertical ya suena", "via": "door"},
         {"room": "House Stairs", "f": 2, "do": "Escudo de rifle en el descanso", "via": "stairs"},
-        {"room": "Lounge", "f": 2, "do": "Sostiene la puerta de Exhibition", "via": "door"}
+        {"room": "Lounge", "f": 2, "do": "Sostiene la puerta de Exhibition", "via": "door"},
+        {"room": "Exhibition", "f": 2, "do": "Entra con el callout de Zero y planta detrás de la vitrina", "via": "door"}
        ],
        "clear": [
         {"room": "House Stairs", "f": 2, "threat": "Roamer en Clearance", "how": "Escudo de rifle arriba, Zero confirma con Argus"},
-        {"room": "Lounge", "f": 2, "threat": "Ancla de Exhibition asomando y Noor con fuego", "how": "Asomar por la pared y no quedarse en la puerta"}
+        {"room": "Lounge", "f": 2, "threat": "Ancla de Exhibition asomando y Noor con fuego", "how": "Asomar por la pared y no quedarse en la puerta"},
+        {"room": "Exhibition", "f": 2, "threat": "Ancla detrás de la vitrina o rotando desde Work Office", "how": "Buck la niega por el hoyo desde Bedroom antes de entrar; plant fuera de la línea de la puerta de Office"}
        ],
-       "final": "Cubre Lounge durante el plant de Buck"
+       "final": "Planta en Exhibition detrás de la vitrina con Buck y Sledge cubriendo desde abajo"
       }
      ]
     },
@@ -1576,6 +1599,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra con Kali", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube droneando", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Limpia Geisha Room", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "Exotérmica a la pared de Office tras la LV", "via": "door"},
@@ -1595,6 +1619,7 @@
        "path": [
         {"room": "Bridge", "f": -1, "do": "Cruza detrás de Thermite", "via": "door"},
         {"room": "Main Entrance", "f": 1, "do": "Entra", "via": "door"},
+        {"room": "Reception", "f": 1, "do": "Cruza el mostrador mirando Toilet y la boca de Main Stairs", "via": "door"},
         {"room": "Main Stairs", "f": 1, "do": "Sube", "via": "door"},
         {"room": "Main Stairs", "f": 2, "do": "Sostiene Geisha Room", "via": "stairs"},
         {"room": "Hallway", "f": 2, "do": "LV a la pared de Office para tronar batería y ADS", "via": "door"}

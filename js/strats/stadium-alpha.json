@@ -7,12 +7,12 @@
      "id": "default",
      "n": "Default lento",
      "tag": "DEFAULT",
-     "summary": "Se abre la pared reforzada principal desde Pasillo con Thermite + Thatcher mientras Buck hace presión vertical desde 2F (arriba) sobre Sitio B. Funciona porque la defensa de Stadium Alpha se apoya en Bandit/Kaid en esa pared y en una Mira mirando Pasillo: si le quitas la batería y le abres el techo al ancla de B, el sitio queda a dos frentes sin que gastes vidas.",
+     "summary": "Se abre la pared reforzada principal Pasillo → Sitio A con Thermite + Thatcher mientras Buck hace presión vertical desde 2F (arriba) sobre Sitio B y Nomad sella la puerta lateral. Funciona porque la defensa típica de este sitio vive de Bandit/Kaid en esa pared y de una Mira mirando Pasillo: sin batería y con el techo de B abierto, las anclas quedan a dos frentes y el plant se hace detrás de la pared abierta sin regalar vidas.",
      "timeline": [
-      "0:00–0:45 · Iana y Buck dronean Pasillo y Sitio A/B; ubicar Mira, Bandit y al roamer",
-      "0:45–1:30 · Buck sube a 2F (arriba) y abre suelo sobre Sitio B; Thatcher EMP + Thermite abren la pared principal",
-      "1:30–2:30 · Entrada por la pared abierta con Iana de punta; Nomad tapa la puerta lateral con Airjabs",
-      "2:30–3:00 · Plant detrás de la pared abierta, Buck sostiene desde arriba y Nomad cuida el flanco"
+      "0:00–0:45 · Iana y Buck dronean Pasillo, Sitio A y Sitio B; ubicar Mira, Bandit y al roamer; Nomad pone Airjabs junto a la puerta lateral",
+      "0:45–1:30 · Buck sube a 2F (arriba) y abre el suelo sobre Sitio B; Thatcher tira EMP y Thermite abre la pared principal",
+      "1:30–2:30 · Entrada por la pared abierta con Iana de punta y Thermite detrás; Buck castiga desde arriba a quien rote a B",
+      "2:30–3:00 · Plant pegado a la pared abierta; Buck sostiene el techo, Nomad y Thatcher cubren Pasillo y la puerta lateral"
      ],
      "ops": [
       {
@@ -20,13 +20,13 @@
        "role": "antigadget",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Dronea la entrada de Pasillo y espera a que Iana confirme que no hay roamer", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Se pega a la pared reforzada y tira 2 EMP para quemar batería/Kaid y ADS", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Entra detrás de Thermite cuando la pared cae", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Dronea la entrada de Pasillo y espera a que Iana confirme que no hay roamer en la puerta", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Se pega a la pared reforzada y tira 2 EMP para quemar batería, Kaid y ADS antes de la carga", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Entra detrás de Thermite cuando la pared cae y limpia la esquina del espejo", "via": "breach"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Kapkan en el marco de la puerta y a veces un roamer tipo Vigil esperando en la esquina", "how": "Dron primero, dispara la trampa desde afuera y prefire la esquina al entrar"},
-        {"room": "Sitio A", "f": 1, "threat": "Bandit o Kaid trickeando la pared principal con un Jäger encima", "how": "EMP en la pared justo antes de que Thermite pegue la carga; si falla, Thermite espera y repite"}
+        {"room": "Pasillo", "f": 1, "threat": "Kapkan en el marco de la puerta y un roamer tipo Vigil esperando en la esquina ciega", "how": "Dron primero, revienta la trampa desde afuera y prefire la esquina al cruzar"},
+        {"room": "Sitio A", "f": 1, "threat": "Bandit o Kaid trickeando la pared principal con un Jäger encima", "how": "EMP justo cuando Thermite pega la carga; si la batería regresa, Thermite espera y repite con el segundo EMP"}
        ],
        "final": "Sostiene la pared abierta desde Pasillo cubriendo el plant de Iana"
       },
@@ -35,60 +35,64 @@
        "role": "duro",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Camina pegado al muro, sin apurarse, hasta la entrada de Pasillo", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Pone la carga exotérmica en la pared principal tras el EMP de Thatcher", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Cruza la pared abierta y planta si Iana ya limpió", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Camina pegado al muro sin apurarse hasta la entrada de Pasillo", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Pone la carga exotérmica en la pared principal justo después del EMP de Thatcher", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Cruza la pared abierta y planta si Iana ya limpió la esquina", "via": "breach"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Ancla con Mira mirando toda la línea de Pasillo desde Sitio A", "how": "No cruces la línea del espejo; pega la carga desde el lado ciego y espera a Buck arriba"},
-        {"room": "Sitio A", "f": 1, "threat": "Smoke con gas listo para el plant y Rook parado detrás de la pared", "how": "Que Buck abra el techo primero para sacarlos de la esquina; entra con flash de Iana"}
+        {"room": "Pasillo", "f": 1, "threat": "Ancla con Mira mirando toda la línea de Pasillo desde Sitio A", "how": "No cruces la línea del espejo; pega la carga desde el lado ciego y espera a que Buck haga ruido arriba"},
+        {"room": "Sitio A", "f": 1, "threat": "Smoke con gas listo para el plant y Rook parado detrás de la pared", "how": "Que Buck abra el techo primero para sacarlos de la esquina; entra con la flash de Iana"}
        ],
-       "final": "Planta detrás de la pared abierta, lo más lejos de la puerta lateral"
+       "final": "Planta detrás de la pared abierta y se queda tras la esquina reforzada"
       },
       {
        "op": "iana",
        "role": "intel",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Manda la réplica Gemini por Pasillo hasta Sitio A/B para ubicar a todos", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Segunda réplica para revisar Sitio B y la conexión A↔B", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Entra de punta por la pared abierta y limpia esquinas", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Manda la réplica Gemini por Pasillo para contar defensores y sacar el roamer", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Espera pegada a Thermite con segunda réplica lista para checar Sitio A tras la brecha", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Entra de punta por la pared abierta y limpia la esquina del espejo", "via": "breach"},
+        {"room": "Sitio B", "f": 1, "do": "Cruza a Sitio B para sacar al ancla que se esconde del techo de Buck", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio A", "f": 1, "threat": "Rook o Smoke en la esquina detrás de la pared principal", "how": "Réplica para hacerlos disparar y revelar; entra prefireando la esquina"},
-        {"room": "Sitio B", "f": 1, "threat": "Pulse pegado a la pared entre A y B buscando el plant", "how": "Buck le abre el piso desde 2F (arriba); Iana lo confirma con réplica antes del plant"}
+        {"room": "Pasillo", "f": 1, "threat": "Roamer tipo Vigil o Caveira jugando la esquina de Pasillo", "how": "Réplica primero; si hay alguien, prefire con el equipo y no entres sola"},
+        {"room": "Sitio A", "f": 1, "threat": "Mira detrás del espejo y un flex con escopeta en la esquina", "how": "Réplica por la pared abierta para hacer que abran el espejo; entra con la flash cuando el gas de Smoke se disipe"},
+        {"room": "Sitio B", "f": 1, "threat": "Ancla con Smoke pegada al muro exterior evitando el techo abierto", "how": "Buck avisa dónde está desde arriba y tú entras con prefire a esa esquina"}
        ],
-       "final": "Limpia Sitio A y cubre la conexión hacia Sitio B mientras planta Thermite"
+       "final": "Limpia Sitio B y sostiene la conexión A↔B mientras Thermite planta"
       },
       {
        "op": "buck",
        "role": "vertical",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Dronea la escalera de Pasillo antes de subir", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Toma la escalera a 2F con cuidado, dron adelante", "via": "door"},
-        {"room": "2F (arriba)", "f": 1, "do": "Abre el suelo sobre Sitio B con Skeleton Key y mata anclas desde arriba", "via": "stairs"},
-        {"room": "Sitio B", "f": 1, "do": "Baja por la escotilla al final para cerrar el plant", "via": "hatch"}
+        {"room": "Exterior", "f": 1, "do": "Dronea la escalera a 2F (arriba) para ver que esté limpia", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Cruza rápido hacia la escalera sin pelear la pared principal", "via": "door"},
+        {"room": "2F (arriba)", "f": 1, "do": "Abre el suelo sobre Sitio B con la Skeleton Key y castiga a las anclas", "via": "stairs"},
+        {"room": "Sitio B", "f": 1, "do": "Baja por el hueco al final si el plant necesita apoyo", "via": "hatch"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Roamer (Cav/Vigil) que sube por la escalera a jugar 2F", "how": "Dron a la escalera y sube en pareja con Nomad cubriendo; nunca subas solo sin dron"},
-        {"room": "2F (arriba)", "f": 1, "threat": "Defensor jugando 2F con la escotilla cerrada esperando pasos", "how": "Camina agachado, prefire la esquina de la escotilla y abre el suelo lejos de la puerta"}
+        {"room": "Pasillo", "f": 1, "threat": "Roamer que sube y baja la escalera para molestar al vertical", "how": "Dron en la escalera, sube con un compañero cubriendo Pasillo"},
+        {"room": "2F (arriba)", "f": 1, "threat": "Pulse o Valkyrie leyendo desde arriba y un roamer que te espera en la esquina de la escalera", "how": "Sube con dron adelante, limpia esquinas con prefire y rompe cámaras antes de abrir el suelo"},
+        {"room": "Sitio B", "f": 1, "threat": "Ancla con Smoke que se pega a la pared exterior y un Jäger con ADS", "how": "Abre el suelo por partes; quema ADS con un frag antes de tirar granadas de verdad"}
        ],
-       "final": "Sostiene los agujeros sobre Sitio B hasta que la bomba explote; baja solo si se necesita rematar"
+       "final": "Sostiene el techo abierto y niega Sitio B durante el plant"
       },
       {
        "op": "nomad",
        "role": "flanco",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Pone Airjabs en la puerta lateral y en la conexión de Pasillo para tapar rotaciones", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Presiona la puerta lateral cuando caiga la pared para dividir la atención", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Pone 2 Airjabs en el pasillo exterior que lleva a la puerta lateral", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Entra por la puerta lateral solo cuando el plant ya cayó, para cerrar la pinza", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Cruza a Sitio A para cubrir la bomba desde el lado opuesto", "via": "door"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 1, "threat": "Roamer saliendo por la puerta lateral a hacer spawn peek o flanco", "how": "Airjab en la puerta y prefire desde cobertura; no cruces el ángulo hasta que Iana tenga intel"},
-        {"room": "Sitio B", "f": 1, "threat": "Castle en la puerta lateral con Frost detrás", "how": "Tira la barricada con la escopeta de repuesto o granada; revisa el cepo antes de saltar"}
+        {"room": "Exterior", "f": 1, "threat": "Roamer que sale por la puerta lateral para flanquear a Thermite", "how": "Airjabs en el camino y espera detrás de una esquina con el micrófono atento"},
+        {"room": "Sitio B", "f": 1, "threat": "Kapkan o Castle en la puerta lateral con Smoke detrás", "how": "Dispara la trampa desde lejos, no abras el Castle a mano; entra solo cuando Buck confirme que B está vacío"}
        ],
-       "final": "Cubre el flanco de la puerta lateral durante todo el post-plant"
+       "final": "Cierra el flanco de la puerta lateral y cubre el post-plant desde Sitio B"
       }
      ]
     },
@@ -96,12 +100,12 @@
      "id": "rush",
      "n": "Rush",
      "tag": "RUSH",
-     "summary": "Todos entran por la puerta lateral a Sitio B en los primeros 30 segundos, con Candelas de Ying y flash de Blitz antes de que armen Castle y las trampas. En Stadium Alpha la puerta lateral queda pegada a la bomba de B, así que si llegas antes que Bandit termine de reforzar, el sitio cae sin utilidad.",
+     "summary": "Entrada a los 20 segundos por la puerta lateral que da directo a Sitio B, con Candelas de Ying y flashes de Zofia antes de que Mira monte el espejo y Bandit trickee la pared. En ranked la defensa de Stadium Alpha tarda en armar la puerta lateral porque prioriza la pared principal; si llegan cinco de golpe por ese lado con Finka activa, las anclas de B mueren sin refuerzo.",
      "timeline": [
-      "0:00–0:20 · Todos corren desde Exterior a la puerta lateral, Ying tira Candela por la puerta",
-      "0:20–0:45 · Ash rompe la barricada, Blitz entra flasheando y Zofia limpia con concusiones",
-      "0:45–1:30 · Finka activa el Surge, se planta en Sitio B en la primera esquina segura",
-      "1:30–3:00 · Post-plant: dos en B, uno en Pasillo cortando la rotación de Sitio A"
+      "0:00–0:20 · Todos corren por el exterior a la puerta lateral; Ash rompe la barricada desde distancia",
+      "0:20–0:45 · Ying tira Candela adentro de Sitio B, Finka activa la subida y entran Blitz + Ash + Ying",
+      "0:45–1:30 · Zofia limpia Sitio A y cierra la puerta de Pasillo; se busca y se cae el ancla que rotó",
+      "1:30–3:00 · Plant rápido en Sitio B en cuanto caiga el segundo defensor; el resto sostiene puertas"
      ],
      "ops": [
       {
@@ -109,72 +113,77 @@
        "role": "entrada",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Corre a la puerta lateral y lanza la Candela cocinada por el marco", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Entra en cuanto explote, limpia las esquinas cercanas a la bomba", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Corre pegada al muro hasta la puerta lateral con Candela lista", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Tira Candela adentro y entra cuando explote limpiando la esquina larga", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Segunda Candela hacia Sitio A y empuja al ancla que se refugió", "via": "door"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 1, "threat": "Spawn peek desde la puerta lateral o ventana de Sitio B", "how": "Sal en grupo, pegados al muro, y que Blitz vaya adelante con el escudo"},
-        {"room": "Sitio B", "f": 1, "threat": "Ancla en la esquina de la bomba con Jäger armando ADS", "how": "Candela primero (el ADS se come una), después entra prefireando la esquina"}
+        {"room": "Exterior", "f": 1, "threat": "Defensor asomado por la puerta lateral haciendo spawn peek", "how": "Corre en zigzag pegada al muro; Ash rompe la barricada a distancia para no pararse en la puerta"},
+        {"room": "Sitio B", "f": 1, "threat": "Ancla con Smoke en la esquina y Kapkan en el marco", "how": "Candela dentro, dispara la trampa y entra con Blitz de escudo por delante"}
        ],
-       "final": "Toma la esquina de Sitio B y cubre el plant de Finka"
+       "final": "Planta en Sitio B en cuanto caiga la primera ancla"
       },
       {
        "op": "ash",
        "role": "blando",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Tira la carga de brecha a la barricada de la puerta lateral desde lejos", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Entra segunda detrás de Ying y abre la pared blanda hacia Sitio A", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Corta la rotación A→B y limpia si el sitio ya cayó", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Lanza la carga de brecha a la barricada de la puerta lateral desde media distancia", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Entra en segundo lugar limpiando la esquina que Ying no vio", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Abre la pared blanda entre sitios con la segunda carga y limpia A", "via": "breach"}
        ],
        "clear": [
-        {"room": "Sitio B", "f": 1, "threat": "Kapkan en el marco de la puerta lateral", "how": "Mira el marco antes de cruzar; si hay láser lo rompes con una bala"},
-        {"room": "Sitio A", "f": 1, "threat": "Rotación del ancla de A que viene a ayudar a B", "how": "Prefire la conexión A↔B y tira una segunda carga para abrir línea"}
+        {"room": "Exterior", "f": 1, "threat": "Peek desde la puerta lateral o desde Pasillo", "how": "Rompe la barricada a distancia y entra tras la Candela, nunca de primera"},
+        {"room": "Sitio B", "f": 1, "threat": "Jäger con ADS que come la carga de brecha y flex con escopeta en la esquina", "how": "Tira la carga desde lejos para que el ADS se gaste; segunda carga a la pared blanda hacia A"}
        ],
-       "final": "Sostiene la conexión A↔B para que no roten al plant"
+       "final": "Sostiene la conexión A↔B durante el plant de Ying"
       },
       {
        "op": "blitz",
        "role": "entrada",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Va de primero con el escudo arriba hacia la puerta lateral", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Flashea y va al cuerpo a cuerpo con el ancla más cercana", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Corre con el escudo adelante hasta la puerta lateral", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Entra primero con flash del escudo, come los disparos y remata a quien quede ciego", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Flashea hacia A para cubrir el plant", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio B", "f": 1, "threat": "Noor con el Horus esperando escudos en la puerta; te va a quemar el escudo", "how": "No entres primero si dronearon a Noor: deja que Ying limpie con Candela y entra flasheando desde el lado"},
-        {"room": "Sitio B", "f": 1, "threat": "Frost con cepo debajo de la ventana o detrás de la puerta", "how": "Camina, no saltes; mira al piso antes de cruzar"}
+        {"room": "Sitio B", "f": 1, "threat": "Noor con fuego Horus apuntando a la puerta lateral para quemar escudos", "how": "No te pares en el marco; entra después de la Candela y flashea antes de que Noor dispare"},
+        {"room": "Sitio A", "f": 1, "threat": "Rook o Doc esperando el push desde la esquina de A", "how": "Flash con el escudo y deja que Zofia y Ash rematen"}
        ],
-       "final": "Bloquea la puerta interior de Sitio B con el escudo mientras plantan"
+       "final": "Cubre a Ying en el plant absorbiendo las balas desde la puerta de A"
       },
       {
        "op": "zofia",
        "role": "blando",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Dispara concusiones por la puerta lateral apenas la abra Ash", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Entra tercera y remata aturdidos", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sale a Pasillo a tapar la rotación y el regreso del roamer", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Tira una concusión por la puerta lateral y entra detrás de Blitz", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Limpia la esquina y sigue de largo hacia Sitio A", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Concusión a Sitio A y remata al ancla que se refugió detrás de la pared principal", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sale a Pasillo para cerrar la rotación del roamer que regresa", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio B", "f": 1, "threat": "Ancla Mira/Smoke en la esquina de la bomba", "how": "Concusión a la esquina y Ying con Candela; entra cuando estén aturdidos"},
-        {"room": "Pasillo", "f": 1, "threat": "Roamer que regresa por Pasillo a flanquear el plant", "how": "Impact en la puerta de Pasillo y sostén el ángulo desde adentro de B"}
+        {"room": "Sitio B", "f": 1, "threat": "Ancla con Smoke y un flex detrás del Castle", "how": "Concusión al cuarto antes de entrar, nunca de primera"},
+        {"room": "Sitio A", "f": 1, "threat": "Mira escondida detrás del espejo mirando Pasillo, de espaldas al push", "how": "Entra por el lado de B mientras ella mira Pasillo; concusión y remate"},
+        {"room": "Pasillo", "f": 1, "threat": "Roamer que vuelve corriendo desde 2F (arriba) para flanquear el plant", "how": "Ángulo con Lifeline apuntando a la escalera, sin salir a peek"}
        ],
-       "final": "Sostiene Pasillo para que el roamer no flanquee el post-plant"
+       "final": "Sostiene Pasillo para que nadie regrese al sitio durante el post-plant"
       },
       {
        "op": "finka",
        "role": "soporte",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Activa el Adrenal Surge cuando Ash rompa la puerta", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Entra última y planta en la primera esquina limpia", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Activa Adrenal Surge justo cuando Ash rompe la barricada", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Entra en cuarto lugar, levanta a los caídos y sostiene la puerta lateral", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Segundo Surge para el plant y cubre desde la pared blanda", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio B", "f": 1, "threat": "Lesion con Gu en la puerta y bajo la ventana", "how": "Surge para no quedar lentos; mira el piso y limpia las agujas al entrar"},
-        {"room": "Sitio B", "f": 1, "threat": "Pulse detrás de la pared entre A y B intentando shootear el plant", "how": "Planta en la esquina opuesta a la conexión con A y que Ash cubra"}
+        {"room": "Exterior", "f": 1, "threat": "Cepo de Frost bajo la puerta lateral o Gu de Lesion en la entrada", "how": "El Surge quita los efectos; aun así dispara al suelo del marco antes de cruzar"},
+        {"room": "Sitio B", "f": 1, "threat": "Doc o Rook con blindaje que aguanta el push", "how": "Surge para el equipo, dispara con Blitz por delante y remata"}
        ],
-       "final": "Planta y luego levanta caídos con Surge en el post-plant"
+       "final": "Sostiene la puerta lateral desde adentro y activa Surge en el post-plant"
       }
      ]
     },
@@ -182,12 +191,12 @@
      "id": "vertical",
      "n": "Vertical",
      "tag": "VERTICAL",
-     "summary": "Se toma 2F (arriba) con Sledge y Buck para abrir todo el techo de Sitio B mientras Fuze mete clusters por el suelo y Dokkaebi vibra los teléfonos para saber dónde están. Hibana abre la pared principal al final. En Stadium Alpha el piso de 2F es blando encima de B, así que las anclas no tienen dónde esconderse.",
+     "summary": "Cuatro suben a 2F (arriba) y le destruyen el suelo a Sitio B con Sledge y Ram mientras Fuze mete racimo sobre las anclas y Dokkaebi les vibra el celular para ubicarlas; Maverick abre en silencio la pared principal para entrar al final. La defensa de este sitio depende de dos anclas en B y un Mira en A; si el techo se cae, la ancla de B muere o rota a A y el sitio queda con dos defensores para cinco.",
      "timeline": [
-      "0:00–0:45 · Drones a Pasillo y la escalera; Dokkaebi hackea cuando caiga la primera cámara",
-      "0:45–1:30 · Sledge y Buck toman 2F (arriba) y abren el suelo; Fuze mete 2 clusters sobre B",
-      "1:30–2:30 · Hibana abre la pared principal; se mata desde arriba y entra Dokkaebi por Pasillo",
-      "2:30–3:00 · Plant en Sitio B con Buck bajando por la escotilla; Sledge sostiene desde arriba"
+      "0:00–0:45 · Dokkaebi dronea la escalera; Sledge y Ram suben a 2F (arriba) y Maverick empieza a soplar la pared principal",
+      "0:45–1:30 · Sledge abre el suelo sobre Sitio B, Ram lanza BU-GI, Fuze pone racimo sobre la esquina del ancla y Dokkaebi vibra celulares",
+      "1:30–2:30 · Se matan las anclas desde arriba; Maverick termina el hueco en la pared principal y entra con Dokkaebi",
+      "2:30–3:00 · Plant en Sitio A por el hueco de Maverick con el techo de B abierto y Sledge cubriendo desde arriba"
      ],
      "ops": [
       {
@@ -195,77 +204,82 @@
        "role": "blando",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Dronea la entrada de Pasillo y la escalera", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera con Buck", "via": "door"},
-        {"room": "2F (arriba)", "f": 1, "do": "Abre el suelo sobre Sitio B con el martillo y sostiene ángulos hacia abajo", "via": "stairs"},
-        {"room": "Sitio B", "f": 1, "do": "Baja por la escotilla al final para rematar y cerrar el plant", "via": "hatch"}
+        {"room": "Exterior", "f": 1, "do": "Dronea la escalera de Pasillo antes de subir", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Cruza rápido hacia la escalera con Ram detrás", "via": "door"},
+        {"room": "2F (arriba)", "f": 1, "do": "Martilla el suelo sobre la esquina donde vive el ancla de Sitio B y abre líneas", "via": "stairs"},
+        {"room": "Sitio B", "f": 1, "do": "Baja por el hueco al final solo para cubrir el plant", "via": "hatch"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Roamer tipo Vigil o Caveira jugando la escalera", "how": "Dron y suben dos juntos; el segundo cubre la subida"},
-        {"room": "2F (arriba)", "f": 1, "threat": "Defensor en 2F esperando en la escotilla cerrada", "how": "Prefire la esquina de la escotilla al llegar; abre agujeros lejos de la puerta"}
+        {"room": "Pasillo", "f": 1, "threat": "Roamer tipo Vigil o Caveira que juega la escalera", "how": "Dron adelante y sube con Ram cubriendo tu espalda"},
+        {"room": "2F (arriba)", "f": 1, "threat": "Defensor que sube por la escalera para molestar el vertical y cámaras de Valkyrie", "how": "Limpia esquinas con prefire y rompe cámaras antes de martillar"},
+        {"room": "Sitio B", "f": 1, "threat": "Ancla con Smoke pegada a la pared exterior lejos del techo abierto", "how": "Abre el suelo por secciones hasta ver la esquina; Fuze la saca con el racimo"}
        ],
-       "final": "Sostiene los agujeros sobre Sitio B en post-plant"
+       "final": "Sostiene el techo abierto y niega Sitio B durante el plant"
       },
       {
-       "op": "buck",
-       "role": "blando",
+       "op": "ram",
+       "role": "negacion",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Sale pegado a Sledge", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera cubriendo a Sledge", "via": "door"},
-        {"room": "2F (arriba)", "f": 1, "do": "Abre líneas con Skeleton Key hacia el rincón del ancla de B", "via": "stairs"},
-        {"room": "Sitio B", "f": 1, "do": "Baja por la escotilla y planta", "via": "hatch"}
+        {"room": "Exterior", "f": 1, "do": "Entra detrás de Sledge hacia Pasillo", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera cubriendo la espalda de Sledge", "via": "door"},
+        {"room": "2F (arriba)", "f": 1, "do": "Lanza el BU-GI hacia la zona sobre Sitio B para abrir todo el suelo y quemar gadgets", "via": "stairs"},
+        {"room": "Sitio B", "f": 1, "do": "Baja por el hueco al final para cubrir el plant", "via": "hatch"}
        ],
        "clear": [
-        {"room": "2F (arriba)", "f": 1, "threat": "Ancla tirando por el suelo abierto hacia arriba", "how": "Nunca te quedes parado sobre un agujero; abre y te mueves"},
-        {"room": "Sitio B", "f": 1, "threat": "Smoke con gas debajo de la escotilla", "how": "Baja solo cuando Sledge confirme que no hay nadie abajo o Fuze ya limpió"}
+        {"room": "Pasillo", "f": 1, "threat": "Kapkan en la puerta de Pasillo", "how": "Dron primero y dispara la trampa antes de cruzar"},
+        {"room": "2F (arriba)", "f": 1, "threat": "Pulse leyendo desde arriba y esperando el peek", "how": "Sube con Sledge, prefire la esquina y deja que el BU-GI rompa el suelo antes de asomarte"},
+        {"room": "Sitio B", "f": 1, "threat": "Jäger con ADS y Mute con jammer bajo el techo", "how": "El BU-GI los destruye al pasar; luego Fuze mete racimo limpio"}
        ],
-       "final": "Planta en Sitio B cubierto por Sledge desde arriba"
+       "final": "Niega Sitio B desde arriba y baja a cubrir el plant"
       },
       {
        "op": "fuze",
        "role": "negacion",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Espera a que Sledge y Buck aseguren 2F", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera", "via": "door"},
-        {"room": "2F (arriba)", "f": 1, "do": "Pone 2 cargas de racimo en el suelo sobre Sitio B para limpiar anclas y gadgets", "via": "stairs"}
+        {"room": "Exterior", "f": 1, "do": "Entra a Pasillo detrás del grupo vertical", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera a 2F (arriba)", "via": "door"},
+        {"room": "2F (arriba)", "f": 1, "do": "Pone racimo sobre la esquina del ancla de Sitio B después de que el BU-GI queme el ADS", "via": "stairs"},
+        {"room": "Sitio B", "f": 1, "do": "Baja por el hueco al final para cubrir la bomba", "via": "hatch"}
        ],
        "clear": [
-        {"room": "Sitio B", "f": 1, "threat": "Jäger con ADS y Wamai con Mag-NET esperando los clusters", "how": "Primer cluster para gastar ADS, segundo para matar; avisa antes de activar"},
-        {"room": "2F (arriba)", "f": 1, "threat": "Defensor que sube a rotar por la escalera", "how": "Sledge sostiene la escalera mientras Fuze pone las cargas"}
+        {"room": "Pasillo", "f": 1, "threat": "Roamer que baja por la escalera cuando escucha las cargas", "how": "No subas solo; que Sledge cubra la escalera mientras colocas"},
+        {"room": "2F (arriba)", "f": 1, "threat": "Jäger con ADS bajo el suelo que se come los pucks", "how": "Espera a que Ram pase el BU-GI o tira una frag primero; segunda carga en otra esquina"}
        ],
-       "final": "Sostiene 2F (arriba) mirando la escalera durante el post-plant"
+       "final": "Racimo sobre el plant si un defensor intenta defusear desde Sitio B"
       },
       {
        "op": "dokkaebi",
        "role": "intel",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Logic Bomb cuando los verticales estén listos para saber dónde están las anclas", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Hackea el teléfono del primer caído y entra por Pasillo", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Entra por la pared que abre Hibana y limpia", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Dronea Pasillo y la escalera para ubicar al roamer", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Lanza Logic Bomb para ubicar a las anclas y hackea el celular del primer caído", "via": "door"},
+        {"room": "2F (arriba)", "f": 1, "do": "Sube con el grupo y usa las cámaras hackeadas para llamar dónde están las anclas", "via": "stairs"},
+        {"room": "Sitio B", "f": 1, "do": "Baja por el hueco al final con el segundo Logic Bomb para sacar al último", "via": "hatch"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Kapkan en la puerta de Pasillo", "how": "Dron primero y rompe la trampa desde la distancia"},
-        {"room": "Sitio A", "f": 1, "threat": "Ancla de Sitio A con Mira mirando Pasillo", "how": "Entra cuando la vertical ya la haya presionado; usa las cámaras hackeadas para verla"}
+        {"room": "Pasillo", "f": 1, "threat": "Vigil invisible en la esquina de Pasillo", "how": "Logic Bomb lo hace vibrar aunque esté invisible; prefire con el equipo"},
+        {"room": "2F (arriba)", "f": 1, "threat": "Cámaras de Valkyrie o Maestro mirando la escalera", "how": "Hackea las cámaras del defensor caído y rompe las que veas desde abajo"},
+        {"room": "Sitio B", "f": 1, "threat": "Ancla escondida en la esquina que no alcanzó el techo abierto", "how": "Vibra celular y deja que Sledge abra el suelo justo encima"}
        ],
-       "final": "Limpia Sitio A y cubre la conexión A↔B mientras plantan en B"
+       "final": "Llama posiciones desde las cámaras y baja a cubrir el post-plant"
       },
       {
-       "op": "hibana",
+       "op": "maverick",
        "role": "duro",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Cubre la puerta lateral desde afuera mientras la vertical trabaja", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Abre la pared principal con X-KAIROS cuando Fuze termine", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Entra con Dokkaebi a cerrar", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Camina a Pasillo mientras el vertical hace ruido arriba", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sopla la pared principal en silencio, primero un ojo y luego un hueco de cuerpo", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Entra por el hueco cuando el techo de B ya esté abierto y planta", "via": "breach"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 1, "threat": "Roamer que sale por la puerta lateral a flanquear a los de 2F", "how": "Sostén el ángulo de la puerta y prefire; el flanco no puede pasar"},
-        {"room": "Sitio A", "f": 1, "threat": "Bandit trickeando la pared principal", "how": "Pellets en ráfagas de 3 en distintos puntos; si se pierden, Fuze ya sacó a las anclas"}
+        {"room": "Pasillo", "f": 1, "threat": "Mira con espejo mirando Pasillo y Bandit trickeando la pared", "how": "Sopla desde el lado ciego del espejo; el soplete quema la batería y el ancla no puede reaccionar sin abrir el espejo"},
+        {"room": "Sitio A", "f": 1, "threat": "Rook o Kaid parado detrás de la pared principal esperando el hueco", "how": "Abre un ojo primero y que Dokkaebi te diga dónde está antes de abrir el hueco grande"}
        ],
-       "final": "Sostiene la pared abierta y la puerta lateral en post-plant"
+       "final": "Planta detrás de la pared abierta y sostiene desde Pasillo"
       }
      ]
     },
@@ -273,12 +287,12 @@
      "id": "split",
      "n": "Split",
      "tag": "SPLIT",
-     "summary": "Dos frentes al mismo tiempo: Ace y Kali abren la pared principal desde Pasillo mientras Montagne, Capitão y Jackal entran por la puerta lateral a Sitio B. En Stadium Alpha la defensa solo tiene 2 anclas por sitio, así que si presionas A y B en el mismo segundo, uno de los dos queda sin refuerzo.",
+     "summary": "Dos frentes al mismo tiempo: Ace y Kali abren la pared principal desde Pasillo mientras Montagne, Capitão y Jackal entran por la puerta lateral hacia Sitio B con fuego y humo. La defensa solo tiene dos anclas de verdad; si tienen que cubrir la pared y la puerta lateral a la vez, Jackal rastrea al roamer y una de las dos entradas se queda sin nadie.",
      "timeline": [
-      "0:00–0:45 · Drones; Jackal escanea las huellas del roamer y lo caza en Exterior/Pasillo",
-      "0:45–1:30 · Kali rompe batería con Lanza, Ace abre la pared principal; Montagne se planta en la puerta lateral",
-      "1:30–2:30 · Entrada a la vez: Capitão quema la esquina de B y entran; por A entra Kali detrás de Ace",
-      "2:30–3:00 · Plant en el sitio que quedó más limpio, el otro grupo corta la rotación"
+      "0:00–0:45 · Kali quema Bandit con la lanza desde Pasillo; Jackal dronea la puerta lateral y busca huellas del roamer",
+      "0:45–1:30 · Ace abre la pared principal; Montagne se planta en la puerta lateral con Capitão detrás tirando fuego a la esquina de B",
+      "1:30–2:30 · Push simultáneo: Ace + Kali por la pared, Montagne + Capitão + Jackal por la puerta lateral",
+      "2:30–3:00 · Plant en Sitio B detrás de Montagne; Capitão pone humo en la puerta de Pasillo y Kali sostiene la pared"
      ],
      "ops": [
       {
@@ -286,73 +300,76 @@
        "role": "duro",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Camina a Pasillo con Kali", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Tira SELMA a la pared principal tras la Lanza de Kali", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Entra y planta cuando el otro grupo ya presionó B", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Dronea Pasillo y avanza con Kali", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Lanza SELMA a la pared principal después de la lanza de Kali", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Entra por la pared abierta cuando Montagne ya está adentro de B", "via": "breach"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Mira en Sitio A mirando la línea de Pasillo", "how": "Tira SELMA desde el lado ciego del espejo; el otro grupo la obliga a girar"},
-        {"room": "Sitio A", "f": 1, "threat": "Rook/Doc anclados detrás de la pared", "how": "Entra cuando Capitão ya haya quemado B y estén rotando; prefire esquinas"}
+        {"room": "Pasillo", "f": 1, "threat": "Kapkan en la puerta y roamer en la esquina", "how": "Dron primero, dispara la trampa y entra con Kali cubriendo"},
+        {"room": "Sitio A", "f": 1, "threat": "Mira detrás del espejo y Bandit trickeando", "how": "Kali quema la batería; SELMA en tres etapas, la primera solo para hacer que abran el espejo"}
        ],
-       "final": "Planta en Sitio A detrás de la pared abierta"
+       "final": "Sostiene la pared abierta y cubre la bomba desde Sitio A"
       },
       {
        "op": "kali",
        "role": "antigadget",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Dronea la pared principal para ubicar la batería", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Dispara Lanzas LV para romper batería/Kaid y ADS", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Entra segunda detrás de Ace cubriendo con el CSRX", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Entra a Pasillo con Ace y lanza el LV a la pared principal", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Segunda lanza si la batería regresa; sostiene la línea larga con el rifle", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Entra detrás de Ace y limpia la esquina del espejo", "via": "breach"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Kapkan en la puerta y roamer esperando", "how": "Dron y rompe la trampa; espera a que Jackal escanee"},
-        {"room": "Sitio A", "f": 1, "threat": "Bandit trickeando la pared principal", "how": "Lanza pegada a la pared en cuanto se escuche el zap; Ace tira SELMA de inmediato"}
+        {"room": "Pasillo", "f": 1, "threat": "Ancla con Mira mirando la línea larga de Pasillo", "how": "No cruces la línea del espejo; la lanza se pega desde el lado ciego"},
+        {"room": "Sitio A", "f": 1, "threat": "Bandit o Kaid con Jäger encima de la pared", "how": "El LV revienta la batería y el ADS al mismo tiempo; Ace pega SELMA de inmediato"}
        ],
-       "final": "Sostiene la pared abierta con el rifle mientras Ace planta"
+       "final": "Sostiene Pasillo con el rifle durante el post-plant"
       },
       {
        "op": "montagne",
        "role": "soporte",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Camina con escudo extendido hasta la puerta lateral y la sostiene", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Entra con el escudo arriba para que Capitão y Jackal maten detrás de él", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Camina con el escudo extendido hasta la puerta lateral y espera la llamada de Ace", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Entra con el escudo por delante y se planta en la esquina para que Capitão y Jackal maten", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Avanza a la conexión con A para cubrir el plant", "via": "door"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 1, "threat": "Spawn peek desde Sitio B", "how": "Escudo arriba desde que sale; el equipo camina detrás"},
-        {"room": "Sitio B", "f": 1, "threat": "Noor con Horus para quemar el escudo o Oryx para tumbarlo", "how": "No entres al cuarto solo: quédate en el marco y que Capitão queme la esquina; si hay fuego, retrocede un paso"}
+        {"room": "Exterior", "f": 1, "threat": "Peek desde la puerta lateral y Noor con fuego Horus apuntando al marco", "how": "Espera que Capitão tire fuego adentro y entra con el escudo cerrado sin pararte en el marco"},
+        {"room": "Sitio B", "f": 1, "threat": "Ancla con Smoke en la esquina y Oryx buscando el dash al escudo", "how": "Camina pegado a la pared con Jackal detrás; que Capitão queme la esquina"}
        ],
-       "final": "Tapa la puerta lateral con el escudo durante el plant"
+       "final": "Se planta como muro para el plant de Jackal en Sitio B"
       },
       {
        "op": "capitao",
        "role": "negacion",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Detrás de Montagne hacia la puerta lateral", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Tira flecha de fuego a la esquina del ancla y de humo para el plant", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Llega detrás de Montagne a la puerta lateral y tira fuego a la esquina de B", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Entra tras el escudo y pone humo en la puerta hacia Pasillo", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Segundo fuego a la esquina de Sitio A para negar la rotación", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio B", "f": 1, "threat": "Ancla en la esquina de la bomba con Smoke listo", "how": "Fuego a la esquina desde detrás del escudo de Montagne y prefire cuando salga"},
-        {"room": "Sitio B", "f": 1, "threat": "Frost bajo la ventana o detrás de la puerta", "how": "Mira el piso y rompe el cepo con una bala antes de entrar"}
+        {"room": "Sitio B", "f": 1, "threat": "Ancla con Smoke en la esquina lejana y Castle en la puerta", "how": "Fuego por encima del Castle o por la puerta rota; entra detrás de Montagne"},
+        {"room": "Sitio A", "f": 1, "threat": "Rook detrás de la pared principal esperando la brecha de Ace", "how": "Fuego a esa esquina para que salga hacia las balas de Kali"}
        ],
-       "final": "Planta en Sitio B bajo humo si A se complica"
+       "final": "Humo en la puerta de Pasillo y fuego en la rotación durante el post-plant"
       },
       {
        "op": "jackal",
        "role": "flanco",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Escanea huellas del roamer cerca de la puerta lateral y lo caza", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Entra tercero con Montagne y limpia", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sale a Pasillo a juntar con Ace/Kali y cortar la rotación", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Escanea huellas cerca de la puerta lateral para ubicar al roamer", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Entra detrás de Montagne y Capitão y planta la bomba", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sale a Pasillo con Eyenox para cazar al roamer que quiera regresar", "via": "door"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 1, "threat": "Roamer (Cav/Vigil) fuera del sitio buscando flanco", "how": "Eyenox y lo persigue en pareja; no lo caces solo"},
-        {"room": "Pasillo", "f": 1, "threat": "Rotación de anclas entre A y B por Pasillo", "how": "Sostén el ángulo desde la puerta de B y avisa a Ace"}
+        {"room": "Exterior", "f": 1, "threat": "Roamer que salió por la puerta lateral a buscar el spawn", "how": "Escanea huellas y avisa; no entres a B hasta saber dónde está"},
+        {"room": "Sitio B", "f": 1, "threat": "Kapkan en el marco de la puerta lateral y flex en la esquina", "how": "Dispara la trampa y entra detrás del escudo"},
+        {"room": "Pasillo", "f": 1, "threat": "Vigil o Caveira volviendo desde 2F (arriba) por la escalera", "how": "Eyenox y ángulo hacia la escalera; no salgas a peek"}
        ],
-       "final": "Cubre Pasillo y el flanco del post-plant"
+       "final": "Planta en Sitio B y cierra Pasillo con el rastreo"
       }
      ]
     }
@@ -361,29 +378,43 @@
     {
      "id": "default",
      "n": "Default",
-     "summary": "Se refuerza la pared principal doble con Bandit y se deja el piso de 2F blando para que Pulse escuche la vertical. Mira pone el espejo mirando Pasillo, Smoke juega el plant en B y Jäger cuida las ventanas de la puerta lateral con ADS. Dos anclas, un flex y dos roamers cazando la vertical.",
-     "reinforce": ["Pared principal ×2 (Pasillo → Sitio A)", "Escotilla de 2F (arriba) sobre Sitio B", "Puerta lateral: Castle o barricada"],
-     "rotations": ["A↔B por la pared blanda entre sitios", "Sitio B → Pasillo por la puerta interior (rotación de emergencia)"],
+     "summary": "Mira y Bandit anclan Sitio A con espejos hacia Pasillo y trick en la pared principal; Smoke ancla Sitio B con gas para el plant y Jäger flexea entre ambos. Pulse juega 2F (arriba) leyendo el vertical y bajando a flanquear por la escalera. Se refuerza la pared principal ×2 y la escotilla sobre B; el resto del suelo de 2F se deja blando para que Pulse lea y rotaciones rápidas.",
+     "reinforce": [
+      "Pared principal ×2 (Pasillo → Sitio A)",
+      "Escotilla de 2F (arriba) sobre Sitio B",
+      "Puerta lateral: barricada + Kapkan"
+     ],
+     "rotations": [
+      "A↔B por la pared blanda entre sitios",
+      "Sitio B → Pasillo por la puerta interior (salida de emergencia)"
+     ],
      "ops": [
-      {"op": "mira", "room": "Sitio A", "f": 1, "role": "ancla", "job": "Espejo negro en la pared principal mirando Pasillo; segundo espejo hacia la conexión A↔B para cubrir el plant en B"},
-      {"op": "bandit", "room": "Sitio A", "f": 1, "role": "ancla", "job": "Trickea la pared principal (batería solo cuando escuche la carga); luego se queda de ancla en la esquina de A"},
-      {"op": "smoke", "room": "Sitio B", "f": 1, "role": "ancla", "job": "Ancla del plant de B: gas en la puerta lateral y en la pared abierta; escopeta para abrir rotación"},
-      {"op": "jager", "room": "Sitio B", "f": 1, "role": "flex", "job": "ADS en la puerta lateral y en Sitio B; juega la ventana y rota a Pasillo si la vertical se pone pesada"},
-      {"op": "pulse", "room": "2F (arriba)", "f": 1, "role": "roam", "job": "Sube a 2F (arriba) a escuchar la vertical de Buck/Sledge; con sensor caza a los que suben por la escalera de Pasillo y baja a shootear el plant por la escotilla"}
+      {"op": "mira", "room": "Sitio A", "f": 1, "role": "ancla", "job": "Dos espejos en la pared principal mirando Pasillo; abre solo cuando Thermite pega la carga y avisa al equipo"},
+      {"op": "bandit", "room": "Sitio A", "f": 1, "role": "ancla", "job": "Trickea la pared principal detrás de los espejos; si oye EMP se retira a la esquina y vuelve a poner batería"},
+      {"op": "smoke", "room": "Sitio B", "f": 1, "role": "ancla", "job": "Ancla en la esquina lejana de B con gas guardado para el plant; escopeta en la puerta lateral"},
+      {"op": "jager", "room": "Sitio B", "f": 1, "role": "flex", "job": "ADS en la puerta lateral y en la pared principal; flexea A↔B y peekea Pasillo con la carabina"},
+      {"op": "pulse", "room": "2F (arriba)", "f": 1, "role": "roam", "job": "Lee el vertical desde arriba, dispara por el suelo blando y baja por la escalera a flanquear a quien esté en Pasillo"}
      ]
     },
     {
      "id": "alt",
      "n": "Anti-rush y roam pesado",
-     "summary": "Setup para cuando el rival va a rushear la puerta lateral con escudos: Noor en Sitio B con el Horus para quemarles el escudo y la puerta, Kaid electrifica pared y escotilla desde arriba, Azami tapa la puerta lateral con Kiba y Vigil/Alibi roamean fuera del sitio para castigar la entrada.",
-     "reinforce": ["Pared principal ×2 (Pasillo → Sitio A)", "Escotilla de 2F (arriba) sobre Sitio B", "Pared entre Sitio B y Pasillo (dejar solo una rotación)"],
-     "rotations": ["A↔B por la conexión entre sitios", "Sitio A → Pasillo por la puerta (para el roam)"],
+     "summary": "Setup para cuando el rival rushea la puerta lateral con escudos: Noor con el Horus apuntando a la puerta de B quema a Montagne y Blitz, Kaid electrifica la pared principal y la escotilla, y Azami cierra huecos y el techo con Kiba. Vigil roamea Pasillo y Alibi juega 2F (arriba) con prismas para vender rotaciones falsas y castigar al vertical.",
+     "reinforce": [
+      "Pared principal ×2 (Pasillo → Sitio A)",
+      "Escotilla de 2F (arriba) sobre Sitio B",
+      "Pared entre Sitio B y Pasillo (dejar solo una rotación)"
+     ],
+     "rotations": [
+      "A↔B por la conexión entre sitios",
+      "Sitio A → Pasillo por la puerta (para que Vigil regrese)"
+     ],
      "ops": [
-      {"op": "noor", "room": "Sitio B", "f": 1, "role": "ancla", "job": "Ancla anti-escudo: Horus apuntando a la puerta lateral; quema a Blitz/Montagne y el plant si lo intentan pegado a la puerta"},
-      {"op": "kaid", "room": "Sitio A", "f": 1, "role": "ancla", "job": "Rtila en la pared principal y en la escotilla sobre B desde 2F; después ancla en la esquina de A con el TCSG"},
-      {"op": "azami", "room": "Sitio B", "f": 1, "role": "flex", "job": "Kiba tapa la puerta lateral y las líneas de la ventana; deja 1 para tapar el agujero de la vertical cuando aparezca"},
-      {"op": "vigil", "room": "Pasillo", "f": 1, "role": "roam", "job": "Roamea Pasillo y la escalera a 2F; invisible a drones, espera a que el equipo entre y les cae por la espalda"},
-      {"op": "alibi", "room": "Exterior", "f": 1, "role": "roam", "job": "Prismas en la puerta lateral y Pasillo; juega afuera en Exterior para castigar el rush por la lateral y avisa qué puerta pisan"}
+      {"op": "noor", "room": "Sitio B", "f": 1, "role": "ancla", "job": "Lanzador Horus apuntando a la puerta lateral para quemar a los escudos; ancla en la esquina con línea a la puerta"},
+      {"op": "kaid", "room": "Sitio A", "f": 1, "role": "ancla", "job": "Rtila en la pared principal y en la escotilla de arriba desde el lado del sitio; ancla detrás de la pared"},
+      {"op": "azami", "room": "Sitio B", "f": 1, "role": "flex", "job": "Kiba para tapar el techo abierto de Buck y la pared blanda entre sitios; flexea A↔B"},
+      {"op": "vigil", "room": "Pasillo", "f": 1, "role": "roam", "job": "Roamea Pasillo invisible a drones, castiga al que ponga la carga y se retira por la puerta a Sitio A"},
+      {"op": "alibi", "room": "2F (arriba)", "f": 1, "role": "roam", "job": "Prismas en la escalera y en 2F (arriba) para marcar al vertical; peekea la escalera y baja a flanquear"}
      ]
     }
    ]
@@ -394,12 +425,12 @@
      "id": "default",
      "n": "Default lento",
      "tag": "DEFAULT",
-     "summary": "Se sube por la escalera a Pasillo 2F para abrir la pared reforzada hacia Sitio D con Ace + Thatcher, mientras Glaz cuelga en las ventanas de Sitio C con humo y Zero mete Argus para ver el sitio. Funciona porque la defensa de 2F en Stadium Alpha reparte a Frost y Castle en las ventanas y a Mira en la pared del pasillo: con humo en la ventana y EMP en la pared, ninguno de sus gadgets sirve.",
+     "summary": "Se sube por Escaleras hasta Pasillo 2F y se abre la pared reforzada de Sitio D con Ace + Thatcher, mientras Glaz y Zero rapelean a las ventanas de Sitio C para negar el sitio con térmica y cámaras Argus. Jackal cubre Escaleras para que ningún roamer baje. Funciona porque las anclas de C y D tienen que elegir entre mirar la pared o las ventanas; el plant va lejos de la puerta de Pasillo 2F, detrás de la pared abierta.",
      "timeline": [
-      "0:00–0:45 · Zero mete Argus por las ventanas de Sitio C y a Sitio D; Jackal escanea al roamer en Escaleras",
-      "0:45–1:30 · Thatcher EMP + Ace abren la pared del Pasillo 2F; Glaz se cuelga en la ventana con humo",
-      "1:30–2:30 · Entrada por la pared abierta a Sitio D, Glaz mata por el humo en Sitio C",
-      "2:30–3:00 · Plant en Sitio D lejos de la puerta, Jackal cubre Escaleras y Glaz la ventana"
+      "0:00–0:45 · Zero tira Argus por las ventanas de Sitio C; Jackal dronea Escaleras y escanea huellas; Thatcher y Ace suben",
+      "0:45–1:30 · Glaz rapelea a la ventana de C y niega; Thatcher EMP y Ace abre la pared de Pasillo 2F → Sitio D",
+      "1:30–2:30 · Entrada por la pared abierta con Ace de punta; Zero entra por la ventana de C para cerrar la pinza",
+      "2:30–3:00 · Plant en Sitio D lejos de la puerta; Glaz sostiene desde la ventana y Jackal cierra Escaleras"
      ],
      "ops": [
       {
@@ -407,80 +438,83 @@
        "role": "duro",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Entra por la puerta de abajo con Thatcher, dron adelante", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Toma la escalera hacia 2F cubierto por Jackal", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Limpia el descanso de la escalera y mira la puerta de Sitio C", "via": "stairs"},
-        {"room": "Pasillo 2F", "f": 2, "do": "Tira SELMA a la pared reforzada de Sitio D tras el EMP", "via": "door"},
-        {"room": "Sitio D", "f": 2, "do": "Entra y planta lejos de la puerta", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Dronea Pasillo y la escalera antes de entrar", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Cruza rápido hacia la escalera con Thatcher cubriendo", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Sube en silencio y limpia el rellano", "via": "stairs"},
+        {"room": "Pasillo 2F", "f": 2, "do": "Lanza SELMA a la pared reforzada de Sitio D tras el EMP", "via": "door"},
+        {"room": "Sitio D", "f": 2, "do": "Entra por la pared abierta y planta lejos de la puerta", "via": "breach"}
        ],
        "clear": [
-        {"room": "Escaleras", "f": 2, "threat": "Roamer (Vigil/Cav) jugando el descanso de la escalera y la puerta de Sitio C", "how": "Dron a la escalera; suben dos juntos; Jackal escanea antes"},
-        {"room": "Pasillo 2F", "f": 2, "threat": "Mira mirando el pasillo desde Sitio D y Kaid en la pared", "how": "No cruces la línea del espejo; SELMA desde el lado ciego tras el EMP de Thatcher"},
-        {"room": "Sitio D", "f": 2, "threat": "Smoke con gas y ancla detrás de la pared", "how": "Entra cuando Glaz confirme que no hay nadie en C; prefire la esquina"}
+        {"room": "Escaleras", "f": 2, "threat": "Roamer tipo Vigil o Caveira esperando en el rellano y cámara de Valkyrie", "how": "Dron adelante, prefire el rellano y rompe la cámara antes de subir"},
+        {"room": "Pasillo 2F", "f": 2, "threat": "Ancla con Mira mirando Pasillo 2F y Kaid con Rtila en la pared", "how": "Pega SELMA desde el lado ciego del espejo justo después del EMP de Thatcher"},
+        {"room": "Sitio D", "f": 2, "threat": "Smoke con gas y Rook detrás de la pared esperando la brecha", "how": "Que Glaz niegue desde la ventana antes de cruzar; entra con la flash de Zero"}
        ],
-       "final": "Planta en Sitio D en la esquina más lejana a la puerta"
+       "final": "Planta en Sitio D detrás de la pared abierta"
       },
       {
        "op": "thatcher",
        "role": "antigadget",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Entra con Ace por la planta baja", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Cubre a Ace en el descanso", "via": "stairs"},
-        {"room": "Pasillo 2F", "f": 2, "do": "Tira 2 EMP sobre la pared reforzada de Sitio D para quemar batería/Kaid y ADS", "via": "door"},
-        {"room": "Sitio D", "f": 2, "do": "Entra segundo y cubre el plant", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Avanza con Ace hacia Pasillo", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera cubriendo la espalda de Ace", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Limpia el rellano y avanza a Pasillo 2F", "via": "stairs"},
+        {"room": "Pasillo 2F", "f": 2, "do": "Tira 2 EMP a la pared de Sitio D para quemar Kaid, Bandit y ADS", "via": "door"},
+        {"room": "Sitio D", "f": 2, "do": "Entra detrás de Ace y sostiene la esquina del espejo", "via": "breach"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Kapkan en la puerta de la escalera", "how": "Dron primero, rompe la trampa con una bala"},
-        {"room": "Pasillo 2F", "f": 2, "threat": "Bandit trickeando o Kaid con Rtila en la pared", "how": "EMP en el momento justo antes de la SELMA; Zero confirma por Argus"}
+        {"room": "Escaleras", "f": 2, "threat": "Kapkan en la puerta del rellano", "how": "Dron primero, dispara la trampa desde abajo"},
+        {"room": "Pasillo 2F", "f": 2, "threat": "Bandit o Kaid trickeando con Jäger encima", "how": "EMP justo cuando Ace lanza SELMA; segundo EMP si la batería regresa"}
        ],
-       "final": "Sostiene Pasillo 2F mirando Escaleras mientras Ace planta"
+       "final": "Sostiene Pasillo 2F cubriendo el plant de Ace"
       },
       {
        "op": "zero",
        "role": "intel",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 2, "do": "Dispara Argus por las ventanas de Sitio C y otra hacia Sitio D para tener ojos dentro", "via": "rappel"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la ventana cuando Glaz haya limpiado y juega el cuarto", "via": "window"},
-        {"room": "Sitio D", "f": 2, "do": "Pasa a D a apoyar el plant y limpia la esquina", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Tira 2 Argus por las ventanas de Sitio C desde abajo y lee el sitio", "via": "door"},
+        {"room": "Exterior", "f": 2, "do": "Rapelea a la ventana de Sitio C junto a Glaz y rompe gadgets con la cámara", "via": "rappel"},
+        {"room": "Sitio C", "f": 2, "do": "Entra por la ventana cuando Ace abra la pared y limpia la esquina de Frost", "via": "window"},
+        {"room": "Sitio D", "f": 2, "do": "Cruza a D para cerrar la pinza sobre el plant", "via": "door"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 2, "threat": "Frost o Castle en las ventanas y un defensor asomando", "how": "Argus primero para ver el cepo; Glaz cubre la ventana desde la cuerda"},
-        {"room": "Sitio C", "f": 2, "threat": "Valkyrie cam en la esquina viendo la ventana", "how": "Argus la ubica, la rompes con una bala antes de entrar"}
+        {"room": "Exterior", "f": 2, "threat": "Peek desde la ventana de Sitio C y Castle en las ventanas", "how": "Argus dentro primero; rompe el Castle con la Argus o con una frag antes de asomarte"},
+        {"room": "Sitio C", "f": 2, "threat": "Cepos de Frost bajo las ventanas y ancla en la esquina", "how": "Argus dispara al cepo; entra solo cuando Glaz confirme que no hay nadie apuntando"},
+        {"room": "Sitio D", "f": 2, "threat": "Ancla con Smoke escondida en la esquina lejos de la pared", "how": "Argus la ubica; prefire con Ace desde dos ángulos"}
        ],
-       "final": "Sostiene la conexión C↔D desde Sitio C durante el post-plant"
+       "final": "Cubre el plant desde la conexión C↔D con las Argus mirando la puerta"
       },
       {
        "op": "glaz",
-       "role": "soporte",
+       "role": "negacion",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 2, "do": "Rappel a la ventana de Sitio C, tira humo dentro y mata por la térmica", "via": "rappel"},
-        {"room": "Sitio C", "f": 2, "do": "Entra al final por la ventana a cerrar el plant", "via": "window"}
+        {"room": "Exterior", "f": 1, "do": "Tira humo bajo la ventana de Sitio C y se pone en la cuerda", "via": "door"},
+        {"room": "Exterior", "f": 2, "do": "Rapelea a la ventana de Sitio C y niega el sitio con la térmica a través del humo", "via": "rappel"},
+        {"room": "Sitio C", "f": 2, "do": "Entra solo cuando el plant ya esté abajo para sostener el ángulo largo", "via": "window"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 2, "threat": "Defensor asomando la ventana o Castle con Frost detrás", "how": "Cuelga a un lado de la ventana, humo primero, térmica para encontrar cuerpos"},
-        {"room": "Sitio C", "f": 2, "threat": "Ancla de C con Smoke escondida en la esquina", "how": "Segundo humo y espera a que se muevan por el plant; no entres hasta que Zero confirme"}
+        {"room": "Exterior", "f": 2, "threat": "Defensor asomado en la ventana de Sitio C haciendo peek al rappel", "how": "Sube tapado con humo y por el lado de la ventana; nunca de frente"},
+        {"room": "Sitio C", "f": 2, "threat": "Frost con cepo bajo la ventana y ancla con escopeta", "how": "Humo adentro y térmica; dispara el cepo antes de entrar"}
        ],
-       "final": "Cubre el plant desde la ventana de Sitio C con humo y térmica"
+       "final": "Sostiene la ventana de Sitio C negando toda la línea C↔D durante el post-plant"
       },
       {
        "op": "jackal",
        "role": "flanco",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Escanea huellas del roamer y entra a la planta baja", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera cazando al roamer", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Sostiene la puerta de Sitio C desde Escaleras para dividir la atención", "via": "stairs"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la puerta cuando Ace ya abrió D", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Escanea huellas en Exterior para ubicar al roamer", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube detrás de Ace y Thatcher", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Se queda en Escaleras rastreando al roamer y cuidando la espalda del equipo", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra por la puerta de C al final para cerrar la pinza", "via": "door"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Roamer bajando a flanquear por la escalera", "how": "Eyenox y espera en la esquina; deja que venga a ti"},
-        {"room": "Escaleras", "f": 2, "threat": "Ancla de Sitio C mirando la puerta desde la esquina", "how": "No entres solo: sostén el ángulo y entra cuando Glaz ya presionó la ventana"}
+        {"room": "Pasillo", "f": 1, "threat": "Roamer que baja a buscar el spawn por Pasillo", "how": "Eyenox y avisa; espera con el equipo en vez de perseguirlo solo"},
+        {"room": "Escaleras", "f": 2, "threat": "Vigil o Caveira jugando el rellano y Alibi con prismas", "how": "Rastrea con Eyenox, dispara al prisma para revelar y prefire el rellano"}
        ],
-       "final": "Cubre Escaleras contra el flanco durante el post-plant"
+       "final": "Cierra Escaleras para que nadie baje a flanquear el plant"
       }
      ]
     },
@@ -488,12 +522,12 @@
      "id": "rush",
      "n": "Rush",
      "tag": "RUSH",
-     "summary": "Rush por las ventanas de Sitio C: Ying y Amaru entran por la ventana con Candela antes de que Castle y Frost armen, mientras Ash, Zofia y Blitz suben por la escalera a la puerta de C al mismo tiempo. En 2F la ventana está pegada a la bomba de C y la defensa tarda en llegar del otro lado, así que el sitio cae antes del minuto.",
+     "summary": "Ying y Amaru entran por las ventanas de Sitio C a los 25 segundos con Candela, mientras Ash, Zofia y Striker suben Escaleras y entran por la puerta de C con concusión y flash. La defensa de este sitio tarda en castlear las ventanas y en poner los cepos; si entran cuatro de golpe antes de que Frost termine, las anclas de C caen y D queda sin rotación.",
      "timeline": [
-      "0:00–0:20 · Ying y Amaru a la fachada; Ash, Zofia y Blitz corren a la escalera por Pasillo",
-      "0:20–0:45 · Candela por la ventana, Amaru con Garra entra, Ash rompe la puerta de C desde Escaleras",
-      "0:45–1:30 · Zofia y Blitz limpian Sitio C, plant pegado a la ventana",
-      "1:30–3:00 · Post-plant: Amaru en la ventana, Ash en Escaleras, Blitz tapa la conexión a D"
+      "0:00–0:25 · Ying y Amaru corren a la fachada de Sitio C; Ash, Zofia y Striker suben por Pasillo a Escaleras",
+      "0:25–0:45 · Ying tira Candela por la ventana, Amaru se lanza con la garra; Ash rompe la barricada de la puerta de C",
+      "0:45–1:30 · Zofia concusión adentro, entran todos; se limpia Sitio C y se empuja la pared blanda hacia D",
+      "1:30–3:00 · Plant rápido en Sitio C bajo la ventana; Striker pone claymore en Escaleras y todos sostienen"
      ],
      "ops": [
       {
@@ -501,76 +535,80 @@
        "role": "entrada",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 2, "do": "Rappel rápido a la ventana de Sitio C, tira Candela cocinada", "via": "rappel"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la ventana después del flash y limpia esquinas", "via": "window"}
+        {"room": "Exterior", "f": 1, "do": "Corre a la fachada de Sitio C con Candela lista", "via": "door"},
+        {"room": "Exterior", "f": 2, "do": "Rapelea a la ventana y tira Candela adentro", "via": "rappel"},
+        {"room": "Sitio C", "f": 2, "do": "Entra cuando explote y limpia la esquina de Frost", "via": "window"},
+        {"room": "Sitio D", "f": 2, "do": "Segunda Candela a D y empuja al ancla", "via": "door"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 2, "threat": "Spawn peek desde las ventanas de Sitio C", "how": "Sal de lado, no de frente a la ventana; Amaru sube primero y tú flasheas"},
-        {"room": "Sitio C", "f": 2, "threat": "Frost con cepo debajo de la ventana", "how": "Candela primero, entra de lado sin saltar directo al piso bajo la ventana"}
+        {"room": "Exterior", "f": 2, "threat": "Defensor asomado por la ventana de C o Castle en la ventana", "how": "Rapelea por el lado y tira Candela adentro; si hay Castle, Ash lo rompe a distancia"},
+        {"room": "Sitio C", "f": 2, "threat": "Frost con cepo bajo la ventana y ancla en la esquina", "how": "Candela ciega, dispara el cepo y entra con Amaru"}
        ],
-       "final": "Toma la esquina de Sitio C y cubre el plant de Zofia"
+       "final": "Planta en Sitio C en cuanto caiga la primera ancla"
       },
       {
        "op": "amaru",
        "role": "entrada",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 2, "do": "Garra Hook directo a la ventana de Sitio C justo después de la Candela", "via": "rappel"},
-        {"room": "Sitio C", "f": 2, "do": "Entra volando y va al cuerpo a cuerpo con el ancla", "via": "window"}
+        {"room": "Exterior", "f": 1, "do": "Corre a la fachada de Sitio C sin ponerse en la cuerda", "via": "door"},
+        {"room": "Exterior", "f": 2, "do": "Usa la Garra Hook para lanzarse a la ventana en cuanto explote la Candela", "via": "rappel"},
+        {"room": "Sitio C", "f": 2, "do": "Entra de golpe y limpia la esquina larga", "via": "window"}
        ],
        "clear": [
-        {"room": "Sitio C", "f": 2, "threat": "Castle en la ventana: la Garra no pasa", "how": "Si hay Castle, Amaru cambia a la ventana sin barricar o entra por la puerta con Ash"},
-        {"room": "Sitio C", "f": 2, "threat": "Ancla con Jäger/Wamai pegada a la ventana", "how": "Entra en el segundo exacto de la Candela; escopeta lista"}
+        {"room": "Exterior", "f": 2, "threat": "Peek de ventana o Noor con fuego apuntando a la ventana", "how": "Entra solo después de la Candela y por la ventana que Ying no usó"},
+        {"room": "Sitio C", "f": 2, "threat": "Ancla con Smoke y Castle en la ventana", "how": "Garra a la ventana sin Castle; si las dos están cerradas, entra por la puerta con Ash"}
        ],
-       "final": "Sostiene la ventana de Sitio C en post-plant"
+       "final": "Sostiene la esquina de Sitio C y cubre el plant de Ying"
       },
       {
        "op": "ash",
        "role": "blando",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Corre a la puerta de abajo", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera corriendo", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Tira carga de brecha a la barricada de la puerta de Sitio C desde el descanso", "via": "stairs"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la puerta y limpia con Zofia", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Corre a Pasillo con Zofia y Striker", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera sin detenerse", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Lanza la carga de brecha a la barricada de la puerta de Sitio C", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra en segundo lugar y abre la pared blanda hacia D con la segunda carga", "via": "door"},
+        {"room": "Sitio D", "f": 2, "do": "Limpia D y remata al ancla que se refugió", "via": "breach"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Kapkan en la puerta de la escalera", "how": "Mira los marcos al correr; rompe el láser con una bala"},
-        {"room": "Escaleras", "f": 2, "threat": "Roamer en el descanso de la escalera", "how": "Prefire la esquina, Blitz va delante con el escudo"}
+        {"room": "Escaleras", "f": 2, "threat": "Kapkan en la puerta de C y roamer en el rellano", "how": "La carga de brecha revienta la trampa; prefire el rellano al subir"},
+        {"room": "Sitio C", "f": 2, "threat": "Jäger con ADS que come la carga y flex con escopeta", "how": "Tira la carga desde Escaleras para que el ADS se gaste; entra tras la concusión de Zofia"}
        ],
-       "final": "Sostiene Escaleras contra la rotación desde Pasillo 2F"
+       "final": "Sostiene la pared blanda C↔D durante el plant"
       },
       {
        "op": "zofia",
        "role": "blando",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Sale con Ash y Blitz", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Concusiones por la puerta de Sitio C apenas caiga la barricada", "via": "stairs"},
-        {"room": "Sitio C", "f": 2, "do": "Entra y planta pegada a la ventana", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Corre a Pasillo detrás de Ash", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Tira concusión por la puerta de C abierta por Ash", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra detrás de Ash y remata a los aturdidos", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio C", "f": 2, "threat": "Ancla en la esquina de la bomba con Smoke", "how": "Concusión a la esquina, entra cuando Ying confirme el flash"},
-        {"room": "Sitio C", "f": 2, "threat": "Mira en la pared C↔D mirando el plant", "how": "Planta en la esquina de la ventana, fuera de la línea del espejo"}
+        {"room": "Escaleras", "f": 2, "threat": "Roamer tipo Vigil o Caveira en el rellano", "how": "Concusión al rellano si se escucha algo; sube con Striker cubriendo"},
+        {"room": "Sitio C", "f": 2, "threat": "Ancla con Smoke y Rook aguantando en la esquina", "how": "Concusión al cuarto antes de entrar; Ying y Amaru ya los tienen de flanco"}
        ],
-       "final": "Planta en Sitio C junto a la ventana"
+       "final": "Sostiene la puerta de Sitio C hacia Escaleras durante el post-plant"
       },
       {
-       "op": "blitz",
-       "role": "entrada",
+       "op": "striker",
+       "role": "soporte",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Va adelante del grupo de la escalera con escudo arriba", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera de primero", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Flashea al que asome en el descanso o la puerta de Sitio C", "via": "stairs"},
-        {"room": "Sitio C", "f": 2, "do": "Entra flasheando y tapa la conexión C↔D", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Entra a Pasillo detrás de Zofia", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera cubriendo la espalda del grupo", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Pone claymore en el rellano mirando Pasillo 2F y tira flash a la puerta de C", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra al último para levantar caídos y sostener", "via": "door"}
        ],
        "clear": [
-        {"room": "Escaleras", "f": 2, "threat": "Noor con el Horus esperando el escudo en la puerta de C", "how": "Si Ying la ve con dron, no entres primero: flasheas desde el marco y entra Zofia"},
-        {"room": "Sitio C", "f": 2, "threat": "Lesion con Gu en la puerta", "how": "Mira el piso y rompe las agujas antes de cruzar"}
+        {"room": "Escaleras", "f": 2, "threat": "Roamer que regresa desde Pasillo 2F para flanquear", "how": "Claymore en el rellano y ángulo hacia la puerta de Pasillo 2F"},
+        {"room": "Sitio C", "f": 2, "threat": "Defensor que rota desde D por la pared blanda", "how": "Flash y prefire con Zofia; no entres solo"}
        ],
-       "final": "Bloquea la conexión C↔D con el escudo durante el plant"
+       "final": "Sostiene Escaleras y la puerta de Sitio C durante el post-plant"
       }
      ]
     },
@@ -578,12 +616,12 @@
      "id": "vertical",
      "n": "Vertical",
      "tag": "VERTICAL",
-     "summary": "Como el sitio está en 2F, la vertical es desde abajo: Buck y Sledge toman Sitio A y Sitio B (justo debajo de C y D) y abren el techo para matar a las anclas por los pies, Hibana abre las escotillas para tener líneas y Fuze mete clusters desde Pasillo 2F a Sitio D. Dokkaebi vibra teléfonos para saber a quién apuntar. Entran al final por la escalera.",
+     "summary": "El sitio está en 2F, así que el vertical se juega desde abajo: Buck y Sledge se meten a Sitio A y Sitio B en 1F y le disparan al suelo blando de Sitio C y Sitio D, e Hibana abre las escotillas reforzadas desde abajo para quitarle a la defensa el piso. Dokkaebi vibra celulares para ubicar a las anclas y Gridlock sella Escaleras con Trax para que nadie baje a castigar. Entran al final por Escaleras cuando ya no queda nadie parado sobre el suelo.",
      "timeline": [
-      "0:00–0:45 · Drones a Sitio A/B de abajo; Dokkaebi hackea cuando caiga una cámara",
-      "0:45–1:30 · Buck y Sledge abren el techo bajo Sitio C y D; Hibana abre las escotillas desde abajo",
-      "1:30–2:30 · Fuze mete clusters en Sitio D desde Pasillo 2F; se mata desde abajo",
-      "2:30–3:00 · Suben por Escaleras a plantar en Sitio C mientras Sledge sigue abajo sosteniendo"
+      "0:00–0:45 · Dokkaebi dronea Pasillo, Sitio A y Sitio B en 1F; Gridlock pone Trax en Escaleras; Buck y Sledge llegan abajo",
+      "0:45–1:30 · Buck dispara el suelo bajo Sitio C, Sledge el de Sitio D; Hibana pone X-KAIROS en las escotillas desde abajo; Dokkaebi vibra celulares",
+      "1:30–2:30 · Se mata a las anclas desde abajo; Gridlock y Dokkaebi suben por Escaleras y entran a C",
+      "2:30–3:00 · Plant en Sitio C cerca de la escotilla abierta; Buck sostiene desde abajo y Gridlock cubre Escaleras"
      ],
      "ops": [
       {
@@ -591,82 +629,87 @@
        "role": "blando",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Dronea la planta baja: Pasillo y Sitio A", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Cruza a Sitio A cubriendo con Sledge", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Abre el techo bajo Sitio C con Skeleton Key y dispara hacia arriba", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Regresa a la escalera cuando el sitio esté limpio", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Sube a cerrar el plant", "via": "stairs"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la puerta y planta", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Dronea Pasillo y Sitio A para ver que no haya roamer abajo", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Cruza en silencio hacia Sitio A", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Dispara el techo con la Skeleton Key justo bajo la esquina del ancla de Sitio C y mata hacia arriba", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Regresa a Pasillo para subir cuando el sitio esté vacío", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Sube cubierto por los Trax de Gridlock", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra a C por la puerta y cubre el plant", "via": "door"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Roamer bajando por la escalera a jugar la planta baja (Vigil/Cav)", "how": "Dron a la escalera y prefire; Dokkaebi hackea para verlo"},
-        {"room": "Sitio A", "f": 1, "threat": "Ancla de C disparando hacia abajo por el techo abierto", "how": "Abre y te mueves; nunca te quedes bajo un agujero"}
+        {"room": "Pasillo", "f": 1, "threat": "Roamer que baja a jugar 1F contra el vertical", "how": "Dron primero y Dokkaebi lo vibra; prefire la esquina"},
+        {"room": "Sitio A", "f": 1, "threat": "Defensor que dispara hacia abajo desde Sitio C por el suelo que abriste", "how": "Abre por secciones, cambia de posición tras cada ráfaga y usa a Dokkaebi para saber dónde están"},
+        {"room": "Sitio C", "f": 2, "threat": "Frost en la esquina de las ventanas y cepo bajo la puerta", "how": "Dispara al suelo del marco desde Escaleras y entra con Gridlock"}
        ],
-       "final": "Planta en Sitio C cubierto por Sledge desde abajo"
+       "final": "Cubre el plant en Sitio C desde la escotilla abierta"
       },
       {
        "op": "sledge",
        "role": "blando",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Entra con Buck", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Cruza a Sitio B", "via": "door"},
-        {"room": "Sitio B", "f": 1, "do": "Abre el techo bajo Sitio D con el martillo y mata anclas por los pies", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Entra a Pasillo con Buck", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Cruza hacia Sitio B", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Martilla la escotilla y el techo blando bajo Sitio D y dispara hacia arriba", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Regresa a Pasillo para subir con el grupo", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Sube cubierto por los Trax", "via": "stairs"},
+        {"room": "Pasillo 2F", "f": 2, "do": "Martilla la pared blanda o entra por la puerta hacia D para cerrar la pinza", "via": "door"},
+        {"room": "Sitio D", "f": 2, "do": "Entra a D y cubre la bomba desde la escotilla", "via": "breach"}
        ],
        "clear": [
-        {"room": "Sitio B", "f": 1, "threat": "Ancla de D tirando por el techo abierto o bajando por la escotilla", "how": "Abre lejos de la escotilla, un agujero a la vez, y te mueves"},
-        {"room": "Pasillo", "f": 1, "threat": "Roamer que baja a cazar a los verticales", "how": "Que Dokkaebi cubra Pasillo; no te alejes del grupo"}
+        {"room": "Sitio B", "f": 1, "threat": "Defensor que baja por la escotilla de D a castigar el vertical", "how": "Martilla desde un costado, nunca de frente a la escotilla; Dokkaebi avisa si se mueven"},
+        {"room": "Pasillo 2F", "f": 2, "threat": "Mira mirando Pasillo 2F y Kapkan en la puerta de D", "how": "Sube solo cuando las anclas ya estén muertas; dispara la trampa desde Escaleras"}
        ],
-       "final": "Sostiene los agujeros bajo Sitio D hasta que explote la bomba"
+       "final": "Sostiene Sitio D desde el hueco para que nadie defusee"
       },
       {
        "op": "hibana",
        "role": "duro",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Sale detrás del grupo vertical", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Cruza a Sitio A", "via": "door"},
-        {"room": "Sitio A", "f": 1, "do": "Abre la escotilla de Sitio C desde abajo con X-KAIROS para dar líneas", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Vuelve a la escalera para subir con Buck", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Sube al final", "via": "stairs"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la puerta y cubre el plant", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Entra a Pasillo detrás de Buck", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Cruza hacia Sitio A", "via": "door"},
+        {"room": "Sitio A", "f": 1, "do": "Pone X-KAIROS en la escotilla reforzada de Sitio C desde abajo y la abre", "via": "door"},
+        {"room": "Sitio B", "f": 1, "do": "Segunda tanda en la escotilla de Sitio D; sostiene abajo mirando los huecos", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio A", "f": 1, "threat": "Bandit o Kaid electrificando la escotilla desde arriba", "how": "Pellets en ráfagas; si truena, Buck le abre el piso al que está encima"},
-        {"room": "Escaleras", "f": 2, "threat": "Defensor sosteniendo la puerta de Sitio C desde adentro", "how": "Sube cuando Sledge confirme desde abajo que la esquina está vacía"}
+        {"room": "Sitio A", "f": 1, "threat": "Kaid con Rtila en la escotilla y Mute con jammer arriba", "how": "Dispara el techo con Buck primero para que los pellets peguen donde no hay jammer; si hay Rtila, Buck abre a un lado y Hibana pone en la orilla"},
+        {"room": "Sitio B", "f": 1, "threat": "Ancla de D esperando arriba de la escotilla con escopeta", "how": "Sledge la mueve disparando el suelo; abres cuando Dokkaebi diga que se movió"}
        ],
-       "final": "Cubre la puerta de Sitio C desde adentro mientras planta Buck"
-      },
-      {
-       "op": "fuze",
-       "role": "negacion",
-       "spawn": "Exterior",
-       "path": [
-        {"room": "Exterior", "f": 1, "do": "Entra por la planta baja", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera con Dokkaebi cubriendo", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Limpia el descanso", "via": "stairs"},
-        {"room": "Pasillo 2F", "f": 2, "do": "Pone 2 clusters en la pared blanda/puerta de Sitio D para limpiar anclas y gadgets", "via": "door"}
-       ],
-       "clear": [
-        {"room": "Escaleras", "f": 2, "threat": "Roamer en el descanso de la escalera", "how": "Dokkaebi cubre; Fuze no sube solo"},
-        {"room": "Pasillo 2F", "f": 2, "threat": "Mira mirando el pasillo desde Sitio D", "how": "Pon los clusters fuera de la línea del espejo; los verticales de abajo la obligan a moverse"}
-       ],
-       "final": "Sostiene Pasillo 2F contra la rotación de D durante el post-plant"
+       "final": "Sostiene los huecos de las escotillas desde 1F durante el post-plant"
       },
       {
        "op": "dokkaebi",
        "role": "intel",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Logic Bomb en cuanto los verticales estén en posición", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Hackea el primer teléfono y sostiene la escalera para el grupo", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Sube con Fuze y cubre la puerta de Sitio C", "via": "stairs"}
+        {"room": "Exterior", "f": 1, "do": "Dronea Pasillo y la escalera; Logic Bomb para ubicar a las anclas", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Hackea el celular del primer caído y llama posiciones desde las cámaras", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Sube con Gridlock cuando el sitio esté limpio", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra a C y planta cerca de la escotilla abierta", "via": "door"}
        ],
        "clear": [
-        {"room": "Pasillo", "f": 1, "threat": "Kapkan en la puerta de la escalera y roamer esperando", "how": "Dron, rompe trampa, Logic Bomb para revelar al roamer por el sonido"},
-        {"room": "Escaleras", "f": 2, "threat": "Ancla de C asomando la puerta hacia la escalera", "how": "Usa las cámaras hackeadas para ver cuándo se mueve; prefire"}
+        {"room": "Pasillo", "f": 1, "threat": "Vigil invisible o Caveira jugando Pasillo contra el vertical", "how": "Logic Bomb los hace vibrar; prefire con Gridlock"},
+        {"room": "Escaleras", "f": 2, "threat": "Cámaras de Valkyrie en el rellano y roamer bajando", "how": "Hackea cámaras con el celular y rómpelas; los Trax te avisan si alguien baja"},
+        {"room": "Sitio C", "f": 2, "threat": "Ancla que sobrevivió al vertical escondida en la esquina de las ventanas", "how": "Vibra celular y entra con Buck cubriendo desde la escotilla"}
        ],
-       "final": "Cubre Escaleras contra el flanco mientras plantan arriba"
+       "final": "Planta en Sitio C y llama posiciones desde las cámaras"
+      },
+      {
+       "op": "gridlock",
+       "role": "flanco",
+       "spawn": "Exterior",
+       "path": [
+        {"room": "Exterior", "f": 1, "do": "Entra a Pasillo cubriendo al grupo vertical", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Se planta al pie de la escalera y lanza Trax hacia arriba", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Sube dejando Trax en el rellano para sellar Pasillo 2F", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra a C con Dokkaebi y cubre el plant", "via": "door"}
+       ],
+       "clear": [
+        {"room": "Pasillo", "f": 1, "threat": "Roamer que baja por la escalera a castigar a Buck y Sledge", "how": "Trax en la escalera y ángulo desde Pasillo; dispara al que pise"},
+        {"room": "Escaleras", "f": 2, "threat": "Alibi con prismas o Vigil en el rellano", "how": "Trax adelante, dispara al prisma y prefire el rellano"}
+       ],
+       "final": "Sella Escaleras con Trax y cubre la puerta de Sitio C en el post-plant"
       }
      ]
     },
@@ -674,12 +717,12 @@
      "id": "split",
      "n": "Split",
      "tag": "SPLIT",
-     "summary": "Dos frentes al mismo tiempo: Thermite y Brava abren la pared del Pasillo 2F hacia Sitio D (Brava roba las ADS y la Evil Eye), mientras Blackbeard y Capitão presionan las ventanas de Sitio C y Nøkk sube en silencio por Escaleras a la puerta de C. La defensa de 2F no puede cubrir pared, ventana y puerta a la vez.",
+     "summary": "Dos frentes: Thermite y Brava suben por Escaleras y abren la pared de Pasillo 2F → Sitio D (Brava roba las Evil Eye y el ADS con el Kludge), mientras Blackbeard y Capitão rapelean a las ventanas de Sitio C con fuego y humo, y Nøkk se cuela por la puerta de Sitio C desde Escaleras sin que la vean las cámaras. Con Valkyrie robada y dos entradas simultáneas, las anclas no saben a dónde mirar y el plant cae en D detrás de la pared.",
      "timeline": [
-      "0:00–0:45 · Brava hackea gadgets en Sitio D; Nøkk sube en silencio por la escalera",
-      "0:45–1:30 · Thermite abre la pared del pasillo; Blackbeard y Capitão se cuelgan en las ventanas de C",
-      "1:30–2:30 · Entrada simultánea: pared a D, ventana a C, Nøkk por la puerta de C",
-      "2:30–3:00 · Plant en el sitio más limpio, el otro grupo corta la rotación C↔D"
+      "0:00–0:45 · Brava manda el Kludge por Escaleras y hackea cámaras y ADS; Nøkk dronea la puerta de C; Blackbeard y Capitão llegan a la fachada",
+      "0:45–1:30 · Thermite abre la pared de Sitio D; Blackbeard se asoma por la ventana de C con Capitão tirando fuego a la esquina de Frost",
+      "1:30–2:30 · Push simultáneo: Thermite + Brava por la pared, Blackbeard + Capitão por la ventana, Nøkk por la puerta de C",
+      "2:30–3:00 · Plant en Sitio D detrás de la pared; Capitão pone humo en la puerta de Pasillo 2F y Nøkk sostiene C"
      ],
      "ops": [
       {
@@ -687,15 +730,15 @@
        "role": "duro",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Entra a la planta baja con Brava", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Cruza a Pasillo 2F cubierto por Nøkk", "via": "stairs"},
-        {"room": "Pasillo 2F", "f": 2, "do": "Pone la carga exotérmica en la pared de Sitio D cuando Brava confirme sin batería", "via": "door"},
-        {"room": "Sitio D", "f": 2, "do": "Entra y planta", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Avanza a Pasillo detrás del Kludge de Brava", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera con Brava cubriendo", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Limpia el rellano y avanza a Pasillo 2F", "via": "stairs"},
+        {"room": "Pasillo 2F", "f": 2, "do": "Pone la carga exotérmica en la pared de Sitio D cuando Brava confirme que no hay batería", "via": "door"},
+        {"room": "Sitio D", "f": 2, "do": "Entra por la pared abierta y planta lejos de la puerta", "via": "breach"}
        ],
        "clear": [
-        {"room": "Escaleras", "f": 2, "threat": "Roamer en el descanso de la escalera", "how": "Nøkk va primero en silencio; Thermite sube cuando esté limpio"},
-        {"room": "Pasillo 2F", "f": 2, "threat": "Bandit trickeando y Mira mirando el pasillo", "how": "Brava hackea la batería; carga desde el lado ciego del espejo"}
+        {"room": "Escaleras", "f": 2, "threat": "Kapkan en la puerta del rellano y roamer esperando", "how": "Kludge dispara la trampa; prefire el rellano al subir"},
+        {"room": "Pasillo 2F", "f": 2, "threat": "Mira mirando Pasillo 2F con Bandit trickeando y Maestro con Evil Eye", "how": "Brava roba la Evil Eye y quema el ADS; pega la carga desde el lado ciego del espejo"}
        ],
        "final": "Planta en Sitio D detrás de la pared abierta"
       },
@@ -704,61 +747,65 @@
        "role": "antigadget",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Manda el Kludge por la planta baja y la escalera", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube con Thermite", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Segundo Kludge a Sitio D: hackea ADS, Evil Eye y batería", "via": "stairs"},
-        {"room": "Pasillo 2F", "f": 2, "do": "Cubre a Thermite mientras pone la carga", "via": "door"},
-        {"room": "Sitio D", "f": 2, "do": "Entra segunda y limpia esquinas", "via": "breach"}
+        {"room": "Exterior", "f": 1, "do": "Manda el Kludge por Pasillo hacia Escaleras y hackea cámaras y ADS", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube con Thermite cubriendo su espalda", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Segundo Kludge hacia Pasillo 2F para robar la Evil Eye y el jammer de la pared", "via": "stairs"},
+        {"room": "Pasillo 2F", "f": 2, "do": "Confirma que la pared está limpia y cubre a Thermite", "via": "door"},
+        {"room": "Sitio D", "f": 2, "do": "Entra detrás de Thermite y limpia la esquina del espejo", "via": "breach"}
        ],
        "clear": [
-        {"room": "Pasillo 2F", "f": 2, "threat": "Maestro con Evil Eye mirando la pared o el pasillo", "how": "Kludge para robarla y que dispare a los defensores"},
-        {"room": "Sitio D", "f": 2, "threat": "Kaid con Rtila en la pared reforzada", "how": "Hackea la Rtila con el dron; si no llega, Thermite espera al segundo dron"}
+        {"room": "Escaleras", "f": 2, "threat": "Cámara de Valkyrie o Evil Eye en el rellano", "how": "Kludge las hackea y se vuelven tuyas; úsalas para llamar posiciones"},
+        {"room": "Pasillo 2F", "f": 2, "threat": "Bandit o Kaid en la pared con Jäger encima", "how": "Kludge hackea el ADS y la batería; si es Kaid, Thermite espera al segundo Kludge"}
        ],
-       "final": "Sostiene la pared abierta de Sitio D mientras planta Thermite"
+       "final": "Sostiene Pasillo 2F con las cámaras robadas cubriendo el plant"
       },
       {
        "op": "blackbeard",
        "role": "soporte",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 2, "do": "Rappel a la ventana de Sitio C con el escudo de rifle, sostiene el ángulo", "via": "rappel"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la ventana cuando Capitão queme la esquina", "via": "window"}
+        {"room": "Exterior", "f": 1, "do": "Corre a la fachada de Sitio C y se pone en la cuerda", "via": "door"},
+        {"room": "Exterior", "f": 2, "do": "Rapelea a la ventana de Sitio C con el escudo puesto y sostiene el ángulo", "via": "rappel"},
+        {"room": "Sitio C", "f": 2, "do": "Entra por la ventana cuando Thermite abra la pared y cierra la pinza", "via": "window"}
        ],
        "clear": [
-        {"room": "Exterior", "f": 2, "threat": "Defensor asomando la ventana", "how": "Escudo de rifle arriba desde la cuerda; peek lento"},
-        {"room": "Sitio C", "f": 2, "threat": "Frost bajo la ventana y Castle en la de al lado", "how": "Mira el piso, entra por la ventana sin Castle; rompe el cepo con una bala"}
+        {"room": "Exterior", "f": 2, "threat": "Peek desde la ventana de C y Noor con fuego Horus apuntando a la ventana", "how": "Sube por el costado; si hay fuego, Capitão pone humo y esperas a que se apague"},
+        {"room": "Sitio C", "f": 2, "threat": "Frost con cepo bajo la ventana y ancla en la esquina", "how": "Dispara el cepo desde la cuerda y entra con el fuego de Capitão en la esquina"}
        ],
-       "final": "Sostiene la ventana de Sitio C en post-plant"
+       "final": "Sostiene Sitio C desde la ventana durante el plant en D"
       },
       {
        "op": "capitao",
        "role": "negacion",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 2, "do": "Rappel junto a Blackbeard; flecha de fuego a la esquina del ancla de C", "via": "rappel"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la ventana y tira humo para el plant si va en C", "via": "window"}
+        {"room": "Exterior", "f": 1, "do": "Llega a la fachada de Sitio C con Blackbeard", "via": "door"},
+        {"room": "Exterior", "f": 2, "do": "Rapelea a la ventana y tira fuego a la esquina de Frost y humo a la conexión C↔D", "via": "rappel"},
+        {"room": "Sitio C", "f": 2, "do": "Entra detrás de Blackbeard y pone humo en la puerta hacia Escaleras", "via": "window"},
+        {"room": "Sitio D", "f": 2, "do": "Segundo fuego en la puerta de Pasillo 2F para cubrir el plant", "via": "door"}
        ],
        "clear": [
-        {"room": "Sitio C", "f": 2, "threat": "Ancla de C en la esquina de la bomba con Smoke listo", "how": "Fuego a la esquina desde la ventana; prefire cuando salga"},
-        {"room": "Sitio C", "f": 2, "threat": "Valkyrie cam viendo la ventana", "how": "Blackbeard la rompe desde la cuerda antes de entrar"}
+        {"room": "Exterior", "f": 2, "threat": "Castle en la ventana y ancla mirando la cuerda", "how": "Fuego por encima del Castle o por la ventana abierta; rapelea por el costado"},
+        {"room": "Sitio C", "f": 2, "threat": "Ancla con Smoke en la esquina con gas listo", "how": "Fuego a esa esquina antes de que Blackbeard entre"},
+        {"room": "Sitio D", "f": 2, "threat": "Rotación desde Pasillo 2F por la puerta durante el plant", "how": "Humo y fuego en la puerta para negarla"}
        ],
-       "final": "Planta en Sitio C bajo humo si D se complica"
+       "final": "Humo y fuego en la puerta de Pasillo 2F durante el post-plant"
       },
       {
        "op": "nokk",
        "role": "flanco",
        "spawn": "Exterior",
        "path": [
-        {"room": "Exterior", "f": 1, "do": "Entra en silencio con HEL a la planta baja", "via": "door"},
-        {"room": "Pasillo", "f": 1, "do": "Sube la escalera invisible a cámaras", "via": "door"},
-        {"room": "Escaleras", "f": 2, "do": "Espera en el descanso mirando la puerta de Sitio C", "via": "stairs"},
-        {"room": "Sitio C", "f": 2, "do": "Entra por la puerta al mismo tiempo que la pared y la ventana", "via": "door"}
+        {"room": "Exterior", "f": 1, "do": "Entra a Pasillo detrás del grupo de la pared", "via": "door"},
+        {"room": "Pasillo", "f": 1, "do": "Sube por la escalera con el HEL activo", "via": "door"},
+        {"room": "Escaleras", "f": 2, "do": "Se separa del grupo y se pega a la puerta de Sitio C sin ser vista por cámaras", "via": "stairs"},
+        {"room": "Sitio C", "f": 2, "do": "Entra por la puerta cuando empiece el push y mata a la ancla por la espalda", "via": "door"}
        ],
        "clear": [
-        {"room": "Escaleras", "f": 2, "threat": "Roamer tipo Vigil/Cav jugando la escalera", "how": "HEL y espera pegada a la pared; deja que pase y lo matas por la espalda"},
-        {"room": "Sitio C", "f": 2, "threat": "Ancla de C mirando la puerta", "how": "No entres hasta que Capitão queme la esquina; entra por la espalda"}
+        {"room": "Escaleras", "f": 2, "threat": "Valkyrie con cámaras en el rellano y Vigil roameando", "how": "HEL activo para que las cámaras no te vean; camina y no corras"},
+        {"room": "Sitio C", "f": 2, "threat": "Kapkan o Castle en la puerta de C y Frost en la esquina", "how": "Dispara la trampa desde Escaleras justo cuando Thermite abra la pared para que el ruido te cubra"}
        ],
-       "final": "Cubre Escaleras y la rotación C↔D en post-plant"
+       "final": "Sostiene Sitio C por la espalda de la defensa durante el plant en D"
       }
      ]
     }
@@ -767,29 +814,43 @@
     {
      "id": "default",
      "n": "Default",
-     "summary": "Se refuerza la pared del Pasillo 2F doble y se ponen Castle en las ventanas de Sitio C con Frost detrás para castigar el rappel. Mira mira el pasillo desde Sitio D, Smoke juega el plant y Valkyrie mete cámaras afuera para ver las cuerdas y en Escaleras para el flanco.",
-     "reinforce": ["Pared Pasillo 2F → Sitio D ×2", "Ventanas de Sitio C: Castle ×2", "Escotillas de Sitio C y D (piso hacia 1F)"],
-     "rotations": ["C↔D por la pared blanda entre sitios", "Sitio D → Pasillo 2F por la puerta (salida de emergencia)"],
+     "summary": "Frost y Castle anclan Sitio C: Castle cierra las ventanas y Frost pone cepos bajo la que se deja abierta como cebo; Smoke y Mira anclan Sitio D con espejos hacia Pasillo 2F y gas para el plant. Valkyrie pone cámaras en Escaleras y roamea el rellano para leer a quien suba. Se refuerza la pared de Pasillo 2F → Sitio D y las escotillas hacia 1F.",
+     "reinforce": [
+      "Pared Pasillo 2F → Sitio D ×2",
+      "Ventanas de Sitio C: Castle ×2 (dejar una abierta como cebo)",
+      "Escotillas de Sitio C y Sitio D (piso hacia 1F)"
+     ],
+     "rotations": [
+      "C↔D por la pared blanda entre sitios",
+      "Sitio D → Pasillo 2F por la puerta (salida de emergencia)"
+     ],
      "ops": [
-      {"op": "frost", "room": "Sitio C", "f": 2, "role": "ancla", "job": "Cepos debajo de las ventanas de C y detrás de la puerta; ancla en la esquina fuera de la línea de la ventana"},
-      {"op": "castle", "room": "Sitio C", "f": 2, "role": "flex", "job": "Barricadas blindadas en las ventanas de C; juega la puerta de Escaleras y rota a D si abren la pared"},
-      {"op": "smoke", "room": "Sitio D", "f": 2, "role": "ancla", "job": "Ancla del plant en D: gas en la pared abierta y la puerta del pasillo; escopeta para la rotación C↔D"},
-      {"op": "mira", "room": "Sitio D", "f": 2, "role": "ancla", "job": "Espejo negro en la pared del Pasillo 2F; segundo espejo en la conexión C↔D para ver el plant en C"},
-      {"op": "valkyrie", "room": "Escaleras", "f": 2, "role": "roam", "job": "Cámaras afuera (ventanas de C, para las cuerdas) y en Escaleras; roamea la escalera y baja a 1F a cazar la vertical"}
+      {"op": "frost", "room": "Sitio C", "f": 2, "role": "ancla", "job": "Cepos bajo la ventana abierta y en la puerta de Escaleras; ancla en la esquina con ángulo a las ventanas"},
+      {"op": "castle", "room": "Sitio C", "f": 2, "role": "flex", "job": "Castle en las ventanas de C y en la puerta de Escaleras; flexea C↔D y peekea desde el Castle roto"},
+      {"op": "smoke", "room": "Sitio D", "f": 2, "role": "ancla", "job": "Ancla en la esquina lejana de D con gas guardado para el plant; escopeta en la pared blanda C↔D"},
+      {"op": "mira", "room": "Sitio D", "f": 2, "role": "ancla", "job": "Dos espejos en la pared de Pasillo 2F; abre cuando Thermite pegue la carga y avisa"},
+      {"op": "valkyrie", "room": "Escaleras", "f": 2, "role": "roam", "job": "Cámaras en Escaleras, Pasillo 2F y fuera de la ventana de C; roamea el rellano y baja a flanquear por Pasillo"}
      ]
     },
     {
      "id": "alt",
      "n": "Anti-rappel y fuego",
-     "summary": "Setup para rivales que rushean las ventanas con escudos y Amaru: Noor quema la ventana y a Blackbeard/Montagne con el Horus, Kaid electrifica pared y escotillas, Wamai roba Candelas y humos, Lesion pone Gu en las ventanas y la puerta, y Alibi engaña en Pasillo 2F para saber por dónde entran.",
-     "reinforce": ["Pared Pasillo 2F → Sitio D ×2", "Escotillas de Sitio C y D", "Una ventana de Sitio C (dejar la otra abierta como cebo)"],
-     "rotations": ["C↔D por la pared blanda entre sitios", "Sitio C → Escaleras por la puerta (para Alibi)"],
+     "summary": "Para cuando el rival vive de las ventanas de Sitio C con Blackbeard o Montagne: Noor apunta el Horus a las ventanas y quema a los escudos, Kaid electrifica la pared de Pasillo 2F y las escotillas, Wamai atrapa Candelas y humos en C, Lesion siembra Gu en las puertas y Alibi juega Escaleras con prismas para vender rotaciones falsas.",
+     "reinforce": [
+      "Pared Pasillo 2F → Sitio D ×2 (Kaid Rtila)",
+      "Escotillas de Sitio C y Sitio D",
+      "Una ventana de Sitio C (dejar la otra abierta como cebo con Gu)"
+     ],
+     "rotations": [
+      "C↔D por la pared blanda entre sitios",
+      "Sitio C → Escaleras por la puerta (para que Alibi regrese)"
+     ],
      "ops": [
-      {"op": "noor", "room": "Sitio C", "f": 2, "role": "ancla", "job": "Horus apuntando a la ventana cebo y la puerta de C; quema escudos y el plant pegado a la ventana"},
-      {"op": "kaid", "room": "Sitio D", "f": 2, "role": "ancla", "job": "Rtila en la pared del Pasillo 2F y en las escotillas; ancla en la esquina de D con el TCSG mirando la pared"},
-      {"op": "wamai", "room": "Sitio C", "f": 2, "role": "flex", "job": "Mag-NET en la ventana y la puerta para robar Candelas, humos y flashes; rota a D por la conexión"},
-      {"op": "lesion", "room": "Sitio D", "f": 2, "role": "flex", "job": "Gu bajo las ventanas de C, en la puerta de C y en Pasillo 2F; juega entre C y D y castiga la entrada lenta"},
-      {"op": "alibi", "room": "Pasillo 2F", "f": 2, "role": "roam", "job": "Prismas en Pasillo 2F y Escaleras; roamea la escalera para avisar si suben o rappelean, y castiga la espalda del que entra por la pared"}
+      {"op": "noor", "room": "Sitio C", "f": 2, "role": "ancla", "job": "Lanzador Horus apuntando a las ventanas para quemar a Blackbeard y Montagne; ancla detrás de la pared blanda"},
+      {"op": "kaid", "room": "Sitio D", "f": 2, "role": "ancla", "job": "Rtila en la pared de Pasillo 2F y en las dos escotillas; ancla en la esquina lejana"},
+      {"op": "wamai", "room": "Sitio C", "f": 2, "role": "flex", "job": "Mag-NET en las ventanas para atrapar Candelas y humos; flexea C↔D y peekea las ventanas"},
+      {"op": "lesion", "room": "Sitio D", "f": 2, "role": "flex", "job": "Gu en la puerta de C, bajo la ventana abierta y en la puerta de Pasillo 2F; flexea D↔C"},
+      {"op": "alibi", "room": "Escaleras", "f": 2, "role": "roam", "job": "Prismas en el rellano y en Pasillo 2F para marcar a quien suba; peekea la escalera y regresa a C por la puerta"}
      ]
     }
    ]

@@ -17,7 +17,10 @@
   const curStrat = () => { const st = siteStrats(); if (!st) return null; const list = S.side === 'atk' ? st.attack : st.defense; if (!list || !list.length) return null; if (S.strat === 'custom') return null; return list.find(x => x.id === S.strat) || list[0]; };
   const clean = t => String(t || '').replace(/<br\s*\/?>/g, ' ').replace(/\s+/g, ' ').trim();
   function roomPoint(m, room, f) { // coordenada mundo de un cuarto por nombre exacto (en) y piso
-    if (m.r6) { const fi = f === -1 || f === '-1' ? -1 : +f; let l = m.r6.rooms.find(r => clean(r.en) === room && r.f === fi) || m.r6.rooms.find(r => clean(r.en) === room); if (l) return { x: l.left, y: l.top, f: l.out ? -1 : l.f }; const sp = m.r6.spawns.find(r => clean(r.en) === room); if (sp) return { x: sp.left, y: sp.top, f: -1, spawn: true }; return null; }
+    if (m.r6) { const fi = f === -1 || f === '-1' ? -1 : +f;
+      if (fi === -1) { const sp = m.r6.spawns.find(r => clean(r.en) === room); if (sp) return { x: sp.left, y: sp.top, f: -1, spawn: true }; const lo = m.r6.rooms.find(r => clean(r.en) === room && (r.out || r.f === -1)); if (lo) return { x: lo.left, y: lo.top, f: -1 }; }
+      let l = m.r6.rooms.find(r => clean(r.en) === room && r.f === fi) || m.r6.rooms.find(r => clean(r.en) === room); if (l) return { x: l.left, y: l.top, f: (l.out || l.f == null) ? -1 : l.f };
+      const sp = m.r6.spawns.find(r => clean(r.en) === room); if (sp) return { x: sp.left, y: sp.top, f: -1, spawn: true }; return null; }
     for (const st of m.sites) for (const [fl, rooms] of Object.entries(st.geo || {})) { const r = rooms.find(x => x.n === room); if (r) return { x: r.c * 100 + r.w * 50, y: r.r * 100 + r.h * 50, f: fl }; }
     return null;
   }
@@ -29,11 +32,11 @@
   const initials = p => (p.nick || p.id || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
 
   // ---------- estado ----------
-  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
-  const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
+  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [] }, hint: null, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
+  const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
   const map = () => MAPS.find(m => m.id === S.map) || MAPS[0];
   const site = () => map().sites.find(s => s.id === S.site) || map().sites[0];
-  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, picks: S.picks, pins: S.pins, notes: S.notes });
+  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes });
   let syncing = false;
   function commit(patch) { Object.assign(S, patch); save(); if (Sync.connected && !syncing) { const p = {}; for (const k of Object.keys(patch)) if (k in shared()) p[k] = S[k]; if (Object.keys(p).length) Sync.patch(p); } render(); }
   Sync.onState = st => { syncing = true; const keep = { ...st }; delete keep.updatedAt; delete keep.by; const jump = (st.map && st.map !== S.map) || (st.site && st.site !== S.site) || (st.side && st.side !== S.side); Object.assign(S, keep); if (st.map !== undefined) S.floorIdx = null; if (jump && S.step < 3) S.step = 3; save(); render(); syncing = false; if (st.by && st.by !== (me && me.name)) Store.toast(`${st.by} actualizó el plan`); };
@@ -76,7 +79,12 @@
       const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op) || null; if (!so) return; const o = Engine.op(so.op); if (!o) return;
       if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
       const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
-      if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); (so.path || []).forEach(stp => { const pt = roomPoint(m, stp.room, stp.f); if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do }); });
+      if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); (so.path || []).forEach(stp => { const pt = roomPoint(m, stp.room, stp.f); if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do, room: stp.room }); });
+        // exterior: spawn → (solo el último punto exterior antes de entrar) → interior. Evita zigzags por labels lejanos.
+        const firstIn = pts.findIndex((q, i) => i > 0 && q.f >= 0); if (firstIn > 2) pts = [pts[0], pts[firstIn - 1], ...pts.slice(firstIn)];
+        // quitar repeticiones (ida y vuelta al mismo cuarto)
+        pts = pts.filter((q, i) => i === 0 || !(Math.abs(q.x - pts[i - 1].x) < 2 && Math.abs(q.y - pts[i - 1].y) < 2));
+        for (let i = 0; i < pts.length - 2; i++) { if (Math.abs(pts[i].x - pts[i + 2].x) < 2 && Math.abs(pts[i].y - pts[i + 2].y) < 2) { pts.splice(i + 1, 2); i--; } } // A→B→A: quitar ida y vuelta
         if (set && pts.length) { const last = pts[pts.length - 1]; const b = set.bombs.reduce((a, c) => (Math.hypot(c.left - last.x, c.top - last.y) < Math.hypot(a.left - last.x, a.top - last.y) ? c : a)); if (Math.hypot(b.left - last.x, b.top - last.y) > 6) pts.push({ x: b.left, y: b.top, f: b.f, bomb: true }); } }
       if (pts.length < 2) return;
       const clear = (so.clear || []).map(c => { const pt = roomPoint(m, c.room, c.f); return pt ? { ...pt, short: short(c.threat), threat: c.threat, how: c.how } : null; }).filter(Boolean);
@@ -226,13 +234,51 @@
   function renderWiz() {
     const lb = stepLabels(); $$('#steps button[data-step]').forEach(b => { const n = +b.dataset.step; b.classList.toggle('on', n === S.step); b.classList.toggle('done', n < S.step); b.querySelector('small').textContent = lb[n] || ''; b.onclick = () => goStep(n); });
     $$('.screen').forEach(sc => sc.classList.toggle('on', sc.id === 's' + S.step));
-    $('#rNum').textContent = 'Ronda ' + S.round;
+    $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [] }, hint: null, round: 1, live: null, siteKnown: true }); };
     const cv = $('#canvas'); cv.hidden = !(S.step === 3 || S.step === 4);
     if (S.step === 1) renderS1(); if (S.step === 2) renderS2(); if (S.step === 3) renderS3(); if (S.step === 4) renderS4();
     if (S.step === 3) { const host = $('#s3 .mini'); if (host && cv.parentElement !== host) host.appendChild(cv); }
     if (S.step === 4) { const host = $('#s4 .lv-canvas'); if (host && cv.parentElement !== host) host.appendChild(cv); }
     if (S.step !== 4) Round.stopTick();
     else Round.ensureTick();
+  }
+
+  // =====================================================================
+  //  LÓGICA ENTRE RONDAS: resultado → qué lado, qué sitio y qué estrategia sigue
+  // =====================================================================
+  const TAGS = [['rush', 'Nos rushearon / rusheamos'], ['vertical', 'Vertical'], ['flanco', 'Flanco / roam'], ['plant', 'Plant / defuse'], ['tiempo', 'Se acabó el tiempo'], ['duelo', 'Duelos perdidos']];
+  const score = () => { const w = (S.match.rounds || []).filter(r => r.result === 'W').length, l = (S.match.rounds || []).filter(r => r.result === 'L').length; return { w, l }; };
+  const siteRecord = sid => { const rs = (S.match.rounds || []).filter(r => r.map === S.map && r.site === sid); return { w: rs.filter(r => r.result === 'W').length, l: rs.filter(r => r.result === 'L').length, rs }; };
+  function nextRoundPlan(result, tags) {
+    const m = map(), s = site(), x = curStrat(); const n = S.round + 1;
+    let side = S.side, flip = false; if (n === 4 || n >= 7) { side = S.side === 'atk' ? 'def' : 'atk'; flip = true; } // medio tiempo tras la 3; tiempo extra alterna
+    const rec = { n: S.round, map: S.map, side: S.side, site: s.id, strat: x ? x.id : S.strat, result, tags };
+    const rounds = [...(S.match.rounds || []), rec];
+    const hint = { n, flip, side, site: null, strat: 'default', why: '' };
+    const st = STR[S.map] && STR[S.map].sites;
+    if (side === 'def') {
+      const cand = (PICKS[m.id] || []).map(pk => pk.site).filter(id => m.sites.some(z => z.id === id)).concat(m.sites.map(z => z.id).filter(id => !(PICKS[m.id] || []).some(pk => pk.site === id)));
+      const scored = cand.map(id => { const r = rounds.filter(q => q.map === S.map && q.side === 'def' && q.site === id); const w = r.filter(q => q.result === 'W').length, l = r.filter(q => q.result === 'L').length; const last2 = r.slice(-2); const burned = last2.length === 2 && last2.every(q => q.result === 'L'); return { id, w, l, burned, idx: cand.indexOf(id) }; });
+      scored.sort((a, b) => (a.burned - b.burned) || ((b.w - b.l) - (a.w - a.l)) || (a.idx - b.idx));
+      const curS = scored.find(z => z.id === s.id); const keep = !flip && S.side === 'def' && curS && !curS.burned; // una derrota no basta para abandonar el sitio
+      hint.site = keep ? s.id : scored[0].id; const sr = keep ? curS : scored[0];
+      const defs = st && st[hint.site] ? st[hint.site].defense : [];
+      if (!flip && S.side === 'def' && hint.site === s.id) { hint.strat = result === 'W' ? (x ? x.id : 'default') : (defs[1] && (!x || x.id !== defs[1].id) ? defs[1].id : 'default'); hint.why = result === 'W' ? 'Ganamos aquí: mismo sitio, mismo setup. No cambies lo que funciona.' : (tags.includes('rush') ? 'Nos rushearon: setup anti-rush (más utilidad en la puerta).' : tags.includes('vertical') ? 'Nos hicieron vertical: roam arriba y anclas fuera del piso blando.' : 'Perdimos: cambia el setup en el mismo sitio antes de cambiar de sitio.'); }
+      else hint.why = sr.w || sr.l ? `Récord ${sr.w}W-${sr.l}L en este sitio.` : (((PICKS[m.id] || [])[0] || {}).why || 'Sitio recomendado del mapa.');
+      if (sr.burned) hint.why = 'Perdimos 2 seguidas ahí: cambiar de sitio.';
+    } else {
+      const order = ['default', 'split', 'vertical', 'rush'];
+      if (!flip && S.side === 'atk') { if (result === 'W') { hint.strat = x ? x.id : 'default'; hint.why = 'Ganamos: misma estrategia si eligen el mismo sitio.'; } else { hint.strat = tags.includes('tiempo') ? 'rush' : tags.includes('plant') ? 'vertical' : tags.includes('flanco') ? (x ? x.id : 'default') : order[(order.indexOf(x ? x.id : 'default') + 1) % order.length]; hint.why = tags.includes('tiempo') ? 'Se acabó el tiempo: entrar más rápido (RUSH).' : tags.includes('plant') ? 'No pudimos plantar: matar desde arriba (VERTICAL).' : tags.includes('flanco') ? 'Nos flanquearon: misma estrategia, Nomad/Gridlock en la espalda.' : 'Perdimos: cambia el ángulo de ataque.'; } }
+      else hint.why = 'Ataque: comp flexible y toca el sitio cuando lo veas en drones.';
+    }
+    return { rounds, hint, side, n, flip };
+  }
+  function openResult() {
+    openModal(`<h3>¿Cómo terminó la ronda ${S.round}?</h3><div class="sub">${E(map().n)} · ${S.side === 'atk' ? 'Ataque' : 'Defensa'} · ${E(site().n)}</div><div class="big-toggle" style="max-width:none"><button data-res="W">GANAMOS</button><button data-res="L" style="color:#ffb3c2">PERDIMOS</button></div><div class="k" style="margin:6px 0">¿Qué pasó? (opcional)</div><div style="display:flex;gap:6px;flex-wrap:wrap" id="tagRow">${TAGS.map(t => `<button class="chip" data-tag="${t[0]}">${E(t[1])}</button>`).join('')}</div><div class="row"><button class="btn" data-close>Cancelar</button><button class="btn p" id="resGo" disabled>Siguiente ronda ▶</button></div>`);
+    let res = null; const tags = new Set();
+    $$('#modal [data-res]').forEach(b => b.onclick = () => { res = b.dataset.res; $$('#modal [data-res]').forEach(x => { x.classList.toggle('on', x === b); x.classList.toggle('atk', x === b && b.dataset.res === 'W'); }); $('#resGo').disabled = false; });
+    $$('#modal [data-tag]').forEach(b => b.onclick = () => { const t = b.dataset.tag; tags.has(t) ? tags.delete(t) : tags.add(t); b.classList.toggle('acc', tags.has(t)); });
+    $('#resGo').onclick = () => { const plan = nextRoundPlan(res, [...tags]); closeModal(); S.step = 2; S.focus = null; S.selected = null; S.floorIdx = null; const patch = { match: { rounds: plan.rounds }, hint: plan.hint, round: plan.n, side: plan.side, live: null, strat: plan.hint.strat || 'default' }; if (plan.hint.site) { patch.site = plan.hint.site; patch.siteKnown = true; } else patch.siteKnown = false; commit(patch); if (plan.flip) Store.toast(`Ronda ${plan.n}: cambio de lado → ${plan.side === 'atk' ? 'ATAQUE' : 'DEFENSA'}`); };
   }
   // ---- paso 1: mapa
   function renderS1() {
@@ -245,15 +291,17 @@
   function renderS2() {
     const m = map(); const picks = PICKS[m.id] || []; const isDef = S.side === 'def';
     const ordered = picks.map(pk => ({ ...pk, s: m.sites.find(x => x.id === pk.site) })).filter(x => x.s).concat(m.sites.filter(x => !picks.some(pk => pk.site === x.id)).map(x => ({ site: x.id, why: '', s: x })));
-    let h = `<div class="h-step"><h2 data-fx>${E(m.n)}</h2><p>${isDef ? 'Qué sitio pedir y qué hacer. Toca el sitio.' : '¿Ya viste el sitio con los drones? Tócalo. Si no, pide la comp flexible.'}</p></div>`;
+    const sc = score(); let h = `<div class="h-step"><h2 data-fx>${E(m.n)}</h2><p>${isDef ? 'Qué sitio pedir y qué hacer. Toca el sitio.' : '¿Ya viste el sitio con los drones? Tócalo. Si no, pide la comp flexible.'}${sc.w + sc.l ? ` · <b class="acc">${sc.w} – ${sc.l}</b>` : ''}</p></div>`;
+    if (S.hint && S.hint.n === S.round) { const hs = S.hint.site ? m.sites.find(z => z.id === S.hint.site) : null; h += `<div class="hintbar"><div><span class="k">Ronda ${S.round} · sugerencia</span><div class="ht">${S.hint.flip ? '<b>CAMBIO DE LADO → ' + (S.hint.side === 'atk' ? 'ATAQUE' : 'DEFENSA') + '</b> · ' : ''}${hs ? 'Pedir <b>' + E(hs.n) + '</b>' : 'Comp flexible'}${S.hint.strat ? ' · setup <b>' + E(String(S.hint.strat).toUpperCase()) + '</b>' : ''}</div><div class="hw">${E(S.hint.why)}</div></div><button class="btn p" id="applyHint">Aplicar</button></div>`; }
     h += `<div class="big-toggle"><button class="${!isDef ? 'on atk' : ''}" data-side="atk">ATAQUE</button><button class="${isDef ? 'on def' : ''}" data-side="def">DEFENSA</button></div>`;
     h += `<div class="sitegrid">`;
     if (!isDef) h += `<button class="sitecard unknown ${!S.siteKnown ? 'on' : ''}" data-unknown="1"><div class="fl">Fase de operadores</div><div class="n">Aún no sé el sitio</div><div class="why">Te doy la comp flexible del mapa (sirve para el sitio más probable) y cuando lo veas, lo tocas.</div></button>`;
-    ordered.forEach((x, i) => { h += `<button class="sitecard ${S.siteKnown && x.s.id === site().id ? 'on' : ''}" data-site="${x.s.id}">${i === 0 && picks.length ? `<span class="chip acc rec">${isDef ? 'PEDIR ESTE' : 'MÁS PROBABLE'}</span>` : picks.length ? `<span class="rank">#${i + 1}</span>` : ''}<div class="fl">${E(Engine.FLN[x.s.fl] || x.s.fl)}</div><div class="n">${E(x.s.n)}</div><div class="why">${E(x.why || '')}${x.verify || x.s.verify ? ' <span class="dim">(por confirmar)</span>' : ''}</div></button>`; });
+    ordered.forEach((x, i) => { const r = siteRecord(x.s.id); const recBadge = S.hint && S.hint.n === S.round && S.hint.site === x.s.id; h += `<button class="sitecard ${S.siteKnown && x.s.id === site().id ? 'on' : ''}" data-site="${x.s.id}">${recBadge ? `<span class="chip acc rec">SUGERIDO</span>` : i === 0 && picks.length ? `<span class="chip rec">${isDef ? 'PEDIR ESTE' : 'MÁS PROBABLE'}</span>` : picks.length ? `<span class="rank">#${i + 1}</span>` : ''}<div class="fl">${E(Engine.FLN[x.s.fl] || x.s.fl)}${r.w + r.l ? ` · <b style="color:${r.w >= r.l ? 'var(--green)' : 'var(--red)'}">${r.w}W ${r.l}L</b>` : ''}</div><div class="n">${E(x.s.n)}</div><div class="why">${E(x.why || '')}${x.verify || x.s.verify ? ' <span class="dim">(por confirmar)</span>' : ''}</div></button>`; });
     h += `</div>`;
     $('#s2').innerHTML = h; FX.all($('#s2'));
     $$('#s2 .big-toggle button').forEach(b => b.onclick = () => { S.selected = null; S.focus = null; commit({ side: b.dataset.side, siteKnown: b.dataset.side === 'def' ? true : S.siteKnown, strat: 'default' }); });
     $$('#s2 .sitecard[data-site]').forEach(b => b.onclick = () => { S.floorIdx = null; S.selected = null; S.focus = null; S.step = 3; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
+    const ah = $('#applyHint'); if (ah) ah.onclick = () => { S.step = 3; S.floorIdx = null; const hs = S.hint.site; commit({ site: hs || site().id, siteKnown: !!hs || S.side === 'def', strat: S.hint.strat || 'default' }); };
     const u = $('#s2 [data-unknown]'); if (u) u.onclick = () => { S.step = 3; const pk = (PICKS[m.id] || [])[0]; commit({ site: pk ? pk.site : m.sites[0].id, siteKnown: false, strat: 'default' }); };
   }
   // ---- llamadas por jugador (lo que se dice en voz alta)
@@ -280,16 +328,17 @@
     let h = `<div class="call"><div class="hd"><h2 data-fx>${E(m.n)}</h2><span class="chip ${isAtk ? 'acc' : ''}" style="${isAtk ? '' : 'border-color:var(--mag);color:#ffb3ea'}">${isAtk ? 'ATAQUE' : 'DEFENSA'}</span><span class="chip">R${S.round}</span><span class="chip">${E(Engine.FLN[s.fl] || s.fl)} · ${E(s.n)}${S.siteKnown ? '' : ' · ?'}</span></div>`;
     if (isAtk && !S.siteKnown) h += `<div class="flexnote"><b>Comp flexible</b> — sitio más probable: <b>${E(s.n)}</b>. Cuando lo veas en drones, tócalo:<div class="sites">${m.sites.map(z => `<button data-site="${z.id}"><span class="fl">${E(Engine.FLN[z.fl] || z.fl)}</span>${E(z.n)}</button>`).join('')}</div></div>`;
     if (list && list.length) h += `<div class="stratrow">${list.map(z => `<button class="${x && x.id === z.id ? 'on' : ''}" data-strat="${z.id}"><b>${E(z.tag || z.n)}</b><small>${E(z.summary ? z.summary.split('.')[0] : z.n)}</small></button>`).join('')}</div>`;
+    if (x) h += `<div class="setup"><div class="sm">${E(x.summary || '')}</div>${!isAtk && x.reinforce ? `<div class="rl"><b>Reforzar:</b> ${E(x.reinforce.join(' · '))}${x.rotations && x.rotations.length ? ` &nbsp;<b>Rotar:</b> ${E(x.rotations.join(' · '))}` : ''}</div>` : ''}${x.sources && x.sources.length ? `<div class="src">Basado en: ${x.sources.slice(0, 4).map(u => `<a target="_blank" rel="noopener" href="${E(u)}">${E(String(u).replace(/^https?:\/\/(www\.)?/, '').split('/')[0])}</a>`).join(' · ')}${x.basis ? ' · ' + E(x.basis) : ''}</div>` : ''}</div>`;
     else h += `<div class="flexnote">Este mapa aún no tiene estrategias generadas (se generan después de las 3:30 am). Mientras, plan por entradas: <b>Auto-completar</b> en Detalle.</div>`;
     h += `<div class="cards5">` + cards.map(c => `<div class="pcard ${S.focus === c.slot ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><div class="bar"></div><div class="who"><b>${E(c.name)}</b>${E(c.role)}</div><div><div class="op">${E(c.op)}</div><div class="go">${E(c.go)}<i>${E(c.sub)}</i></div></div><select class="in" data-slot="${c.slot}"><option value="">— cambiar —</option>${ops.map(o => `<option value="${o.id}" ${c.o && c.o.id === o.id ? 'selected' : ''}>${E(o.n)}</option>`).join('')}</select></div>`).join('') + `</div>`;
-    h += `<div class="actions"><button class="btn p" id="goLive">▶ En vivo</button><button class="btn" id="dictar">🔊 Dictar</button><button class="btn" id="nextRound">Siguiente ronda</button><button class="btn ghost" id="openDrawer">Detalle</button></div></div>`;
+    h += `<div class="actions"><button class="btn p" id="goLive">▶ En vivo</button><button class="btn" id="dictar">🔊 Dictar</button><button class="btn" id="nextRound">Terminó la ronda</button><button class="btn ghost" id="openDrawer">Detalle</button></div></div>`;
     h += `<div class="mini"></div>`;
     $('#s3').innerHTML = h; FX.all($('#s3'));
     $$('#s3 .stratrow button').forEach(b => b.onclick = () => applyStrat(b.dataset.strat));
     $$('#s3 .flexnote [data-site]').forEach(b => b.onclick = () => { S.floorIdx = null; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
     $$('#s3 .pcard').forEach(d => d.onclick = e => { if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return; S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS3(); renderCanvas(); });
     $$('#s3 .pcard select').forEach(sel => { sel.onclick = e => e.stopPropagation(); sel.onchange = () => { const picks = { ...S.picks }; picks[sel.dataset.slot] = { op: sel.value || undefined }; commit({ picks }); }; });
-    $('#goLive').onclick = () => goStep(4); $('#dictar').onclick = dictate; $('#nextRound').onclick = () => { S.step = 2; S.focus = null; commit({ round: S.round + 1, siteKnown: S.side === 'def', live: null }); };
+    $('#goLive').onclick = () => goStep(4); $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
     $('#openDrawer').onclick = () => $('#drawer').classList.add('on');
     setTimeout(() => MapView.fit(), 50);
   }

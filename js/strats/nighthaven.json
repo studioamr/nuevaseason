@@ -7,7 +7,7 @@
      "id": "default",
      "n": "Default lento",
      "tag": "DEFAULT",
-     "summary": "Thermite abre la pared reforzada Escaleras sótano → Tanque mientras Hibana abre la escotilla de Ensamblaje sobre Almacén. Con Lion activo bajamos por los dos frentes a la vez y Nomad cierra Escaleras 2 para que el roam no nos coma la espalda. Funciona porque el sótano solo tiene dos bajadas: si abrimos pared y escotilla al mismo tiempo, las anclas no pueden cubrir Tanque y Almacén a la vez.",
+     "summary": "Thermite abre la pared reforzada Escaleras sótano → Tanque mientras Hibana abre la escotilla de Ensamblaje sobre Almacén. Con Lion activo bajamos por los dos frentes a la vez y Nomad cierra Escaleras 2 para que el roam no nos coma la espalda. Funciona porque al sótano solo se llega por dos escaleras y una escotilla: si abrimos la pared de Tanque y la escotilla de Almacén al mismo tiempo, Smoke y Mira no pueden cubrir los dos cuartos a la vez y la puerta de Escaleras 2 queda vigilada por Nomad.",
      "timeline": [
       "0:00–0:45 · drones a Escaleras sótano y Escaleras 2, ubicar Kaid/Bandit en la pared de Tanque y el espejo de Mira en Almacén",
       "0:45–1:30 · EMP + Thermite en la pared de Tanque; Hibana abre la escotilla sobre Almacén; Lion escanea",
@@ -157,8 +157,8 @@
         {
          "room": "Ensamblaje",
          "f": "1",
-         "do": "Limpia el cuarto y pone los pellets en la escotilla sobre Almacén",
-         "via": "hatch"
+         "do": "Entra por la puerta desde Pasillo, limpia el cuarto y pone los pellets en la escotilla sobre Almacén",
+         "via": "door"
         },
         {
          "room": "Almacén",
@@ -625,7 +625,7 @@
         {
          "room": "1F (arriba)",
          "f": "b",
-         "do": "Se planta en 1F justo encima de Tanque y abre el piso con la Skeleton Key",
+         "do": "Se planta en 1F justo encima de Tanque (mismo piso físico que Ensamblaje) y abre el piso con la Skeleton Key",
          "via": "door"
         },
         {
@@ -739,9 +739,9 @@
          "via": "door"
         },
         {
-         "room": "Tanque",
+         "room": "Almacén",
          "f": "b",
-         "do": "Baja al final por la brecha de Ace",
+         "do": "Baja al final por la escotilla que abrió Ace y cubre el plant desde la esquina de la escotilla",
          "via": "hatch"
         }
        ],
@@ -759,7 +759,7 @@
          "how": "Cluster encima y esperar el gas"
         }
        ],
-       "final": "Sostiene Tanque desde arriba y baja al final"
+       "final": "Sostiene Tanque y Almacén desde arriba y baja por la escotilla al final"
       },
       {
        "op": "capitao",
@@ -833,8 +833,8 @@
         {
          "room": "Ensamblaje",
          "f": "1",
-         "do": "SELMA en la escotilla de Almacén cuando el piso ya esté abierto",
-         "via": "hatch"
+         "do": "Entra a Ensamblaje por la puerta; SELMA en la escotilla de Almacén cuando el piso ya esté abierto",
+         "via": "door"
         },
         {
          "room": "Almacén",
@@ -1146,11 +1146,10 @@
     {
      "id": "default",
      "n": "Default",
-     "summary": "Kaid electrifica la pared de Tanque y la escotilla de Almacén; Mira pone el espejo hacia la puerta de Escaleras 2; Smoke ancla en Tanque con gas para la brecha. Pulse roamea en 1F encima del sitio y castiga las verticales.",
+     "summary": "Kaid electrifica desde adentro la pared de Tanque y la escotilla de Almacén; Mira pone el espejo hacia la puerta de Escaleras 2; Smoke ancla en Tanque con gas para la brecha. Jäger cubre la escotilla y Pulse roamea en 1F encima del sitio para castigar a Buck/Sledge.",
      "reinforce": [
       "Pared Tanque–Escaleras sótano ×2",
-      "Escotilla Almacén",
-      "Escotilla sobre Tanque"
+      "Escotilla Almacén"
      ],
      "rotations": [
       "Tanque↔Almacén"
@@ -1172,10 +1171,10 @@
       },
       {
        "op": "kaid",
-       "room": "Escaleras sótano",
+       "room": "Tanque",
        "f": "b",
        "role": "flex",
-       "job": "Rtila en la pared de Tanque y en la escotilla de Almacén; peekea la escalera y se retrae a Tanque"
+       "job": "Rtila en la pared de Tanque (desde adentro) y en la escotilla de Almacén; ancla flex en Tanque con Smoke y rota a Almacén cuando cae la pared"
       },
       {
        "op": "jager",
@@ -1196,7 +1195,7 @@
     {
      "id": "alt",
      "n": "Anti-rush Escaleras 2",
-     "summary": "Setup contra rushes y splits por Escaleras 2: Noor quema la puerta de Almacén para escudos (Blitz/Osa/Monty), Azami cierra ángulos con Kiba, Maestro vigila la escalera con Evil Eye y Bandit trickea la pared de Tanque. Vigil roamea en 1F sin aparecer en drones.",
+     "summary": "Setup contra rushes y splits por Escaleras 2: Noor quema desde adentro de Almacén la puerta de Escaleras 2 contra escudos (Blitz/Osa/Monty), Azami cierra ángulos con Kiba, Maestro vigila la escalera con Evil Eye y Bandit trickea la pared de Tanque. Vigil roamea en 1F sin aparecer en drones.",
      "reinforce": [
       "Pared Tanque–Escaleras sótano ×2",
       "Escotilla Almacén"
@@ -1229,10 +1228,10 @@
       },
       {
        "op": "noor",
-       "room": "Escaleras 2",
+       "room": "Almacén",
        "f": "b",
        "role": "flex",
-       "job": "Horus a la puerta de Almacén y a la escalera para quemar escudos y flashes del rush; se retrae a Almacén"
+       "job": "Horus apuntando a la puerta de Escaleras 2 y a la escotilla para quemar escudos y flashes del rush; ancla en Almacén con Maestro y Azami"
       },
       {
        "op": "vigil",
@@ -1371,7 +1370,7 @@
         {
          "room": "Ensamblaje",
          "f": "1",
-         "do": "Baja por la escotilla al final para el post-plant",
+         "do": "Baja al final por el hueco que abrió con la Skeleton Key para el post-plant",
          "via": "hatch"
         }
        ],
@@ -2159,14 +2158,20 @@
         {
          "room": "Escaleras",
          "f": "1",
-         "do": "Sube si el roamer está en 2F, si no se queda en Pasillo",
+         "do": "Sube al descanso si el roamer está en 2F; si no, se queda vigilando Escaleras desde Pasillo",
          "via": "stairs"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Vuelve a Pasillo y cubre la espalda de Monty en la puerta de Ensamblaje",
+         "via": "door"
         },
         {
          "room": "Ensamblaje",
          "f": "1",
-         "do": "Baja y entra al final por la escotilla o la puerta",
-         "via": "hatch"
+         "do": "Entra al final por la puerta con Dokkaebi para el post-plant",
+         "via": "door"
         }
        ],
        "clear": [
@@ -2195,8 +2200,7 @@
      "summary": "Bandit trickea la pared exterior de Pruebas, Smoke ancla en Pruebas, Maestro ancla en Ensamblaje con Evil Eye a la puerta de Pasillo. Jäger flex entre los dos cuartos y Lesion roamea en 2F para negar las verticales y las escaleras.",
      "reinforce": [
       "Pared Pruebas–Exterior ×2",
-      "Pared Ensamblaje–Pasillo",
-      "Escotilla sobre Pruebas"
+      "Pared Ensamblaje–Pasillo (dejar la puerta con barricada)"
      ],
      "rotations": [
       "Ensamblaje↔Pruebas",
@@ -2243,7 +2247,7 @@
     {
      "id": "alt",
      "n": "Anti-rush con Mira",
-     "summary": "Setup contra rush por la puerta de Ensamblaje: Mira pone espejo hacia Pasillo, Warden en la esquina para ver a través de candelas y humos, Thorn con Razorbloom en la puerta y Kaid electrifica la pared de Pruebas. Solis roamea en 2F cazando drones y verticales.",
+     "summary": "Setup contra rush por la puerta de Ensamblaje: Mira pone espejo hacia Pasillo, Warden en la esquina para ver a través de candelas y humos, Thorn flex en Pruebas con Razorbloom en la puerta de Ensamblaje y Kaid electrifica la pared de Pruebas. Solis roamea en 2F cazando drones y verticales.",
      "reinforce": [
       "Pared Pruebas–Exterior ×2",
       "Pared Ensamblaje–Pasillo (espejo Mira)"
@@ -2268,10 +2272,10 @@
       },
       {
        "op": "thorn",
-       "room": "Pasillo",
+       "room": "Pruebas",
        "f": "1",
        "role": "flex",
-       "job": "Razorbloom en la puerta de Ensamblaje y en Pasillo; se retrae a Pruebas"
+       "job": "Razorbloom en la puerta Pasillo→Ensamblaje y en la puerta interna Ensamblaje↔Pruebas; ancla flex en Pruebas con Kaid y peekea la puerta interna cuando explota el Razorbloom"
       },
       {
        "op": "kaid",
@@ -2300,7 +2304,7 @@
      "summary": "Ace abre la pared reforzada Pasillo 2F → Servidores tras el EMP de Thatcher, mientras Zero y Ying entran por las ventanas de Laboratorio en rappel y Nomad cierra Escaleras con Airjabs. Funciona porque Servidores solo tiene dos accesos: la pared del pasillo y la puerta desde Laboratorio; al presionar las dos, Mira y Smoke no pueden cubrir ambas.",
      "timeline": [
       "0:00–0:45 · drones a Pasillo 2F y Laboratorio, Zero pone Argus en las ventanas",
-      "0:45–1:30 · EMP + SELMA en la pared de Servidores; Ying y Zero rompen Castle en Laboratorio",
+      "0:45–1:30 · EMP + SELMA en la pared de Servidores; Ying rompe el Castle de Laboratorio con carga de brecha dura, Zero limpia el cepo",
       "1:30–2:30 · entrada por la pared con humo, Ying presiona desde Laboratorio",
       "2:30–3:00 · plant en Servidores, post-plant desde Pasillo 2F y Laboratorio"
      ],
@@ -2456,7 +2460,7 @@
          "room": "Exterior",
          "f": "2",
          "threat": "Frost con cepos bajo las ventanas y Castle",
-         "how": "Argus ve el cepo, Ying rompe el Castle con impactos"
+         "how": "Argus ve el cepo desde afuera; Ying rompe el Castle con la carga de brecha dura y Zero entra por la parte alta de la ventana"
         },
         {
          "room": "Laboratorio",
@@ -2571,7 +2575,7 @@
      "id": "rush",
      "n": "Rush ventanas Laboratorio",
      "tag": "RUSH",
-     "summary": "Los cinco entran por las ventanas de Laboratorio en rappel: Amaru se gancha primero, Ash rompe Castle con breach, Zofia aturde, Blackbeard toma el peek y Blitz flashea. Funciona porque Laboratorio es el cuarto más lejos de la escalera y en los primeros 30 segundos Castle/Frost no han terminado de armar.",
+     "summary": "Los cinco entran por las ventanas de Laboratorio en rappel: Amaru se engancha primero, Ash rompe Castle con breach, Zofia aturde, Blackbeard toma el peek y Blitz flashea. Funciona porque Laboratorio es el cuarto más lejos de la escalera y en los primeros 30 segundos Castle/Frost no han terminado de armar.",
      "timeline": [
       "0:00–0:30 · correr al exterior de 2F y subir en rappel",
       "0:30–1:00 · Ash rompe Castle, Zofia concusión, Amaru y Blitz entran",
@@ -2805,6 +2809,12 @@
          "via": "door"
         },
         {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Vuelve a Pasillo pegado a la pared para subir por Escaleras",
+         "via": "door"
+        },
+        {
          "room": "Escaleras",
          "f": "1",
          "do": "Sube al final por Escaleras",
@@ -2875,6 +2885,12 @@
          "via": "door"
         },
         {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Vuelve a Pasillo pegado a la pared para subir por Escaleras",
+         "via": "door"
+        },
+        {
          "room": "Escaleras",
          "f": "1",
          "do": "Sube al final",
@@ -2930,6 +2946,12 @@
          "room": "Ensamblaje",
          "f": "1",
          "do": "Fuego por los huecos de Buck hacia Servidores",
+         "via": "door"
+        },
+        {
+         "room": "Pasillo",
+         "f": "1",
+         "do": "Vuelve a Pasillo pegado a la pared para subir por Escaleras",
          "via": "door"
         },
         {
@@ -3355,8 +3377,7 @@
      "summary": "Castle tapa las ventanas de Laboratorio con Frost poniendo cepos debajo; Smoke ancla en Servidores y Mira pone espejo hacia Pasillo 2F. Valkyrie roamea en 1F con cámaras en Escaleras para avisar el flanco.",
      "reinforce": [
       "Pared Servidores–Pasillo 2F ×2",
-      "Ventanas Laboratorio (Castle)",
-      "Escotilla Servidores"
+      "Ventanas Laboratorio (Castle)"
      ],
      "rotations": [
       "Servidores↔Laboratorio"
@@ -3402,11 +3423,10 @@
     {
      "id": "alt",
      "n": "Anti-vertical Mute",
-     "summary": "Setup contra drones y verticales: Mute jammea la pared de Pasillo 2F y las escotillas, Kaid electrifica pared y escotilla, Melusi frena las ventanas de Laboratorio, Jäger flex y Vigil roamea en 1F cazando a Buck/Sledge debajo del sitio.",
+     "summary": "Setup contra drones y verticales: Mute jammea desde adentro la pared de Pasillo 2F, Kaid la electrifica, Melusi frena las ventanas de Laboratorio con Banshees, Jäger flex entre los dos cuartos y Vigil roamea en 1F cazando a Buck/Sledge debajo del sitio.",
      "reinforce": [
       "Pared Servidores–Pasillo 2F ×2",
-      "Escotilla Servidores",
-      "Escotilla Laboratorio"
+      "Ventanas Laboratorio (Banshees + barricadas)"
      ],
      "rotations": [
       "Servidores↔Laboratorio",
@@ -3418,14 +3438,14 @@
        "room": "Servidores",
        "f": "2",
        "role": "ancla",
-       "job": "Rtila en la pared de Pasillo 2F y en la escotilla; ancla entre racks"
+       "job": "Rtila en la pared de Pasillo 2F desde adentro de Servidores; ancla entre los racks y cubre la puerta a Laboratorio"
       },
       {
        "op": "mute",
-       "room": "Pasillo 2F",
+       "room": "Servidores",
        "f": "2",
        "role": "flex",
-       "job": "Jammers en la pared reforzada y en la puerta de Laboratorio; se retrae a Servidores"
+       "job": "Jammers pegados a la pared reforzada de Pasillo 2F (desde adentro) y uno en la puerta a Laboratorio contra drones; ancla flex en Servidores con Kaid"
       },
       {
        "op": "melusi",

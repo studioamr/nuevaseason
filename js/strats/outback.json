@@ -4,7 +4,7 @@
   "nature": {
    "attack": [
     {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Presión doble: Thermite abre la pared Cocina→Bushranger mientras Buck castiga desde Lavandería (2F) el techo de Naturaleza. Funciona porque el sitio es alargado y las anclas no pueden cuidar la pared y el piso al mismo tiempo; el plant va en Bushranger con Nomad cerrando Garaje.",
-     "timeline":["0:00–0:45 · drones a Naturaleza/Bushranger, Buck y Nomad suben por Escaleras Rojas","0:45–1:30 · Thatcher EMP + Thermite pared Cocina; Buck abre el piso de Lavandería sobre Naturaleza","1:30–2:30 · entrada por la pared con Iana de señuelo por Garaje, plant en Bushranger","2:30–3:00 · post-plant: Buck sostiene desde arriba, Nomad cierra Garaje, Thermite en Cocina"],
+     "timeline":["0:00–0:45 · drones a Naturaleza/Bushranger, Buck sube por Escaleras Rojas y Nomad cierra Garaje con airjabs","0:45–1:30 · Thatcher EMP + Thermite pared Cocina; Buck abre el piso de Lavandería sobre Naturaleza","1:30–2:30 · entrada por la pared con Iana de señuelo por Garaje, plant en Bushranger","2:30–3:00 · post-plant: Buck sostiene desde arriba, Nomad cierra Garaje, Thermite en Cocina"],
      "ops":[
       {"op":"thermite","role":"duro","spawn":"Exterior",
        "path":[
@@ -31,7 +31,7 @@
         {"room":"Naturaleza","f":"1","do":"Presiona con réplica primero, entra cuando Buck abre el techo","via":"door"}],
        "clear":[
         {"room":"Garaje","f":"1","threat":"Roamer jugando la puerta de Garaje o Lesion con gu en la entrada","how":"réplica primero para gastar el gu, luego entra"},
-        {"room":"Naturaleza","f":"1","threat":"Mira mirando la puerta de Garaje desde Naturaleza","how":"no cruces el espejo, espera que Buck lo rompa desde arriba"}],
+        {"room":"Naturaleza","f":"1","threat":"Mira mirando la puerta de Garaje desde Naturaleza","how":"no cruces la línea del espejo: tira una frag pegada a la base del espejo desde Garaje o entra solo cuando Buck ya castigó a Mira desde arriba"}],
        "final":"Entra a Naturaleza cuando cae el techo y cubre el flanco de Garaje"},
       {"op":"buck","role":"vertical","spawn":"Exterior",
        "path":[
@@ -130,10 +130,10 @@
       {"op":"fuze","role":"negacion","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Entra por Cocina con Hibana","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa rápido","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
         {"room":"Pasillo","f":"1","do":"Avanza a las escaleras","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale al 2F","via":"stairs"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Fiesta","f":"2","do":"Pone clusters en el piso de Fiesta sobre Bushranger","via":"door"}],
        "clear":[
         {"room":"Escaleras Rojas","f":"1","threat":"Roamer tipo Cav en las escaleras","how":"dron adelante, sube en grupo"},
@@ -142,19 +142,19 @@
       {"op":"twitch","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Dron de choque por la puerta de Garaje a Naturaleza","via":"door"},
-        {"room":"Garaje","f":"1","do":"Mata Mira, ADS y Maestro desde el dron","via":"door"},
+        {"room":"Garaje","f":"1","do":"Mete el dron por la puerta de Naturaleza y revienta ADS, Evil Eyes y baterías de Bandit (el espejo de Mira no cae con el dron: avisa dónde está)","via":"door"},
         {"room":"Naturaleza","f":"1","do":"Entra cuando el piso ya está abierto","via":"door"}],
        "clear":[
         {"room":"Garaje","f":"1","threat":"Mozzie pest robando el dron en la puerta","how":"dron pequeño primero, después el de choque"},
-        {"room":"Naturaleza","f":"1","threat":"Mira y ADS de Jäger en el sitio","how":"choque a los gadgets desde el dron, no entres hasta que caiga el techo"}],
+        {"room":"Naturaleza","f":"1","threat":"Mira y ADS de Jäger en el sitio","how":"choque a los ADS desde el dron y marca el espejo para que Sledge lo castigue desde arriba; no entres hasta que caiga el techo"}],
        "final":"Planta en Naturaleza cuando arriba limpian las anclas"},
       {"op":"hibana","role":"duro","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va con Fuze por Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa rápido","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale al 2F","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"Avanza a Lavandería","via":"door"},
         {"room":"Lavandería","f":"2","do":"X-KAIROS a la escotilla reforzada de Lavandería para bajar","via":"door"},
         {"room":"Naturaleza","f":"1","do":"Baja por la escotilla al final para el plant","via":"hatch"}],
@@ -204,7 +204,7 @@
        "final":"Sostiene Naturaleza desde Garaje con humo en el plant"},
       {"op":"dokkaebi","role":"intel","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Logic bomb para ubicar roamers y hackea la cámara","via":"door"},
+        {"room":"Exterior","f":"1","do":"Logic bomb al 0:45 para ubicar roamers; las cámaras las hackea con el teléfono del primer defensor que caiga","via":"door"},
         {"room":"Garaje","f":"1","do":"Sigue a Monty","via":"door"},
         {"room":"Naturaleza","f":"1","do":"Plant detrás del escudo","via":"door"}],
        "clear":[
@@ -219,7 +219,7 @@
      "rotations":["Naturaleza↔Bushranger","Bushranger↔Cocina (rotación chica)"],
      "ops":[
       {"op":"smoke","room":"Bushranger","f":"1","role":"ancla","job":"Ancla detrás de la barra, gas a la pared de Cocina y al plant"},
-      {"op":"mira","room":"Naturaleza","f":"1","role":"ancla","job":"Espejo a la puerta de Garaje y otro a Bushranger; mira Garaje"},
+      {"op":"mira","room":"Naturaleza","f":"1","role":"ancla","job":"Espejo en la pared reforzada Naturaleza–Garaje mirando la puerta, y otro en la rotación a Bushranger; juega Garaje"},
       {"op":"bandit","room":"Bushranger","f":"1","role":"flex","job":"Trickea la pared de Cocina, luego juega Pasillo"},
       {"op":"jager","room":"Naturaleza","f":"1","role":"flex","job":"ADS en las puertas del sitio, juega la puerta de Garaje"},
       {"op":"pulse","room":"Lavandería","f":"2","role":"roam","job":"Roam arriba negando el vertical, escanea Escaleras y Pasillo 2F"}]},
@@ -228,7 +228,7 @@
      "rotations":["Naturaleza↔Bushranger","Naturaleza↔Lavandería (arriba)"],
      "ops":[
       {"op":"kaid","room":"Bushranger","f":"1","role":"ancla","job":"Rtila en la pared de Cocina y la escotilla; ancla la barra"},
-      {"op":"mute","room":"Naturaleza","f":"1","role":"ancla","job":"Jammers bajo el piso de Lavandería y en la puerta de Garaje; ancla el sitio"},
+      {"op":"mute","room":"Naturaleza","f":"1","role":"ancla","job":"Jammers en la pared de Cocina (frena Thermite/Hibana) y uno en la puerta de Garaje contra drones; ancla el sitio"},
       {"op":"noor","room":"Naturaleza","f":"1","role":"flex","job":"Fuego a la puerta de Garaje contra Monty/Blitz, juega Lavandería (arriba)"},
       {"op":"vigil","room":"Juegos","f":"2","role":"roam","job":"Roam arriba, castiga rappels en Juegos y al que abra el piso"},
       {"op":"solis","room":"Pasillo 2F","f":"2","role":"roam","job":"Escanea drones y gadgets en 2F, avisa el vertical y rota por Escaleras"}]}
@@ -237,7 +237,7 @@
   "compressor": {
    "attack": [
     {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Hibana abre la pared Restaurante→Tienda con Thatcher mientras Buck destruye Compresor desde Oficina (2F). Zero da intel dentro del sitio y Gridlock cierra Pasillo y Garaje para que no lleguen flancos al plant en Compresor.",
-     "timeline":["0:00–0:45 · Zero cámaras en Compresor/Tienda, Buck sube por Escaleras Rojas","0:45–1:30 · Thatcher EMP + Hibana pared de Restaurante; Buck abre el piso de Oficina","1:30–2:30 · entrada por Tienda con Gridlock presionando Garaje, plant en Compresor","2:30–3:00 · Buck sostiene desde arriba, Gridlock cierra Pasillo con stingers"],
+     "timeline":["0:00–0:45 · Zero cámaras en Compresor/Tienda, Buck sube por Escaleras Rojas","0:45–1:30 · Thatcher EMP + Hibana pared de Restaurante; Buck abre el piso de Oficina","1:30–2:30 · entrada por Tienda con Gridlock presionando Garaje, plant en Compresor","2:30–3:00 · Buck sostiene desde arriba, Gridlock cierra Garaje con stingers y Thatcher la puerta de Pasillo"],
      "ops":[
       {"op":"hibana","role":"duro","spawn":"Exterior",
        "path":[
@@ -251,7 +251,7 @@
        "final":"Planta en Compresor y sostiene la puerta de Tienda"},
       {"op":"thatcher","role":"antigadget","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Dronea Restaurante","via":"door"},
+        {"room":"Exterior","f":"1","do":"Dronea Restaurante desde la puerta trasera buscando trampas y la batería de Bandit","via":"door"},
         {"room":"Restaurante","f":"1","do":"EMP sobre la pared de Tienda y cubre a Hibana","via":"door"},
         {"room":"Tienda","f":"1","do":"Entra segundo, limpia esquinas","via":"breach"}],
        "clear":[
@@ -260,9 +260,10 @@
        "final":"Cubre Tienda y la puerta de Pasillo"},
       {"op":"zero","role":"intel","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Argus a la pared exterior de Tienda","via":"door"},
-        {"room":"Tienda","f":"1","do":"Dispara la Evil Eye y busca anclas con las cámaras","via":"door"},
-        {"room":"Compresor","f":"1","do":"Entra con Hibana","via":"door"}],
+        {"room":"Exterior","f":"1","do":"Argus a la pared exterior de Tienda desde la fachada trasera y otra a la pared exterior de Compresor","via":"door"},
+        {"room":"Restaurante","f":"1","do":"Entra por la puerta trasera con Hibana y Thatcher, cubre la puerta de Pasillo mientras ponen la carga","via":"door"},
+        {"room":"Tienda","f":"1","do":"Cruza por la pared abierta, dispara la Evil Eye con la Argus y marca anclas","via":"breach"},
+        {"room":"Compresor","f":"1","do":"Entra con Hibana y cubre el plant desde la puerta de Tienda","via":"door"}],
        "clear":[
         {"room":"Tienda","f":"1","threat":"Maestro Evil Eye y ADS en el sitio","how":"Argus desde afuera, dispara los gadgets antes de la entrada"},
         {"room":"Compresor","f":"1","threat":"Ancla Smoke en la esquina de Compresor","how":"cámara en la pared, marca y entra con dos"}],
@@ -270,9 +271,9 @@
       {"op":"buck","role":"vertical","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la puerta de Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa rápido","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
         {"room":"Pasillo","f":"1","do":"Avanza a las escaleras","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
         {"room":"Escaleras","f":"2","do":"Sale y checa Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"Avanza a Oficina","via":"door"},
         {"room":"Oficina","f":"2","do":"Skeleton Key al piso sobre Compresor","via":"breach"}],
@@ -340,16 +341,16 @@
         {"room":"Naturaleza","f":"1","threat":"Roamer rotando a Garaje","how":"sigue el ping"}],
        "final":"Cierra Naturaleza→Garaje en el post-plant"}
      ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sledge y Ram destruyen el piso de Oficina (2F) sobre Compresor mientras Fuze mete clusters sobre Tienda desde Fiesta; Maverick abre la escotilla Oficina→Oficina (arriba) para bajar y Twitch mata los gadgets desde abajo. Las anclas de Compresor no tienen techo.",
-     "timeline":["0:00–0:45 · drones a 2F, los cuatro suben por Escaleras Rojas, Twitch dronea Compresor","0:45–1:30 · Sledge/Ram abren el piso de Oficina; Fuze clusters sobre Tienda","1:30–2:30 · Maverick abre la escotilla y bajan a Oficina (arriba)","2:30–3:00 · plant en Compresor con dos arriba"],
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sledge y Ram destruyen el piso de Oficina (2F) sobre Compresor mientras Fuze mete clusters sobre Tienda desde Pasillo 2F; Maverick abre la escotilla Oficina→Oficina (arriba) para bajar y Twitch mata los gadgets desde abajo. Las anclas de Compresor no tienen techo.",
+     "timeline":["0:00–0:45 · drones a 2F, los cuatro suben por Escaleras Rojas, Twitch dronea Compresor","0:45–1:30 · Sledge/Ram abren el piso de Oficina; Fuze clusters desde Pasillo 2F sobre Tienda","1:30–2:30 · Maverick abre la escotilla y bajan a Oficina (arriba)","2:30–3:00 · plant en Compresor con dos arriba"],
      "ops":[
       {"op":"sledge","role":"blando","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la puerta de Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa rápido","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale al 2F","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"Avanza a Oficina","via":"door"},
         {"room":"Oficina","f":"2","do":"Martillo al piso sobre Compresor","via":"breach"}],
        "clear":[
@@ -359,11 +360,11 @@
       {"op":"ram","role":"blando","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va con Sledge","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
-        {"room":"Pasillo 2F","f":"2","do":"Avanza","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Avanza por el Pasillo 2F hasta la pared reforzada","via":"door"},
         {"room":"Oficina","f":"2","do":"BU-GI cruzando Oficina para abrir todo el piso sobre Compresor","via":"door"}],
        "clear":[
         {"room":"Pasillo 2F","f":"2","threat":"Roamer rotando entre Oficina y Lavandería","how":"dron el pasillo y avanza con Sledge"},
@@ -372,19 +373,19 @@
       {"op":"fuze","role":"negacion","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Sube con el grupo por Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
-        {"room":"Fiesta","f":"2","do":"Clusters en el piso de Fiesta sobre Tienda","via":"door"}],
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Clusters en el piso del Pasillo 2F justo sobre Tienda, antes de la puerta de Oficina","via":"door"}],
        "clear":[
-        {"room":"Fiesta","f":"2","threat":"Roamer tipo Vigil en Fiesta","how":"dron y limpia antes de poner clusters"},
+        {"room":"Pasillo 2F","f":"2","threat":"Roamer tipo Vigil rotando entre Oficina y Lavandería","how":"dron el pasillo y limpia con Sledge antes de agacharte a poner clusters"},
         {"room":"Tienda","f":"1","threat":"Maestro anclado en Tienda debajo","how":"clusters sobre su posición y avisa al equipo"}],
        "final":"Clusters sobre Tienda y cubre Escaleras 2F"},
       {"op":"twitch","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Dron de choque por Garaje a Compresor","via":"door"},
-        {"room":"Garaje","f":"1","do":"Mata Evil Eye, ADS y Mira desde el dron","via":"door"},
+        {"room":"Garaje","f":"1","do":"Mete el dron por la puerta de Compresor y revienta Evil Eyes, ADS y baterías; marca dónde está Mira","via":"door"},
         {"room":"Compresor","f":"1","do":"Entra cuando cae el techo","via":"door"}],
        "clear":[
         {"room":"Garaje","f":"1","threat":"Mozzie pest en la puerta","how":"dron chico primero"},
@@ -393,11 +394,11 @@
       {"op":"maverick","role":"duro","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Sube con el grupo","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
-        {"room":"Pasillo 2F","f":"2","do":"Avanza","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
+        {"room":"Pasillo 2F","f":"2","do":"Avanza por el Pasillo 2F hasta la pared reforzada","via":"door"},
         {"room":"Oficina","f":"2","do":"Soplete a la escotilla reforzada","via":"door"},
         {"room":"Oficina (arriba)","f":"1","do":"Baja por la escotilla al final","via":"hatch"}],
        "clear":[
@@ -421,7 +422,7 @@
        "path":[
         {"room":"Exterior","f":"1","do":"Lanza LV por la puerta de Restaurante a la pared","via":"door"},
         {"room":"Restaurante","f":"1","do":"Cubre a Thermite","via":"door"},
-        {"room":"Tienda","f":"1","do":"Entra atrás","via":"breach"}],
+        {"room":"Tienda","f":"1","do":"Entra atrás de Thermite por la pared abierta","via":"breach"}],
        "clear":[
         {"room":"Restaurante","f":"1","threat":"Bandit/Kaid en la pared","how":"lanza LV pegada a la pared"},
         {"room":"Pasillo","f":"1","threat":"Roamer llegando por Pasillo","how":"claymore en la puerta"}],
@@ -479,15 +480,15 @@
   "party": {
    "attack": [
     {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Thermite y Thatcher suben por Escaleras Rojas y abren la pared Pasillo 2F→Oficina mientras Glaz e Iana presionan las ventanas de Fiesta con humo. Nomad cierra las Escaleras para que ningún roamer llegue al plant en Oficina.",
-     "timeline":["0:00–0:45 · Iana réplica por la ventana de Fiesta, Thermite/Thatcher suben","0:45–1:30 · Thatcher EMP + Thermite pared de Oficina; Glaz humo en Fiesta","1:30–2:30 · entrada por la pared y ventana, plant en Oficina","2:30–3:00 · Nomad cierra Escaleras, Glaz sostiene desde la ventana"],
+     "timeline":["0:00–0:45 · Thermite/Thatcher/Iana/Nomad suben por Escaleras Rojas, Glaz rappelea a Fiesta; réplica de Iana desde Escaleras","0:45–1:30 · Thatcher EMP + Thermite pared de Oficina; Glaz humo en Fiesta","1:30–2:30 · entrada por la pared y ventana, plant en Oficina","2:30–3:00 · Nomad cierra Escaleras, Glaz sostiene desde la ventana"],
      "ops":[
       {"op":"thermite","role":"duro","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la puerta de Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa rápido","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
         {"room":"Pasillo","f":"1","do":"Avanza a las escaleras","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale al 2F","via":"stairs"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"Exotérmica en la pared reforzada de Oficina","via":"door"},
         {"room":"Oficina","f":"2","do":"Entra y planta","via":"breach"}],
        "clear":[
@@ -498,26 +499,29 @@
       {"op":"thatcher","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Sube con Thermite","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"EMP a la pared de Oficina","via":"door"},
-        {"room":"Oficina","f":"2","do":"Entra segundo","via":"breach"}],
+        {"room":"Oficina","f":"2","do":"Entra segundo por la pared abierta y limpia la esquina de Fiesta","via":"breach"}],
        "clear":[
         {"room":"Pasillo 2F","f":"2","threat":"Mute jammer y Bandit trickeando","how":"EMP justo con la carga"},
         {"room":"Lavandería","f":"2","threat":"Roamer saliendo de Lavandería a la espalda","how":"claymore en la puerta de Lavandería"}],
        "final":"Cubre Pasillo 2F mientras Thermite planta"},
       {"op":"iana","role":"intel","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Réplica por la ventana de Fiesta para ver anclas","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel a la ventana de Fiesta","via":"rappel"},
-        {"room":"Fiesta","f":"2","do":"Entra con humo de Glaz","via":"window"},
+        {"room":"Exterior","f":"1","do":"Entra por Cocina con Thermite (la réplica no puede rappelear, así que sube por escaleras)","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina sin pelear la pared","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube con Nomad detrás","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Manda la réplica por la puerta de Fiesta para contar anclas y gastar cepos de Frost","via":"stairs"},
+        {"room":"Fiesta","f":"2","do":"Entra con el humo de Glaz cuando Thermite abre la pared de Oficina","via":"door"},
         {"room":"Oficina","f":"2","do":"Cruza a Oficina para el plant","via":"door"}],
        "clear":[
-        {"room":"Fiesta","f":"2","threat":"Frost cepo bajo la ventana, Castle en la ventana","how":"réplica primero para ver los cepos, rompe la Castle con impacto"},
+        {"room":"Fiesta","f":"2","threat":"Frost cepo detrás de la puerta de Escaleras, Smoke anclado en la esquina","how":"réplica primero para ver los cepos y dispáralos; entra solo con el humo de Glaz"},
         {"room":"Oficina","f":"2","threat":"Ancla Mira mirando la puerta de Fiesta","how":"réplica para gastar el espejo, entra con el equipo"}],
-       "final":"Cubre Fiesta desde la ventana durante el plant"},
+       "final":"Cubre la puerta de Escaleras desde Fiesta durante el plant"},
       {"op":"glaz","role":"negacion","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la fachada de Fiesta","via":"door"},
@@ -530,9 +534,9 @@
       {"op":"nomad","role":"flanco","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Entra por Cocina con el grupo","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
         {"room":"Pasillo","f":"1","do":"Airjab en la puerta de Restaurante","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
         {"room":"Escaleras","f":"2","do":"Airjabs en las Escaleras para cerrar el flanco","via":"stairs"}],
        "clear":[
         {"room":"Pasillo","f":"1","threat":"Roamer rotando por Pasillo desde Restaurante","how":"airjab en la puerta"},
@@ -540,7 +544,7 @@
        "final":"Cubre Escaleras en el post-plant"}
      ]},
     {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rappel masivo a las ventanas de Fiesta en los primeros 20 segundos: Ying ciega el cuarto, Ash rompe la Castle, Zofia y Blitz entran y Dokkaebi hackea cámaras. Planta en Fiesta antes de que armen Oficina.",
-     "timeline":["0:00–0:20 · sprint a la fachada de Fiesta, rappel","0:20–0:40 · Ash rompe Castle, Ying candelas, Dokkaebi logic bomb","0:40–1:15 · entrada por las ventanas y plant en Fiesta","1:15–3:00 · sostener desde Fiesta y las ventanas"],
+     "timeline":["0:00–0:20 · sprint a la fachada de Fiesta, rappel","0:20–0:40 · Ash rompe Castle, Ying candelas, Dokkaebi logic bomb (cámaras solo tras el primer kill)","0:40–1:15 · entrada por las ventanas y plant en Fiesta","1:15–3:00 · sostener desde Fiesta y las ventanas"],
      "ops":[
       {"op":"ying","role":"entrada","spawn":"Exterior",
        "path":[
@@ -553,7 +557,7 @@
        "final":"Planta en Fiesta pegada a la pared de Oficina"},
       {"op":"ash","role":"entrada","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Sprint","via":"door"},
+        {"room":"Exterior","f":"1","do":"Sprint a la fachada y engancha el rappel","via":"door"},
         {"room":"Exterior","f":"2","do":"Rappel a Fiesta","via":"rappel"},
         {"room":"Fiesta","f":"2","do":"Breach round a la Castle y entra","via":"window"}],
        "clear":[
@@ -562,7 +566,7 @@
        "final":"Cubre Escaleras desde Fiesta"},
       {"op":"zofia","role":"blando","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Sprint","via":"door"},
+        {"room":"Exterior","f":"1","do":"Sprint a la fachada y engancha el rappel","via":"door"},
         {"room":"Exterior","f":"2","do":"Rappel a la segunda ventana","via":"rappel"},
         {"room":"Fiesta","f":"2","do":"Conmoción y entra","via":"window"}],
        "clear":[
@@ -571,8 +575,8 @@
        "final":"Sostiene la puerta a Oficina durante el plant"},
       {"op":"blitz","role":"soporte","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Sprint","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
+        {"room":"Exterior","f":"1","do":"Sprint a la fachada y engancha el rappel","via":"door"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana con el equipo, sin asomarte hasta la candela","via":"rappel"},
         {"room":"Fiesta","f":"2","do":"Entra flasheando por la ventana","via":"window"}],
        "clear":[
         {"room":"Fiesta","f":"2","threat":"Ancla Frost cerca de la ventana, Noor con fuego","how":"flash al entrar; si hay fuego de Noor, sal por la ventana"},
@@ -580,21 +584,21 @@
        "final":"Bloquea la puerta de Oficina durante el plant"},
       {"op":"dokkaebi","role":"intel","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Logic bomb y hackea cámaras","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
-        {"room":"Fiesta","f":"2","do":"Entra al final y cubre","via":"window"}],
+        {"room":"Exterior","f":"1","do":"Logic bomb al 0:20 para que los teléfonos delaten dónde están las anclas de Fiesta","via":"door"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana lateral de Fiesta","via":"rappel"},
+        {"room":"Fiesta","f":"2","do":"Entra al final y cubre; hackea cámaras con el teléfono del primer defensor que caiga","via":"window"}],
        "clear":[
         {"room":"Fiesta","f":"2","threat":"Roamer con teléfono sonando","how":"logic bomb y prefire donde suene"},
         {"room":"Escaleras","f":"2","threat":"Roamer llegando por Escaleras","how":"cámara hackeada y aviso"}],
        "final":"Cubre Escaleras desde Fiesta con las cámaras"}
      ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck y Sledge abren el techo de Bushranger y Compresor desde abajo (1F) para castigar a las anclas de Fiesta y Oficina, Capitão quema desde abajo, Fuze rappelea a Fiesta con clusters y Brava roba los gadgets. Entran por Escaleras al final.",
-     "timeline":["0:00–0:45 · Brava dron por Cocina, Buck/Sledge entran a Bushranger y Compresor","0:45–1:30 · abren techos bajo Fiesta y Oficina; Fuze clusters por la ventana","1:30–2:30 · Capitão quema desde abajo, suben por Escaleras Rojas","2:30–3:00 · plant en Fiesta con dos abajo cubriendo"],
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck y Sledge abren el techo de Bushranger y Compresor desde abajo (1F) para castigar a las anclas de Fiesta y Oficina, Fuze rappelea a Fiesta con clusters, Brava roba los gadgets y Zofia sube con ella por Escaleras Rojas para conmocionar y plantar cuando el sitio ya está roto desde abajo.",
+     "timeline":["0:00–0:45 · Brava dron por Cocina, Buck/Sledge entran a Bushranger y Compresor","0:45–1:30 · abren techos bajo Fiesta y Oficina; Fuze clusters por la ventana","1:30–2:30 · Zofia y Brava suben por Escaleras Rojas, conmoción a Fiesta","2:30–3:00 · plant en Fiesta con dos abajo cubriendo"],
      "ops":[
       {"op":"buck","role":"blando","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la ventana de Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Entra y abre la pared blanda a Bushranger","via":"window"},
+        {"room":"Cocina","f":"1","do":"Entra y abre con la Skeleton Key la pared Cocina–Bushranger (en este sitio no la refuerzan; si la ven reforzada, rodea por Garaje→Naturaleza)","via":"window"},
         {"room":"Bushranger","f":"1","do":"Skeleton Key al techo bajo Fiesta","via":"breach"}],
        "clear":[
         {"room":"Cocina","f":"1","threat":"Kapkan en la ventana","how":"dron y disparo a la trampa"},
@@ -603,22 +607,25 @@
       {"op":"sledge","role":"blando","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Entra por Garaje","via":"door"},
-        {"room":"Garaje","f":"1","do":"Pasa rápido","via":"door"},
+        {"room":"Garaje","f":"1","do":"Cruza Garaje pegado a los autos, sin exponerte a la puerta de Compresor","via":"door"},
         {"room":"Compresor","f":"1","do":"Martillo al techo bajo Oficina","via":"door"},
         {"room":"Oficina (arriba)","f":"1","do":"Abre el techo bajo Oficina","via":"door"}],
        "clear":[
         {"room":"Garaje","f":"1","threat":"Roamer detrás de los autos","how":"dron y prefire"},
         {"room":"Compresor","f":"1","threat":"Roamer rotando por Compresor","how":"limpia con dron antes de golpear"}],
        "final":"Mata anclas de Oficina desde abajo"},
-      {"op":"capitao","role":"negacion","spawn":"Exterior",
+      {"op":"zofia","role":"entrada","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Sigue a Buck","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"window"},
-        {"room":"Bushranger","f":"1","do":"Fuego por los huecos del techo a Fiesta","via":"breach"}],
+        {"room":"Exterior","f":"1","do":"Entra por Cocina con Brava","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina sin pelear la pared de Bushranger","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube cuando Buck confirme que ya abrió el techo de Bushranger","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Conmoción por la puerta de Fiesta y entra tras el Kludge de Brava","via":"stairs"},
+        {"room":"Fiesta","f":"2","do":"Impacto para abrir hueco a Oficina y planta pegada a la pared","via":"door"}],
        "clear":[
-        {"room":"Bushranger","f":"1","threat":"Roamer bajando a castigar el vertical","how":"fuego a la puerta de Pasillo"},
-        {"room":"Fiesta","f":"2","threat":"Anclas Frost/Smoke pegadas a las paredes","how":"fuego por el hueco del techo"}],
-       "final":"Quema el plant desde abajo y cubre Cocina"},
+        {"room":"Escaleras","f":"2","threat":"Roamer esperando la subida en la esquina de las Escaleras 2F","how":"impacto a la esquina y sube con Brava"},
+        {"room":"Fiesta","f":"2","threat":"Anclas Frost/Smoke pegadas a las paredes que Buck no alcanza desde abajo","how":"conmoción por la puerta y entra al reventar"}],
+       "final":"Planta en Fiesta y sostiene la puerta de Oficina"},
       {"op":"fuze","role":"negacion","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la fachada","via":"door"},
@@ -631,8 +638,8 @@
       {"op":"brava","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Kludge por Cocina hacia las escaleras","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
         {"room":"Escaleras Rojas","f":"1","do":"Sube al final","via":"stairs"},
         {"room":"Escaleras","f":"2","do":"Roba ADS y Evil Eyes con el Kludge y entra","via":"stairs"},
         {"room":"Fiesta","f":"2","do":"Entra cuando el sitio está roto","via":"door"}],
@@ -647,10 +654,10 @@
       {"op":"ace","role":"duro","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"SELMA a la pared de Oficina","via":"door"},
         {"room":"Oficina","f":"2","do":"Entra con Kali","via":"breach"}],
        "clear":[
@@ -660,12 +667,12 @@
       {"op":"kali","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Sube con Ace","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"Lanza LV a la pared de Oficina","via":"door"},
-        {"room":"Oficina","f":"2","do":"Entra atrás","via":"breach"}],
+        {"room":"Oficina","f":"2","do":"Entra atrás de Ace por la pared abierta","via":"breach"}],
        "clear":[
         {"room":"Pasillo 2F","f":"2","threat":"Bandit/Kaid en la pared","how":"lanza LV pegada"},
         {"room":"Lavandería","f":"2","threat":"Roamer saliendo de Lavandería","how":"claymore en la puerta"}],
@@ -682,7 +689,7 @@
       {"op":"gridlock","role":"flanco","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la fachada","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana con el equipo, sin asomarte hasta la candela","via":"rappel"},
         {"room":"Fiesta","f":"2","do":"Stingers a la puerta de Escaleras y planta","via":"window"}],
        "clear":[
         {"room":"Fiesta","f":"2","threat":"Ancla en la esquina de Fiesta","how":"entra tras Monty y prefire"},
@@ -691,10 +698,10 @@
       {"op":"lion","role":"intel","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Escaneo cuando Ace abre","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana con el equipo, sin asomarte hasta la candela","via":"rappel"},
         {"room":"Fiesta","f":"2","do":"Entra al final","via":"window"}],
        "clear":[
-        {"room":"Fiesta","f":"2","threat":"Frost cepo bajo la ventana","how":"impacto al piso antes de entrar"},
+        {"room":"Fiesta","f":"2","threat":"Frost cepo bajo la ventana","how":"dispara el cepo desde el rappel antes de entrar"},
         {"room":"Oficina","f":"2","threat":"Ancla moviéndose a Fiesta","how":"escaneo y prefire"}],
        "final":"Cubre Fiesta y escanea en el post-plant"}
      ]}
@@ -728,10 +735,10 @@
       {"op":"ace","role":"duro","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale al 2F","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"SELMA a la pared reforzada de Lavandería","via":"door"},
         {"room":"Lavandería","f":"2","do":"Entra y cruza a Juegos","via":"breach"},
         {"room":"Juegos","f":"2","do":"Planta detrás de la mesa","via":"door"}],
@@ -743,12 +750,12 @@
       {"op":"thatcher","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Sube con Ace","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"EMP a la pared de Lavandería","via":"door"},
-        {"room":"Lavandería","f":"2","do":"Entra segundo","via":"breach"}],
+        {"room":"Lavandería","f":"2","do":"Entra segundo por la pared abierta y limpia detrás de las lavadoras","via":"breach"}],
        "clear":[
         {"room":"Pasillo 2F","f":"2","threat":"Mute jammer y Bandit","how":"EMP con la carga"},
         {"room":"Oficina","f":"2","threat":"Roamer saliendo de Oficina a la espalda","how":"claymore en la puerta de Oficina"}],
@@ -765,7 +772,7 @@
       {"op":"sledge","role":"vertical","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Entra por Garaje","via":"door"},
-        {"room":"Garaje","f":"1","do":"Pasa rápido","via":"door"},
+        {"room":"Garaje","f":"1","do":"Cruza Garaje pegado a los autos, sin exponerte a la puerta de Compresor","via":"door"},
         {"room":"Naturaleza","f":"1","do":"Martillo al techo bajo Lavandería","via":"door"},
         {"room":"Lavandería (arriba)","f":"1","do":"Sigue abriendo el techo bajo Lavandería","via":"door"}],
        "clear":[
@@ -775,9 +782,9 @@
       {"op":"gridlock","role":"flanco","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Entra por Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
         {"room":"Pasillo","f":"1","do":"Stingers a la puerta de Restaurante","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
         {"room":"Escaleras","f":"2","do":"Stingers en las Escaleras y cubre Fiesta","via":"stairs"}],
        "clear":[
         {"room":"Pasillo","f":"1","threat":"Roamer rotando por Pasillo","how":"stingers en la puerta"},
@@ -798,8 +805,8 @@
        "final":"Planta en Juegos pegada a la pared"},
       {"op":"ying","role":"entrada","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Sprint","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
+        {"room":"Exterior","f":"1","do":"Sprint a la fachada y engancha el rappel","via":"door"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana con el equipo, sin asomarte hasta la candela","via":"rappel"},
         {"room":"Juegos","f":"2","do":"Candelas adentro y entra","via":"window"}],
        "clear":[
         {"room":"Juegos","f":"2","threat":"Anclas en las esquinas de Juegos","how":"candela por la ventana"},
@@ -807,9 +814,9 @@
        "final":"Sostiene la puerta a Lavandería"},
       {"op":"blitz","role":"soporte","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Sprint","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
-        {"room":"Juegos","f":"2","do":"Entra flasheando","via":"window"}],
+        {"room":"Exterior","f":"1","do":"Sprint a la fachada y engancha el rappel","via":"door"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana con el equipo, sin asomarte hasta la candela","via":"rappel"},
+        {"room":"Juegos","f":"2","do":"Entra flasheando por la ventana con Ying atrás","via":"window"}],
        "clear":[
         {"room":"Juegos","f":"2","threat":"Frost cerca de la ventana, Noor con fuego","how":"flash al entrar; si hay fuego sal por la ventana"},
         {"room":"Escaleras","f":"2","threat":"Roamer llegando por Escaleras","how":"flash a la puerta"}],
@@ -817,7 +824,7 @@
       {"op":"finka","role":"soporte","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Surge al rappel","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana con el equipo, sin asomarte hasta la candela","via":"rappel"},
         {"room":"Juegos","f":"2","do":"Entra al final","via":"window"}],
        "clear":[
         {"room":"Juegos","f":"2","threat":"Lesion gu bajo la ventana","how":"el surge quita el gu"},
@@ -826,7 +833,7 @@
       {"op":"jackal","role":"flanco","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Escanea huellas afuera","via":"door"},
-        {"room":"Exterior","f":"2","do":"Rappel","via":"rappel"},
+        {"room":"Exterior","f":"2","do":"Rappel a la ventana con el equipo, sin asomarte hasta la candela","via":"rappel"},
         {"room":"Juegos","f":"2","do":"Escanea al roamer y lo caza","via":"window"},
         {"room":"Escaleras","f":"2","do":"Persigue al roamer por Escaleras","via":"door"}],
        "clear":[
@@ -834,35 +841,38 @@
         {"room":"Escaleras","f":"2","threat":"Roamer rotando por Escaleras","how":"sigue el ping"}],
        "final":"Cierra Escaleras en el post-plant"}
      ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck abre el techo de Naturaleza bajo Lavandería y Ram el de Garaje bajo Juegos; Capitão quema desde abajo, Fuze rappelea a Juegos con clusters y Twitch mata gadgets. Suben por Escaleras Rojas al final.",
-     "timeline":["0:00–0:45 · Twitch dron por Garaje, Buck/Ram entran a Naturaleza y Garaje","0:45–1:30 · abren techos bajo Lavandería y Juegos; Fuze clusters por la ventana","1:30–2:30 · Capitão quema desde abajo, suben por Escaleras Rojas","2:30–3:00 · plant en Lavandería con dos abajo cubriendo"],
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck abre el techo de Naturaleza bajo Lavandería y Sledge el de Garaje bajo Juegos (el BU-GI de Ram no sirve desde abajo: solo rompe pisos); Fuze rappelea a Juegos con clusters, Twitch mata gadgets y Ash sube por Escaleras Rojas para entrar y plantar cuando el sitio ya está roto.",
+     "timeline":["0:00–0:45 · Twitch dron por Garaje, Buck/Sledge entran a Naturaleza y Garaje","0:45–1:30 · abren techos bajo Lavandería y Juegos; Fuze clusters por la ventana","1:30–2:30 · Ash y Twitch suben por Escaleras Rojas, breach rounds a la puerta de Juegos","2:30–3:00 · plant en Juegos con dos abajo cubriendo"],
      "ops":[
       {"op":"buck","role":"blando","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Entra por Garaje","via":"door"},
-        {"room":"Garaje","f":"1","do":"Pasa","via":"door"},
+        {"room":"Garaje","f":"1","do":"Cruza Garaje pegado a los autos, sin exponerte a la puerta de Compresor","via":"door"},
         {"room":"Naturaleza","f":"1","do":"Skeleton Key al techo bajo Lavandería","via":"door"}],
        "clear":[
         {"room":"Garaje","f":"1","threat":"Roamer detrás de los autos","how":"dron y prefire"},
         {"room":"Naturaleza","f":"1","threat":"Roamer bajando a castigar el vertical","how":"claymore en la puerta de Lavandería (arriba)"}],
        "final":"Mata anclas de Lavandería desde abajo"},
-      {"op":"ram","role":"blando","spawn":"Exterior",
+      {"op":"sledge","role":"blando","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Entra por Garaje","via":"door"},
-        {"room":"Garaje","f":"1","do":"BU-GI cruzando Garaje para abrir el techo bajo Juegos","via":"door"}],
+        {"room":"Exterior","f":"1","do":"Entra por Garaje con Buck","via":"door"},
+        {"room":"Garaje","f":"1","do":"Martillo al techo de Garaje bajo Juegos, empezando por la esquina de las ventanas donde se para Frost","via":"door"}],
        "clear":[
-        {"room":"Garaje","f":"1","threat":"Roamer en Garaje, Lesion gu en la puerta","how":"BU-GI limpia gadgets, entra atrás"},
+        {"room":"Garaje","f":"1","threat":"Roamer en Garaje, Lesion gu en la puerta","how":"dron primero, dispara los gu y entra atrás de Buck"},
         {"room":"Compresor","f":"1","threat":"Roamer rotando por Compresor","how":"claymore en la puerta de Compresor"}],
        "final":"Sostiene el techo abierto bajo Juegos"},
-      {"op":"capitao","role":"negacion","spawn":"Exterior",
+      {"op":"ash","role":"entrada","spawn":"Exterior",
        "path":[
-        {"room":"Exterior","f":"1","do":"Sigue a Buck","via":"door"},
-        {"room":"Garaje","f":"1","do":"Pasa","via":"door"},
-        {"room":"Naturaleza","f":"1","do":"Fuego por los huecos del techo a Lavandería","via":"door"}],
+        {"room":"Exterior","f":"1","do":"Entra por Cocina con Twitch","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina sin pelear la pared de Bushranger","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube cuando Buck confirme que ya abrió el techo","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Breach round a la barricada de Juegos y entra tras el dron de Twitch","via":"stairs"},
+        {"room":"Juegos","f":"2","do":"Planta detrás de la mesa mientras Buck y Sledge castigan desde abajo","via":"door"}],
        "clear":[
-        {"room":"Naturaleza","f":"1","threat":"Roamer llegando por Lavandería (arriba)","how":"fuego a la puerta"},
-        {"room":"Lavandería","f":"2","threat":"Anclas pegadas a las lavadoras","how":"fuego por el hueco del techo"}],
-       "final":"Quema el plant desde abajo"},
+        {"room":"Escaleras","f":"2","threat":"Roamer esperando la subida en las Escaleras 2F","how":"dron adelante y breach round a la esquina"},
+        {"room":"Juegos","f":"2","threat":"Ancla Frost/Castle detrás de la barricada","how":"breach round a la barricada y entra al reventar"}],
+       "final":"Planta en Juegos y sostiene la puerta de Lavandería"},
       {"op":"fuze","role":"negacion","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a la fachada","via":"door"},
@@ -875,8 +885,8 @@
       {"op":"twitch","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Dron de choque por Cocina hacia las escaleras","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
         {"room":"Escaleras Rojas","f":"1","do":"Sube al final","via":"stairs"},
         {"room":"Escaleras","f":"2","do":"Mata ADS y Evil Eyes con el dron y entra","via":"stairs"},
         {"room":"Juegos","f":"2","do":"Entra cuando el sitio está roto","via":"door"}],
@@ -891,10 +901,10 @@
       {"op":"thermite","role":"duro","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Va a Cocina","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"Exotérmica en la pared de Lavandería","via":"door"},
         {"room":"Lavandería","f":"2","do":"Entra con Kali","via":"breach"}],
        "clear":[
@@ -904,12 +914,12 @@
       {"op":"kali","role":"antigadget","spawn":"Exterior",
        "path":[
         {"room":"Exterior","f":"1","do":"Sube con Thermite","via":"door"},
-        {"room":"Cocina","f":"1","do":"Pasa","via":"door"},
-        {"room":"Pasillo","f":"1","do":"Avanza","via":"door"},
-        {"room":"Escaleras Rojas","f":"1","do":"Sube","via":"stairs"},
-        {"room":"Escaleras","f":"2","do":"Sale","via":"stairs"},
+        {"room":"Cocina","f":"1","do":"Cruza Cocina rápido sin pelear la pared de Bushranger, pegado a la barra","via":"door"},
+        {"room":"Pasillo","f":"1","do":"Recorre el Pasillo cubriendo la puerta de Restaurante hasta el pie de las Escaleras Rojas","via":"door"},
+        {"room":"Escaleras Rojas","f":"1","do":"Sube las Escaleras Rojas pegado a la pared, con dron adelante","via":"stairs"},
+        {"room":"Escaleras","f":"2","do":"Sale al 2F cubriendo la puerta de Fiesta","via":"stairs"},
         {"room":"Pasillo 2F","f":"2","do":"Lanza LV a la pared de Lavandería","via":"door"},
-        {"room":"Lavandería","f":"2","do":"Entra atrás","via":"breach"}],
+        {"room":"Lavandería","f":"2","do":"Entra atrás de Thermite por la pared abierta","via":"breach"}],
        "clear":[
         {"room":"Pasillo 2F","f":"2","threat":"Bandit/Kaid en la pared","how":"lanza LV pegada"},
         {"room":"Oficina","f":"2","threat":"Roamer saliendo de Oficina","how":"claymore en la puerta"}],

@@ -1,33 +1,57 @@
 {
- "map": "favela",
- "sites": {
-  "garage": {
-   "attack": [
-    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Back Alley para abrir la pared reforzada de Biker's Bedroom con Thatcher + Thermite mientras Buck rompe el piso de Football Bedroom encima de la bomba B y Iana dronea desde Stair Hall. El sitio de garaje está lleno de paredes blandas y el ancla vive en la esquina de Bedroom: cuando cae la pared y el techo, se le acaban los rincones. Nomad tapa Stair Hall para que el roamer de 2F no baje por la espalda.",
-     "timeline":["0:00–0:45 · drones a Biker's Bedroom y Garage; Buck sube a Football Bedroom; Thatcher y Thermite toman Back Alley","0:45–1:30 · Buck abre el techo de Bedroom; EMP + carga exotérmica en la pared Back Alley–Biker's Bedroom","1:30–2:30 · entrada por la pared y por Garage con Nomad tapando Stair Hall; planta en Biker's Bedroom","2:30–3:00 · post-plant: Buck desde arriba, Thermite sostiene el hueco, Iana revisa Stair Hall con la réplica"],
+ "map":"favela",
+ "sites":{
+  "garage":{
+   "attack":[
+    {
+     "id":"default",
+     "n":"Default lento",
+     "tag":"DEFAULT",
+     "summary":"Se toma Back Alley para abrir la pared reforzada de Biker's Bedroom con Thatcher + Thermite mientras Buck rompe el piso de Football Bedroom encima de la bomba B y Iana dronea desde Stair Hall. El sitio de garaje está lleno de paredes blandas y el ancla vive en la esquina de Bedroom: cuando cae la pared y el techo, se le acaban los rincones. Nomad tapa Stair Hall para que el roamer de 2F no baje por la espalda.",
+     "timeline":[
+      "0:00–0:45 · drones a Biker's Bedroom y Garage; Buck sube a Football Bedroom; Thatcher y Thermite toman Back Alley",
+      "0:45–1:30 · Buck abre el techo de Bedroom; EMP + carga exotérmica en la pared Back Alley–Biker's Bedroom",
+      "1:30–2:30 · entrada por la pared y por Garage con Nomad tapando Stair Hall; planta en Biker's Bedroom",
+      "2:30–3:00 · post-plant: Buck desde arriba, Thermite sostiene el hueco, Iana revisa Stair Hall con la réplica"
+     ],
      "ops":[
-      {"op":"thermite","role":"duro","spawn":"School Alley",
+      {
+       "op":"thermite",
+       "role":"duro",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Dronea el callejón y espera al equipo, no salgas solo","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza pegado a la pared cuidando las ventanas de Football Apartment","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Coloca la carga exotérmica en la pared reforzada de Biker's Bedroom tras el EMP","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Entra por el hueco con humo y cubre la planta","via":"breach"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Entra por el hueco con humo y cubre la planta","via":"breach"}
+       ],
        "clear":[
         {"room":"Street","f":-1,"threat":"Spawnpeek desde la ventana de Football Apartment (2F) y desde la puerta de Biker's Garage","how":"Dron primero, cruza en pareja con Nomad y no te pares en el centro de la calle"},
         {"room":"Back Alley","f":-1,"threat":"Bandit trickeando la pared reforzada y ADS de Jäger pegado al marco","how":"Espera los dos EMP de Thatcher y pon la carga justo cuando Buck ya abrió el techo para que Bandit no pueda asomar"},
-        {"room":"Biker's Bedroom","f":1,"threat":"Ancla con Mira mirando el hueco y Smoke con gas listo en la esquina","how":"Humo en el hueco, Buck le quita el piso al ancla desde arriba y entras en cuanto rompan el espejo"}],
-       "final":"Sostiene el hueco de la pared y cubre la planta en Biker's Bedroom"},
-      {"op":"thatcher","role":"antigadget","spawn":"School Alley",
+        {"room":"Biker's Bedroom","f":1,"threat":"Ancla con Mira mirando el hueco y Smoke con gas listo en la esquina","how":"Humo en el hueco, Buck le quita el piso al ancla desde arriba y entras en cuanto rompan el espejo"}
+       ],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Biker's Bedroom"
+      },
+      {
+       "op":"thatcher",
+       "role":"antigadget",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Dronea Street buscando peek de Garage","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza con Thermite y revisa la puerta de Biker's Garage","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Dos EMP a la pared de Biker's Bedroom para quemar Bandit, Kaid y Mute","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Entra detrás de Thermite y limpia el rincón de la cama","via":"breach"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Entra detrás de Thermite y limpia el rincón de la cama","via":"breach"}
+       ],
        "clear":[
         {"room":"Back Alley","f":-1,"threat":"Kapkan en la puerta de Back Stairs y Mute jammer detrás de la pared reforzada","how":"EMP al marco de la puerta y a la pared antes de que Thermite se acerque"},
-        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Mira o Kaid pegado a la pared reforzada","how":"Tira el segundo EMP en cuanto veas chispa de Rtila y entra con humo"}],
-       "final":"Cubre a Thermite en la planta desde el hueco y vigila la puerta de Back Stairs"},
-      {"op":"buck","role":"blando","spawn":"Rooftops",
+        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Mira o Kaid pegado a la pared reforzada","how":"Tira el segundo EMP en cuanto veas chispa de Rtila y entra con humo"}
+       ],
+       "final":"Cubre a Thermite en la planta desde el hueco y vigila la puerta de Back Stairs"
+      },
+      {
+       "op":"buck",
+       "role":"blando",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja por los techos droneando Roof 3F","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio por la puerta de Packaging","via":"door"},
@@ -36,96 +60,164 @@
         {"room":"Main Stairs","f":2,"do":"Sale a Football Apartment y limpia el cuarto","via":"stairs"},
         {"room":"Football Apartment","f":2,"do":"Cruza a Football Bedroom despacio, el roamer suele estar aquí","via":"door"},
         {"room":"Football Bedroom","f":2,"do":"Abre el piso con la Skeleton Key encima de la bomba de Biker's Bedroom y mata al ancla desde arriba","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Baja por la escotilla al final para cerrar la ronda","via":"hatch"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Baja por la escotilla al final para cerrar la ronda","via":"hatch"}
+       ],
        "clear":[
         {"room":"Packaging Room","f":3,"threat":"Roamer tipo Vigil/Cav esperando en 3F o trampas de Kapkan en la puerta de Roof","how":"Dron antes de cruzar la puerta y revisa las esquinas; si no hay dron, prefire la esquina del fondo"},
         {"room":"Football Apartment","f":2,"threat":"Roamer que sale por Main Stairs y ADS/Evil Eye de Maestro cubriendo Football Bedroom","how":"Pide a Iana que revise con la réplica y rompe las Evil Eye con la escopeta antes de abrir piso"},
-        {"room":"Football Bedroom","f":2,"threat":"Ancla de Biker's Bedroom disparando hacia arriba por los huecos del piso blando","how":"Abre desde una esquina, nunca de pie en el centro, y alterna huecos"}],
-       "final":"Controla la bomba B desde arriba, luego baja por la escotilla para la planta o el post-plant"},
-      {"op":"iana","role":"intel","spawn":"Market",
+        {"room":"Football Bedroom","f":2,"threat":"Ancla de Biker's Bedroom disparando hacia arriba por los huecos del piso blando","how":"Abre desde una esquina, nunca de pie en el centro, y alterna huecos"}
+       ],
+       "final":"Controla la bomba B desde arriba, luego baja por la escotilla para la planta o el post-plant"
+      },
+      {
+       "op":"iana",
+       "role":"intel",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado buscando peek desde Market 2F","via":"door"},
         {"room":"Market","f":1,"do":"Cruza el mercado pegado a los puestos","via":"door"},
         {"room":"Courtyard","f":1,"do":"Manda la réplica Gemini a Stair Hall para sacar la posición del roamer","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Toma el vestíbulo y revisa la puerta de Biker's Apartment con la réplica","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Entra cuando caigan pared y techo y limpia la bomba A","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Entra cuando caigan pared y techo y limpia la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Market","f":1,"threat":"Spawnpeek desde Market 2F y roamer bajando de Courtyard","how":"Dron primero y cruza rápido; no te quedes en el centro del mercado"},
         {"room":"Stair Hall","f":1,"threat":"Roamer tipo Vigil o Alibi con prismas en la puerta de Biker's Apartment","how":"Réplica primero, luego entras; los prismas los distingues porque no reaccionan"},
-        {"room":"Biker's Apartment","f":1,"threat":"Ancla Smoke o Jäger pegado a la pared reforzada de Stair Hall","how":"Espera a que Buck abra techo y a que se rompa la pared; entra por la puerta cuando el ancla rota"}],
-       "final":"Entra a Biker's Apartment cuando el sitio esté roto y cubre la planta desde la bomba A"},
-      {"op":"nomad","role":"flanco","spawn":"School Alley",
+        {"room":"Biker's Apartment","f":1,"threat":"Ancla Smoke o Jäger pegado a la pared reforzada de Stair Hall","how":"Espera a que Buck abra techo y a que se rompa la pared; entra por la puerta cuando el ancla rota"}
+       ],
+       "final":"Entra a Biker's Apartment cuando el sitio esté roto y cubre la planta desde la bomba A"
+      },
+      {
+       "op":"nomad",
+       "role":"flanco",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Thermite y Thatcher","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza y revisa la puerta de Biker's Garage con dron","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Entra por la puerta del garaje y pone dos Airjab hacia Stair Hall","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Se planta en la puerta del apartamento cuando la pared cae y cubre la planta","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Se planta en la puerta del apartamento cuando la pared cae y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Street","f":-1,"threat":"Peek desde la puerta de Biker's Garage o Castle en la puerta","how":"Dron y abre la barricada desde el lado; si hay Castle pide a Ash o rómpela con explosivo"},
         {"room":"Biker's Garage","f":1,"threat":"Lesion con Gu o Kapkan en la puerta del garaje y ancla asomando desde Biker's Apartment","how":"Dron al piso, revisa el marco y entra pegado a las motos"},
-        {"room":"Biker's Apartment","f":1,"threat":"Roamer regresando por Stair Hall a la espalda del equipo","how":"Airjab en la puerta de Stair Hall y otra en la de Garage; queda mirando Stair Hall durante la planta"}],
-       "final":"Sostiene la puerta de Stair Hall con Airjabs y cubre la planta"}
-     ]},
-    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Cinco por la puerta de Biker's Garage desde Street antes del 2:30, con Ying quemando Biker's Apartment y Blitz de punta. El garaje conecta directo con la bomba A y los defensores tardan en reforzar esa entrada; si los agarras montando Mira ya ganaste.",
-     "timeline":["0:00–0:20 · sin drones largos, Ash abre la barricada del garaje desde Street","0:20–0:45 · Candela por la puerta de Biker's Apartment y humo de Striker en Stair Hall","0:45–1:30 · Blitz entra primero, los demás detrás y se limpia Bedroom","1:30–3:00 · planta en Biker's Apartment y se sostiene desde el garaje"],
+        {"room":"Biker's Apartment","f":1,"threat":"Roamer regresando por Stair Hall a la espalda del equipo","how":"Airjab en la puerta de Stair Hall y otra en la de Garage; queda mirando Stair Hall durante la planta"}
+       ],
+       "final":"Sostiene la puerta de Stair Hall con Airjabs y cubre la planta"
+      }
+     ]
+    },
+    {
+     "id":"rush",
+     "n":"Rush",
+     "tag":"RUSH",
+     "summary":"Cinco por la puerta de Biker's Garage desde Street antes del 2:30, con Ying quemando Biker's Apartment y Blitz de punta. El garaje conecta directo con la bomba A y los defensores tardan en reforzar esa entrada; si los agarras montando Mira ya ganaste.",
+     "timeline":[
+      "0:00–0:20 · sin drones largos, Ash abre la barricada del garaje desde Street",
+      "0:20–0:45 · Candela por la puerta de Biker's Apartment y humo de Striker en Stair Hall",
+      "0:45–1:30 · Blitz entra primero, los demás detrás y se limpia Bedroom",
+      "1:30–3:00 · planta en Biker's Apartment y se sostiene desde el garaje"
+     ],
      "ops":[
-      {"op":"ash","role":"entrada","spawn":"School Alley",
+      {
+       "op":"ash",
+       "role":"entrada",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre a Street con el equipo","via":"door"},
         {"room":"Street","f":-1,"do":"Breach a la barricada de Biker's Garage desde la esquina","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Entra detrás de Blitz y abre la puerta del apartamento con la segunda carga","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Limpia la bomba A y cubre la planta","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Limpia la bomba A y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Street","f":-1,"threat":"Spawnpeek desde la ventana de Football Apartment","how":"Corre pegado a la pared del edificio, no cruces por el centro"},
-        {"room":"Biker's Garage","f":1,"threat":"Kapkan o ADS en la puerta y roamer asomando desde Biker's Apartment","how":"Breach de Ash quema el marco, entra con el flash de Blitz"}],
-       "final":"Cubre la planta desde la puerta de Biker's Apartment"},
-      {"op":"blitz","role":"entrada","spawn":"School Alley",
+        {"room":"Biker's Garage","f":1,"threat":"Kapkan o ADS en la puerta y roamer asomando desde Biker's Apartment","how":"Breach de Ash quema el marco, entra con el flash de Blitz"}
+       ],
+       "final":"Cubre la planta desde la puerta de Biker's Apartment"
+      },
+      {
+       "op":"blitz",
+       "role":"entrada",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale corriendo con el escudo arriba","via":"door"},
         {"room":"Street","f":-1,"do":"Se pega a la puerta de Garage mientras Ash la abre","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Entra primero con flash y aguanta la puerta del apartamento","via":"door"},
         {"room":"Biker's Apartment","f":1,"do":"Flash y entra tras la Candela, mata al ancla","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Empuja Bedroom con el resto detrás","via":"door"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Empuja Bedroom con el resto detrás","via":"door"}
+       ],
        "clear":[
         {"room":"Biker's Garage","f":1,"threat":"Ancla esperando en la esquina de las motos o Noor con Horus para quemar escudos","how":"Flash del escudo al entrar y que Ash prefire la esquina; si ves a Noor, retrocede y deja que Ying entre primero"},
-        {"room":"Biker's Apartment","f":1,"threat":"Mira con espejo hacia la puerta del garaje","how":"Candela de Ying primero, entra pegado al espejo para que no te vea"}],
-       "final":"Mata al ancla de Biker's Apartment y sostiene la puerta a Biker's Bedroom"},
-      {"op":"ying","role":"negacion","spawn":"School Alley",
+        {"room":"Biker's Apartment","f":1,"threat":"Mira con espejo hacia la puerta del garaje","how":"Candela de Ying primero, entra pegado al espejo para que no te vea"}
+       ],
+       "final":"Mata al ancla de Biker's Apartment y sostiene la puerta a Biker's Bedroom"
+      },
+      {
+       "op":"ying",
+       "role":"negacion",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con el grupo","via":"door"},
         {"room":"Street","f":-1,"do":"Prepara la Candela","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Candela por la puerta hacia Biker's Apartment","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Entra detrás de Blitz y planta en la bomba A","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Entra detrás de Blitz y planta en la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Biker's Garage","f":1,"threat":"Jäger con ADS en la puerta que se come la Candela","how":"Tira la Candela cocinada rebotando en el piso, no directa al marco"},
-        {"room":"Biker's Apartment","f":1,"threat":"Ancla en la esquina de la cocina del apartamento","how":"Segunda Candela y entra con Blitz de escudo"}],
-       "final":"Planta en Biker's Apartment mientras Blitz y Ash cubren"},
-      {"op":"zofia","role":"blando","spawn":"School Alley",
+        {"room":"Biker's Apartment","f":1,"threat":"Ancla en la esquina de la cocina del apartamento","how":"Segunda Candela y entra con Blitz de escudo"}
+       ],
+       "final":"Planta en Biker's Apartment mientras Blitz y Ash cubren"
+      },
+      {
+       "op":"zofia",
+       "role":"blando",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale detrás de Blitz","via":"door"},
         {"room":"Street","f":-1,"do":"Impact a la barricada del garaje si Ash falla","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Concusión a Biker's Apartment y entra","via":"door"},
         {"room":"Biker's Apartment","f":1,"do":"Cruza a Bedroom con impacto a la pared blanda","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Limpia Bedroom y cubre la planta desde la bomba B","via":"breach"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Limpia Bedroom y cubre la planta desde la bomba B","via":"breach"}
+       ],
        "clear":[
         {"room":"Biker's Apartment","f":1,"threat":"Frost con cepo detrás de la puerta o debajo de la ventana","how":"Mira el piso al entrar y salta la puerta pegado al marco"},
-        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Smoke o Kaid en la esquina de la cama","how":"Concusión por la pared blanda que abriste y entras con otro"}],
-       "final":"Sostiene Biker's Bedroom durante la planta"},
-      {"op":"striker","role":"soporte","spawn":"School Alley",
+        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Smoke o Kaid en la esquina de la cama","how":"Concusión por la pared blanda que abriste y entras con otro"}
+       ],
+       "final":"Sostiene Biker's Bedroom durante la planta"
+      },
+      {
+       "op":"striker",
+       "role":"soporte",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale último con humos listos","via":"door"},
         {"room":"Street","f":-1,"do":"Humo en Street para cubrir la cruzada","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Humo hacia Stair Hall por la puerta de Biker's Apartment","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Se queda en la puerta mirando Stair Hall mientras plantan","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Se queda en la puerta mirando Stair Hall mientras plantan","via":"door"}
+       ],
        "clear":[
         {"room":"Street","f":-1,"threat":"Peek de Football Apartment 2F sobre Street","how":"Humo antes de cruzar"},
-        {"room":"Biker's Apartment","f":1,"threat":"Roamer regresando por Stair Hall a la espalda","how":"Humo en la puerta de Stair Hall y claymore en el marco"}],
-       "final":"Claymore + humo en la puerta de Stair Hall y cubre la planta"}
-     ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Todo el daño viene de 2F: Sledge abre Football Apartment sobre la bomba A, Ram y Fuze destrozan Football Bedroom sobre la bomba B, y Hibana abre la escotilla para bajar al final. El garaje tiene techo blando en todo el sitio; el ancla no tiene dónde esconderse si el piso está abierto. Lion revela cuando vayan a rotar a Garage.",
-     "timeline":["0:00–0:45 · Lion escanea, todos suben por Roof 3F y Main Stairs a Football Apartment","0:45–1:30 · Sledge abre techo sobre Apartment, Ram manda BU-GI por Football Bedroom, Fuze pone cargas","1:30–2:30 · Fuze detona, Hibana abre la escotilla y bajan Sledge y Ram; planta en Biker's Bedroom","2:30–3:00 · post-plant desde arriba con Fuze y Lion viendo los huecos"],
+        {"room":"Biker's Apartment","f":1,"threat":"Roamer regresando por Stair Hall a la espalda","how":"Humo en la puerta de Stair Hall y claymore en el marco"}
+       ],
+       "final":"Claymore + humo en la puerta de Stair Hall y cubre la planta"
+      }
+     ]
+    },
+    {
+     "id":"vertical",
+     "n":"Vertical",
+     "tag":"VERTICAL",
+     "summary":"Todo el daño viene de 2F: Sledge abre Football Apartment sobre la bomba A, Ram y Fuze destrozan Football Bedroom sobre la bomba B, y Hibana abre la escotilla para bajar al final. El garaje tiene techo blando en todo el sitio; el ancla no tiene dónde esconderse si el piso está abierto. Lion revela cuando vayan a rotar a Garage.",
+     "timeline":[
+      "0:00–0:45 · Lion escanea, todos suben por Roof 3F y Main Stairs a Football Apartment",
+      "0:45–1:30 · Sledge abre techo sobre Apartment, Ram manda BU-GI por Football Bedroom, Fuze pone cargas",
+      "1:30–2:30 · Fuze detona, Hibana abre la escotilla y bajan Sledge y Ram; planta en Biker's Bedroom",
+      "2:30–3:00 · post-plant desde arriba con Fuze y Lion viendo los huecos"
+     ],
      "ops":[
-      {"op":"sledge","role":"blando","spawn":"Rooftops",
+      {
+       "op":"sledge",
+       "role":"blando",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja por los techos con el equipo","via":"door"},
         {"room":"Roof","f":3,"do":"Entra por la puerta de Packaging","via":"door"},
@@ -133,12 +225,18 @@
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Sale a Football Apartment","via":"stairs"},
         {"room":"Football Apartment","f":2,"do":"Abre el piso con el martillo encima de la bomba A y mata desde arriba","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Baja por la escotilla de Hibana al final","via":"hatch"}],
+        {"room":"Biker's Apartment","f":1,"do":"Baja por la escotilla de Hibana al final","via":"hatch"}
+       ],
        "clear":[
         {"room":"Packaging Room","f":3,"threat":"Roamer que sube a Packaging por Back Stairs para pegar por la espalda","how":"Dron y que Lion escanee antes de bajar"},
-        {"room":"Football Apartment","f":2,"threat":"Roamer 2F (Vigil/Cav) y ancla de abajo disparando por los huecos","how":"Limpia esquinas con dron, abre el piso desde el borde y nunca te asomes al mismo hueco dos veces"}],
-       "final":"Baja a Biker's Apartment por la escotilla y planta en la bomba A"},
-      {"op":"ram","role":"negacion","spawn":"Rooftops",
+        {"room":"Football Apartment","f":2,"threat":"Roamer 2F (Vigil/Cav) y ancla de abajo disparando por los huecos","how":"Limpia esquinas con dron, abre el piso desde el borde y nunca te asomes al mismo hueco dos veces"}
+       ],
+       "final":"Baja a Biker's Apartment por la escotilla y planta en la bomba A"
+      },
+      {
+       "op":"ram",
+       "role":"negacion",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Sledge","via":"door"},
         {"room":"Roof","f":3,"do":"Cruza el techo","via":"door"},
@@ -147,12 +245,18 @@
         {"room":"Main Stairs","f":2,"do":"Sale a 2F","via":"stairs"},
         {"room":"Football Apartment","f":2,"do":"Cruza a Football Bedroom","via":"door"},
         {"room":"Football Bedroom","f":2,"do":"Manda dos BU-GI por el piso para abrir todo Biker's Bedroom","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Baja por la escotilla al final","via":"hatch"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Baja por la escotilla al final","via":"hatch"}
+       ],
        "clear":[
         {"room":"Football Bedroom","f":2,"threat":"Maestro con Evil Eye o Kapkan en la puerta que conecta con Apartment","how":"Dron al marco y rómpelo con la escopeta o el BU-GI"},
-        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Mira o Smoke en la esquina de la cama con gas listo","how":"BU-GI en línea sobre la esquina y remata por el hueco con Sledge"}],
-       "final":"Cubre la bomba B desde arriba y baja para el post-plant"},
-      {"op":"fuze","role":"negacion","spawn":"Rooftops",
+        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Mira o Smoke en la esquina de la cama con gas listo","how":"BU-GI en línea sobre la esquina y remata por el hueco con Sledge"}
+       ],
+       "final":"Cubre la bomba B desde arriba y baja para el post-plant"
+      },
+      {
+       "op":"fuze",
+       "role":"negacion",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con el equipo","via":"door"},
         {"room":"Roof","f":3,"do":"Cruza el techo","via":"door"},
@@ -160,12 +264,18 @@
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Sale a 2F","via":"stairs"},
         {"room":"Football Apartment","f":2,"do":"Carga de racimo en el piso sobre la bomba A y otra en Football Bedroom","via":"door"},
-        {"room":"Football Bedroom","f":2,"do":"Detona y cubre los huecos con el escudo","via":"door"}],
+        {"room":"Football Bedroom","f":2,"do":"Detona y cubre los huecos con el escudo","via":"door"}
+       ],
        "clear":[
         {"room":"Football Apartment","f":2,"threat":"ADS de Jäger o Wamai debajo que se comen las cargas","how":"Pide a Lion que escanee y pon la carga lejos de las paredes donde suelen poner ADS"},
-        {"room":"Football Bedroom","f":2,"threat":"Ancla de abajo disparando al techo cuando oye la carga","how":"Pon la carga y aléjate del hueco antes de detonar"}],
-       "final":"Sostiene los huecos desde 2F y niega la desactivación con la última carga"},
-      {"op":"hibana","role":"duro","spawn":"Rooftops",
+        {"room":"Football Bedroom","f":2,"threat":"Ancla de abajo disparando al techo cuando oye la carga","how":"Pon la carga y aléjate del hueco antes de detonar"}
+       ],
+       "final":"Sostiene los huecos desde 2F y niega la desactivación con la última carga"
+      },
+      {
+       "op":"hibana",
+       "role":"duro",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con el equipo","via":"door"},
         {"room":"Roof","f":3,"do":"Cruza el techo","via":"door"},
@@ -173,108 +283,194 @@
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Sale a 2F","via":"stairs"},
         {"room":"Football Apartment","f":2,"do":"X-KAIROS en la escotilla reforzada de Biker's Apartment","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Baja primero y cubre la planta","via":"hatch"}],
+        {"room":"Biker's Apartment","f":1,"do":"Baja primero y cubre la planta","via":"hatch"}
+       ],
        "clear":[
         {"room":"Football Apartment","f":2,"threat":"Bandit o Kaid electrificando la escotilla desde abajo","how":"Mira la escotilla con dron; si chispea, que Fuze detone al lado para sacarlo y luego pones los pellets"},
-        {"room":"Biker's Apartment","f":1,"threat":"Ancla esperando debajo de la escotilla","how":"Flash por la escotilla antes de bajar y que Sledge cubra desde su hueco"}],
-       "final":"Baja por la escotilla y planta en Biker's Apartment"},
-      {"op":"lion","role":"intel","spawn":"Market",
+        {"room":"Biker's Apartment","f":1,"threat":"Ancla esperando debajo de la escotilla","how":"Flash por la escotilla antes de bajar y que Sledge cubra desde su hueco"}
+       ],
+       "final":"Baja por la escotilla y planta en Biker's Apartment"
+      },
+      {
+       "op":"lion",
+       "role":"intel",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza rápido al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Escanea con el EE-ONE-D cuando el equipo abra el techo","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Sostiene Stair Hall para tapar la rotación a Garage","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Entra al final por la puerta cuando el sitio esté abierto","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Entra al final por la puerta cuando el sitio esté abierto","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":1,"threat":"Roamer saliendo de Aunt's Apartment o Laundry hacia el patio","how":"Escaneo antes de cruzar, claymore en la puerta de Laundry"},
-        {"room":"Stair Hall","f":1,"threat":"Ancla de Biker's Apartment asomando por la puerta reforzada abierta","how":"Sostén el ángulo desde la esquina y espera el escaneo para prefirear"}],
-       "final":"Cubre el flanco de Stair Hall y escanea en la planta"}
-     ]},
-    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes al mismo tiempo: Maverick y Capitão abren la pared de Biker's Bedroom desde Back Alley con fuego cubriendo, mientras Montagne, Finka y Jackal entran por Biker's Garage hacia Biker's Apartment. El ancla no puede ver la pared y la puerta del garaje a la vez, y Jackal saca al roamer que intente flanquear por Stair Hall.",
-     "timeline":["0:00–0:45 · drones; Maverick y Capitão a Back Alley, Montagne + Finka + Jackal a Street","0:45–1:30 · Maverick abre hueco silencioso en Biker's Bedroom; Montagne se pone en la puerta del garaje","1:30–2:30 · Capitão quema la bomba B, Finka activa y entran los dos frentes; planta en Biker's Apartment","2:30–3:00 · post-plant: fuego de Capitão en la puerta de Bedroom, Jackal ve el flanco"],
+        {"room":"Stair Hall","f":1,"threat":"Ancla de Biker's Apartment asomando por la puerta reforzada abierta","how":"Sostén el ángulo desde la esquina y espera el escaneo para prefirear"}
+       ],
+       "final":"Cubre el flanco de Stair Hall y escanea en la planta"
+      }
+     ]
+    },
+    {
+     "id":"split",
+     "n":"Split",
+     "tag":"SPLIT",
+     "summary":"Dos frentes al mismo tiempo: Maverick y Capitão abren la pared de Biker's Bedroom desde Back Alley con fuego cubriendo, mientras Montagne, Finka y Jackal entran por Biker's Garage hacia Biker's Apartment. El ancla no puede ver la pared y la puerta del garaje a la vez, y Jackal saca al roamer que intente flanquear por Stair Hall.",
+     "timeline":[
+      "0:00–0:45 · drones; Maverick y Capitão a Back Alley, Montagne + Finka + Jackal a Street",
+      "0:45–1:30 · Maverick abre hueco silencioso en Biker's Bedroom; Montagne se pone en la puerta del garaje",
+      "1:30–2:30 · Capitão quema la bomba B, Finka activa y entran los dos frentes; planta en Biker's Apartment",
+      "2:30–3:00 · post-plant: fuego de Capitão en la puerta de Bedroom, Jackal ve el flanco"
+     ],
      "ops":[
-      {"op":"maverick","role":"duro","spawn":"School Alley",
+      {
+       "op":"maverick",
+       "role":"duro",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Capitão","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza pegado al edificio","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Abre un hueco de mira y luego uno de entrada en la pared reforzada de Biker's Bedroom","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Entra por el hueco cuando Capitão ya quemó la esquina","via":"breach"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Entra por el hueco cuando Capitão ya quemó la esquina","via":"breach"}
+       ],
        "clear":[
         {"room":"Back Alley","f":-1,"threat":"Kapkan en la puerta de Back Stairs y Mute jammer detrás de la pared","how":"El soplete no lo afecta el jammer; quema despacio y no camines frente a la puerta de Back Stairs"},
-        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Mira o Kaid pegado a la pared reforzada","how":"Primer hueco a la altura de la cabeza para verlo, segundo hueco solo cuando Capitão tire el fuego"}],
-       "final":"Sostiene el hueco de la pared y cubre la bomba B"},
-      {"op":"capitao","role":"negacion","spawn":"School Alley",
+        {"room":"Biker's Bedroom","f":1,"threat":"Ancla Mira o Kaid pegado a la pared reforzada","how":"Primer hueco a la altura de la cabeza para verlo, segundo hueco solo cuando Capitão tire el fuego"}
+       ],
+       "final":"Sostiene el hueco de la pared y cubre la bomba B"
+      },
+      {
+       "op":"capitao",
+       "role":"negacion",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Maverick","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza con humo si hay peek","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Flecha de fuego por el hueco de Maverick a la esquina del ancla","via":"door"},
-        {"room":"Biker's Bedroom","f":1,"do":"Entra detrás de Maverick y humo hacia la puerta de Back Stairs","via":"breach"}],
+        {"room":"Biker's Bedroom","f":1,"do":"Entra detrás de Maverick y humo hacia la puerta de Back Stairs","via":"breach"}
+       ],
        "clear":[
         {"room":"Street","f":-1,"threat":"Spawnpeek desde la ventana de Football Apartment","how":"Humo de ballesta en Street antes de cruzar"},
-        {"room":"Biker's Bedroom","f":1,"threat":"Ancla en la esquina de la cama y trampa de Frost bajo la ventana","how":"Fuego a la esquina y mira el piso al cruzar el hueco"}],
-       "final":"Fuego en la puerta a Back Stairs y cubre la planta desde Bedroom"},
-      {"op":"montagne","role":"soporte","spawn":"School Alley",
+        {"room":"Biker's Bedroom","f":1,"threat":"Ancla en la esquina de la cama y trampa de Frost bajo la ventana","how":"Fuego a la esquina y mira el piso al cruzar el hueco"}
+       ],
+       "final":"Fuego en la puerta a Back Stairs y cubre la planta desde Bedroom"
+      },
+      {
+       "op":"montagne",
+       "role":"soporte",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Finka y Jackal","via":"door"},
         {"room":"Street","f":-1,"do":"Escudo arriba en la puerta de Garage mientras la abren","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Entra primero con escudo extendido y toma la esquina de la puerta del apartamento","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Entra con Finka activa y da cobertura a la planta","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Entra con Finka activa y da cobertura a la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Biker's Garage","f":1,"threat":"Noor con Horus para quemar el escudo o Lesion con Gu en la puerta","how":"Entra despacio, si ves fuego retrocede a Street; que Jackal revise el marco con dron"},
-        {"room":"Biker's Apartment","f":1,"threat":"Mira con espejo hacia la puerta del garaje y ancla detrás","how":"Escudo pegado al espejo para que Finka y Jackal entren por tus lados en cuanto Maverick abra la otra pared"}],
-       "final":"Planta detrás del escudo en Biker's Apartment"},
-      {"op":"finka","role":"soporte","spawn":"School Alley",
+        {"room":"Biker's Apartment","f":1,"threat":"Mira con espejo hacia la puerta del garaje y ancla detrás","how":"Escudo pegado al espejo para que Finka y Jackal entren por tus lados en cuanto Maverick abra la otra pared"}
+       ],
+       "final":"Planta detrás del escudo en Biker's Apartment"
+      },
+      {
+       "op":"finka",
+       "role":"soporte",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Montagne","via":"door"},
         {"room":"Street","f":-1,"do":"Abre la barricada del garaje con explosivo","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Se pega detrás de Montagne y activa Adrenal Surge al momento de la entrada","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Entra por el lado del escudo y limpia la bomba A","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Entra por el lado del escudo y limpia la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Biker's Garage","f":1,"threat":"Frost bajo la puerta del garaje","how":"Surge te saca del cepo, pero mejor mira el piso antes de entrar"},
-        {"room":"Biker's Apartment","f":1,"threat":"Ancla Smoke con gas en la puerta del garaje","how":"Surge, humo de Montagne y entra rápido por el lado del espejo"}],
-       "final":"Cubre la planta de Montagne y revive con Surge si cae alguien"},
-      {"op":"jackal","role":"flanco","spawn":"Market",
+        {"room":"Biker's Apartment","f":1,"threat":"Ancla Smoke con gas en la puerta del garaje","how":"Surge, humo de Montagne y entra rápido por el lado del espejo"}
+       ],
+       "final":"Cubre la planta de Montagne y revive con Surge si cae alguien"
+      },
+      {
+       "op":"jackal",
+       "role":"flanco",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea Market","via":"door"},
         {"room":"Market","f":1,"do":"Cruza a Courtyard","via":"door"},
         {"room":"Courtyard","f":1,"do":"Escanea huellas del roamer con Eyenox","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Sostiene Stair Hall mirando Main Stairs para tapar la rotación","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Entra por la puerta reforzada cuando el sitio esté roto","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Entra por la puerta reforzada cuando el sitio esté roto","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":1,"threat":"Roamer saliendo de Aunt's Apartment hacia el patio","how":"Huellas con Eyenox y claymore en la puerta de Laundry"},
-        {"room":"Stair Hall","f":1,"threat":"Roamer bajando por Main Stairs a la espalda del frente del garaje","how":"Sostén la escalera desde la esquina y escanea para que el equipo lo cace"}],
-       "final":"Cubre Stair Hall durante la planta y caza al roamer con el escaneo"}
-     ]}
+        {"room":"Stair Hall","f":1,"threat":"Roamer bajando por Main Stairs a la espalda del frente del garaje","how":"Sostén la escalera desde la esquina y escanea para que el equipo lo cace"}
+       ],
+       "final":"Cubre Stair Hall durante la planta y caza al roamer con el escaneo"
+      }
+     ]
+    }
    ],
    "defense":[
-    {"id":"default","n":"Default","summary":"Mira ancla en Biker's Bedroom con espejos hacia Back Alley, Smoke ancla en Biker's Apartment mirando la puerta del garaje, Bandit trickea la pared de Bedroom y Jäger cubre las Candelas del garaje. Vigil roamea en Football Apartment para negar el vertical, que es lo que mata este sitio.",
-     "reinforce":["Pared Biker's Bedroom–Back Alley ×2","Pared Biker's Apartment–Stair Hall ×2","Escotilla Biker's Apartment (Football Apartment 2F)","Escotilla Biker's Bedroom (Football Bedroom 2F)"],
-     "rotations":["Biker's Apartment↔Biker's Bedroom (rotación en pared blanda)","Biker's Apartment↔Biker's Garage (puerta con Castle o barricada abierta arriba)"],
+    {
+     "id":"default",
+     "n":"Default",
+     "summary":"Mira ancla en Biker's Bedroom con espejos hacia Back Alley, Smoke ancla en Biker's Apartment mirando la puerta del garaje, Bandit trickea la pared de Bedroom y Jäger cubre las Candelas del garaje. Vigil roamea en Football Apartment para negar el vertical, que es lo que mata este sitio.",
+     "reinforce":[
+      "Pared Biker's Bedroom–Back Alley ×2",
+      "Pared Biker's Apartment–Stair Hall ×2",
+      "Escotilla Biker's Apartment (Football Apartment 2F)",
+      "Escotilla Biker's Bedroom (Football Bedroom 2F)"
+     ],
+     "rotations":[
+      "Biker's Apartment↔Biker's Bedroom (rotación en pared blanda)",
+      "Biker's Apartment↔Biker's Garage (puerta con Castle o barricada abierta arriba)"
+     ],
      "ops":[
       {"op":"mira","room":"Biker's Bedroom","f":1,"role":"ancla","job":"Dos espejos en la pared reforzada hacia Back Alley; sostiene la bomba B y mira la puerta de Back Stairs"},
       {"op":"smoke","room":"Biker's Apartment","f":1,"role":"ancla","job":"Ancla de la bomba A mirando la puerta del garaje; gas para el plant en los últimos 40 segundos"},
       {"op":"bandit","room":"Biker's Bedroom","f":1,"role":"flex","job":"Trickea la pared de Back Alley y luego rota a Garage a cubrir la puerta"},
       {"op":"jager","room":"Biker's Garage","f":1,"role":"flex","job":"ADS en la puerta del garaje y en la puerta a Biker's Apartment; juega el garaje y rota a Apartment"},
       {"op":"vigil","room":"Football Apartment","f":2,"role":"roam","job":"Roam en 2F para negar Buck/Sledge encima del sitio; pelea en Football Bedroom y baja por Main Stairs si lo persiguen"}
-     ]},
-    {"id":"alt","n":"Anti-rush con Noor","summary":"Setup para cuando el rival rushea por Garage con escudos: Noor quema el marco del garaje, Kaid electrifica pared y escotillas desde lejos y Azami tapa la puerta de Biker's Apartment. Thunderbird mantiene vivas a las anclas y Solis roamea en 2F cazando drones y al vertical.",
-     "reinforce":["Pared Biker's Bedroom–Back Alley ×2","Pared Biker's Apartment–Stair Hall ×2","Escotilla Biker's Apartment","Escotilla Biker's Bedroom"],
-     "rotations":["Biker's Apartment↔Biker's Bedroom (pared blanda abierta)","Biker's Bedroom↔Back Stairs (puerta con Kiba para cerrar rápido)"],
+     ]
+    },
+    {
+     "id":"alt",
+     "n":"Anti-rush con Noor",
+     "summary":"Setup para cuando el rival rushea por Garage con escudos: Noor quema el marco del garaje, Kaid electrifica pared y escotillas desde lejos y Azami tapa la puerta de Biker's Apartment. Thunderbird mantiene vivas a las anclas y Solis roamea en 2F cazando drones y al vertical.",
+     "reinforce":[
+      "Pared Biker's Bedroom–Back Alley ×2",
+      "Pared Biker's Apartment–Stair Hall ×2",
+      "Escotilla Biker's Apartment",
+      "Escotilla Biker's Bedroom"
+     ],
+     "rotations":[
+      "Biker's Apartment↔Biker's Bedroom (pared blanda abierta)",
+      "Biker's Bedroom↔Back Stairs (puerta con Kiba para cerrar rápido)"
+     ],
      "ops":[
       {"op":"noor","room":"Biker's Garage","f":1,"role":"ancla","job":"Horus apuntando a la puerta del garaje y a la puerta del apartamento; quema a Blitz/Montagne y al que entre corriendo"},
       {"op":"kaid","room":"Biker's Bedroom","f":1,"role":"ancla","job":"Rtila en la pared de Back Alley y en la escotilla de Bedroom; ancla la bomba B"},
       {"op":"azami","room":"Biker's Apartment","f":1,"role":"flex","job":"Kiba en la puerta del garaje y en la puerta de Stair Hall; cierra huecos de Maverick y cubre la bomba A"},
       {"op":"thunderbird","room":"Biker's Apartment","f":1,"role":"ancla","job":"Kóna entre las dos bombas; sostiene la rotación y cura a Noor y Kaid"},
       {"op":"solis","room":"Football Bedroom","f":2,"role":"roam","job":"Roam en 2F con SPEC-IO para cazar drones y frenar a Buck/Sledge; avisa por dónde viene el vertical"}
-     ]}
+     ]
+    }
    ]
   },
-  "aunt": {
-   "attack": [
-    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Main Stairs 2F para abrir la pared reforzada de Aunt's Hall–Aunt's Bedroom con Thatcher + Hibana, Sledge rompe desde Roof 3F el techo de Kids Room y Glaz rapela a las ventanas de Aunt's Bedroom desde Courtyard para ver a través del humo. El sitio de la tía se defiende desde Aunt's Hall y desde debajo de las ventanas; cuando pierdes el techo y la pared al mismo tiempo, las anclas se quedan sin esquinas. Zero pone Argus para el flanco de Grow Room.",
-     "timeline":["0:00–0:45 · drones a Aunt's Bedroom y Kids Room; Zero pone Argus en la ventana de Aunt's Bedroom; Sledge sube a Roof 3F","0:45–1:30 · Sledge abre el techo de Kids Room; EMP + X-KAIROS en la pared de Aunt's Hall; Glaz rapela a las ventanas","1:30–2:30 · humo en Aunt's Hall, Glaz limpia desde la ventana y entran por la pared; planta en Aunt's Bedroom","2:30–3:00 · post-plant: Sledge desde arriba, Glaz en ventana, Zero cubre Grow Room por la Argus"],
+  "aunt":{
+   "attack":[
+    {
+     "id":"default",
+     "n":"Default lento",
+     "tag":"DEFAULT",
+     "summary":"Se toma Main Stairs 2F para abrir la pared reforzada de Aunt's Hall–Aunt's Bedroom con Thatcher + Hibana, Sledge rompe desde Roof 3F el techo de Kids Room y Jackal sube por Back Stairs a Meth Lab para cerrar la rotación de Grow Room y cazar al roamer con el Eyenox. El sitio de la tía se defiende desde Aunt's Hall y desde Kids Room; cuando pierdes el techo y la pared al mismo tiempo, las anclas se quedan sin esquinas. Zero pone Argus en la ventana de Aunt's Bedroom y en la pared de Grow Room para ver las dos rotaciones.",
+     "timeline":[
+      "0:00–0:45 · drones a Aunt's Bedroom y Kids Room; Zero pone Argus en la ventana de Aunt's Bedroom; Sledge sube a Roof 3F; Jackal toma Back Stairs",
+      "0:45–1:30 · Sledge abre el techo de Kids Room; EMP + X-KAIROS en la pared de Aunt's Hall; Jackal escanea y sostiene Grow Room",
+      "1:30–2:30 · humo en Aunt's Hall, entrada por la pared con Zero viendo por la Argus; planta en Aunt's Bedroom",
+      "2:30–3:00 · post-plant: Sledge desde arriba, Jackal en Grow Room, Zero cubre el balcón por la Argus"
+     ],
      "ops":[
-      {"op":"hibana","role":"duro","spawn":"Rooftops",
+      {
+       "op":"hibana",
+       "role":"duro",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja por los techos droneando la puerta de Roof 3F","via":"door"},
         {"room":"Roof","f":3,"do":"Entra por la puerta hacia Packaging","via":"door"},
@@ -282,13 +478,19 @@
         {"room":"Main Stairs","f":3,"do":"Baja al descanso de 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Desde el descanso pone X-KAIROS en la pared reforzada de Aunt's Hall tras el EMP","via":"stairs"},
         {"room":"Aunt's Hall","f":2,"do":"Entra por el hueco con el humo y toma el pasillo","via":"breach"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Cubre la planta en la bomba A","via":"door"}],
+        {"room":"Aunt's Bedroom","f":2,"do":"Cubre la planta en la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Packaging Room","f":3,"threat":"Roamer subiendo por Back Stairs 3F o Kapkan en la puerta de Roof","how":"Dron primero, revisa el marco y las esquinas del fondo"},
         {"room":"Main Stairs","f":2,"threat":"Bandit trickeando la pared y Mira con espejo hacia la escalera","how":"Espera los dos EMP de Thatcher y pon los pellets cuando Sledge ya abrió el techo de Kids Room"},
-        {"room":"Aunt's Hall","f":2,"threat":"Ancla Smoke en la puerta de Aunt's Bedroom con gas listo","how":"Humo en el hueco, Glaz ve a través y mata; entras hasta que confirme"}],
-       "final":"Sostiene el hueco de la pared y cubre la planta en Aunt's Bedroom"},
-      {"op":"thatcher","role":"antigadget","spawn":"Rooftops",
+        {"room":"Aunt's Hall","f":2,"threat":"Ancla Smoke en la puerta de Aunt's Bedroom con gas listo","how":"Humo en el hueco, Zero confirma por la Argus dónde está y entras hasta que se disipe el gas"}
+       ],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Aunt's Bedroom"
+      },
+      {
+       "op":"thatcher",
+       "role":"antigadget",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Hibana","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
@@ -296,161 +498,279 @@
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Dos EMP a la pared reforzada de Aunt's Hall para quemar Bandit, Kaid y Mute","via":"stairs"},
         {"room":"Aunt's Hall","f":2,"do":"Entra detrás de Hibana y limpia la puerta de Kids Room","via":"breach"},
-        {"room":"Kids Room","f":2,"do":"Toma la bomba B mientras plantan en la A","via":"door"}],
+        {"room":"Kids Room","f":2,"do":"Toma la bomba B mientras plantan en la A","via":"door"}
+       ],
        "clear":[
         {"room":"Main Stairs","f":2,"threat":"Kapkan en la puerta de Football Apartment y Mute jammer detrás de la pared","how":"EMP al marco y a la pared antes de que Hibana suba"},
-        {"room":"Kids Room","f":2,"threat":"Ancla Frost o Kaid pegado a la escotilla de Kids Room","how":"EMP para quemar Rtila y entra cuando Sledge le abra el techo"}],
-       "final":"Sostiene Kids Room y la puerta de Grow Room durante la planta"},
-      {"op":"sledge","role":"blando","spawn":"Rooftops",
+        {"room":"Kids Room","f":2,"threat":"Ancla Frost o Kaid pegado a la escotilla de Kids Room","how":"EMP para quemar Rtila y entra cuando Sledge le abra el techo"}
+       ],
+       "final":"Sostiene Kids Room y la puerta de Grow Room durante la planta"
+      },
+      {
+       "op":"sledge",
+       "role":"blando",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja por los techos con dron adelante","via":"door"},
         {"room":"Roof","f":3,"do":"Toma el techo encima de Kids Room y abre el piso con el martillo","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Baja por la escotilla al final para cerrar","via":"hatch"}],
+        {"room":"Kids Room","f":2,"do":"Baja por la escotilla al final para cerrar","via":"hatch"}
+       ],
        "clear":[
         {"room":"Roof","f":3,"threat":"Roamer asomando desde Packaging Room o Back Stairs 3F hacia el techo","how":"Dron a Packaging antes de ponerte a martillar y claymore en la puerta"},
-        {"room":"Kids Room","f":2,"threat":"Ancla de Kids Room disparando al techo por los huecos","how":"Abre desde el borde, cambia de hueco cada vez y pide frag de Zero si se atrinchera"}],
-       "final":"Mata desde arriba a la ancla de Kids Room y baja por la escotilla para el post-plant"},
-      {"op":"glaz","role":"negacion","spawn":"Market",
+        {"room":"Kids Room","f":2,"threat":"Ancla de Kids Room disparando al techo por los huecos","how":"Abre desde el borde, cambia de hueco cada vez y pide frag de Zero si se atrinchera"}
+       ],
+       "final":"Mata desde arriba a la ancla de Kids Room y baja por la escotilla para el post-plant"
+      },
+      {
+       "op":"jackal",
+       "role":"flanco",
+       "spawn":"School Alley",
        "path":[
-        {"room":"Market Alley","f":-1,"do":"Dronea el mercado y el patio","via":"door"},
-        {"room":"Market","f":1,"do":"Cruza rápido al patio","via":"door"},
-        {"room":"Courtyard","f":1,"do":"Rapela a las ventanas de Aunt's Bedroom con humo listo","via":"rappel"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Humo dentro del cuarto y limpia con la térmica desde la ventana; entra cuando abran la pared","via":"window"}],
+        {"room":"School Alley","f":-1,"do":"Dronea Street y la puerta de Back Stairs antes de salir","via":"door"},
+        {"room":"Street","f":-1,"do":"Cruza pegado al edificio cuidando las ventanas de Football Apartment","via":"door"},
+        {"room":"Back Alley","f":-1,"do":"Revisa la puerta de Back Stairs con dron y escanea huellas con el Eyenox","via":"door"},
+        {"room":"Back Stairs","f":1,"do":"Sube despacio, prefire el descanso de 2F","via":"door"},
+        {"room":"Back Stairs","f":2,"do":"Sale a Meth Lab con el Eyenox activo para seguir al roamer","via":"stairs"},
+        {"room":"Meth Lab","f":2,"do":"Limpia el laboratorio y toma la puerta de Grow Room","via":"door"},
+        {"room":"Grow Room","f":2,"do":"Sostiene la puerta a Kids Room: es la rotación de escape del sitio","via":"door"}
+       ],
        "clear":[
-        {"room":"Courtyard","f":1,"threat":"Peek desde las ventanas de Aunt's Bedroom o desde Courtyard 2F (balcón)","how":"Rapela por el lado ciego de la ventana y sube en silencio"},
-        {"room":"Aunt's Bedroom","f":2,"threat":"Frost bajo la ventana y Castle en la ventana; ancla Mira en la esquina","how":"Humo dentro, rompe Castle con explosivo, no entres por la ventana hasta que Hibana abra la pared"}],
-       "final":"Cubre la planta desde la ventana con humo y térmica; entra al final"},
-      {"op":"zero","role":"intel","spawn":"Market",
+        {"room":"Back Alley","f":-1,"threat":"Kapkan en la puerta de Back Stairs y spawnpeek desde la escalera","how":"Dron al marco antes de tocar la puerta; si hay trampa, dispárale desde fuera"},
+        {"room":"Back Stairs","f":2,"threat":"Roamer tipo Vigil/Cav esperando en la escalera trasera","how":"Escaneo del Eyenox y prefire el descanso; no subas solo si el rastro es fresco"},
+        {"room":"Meth Lab","f":2,"threat":"Prismas de Alibi o Banshee de Melusi en la puerta de Grow Room","how":"Dron primero; los prismas no reaccionan y la Banshee se rompe con un disparo"}
+       ],
+       "final":"Sostiene Grow Room–Kids Room y mata al que rote fuera cuando entre el equipo por la pared"
+      },
+      {
+       "op":"zero",
+       "role":"intel",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea Market","via":"door"},
         {"room":"Market","f":1,"do":"Sube a Market 2F por la escalera del mercado","via":"stairs"},
-        {"room":"Market","f":2,"do":"Cruza al balcón del patio","via":"door"},
+        {"room":"Market","f":2,"do":"Cruza al balcón del patio","via":"stairs"},
         {"room":"Courtyard","f":2,"do":"Dispara una Argus a la ventana de Aunt's Bedroom y otra a la pared de Grow Room","via":"door"},
         {"room":"Aunt's Hall","f":2,"do":"Entra por la puerta del balcón cuando el equipo abra la pared y cubre Grow Room","via":"door"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Cubre la planta","via":"door"}],
+        {"room":"Aunt's Bedroom","f":2,"do":"Cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Market","f":2,"threat":"Roamer peekeando desde Courtyard 2F hacia el mercado","how":"Dron y Argus antes de cruzar el balcón"},
-        {"room":"Aunt's Hall","f":2,"threat":"Roamer regresando desde Grow Room y Maestro con Evil Eye en el pasillo","how":"Argus en la pared de Grow Room y rompe la Evil Eye con la Argus o con un disparo"}],
-       "final":"Cubre el flanco de Grow Room por la Argus y la puerta del balcón durante la planta"}
-     ]},
-    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rush por el balcón de Courtyard 2F: Ash abre la puerta de Aunt's Hall, Ying tira Candela y Amaru se cuelga directo a la ventana de Aunt's Bedroom para agarrar a la ancla por la espalda. Blackbeard entra primero por el pasillo. El balcón está a 30 segundos del spawn de Market y los defensores tardan en poner Castle en las ventanas.",
-     "timeline":["0:00–0:20 · corren de Market Alley a Courtyard sin drones","0:20–0:45 · Amaru se cuelga a la ventana de Aunt's Bedroom; Ash abre la puerta del balcón","0:45–1:30 · Candela en Aunt's Hall, Blackbeard entra primero y Iana limpia Kids Room","1:30–3:00 · planta en Aunt's Bedroom y sostienen el pasillo"],
+        {"room":"Aunt's Hall","f":2,"threat":"Roamer regresando desde Grow Room y Maestro con Evil Eye en el pasillo","how":"Argus en la pared de Grow Room y rompe la Evil Eye con la Argus o con un disparo"}
+       ],
+       "final":"Cubre el flanco de Grow Room por la Argus y la puerta del balcón durante la planta"
+      }
+     ]
+    },
+    {
+     "id":"rush",
+     "n":"Rush",
+     "tag":"RUSH",
+     "summary":"Rush por el balcón de Courtyard 2F: Ash abre la puerta de Aunt's Hall, Ying tira Candela y Amaru se cuelga directo a la ventana de Aunt's Bedroom para agarrar a la ancla por la espalda. Blackbeard entra primero por el pasillo. El balcón está a 30 segundos del spawn de Market y los defensores tardan en poner Castle en las ventanas.",
+     "timeline":[
+      "0:00–0:20 · corren de Market Alley a Courtyard sin drones",
+      "0:20–0:45 · Amaru se cuelga a la ventana de Aunt's Bedroom; Ash abre la puerta del balcón",
+      "0:45–1:30 · Candela en Aunt's Hall, Blackbeard entra primero y Iana limpia Kids Room",
+      "1:30–3:00 · planta en Aunt's Bedroom y sostienen el pasillo"
+     ],
      "ops":[
-      {"op":"ash","role":"entrada","spawn":"Market",
+      {
+       "op":"ash",
+       "role":"entrada",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Corre al mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Sube por la escalera exterior al balcón","via":"stairs"},
-        {"room":"Courtyard","f":2,"do":"Breach a la barricada de Aunt's Hall desde el balcón","via":"door"},
+        {"room":"Courtyard","f":2,"do":"Breach a la barricada de Aunt's Hall desde el balcón","via":"stairs"},
         {"room":"Aunt's Hall","f":2,"do":"Entra detrás de Blackbeard y limpia el pasillo","via":"door"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Toma la bomba A y cubre la planta","via":"door"}],
+        {"room":"Aunt's Bedroom","f":2,"do":"Toma la bomba A y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":2,"threat":"Peek desde la puerta de Aunt's Hall o Kapkan en la barricada","how":"Breach a distancia desde la escalera, no toques la barricada con la mano"},
-        {"room":"Aunt's Hall","f":2,"threat":"Ancla Smoke en la puerta de Aunt's Bedroom y ADS de Jäger","how":"Candela de Ying primero y entra con Blackbeard delante"}],
-       "final":"Cubre la planta desde la puerta de Aunt's Bedroom"},
-      {"op":"blackbeard","role":"entrada","spawn":"Market",
+        {"room":"Aunt's Hall","f":2,"threat":"Ancla Smoke en la puerta de Aunt's Bedroom y ADS de Jäger","how":"Candela de Ying primero y entra con Blackbeard delante"}
+       ],
+       "final":"Cubre la planta desde la puerta de Aunt's Bedroom"
+      },
+      {
+       "op":"blackbeard",
+       "role":"entrada",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Corre al mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Sube al balcón","via":"stairs"},
-        {"room":"Courtyard","f":2,"do":"Escudo en el rifle, se pega a la puerta","via":"door"},
+        {"room":"Courtyard","f":2,"do":"Escudo en el rifle, se pega a la puerta","via":"stairs"},
         {"room":"Aunt's Hall","f":2,"do":"Entra primero tras la Candela y sostiene el ángulo a Aunt's Bedroom","via":"door"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Entra y limpia la esquina de la cama","via":"door"}],
+        {"room":"Aunt's Bedroom","f":2,"do":"Entra y limpia la esquina de la cama","via":"door"}
+       ],
        "clear":[
         {"room":"Aunt's Hall","f":2,"threat":"Ancla peekeando desde la puerta de Kids Room y Mira con espejo en el pasillo","how":"Entra con escudo arriba mirando Kids Room y deja que Iana limpie el espejo"},
-        {"room":"Aunt's Bedroom","f":2,"threat":"Ancla Frost con cepo detrás de la puerta","how":"Mira el piso y entra cuando Amaru ya esté dentro por la ventana"}],
-       "final":"Sostiene Aunt's Hall con el escudo mientras plantan"},
-      {"op":"ying","role":"negacion","spawn":"Market",
+        {"room":"Aunt's Bedroom","f":2,"threat":"Ancla Frost con cepo detrás de la puerta","how":"Mira el piso y entra cuando Amaru ya esté dentro por la ventana"}
+       ],
+       "final":"Sostiene Aunt's Hall con el escudo mientras plantan"
+      },
+      {
+       "op":"ying",
+       "role":"negacion",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Corre al mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Sube al balcón","via":"stairs"},
-        {"room":"Courtyard","f":2,"do":"Candela cocinada por la puerta hacia Aunt's Hall","via":"door"},
+        {"room":"Courtyard","f":2,"do":"Candela cocinada por la puerta hacia Aunt's Hall","via":"stairs"},
         {"room":"Aunt's Hall","f":2,"do":"Entra y segunda Candela a Aunt's Bedroom","via":"door"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Planta en la bomba A","via":"door"}],
+        {"room":"Aunt's Bedroom","f":2,"do":"Planta en la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":2,"threat":"Jäger ADS en la puerta del balcón","how":"Cocina la Candela y tírala rebotando en el piso"},
-        {"room":"Aunt's Bedroom","f":2,"threat":"Ancla Mira o Smoke en la esquina de la cama","how":"Candela dentro del cuarto y entra con Blackbeard"}],
-       "final":"Planta en Aunt's Bedroom mientras Blackbeard y Ash cubren"},
-      {"op":"amaru","role":"entrada","spawn":"Market",
+        {"room":"Aunt's Bedroom","f":2,"threat":"Ancla Mira o Smoke en la esquina de la cama","how":"Candela dentro del cuarto y entra con Blackbeard"}
+       ],
+       "final":"Planta en Aunt's Bedroom mientras Blackbeard y Ash cubren"
+      },
+      {
+       "op":"amaru",
+       "role":"entrada",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Corre al mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
-        {"room":"Courtyard","f":1,"do":"Garra Hook a la ventana de Aunt's Bedroom al mismo tiempo que la Candela","via":"door"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Entra por la ventana y agarra a la ancla por la espalda","via":"window"}],
+        {"room":"Courtyard","f":-1,"do":"Garra Hook a la ventana de Aunt's Bedroom al mismo tiempo que la Candela","via":"door"},
+        {"room":"Aunt's Bedroom","f":2,"do":"Entra por la ventana y agarra a la ancla por la espalda","via":"window"}
+       ],
        "clear":[
-        {"room":"Courtyard","f":1,"threat":"Ancla mirando la ventana de Aunt's Bedroom y Frost bajo la ventana","how":"Entra justo cuando suene la Candela; mira el piso al caer"},
-        {"room":"Aunt's Bedroom","f":2,"threat":"Castle en la ventana o Kiba de Azami","how":"Si hay Castle no entres; rómpela con explosivo o cambia a la puerta del balcón"}],
-       "final":"Mata a la ancla de Aunt's Bedroom y cubre la puerta de Aunt's Hall"},
-      {"op":"iana","role":"intel","spawn":"Market",
+        {"room":"Courtyard","f":-1,"threat":"Ancla mirando la ventana de Aunt's Bedroom y Frost bajo la ventana","how":"Entra justo cuando suene la Candela; mira el piso al caer"},
+        {"room":"Aunt's Bedroom","f":2,"threat":"Castle en la ventana o Kiba de Azami","how":"Si hay Castle no entres; rómpela con explosivo o cambia a la puerta del balcón"}
+       ],
+       "final":"Mata a la ancla de Aunt's Bedroom y cubre la puerta de Aunt's Hall"
+      },
+      {
+       "op":"iana",
+       "role":"intel",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Corre al mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Sube al balcón","via":"stairs"},
-        {"room":"Courtyard","f":2,"do":"Réplica Gemini por la puerta para sacar la posición de las anclas","via":"door"},
+        {"room":"Courtyard","f":2,"do":"Réplica Gemini por la puerta para sacar la posición de las anclas","via":"stairs"},
         {"room":"Aunt's Hall","f":2,"do":"Entra y limpia hacia Kids Room","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Toma la bomba B y cubre Grow Room","via":"door"}],
+        {"room":"Kids Room","f":2,"do":"Toma la bomba B y cubre Grow Room","via":"door"}
+       ],
        "clear":[
         {"room":"Aunt's Hall","f":2,"threat":"Alibi con prismas en el pasillo y roamer en Grow Room","how":"Réplica primero: los prismas no reaccionan, la ancla sí"},
-        {"room":"Kids Room","f":2,"threat":"Ancla Kaid en la esquina de la escotilla","how":"Entra con Ash detrás y prefire la esquina"}],
-       "final":"Sostiene Kids Room y la puerta de Grow Room durante la planta"}
-     ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sándwich: Ram y Fuze desde Roof 3F sobre Kids Room, Ace abre la escotilla de Kids Room para bajar, y Buck desde Aunt's Apartment 1F rompe el piso de Aunt's Bedroom por debajo. Las anclas de la tía se paran pegadas a las ventanas y a la escotilla; con techo y piso abiertos no tienen dónde estar. Lion escanea en cada apertura.",
-     "timeline":["0:00–0:45 · Ram, Fuze y Ace suben a Roof 3F; Buck y Lion toman Courtyard 1F y Aunt's Apartment","0:45–1:30 · BU-GI por Roof sobre Kids Room, Buck abre el piso de Aunt's Bedroom desde abajo, cargas de Fuze","1:30–2:30 · Lion escanea, Ace abre la escotilla y bajan Ram y Ace; planta en Kids Room","2:30–3:00 · post-plant: Buck desde abajo, Fuze desde arriba, Lion cubre Courtyard"],
+        {"room":"Kids Room","f":2,"threat":"Ancla Kaid en la esquina de la escotilla","how":"Entra con Ash detrás y prefire la esquina"}
+       ],
+       "final":"Sostiene Kids Room y la puerta de Grow Room durante la planta"
+      }
+     ]
+    },
+    {
+     "id":"vertical",
+     "n":"Vertical",
+     "tag":"VERTICAL",
+     "summary":"Sándwich: Ram y Fuze desde Roof 3F sobre Kids Room, Ace abre la escotilla de Kids Room para bajar, y Buck desde Aunt's Apartment 1F rompe el piso de Aunt's Bedroom por debajo. Las anclas de la tía se paran pegadas a las ventanas y a la escotilla; con techo y piso abiertos no tienen dónde estar. Lion escanea en cada apertura.",
+     "timeline":[
+      "0:00–0:45 · Ram, Fuze y Ace suben a Roof 3F; Buck y Lion toman Courtyard 1F y Aunt's Apartment",
+      "0:45–1:30 · BU-GI por Roof sobre Kids Room, Buck abre el piso de Aunt's Bedroom desde abajo, cargas de Fuze",
+      "1:30–2:30 · Lion escanea, Ace abre la escotilla y bajan Ram y Ace; planta en Kids Room",
+      "2:30–3:00 · post-plant: Buck desde abajo, Fuze desde arriba, Lion cubre Courtyard"
+     ],
      "ops":[
-      {"op":"ram","role":"negacion","spawn":"Rooftops",
+      {
+       "op":"ram",
+       "role":"negacion",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja por los techos con dron","via":"door"},
         {"room":"Roof","f":3,"do":"Manda dos BU-GI encima de Kids Room y Aunt's Hall para abrir todo el techo","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Baja por la escotilla de Ace al final","via":"hatch"}],
+        {"room":"Kids Room","f":2,"do":"Baja por la escotilla de Ace al final","via":"hatch"}
+       ],
        "clear":[
         {"room":"Roof","f":3,"threat":"Roamer saliendo de Packaging Room al techo","how":"Claymore en la puerta de Packaging y dron antes de lanzar"},
-        {"room":"Kids Room","f":2,"threat":"Ancla Kaid/Frost pegado a la escotilla y ADS de Jäger","how":"BU-GI en línea sobre la escotilla; el segundo lo mandas por Aunt's Hall"}],
-       "final":"Cubre la bomba B desde el techo y baja para el post-plant"},
-      {"op":"fuze","role":"negacion","spawn":"Rooftops",
+        {"room":"Kids Room","f":2,"threat":"Ancla Kaid/Frost pegado a la escotilla y ADS de Jäger","how":"BU-GI en línea sobre la escotilla; el segundo lo mandas por Aunt's Hall"}
+       ],
+       "final":"Cubre la bomba B desde el techo y baja para el post-plant"
+      },
+      {
+       "op":"fuze",
+       "role":"negacion",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Ram","via":"door"},
         {"room":"Roof","f":3,"do":"Carga de racimo sobre Kids Room y otra sobre Aunt's Hall; detona tras el escaneo de Lion","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Baja al final con el escudo por delante","via":"hatch"}],
+        {"room":"Kids Room","f":2,"do":"Baja al final con el escudo por delante","via":"hatch"}
+       ],
        "clear":[
         {"room":"Roof","f":3,"threat":"Wamai o Jäger debajo comiéndose las cargas","how":"Que Lion escanee y pon la carga lejos de las paredes"},
-        {"room":"Kids Room","f":2,"threat":"Ancla disparando al techo por los huecos de Ram","how":"Aléjate del hueco al detonar y cambia de posición"}],
-       "final":"Niega la desactivación desde arriba con la última carga"},
-      {"op":"ace","role":"duro","spawn":"Rooftops",
+        {"room":"Kids Room","f":2,"threat":"Ancla disparando al techo por los huecos de Ram","how":"Aléjate del hueco al detonar y cambia de posición"}
+       ],
+       "final":"Niega la desactivación desde arriba con la última carga"
+      },
+      {
+       "op":"ace",
+       "role":"duro",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con el equipo","via":"door"},
         {"room":"Roof","f":3,"do":"S.E.L.M.A. en la escotilla reforzada de Kids Room","via":"door"},
         {"room":"Kids Room","f":2,"do":"Baja primero y planta en la bomba B","via":"hatch"},
-        {"room":"Aunt's Hall","f":2,"do":"Cubre el pasillo después de plantar","via":"door"}],
+        {"room":"Aunt's Hall","f":2,"do":"Cubre el pasillo después de plantar","via":"door"}
+       ],
        "clear":[
         {"room":"Roof","f":3,"threat":"Bandit/Kaid electrificando la escotilla","how":"Espera el BU-GI de Ram al lado para sacarlo y luego pones la SELMA"},
-        {"room":"Kids Room","f":2,"threat":"Ancla debajo de la escotilla esperando la caída","how":"Flash por la escotilla y que Fuze detone justo antes"}],
-       "final":"Planta en Kids Room y cubre Aunt's Hall"},
-      {"op":"buck","role":"blando","spawn":"Market",
+        {"room":"Kids Room","f":2,"threat":"Ancla debajo de la escotilla esperando la caída","how":"Flash por la escotilla y que Fuze detone justo antes"}
+       ],
+       "final":"Planta en Kids Room y cubre Aunt's Hall"
+      },
+      {
+       "op":"buck",
+       "role":"blando",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Toma el patio y revisa Aunt's Apartment con dron","via":"door"},
-        {"room":"Aunt's Apartment","f":1,"do":"Abre el techo con la Skeleton Key debajo de Aunt's Bedroom y mata desde abajo","via":"door"}],
+        {"room":"Aunt's Apartment","f":1,"do":"Abre el techo con la Skeleton Key debajo de Aunt's Bedroom y mata desde abajo","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":1,"threat":"Roamer saliendo de Laundry o peek desde Courtyard 2F","how":"Dron y claymore en la puerta de Laundry"},
-        {"room":"Aunt's Apartment","f":1,"threat":"Roamer tipo Cav/Vigil escondido debajo del sitio","how":"Escaneo de Lion antes de entrar y limpia esquinas con la escopeta"}],
-       "final":"Controla Aunt's Bedroom desde abajo y niega la desactivación"},
-      {"op":"lion","role":"intel","spawn":"Market",
+        {"room":"Aunt's Apartment","f":1,"threat":"Roamer tipo Cav/Vigil escondido debajo del sitio","how":"Escaneo de Lion antes de entrar y limpia esquinas con la escopeta"}
+       ],
+       "final":"Controla Aunt's Bedroom desde abajo y niega la desactivación"
+      },
+      {
+       "op":"lion",
+       "role":"intel",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Escanea cuando Ram abra el techo y cubre a Buck desde el patio","via":"door"},
-        {"room":"Aunt's Apartment","f":1,"do":"Sostiene la puerta a Laundry para que nadie llegue a Buck","via":"door"}],
+        {"room":"Aunt's Apartment","f":1,"do":"Sostiene la puerta a Laundry para que nadie llegue a Buck","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":1,"threat":"Roamer que baja del balcón por la escalera exterior","how":"Escaneo y prefire la escalera"},
-        {"room":"Aunt's Apartment","f":1,"threat":"Roamer entrando desde Laundry Room","how":"Claymore en la puerta de Laundry y sostén el ángulo"}],
-       "final":"Escanea en la planta y cubre a Buck en Aunt's Apartment"}
-     ]},
-    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes: Maverick y Kali abren la pared de Aunt's Hall desde Main Stairs 2F en silencio, mientras Osa, Finka y Gridlock entran por Back Stairs 2F a Grow Room y presionan Kids Room por atrás. La defensa mira la pared reforzada y las ventanas; Grow Room es la puerta trasera que casi nadie sostiene.",
-     "timeline":["0:00–0:45 · Maverick + Kali a Main Stairs 2F; Osa + Finka + Gridlock por Back Alley a Back Stairs","0:45–1:30 · Kali quema Bandit con la lanza, Maverick abre hueco; Osa pone el Talon en la puerta de Grow Room","1:30–2:30 · Finka activa y entran ambos frentes; Gridlock siembra Stingers en Back Stairs; planta en Kids Room","2:30–3:00 · post-plant: Osa detrás del Talon, Maverick en el hueco, Gridlock cubre Back Stairs"],
+        {"room":"Aunt's Apartment","f":1,"threat":"Roamer entrando desde Laundry Room","how":"Claymore en la puerta de Laundry y sostén el ángulo"}
+       ],
+       "final":"Escanea en la planta y cubre a Buck en Aunt's Apartment"
+      }
+     ]
+    },
+    {
+     "id":"split",
+     "n":"Split",
+     "tag":"SPLIT",
+     "summary":"Dos frentes: Maverick y Kali abren la pared de Aunt's Hall desde Main Stairs 2F en silencio, mientras Osa, Finka y Gridlock entran por Back Stairs 2F a Grow Room y presionan Kids Room por atrás. La defensa mira la pared reforzada y las ventanas; Grow Room es la puerta trasera que casi nadie sostiene.",
+     "timeline":[
+      "0:00–0:45 · Maverick + Kali a Main Stairs 2F; Osa + Finka + Gridlock por Back Alley a Back Stairs",
+      "0:45–1:30 · Kali quema Bandit con la lanza, Maverick abre hueco; Osa pone el Talon en la puerta de Grow Room",
+      "1:30–2:30 · Finka activa y entran ambos frentes; Gridlock siembra Stingers en Back Stairs; planta en Kids Room",
+      "2:30–3:00 · post-plant: Osa detrás del Talon, Maverick en el hueco, Gridlock cubre Back Stairs"
+     ],
      "ops":[
-      {"op":"maverick","role":"duro","spawn":"Rooftops",
+      {
+       "op":"maverick",
+       "role":"duro",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Kali","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
@@ -458,24 +778,36 @@
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Hueco de mira y luego hueco de entrada en la pared reforzada de Aunt's Hall","via":"stairs"},
         {"room":"Aunt's Hall","f":2,"do":"Entra por el hueco con Kali cubriendo","via":"breach"},
-        {"room":"Aunt's Bedroom","f":2,"do":"Cubre la bomba A","via":"door"}],
+        {"room":"Aunt's Bedroom","f":2,"do":"Cubre la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Main Stairs","f":2,"threat":"Mira con espejo hacia la escalera y Kapkan en la puerta de Football Apartment","how":"Hueco chiquito en la zona ciega del espejo; deja que Kali reviente el espejo con la lanza"},
-        {"room":"Aunt's Hall","f":2,"threat":"Ancla Smoke en la puerta de Aunt's Bedroom","how":"Entra solo cuando el frente de Grow Room ya presione"}],
-       "final":"Sostiene el hueco y cubre la planta"},
-      {"op":"kali","role":"antigadget","spawn":"Rooftops",
+        {"room":"Aunt's Hall","f":2,"threat":"Ancla Smoke en la puerta de Aunt's Bedroom","how":"Entra solo cuando el frente de Grow Room ya presione"}
+       ],
+       "final":"Sostiene el hueco y cubre la planta"
+      },
+      {
+       "op":"kali",
+       "role":"antigadget",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Maverick","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
         {"room":"Packaging Room","f":3,"do":"Limpia y baja","via":"door"},
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Lanza LV en la pared para quemar Bandit/Kaid y romper el espejo de Mira","via":"stairs"},
-        {"room":"Aunt's Hall","f":2,"do":"Cubre con el rifle desde el hueco","via":"breach"}],
+        {"room":"Aunt's Hall","f":2,"do":"Cubre con el rifle desde el hueco","via":"breach"}
+       ],
        "clear":[
         {"room":"Main Stairs","f":2,"threat":"Bandit trickeando la pared y Rtila de Kaid","how":"Lanza LV a la altura de la batería en cuanto chispee"},
-        {"room":"Aunt's Hall","f":2,"threat":"Ancla asomando por la puerta de Kids Room","how":"Sostén el hueco con el rifle y espera que Osa presione"}],
-       "final":"Sostiene Aunt's Hall desde el hueco de Maverick durante la planta"},
-      {"op":"osa","role":"soporte","spawn":"School Alley",
+        {"room":"Aunt's Hall","f":2,"threat":"Ancla asomando por la puerta de Kids Room","how":"Sostén el hueco con el rifle y espera que Osa presione"}
+       ],
+       "final":"Sostiene Aunt's Hall desde el hueco de Maverick durante la planta"
+      },
+      {
+       "op":"osa",
+       "role":"soporte",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Finka y Gridlock","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
@@ -484,13 +816,19 @@
         {"room":"Back Stairs","f":2,"do":"Pone un Talon en la puerta de Meth Lab para cubrir la subida","via":"stairs"},
         {"room":"Meth Lab","f":2,"do":"Cruza el laboratorio y pone el segundo Talon en la puerta de Grow Room","via":"door"},
         {"room":"Grow Room","f":2,"do":"Toma Grow Room y presiona Kids Room","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Planta detrás del Talon","via":"door"}],
+        {"room":"Kids Room","f":2,"do":"Planta detrás del Talon","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":1,"threat":"Kapkan en la puerta de Back Alley y roamer bajando la escalera","how":"Dron al marco y sube con Finka cubriendo arriba"},
         {"room":"Meth Lab","f":2,"threat":"Roamer tipo Vigil en el laboratorio o Evil Eye de Maestro","how":"Talon delante, rompe la Evil Eye y limpia esquinas con Gridlock"},
-        {"room":"Kids Room","f":2,"threat":"Ancla Kaid/Frost cerca de la escotilla y cepo bajo la puerta","how":"Talon en el marco, Finka activa y entran los tres; mira el piso"}],
-       "final":"Planta en Kids Room detrás del Talon"},
-      {"op":"finka","role":"soporte","spawn":"School Alley",
+        {"room":"Kids Room","f":2,"threat":"Ancla Kaid/Frost cerca de la escotilla y cepo bajo la puerta","how":"Talon en el marco, Finka activa y entran los tres; mira el piso"}
+       ],
+       "final":"Planta en Kids Room detrás del Talon"
+      },
+      {
+       "op":"finka",
+       "role":"soporte",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Osa","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
@@ -499,67 +837,119 @@
         {"room":"Back Stairs","f":2,"do":"Cubre la subida de Osa","via":"stairs"},
         {"room":"Meth Lab","f":2,"do":"Cruza a Grow Room","via":"door"},
         {"room":"Grow Room","f":2,"do":"Activa Surge cuando Maverick avise que va a entrar","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Entra con Osa y limpia la bomba B","via":"door"}],
+        {"room":"Kids Room","f":2,"do":"Entra con Osa y limpia la bomba B","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":2,"threat":"Roamer esperando en el descanso de Back Stairs","how":"Prefire el descanso y sube con Osa delante"},
-        {"room":"Grow Room","f":2,"threat":"Frost con cepo entre las plantas","how":"Mira el piso; Surge te saca si caes"}],
-       "final":"Cubre la planta de Osa y revive con Surge si cae alguien"},
-      {"op":"gridlock","role":"flanco","spawn":"School Alley",
+        {"room":"Grow Room","f":2,"threat":"Frost con cepo entre las plantas","how":"Mira el piso; Surge te saca si caes"}
+       ],
+       "final":"Cubre la planta de Osa y revive con Surge si cae alguien"
+      },
+      {
+       "op":"gridlock",
+       "role":"flanco",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale último del grupo","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Entra por Back Stairs","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Stingers en la puerta de Vault Room para tapar la espalda","via":"stairs"},
         {"room":"Back Stairs","f":2,"do":"Stingers en el descanso hacia 3F y sostiene la escalera","via":"stairs"},
-        {"room":"Meth Lab","f":2,"do":"Entra al final para cubrir Grow Room","via":"door"}],
+        {"room":"Meth Lab","f":2,"do":"Entra al final para cubrir Grow Room","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":1,"threat":"Roamer saliendo de Vault Room a la espalda del grupo","how":"Stingers en la puerta y sostén el ángulo desde la escalera"},
-        {"room":"Back Stairs","f":2,"threat":"Roamer bajando de 3F por Back Stairs","how":"Stingers en el descanso y prefire"}],
-       "final":"Sostiene Back Stairs con Stingers y cubre el flanco del frente de Grow Room"}
-     ]}
+        {"room":"Back Stairs","f":2,"threat":"Roamer bajando de 3F por Back Stairs","how":"Stingers en el descanso y prefire"}
+       ],
+       "final":"Sostiene Back Stairs con Stingers y cubre el flanco del frente de Grow Room"
+      }
+     ]
+    }
    ],
    "defense":[
-    {"id":"default","n":"Default","summary":"Mira ancla en Aunt's Bedroom con espejos hacia Aunt's Hall, Castle en las ventanas de Aunt's Bedroom con Frost debajo, Smoke ancla en Kids Room y Valkyrie con cámaras en Courtyard y Main Stairs roameando en Aunt's Apartment 1F para negar el Buck de abajo.",
-     "reinforce":["Pared Aunt's Hall–Main Stairs ×2","Escotilla Kids Room (Roof 3F)","Pared Kids Room–Grow Room ×1","Escotilla Vault Room (debajo de Aunt's Hall)"],
-     "rotations":["Aunt's Bedroom↔Kids Room (por Aunt's Hall y hueco de rotación en pared blanda)","Kids Room↔Grow Room (puerta) para escapar hacia Back Stairs"],
+    {
+     "id":"default",
+     "n":"Default",
+     "summary":"Mira ancla en Aunt's Bedroom con espejos hacia Aunt's Hall, Castle en las ventanas de Aunt's Bedroom con Frost debajo, Smoke ancla en Kids Room y Valkyrie con cámaras en Courtyard y Main Stairs roameando en Aunt's Apartment 1F para negar el Buck de abajo.",
+     "reinforce":[
+      "Pared Aunt's Hall–Main Stairs ×2",
+      "Escotilla Kids Room (Roof 3F)",
+      "Pared Kids Room–Grow Room ×1",
+      "Escotilla Vault Room (debajo de Aunt's Hall)"
+     ],
+     "rotations":[
+      "Aunt's Bedroom↔Kids Room (por Aunt's Hall y hueco de rotación en pared blanda)",
+      "Kids Room↔Grow Room (puerta) para escapar hacia Back Stairs"
+     ],
      "ops":[
       {"op":"mira","room":"Aunt's Bedroom","f":2,"role":"ancla","job":"Dos espejos en la pared de Aunt's Hall hacia Main Stairs; ancla la bomba A y mira la ventana"},
       {"op":"castle","room":"Aunt's Bedroom","f":2,"role":"flex","job":"Castle en las dos ventanas de Aunt's Bedroom y en la puerta del balcón de Aunt's Hall; juega entre las dos bombas"},
       {"op":"frost","room":"Aunt's Bedroom","f":2,"role":"ancla","job":"Cepos bajo las ventanas y detrás de la puerta de Aunt's Hall; ancla la esquina de la cama"},
       {"op":"smoke","room":"Kids Room","f":2,"role":"ancla","job":"Ancla la bomba B mirando la puerta de Grow Room; gas para el plant"},
       {"op":"valkyrie","room":"Aunt's Apartment","f":1,"role":"roam","job":"Cámaras en Courtyard 1F, Main Stairs 2F y Roof 3F; roamea en 1F para cazar al Buck que quiera abrir desde abajo"}
-     ]},
-    {"id":"alt","n":"Bunker Kaid + Azami","summary":"Cuando el rival juega vertical: Kaid electrifica la escotilla de Kids Room y la pared de Aunt's Hall desde lejos, Azami sella ventanas y techos rotos con Kiba, Melusi frena a los que entren por el balcón, Warden aguanta el humo en Aunt's Bedroom y Solis roamea en 3F cazando drones y al vertical de Roof.",
-     "reinforce":["Pared Aunt's Hall–Main Stairs ×2","Escotilla Kids Room","Pared Kids Room–Grow Room ×1","Escotilla Vault Room"],
-     "rotations":["Aunt's Bedroom↔Kids Room (pared blanda abierta)","Aunt's Hall↔Courtyard 2F (puerta con Banshee para escuchar el rush)"],
+     ]
+    },
+    {
+     "id":"alt",
+     "n":"Bunker Kaid + Azami",
+     "summary":"Cuando el rival juega vertical: Kaid electrifica la escotilla de Kids Room y la pared de Aunt's Hall desde lejos, Azami sella ventanas y techos rotos con Kiba, Melusi frena a los que entren por el balcón, Warden aguanta el humo en Aunt's Bedroom y Solis roamea en 3F cazando drones y al vertical de Roof.",
+     "reinforce":[
+      "Pared Aunt's Hall–Main Stairs ×2",
+      "Escotilla Kids Room",
+      "Pared Kids Room–Grow Room ×1",
+      "Escotilla Vault Room"
+     ],
+     "rotations":[
+      "Aunt's Bedroom↔Kids Room (pared blanda abierta)",
+      "Aunt's Hall↔Courtyard 2F (puerta con Banshee para escuchar el rush)"
+     ],
      "ops":[
       {"op":"kaid","room":"Kids Room","f":2,"role":"ancla","job":"Rtila en la escotilla de Kids Room y en la pared de Aunt's Hall; ancla la bomba B"},
       {"op":"azami","room":"Aunt's Bedroom","f":2,"role":"flex","job":"Kiba para tapar ventanas y los huecos de techo que abra Sledge/Ram; juega entre bombas"},
       {"op":"melusi","room":"Aunt's Hall","f":2,"role":"flex","job":"Banshee en la puerta del balcón y en la puerta de Grow Room; frena el rush y avisa"},
-      {"op":"warden","room":"Aunt's Bedroom","f":2,"role":"ancla","job":"Ancla la bomba A; Glance para ver a través del humo de Glaz y de la Candela"},
+      {"op":"warden","room":"Aunt's Bedroom","f":2,"role":"ancla","job":"Ancla la bomba A; Glance para ver a través del humo del atacante y de la Candela"},
       {"op":"solis","room":"Packaging Room","f":3,"role":"roam","job":"Roam en 3F con SPEC-IO; caza drones y pega por la espalda al que quiera abrir Roof sobre Kids Room"}
-     ]}
+     ]
+    }
    ]
   },
-  "football": {
-   "attack": [
-    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Main Stairs 2F para abrir la pared reforzada de Football Apartment con Thatcher + Thermite mientras Buck rompe desde Biker's Apartment 1F el piso de Football Apartment por debajo. Twitch quema los gadgets del sitio y Nomad tapa Football Office para que la rotación de Back Stairs no llegue. El sitio de fútbol vive de las ventanas hacia el campo y de la Mira en Bedroom; le quitas el piso y la pared y se cae.",
-     "timeline":["0:00–0:45 · Twitch dronea el sitio y quema ADS; Thatcher y Thermite suben a Main Stairs 2F; Buck toma Biker's Apartment 1F","0:45–1:30 · Buck abre el piso debajo de Football Apartment; EMP + carga exotérmica en la pared Main Stairs–Football Apartment","1:30–2:30 · entrada por la pared con humo, Nomad sella Football Office; planta en Football Apartment","2:30–3:00 · post-plant: Buck desde abajo, Thermite en el hueco, Twitch drone en Football Bedroom"],
+  "football":{
+   "attack":[
+    {
+     "id":"default",
+     "n":"Default lento",
+     "tag":"DEFAULT",
+     "summary":"Se toma Main Stairs 2F para abrir la pared reforzada de Football Apartment con Thatcher + Thermite mientras Buck rompe desde Biker's Apartment 1F el piso de Football Apartment por debajo. Twitch quema los gadgets del sitio y Nomad tapa Football Office para que la rotación de Back Stairs no llegue. El sitio de fútbol vive de las ventanas hacia el campo y de la Mira en Bedroom; le quitas el piso y la pared y se cae.",
+     "timeline":[
+      "0:00–0:45 · Twitch dronea el sitio y quema ADS; Thatcher y Thermite suben a Main Stairs 2F; Buck toma Biker's Apartment 1F",
+      "0:45–1:30 · Buck abre el piso debajo de Football Apartment; EMP + carga exotérmica en la pared Main Stairs–Football Apartment",
+      "1:30–2:30 · entrada por la pared con humo, Nomad sella Football Office; planta en Football Apartment",
+      "2:30–3:00 · post-plant: Buck desde abajo, Thermite en el hueco, Twitch drone en Football Bedroom"
+     ],
      "ops":[
-      {"op":"thermite","role":"duro","spawn":"Rooftops",
+      {
+       "op":"thermite",
+       "role":"duro",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja por los techos con dron","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
         {"room":"Packaging Room","f":3,"do":"Limpia el cuarto y toma Main Stairs","via":"door"},
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Carga exotérmica en la pared reforzada de Football Apartment tras el EMP","via":"stairs"},
-        {"room":"Football Apartment","f":2,"do":"Entra con humo y cubre la planta en la bomba A","via":"breach"}],
+        {"room":"Football Apartment","f":2,"do":"Entra con humo y cubre la planta en la bomba A","via":"breach"}
+       ],
        "clear":[
         {"room":"Packaging Room","f":3,"threat":"Roamer que sube a 3F por Back Stairs y Kapkan en la puerta de Roof","how":"Dron al marco y prefire las esquinas antes de bajar"},
         {"room":"Main Stairs","f":2,"threat":"Bandit trickeando la pared y Mira con espejo hacia la escalera","how":"Espera los dos EMP y pon la carga cuando Buck ya abrió el piso"},
-        {"room":"Football Apartment","f":2,"threat":"Ancla Smoke con gas listo en la puerta de Football Bedroom","how":"Humo en el hueco y entra cuando Twitch confirme con el dron"}],
-       "final":"Sostiene el hueco de la pared y cubre la planta en Football Apartment"},
-      {"op":"thatcher","role":"antigadget","spawn":"Rooftops",
+        {"room":"Football Apartment","f":2,"threat":"Ancla Smoke con gas listo en la puerta de Football Bedroom","how":"Humo en el hueco y entra cuando Twitch confirme con el dron"}
+       ],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Football Apartment"
+      },
+      {
+       "op":"thatcher",
+       "role":"antigadget",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Thermite","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
@@ -567,147 +957,255 @@
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Dos EMP a la pared de Football Apartment para quemar Bandit, Kaid y Mute","via":"stairs"},
         {"room":"Football Apartment","f":2,"do":"Entra detrás de Thermite y limpia hacia Football Bedroom","via":"breach"},
-        {"room":"Football Bedroom","f":2,"do":"Toma la bomba B","via":"door"}],
+        {"room":"Football Bedroom","f":2,"do":"Toma la bomba B","via":"door"}
+       ],
        "clear":[
         {"room":"Main Stairs","f":2,"threat":"Kapkan en la puerta de Aunt's Hall y Mute jammer detrás de la pared","how":"EMP al marco y a la pared antes de que Thermite se acerque"},
-        {"room":"Football Bedroom","f":2,"threat":"Ancla Mira o Kaid en la esquina de la cama","how":"Tercer EMP a la pared y entra con humo"}],
-       "final":"Sostiene Football Bedroom y la puerta a Football Office"},
-      {"op":"buck","role":"blando","spawn":"School Alley",
+        {"room":"Football Bedroom","f":2,"threat":"Ancla Mira o Kaid en la esquina de la cama","how":"Tercer EMP a la pared y entra con humo"}
+       ],
+       "final":"Sostiene Football Bedroom y la puerta a Football Office"
+      },
+      {
+       "op":"buck",
+       "role":"blando",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Nomad","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza con humo por las ventanas de Football Apartment","via":"door"},
         {"room":"Biker's Garage","f":1,"do":"Entra por la puerta del garaje","via":"door"},
-        {"room":"Biker's Apartment","f":1,"do":"Abre el techo con la Skeleton Key debajo de Football Apartment y mata desde abajo","via":"door"}],
+        {"room":"Biker's Apartment","f":1,"do":"Abre el techo con la Skeleton Key debajo de Football Apartment y mata desde abajo","via":"door"}
+       ],
        "clear":[
         {"room":"Street","f":-1,"threat":"Spawnpeek desde las ventanas de Football Apartment","how":"Humo o cruza pegado al edificio"},
         {"room":"Biker's Garage","f":1,"threat":"Roamer escondido en el garaje o Kapkan en la puerta","how":"Dron al marco y limpia esquinas con Nomad"},
-        {"room":"Biker's Apartment","f":1,"threat":"Roamer tipo Cav/Vigil debajo del sitio","how":"Dron antes de entrar y escopeta lista en esquinas"}],
-       "final":"Controla Football Apartment desde abajo y niega la desactivación por los huecos"},
-      {"op":"twitch","role":"intel","spawn":"School Alley",
+        {"room":"Biker's Apartment","f":1,"threat":"Roamer tipo Cav/Vigil debajo del sitio","how":"Dron antes de entrar y escopeta lista en esquinas"}
+       ],
+       "final":"Controla Football Apartment desde abajo y niega la desactivación por los huecos"
+      },
+      {
+       "op":"twitch",
+       "role":"intel",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Dron de choque por Football Pitch hacia las ventanas del sitio","via":"door"},
-        {"room":"Football Pitch","f":-1,"do":"Quema ADS y Evil Eyes del sitio desde el campo; rapela a la ventana de Football Apartment","via":"rappel"},
-        {"room":"Football Apartment","f":2,"do":"Entra por la ventana cuando caiga la pared y cubre la planta","via":"window"}],
+        {"room":"Football Pitch","f":-1,"do":"Quema ADS y Evil Eyes del sitio desde el campo; rapela a la ventana de Football Apartment","via":"door"},
+        {"room":"Football Apartment","f":2,"do":"Entra por la ventana cuando caiga la pared y cubre la planta","via":"rappel"}
+       ],
        "clear":[
         {"room":"Football Pitch","f":-1,"threat":"Peek desde las ventanas de Football Apartment y Football Bedroom","how":"Rapela por la esquina ciega y no cuelgues frente a la ventana"},
-        {"room":"Football Apartment","f":2,"threat":"Castle en la ventana y Frost debajo","how":"Dron de choque dispara al cepo; Castle la rompes con explosivo o entras por la pared"}],
-       "final":"Entra por la ventana al final y cubre la planta"},
-      {"op":"nomad","role":"flanco","spawn":"School Alley",
+        {"room":"Football Apartment","f":2,"threat":"Castle en la ventana y Frost debajo","how":"Dron de choque dispara al cepo; Castle la rompes con explosivo o entras por la pared"}
+       ],
+       "final":"Entra por la ventana al final y cubre la planta"
+      },
+      {
+       "op":"nomad",
+       "role":"flanco",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Buck","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Entra por Back Stairs","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Sube a 2F","via":"stairs"},
         {"room":"Back Stairs","f":2,"do":"Airjab en la puerta de Football Office y otra hacia Meth Lab","via":"stairs"},
-        {"room":"Football Office","f":2,"do":"Entra cuando el sitio esté abierto y cubre la bomba B por la espalda","via":"door"}],
+        {"room":"Football Office","f":2,"do":"Entra cuando el sitio esté abierto y cubre la bomba B por la espalda","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":1,"threat":"Kapkan en la puerta de Back Alley y roamer en la escalera","how":"Dron al marco y sube despacio"},
         {"room":"Back Stairs","f":2,"threat":"Roamer saliendo de Meth Lab a la espalda","how":"Airjab hacia Meth Lab y sostén desde el descanso"},
-        {"room":"Football Office","f":2,"threat":"Ancla rotando de Football Bedroom a Office","how":"Airjab en la puerta y prefire cuando suene"}],
-       "final":"Sostiene Football Office con Airjabs y cubre la planta"}
-     ]},
-    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rush por Roof 2F desde School Rooftops: Ash abre la puerta de Football Apartment, Ying tira Candela, Blitz entra con flash y Zofia concusiona Football Bedroom. Es la entrada más corta desde School Alley y la defensa suele sostener Main Stairs, no el techo.",
-     "timeline":["0:00–0:20 · corren de School Alley a School Rooftops","0:20–0:45 · Ash abre la puerta de Roof 2F, Candela por la puerta de Football Apartment","0:45–1:30 · Blitz entra con flash, Zofia limpia Bedroom, Striker humo a Main Stairs","1:30–3:00 · planta en Football Apartment y sostienen desde Roof"],
+        {"room":"Football Office","f":2,"threat":"Ancla rotando de Football Bedroom a Office","how":"Airjab en la puerta y prefire cuando suene"}
+       ],
+       "final":"Sostiene Football Office con Airjabs y cubre la planta"
+      }
+     ]
+    },
+    {
+     "id":"rush",
+     "n":"Rush",
+     "tag":"RUSH",
+     "summary":"Rush por Roof 2F desde School Rooftops: Ash abre la puerta de Football Apartment, Ying tira Candela, Blitz entra con flash y Zofia concusiona Football Bedroom. Es la entrada más corta desde School Alley y la defensa suele sostener Main Stairs, no el techo.",
+     "timeline":[
+      "0:00–0:20 · corren de School Alley a School Rooftops",
+      "0:20–0:45 · Ash abre la puerta de Roof 2F, Candela por la puerta de Football Apartment",
+      "0:45–1:30 · Blitz entra con flash, Zofia limpia Bedroom, Striker humo a Main Stairs",
+      "1:30–3:00 · planta en Football Apartment y sostienen desde Roof"
+     ],
      "ops":[
-      {"op":"ash","role":"entrada","spawn":"School Alley",
+      {
+       "op":"ash",
+       "role":"entrada",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre a los techos de la escuela","via":"stairs"},
         {"room":"School Rooftops","f":-1,"do":"Cruza al techo del edificio","via":"door"},
         {"room":"Roof","f":2,"do":"Breach a la barricada de Football Apartment","via":"door"},
-        {"room":"Football Apartment","f":2,"do":"Entra detrás de Blitz y cubre la planta","via":"door"}],
+        {"room":"Football Apartment","f":2,"do":"Entra detrás de Blitz y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"School Rooftops","f":-1,"threat":"Peek desde Roof 2F o desde la ventana de Football Apartment","how":"Corre pegado al muro y no cruces solo"},
-        {"room":"Roof","f":2,"threat":"Kapkan o ADS en la puerta de Football Apartment","how":"Breach a distancia y entra con el flash de Blitz"}],
-       "final":"Cubre la planta desde la puerta de Roof"},
-      {"op":"blitz","role":"entrada","spawn":"School Alley",
+        {"room":"Roof","f":2,"threat":"Kapkan o ADS en la puerta de Football Apartment","how":"Breach a distancia y entra con el flash de Blitz"}
+       ],
+       "final":"Cubre la planta desde la puerta de Roof"
+      },
+      {
+       "op":"blitz",
+       "role":"entrada",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre a los techos","via":"stairs"},
         {"room":"School Rooftops","f":-1,"do":"Cruza con el escudo arriba","via":"door"},
         {"room":"Roof","f":2,"do":"Se pega a la puerta mientras Ash la abre","via":"door"},
         {"room":"Football Apartment","f":2,"do":"Entra primero con flash tras la Candela y mata al ancla","via":"door"},
-        {"room":"Football Bedroom","f":2,"do":"Empuja Bedroom con Zofia","via":"door"}],
+        {"room":"Football Bedroom","f":2,"do":"Empuja Bedroom con Zofia","via":"door"}
+       ],
        "clear":[
         {"room":"Football Apartment","f":2,"threat":"Ancla en la esquina de la ventana o Noor con Horus para quemar el escudo","how":"Flash y entra; si ves fuego retrocede y deja que Ying meta la segunda Candela"},
-        {"room":"Football Bedroom","f":2,"threat":"Mira con espejo hacia la puerta de Apartment","how":"Entra pegado al espejo con Zofia concusionando"}],
-       "final":"Mata al ancla de Football Apartment y sostiene la puerta a Bedroom"},
-      {"op":"ying","role":"negacion","spawn":"School Alley",
+        {"room":"Football Bedroom","f":2,"threat":"Mira con espejo hacia la puerta de Apartment","how":"Entra pegado al espejo con Zofia concusionando"}
+       ],
+       "final":"Mata al ancla de Football Apartment y sostiene la puerta a Bedroom"
+      },
+      {
+       "op":"ying",
+       "role":"negacion",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre a los techos","via":"stairs"},
         {"room":"School Rooftops","f":-1,"do":"Cruza al techo","via":"door"},
         {"room":"Roof","f":2,"do":"Candela cocinada por la puerta hacia Football Apartment","via":"door"},
-        {"room":"Football Apartment","f":2,"do":"Entra detrás de Blitz y planta en la bomba A","via":"door"}],
+        {"room":"Football Apartment","f":2,"do":"Entra detrás de Blitz y planta en la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Roof","f":2,"threat":"Jäger con ADS en la puerta de Football Apartment","how":"Candela cocinada rebotando en el piso"},
-        {"room":"Football Apartment","f":2,"threat":"Ancla Smoke en la puerta de Bedroom","how":"Segunda Candela hacia Bedroom y entra con Blitz"}],
-       "final":"Planta en Football Apartment mientras Blitz y Ash cubren"},
-      {"op":"zofia","role":"blando","spawn":"School Alley",
+        {"room":"Football Apartment","f":2,"threat":"Ancla Smoke en la puerta de Bedroom","how":"Segunda Candela hacia Bedroom y entra con Blitz"}
+       ],
+       "final":"Planta en Football Apartment mientras Blitz y Ash cubren"
+      },
+      {
+       "op":"zofia",
+       "role":"blando",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre a los techos","via":"stairs"},
         {"room":"School Rooftops","f":-1,"do":"Cruza al techo","via":"door"},
         {"room":"Roof","f":2,"do":"Impact a la barricada si Ash falla","via":"door"},
         {"room":"Football Apartment","f":2,"do":"Concusión a Football Bedroom por la puerta","via":"door"},
-        {"room":"Football Bedroom","f":2,"do":"Limpia Bedroom y cubre la bomba B","via":"door"}],
+        {"room":"Football Bedroom","f":2,"do":"Limpia Bedroom y cubre la bomba B","via":"door"}
+       ],
        "clear":[
         {"room":"Football Apartment","f":2,"threat":"Frost con cepo detrás de la puerta de Roof","how":"Mira el piso al entrar"},
-        {"room":"Football Bedroom","f":2,"threat":"Ancla Kaid o Smoke en la esquina de la cama","how":"Concusión y entra con Blitz de escudo"}],
-       "final":"Sostiene Football Bedroom durante la planta"},
-      {"op":"striker","role":"soporte","spawn":"School Alley",
+        {"room":"Football Bedroom","f":2,"threat":"Ancla Kaid o Smoke en la esquina de la cama","how":"Concusión y entra con Blitz de escudo"}
+       ],
+       "final":"Sostiene Football Bedroom durante la planta"
+      },
+      {
+       "op":"striker",
+       "role":"soporte",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre último con humos","via":"stairs"},
         {"room":"School Rooftops","f":-1,"do":"Humo en el techo si hay peek","via":"door"},
         {"room":"Roof","f":2,"do":"Humo hacia Main Stairs por la puerta de Football Apartment","via":"door"},
-        {"room":"Football Apartment","f":2,"do":"Claymore en la puerta de Main Stairs y cubre la planta","via":"door"}],
+        {"room":"Football Apartment","f":2,"do":"Claymore en la puerta de Main Stairs y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"School Rooftops","f":-1,"threat":"Peek desde Roof 2F","how":"Humo antes de cruzar"},
-        {"room":"Football Apartment","f":2,"threat":"Roamer regresando por Main Stairs a la espalda","how":"Humo y claymore en la puerta de Main Stairs"}],
-       "final":"Claymore + humo en Main Stairs y cubre la planta"}
-     ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Sledge, Ram y Fuze toman Packaging Room 3F y destrozan el techo de Football Office y Football Bedroom, Hibana abre la escotilla de Football Bedroom para bajar y Dokkaebi hackea teléfonos para que las anclas no puedan callar el ruido. El sitio de fútbol tiene techo blando en Bedroom y Office; con el techo abierto, la Mira de Bedroom no sirve.",
-     "timeline":["0:00–0:45 · Dokkaebi hackea, todos suben por Roof 3F a Packaging Room","0:45–1:30 · Sledge abre techo de Office, Ram manda BU-GI sobre Bedroom, Fuze pone cargas","1:30–2:30 · Fuze detona, Hibana abre la escotilla y bajan Sledge y Ram; planta en Football Bedroom","2:30–3:00 · post-plant desde arriba con Fuze y Dokkaebi en cámaras"],
+        {"room":"Football Apartment","f":2,"threat":"Roamer regresando por Main Stairs a la espalda","how":"Humo y claymore en la puerta de Main Stairs"}
+       ],
+       "final":"Claymore + humo en Main Stairs y cubre la planta"
+      }
+     ]
+    },
+    {
+     "id":"vertical",
+     "n":"Vertical",
+     "tag":"VERTICAL",
+     "summary":"Sledge, Ram, Fuze y Buck toman Packaging Room 3F y destrozan el techo de Football Office y Football Bedroom; nadie entra hasta que el sitio esté abierto y luego bajan a la vez por Main Stairs y Back Stairs. Dokkaebi hackea teléfonos para que las anclas no puedan callar el ruido de la Skeleton Key. El sitio de fútbol tiene techo blando en Bedroom y Office; con el techo abierto, la Mira de Bedroom no sirve.",
+     "timeline":[
+      "0:00–0:45 · Dokkaebi hackea, todos suben por Roof 3F a Packaging Room",
+      "0:45–1:30 · Sledge abre techo de Office, Buck abre sobre Bedroom, Ram manda BU-GI, Fuze pone cargas",
+      "1:30–2:30 · Fuze detona, Sledge baja por Back Stairs y Buck + Ram por Main Stairs; planta en Football Bedroom",
+      "2:30–3:00 · post-plant desde arriba con Fuze y Dokkaebi en cámaras"
+     ],
      "ops":[
-      {"op":"sledge","role":"blando","spawn":"Rooftops",
+      {
+       "op":"sledge",
+       "role":"blando",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja por los techos con dron","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
         {"room":"Packaging Room","f":3,"do":"Limpia Packaging y abre el piso con el martillo encima de Football Office","via":"door"},
         {"room":"Back Stairs","f":3,"do":"Sostiene la escalera trasera para que nadie suba","via":"door"},
         {"room":"Back Stairs","f":2,"do":"Baja al final para entrar a Office","via":"stairs"},
-        {"room":"Football Office","f":2,"do":"Entra y cubre la planta por la espalda","via":"door"}],
+        {"room":"Football Office","f":2,"do":"Entra y cubre la planta por la espalda","via":"door"}
+       ],
        "clear":[
         {"room":"Packaging Room","f":3,"threat":"Roamer 3F (Vigil/Cav) escondido en Packaging o subiendo por Back Stairs","how":"Dron y claymore en la puerta de Back Stairs 3F"},
-        {"room":"Back Stairs","f":2,"threat":"Ancla de Office asomando a la escalera","how":"Prefire el descanso y baja cuando Fuze detone"}],
-       "final":"Entra a Football Office al final y cubre la planta"},
-      {"op":"ram","role":"negacion","spawn":"Rooftops",
+        {"room":"Back Stairs","f":2,"threat":"Ancla de Office asomando a la escalera","how":"Prefire el descanso y baja cuando Fuze detone"}
+       ],
+       "final":"Entra a Football Office al final y cubre la planta"
+      },
+      {
+       "op":"ram",
+       "role":"negacion",
+       "spawn":"Rooftops",
        "path":[
-        {"room":"Rooftops","f":-1,"do":"Baja con Sledge","via":"door"},
-        {"room":"Roof","f":3,"do":"Cruza el techo","via":"door"},
-        {"room":"Packaging Room","f":3,"do":"Manda dos BU-GI por el piso para abrir Football Bedroom y Office","via":"door"},
-        {"room":"Football Bedroom","f":2,"do":"Baja por la escotilla de Hibana al final","via":"hatch"}],
+        {"room":"Rooftops","f":-1,"do":"Baja por los techos con dron y cuida el peek de Market Rooftops","via":"door"},
+        {"room":"Roof","f":3,"do":"Cruza el techo y entra a Packaging","via":"door"},
+        {"room":"Packaging Room","f":3,"do":"Manda dos BU-GI por el piso para abrir todo el techo de Football Bedroom y Office","via":"door"},
+        {"room":"Main Stairs","f":3,"do":"Baja a 2F cuando el sitio ya esté abierto","via":"stairs"},
+        {"room":"Main Stairs","f":2,"do":"Sale al descanso de 2F con el equipo","via":"stairs"},
+        {"room":"Football Apartment","f":2,"do":"Entra al final por la puerta reforzada abierta","via":"door"},
+        {"room":"Football Bedroom","f":2,"do":"Cubre la bomba B ya sin ancla","via":"door"}
+       ],
        "clear":[
-        {"room":"Packaging Room","f":3,"threat":"Maestro con Evil Eye en Packaging o Kapkan en la puerta de Main Stairs","how":"Dron al marco y rómpelo con la escopeta"},
-        {"room":"Football Bedroom","f":2,"threat":"Ancla Mira o Smoke pegado a la pared de Main Stairs","how":"BU-GI en línea sobre la esquina y remata por el hueco"}],
-       "final":"Cubre la bomba B desde arriba y baja para el post-plant"},
-      {"op":"fuze","role":"negacion","spawn":"Rooftops",
+        {"room":"Packaging Room","f":3,"threat":"Maestro con Evil Eye en Packaging o Kapkan en la puerta de Main Stairs 3F","how":"Dron al marco y rómpelo con la escopeta antes de poner el BU-GI"},
+        {"room":"Main Stairs","f":2,"threat":"Ancla asomando por la puerta de Football Apartment a la escalera","how":"Baja solo cuando Fuze ya detonó y Sledge cubra desde su hueco"},
+        {"room":"Football Bedroom","f":2,"threat":"Ancla Mira o Smoke pegado a la pared de Main Stairs","how":"BU-GI en línea sobre la esquina y remata por el hueco desde arriba antes de bajar"}
+       ],
+       "final":"Cubre la bomba B desde arriba y baja por Main Stairs para el post-plant"
+      },
+      {
+       "op":"fuze",
+       "role":"negacion",
+       "spawn":"Rooftops",
        "path":[
-        {"room":"Rooftops","f":-1,"do":"Baja con el equipo","via":"door"},
-        {"room":"Roof","f":3,"do":"Cruza el techo","via":"door"},
+        {"room":"Rooftops","f":-1,"do":"Baja por los techos con dron y cuida el peek de Market Rooftops","via":"door"},
+        {"room":"Roof","f":3,"do":"Cruza el techo y entra a Packaging","via":"door"},
         {"room":"Packaging Room","f":3,"do":"Carga de racimo sobre Football Bedroom y otra sobre Office; detona tras el hackeo de Dokkaebi","via":"door"},
-        {"room":"Football Bedroom","f":2,"do":"Baja al final con el escudo por delante","via":"hatch"}],
+        {"room":"Main Stairs","f":3,"do":"Baja a 2F cuando el sitio ya esté abierto","via":"stairs"},
+        {"room":"Main Stairs","f":2,"do":"Sale al descanso de 2F con el equipo","via":"stairs"},
+        {"room":"Football Apartment","f":2,"do":"Baja al final con el escudo por delante y niega la desactivación","via":"door"}
+       ],
        "clear":[
-        {"room":"Packaging Room","f":3,"threat":"Wamai o Jäger abajo comiéndose las cargas","how":"Pon la carga lejos de las paredes donde ponen ADS"},
-        {"room":"Football Bedroom","f":2,"threat":"Ancla disparando al techo por los huecos","how":"Aléjate del hueco antes de detonar"}],
-       "final":"Niega la desactivación desde arriba con la última carga"},
-      {"op":"hibana","role":"duro","spawn":"Rooftops",
+        {"room":"Packaging Room","f":3,"threat":"Wamai o Jäger abajo comiéndose las cargas","how":"Pon la carga lejos de las paredes donde ponen ADS y aléjate del hueco antes de detonar"},
+        {"room":"Football Apartment","f":2,"threat":"Ancla que rota a Apartment cuando truena el techo de Bedroom","how":"Entra detrás de Buck con el escudo y deja que Dokkaebi vea la cámara"}
+       ],
+       "final":"Niega la desactivación desde 2F con la última carga y el escudo"
+      },
+      {
+       "op":"buck",
+       "role":"blando",
+       "spawn":"Rooftops",
        "path":[
-        {"room":"Rooftops","f":-1,"do":"Baja con el equipo","via":"door"},
-        {"room":"Roof","f":3,"do":"Cruza el techo","via":"door"},
-        {"room":"Packaging Room","f":3,"do":"X-KAIROS en la escotilla reforzada de Football Bedroom","via":"door"},
-        {"room":"Football Bedroom","f":2,"do":"Baja primero y planta en la bomba B","via":"hatch"}],
+        {"room":"Rooftops","f":-1,"do":"Baja por los techos con dron y cuida el peek de Market Rooftops","via":"door"},
+        {"room":"Roof","f":3,"do":"Cruza el techo y entra a Packaging","via":"door"},
+        {"room":"Packaging Room","f":3,"do":"Abre el piso con la Skeleton Key encima de la bomba de Football Bedroom y mata al ancla desde arriba","via":"door"},
+        {"room":"Main Stairs","f":3,"do":"Baja a 2F cuando el sitio ya esté abierto","via":"stairs"},
+        {"room":"Main Stairs","f":2,"do":"Sale al descanso de 2F con el equipo","via":"stairs"},
+        {"room":"Football Apartment","f":2,"do":"Cruza Apartment con Ram cubriendo","via":"door"},
+        {"room":"Football Bedroom","f":2,"do":"Entra al final y planta en la bomba B","via":"door"}
+       ],
        "clear":[
-        {"room":"Packaging Room","f":3,"threat":"Bandit/Kaid electrificando la escotilla desde abajo","how":"Espera el BU-GI de Ram al lado para sacarlo y pones los pellets"},
-        {"room":"Football Bedroom","f":2,"threat":"Ancla esperando debajo de la escotilla","how":"Flash por la escotilla y que Fuze detone justo antes"}],
-       "final":"Baja por la escotilla y planta en Football Bedroom"},
-      {"op":"dokkaebi","role":"intel","spawn":"Market",
+        {"room":"Packaging Room","f":3,"threat":"Roamer subiendo por Back Stairs 3F a la espalda mientras abres piso","how":"Claymore en la puerta de Back Stairs 3F y abre desde una esquina, nunca de pie en el centro"},
+        {"room":"Main Stairs","f":2,"threat":"Ancla de Apartment cubriendo la puerta reforzada desde la esquina","how":"Prefire la esquina al salir de la escalera y entra con el flash de Fuze detonando"},
+        {"room":"Football Bedroom","f":2,"threat":"Ancla Mira o Smoke en la esquina de Bedroom disparando hacia arriba","how":"Alterna huecos desde arriba y baja solo cuando Ram ya barrió la esquina con el BU-GI"}
+       ],
+       "final":"Planta en Football Bedroom con Sledge en Office y Ram cubriendo desde Apartment"
+      },
+      {
+       "op":"dokkaebi",
+       "role":"intel",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
@@ -715,16 +1213,32 @@
         {"room":"Stair Hall","f":1,"do":"Sostiene Stair Hall para tapar la rotación por Main Stairs","via":"door"},
         {"room":"Main Stairs","f":1,"do":"Sube a 2F al final","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Entra a Football Apartment por la puerta","via":"stairs"},
-        {"room":"Football Apartment","f":2,"do":"Cubre la planta desde la bomba A","via":"door"}],
+        {"room":"Football Apartment","f":2,"do":"Cubre la planta desde la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":1,"threat":"Roamer saliendo de Aunt's Apartment o Laundry","how":"Logic Bomb y claymore en la puerta de Laundry"},
-        {"room":"Main Stairs","f":2,"threat":"Ancla de Football Apartment mirando la puerta de Main Stairs","how":"Sube solo cuando Ram y Fuze ya abrieron el techo"}],
-       "final":"Cubre Main Stairs y entra a Football Apartment al final"}
-     ]},
-    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes: Maverick y Kali abren la pared de Football Office desde Back Stairs 2F en silencio, mientras Montagne, Finka y Glaz entran por Main Stairs 2F a Football Apartment con humo. La defensa mira Main Stairs y las ventanas; Office es la espalda del sitio y casi nadie lo sostiene.",
-     "timeline":["0:00–0:45 · Maverick + Kali por Back Alley a Back Stairs 2F; Montagne + Finka + Glaz suben por Roof 3F a Main Stairs","0:45–1:30 · Kali quema Bandit, Maverick abre hueco a Office; Montagne se pone en la puerta de Football Apartment","1:30–2:30 · humo de Glaz en Apartment, Finka activa y entran los dos frentes; planta en Football Bedroom","2:30–3:00 · post-plant: Glaz ve por el humo, Maverick en el hueco de Office, Montagne cubre la planta"],
+        {"room":"Main Stairs","f":2,"threat":"Ancla de Football Apartment mirando la puerta de Main Stairs","how":"Sube solo cuando Ram y Fuze ya abrieron el techo"}
+       ],
+       "final":"Cubre Main Stairs y entra a Football Apartment al final"
+      }
+     ]
+    },
+    {
+     "id":"split",
+     "n":"Split",
+     "tag":"SPLIT",
+     "summary":"Dos frentes: Maverick y Kali abren la pared de Football Office desde Back Stairs 2F en silencio, mientras Montagne, Finka y Glaz entran por Main Stairs 2F a Football Apartment con humo. La defensa mira Main Stairs y las ventanas; Office es la espalda del sitio y casi nadie lo sostiene.",
+     "timeline":[
+      "0:00–0:45 · Maverick + Kali por Back Alley a Back Stairs 2F; Montagne + Finka + Glaz suben por Roof 3F a Main Stairs",
+      "0:45–1:30 · Kali quema Bandit, Maverick abre hueco a Office; Montagne se pone en la puerta de Football Apartment",
+      "1:30–2:30 · humo de Glaz en Apartment, Finka activa y entran los dos frentes; planta en Football Bedroom",
+      "2:30–3:00 · post-plant: Glaz ve por el humo, Maverick en el hueco de Office, Montagne cubre la planta"
+     ],
      "ops":[
-      {"op":"maverick","role":"duro","spawn":"School Alley",
+      {
+       "op":"maverick",
+       "role":"duro",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Kali","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
@@ -732,25 +1246,37 @@
         {"room":"Back Stairs","f":1,"do":"Sube a 2F","via":"stairs"},
         {"room":"Back Stairs","f":2,"do":"Hueco de mira y hueco de entrada en la pared reforzada de Football Office","via":"stairs"},
         {"room":"Football Office","f":2,"do":"Entra por el hueco con Kali cubriendo","via":"breach"},
-        {"room":"Football Bedroom","f":2,"do":"Cubre la bomba B","via":"door"}],
+        {"room":"Football Bedroom","f":2,"do":"Cubre la bomba B","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":1,"threat":"Kapkan en la puerta de Back Alley y roamer bajando","how":"Dron al marco y sube con Kali cubriendo arriba"},
         {"room":"Back Stairs","f":2,"threat":"Mira con espejo hacia la escalera y Kaid detrás","how":"Hueco chiquito en la zona ciega; Kali revienta el espejo con la lanza"},
-        {"room":"Football Office","f":2,"threat":"Ancla de Bedroom asomando a Office","how":"Entra solo cuando el frente de Main Stairs ya presione"}],
-       "final":"Sostiene el hueco de Office y cubre la planta"},
-      {"op":"kali","role":"antigadget","spawn":"School Alley",
+        {"room":"Football Office","f":2,"threat":"Ancla de Bedroom asomando a Office","how":"Entra solo cuando el frente de Main Stairs ya presione"}
+       ],
+       "final":"Sostiene el hueco de Office y cubre la planta"
+      },
+      {
+       "op":"kali",
+       "role":"antigadget",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale con Maverick","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Entra por Back Stairs","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Sube","via":"stairs"},
         {"room":"Back Stairs","f":2,"do":"Lanza LV a la pared de Office para quemar Bandit/Kaid y romper espejos","via":"stairs"},
-        {"room":"Football Office","f":2,"do":"Cubre con el rifle desde el hueco","via":"breach"}],
+        {"room":"Football Office","f":2,"do":"Cubre con el rifle desde el hueco","via":"breach"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":2,"threat":"Bandit trickeando la pared y Rtila de Kaid","how":"Lanza LV en cuanto chispee"},
-        {"room":"Football Office","f":2,"threat":"Ancla peekeando desde Bedroom","how":"Sostén el hueco con el rifle y espera la presión de Montagne"}],
-       "final":"Sostiene Football Office desde el hueco durante la planta"},
-      {"op":"montagne","role":"soporte","spawn":"Rooftops",
+        {"room":"Football Office","f":2,"threat":"Ancla peekeando desde Bedroom","how":"Sostén el hueco con el rifle y espera la presión de Montagne"}
+       ],
+       "final":"Sostiene Football Office desde el hueco durante la planta"
+      },
+      {
+       "op":"montagne",
+       "role":"soporte",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Finka y Glaz","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
@@ -758,336 +1284,559 @@
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Escudo extendido en la puerta de Football Apartment","via":"stairs"},
         {"room":"Football Apartment","f":2,"do":"Entra primero con el humo y da cobertura","via":"door"},
-        {"room":"Football Bedroom","f":2,"do":"Planta detrás del escudo","via":"door"}],
+        {"room":"Football Bedroom","f":2,"do":"Planta detrás del escudo","via":"door"}
+       ],
        "clear":[
         {"room":"Main Stairs","f":2,"threat":"Noor con Horus apuntando a la puerta o Lesion con Gu en el marco","how":"Entra despacio; si ves fuego retrocede y que Glaz limpie por el humo"},
-        {"room":"Football Apartment","f":2,"threat":"Mira con espejo hacia la puerta y ancla detrás","how":"Escudo pegado al espejo para que Finka y Glaz entren por los lados cuando Maverick abra Office"}],
-       "final":"Planta detrás del escudo en Football Bedroom"},
-      {"op":"finka","role":"soporte","spawn":"Rooftops",
+        {"room":"Football Apartment","f":2,"threat":"Mira con espejo hacia la puerta y ancla detrás","how":"Escudo pegado al espejo para que Finka y Glaz entren por los lados cuando Maverick abra Office"}
+       ],
+       "final":"Planta detrás del escudo en Football Bedroom"
+      },
+      {
+       "op":"finka",
+       "role":"soporte",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con Montagne","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
         {"room":"Packaging Room","f":3,"do":"Limpia y baja","via":"door"},
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Abre la barricada con explosivo y activa Surge al entrar","via":"stairs"},
-        {"room":"Football Apartment","f":2,"do":"Entra por el lado del escudo y limpia la bomba A","via":"door"}],
+        {"room":"Football Apartment","f":2,"do":"Entra por el lado del escudo y limpia la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Main Stairs","f":2,"threat":"Frost bajo la puerta de Football Apartment","how":"Mira el piso; Surge te saca del cepo"},
-        {"room":"Football Apartment","f":2,"threat":"Ancla Smoke con gas en la puerta","how":"Surge, humo de Glaz y entra rápido"}],
-       "final":"Cubre la planta y revive con Surge si cae alguien"},
-      {"op":"glaz","role":"negacion","spawn":"Rooftops",
+        {"room":"Football Apartment","f":2,"threat":"Ancla Smoke con gas en la puerta","how":"Surge, humo de Glaz y entra rápido"}
+       ],
+       "final":"Cubre la planta y revive con Surge si cae alguien"
+      },
+      {
+       "op":"glaz",
+       "role":"negacion",
+       "spawn":"Rooftops",
        "path":[
         {"room":"Rooftops","f":-1,"do":"Baja con el grupo","via":"door"},
         {"room":"Roof","f":3,"do":"Entra al edificio","via":"door"},
         {"room":"Packaging Room","f":3,"do":"Limpia y baja","via":"door"},
         {"room":"Main Stairs","f":3,"do":"Baja a 2F","via":"stairs"},
         {"room":"Main Stairs","f":2,"do":"Humo dentro de Football Apartment y limpia con la térmica detrás de Montagne","via":"stairs"},
-        {"room":"Football Apartment","f":2,"do":"Entra y cubre la planta viendo por el humo","via":"door"}],
+        {"room":"Football Apartment","f":2,"do":"Entra y cubre la planta viendo por el humo","via":"door"}
+       ],
        "clear":[
         {"room":"Main Stairs","f":2,"threat":"Ancla peekeando desde Football Apartment a la escalera","how":"Humo y térmica desde detrás del escudo"},
-        {"room":"Football Apartment","f":2,"threat":"Warden con Glance viendo por el humo","how":"Prioriza a Warden con la térmica antes de cruzar"}],
-       "final":"Cubre la planta desde Football Apartment viendo por el humo"}
-     ]}
+        {"room":"Football Apartment","f":2,"threat":"Warden con Glance viendo por el humo","how":"Prioriza a Warden con la térmica antes de cruzar"}
+       ],
+       "final":"Cubre la planta desde Football Apartment viendo por el humo"
+      }
+     ]
+    }
    ],
    "defense":[
-    {"id":"default","n":"Default","summary":"Mira ancla en Football Bedroom con espejos hacia Main Stairs y Office, Castle en las ventanas de Football Apartment con Frost debajo, Smoke ancla en Football Apartment mirando la puerta de Roof y Valkyrie con cámaras en Packaging y Roof roameando en Biker's Apartment 1F para negar el Buck de abajo.",
-     "reinforce":["Pared Football Apartment–Main Stairs ×2","Pared Football Office–Back Stairs ×2","Escotilla Football Bedroom (Packaging 3F)","Escotilla Biker's Apartment (debajo de Football Apartment)"],
-     "rotations":["Football Apartment↔Football Bedroom (puerta + hueco en pared blanda)","Football Bedroom↔Football Office (puerta) para salir a Back Stairs"],
+    {
+     "id":"default",
+     "n":"Default",
+     "summary":"Mira ancla en Football Bedroom con espejos hacia Main Stairs y Office, Castle en las ventanas de Football Apartment con Frost debajo, Smoke ancla en Football Apartment mirando la puerta de Roof y Valkyrie con cámaras en Packaging y Roof roameando en Biker's Apartment 1F para negar el Buck de abajo.",
+     "reinforce":[
+      "Pared Football Apartment–Main Stairs ×2",
+      "Pared Football Office–Back Stairs ×2",
+      "Escotilla Football Bedroom (Packaging 3F)",
+      "Escotilla Biker's Apartment (debajo de Football Apartment)"
+     ],
+     "rotations":[
+      "Football Apartment↔Football Bedroom (puerta + hueco en pared blanda)",
+      "Football Bedroom↔Football Office (puerta) para salir a Back Stairs"
+     ],
      "ops":[
       {"op":"mira","room":"Football Bedroom","f":2,"role":"ancla","job":"Espejo en la pared de Main Stairs y otro hacia Football Office; ancla la bomba B"},
       {"op":"castle","room":"Football Apartment","f":2,"role":"flex","job":"Castle en las ventanas hacia Football Pitch y en la puerta de Roof; juega entre las dos bombas"},
       {"op":"frost","room":"Football Apartment","f":2,"role":"ancla","job":"Cepos bajo las ventanas y detrás de la puerta de Roof; ancla la esquina de la ventana"},
       {"op":"smoke","room":"Football Apartment","f":2,"role":"ancla","job":"Ancla la bomba A mirando Roof y Main Stairs; gas para el plant"},
       {"op":"valkyrie","room":"Biker's Apartment","f":1,"role":"roam","job":"Cámaras en Packaging 3F, Roof 2F y Street; roamea en 1F para cazar al Buck que abra desde abajo"}
-     ]},
-    {"id":"alt","n":"Anti-rush Roof con Noor","summary":"Cuando rushean por Roof 2F o Main Stairs con escudos: Noor con Horus en la puerta de Roof, Kaid electrifica escotilla y paredes desde lejos, Azami sella ventanas y huecos, Thunderbird cura entre bombas y Vigil roamea en 1F cazando al vertical de abajo.",
-     "reinforce":["Pared Football Apartment–Main Stairs ×2","Pared Football Office–Back Stairs ×2","Escotilla Football Bedroom","Escotilla Biker's Apartment"],
-     "rotations":["Football Apartment↔Football Bedroom (pared blanda abierta)","Football Office↔Back Stairs (puerta con Kiba para cerrar rápido)"],
+     ]
+    },
+    {
+     "id":"alt",
+     "n":"Anti-rush Roof con Noor",
+     "summary":"Cuando rushean por Roof 2F o Main Stairs con escudos: Noor con Horus en la puerta de Roof, Kaid electrifica escotilla y paredes desde lejos, Azami sella ventanas y huecos, Thunderbird cura entre bombas y Vigil roamea en 1F cazando al vertical de abajo.",
+     "reinforce":[
+      "Pared Football Apartment–Main Stairs ×2",
+      "Pared Football Office–Back Stairs ×2",
+      "Escotilla Football Bedroom",
+      "Escotilla Biker's Apartment"
+     ],
+     "rotations":[
+      "Football Apartment↔Football Bedroom (pared blanda abierta)",
+      "Football Office↔Back Stairs (puerta con Kiba para cerrar rápido)"
+     ],
      "ops":[
       {"op":"noor","room":"Football Apartment","f":2,"role":"ancla","job":"Horus apuntando a la puerta de Roof y a la de Main Stairs; quema a Blitz/Montagne"},
       {"op":"kaid","room":"Football Bedroom","f":2,"role":"ancla","job":"Rtila en la escotilla de Bedroom y en la pared de Office; ancla la bomba B"},
       {"op":"azami","room":"Football Apartment","f":2,"role":"flex","job":"Kiba en las ventanas y en los huecos de techo que abran; juega entre bombas"},
       {"op":"thunderbird","room":"Football Bedroom","f":2,"role":"ancla","job":"Kóna entre las dos bombas; sostiene Office y cura a Noor y Kaid"},
       {"op":"vigil","room":"Biker's Bedroom","f":1,"role":"roam","job":"Roam en 1F invisible a drones; caza a Buck en Biker's Apartment y pega por Stair Hall"}
-     ]}
+     ]
+    }
    ]
   },
-  "packaging": {
-   "attack": [
-    {"id":"default","n":"Default lento","tag":"DEFAULT","summary":"Se toma Stair Hall para abrir la pared reforzada de Armory Room con Thatcher + Thermite mientras Sledge desde Aunt's Hall 2F rompe el techo de Vault Room. Iana dronea desde Laundry Room y Gridlock siembra Back Stairs para que el roamer no regrese a Vault. El sitio de Armory/Vault es un pasillo largo: cuando la pared de Stair Hall cae y Vault pierde el techo, las anclas quedan en fila y sin escape.",
-     "timeline":["0:00–0:45 · drones a Armory y Vault; Sledge sube por Courtyard 2F a Aunt's Hall; Thatcher y Thermite toman Stair Hall","0:45–1:30 · Sledge abre el techo de Vault; EMP + carga exotérmica en la pared Stair Hall–Armory","1:30–2:30 · entrada por la pared con humo, Iana presiona Laundry, Gridlock sella Back Stairs; planta en Armory Room","2:30–3:00 · post-plant: Sledge desde arriba, Thermite en el hueco, Gridlock cubre Back Stairs"],
+  "packaging":{
+   "attack":[
+    {
+     "id":"default",
+     "n":"Default lento",
+     "tag":"DEFAULT",
+     "summary":"Se toma Stair Hall para abrir la pared reforzada de Armory Room con Thatcher + Thermite mientras Sledge desde Aunt's Hall 2F rompe el techo de Vault Room. Iana dronea desde Laundry Room y Gridlock siembra Back Stairs para que el roamer no regrese a Vault. El sitio de Armory/Vault es un pasillo largo: cuando la pared de Stair Hall cae y Vault pierde el techo, las anclas quedan en fila y sin escape.",
+     "timeline":[
+      "0:00–0:45 · drones a Armory y Vault; Sledge sube por Courtyard 2F a Aunt's Hall; Thatcher y Thermite toman Stair Hall",
+      "0:45–1:30 · Sledge abre el techo de Vault; EMP + carga exotérmica en la pared Stair Hall–Armory",
+      "1:30–2:30 · entrada por la pared con humo, Iana presiona Laundry, Gridlock sella Back Stairs; planta en Armory Room",
+      "2:30–3:00 · post-plant: Sledge desde arriba, Thermite en el hueco, Gridlock cubre Back Stairs"
+     ],
      "ops":[
-      {"op":"thermite","role":"duro","spawn":"Market",
+      {
+       "op":"thermite",
+       "role":"duro",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado buscando peek de Market 2F","via":"door"},
         {"room":"Market","f":1,"do":"Cruza pegado a los puestos","via":"door"},
         {"room":"Courtyard","f":1,"do":"Toma el patio y revisa Stair Hall con dron","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Carga exotérmica en la pared reforzada de Armory Room tras el EMP","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Entra por el hueco con humo y cubre la planta en la bomba A","via":"breach"}],
+        {"room":"Armory Room","f":1,"do":"Entra por el hueco con humo y cubre la planta en la bomba A","via":"breach"}
+       ],
        "clear":[
         {"room":"Market","f":1,"threat":"Spawnpeek desde Market 2F","how":"Dron primero y cruza rápido pegado a la pared"},
         {"room":"Stair Hall","f":1,"threat":"Bandit trickeando la pared y Mira con espejo hacia el vestíbulo; roamer bajando por Main Stairs","how":"Espera los dos EMP, Gridlock cubre Main Stairs y pon la carga cuando Sledge ya abrió el techo de Vault"},
-        {"room":"Armory Room","f":1,"threat":"Ancla Smoke con gas listo detrás de la pared","how":"Humo en el hueco y entra cuando Iana confirme con la réplica"}],
-       "final":"Sostiene el hueco de la pared y cubre la planta en Armory Room"},
-      {"op":"thatcher","role":"antigadget","spawn":"Market",
+        {"room":"Armory Room","f":1,"threat":"Ancla Smoke con gas listo detrás de la pared","how":"Humo en el hueco y entra cuando Iana confirme con la réplica"}
+       ],
+       "final":"Sostiene el hueco de la pared y cubre la planta en Armory Room"
+      },
+      {
+       "op":"thatcher",
+       "role":"antigadget",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea con Thermite","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Toma el patio","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Dos EMP a la pared de Armory para quemar Bandit, Kaid y Mute","via":"door"},
         {"room":"Armory Room","f":1,"do":"Entra detrás de Thermite y limpia hacia Vault","via":"breach"},
-        {"room":"Vault Room","f":1,"do":"Toma la bomba B","via":"door"}],
+        {"room":"Vault Room","f":1,"do":"Toma la bomba B","via":"door"}
+       ],
        "clear":[
         {"room":"Stair Hall","f":1,"threat":"Kapkan en la puerta de Biker's Apartment y Mute jammer detrás de la pared","how":"EMP al marco y a la pared antes de que Thermite se acerque"},
-        {"room":"Vault Room","f":1,"threat":"Ancla Kaid o Mira pegado a la puerta de Back Stairs","how":"Tercer EMP y entra cuando Sledge le quite el techo"}],
-       "final":"Sostiene Vault Room y la puerta de Back Stairs"},
-      {"op":"sledge","role":"blando","spawn":"Market",
+        {"room":"Vault Room","f":1,"threat":"Ancla Kaid o Mira pegado a la puerta de Back Stairs","how":"Tercer EMP y entra cuando Sledge le quite el techo"}
+       ],
+       "final":"Sostiene Vault Room y la puerta de Back Stairs"
+      },
+      {
+       "op":"sledge",
+       "role":"blando",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Sube a Market 2F por la escalera del mercado","via":"stairs"},
-        {"room":"Market","f":2,"do":"Cruza al balcón del patio","via":"door"},
+        {"room":"Market","f":2,"do":"Cruza al balcón del patio","via":"stairs"},
         {"room":"Courtyard","f":2,"do":"Entra a Aunt's Hall por la puerta del balcón","via":"door"},
         {"room":"Aunt's Hall","f":2,"do":"Abre el piso con el martillo encima de Vault Room y mata desde arriba","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Baja por la escotilla al final","via":"hatch"}],
+        {"room":"Vault Room","f":1,"do":"Baja por la escotilla al final","via":"hatch"}
+       ],
        "clear":[
         {"room":"Courtyard","f":2,"threat":"Roamer en el balcón o Kapkan en la puerta de Aunt's Hall","how":"Dron al marco y prefire el balcón"},
         {"room":"Aunt's Hall","f":2,"threat":"Roamer 2F (Vigil/Cav) escondido en Aunt's Bedroom o Kids Room","how":"Dron a los dos cuartos y claymore en la puerta de Kids Room antes de martillar"},
-        {"room":"Vault Room","f":1,"threat":"Ancla de Vault disparando al techo por los huecos","how":"Abre desde el borde y cambia de hueco"}],
-       "final":"Controla Vault Room desde arriba y baja por la escotilla para el post-plant"},
-      {"op":"iana","role":"intel","spawn":"Market",
+        {"room":"Vault Room","f":1,"threat":"Ancla de Vault disparando al techo por los huecos","how":"Abre desde el borde y cambia de hueco"}
+       ],
+       "final":"Controla Vault Room desde arriba y baja por la escotilla para el post-plant"
+      },
+      {
+       "op":"iana",
+       "role":"intel",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Réplica Gemini a Aunt's Apartment y Laundry para ubicar al roamer","via":"door"},
         {"room":"Aunt's Apartment","f":1,"do":"Toma el apartamento y revisa Laundry con la réplica","via":"door"},
         {"room":"Laundry Room","f":1,"do":"Presiona la puerta de Armory desde Laundry cuando caiga la pared","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Entra al final y cubre la planta","via":"door"}],
+        {"room":"Armory Room","f":1,"do":"Entra al final y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Aunt's Apartment","f":1,"threat":"Roamer tipo Vigil o Alibi con prismas en el apartamento","how":"Réplica primero; los prismas no reaccionan"},
-        {"room":"Laundry Room","f":1,"threat":"Ancla de Armory mirando la puerta de Laundry o Lesion con Gu","how":"Réplica por la puerta, dron al piso y presiona solo cuando la pared caiga"}],
-       "final":"Entra a Armory por Laundry cuando el sitio esté roto y cubre la planta"},
-      {"op":"gridlock","role":"flanco","spawn":"School Alley",
+        {"room":"Laundry Room","f":1,"threat":"Ancla de Armory mirando la puerta de Laundry o Lesion con Gu","how":"Réplica por la puerta, dron al piso y presiona solo cuando la pared caiga"}
+       ],
+       "final":"Entra a Armory por Laundry cuando el sitio esté roto y cubre la planta"
+      },
+      {
+       "op":"gridlock",
+       "role":"flanco",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale sola por la calle","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Stingers en la puerta de Back Stairs y sostiene desde el callejón","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Entra cuando el sitio esté abierto y siembra la escalera hacia 2F","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Entra a Vault por la puerta al final","via":"door"}],
+        {"room":"Vault Room","f":1,"do":"Entra a Vault por la puerta al final","via":"door"}
+       ],
        "clear":[
         {"room":"Back Alley","f":-1,"threat":"Kapkan en la puerta de Back Stairs y roamer saliendo a Back Alley","how":"Dron al marco y Stingers en la puerta"},
-        {"room":"Back Stairs","f":1,"threat":"Roamer bajando de 2F o ancla de Vault asomando a la escalera","how":"Stingers en la escalera y sostén desde la puerta"}],
-       "final":"Sostiene Back Stairs con Stingers y cubre la planta por la espalda"}
-     ]},
-    {"id":"rush","n":"Rush","tag":"RUSH","summary":"Rush por Back Alley → Back Stairs 1F → Vault Room: Ash abre la barricada de Back Stairs, Ying tira Candela a Vault, Blitz entra con flash, Zofia concusiona Armory y Finka mantiene vivo al grupo. Back Stairs es la espalda del sitio y en el primer minuto casi nadie lo cubre.",
-     "timeline":["0:00–0:20 · corren de School Alley a Back Alley","0:20–0:45 · Ash abre la puerta de Back Stairs, Candela a Vault Room","0:45–1:30 · Blitz entra con flash, Zofia limpia Armory, Finka activa","1:30–3:00 · planta en Vault Room y sostienen desde Back Stairs"],
+        {"room":"Back Stairs","f":1,"threat":"Roamer bajando de 2F o ancla de Vault asomando a la escalera","how":"Stingers en la escalera y sostén desde la puerta"}
+       ],
+       "final":"Sostiene Back Stairs con Stingers y cubre la planta por la espalda"
+      }
+     ]
+    },
+    {
+     "id":"rush",
+     "n":"Rush",
+     "tag":"RUSH",
+     "summary":"Rush por Back Alley → Back Stairs 1F → Vault Room: Ash abre la barricada de Back Stairs, Ying tira Candela a Vault, Blitz entra con flash, Zofia concusiona Armory y Finka mantiene vivo al grupo. Back Stairs es la espalda del sitio y en el primer minuto casi nadie lo cubre.",
+     "timeline":[
+      "0:00–0:20 · corren de School Alley a Back Alley",
+      "0:20–0:45 · Ash abre la puerta de Back Stairs, Candela a Vault Room",
+      "0:45–1:30 · Blitz entra con flash, Zofia limpia Armory, Finka activa",
+      "1:30–3:00 · planta en Vault Room y sostienen desde Back Stairs"
+     ],
      "ops":[
-      {"op":"ash","role":"entrada","spawn":"School Alley",
+      {
+       "op":"ash",
+       "role":"entrada",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre a la calle","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Breach a la barricada de Back Stairs","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Entra detrás de Blitz y abre la puerta de Vault con la segunda carga","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Limpia y cubre la planta","via":"door"}],
+        {"room":"Vault Room","f":1,"do":"Limpia y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Back Alley","f":-1,"threat":"Kapkan o ADS en la puerta de Back Stairs","how":"Breach a distancia y entra con el flash de Blitz"},
-        {"room":"Vault Room","f":1,"threat":"Ancla Mira o Smoke en la esquina de la caja fuerte","how":"Candela primero y entra con Blitz"}],
-       "final":"Cubre la planta desde la puerta de Vault"},
-      {"op":"blitz","role":"entrada","spawn":"School Alley",
+        {"room":"Vault Room","f":1,"threat":"Ancla Mira o Smoke en la esquina de la caja fuerte","how":"Candela primero y entra con Blitz"}
+       ],
+       "final":"Cubre la planta desde la puerta de Vault"
+      },
+      {
+       "op":"blitz",
+       "role":"entrada",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre con el escudo arriba","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Se pega a la puerta mientras Ash la abre","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Entra primero con flash","via":"door"},
         {"room":"Vault Room","f":1,"do":"Flash y entra tras la Candela, mata al ancla","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Empuja Armory con Zofia","via":"door"}],
+        {"room":"Armory Room","f":1,"do":"Empuja Armory con Zofia","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":1,"threat":"Roamer en la escalera o Noor con Horus apuntando a la puerta","how":"Flash y entra; si ves fuego retrocede y deja que Ying meta la Candela"},
-        {"room":"Vault Room","f":1,"threat":"Mira con espejo hacia la puerta de Back Stairs","how":"Entra pegado al espejo tras la Candela"}],
-       "final":"Mata al ancla de Vault y sostiene la puerta a Armory"},
-      {"op":"ying","role":"negacion","spawn":"School Alley",
+        {"room":"Vault Room","f":1,"threat":"Mira con espejo hacia la puerta de Back Stairs","how":"Entra pegado al espejo tras la Candela"}
+       ],
+       "final":"Mata al ancla de Vault y sostiene la puerta a Armory"
+      },
+      {
+       "op":"ying",
+       "role":"negacion",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre con el grupo","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Prepara la Candela","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Candela cocinada por la puerta hacia Vault Room","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Entra detrás de Blitz y planta en la bomba B","via":"door"}],
+        {"room":"Vault Room","f":1,"do":"Entra detrás de Blitz y planta en la bomba B","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":1,"threat":"Jäger con ADS en la puerta de Vault","how":"Candela cocinada rebotando en el piso"},
-        {"room":"Vault Room","f":1,"threat":"Ancla Smoke con gas listo","how":"Segunda Candela hacia Armory y entra con Blitz"}],
-       "final":"Planta en Vault Room mientras Blitz y Ash cubren"},
-      {"op":"zofia","role":"blando","spawn":"School Alley",
+        {"room":"Vault Room","f":1,"threat":"Ancla Smoke con gas listo","how":"Segunda Candela hacia Armory y entra con Blitz"}
+       ],
+       "final":"Planta en Vault Room mientras Blitz y Ash cubren"
+      },
+      {
+       "op":"zofia",
+       "role":"blando",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre con el grupo","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Impact a la barricada si Ash falla","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Concusión a Vault por la puerta","via":"door"},
         {"room":"Vault Room","f":1,"do":"Cruza a Armory con concusión","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Limpia Armory y cubre la bomba A","via":"door"}],
+        {"room":"Armory Room","f":1,"do":"Limpia Armory y cubre la bomba A","via":"door"}
+       ],
        "clear":[
         {"room":"Vault Room","f":1,"threat":"Frost con cepo detrás de la puerta","how":"Mira el piso al entrar"},
-        {"room":"Armory Room","f":1,"threat":"Ancla Kaid o Smoke en la esquina de las armas","how":"Concusión y entra con Blitz de escudo"}],
-       "final":"Sostiene Armory Room durante la planta"},
-      {"op":"finka","role":"soporte","spawn":"School Alley",
+        {"room":"Armory Room","f":1,"threat":"Ancla Kaid o Smoke en la esquina de las armas","how":"Concusión y entra con Blitz de escudo"}
+       ],
+       "final":"Sostiene Armory Room durante la planta"
+      },
+      {
+       "op":"finka",
+       "role":"soporte",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Corre último","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Activa Surge cuando Ash abra la puerta","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Claymore en la escalera hacia 2F para tapar la espalda","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Cubre la planta y revive si cae alguien","via":"door"}],
+        {"room":"Vault Room","f":1,"do":"Cubre la planta y revive si cae alguien","via":"door"}
+       ],
        "clear":[
         {"room":"Back Stairs","f":1,"threat":"Roamer bajando de 2F a la espalda del rush","how":"Claymore en la escalera y sostén el ángulo"},
-        {"room":"Vault Room","f":1,"threat":"Ancla peekeando desde Armory","how":"Surge y entra con el grupo"}],
-       "final":"Cubre Back Stairs y la planta con Surge activo"}
-     ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Buck, Ram y Fuze toman Aunt's Hall y Kids Room 2F para abrir el techo de Vault y Armory, Ace abre la escotilla de Vault para bajar y Lion escanea en cada apertura. Armory/Vault tiene el techo blando bajo la tía; con el piso de 2F abierto, la Mira de Vault y el Smoke de Armory no tienen dónde pararse.",
-     "timeline":["0:00–0:45 · Lion escanea, todos suben por Market 2F y el balcón a Aunt's Hall","0:45–1:30 · Buck abre techo de Vault, Ram manda BU-GI sobre Armory desde Kids Room, Fuze pone cargas","1:30–2:30 · Fuze detona, Ace abre la escotilla y bajan Buck y Ace; planta en Vault Room","2:30–3:00 · post-plant desde arriba con Fuze y Ram; Lion escanea la desactivación"],
+        {"room":"Vault Room","f":1,"threat":"Ancla peekeando desde Armory","how":"Surge y entra con el grupo"}
+       ],
+       "final":"Cubre Back Stairs y la planta con Surge activo"
+      }
+     ]
+    },
+    {
+     "id":"vertical",
+     "n":"Vertical",
+     "tag":"VERTICAL",
+     "summary":"Buck, Ram y Fuze toman Aunt's Hall y Kids Room 2F para abrir el techo de Vault y Armory, Ace abre la escotilla de Vault para bajar y Lion escanea en cada apertura. Armory/Vault tiene el techo blando bajo la tía; con el piso de 2F abierto, la Mira de Vault y el Smoke de Armory no tienen dónde pararse.",
+     "timeline":[
+      "0:00–0:45 · Lion escanea, todos suben por Market 2F y el balcón a Aunt's Hall",
+      "0:45–1:30 · Buck abre techo de Vault, Ram manda BU-GI sobre Armory desde Kids Room, Fuze pone cargas",
+      "1:30–2:30 · Fuze detona, Ace abre la escotilla y bajan Buck y Ace; planta en Vault Room",
+      "2:30–3:00 · post-plant desde arriba con Fuze y Ram; Lion escanea la desactivación"
+     ],
      "ops":[
-      {"op":"buck","role":"blando","spawn":"Market",
+      {
+       "op":"buck",
+       "role":"blando",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Sube a Market 2F","via":"stairs"},
-        {"room":"Market","f":2,"do":"Cruza al balcón","via":"door"},
+        {"room":"Market","f":2,"do":"Cruza al balcón","via":"stairs"},
         {"room":"Courtyard","f":2,"do":"Entra a Aunt's Hall","via":"door"},
         {"room":"Aunt's Hall","f":2,"do":"Abre el piso con la Skeleton Key encima de Vault y mata desde arriba","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Baja por la escotilla de Ace al final","via":"hatch"}],
+        {"room":"Vault Room","f":1,"do":"Baja por la escotilla de Ace al final","via":"hatch"}
+       ],
        "clear":[
         {"room":"Courtyard","f":2,"threat":"Kapkan en la puerta de Aunt's Hall o roamer en el balcón","how":"Dron al marco y prefire"},
         {"room":"Aunt's Hall","f":2,"threat":"Roamer 2F escondido en Aunt's Bedroom o Kids Room","how":"Escaneo de Lion y limpia los dos cuartos antes de abrir piso"},
-        {"room":"Vault Room","f":1,"threat":"Ancla disparando al techo por los huecos","how":"Abre desde el borde y cambia de hueco"}],
-       "final":"Baja por la escotilla y planta en Vault Room"},
-      {"op":"ram","role":"negacion","spawn":"Market",
+        {"room":"Vault Room","f":1,"threat":"Ancla disparando al techo por los huecos","how":"Abre desde el borde y cambia de hueco"}
+       ],
+       "final":"Baja por la escotilla y planta en Vault Room"
+      },
+      {
+       "op":"ram",
+       "role":"negacion",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Sube a Market 2F","via":"stairs"},
-        {"room":"Market","f":2,"do":"Cruza al balcón","via":"door"},
+        {"room":"Market","f":2,"do":"Cruza al balcón","via":"stairs"},
         {"room":"Courtyard","f":2,"do":"Entra a Aunt's Hall","via":"door"},
         {"room":"Aunt's Hall","f":2,"do":"Cruza a Kids Room","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Manda dos BU-GI por el piso para abrir Armory Room","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Baja por el hueco al final para el post-plant","via":"hatch"}],
+        {"room":"Kids Room","f":2,"do":"Manda dos BU-GI por el piso para abrir Armory Room y remata por los huecos","via":"door"}
+       ],
        "clear":[
         {"room":"Kids Room","f":2,"threat":"Maestro con Evil Eye o Kapkan en la puerta de Kids Room","how":"Dron al marco y rómpelo con el BU-GI"},
-        {"room":"Armory Room","f":1,"threat":"Ancla Smoke pegado a la pared de Stair Hall","how":"BU-GI en línea sobre la esquina y remata por el hueco"}],
-       "final":"Cubre Armory desde arriba y baja para el post-plant"},
-      {"op":"fuze","role":"negacion","spawn":"Market",
+        {"room":"Armory Room","f":1,"threat":"Ancla Smoke pegado a la pared de Stair Hall","how":"BU-GI en línea sobre la esquina y remata por el hueco"}
+       ],
+       "final":"Cubre Armory desde Kids Room y baja por la escotilla de Vault con Ace para el post-plant"
+      },
+      {
+       "op":"fuze",
+       "role":"negacion",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Sube a Market 2F","via":"stairs"},
-        {"room":"Market","f":2,"do":"Cruza al balcón","via":"door"},
+        {"room":"Market","f":2,"do":"Cruza al balcón","via":"stairs"},
         {"room":"Courtyard","f":2,"do":"Entra a Aunt's Hall","via":"door"},
         {"room":"Aunt's Hall","f":2,"do":"Carga de racimo sobre Vault y otra sobre Armory desde Kids Room; detona tras el escaneo","via":"door"},
-        {"room":"Kids Room","f":2,"do":"Cubre los huecos con el escudo","via":"door"}],
+        {"room":"Kids Room","f":2,"do":"Cubre los huecos con el escudo","via":"door"}
+       ],
        "clear":[
         {"room":"Aunt's Hall","f":2,"threat":"Wamai o Jäger abajo comiéndose las cargas","how":"Pon la carga lejos de las paredes"},
-        {"room":"Kids Room","f":2,"threat":"Ancla disparando al techo por los huecos de Ram","how":"Aléjate del hueco antes de detonar"}],
-       "final":"Niega la desactivación desde arriba con la última carga"},
-      {"op":"ace","role":"duro","spawn":"Market",
+        {"room":"Kids Room","f":2,"threat":"Ancla disparando al techo por los huecos de Ram","how":"Aléjate del hueco antes de detonar"}
+       ],
+       "final":"Niega la desactivación desde arriba con la última carga"
+      },
+      {
+       "op":"ace",
+       "role":"duro",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Dronea el mercado","via":"door"},
         {"room":"Market","f":1,"do":"Sube a Market 2F","via":"stairs"},
-        {"room":"Market","f":2,"do":"Cruza al balcón","via":"door"},
+        {"room":"Market","f":2,"do":"Cruza al balcón","via":"stairs"},
         {"room":"Courtyard","f":2,"do":"Entra a Aunt's Hall","via":"door"},
         {"room":"Aunt's Hall","f":2,"do":"S.E.L.M.A. en la escotilla reforzada de Vault Room","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Baja primero y planta en la bomba B","via":"hatch"}],
+        {"room":"Vault Room","f":1,"do":"Baja primero y planta en la bomba B","via":"hatch"}
+       ],
        "clear":[
         {"room":"Aunt's Hall","f":2,"threat":"Bandit/Kaid electrificando la escotilla desde abajo","how":"Espera el hueco de Buck al lado para sacarlo y pones la SELMA"},
-        {"room":"Vault Room","f":1,"threat":"Ancla esperando debajo de la escotilla","how":"Flash por la escotilla y que Fuze detone justo antes"}],
-       "final":"Baja por la escotilla y planta en Vault Room"},
-      {"op":"lion","role":"intel","spawn":"School Alley",
+        {"room":"Vault Room","f":1,"threat":"Ancla esperando debajo de la escotilla","how":"Flash por la escotilla y que Fuze detone justo antes"}
+       ],
+       "final":"Baja por la escotilla y planta en Vault Room"
+      },
+      {
+       "op":"lion",
+       "role":"intel",
+       "spawn":"School Alley",
        "path":[
         {"room":"School Alley","f":-1,"do":"Sale solo por la calle","via":"door"},
         {"room":"Street","f":-1,"do":"Cruza a Back Alley","via":"door"},
         {"room":"Back Alley","f":-1,"do":"Escanea cuando Buck abra el techo y sostiene la puerta de Back Stairs desde fuera","via":"door"},
         {"room":"Back Stairs","f":1,"do":"Entra al final y cubre la escalera hacia Vault","via":"door"},
-        {"room":"Vault Room","f":1,"do":"Entra a Vault cuando el sitio esté roto","via":"door"}],
+        {"room":"Vault Room","f":1,"do":"Entra a Vault cuando el sitio esté roto","via":"door"}
+       ],
        "clear":[
         {"room":"Back Alley","f":-1,"threat":"Roamer saliendo por la puerta de Back Stairs a flanquear","how":"Escaneo y claymore en la puerta"},
-        {"room":"Back Stairs","f":1,"threat":"Ancla de Vault asomando a la escalera","how":"Escanea y prefire cuando se mueva"}],
-       "final":"Cubre Back Stairs y escanea en la planta"}
-     ]},
-    {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes: Maverick y Kali abren la pared de Armory desde Laundry Room en silencio, mientras Montagne, Capitão y Jackal entran por Stair Hall. La defensa mira la pared de Stair Hall y Back Stairs; Laundry es un pasillo lateral que casi nadie sostiene y Capitão quema al ancla de Armory en cuanto Maverick abre.",
-     "timeline":["0:00–0:45 · Maverick + Kali por Courtyard 1F a Aunt's Apartment y Laundry; Montagne + Capitão + Jackal a Stair Hall","0:45–1:30 · Kali quema Bandit, Maverick abre hueco en Laundry–Armory; Montagne toma la puerta de Stair Hall","1:30–2:30 · Capitão quema Armory, entran los dos frentes; Jackal caza al roamer; planta en Armory Room","2:30–3:00 · post-plant: Capitão fuego en la puerta de Vault, Maverick en el hueco, Montagne cubre"],
+        {"room":"Back Stairs","f":1,"threat":"Ancla de Vault asomando a la escalera","how":"Escanea y prefire cuando se mueva"}
+       ],
+       "final":"Cubre Back Stairs y escanea en la planta"
+      }
+     ]
+    },
+    {
+     "id":"split",
+     "n":"Split",
+     "tag":"SPLIT",
+     "summary":"Dos frentes: Maverick y Kali abren la pared de Armory desde Laundry Room en silencio, mientras Montagne, Capitão y Jackal entran por Stair Hall. La defensa mira la pared de Stair Hall y Back Stairs; Laundry es un pasillo lateral que casi nadie sostiene y Capitão quema al ancla de Armory en cuanto Maverick abre.",
+     "timeline":[
+      "0:00–0:45 · Maverick + Kali por Courtyard 1F a Aunt's Apartment y Laundry; Montagne + Capitão + Jackal a Stair Hall",
+      "0:45–1:30 · Kali quema Bandit, Maverick abre hueco en Laundry–Armory; Montagne toma la puerta de Stair Hall",
+      "1:30–2:30 · Capitão quema Armory, entran los dos frentes; Jackal caza al roamer; planta en Armory Room",
+      "2:30–3:00 · post-plant: Capitão fuego en la puerta de Vault, Maverick en el hueco, Montagne cubre"
+     ],
      "ops":[
-      {"op":"maverick","role":"duro","spawn":"Market",
+      {
+       "op":"maverick",
+       "role":"duro",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Sale con Kali","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Entra a Aunt's Apartment","via":"door"},
         {"room":"Aunt's Apartment","f":1,"do":"Cruza a Laundry","via":"door"},
         {"room":"Laundry Room","f":1,"do":"Hueco de mira y hueco de entrada en la pared reforzada de Armory","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Entra por el hueco cuando Capitão queme la esquina","via":"breach"}],
+        {"room":"Armory Room","f":1,"do":"Entra por el hueco cuando Capitão queme la esquina","via":"breach"}
+       ],
        "clear":[
         {"room":"Aunt's Apartment","f":1,"threat":"Roamer tipo Cav escondido en el apartamento","how":"Dron y limpia con Kali cubriendo"},
         {"room":"Laundry Room","f":1,"threat":"Bandit trickeando y Mira con espejo hacia Laundry","how":"Hueco chiquito en la zona ciega; Kali revienta el espejo"},
-        {"room":"Armory Room","f":1,"threat":"Ancla Smoke pegado a la pared","how":"Entra solo cuando el frente de Stair Hall presione"}],
-       "final":"Sostiene el hueco y cubre la bomba A"},
-      {"op":"kali","role":"antigadget","spawn":"Market",
+        {"room":"Armory Room","f":1,"threat":"Ancla Smoke pegado a la pared","how":"Entra solo cuando el frente de Stair Hall presione"}
+       ],
+       "final":"Sostiene el hueco y cubre la bomba A"
+      },
+      {
+       "op":"kali",
+       "role":"antigadget",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Sale con Maverick","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Entra a Aunt's Apartment","via":"door"},
         {"room":"Aunt's Apartment","f":1,"do":"Cruza a Laundry","via":"door"},
         {"room":"Laundry Room","f":1,"do":"Lanza LV a la pared para quemar Bandit/Kaid y romper el espejo","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Cubre desde el hueco con el rifle","via":"breach"}],
+        {"room":"Armory Room","f":1,"do":"Cubre desde el hueco con el rifle","via":"breach"}
+       ],
        "clear":[
         {"room":"Laundry Room","f":1,"threat":"Rtila de Kaid o batería de Bandit en la pared","how":"Lanza LV en cuanto chispee"},
-        {"room":"Armory Room","f":1,"threat":"Ancla asomando desde Vault","how":"Sostén el hueco y espera la presión de Montagne"}],
-       "final":"Sostiene Armory desde el hueco de Laundry durante la planta"},
-      {"op":"montagne","role":"soporte","spawn":"Market",
+        {"room":"Armory Room","f":1,"threat":"Ancla asomando desde Vault","how":"Sostén el hueco y espera la presión de Montagne"}
+       ],
+       "final":"Sostiene Armory desde el hueco de Laundry durante la planta"
+      },
+      {
+       "op":"montagne",
+       "role":"soporte",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Sale con Capitão y Jackal","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Toma el patio","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Escudo extendido en la puerta de Armory","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Entra primero con el humo y da cobertura a la planta","via":"door"}],
+        {"room":"Armory Room","f":1,"do":"Entra primero con el humo y da cobertura a la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Stair Hall","f":1,"threat":"Noor con Horus apuntando a la puerta o Lesion con Gu; roamer bajando por Main Stairs","how":"Entra despacio; si ves fuego retrocede; Jackal cubre Main Stairs"},
-        {"room":"Armory Room","f":1,"threat":"Mira con espejo hacia Stair Hall y ancla detrás","how":"Escudo pegado al espejo para que Capitão entre cuando Maverick abra Laundry"}],
-       "final":"Planta detrás del escudo en Armory Room"},
-      {"op":"capitao","role":"negacion","spawn":"Market",
+        {"room":"Armory Room","f":1,"threat":"Mira con espejo hacia Stair Hall y ancla detrás","how":"Escudo pegado al espejo para que Capitão entre cuando Maverick abra Laundry"}
+       ],
+       "final":"Planta detrás del escudo en Armory Room"
+      },
+      {
+       "op":"capitao",
+       "role":"negacion",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Sale con Montagne","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Toma el patio","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Flecha de fuego a la esquina del ancla y humo en la puerta de Armory","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Entra detrás de Montagne y fuego en la puerta de Vault","via":"door"}],
+        {"room":"Armory Room","f":1,"do":"Entra detrás de Montagne y fuego en la puerta de Vault","via":"door"}
+       ],
        "clear":[
         {"room":"Stair Hall","f":1,"threat":"Ancla peekeando desde la puerta de Armory","how":"Humo de ballesta y fuego a la esquina"},
-        {"room":"Armory Room","f":1,"threat":"Ancla rotando desde Vault y Frost bajo la puerta","how":"Fuego en la puerta de Vault y mira el piso"}],
-       "final":"Fuego en la puerta de Vault y cubre la planta"},
-      {"op":"jackal","role":"flanco","spawn":"Market",
+        {"room":"Armory Room","f":1,"threat":"Ancla rotando desde Vault y Frost bajo la puerta","how":"Fuego en la puerta de Vault y mira el piso"}
+       ],
+       "final":"Fuego en la puerta de Vault y cubre la planta"
+      },
+      {
+       "op":"jackal",
+       "role":"flanco",
+       "spawn":"Market",
        "path":[
         {"room":"Market Alley","f":-1,"do":"Sale último","via":"door"},
         {"room":"Market","f":1,"do":"Cruza al patio","via":"door"},
         {"room":"Courtyard","f":1,"do":"Escanea huellas del roamer con Eyenox","via":"door"},
         {"room":"Stair Hall","f":1,"do":"Sostiene Main Stairs y la puerta de Biker's Apartment mientras Montagne entra","via":"door"},
-        {"room":"Armory Room","f":1,"do":"Entra al final y cubre la planta","via":"door"}],
+        {"room":"Armory Room","f":1,"do":"Entra al final y cubre la planta","via":"door"}
+       ],
        "clear":[
         {"room":"Courtyard","f":1,"threat":"Roamer bajando del balcón por la escalera exterior","how":"Huellas con Eyenox y prefire"},
-        {"room":"Stair Hall","f":1,"threat":"Roamer bajando por Main Stairs o saliendo de Biker's Apartment","how":"Claymore en Main Stairs y escanea para que el equipo lo cace"}],
-       "final":"Cubre Stair Hall durante la planta y caza al roamer con el escaneo"}
-     ]}
+        {"room":"Stair Hall","f":1,"threat":"Roamer bajando por Main Stairs o saliendo de Biker's Apartment","how":"Claymore en Main Stairs y escanea para que el equipo lo cace"}
+       ],
+       "final":"Cubre Stair Hall durante la planta y caza al roamer con el escaneo"
+      }
+     ]
+    }
    ],
    "defense":[
-    {"id":"default","n":"Default","summary":"Smoke ancla en Armory Room mirando Stair Hall y Laundry, Mira ancla en Vault Room con espejos hacia Back Stairs, Bandit trickea la pared de Stair Hall, Jäger cubre las Candelas en Armory y Pulse roamea en Aunt's Hall 2F para negar el vertical y cazar al que abra el techo de Vault.",
-     "reinforce":["Pared Armory Room–Stair Hall ×2","Pared Armory Room–Laundry Room ×1","Escotilla Vault Room (Aunt's Hall 2F)","Pared Vault Room–Back Stairs ×1"],
-     "rotations":["Armory Room↔Vault Room (puerta + hueco de rotación en pared blanda)","Vault Room↔Back Stairs (puerta) para escapar"],
+    {
+     "id":"default",
+     "n":"Default",
+     "summary":"Smoke ancla en Armory Room mirando Stair Hall y Laundry, Mira ancla en Vault Room con espejos hacia Back Stairs, Bandit trickea la pared de Stair Hall, Jäger cubre las Candelas en Armory y Pulse roamea en Aunt's Hall 2F para negar el vertical y cazar al que abra el techo de Vault.",
+     "reinforce":[
+      "Pared Armory Room–Stair Hall ×2",
+      "Pared Armory Room–Laundry Room ×1",
+      "Escotilla Vault Room (Aunt's Hall 2F)",
+      "Pared Vault Room–Back Stairs ×1"
+     ],
+     "rotations":[
+      "Armory Room↔Vault Room (puerta + hueco de rotación en pared blanda)",
+      "Vault Room↔Back Stairs (puerta) para escapar"
+     ],
      "ops":[
       {"op":"smoke","room":"Armory Room","f":1,"role":"ancla","job":"Ancla la bomba A mirando la puerta de Stair Hall y la de Laundry; gas para el plant"},
       {"op":"mira","room":"Vault Room","f":1,"role":"ancla","job":"Espejo en la pared de Back Stairs y otro hacia Stair Hall; ancla la bomba B"},
       {"op":"bandit","room":"Armory Room","f":1,"role":"flex","job":"Trickea la pared de Stair Hall; luego batería en la escotilla de Vault y juega Laundry"},
       {"op":"jager","room":"Armory Room","f":1,"role":"flex","job":"ADS en la puerta de Laundry y en la de Stair Hall; juega entre bombas"},
       {"op":"pulse","room":"Aunt's Hall","f":2,"role":"roam","job":"Roam en 2F con el sensor; caza a Buck/Sledge en Aunt's Hall y Kids Room y baja por Back Stairs si lo persiguen"}
-     ]},
-    {"id":"alt","n":"Bunker Kaid + Echo","summary":"Cuando el rival tiene mucho vertical: Kaid electrifica la escotilla de Vault y la pared de Stair Hall desde lejos, Azami sella los huecos de techo, Echo con dos Yokai en el techo de Armory niega la planta, Lesion siembra Gu en Laundry y Back Stairs, y Noor quema al que entre corriendo por Stair Hall.",
-     "reinforce":["Pared Armory Room–Stair Hall ×2","Pared Armory Room–Laundry Room ×1","Escotilla Vault Room","Pared Vault Room–Back Stairs ×1"],
-     "rotations":["Armory Room↔Vault Room (pared blanda abierta)","Armory Room↔Laundry Room (puerta con Gu)"],
+     ]
+    },
+    {
+     "id":"alt",
+     "n":"Bunker Kaid + Echo",
+     "summary":"Cuando el rival tiene mucho vertical: Kaid electrifica la escotilla de Vault y la pared de Stair Hall desde lejos, Azami sella los huecos de techo, Echo con dos Yokai en el techo de Armory niega la planta, Lesion siembra Gu en Laundry y Back Stairs, y Noor quema al que entre corriendo por Stair Hall.",
+     "reinforce":[
+      "Pared Armory Room–Stair Hall ×2",
+      "Pared Armory Room–Laundry Room ×1",
+      "Escotilla Vault Room",
+      "Pared Vault Room–Back Stairs ×1"
+     ],
+     "rotations":[
+      "Armory Room↔Vault Room (pared blanda abierta)",
+      "Armory Room↔Laundry Room (puerta con Gu)"
+     ],
      "ops":[
       {"op":"kaid","room":"Vault Room","f":1,"role":"ancla","job":"Rtila en la escotilla de Vault y en la pared de Stair Hall; ancla la bomba B"},
       {"op":"azami","room":"Armory Room","f":1,"role":"flex","job":"Kiba para tapar los huecos de techo y la puerta de Laundry; juega entre bombas"},
       {"op":"echo","room":"Armory Room","f":1,"role":"ancla","job":"Yokai en el techo de Armory y de Vault; niega la planta y avisa por dónde entran"},
       {"op":"lesion","room":"Laundry Room","f":1,"role":"roam","job":"Gu en Laundry, Back Stairs 1F y Stair Hall; roam corto entre Laundry y Aunt's Apartment"},
       {"op":"noor","room":"Armory Room","f":1,"role":"ancla","job":"Horus apuntando a la puerta de Stair Hall; quema a Montagne/Blitz y cubre la bomba A"}
-     ]}
+     ]
+    }
    ]
   }
  }

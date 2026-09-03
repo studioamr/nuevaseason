@@ -1908,91 +1908,103 @@
     },
     {
      "id": "vertical",
-     "n": "Vertical",
+     "n": "Vertical desde el sótano",
      "tag": "VERTICAL",
-     "summary": "Tomamos el tercer piso del Guardacostas (Third Floor Exit y Balcony) subiendo por Coast Guard Stairs o rapeleando al Balcony. Sledge y Buck abren el techo de Lounge y Coast Guard Office, Fuze pone racimos, IQ encuentra gadgets y teléfonos, Lion escanea las rotaciones. Bajamos al final.",
+     "summary": "Encima de Lounge y Coast Guard Office solo hay tejado exterior (no se rompe), así que el vertical real es desde ABAJO: tomamos Boat Garage y Boat Supplies, que están justo debajo del sitio. Buck abre el techo de Boat Garage bajo Lounge con Skeleton Key, Sledge rompe la escotilla y el techo de Boat Supplies bajo Coast Guard Office, Zofia impacta huecos y Twitch quema ADS/jammers desde abajo. Lion escanea cuando las anclas se muevan y al final subimos en pareja por Coast Guard Stairs con dos disparando por el techo.",
      "timeline": [
-      "0:00–0:45 · rappel a Balcony, drones al sitio",
-      "0:45–1:30 · Sledge/Buck abren techo; Fuze sobre Coast Guard Office",
-      "1:30–2:30 · matar desde arriba con Lion; bajar por Coast Guard Stairs",
-      "2:30–3:00 · plant con dos arriba cubriendo agujeros"
+      "0:00–0:45 · drones al sótano y a Lounge/Coast Guard Office; Lion se planta en Main Entrance como presión para que no roten por atrás",
+      "0:45–1:30 · Buck abre el techo de Boat Garage bajo el sofá de Lounge; Sledge rompe escotilla y techo de Boat Supplies bajo Office; Twitch quema gadgets por los huecos",
+      "1:30–2:30 · escaneo de Lion y disparos desde abajo; Sledge+Zofia suben por Coast Guard Stairs cuando caiga la ancla de Office",
+      "2:30–3:00 · plant en Coast Guard Office con Buck y Twitch pegados al techo del sótano castigando cualquier retake"
      ],
      "ops": [
       {
        "op": "sledge",
        "role": "blando",
-       "spawn": "Floating Dock",
+       "spawn": "Sailboats",
        "path": [
         {
-         "room": "Lockgate",
+         "room": "Quay Containers",
          "f": -1,
-         "do": "Sale del Floating Dock por la compuerta, dron adelantado",
+         "do": "Sale de Sailboats entre los contenedores con el dron adelante",
          "via": "door"
         },
         {
-         "room": "Water Walkway",
+         "room": "Lockgate",
          "f": -1,
-         "do": "Rapela a la fachada del Guardacostas",
-         "via": "rappel"
+         "do": "Cruza la compuerta pegado a la baranda, ojo al peek de la ventana de Lounge",
+         "via": "door"
         },
         {
-         "room": "Balcony",
-         "f": 3,
-         "do": "Entra por el balcón del tercer piso",
-         "via": "window"
+         "room": "Lockgate Tunnel",
+         "f": -1,
+         "do": "Entra al túnel; dron primero por si hay Kapkan/Ela en la puerta del sótano",
+         "via": "door"
         },
         {
-         "room": "Third Floor Exit",
-         "f": 3,
-         "do": "Abre el piso sobre Lounge y Coast Guard Office",
+         "room": "Pipes",
+         "f": 1,
+         "do": "Avanza por las tuberías sin pisar el pasillo hasta que Twitch drone Boat Supplies",
+         "via": "door"
+        },
+        {
+         "room": "Boat Supplies",
+         "f": 1,
+         "do": "Martillo a la escotilla y al techo bajo Coast Guard Office: mata a la ancla de la mesa desde abajo",
+         "via": "door"
+        },
+        {
+         "room": "Boat Supplies Hallway",
+         "f": 1,
+         "do": "Cuando caiga la ancla, sube con Zofia",
          "via": "door"
         },
         {
          "room": "Coast Guard Stairs",
-         "f": 3,
-         "do": "Baja al final",
+         "f": 1,
+         "do": "Sube pegado a la pared, Zofia adelante con impacto",
          "via": "stairs"
         },
         {
          "room": "Coast Guard Stairs",
          "f": 2,
-         "do": "Sale a Coast Guard Hall",
+         "do": "Sale arriba; Lion escanea antes de asomar",
          "via": "stairs"
         },
         {
          "room": "Coast Guard Hall",
          "f": 2,
-         "do": "Entra al plant",
+         "do": "Cruza el pasillo con Lion ya dentro cubriendo Main Entrance",
          "via": "door"
         },
         {
          "room": "Coast Guard Office",
          "f": 2,
-         "do": "Planta",
+         "do": "Planta detrás de la mesa, del lado del hueco que Twitch cubre desde abajo",
          "via": "door"
         }
        ],
        "clear": [
         {
-         "room": "Balcony",
-         "f": 3,
-         "threat": "Roamer que sube a peekear el balcón",
-         "how": "Dron antes de rapelear"
+         "room": "Lockgate Tunnel",
+         "f": -1,
+         "threat": "Kapkan en la puerta del túnel y roamer (Vigil/Cav) esperando dentro del sótano vacío",
+         "how": "Dron primero; disparar la trampa desde el túnel y entrar en pareja con Twitch"
         },
         {
-         "room": "Third Floor Exit",
-         "f": 3,
-         "threat": "Kapkan en la puerta y Vigil roameando arriba",
-         "how": "IQ marca; disparar trampa antes de entrar"
+         "room": "Boat Supplies",
+         "f": 1,
+         "threat": "Rotador que baja por la escotilla o por Coast Guard Stairs a matar al vertical",
+         "how": "Claymore en Boat Supplies Hallway mirando la escalera antes de empezar a martillar"
         },
         {
          "room": "Coast Guard Stairs",
          "f": 2,
-         "threat": "Rotador subiendo a matar al vertical",
-         "how": "Claymore en la escalera"
+         "threat": "Defensor sosteniendo la salida de la escalera a Coast Guard Hall",
+         "how": "Escaneo de Lion + impacto de Zofia; subir solo con la ancla de Office muerta"
         }
        ],
-       "final": "Baja al final y planta"
+       "final": "Planta en Coast Guard Office y sostiene la puerta a Coast Guard Hall"
       },
       {
        "op": "buck",
@@ -2008,177 +2020,171 @@
         {
          "room": "Water Walkway",
          "f": -1,
-         "do": "Rapela",
-         "via": "rappel"
+         "do": "Pasa rápido bajo la ventana de Lounge; no te quedes en la pasarela",
+         "via": "door"
         },
         {
-         "room": "Balcony",
-         "f": 3,
-         "do": "Entra por el balcón",
-         "via": "window"
+         "room": "Loading Dock",
+         "f": 1,
+         "do": "Entra por la puerta del garaje con dron; ojo al espejo de Mira",
+         "via": "door"
         },
         {
-         "room": "Third Floor Exit",
-         "f": 3,
-         "do": "Abre el piso sobre Coast Guard Office con Skeleton Key y mata a la ancla",
+         "room": "Boat Garage",
+         "f": 1,
+         "do": "Skeleton Key al techo bajo el sofá y la ventana de Lounge: abre 2–3 huecos y castiga a la ancla",
          "via": "door"
         }
        ],
        "clear": [
         {
-         "room": "Balcony",
-         "f": 3,
-         "threat": "Castle/ Kapkan en la puerta del balcón",
-         "how": "Frag a la puerta desde el rappel"
+         "room": "Loading Dock",
+         "f": 1,
+         "threat": "Kapkan/Frost en la puerta del garaje y roamer peekeando desde la grúa",
+         "how": "Dron marca la trampa; entrar con Zofia detrás y prefire a la grúa"
         },
         {
-         "room": "Coast Guard Office",
+         "room": "Boat Garage",
+         "f": 1,
+         "threat": "Roamer del sótano escondido tras las lanchas",
+         "how": "Dron completo del garaje antes de mirar hacia arriba"
+        },
+        {
+         "room": "Lounge",
          "f": 2,
-         "threat": "Ancla Smoke bajo el agujero",
-         "how": "Abrir varios huecos y disparar por el que no mira"
+         "threat": "Maestro/ancla parada sobre el hueco esperando que asomes",
+         "how": "Abrir varios huecos y disparar por el que no mira; nunca asomar por el mismo dos veces"
         }
        ],
-       "final": "Sostiene el vertical sobre Coast Guard Office en post-plant"
+       "final": "Sostiene el vertical bajo Lounge en post-plant y castiga el retake"
       },
       {
-       "op": "fuze",
-       "role": "negacion",
-       "spawn": "Construction Site",
+       "op": "zofia",
+       "role": "entrada",
+       "spawn": "Floating Dock",
        "path": [
         {
-         "room": "Construction Site",
+         "room": "Lockgate",
          "f": -1,
-         "do": "Sale",
+         "do": "Sale con Buck",
          "via": "door"
         },
         {
-         "room": "Parking Alley",
+         "room": "Water Walkway",
          "f": -1,
-         "do": "Cruza",
+         "do": "Cubre a Buck mirando la ventana de Lounge",
          "via": "door"
         },
         {
-         "room": "Middle Road",
-         "f": -1,
-         "do": "Pasa bajo el puente",
+         "room": "Loading Dock",
+         "f": 1,
+         "do": "Entra detrás de Buck",
          "via": "door"
         },
         {
-         "room": "Front Lawn",
-         "f": -1,
-         "do": "Cubre",
+         "room": "Boat Garage",
+         "f": 1,
+         "do": "Concusión por los huecos del techo cuando Buck abra; cubre la puerta a Boat Supplies Hallway",
          "via": "door"
         },
         {
-         "room": "Main Entrance",
-         "f": 2,
-         "do": "Entra",
-         "via": "door"
-        },
-        {
-         "room": "Coast Guard Hall",
-         "f": 2,
-         "do": "Sube con Lion",
+         "room": "Boat Supplies Hallway",
+         "f": 1,
+         "do": "Se junta con Sledge para subir",
          "via": "door"
         },
         {
          "room": "Coast Guard Stairs",
-         "f": 2,
-         "do": "Sube",
+         "f": 1,
+         "do": "Impacto a la barricada de arriba y concusión a la salida",
          "via": "stairs"
         },
         {
          "room": "Coast Guard Stairs",
-         "f": 3,
-         "do": "Racimos sobre Coast Guard Office desde el tercer piso",
+         "f": 2,
+         "do": "Sale primero con escaneo de Lion",
          "via": "stairs"
+        },
+        {
+         "room": "Lounge",
+         "f": 2,
+         "do": "Limpia Lounge y cubre la puerta interna a Coast Guard Office durante el plant",
+         "via": "door"
         }
        ],
        "clear": [
         {
-         "room": "Main Entrance",
-         "f": 2,
-         "threat": "Kapkan en la puerta",
-         "how": "Dron y disparar"
+         "room": "Boat Garage",
+         "f": 1,
+         "threat": "Roamer que rota de Locker Room por Boat Supplies Hallway",
+         "how": "Sostener la puerta del pasillo mientras Buck trabaja el techo"
         },
         {
          "room": "Coast Guard Stairs",
+         "f": 1,
+         "threat": "Ela/Kapkan en la escalera y defensor sosteniéndola desde arriba",
+         "how": "Dron la escalera; impacto a la trampa y concusión antes de subir"
+        },
+        {
+         "room": "Lounge",
          "f": 2,
-         "threat": "Defensor esperando en la escalera",
-         "how": "Lion escanea y prefire"
+         "threat": "Ancla de Lounge (Maestro/Jäger) reposicionada tras el vertical",
+         "how": "Concusión por la puerta de la escalera y entrar con Sledge"
         }
        ],
-       "final": "Racimos y sostiene la escalera arriba"
+       "final": "Cubre Lounge y la puerta a Coast Guard Office en post-plant"
       },
       {
-       "op": "iq",
-       "role": "intel",
-       "spawn": "Construction Site",
+       "op": "twitch",
+       "role": "antigadget",
+       "spawn": "Sailboats",
        "path": [
         {
-         "room": "Construction Site",
+         "room": "Quay Containers",
          "f": -1,
-         "do": "Sale con Fuze",
+         "do": "Sale con Sledge, dron shock adelantado",
          "via": "door"
         },
         {
-         "room": "Parking Alley",
+         "room": "Lockgate",
          "f": -1,
-         "do": "Cruza",
+         "do": "Cruza detrás de Sledge",
          "via": "door"
         },
         {
-         "room": "Middle Road",
+         "room": "Lockgate Tunnel",
          "f": -1,
-         "do": "Escanea electrónicos desde abajo",
+         "do": "Dron shock por el túnel: quema Kapkan/Ela de la puerta del sótano",
          "via": "door"
         },
         {
-         "room": "Front Lawn",
-         "f": -1,
-         "do": "Cubre Main Entrance",
+         "room": "Pipes",
+         "f": 1,
+         "do": "Dron shock a Boat Supplies buscando al roamer",
          "via": "door"
         },
         {
-         "room": "Main Entrance",
-         "f": 2,
-         "do": "Entra",
+         "room": "Boat Supplies",
+         "f": 1,
+         "do": "Cuando Sledge abra escotilla y techo, mete el dron por el hueco y quema ADS, jammers y Evil Eyes de Coast Guard Office",
          "via": "door"
-        },
-        {
-         "room": "Coast Guard Hall",
-         "f": 2,
-         "do": "Marca jammers y ADS bajo el techo, dispara a través del piso desde arriba después",
-         "via": "door"
-        },
-        {
-         "room": "Coast Guard Stairs",
-         "f": 2,
-         "do": "Sube",
-         "via": "stairs"
-        },
-        {
-         "room": "Coast Guard Stairs",
-         "f": 3,
-         "do": "Detector: dispara Mute/Jäger y teléfonos a través del piso",
-         "via": "stairs"
         }
        ],
        "clear": [
         {
-         "room": "Coast Guard Hall",
-         "f": 2,
-         "threat": "Maestro Evil Eye y Mute jammers",
-         "how": "Detector y disparar por el piso"
+         "room": "Pipes",
+         "f": 1,
+         "threat": "Roamer (Vigil/Pulse) que espera en el sótano vacío",
+         "how": "Dron shock primero; Sledge entra detrás"
         },
         {
-         "room": "Coast Guard Office",
-         "f": 2,
-         "threat": "Ancla con teléfono de Valk",
-         "how": "Detector la ubica; Buck le abre el techo"
+         "room": "Boat Supplies",
+         "f": 1,
+         "threat": "Rotador bajando por Coast Guard Stairs a matar al vertical",
+         "how": "Claymore de Sledge en el pasillo + dron shock mirando la escalera"
         }
        ],
-       "final": "Info de gadgets y cubre la escalera de arriba"
+       "final": "Se queda abajo con Buck disparando por los huecos durante el plant"
       },
       {
        "op": "lion",
@@ -2188,43 +2194,43 @@
         {
          "room": "Construction Site",
          "f": -1,
-         "do": "Sale",
+         "do": "Sale solo con dron adelantado",
          "via": "door"
         },
         {
          "room": "Parking Alley",
          "f": -1,
-         "do": "Cruza",
+         "do": "Cruza pegado a los coches",
          "via": "door"
         },
         {
          "room": "Middle Road",
          "f": -1,
-         "do": "Pasa",
+         "do": "Pasa bajo el puente sin pararse; ojo a la ventana de Archives",
          "via": "door"
         },
         {
          "room": "Front Lawn",
          "f": -1,
-         "do": "Cubre",
+         "do": "Dron a Main Entrance y Coast Guard Hall antes de abrir la puerta",
          "via": "door"
         },
         {
          "room": "Main Entrance",
          "f": 2,
-         "do": "Entra",
+         "do": "Abre la barricada y se queda como presión: la defensa no puede rotar por atrás del vertical",
          "via": "door"
         },
         {
          "room": "Coast Guard Hall",
          "f": 2,
-         "do": "Escanea cuando abran el techo; sostiene Coast Guard Hall",
+         "do": "Escanea cuando Buck y Sledge abran el piso para que disparen a los que se muevan",
          "via": "door"
         },
         {
          "room": "Coast Guard Office",
          "f": 2,
-         "do": "Entra con Sledge al final",
+         "do": "Entra con Sledge al final y cubre la puerta de Archives",
          "via": "door"
         }
        ],
@@ -2232,17 +2238,23 @@
         {
          "room": "Front Lawn",
          "f": -1,
-         "threat": "Ventana de Archives peekeando",
-         "how": "Escaneo y cruzar"
+         "threat": "Peek desde la ventana de Archives y desde Main Entrance",
+         "how": "Escaneo antes de cruzar; correr pegado a la fachada"
+        },
+        {
+         "room": "Main Entrance",
+         "f": 2,
+         "threat": "Kapkan en la puerta principal y Gu de Lesion",
+         "how": "Dron marca; disparar trampas desde afuera"
         },
         {
          "room": "Coast Guard Hall",
          "f": 2,
-         "threat": "Rotador que llega de Archives",
-         "how": "Sostener la puerta con claymore"
+         "threat": "Rotador que llega de Archives/Radio a la espalda",
+         "how": "Claymore en la puerta de Archives y escaneo antes de cada avance"
         }
        ],
-       "final": "Escanea en el plant y cubre Coast Guard Hall"
+       "final": "Escanea en el plant y cubre Coast Guard Hall/Archives"
       }
      ]
     },
@@ -2613,7 +2625,7 @@
      "reinforce": [
       "Pared Coast Guard Hall–Coast Guard Office ×2",
       "Pared Lounge–Dock Stairs (ventana con Castle)",
-      "Escotilla Coast Guard Hall→Boat Supplies (para que no suban)"
+      "Escotilla Coast Guard Hall→Boat Supplies (contra Buck/Sledge desde el sótano)"
      ],
      "rotations": [
       "Coast Guard Office↔Lounge (puerta interna)",
@@ -2653,7 +2665,7 @@
        "room": "Archives",
        "f": 2,
        "role": "roam",
-       "job": "Gu en Main Entrance y Coast Guard Stairs; roamea Radio/Holding Room y flanquea por Front Lawn"
+       "job": "Gu en Main Entrance y en la salida de Coast Guard Stairs; roamea Radio/Holding Room Hallway y sale por Archives a la espalda de los que entran por Main Entrance"
       }
      ]
     },
@@ -4001,7 +4013,7 @@
        "room": "Security Room",
        "f": 2,
        "role": "roam",
-       "job": "Cámaras en Bridge Roof, Construction Entrance y Control Center Stairs; roamea Security/Kitchen y sube por escotilla"
+       "job": "Cámaras en Bridge Roof, Construction Entrance y Control Center Stairs; roamea Security/Kitchen y sube por Control Center Stairs si la escalera queda libre"
       }
      ]
     },
@@ -4064,10 +4076,10 @@
      "id": "default",
      "n": "Default lento",
      "tag": "DEFAULT",
-     "summary": "Sitio pequeño del segundo piso del Control Center. Ace y Thatcher abren la pared Maps Office Hallway → Security Room, Buck rapela a Server Room arriba y abre las escotillas sobre Security, Zero pone cámaras por las ventanas de Maps Office y Gridlock llega por el Bridge desde el Guardacostas para cerrar Model Room.",
+     "summary": "Sitio pequeño del segundo piso del Control Center. Ace y Thatcher abren la pared Maps Office Hallway → Security Room, Buck sube al tercer piso por el Bridge Roof y abre el piso de Server Room sobre Security (las escotillas suelen ir reforzadas), Zero pone cámaras por las ventanas de Maps Office y Gridlock llega por el Bridge desde el Guardacostas para cerrar Model Room.",
      "timeline": [
       "0:00–0:45 · drones; Zero Argus por ventana de Maps Office",
-      "0:45–1:30 · Buck abre escotillas de Server; Thatcher EMP + Ace abre Security",
+      "0:45–1:30 · Buck abre el piso de Server sobre Security; Thatcher EMP + Ace abre Security",
       "1:30–2:30 · entrada por pared con presión vertical, plant en Maps Office",
       "2:30–3:00 · post-plant: Gridlock en Model Room, Buck arriba"
      ],
@@ -4208,25 +4220,43 @@
         {
          "room": "Quay Construction",
          "f": -1,
-         "do": "Rapela a la ventana de Server Room",
+         "do": "Rodea la obra pegado a la valla hacia Middle Road",
+         "via": "door"
+        },
+        {
+         "room": "Middle Road",
+         "f": -1,
+         "do": "Rapela bajo el puente hasta el techo del puente",
          "via": "rappel"
         },
         {
-         "room": "Server Room",
+         "room": "Bridge Roof",
          "f": 3,
-         "do": "Abre la escotilla y el piso sobre Security Room, mata desde arriba",
+         "do": "Camina por el techo del puente y entra por la ventana de Control Room",
+         "via": "window"
+        },
+        {
+         "room": "Control Room",
+         "f": 3,
+         "do": "Limpia Control Room con dron; nadie suele anclar ahí en Security",
          "via": "window"
         },
         {
          "room": "Control Room Hallway",
          "f": 3,
-         "do": "Baja al final",
+         "do": "Cruza el pasillo; claymore mirando Control Center Stairs",
+         "via": "door"
+        },
+        {
+         "room": "Server Room",
+         "f": 3,
+         "do": "Skeleton Key al piso alrededor de la escotilla reforzada sobre Security Room: abre 2–3 huecos y castiga a la ancla",
          "via": "door"
         },
         {
          "room": "Control Center Stairs",
          "f": 3,
-         "do": "Baja",
+         "do": "Baja al final cuando Ace ya esté en Security",
          "via": "stairs"
         },
         {
@@ -4238,31 +4268,31 @@
         {
          "room": "Maps Office Hallway",
          "f": 2,
-         "do": "Entra al plant",
+         "do": "Entra al plant por el hueco de Ace",
          "via": "door"
         }
        ],
        "clear": [
         {
-         "room": "Server Room",
+         "room": "Bridge Roof",
          "f": 3,
-         "threat": "Roamer Vigil/Alibi esperando arriba",
-         "how": "Dron antes de entrar por la ventana"
+         "threat": "Roamer peekeando desde la ventana de Control Room o Castle en la ventana",
+         "how": "Dron por la ventana desde el techo del puente; frag a la barricada si hay Castle"
         },
         {
          "room": "Control Room Hallway",
          "f": 3,
-         "threat": "Rotador subiendo por Control Center Stairs",
-         "how": "Claymore en la escalera"
+         "threat": "Rotador subiendo por Control Center Stairs a matar al vertical",
+         "how": "Claymore en la salida de la escalera antes de empezar a abrir piso"
         },
         {
          "room": "Security Room",
          "f": 2,
-         "threat": "Ancla bajo la escotilla",
-         "how": "Abrir varios huecos y disparar por el que no espera"
+         "threat": "Ancla Smoke/Mira parada bajo la escotilla reforzada",
+         "how": "Abrir huecos lejos de la escotilla y disparar por el que no espera"
         }
        ],
-       "final": "Vertical sobre Security y baja para el post-plant"
+       "final": "Vertical sobre Security y baja por Control Center Stairs para el post-plant"
       },
       {
        "op": "zero",

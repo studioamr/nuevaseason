@@ -186,7 +186,7 @@
         {"room":"Corridor 1","f":1,"do":"Baja el dron por Main Stairs y quema ADS y espejos en Armory y Lockers","via":"door"},
         {"room":"Main Stairs","f":1,"do":"Sostiene la escalera con el dron abajo","via":"stairs"},
         {"room":"Main Stairs","f":0,"do":"Baja con Hibana cuando el vertical haya limpiado","via":"stairs"},
-        {"room":"Armory","f":0,"do":"Entra por la escotilla abierta de Hibana y cubre la planta","via":"hatch"}],
+        {"room":"Armory","f":0,"do":"Entra por la escotilla abierta de Hibana y cubre la planta","via":"breach"}],
        "clear":[
         {"room":"Main Stairs","f":0,"threat":"Mira con espejo y Jäger con ADS en Armory","how":"Dron de choque por Corridor, quema los ADS y el espejo antes de la carga de Fuze"},
         {"room":"Armory","f":0,"threat":"Ancla Smoke que rota a Lockers al caer el vertical","how":"Deja el dron viendo la puerta de Lockers y avisa el rotate"}],
@@ -270,15 +270,19 @@
        "final":"Planta en Armory pegado a la pared abierta y sostiene la puerta de Lockers"}
      ]}
    ],
-   "defense":[
-    {"id":"default","n":"Default","summary":"Se refuerza la pared Main Stairs–Armory y las dos escotillas del sótano, se deja blando el piso de Kitchen para que Pulse lea el vertical desde abajo. Mira pone espejos en Briefing Room mirando Corridor, Smoke ancla Armory y Kaid electrifica pared y escotillas.","reinforce":["Pared Main Stairs–Armory ×2","Escotilla de Kitchen (Armory)","Escotilla de Dining Room (Maintenance Area)"],"rotations":["Armory↔Lockers","Briefing Room↔Corridor↔Armory"],
+   "defense": [
+    {"id":"default","n":"Default","summary":"Se refuerza la pared Main Stairs–Armory y las dos escotillas del sótano, se deja blando el piso de Kitchen para que Pulse lea el vertical desde abajo. Mira pone espejos en Briefing Room mirando Corridor, Smoke ancla Armory y Kaid electrifica pared y escotillas.",
+     "reinforce":["Pared Main Stairs–Armory ×2","Escotilla de Kitchen (Armory)","Escotilla de Dining Room (Maintenance Area)"],
+     "rotations":["Armory↔Lockers","Briefing Room↔Corridor↔Armory"],
      "ops":[
       {"op":"smoke","room":"Armory","f":0,"role":"ancla","job":"Ancla detrás de los estantes, gas a la pared de Main Stairs y a la puerta de Lockers en el post-plant"},
       {"op":"mira","room":"Briefing Room","f":0,"role":"ancla","job":"Dos espejos viendo Corridor y la entrada de Basement Entrance; rota a Armory cuando caiga la pared"},
       {"op":"kaid","room":"Main Stairs","f":0,"role":"flex","job":"Rtila en la pared reforzada de Armory y en la escotilla de Kitchen; juega la escalera hacia Maintenance Area"},
       {"op":"jager","room":"Lockers","f":0,"role":"flex","job":"ADS en Armory y Lockers, juega la puerta Lockers–Corridor y rota a Armory"},
       {"op":"pulse","room":"Kitchen","f":1,"role":"roam","job":"Roamea arriba en Kitchen y Corridor 1 para negar el vertical; lee corazones y baja por la escotilla si se necesita"}]},
-    {"id":"alt","n":"Anti-escudo y verticales","summary":"Setup para cuando el rival rushea el sótano con escudos: Noor cubre el pasillo largo de Corridor con el Horus, Azami tapa la escotilla de Kitchen con Kiba y Maestro controla Corridor con Evil Eye. Vigil roamea en Garage y TV Room para cazar el vertical.","reinforce":["Pared Main Stairs–Armory ×2","Escotilla de Kitchen","Pared Lockers–Corridor"],"rotations":["Armory↔Lockers","Armory↔Briefing Room"],
+    {"id":"alt","n":"Anti-escudo y verticales","summary":"Setup para cuando el rival rushea el sótano con escudos: Noor cubre el pasillo largo de Corridor con el Horus, Azami tapa la escotilla de Kitchen con Kiba y Maestro controla Corridor con Evil Eye. Vigil roamea en Garage y TV Room para cazar el vertical.",
+     "reinforce":["Pared Main Stairs–Armory ×2","Escotilla de Kitchen","Pared Lockers–Corridor"],
+     "rotations":["Armory↔Lockers","Armory↔Briefing Room"],
      "ops":[
       {"op":"noor","room":"Corridor","f":0,"role":"ancla","job":"Horus apuntando al pasillo largo desde Basement Entrance; castiga escudos Blitz/Montagne y rota a Lockers"},
       {"op":"azami","room":"Armory","f":0,"role":"ancla","job":"Kiba en la escotilla de Kitchen y en la pared abierta; ancla Armory detrás de los estantes"},
@@ -551,15 +555,19 @@
        "final":"Sostiene TV Room y Garage Corridor durante el post-plant"}
      ]}
    ],
-   "defense":[
-    {"id":"default","n":"Default","summary":"Se refuerza la pared Corridor 1–Dining Room y se deja blando el piso de arriba para que Pulse lea el vertical desde Laundry Room. Mira pone espejos en Kitchen mirando Garage Corridor, Smoke ancla Dining Room y Bandit trickea la pared desde Corridor 1. Jäger flexea entre Kitchen y Dining Room.","reinforce":["Pared Corridor 1–Dining Room ×2","Escotilla de Kitchen","Puerta Garage Corridor–Kitchen (Castle o barricada)"],"rotations":["Kitchen↔Dining Room","Kitchen↔Garage Corridor"],
+   "defense": [
+    {"id":"default","n":"Default","summary":"Se refuerza la pared Corridor 1–Dining Room y se deja blando el piso de arriba para que Pulse lea el vertical desde Laundry Room. Mira pone espejos en Kitchen mirando Garage Corridor, Smoke ancla Dining Room y Bandit trickea la pared desde Corridor 1. Jäger flexea entre Kitchen y Dining Room.",
+     "reinforce":["Pared Corridor 1–Dining Room ×2","Escotilla de Kitchen","Puerta Garage Corridor–Kitchen (Castle o barricada)"],
+     "rotations":["Kitchen↔Dining Room","Kitchen↔Garage Corridor"],
      "ops":[
       {"op":"smoke","room":"Dining Room","f":1,"role":"ancla","job":"Ancla detrás de la mesa, gas a la pared de Corridor 1 y a la puerta interna en el post-plant"},
       {"op":"mira","room":"Kitchen","f":1,"role":"ancla","job":"Espejo viendo Garage Corridor y otro viendo la pared de Dining Room; ancla detrás de la barra"},
       {"op":"bandit","room":"Dining Room","f":1,"role":"flex","job":"Trickea la pared de Corridor 1 desde adentro y rota a Kitchen"},
       {"op":"jager","room":"Kitchen","f":1,"role":"flex","job":"ADS en Kitchen y Dining Room, juega la puerta de Garage Corridor y rota"},
       {"op":"pulse","room":"Laundry Room","f":2,"role":"roam","job":"Roamea arriba en Laundry Room y Corridor para negar el vertical; lee corazones y baja por Main Stairs cuando se necesite"}]},
-    {"id":"alt","n":"Anti-rush Garage","summary":"Setup para cuando el rival rushea por Garage: Castle en la puerta de Garage Corridor, Melusi con Banshees en Garage y TV Room, Noor apuntando el Horus al pasillo de Garage Corridor, Thunderbird curando en Kitchen y Alibi con prismas en Dining Room para confundir la entrada por la pared.","reinforce":["Pared Corridor 1–Dining Room ×2","Puerta Garage Corridor–Kitchen (Castle)","Escotilla de Dining Room"],"rotations":["Kitchen↔Dining Room","Dining Room↔Corridor 1"],
+    {"id":"alt","n":"Anti-rush Garage","summary":"Setup para cuando el rival rushea por Garage: Castle en la puerta de Garage Corridor, Melusi con Banshees en Garage y TV Room, Noor apuntando el Horus al pasillo de Garage Corridor, Thunderbird curando en Kitchen y Alibi con prismas en Dining Room para confundir la entrada por la pared.",
+     "reinforce":["Pared Corridor 1–Dining Room ×2","Puerta Garage Corridor–Kitchen (Castle)","Escotilla de Dining Room"],
+     "rotations":["Kitchen↔Dining Room","Dining Room↔Corridor 1"],
      "ops":[
       {"op":"castle","room":"Kitchen","f":1,"role":"ancla","job":"Castle en la puerta de Garage Corridor y en la ventana de Kitchen; ancla la barra"},
       {"op":"melusi","room":"Garage Corridor","f":1,"role":"flex","job":"Banshees en Garage y TV Room para frenar el rush; juega el pasillo y rota a Kitchen"},
@@ -621,7 +629,7 @@
        "path":[
         {"room":"Shooting Range West Entrance","f":-1,"do":"Sale del spawn droneando la fachada","via":"door"},
         {"room":"Observation Ramp","f":-1,"do":"Cruza cubierto hacia Chapel Gate","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Rapelea a la ventana de Master Bedroom y dispara Argus adentro","via":"rappel"},
+        {"room":"Chapel Gate","f":-1,"do":"Rapelea a la ventana de Master Bedroom y dispara Argus adentro","via":"door"},
         {"room":"Master Bedroom","f":2,"do":"Entra por la ventana cuando Buck abra el piso y limpia","via":"window"},
         {"room":"Bathroom","f":2,"do":"Cruza al baño dando info del pasillo","via":"door"},
         {"room":"Kids Bedroom","f":2,"do":"Entra con el paquete y planta pegado a la pared abierta","via":"door"}],
@@ -651,7 +659,7 @@
       {"op":"amaru","role":"entrada","spawn":"Parking",
        "path":[
         {"room":"Parking Entrance","f":-1,"do":"Corre por el exterior hacia Chapel Gate","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Garra Hook a la ventana de Master Bedroom","via":"rappel"},
+        {"room":"Chapel Gate","f":-1,"do":"Garra Hook a la ventana de Master Bedroom","via":"door"},
         {"room":"Master Bedroom","f":2,"do":"Entra volando y limpia la cama","via":"window"},
         {"room":"Bathroom","f":2,"do":"Limpia el baño","via":"door"},
         {"room":"Kids Bedroom","f":2,"do":"Cruza a cubrir la planta","via":"door"}],
@@ -662,8 +670,8 @@
       {"op":"ash","role":"entrada","spawn":"Parking",
        "path":[
         {"room":"Parking Entrance","f":-1,"do":"Corre a Forklift Area","via":"door"},
-        {"room":"Forklift Area","f":-1,"do":"Sube por la escalera del garage a Garage Top","via":"rappel"},
-        {"room":"Garage Top","f":2,"do":"Breach round a la ventana de Kids Bedroom","via":"window"},
+        {"room":"Forklift Area","f":-1,"do":"Sube por la escalera del garage a Garage Top","via":"door"},
+        {"room":"Garage Top","f":2,"do":"Breach round a la ventana de Kids Bedroom","via":"rappel"},
         {"room":"Kids Bedroom","f":2,"do":"Entra tras la Candela y limpia la litera","via":"window"},
         {"room":"Corridor","f":2,"do":"Cubre el pasillo desde la puerta","via":"door"}],
        "clear":[
@@ -673,8 +681,8 @@
       {"op":"ying","role":"negacion","spawn":"Parking",
        "path":[
         {"room":"Parking Entrance","f":-1,"do":"Corre junto a Ash","via":"door"},
-        {"room":"Forklift Area","f":-1,"do":"Sube a Garage Top","via":"rappel"},
-        {"room":"Garage Top","f":2,"do":"Candela por la ventana rota a Kids Bedroom","via":"window"},
+        {"room":"Forklift Area","f":-1,"do":"Sube a Garage Top","via":"door"},
+        {"room":"Garage Top","f":2,"do":"Candela por la ventana rota a Kids Bedroom","via":"rappel"},
         {"room":"Kids Bedroom","f":2,"do":"Entra con Ash y planta pegada a la ventana","via":"window"},
         {"room":"Laundry Room","f":2,"do":"Cubre Laundry Room tras la planta","via":"door"}],
        "clear":[
@@ -684,7 +692,7 @@
       {"op":"zofia","role":"entrada","spawn":"Parking",
        "path":[
         {"room":"Parking Entrance","f":-1,"do":"Corre hacia Chapel Gate con Amaru","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Concusión a la ventana de Master Bedroom y rapelea","via":"rappel"},
+        {"room":"Chapel Gate","f":-1,"do":"Concusión a la ventana de Master Bedroom y rapelea","via":"door"},
         {"room":"Master Bedroom","f":2,"do":"Entra por la ventana tras Amaru","via":"window"},
         {"room":"Corridor","f":2,"do":"Impacto a la puerta y sostiene el pasillo hacia Main Stairs","via":"door"}],
        "clear":[
@@ -694,7 +702,7 @@
       {"op":"iana","role":"intel","spawn":"Parking",
        "path":[
         {"room":"Parking Entrance","f":-1,"do":"Réplica Gemini hacia Chapel Gate para ver las ventanas","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Rapelea tras Zofia","via":"rappel"},
+        {"room":"Chapel Gate","f":-1,"do":"Rapelea tras Zofia","via":"door"},
         {"room":"Master Bedroom","f":2,"do":"Entra y manda la réplica a Corridor","via":"window"},
         {"room":"Bathroom","f":2,"do":"Cubre desde el baño","via":"door"},
         {"room":"Kids Bedroom","f":2,"do":"Cubre la planta de Ying desde la puerta del baño","via":"door"}],
@@ -851,15 +859,19 @@
        "final":"Planta en Kids Bedroom y sostiene Bathroom en silencio"}
      ]}
    ],
-   "defense":[
-    {"id":"default","n":"Default","summary":"Se refuerza la pared Corridor–Kids Bedroom y se deja blando el piso de arriba para que Pulse lea el vertical desde Storage Corridor. Mira pone espejos en Master Bedroom mirando Corridor, Smoke ancla Kids Bedroom y Bandit trickea la pared. Jäger flexea en Bathroom entre los dos cuartos.","reinforce":["Pared Corridor–Kids Bedroom ×2","Pared Corridor–Master Bedroom","Ventanas Master Bedroom y Kids Bedroom (Castle o barricada)"],"rotations":["Master Bedroom↔Bathroom↔Kids Bedroom","Kids Bedroom↔Laundry Room"],
+   "defense": [
+    {"id":"default","n":"Default","summary":"Se refuerza la pared Corridor–Kids Bedroom y se deja blando el piso de arriba para que Pulse lea el vertical desde Storage Corridor. Mira pone espejos en Master Bedroom mirando Corridor, Smoke ancla Kids Bedroom y Bandit trickea la pared. Jäger flexea en Bathroom entre los dos cuartos.",
+     "reinforce":["Pared Corridor–Kids Bedroom ×2","Pared Corridor–Master Bedroom","Ventanas Master Bedroom y Kids Bedroom (Castle o barricada)"],
+     "rotations":["Master Bedroom↔Bathroom↔Kids Bedroom","Kids Bedroom↔Laundry Room"],
      "ops":[
       {"op":"smoke","room":"Kids Bedroom","f":2,"role":"ancla","job":"Ancla detrás de la litera, gas a la pared de Corridor y a la ventana en el post-plant"},
       {"op":"mira","room":"Master Bedroom","f":2,"role":"ancla","job":"Espejo viendo Corridor y otro viendo la ventana; ancla detrás de la cama"},
       {"op":"bandit","room":"Kids Bedroom","f":2,"role":"flex","job":"Trickea la pared de Corridor desde adentro y rota por Laundry Room"},
       {"op":"jager","room":"Bathroom","f":2,"role":"flex","job":"ADS en los dos cuartos, juega el baño como rotación y flexea donde entren"},
       {"op":"pulse","room":"Storage Corridor","f":3,"role":"roam","job":"Roamea el tercer piso para negar el vertical; lee corazones en Dummy Depot y Ballistic Mat Depot y baja por Main Stairs"}]},
-    {"id":"alt","n":"Anti-ventanas y anti-escudo","summary":"Setup para cuando el rival entra por ventanas y con escudos: Aruni con Surya en las ventanas y en Back Access, Solis detectando drones y Argus, Fenrir con F-NATT en Corridor y Bathroom, Noor con el Horus apuntando a Corridor desde Kids Bedroom, y Valkyrie con cámaras en el tercer piso para ver el vertical.","reinforce":["Pared Corridor–Kids Bedroom ×2","Ventana Master Bedroom","Pared Kids Bedroom–Laundry Room"],"rotations":["Master Bedroom↔Bathroom↔Kids Bedroom","Corridor↔Back Access"],
+    {"id":"alt","n":"Anti-ventanas y anti-escudo","summary":"Setup para cuando el rival entra por ventanas y con escudos: Aruni con Surya en las ventanas y en Back Access, Solis detectando drones y Argus, Fenrir con F-NATT en Corridor y Bathroom, Noor con el Horus apuntando a Corridor desde Kids Bedroom, y Valkyrie con cámaras en el tercer piso para ver el vertical.",
+     "reinforce":["Pared Corridor–Kids Bedroom ×2","Ventana Master Bedroom","Pared Kids Bedroom–Laundry Room"],
+     "rotations":["Master Bedroom↔Bathroom↔Kids Bedroom","Corridor↔Back Access"],
      "ops":[
       {"op":"aruni","room":"Master Bedroom","f":2,"role":"ancla","job":"Surya en la ventana de Master Bedroom y en la puerta de Back Access; ancla la cama"},
       {"op":"noor","room":"Kids Bedroom","f":2,"role":"ancla","job":"Horus apuntando a Corridor desde la litera; castiga escudos Montagne/Blitz y rota por Bathroom"},
@@ -923,7 +935,7 @@
        "path":[
         {"room":"Shooting Range West Entrance","f":-1,"do":"Sale del spawn droneando la fachada","via":"door"},
         {"room":"Observation Ramp","f":-1,"do":"Cruza cubierto hacia Chapel Gate","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Rapelea a la ventana de Storage y dispara Argus adentro","via":"rappel"},
+        {"room":"Chapel Gate","f":-1,"do":"Rapelea a la ventana de Storage y dispara Argus adentro","via":"door"},
         {"room":"Storage","f":3,"do":"Entra por la ventana cuando Thermite abra la pared y planta pegado a la pared abierta","via":"window"}],
        "clear":[
         {"room":"Chapel Gate","f":-1,"threat":"Defensor spawnpeekeando desde la ventana de Storage","how":"Dron a la ventana antes de rapelear y sube por el lado ciego"},
@@ -949,7 +961,7 @@
       {"op":"amaru","role":"entrada","spawn":"Training Course",
        "path":[
         {"room":"Bus Back Alley","f":-1,"do":"Corre a Front Access","via":"door"},
-        {"room":"Front Access","f":-1,"do":"Garra Hook a la ventana de Storage","via":"rappel"},
+        {"room":"Front Access","f":-1,"do":"Garra Hook a la ventana de Storage","via":"door"},
         {"room":"Storage","f":3,"do":"Entra volando y limpia los tractores","via":"window"},
         {"room":"Dummy Depot","f":3,"do":"Cruza a limpiar Dummy Depot con Blitz","via":"door"}],
        "clear":[
@@ -959,7 +971,8 @@
       {"op":"ash","role":"entrada","spawn":"Training Course",
        "path":[
         {"room":"Bus Back Alley","f":-1,"do":"Corre hacia Chapel Gate","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Breach round a la ventana de Dummy Depot y rapelea","via":"rappel"},
+        {"room":"Front Access","f":-1,"do":"Pasa por la fachada sin asomarse a las ventanas","via":"door"},
+        {"room":"Chapel Gate","f":-1,"do":"Breach round a la ventana de Dummy Depot y rapelea","via":"door"},
         {"room":"Dummy Depot","f":3,"do":"Entra por la ventana tras Blitz","via":"window"},
         {"room":"Storage Corridor","f":3,"do":"Cubre el pasillo desde la puerta","via":"door"}],
        "clear":[
@@ -969,7 +982,7 @@
       {"op":"ying","role":"negacion","spawn":"Training Course",
        "path":[
         {"room":"Bus Back Alley","f":-1,"do":"Corre junto a Amaru","via":"door"},
-        {"room":"Front Access","f":-1,"do":"Candela por la ventana de Storage y rapelea","via":"rappel"},
+        {"room":"Front Access","f":-1,"do":"Candela por la ventana de Storage y rapelea","via":"door"},
         {"room":"Storage","f":3,"do":"Entra con Amaru y planta entre los tractores","via":"window"}],
        "clear":[
         {"room":"Storage","f":3,"threat":"Jäger con ADS en los tractores y ancla detrás","how":"Rebota la Candela por el techo para que el ADS no la agarre y entra con Amaru"},
@@ -978,7 +991,8 @@
       {"op":"blitz","role":"entrada","spawn":"Training Course",
        "path":[
         {"room":"Bus Back Alley","f":-1,"do":"Corre hacia Chapel Gate con Ash","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Rapelea a la ventana rota de Dummy Depot","via":"rappel"},
+        {"room":"Front Access","f":-1,"do":"Pasa por la fachada sin asomarse a las ventanas","via":"door"},
+        {"room":"Chapel Gate","f":-1,"do":"Rapelea a la ventana rota de Dummy Depot","via":"door"},
         {"room":"Dummy Depot","f":3,"do":"Entra primero flasheando","via":"window"},
         {"room":"Storage Corridor","f":3,"do":"Flash y sostiene el pasillo hacia Main Stairs","via":"door"}],
        "clear":[
@@ -988,7 +1002,7 @@
       {"op":"zofia","role":"entrada","spawn":"Training Course",
        "path":[
         {"room":"Bus Back Alley","f":-1,"do":"Corre a Front Access","via":"door"},
-        {"room":"Front Access","f":-1,"do":"Concusión a la ventana de Storage y rapelea","via":"rappel"},
+        {"room":"Front Access","f":-1,"do":"Concusión a la ventana de Storage y rapelea","via":"door"},
         {"room":"Storage","f":3,"do":"Entra tras Ying","via":"window"},
         {"room":"Dummy Depot","f":3,"do":"Impacto a la puerta y sostiene Dummy Depot hacia Storage Corridor","via":"door"}],
        "clear":[
@@ -996,74 +1010,78 @@
         {"room":"Dummy Depot","f":3,"threat":"Roamer regresando por Storage Corridor","how":"Concusión al pasillo y prefire del marco"}],
        "final":"Sostiene Dummy Depot durante el post-plant"}
      ]},
-    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se sube por Side Stairs hasta el techo y desde ahí Sledge abre las escotillas del Rooftop sobre Dummy Depot y Storage mientras Fuze mete cargas por ellas y Capitão quema los rincones; Twitch quema ADS y espejos desde arriba y Glaz entra al final por la ventana de Storage con humo. Funciona porque el techo de Hereford casi nunca se defiende y desde ahí se controla todo el tercer piso.",
-     "timeline":["0:00–0:45 · Side Stairs hasta el techo, Twitch quema ADS y espejos desde Side Stairs 3F","0:45–1:30 · Sledge abre las escotillas del Rooftop; Fuze cargas sobre Dummy Depot; Capitão quema Storage","1:30–2:30 · Glaz entra por la ventana de Storage con humo y planta entre los tractores","2:30–3:00 · post-plant: Sledge y Fuze desde el techo, Glaz en la ventana, Twitch en Storage Corridor"],
+    {"id":"vertical","n":"Vertical","tag":"VERTICAL","summary":"Se toma el segundo piso completo por Side Stairs y Back Access y desde abajo se abre el techo: Sledge rompe el techo de Office bajo Storage, Fuze pega cargas en el techo de Master Bedroom bajo Dummy Depot y Capitão quema por los hoyos los rincones donde se paran las anclas. Twitch quema ADS y espejos desde Corridor 2F, y Glaz rapelea a la ventana de Storage con humo para plantar al final. Funciona porque todo el piso del tercer nivel de Hereford es blando y los defensores del sitio casi nunca bajan a defender el segundo piso.",
+     "timeline":["0:00–0:45 · Side Stairs hasta el segundo piso; Twitch quema ADS y espejos desde Corridor 2F; Glaz dronea la ventana de Storage desde Front Access","0:45–1:30 · Sledge abre el techo de Office bajo Storage; Fuze cargas en el techo de Master Bedroom bajo Dummy Depot; Capitão quema Storage y Dummy Depot por los hoyos","1:30–2:30 · Glaz rapelea a la ventana de Storage con humo y planta entre los tractores mientras el vertical mata desde abajo","2:30–3:00 · post-plant: Sledge y Fuze desde Office y Master Bedroom, Glaz en la ventana, Twitch en Storage Corridor"],
      "ops":[
       {"op":"sledge","role":"blando","spawn":"Training Course",
        "path":[
-        {"room":"Rappel Tower","f":-1,"do":"Cruza a la escalera lateral","via":"door"},
+        {"room":"Rappel Tower","f":-1,"do":"Cruza a la escalera lateral droneando Side Stairs Alley","via":"door"},
         {"room":"Side Stairs Alley","f":-1,"do":"Rompe la barricada de Side Stairs","via":"door"},
-        {"room":"Side Stairs","f":1,"do":"Sube","via":"stairs"},
-        {"room":"Side Stairs","f":2,"do":"Pasa el segundo piso","via":"stairs"},
-        {"room":"Side Stairs","f":3,"do":"Pasa el tercer piso cubriendo Storage Corridor","via":"stairs"},
-        {"room":"Side Stairs","f":4,"do":"Sale al techo","via":"stairs"},
-        {"room":"Rooftop","f":4,"do":"Abre la escotilla sobre Dummy Depot con el martillo","via":"door"},
-        {"room":"Dummy Depot","f":3,"do":"Baja por la escotilla al final para el post-plant","via":"hatch"}],
+        {"room":"Side Stairs","f":1,"do":"Sube cubriendo el descanso","via":"stairs"},
+        {"room":"Side Stairs","f":2,"do":"Sale al segundo piso","via":"stairs"},
+        {"room":"Back Access","f":2,"do":"Limpia la puerta y espera al dron de Twitch","via":"door"},
+        {"room":"Office","f":2,"do":"Rompe el techo bajo Storage con el martillo, hoyo por hoyo, pegado a la pared exterior","via":"door"},
+        {"room":"Corridor","f":2,"do":"Cubre la salida de Main Stairs 2F en el post-plant","via":"door"}],
        "clear":[
-        {"room":"Side Stairs","f":3,"threat":"Roamer saliendo de Storage Corridor a la escalera","how":"Dron viendo la puerta y sube rápido"},
-        {"room":"Rooftop","f":4,"threat":"Kaid electrificando la escotilla desde abajo","how":"Twitch quema la Rtila y abres el piso alrededor de la escotilla"},
-        {"room":"Dummy Depot","f":3,"threat":"Ancla pegada al rincón bajo la escotilla","how":"Abre la escotilla y dispara a lo que se mueva mientras Fuze mete la carga"}],
-       "final":"Niega Dummy Depot desde el techo y baja al final"},
+        {"room":"Side Stairs","f":2,"threat":"Roamer tipo Vigil/Cav bajando de Side Stairs 3F a cazar la escalera","how":"Dron arriba primero y sube en pareja con Fuze; prefirea el descanso del tercer piso"},
+        {"room":"Back Access","f":2,"threat":"Kapkan o Gu de Lesion en la puerta de Back Access","how":"Dron al marco, Twitch dispara la trampa y entras"},
+        {"room":"Office","f":2,"threat":"Ancla de Storage disparando hacia abajo por los hoyos y una C4 al techo","how":"Abre desde una esquina con dron viendo Storage; no te quedes bajo el hoyo que acabas de abrir"}],
+       "final":"Niega Storage desde abajo por los hoyos del techo de Office y sube por Main Stairs solo si hay que retomar"},
       {"op":"fuze","role":"negacion","spawn":"Training Course",
        "path":[
         {"room":"Rappel Tower","f":-1,"do":"Sigue a Sledge","via":"door"},
-        {"room":"Side Stairs Alley","f":-1,"do":"Cubre la escalera","via":"door"},
+        {"room":"Side Stairs Alley","f":-1,"do":"Cubre la escalera mientras Sledge rompe","via":"door"},
         {"room":"Side Stairs","f":1,"do":"Sube","via":"stairs"},
-        {"room":"Side Stairs","f":2,"do":"Pasa el segundo piso","via":"stairs"},
-        {"room":"Side Stairs","f":3,"do":"Pasa el tercer piso","via":"stairs"},
-        {"room":"Side Stairs","f":4,"do":"Sale al techo","via":"stairs"},
-        {"room":"Rooftop","f":4,"do":"Cargas de racimo en las escotillas sobre Dummy Depot y Storage tras la Twitch","via":"door"}],
+        {"room":"Side Stairs","f":2,"do":"Sale al segundo piso","via":"stairs"},
+        {"room":"Back Access","f":2,"do":"Cubre la puerta mientras Sledge entra a Office","via":"door"},
+        {"room":"Corridor","f":2,"do":"Cruza rápido cubriendo Main Stairs 2F","via":"door"},
+        {"room":"Master Bedroom","f":2,"do":"Pega las cargas de racimo en el techo bajo Dummy Depot, una por esquina","via":"door"}],
        "clear":[
-        {"room":"Rooftop","f":4,"threat":"Defensor que sube por Side Stairs a limpiar el techo","how":"Claymore en la salida de Side Stairs 4F y prefire"},
-        {"room":"Storage","f":3,"threat":"Jäger con ADS que come las cargas y Smoke detrás de los tractores","how":"Twitch quema el ADS primero, después la carga en la escotilla"}],
-       "final":"Segunda carga sobre Storage durante el post-plant"},
+        {"room":"Corridor","f":2,"threat":"Defensor bajando por Main Stairs 2F a cortar el vertical","how":"Sledge cubre Main Stairs desde Office; cruza cuando Twitch confirme que no hay nadie en la escalera"},
+        {"room":"Master Bedroom","f":2,"threat":"ADS de Jäger o Mag-NET de Wamai en el cuarto de arriba que come tus cargas","how":"Twitch quema los ADS desde Storage Corridor antes de que dispares la primera carga"},
+        {"room":"Dummy Depot","f":3,"threat":"Ancla Smoke o Kaid pegado al rincón bajo la ventana","how":"Carga en la esquina donde se para el ancla y otra al centro cuando se mueva"}],
+       "final":"Sostiene Master Bedroom bajo Dummy Depot y mete cargas cada vez que un defensor pise arriba"},
       {"op":"capitao","role":"negacion","spawn":"Training Course",
        "path":[
-        {"room":"Rappel Tower","f":-1,"do":"Entra con el grupo","via":"door"},
-        {"room":"Side Stairs Alley","f":-1,"do":"Cubre la espalda","via":"door"},
+        {"room":"Rappel Tower","f":-1,"do":"Sube con el grupo cubriendo la retaguardia","via":"door"},
+        {"room":"Side Stairs Alley","f":-1,"do":"Vigila Side Stairs 3F desde abajo","via":"door"},
         {"room":"Side Stairs","f":1,"do":"Sube","via":"stairs"},
-        {"room":"Side Stairs","f":2,"do":"Pasa el segundo piso","via":"stairs"},
-        {"room":"Side Stairs","f":3,"do":"Pasa el tercer piso","via":"stairs"},
-        {"room":"Side Stairs","f":4,"do":"Sale al techo","via":"stairs"},
-        {"room":"Rooftop","f":4,"do":"Flechas de fuego por las escotillas a los rincones de Storage","via":"door"},
-        {"room":"Storage","f":3,"do":"Baja por la escotilla al final para cubrir la planta","via":"hatch"}],
+        {"room":"Side Stairs","f":2,"do":"Sale al segundo piso","via":"stairs"},
+        {"room":"Back Access","f":2,"do":"Entra al segundo piso","via":"door"},
+        {"room":"Corridor","f":2,"do":"Toma la boca de Main Stairs 2F para cortar la bajada","via":"door"},
+        {"room":"Bathroom","f":2,"do":"Desde el baño quema por los hoyos que abre Sledge hacia Storage y Dummy Depot","via":"door"}],
        "clear":[
-        {"room":"Storage","f":3,"threat":"Ancla Mira en el rincón de los tractores","how":"Flecha de fuego por la escotilla al rincón y la obligas a rotar a Dummy Depot"},
-        {"room":"Storage Corridor","f":3,"threat":"Defensor que rota por el pasillo a flanquear a Glaz","how":"Flecha de humo en el pasillo desde arriba"}],
-       "final":"Baja al final y sostiene Storage con fuego en Storage Corridor"},
+        {"room":"Back Access","f":2,"threat":"Roamer escondido en Office esperando a los que entran por Back Access","how":"Dron de Twitch limpia Office antes de que el grupo entre"},
+        {"room":"Corridor","f":2,"threat":"Defensor rotando por Main Stairs 2F","how":"Flecha de humo en la boca de Main Stairs 2F y quema la escalera si alguien baja"},
+        {"room":"Bathroom","f":2,"threat":"C4 desde arriba cuando oyen que te acomodas bajo el techo","how":"No te quedes quieto bajo el mismo hoyo; quema y muévete"}],
+       "final":"Quema Storage y Dummy Depot por los hoyos del techo y mete humo en la ventana de Storage para la planta de Glaz"},
       {"op":"twitch","role":"antigadget","spawn":"Training Course",
        "path":[
-        {"room":"Rappel Tower","f":-1,"do":"Manda el dron de choque a Side Stairs Alley","via":"door"},
-        {"room":"Side Stairs Alley","f":-1,"do":"Dron por la escalera lateral","via":"door"},
-        {"room":"Side Stairs","f":1,"do":"Sube con el dron adelante","via":"stairs"},
-        {"room":"Side Stairs","f":2,"do":"Pasa el segundo piso","via":"stairs"},
-        {"room":"Side Stairs","f":3,"do":"Dron a Storage Corridor y Storage para quemar ADS, espejos y Rtila","via":"stairs"},
-        {"room":"Storage Corridor","f":3,"do":"Sostiene el pasillo con el dron adentro mientras el vertical mata","via":"door"},
-        {"room":"Storage","f":3,"do":"Entra al final por la pared blanda y cubre la planta de Glaz","via":"door"}],
+        {"room":"Rappel Tower","f":-1,"do":"Manda el dron de choque por Side Stairs hasta el tercer piso","via":"door"},
+        {"room":"Side Stairs Alley","f":-1,"do":"Quema los ADS y espejos que vea desde el dron en Storage Corridor","via":"door"},
+        {"room":"Side Stairs","f":1,"do":"Sube","via":"stairs"},
+        {"room":"Side Stairs","f":2,"do":"Sale al segundo piso","via":"stairs"},
+        {"room":"Back Access","f":2,"do":"Entra al segundo piso","via":"door"},
+        {"room":"Corridor","f":2,"do":"Con el segundo dron limpia Storage Corridor y Workshop; cubre la escalera","via":"door"},
+        {"room":"Main Stairs","f":2,"do":"Toma la escalera para subir al final","via":"stairs"},
+        {"room":"Main Stairs","f":3,"do":"Sube al tercer piso cuando el vertical ya mató","via":"stairs"},
+        {"room":"Storage Corridor","f":3,"do":"Sostiene el pasillo para cubrir la planta","via":"door"}],
        "clear":[
-        {"room":"Storage Corridor","f":3,"threat":"Mira con espejo en Workshop y Jäger con ADS en Storage","how":"Dron de choque por el pasillo, quema ADS y espejo antes de las cargas de Fuze"},
-        {"room":"Storage","f":3,"threat":"Ancla Smoke rotando a Dummy Depot al caer el vertical","how":"Deja el dron viendo la puerta interna y avisa el rotate"}],
-       "final":"Cubre Storage desde Storage Corridor durante el post-plant"},
-      {"op":"glaz","role":"soporte","spawn":"Shooting Range",
+        {"room":"Storage Corridor","f":3,"threat":"Espejos de Mira en Workshop y ADS en el pasillo","how":"Dron de choque quema los gadgets desde la escalera antes de que suba nadie"},
+        {"room":"Main Stairs","f":3,"threat":"Defensor sosteniendo la salida de Main Stairs 3F","how":"Sube solo cuando Fuze y Sledge confirmen que el sitio está vacío o con flash de Capitão"},
+        {"room":"Storage","f":3,"threat":"Ancla detrás de los tractores mirando la ventana","how":"Dron viendo el tractor y Sledge abre el techo justo debajo"}],
+       "final":"Sostiene Storage Corridor y cubre la planta en Storage"},
+      {"op":"glaz","role":"soporte","spawn":"Training Course",
        "path":[
-        {"room":"Shooting Range West Entrance","f":-1,"do":"Sale del spawn cubriendo la fachada","via":"door"},
-        {"room":"Observation Ramp","f":-1,"do":"Cruza hacia Chapel Gate","via":"door"},
-        {"room":"Chapel Gate","f":-1,"do":"Humo en la ventana de Storage y rapelea viendo por la térmica","via":"rappel"},
-        {"room":"Storage","f":3,"do":"Entra por la ventana con humo y planta entre los tractores","via":"window"}],
+        {"room":"Bus Back Alley","f":-1,"do":"Dronea la ventana de Storage desde el bus","via":"door"},
+        {"room":"Front Access","f":-1,"do":"Rapelea a la ventana de Storage y espera a que el vertical mate","via":"door"},
+        {"room":"Storage","f":3,"do":"Entra con humo de Capitão, mata con la térmica y planta entre los tractores","via":"window"},
+        {"room":"Storage Corridor","f":3,"do":"Sostiene el pasillo en el post-plant","via":"door"}],
        "clear":[
-        {"room":"Chapel Gate","f":-1,"threat":"Defensor spawnpeekeando desde la ventana de Storage","how":"Térmica desde Observation Ramp y prefire de la ventana"},
-        {"room":"Storage","f":3,"threat":"Castle en la ventana y Frost bajo ella","how":"Rompe el Castle con las cargas de Fuze desde arriba y entra con humo viendo el cepo por la térmica"}],
-       "final":"Planta en Storage y sostiene la ventana con humo y térmica"}
+        {"room":"Front Access","f":-1,"threat":"Defensor asomando por la ventana de Storage a picar rapel","how":"Rapelea de cabeza pegado al marco y deja que Sledge abra el techo primero"},
+        {"room":"Storage","f":3,"threat":"Castle y Frost bajo la ventana con el ancla detrás de los tractores","how":"Capitão mete humo, quemas la Castle con la térmica viendo los cepos, entras solo con el sitio ya vaciado por el vertical"},
+        {"room":"Dummy Depot","f":3,"threat":"Defensor retomando desde Dummy Depot a la planta","how":"Térmica por el humo hacia la puerta de Dummy Depot mientras Fuze mete cargas"}],
+       "final":"Planta en Storage entre los tractores y sostiene la ventana con la térmica en el humo"}
      ]},
     {"id":"split","n":"Split","tag":"SPLIT","summary":"Dos frentes a la vez: Ace y Kali abren la pared Storage Corridor–Storage desde Main Stairs mientras Osa lidera a Dokkaebi y Gridlock por Side Stairs hacia Workshop. Dokkaebi hackea los teléfonos justo antes de la doble entrada y Gridlock tapa Side Stairs con Trax para que nadie flanquee. Funciona porque Storage Corridor es la única rotación del tercer piso y con dos frentes queda cruzado.",
      "timeline":["0:00–0:45 · drones; Ace y Kali suben por Main Stairs, Osa toma Side Stairs","0:45–1:30 · Kali lanza LV a la pared, Ace abre con SELMA; Osa pone el Talon en Workshop; Dokkaebi llama teléfonos","1:30–2:30 · entrada simultánea: Ace por la pared, Osa por Workshop; Gridlock tapa Side Stairs; planta en Storage","2:30–3:00 · post-plant: Ace en Main Stairs, Osa en Workshop, Gridlock sostiene Side Stairs"],
@@ -1139,20 +1157,24 @@
        "final":"Sostiene Workshop y Side Stairs durante el post-plant"}
      ]}
    ],
-   "defense":[
-    {"id":"default","n":"Default","summary":"Se refuerza la pared Storage Corridor–Storage y se ponen Castle en las ventanas de Storage con Frost debajo. Smoke ancla Dummy Depot, Mira pone espejos en Workshop mirando Storage Corridor y Valkyrie roamea abajo en Corridor 2F con cámaras para leer el vertical y Side Stairs.","reinforce":["Pared Storage Corridor–Storage ×2","Ventanas de Storage (Castle)","Pared Dummy Depot–Storage Corridor"],"rotations":["Storage↔Dummy Depot","Workshop↔Storage Corridor"],
+   "defense": [
+    {"id":"default","n":"Default","summary":"Se refuerza la pared Storage Corridor–Storage y se ponen Castle en las ventanas de Storage con Frost debajo. Smoke ancla Dummy Depot, Mira pone espejos en Workshop mirando Storage Corridor y Valkyrie roamea abajo en Corridor 2F con cámaras para leer el vertical y Side Stairs.",
+     "reinforce":["Pared Storage Corridor–Storage ×2","Ventanas de Storage (Castle)","Pared Dummy Depot–Storage Corridor"],
+     "rotations":["Storage↔Dummy Depot","Workshop↔Storage Corridor"],
      "ops":[
       {"op":"frost","room":"Storage","f":3,"role":"ancla","job":"Cepos bajo las ventanas de Storage y en la puerta de Dummy Depot; ancla detrás de los tractores"},
       {"op":"castle","room":"Storage","f":3,"role":"ancla","job":"Castle en las ventanas de Storage y en la puerta de Storage Corridor; ancla junto a Frost"},
-      {"op":"smoke","room":"Dummy Depot","f":3,"role":"ancla","job":"Ancla Dummy Depot, gas a la escotilla del techo y a la pared abierta en el post-plant"},
+      {"op":"smoke","room":"Dummy Depot","f":3,"role":"ancla","job":"Ancla Dummy Depot, gas a la puerta de Storage Corridor y a la pared abierta en el post-plant"},
       {"op":"mira","room":"Workshop","f":3,"role":"flex","job":"Espejos viendo Storage Corridor y Side Stairs 3F; flexea a Storage cuando caiga la pared"},
-      {"op":"valkyrie","room":"Corridor","f":2,"role":"roam","job":"Cámaras en Side Stairs y Rooftop; roamea Corridor 2F y Master Bedroom para negar el vertical desde abajo y cazar Side Stairs"}]},
-    {"id":"alt","n":"Anti-techo y anti-escudo","summary":"Setup para cuando el rival sube al techo o entra con escudos: Kaid electrifica las escotillas del Rooftop y la pared, Lesion pone Gu en Storage Corridor y Side Stairs, Echo con Yokai en Storage y Dummy Depot para negar la planta, Noor con el Horus apuntando a Storage Corridor desde Workshop, y Tubarão congela las escotillas y la ventana cuando intenten abrirlas.","reinforce":["Pared Storage Corridor–Storage ×2","Escotillas del Rooftop","Ventana de Storage"],"rotations":["Storage↔Dummy Depot","Workshop↔Storage Corridor"],
+      {"op":"valkyrie","room":"Corridor","f":2,"role":"roam","job":"Cámaras en Side Stairs 3F y Back Access 2F; roamea Corridor 2F y Master Bedroom para negar el vertical desde abajo y cazar Side Stairs"}]},
+    {"id":"alt","n":"Anti-vertical y anti-escudo","summary":"Setup para cuando el rival hace vertical desde el segundo piso o entra con escudos: Kaid electrifica la pared de Storage y las Castle de las ventanas, Lesion pone Gu en Storage Corridor, Side Stairs y Back Access 2F, Echo con Yokai en Storage y Dummy Depot para negar la planta, Noor con el Horus apuntando a Storage Corridor desde Workshop, y Tubarão congela la pared o la ventana cuando intenten abrirlas. Lesion baja a Back Access a cazar al que sube por Side Stairs.",
+     "reinforce":["Pared Storage Corridor–Storage ×2","Ventanas de Storage y Dummy Depot (Castle)","Ventana de Storage"],
+     "rotations":["Storage↔Dummy Depot","Workshop↔Storage Corridor"],
      "ops":[
-      {"op":"kaid","room":"Dummy Depot","f":3,"role":"ancla","job":"Rtila en la escotilla del techo y en la pared de Storage; ancla Dummy Depot"},
+      {"op":"kaid","room":"Dummy Depot","f":3,"role":"ancla","job":"Rtila en la pared reforzada de Storage y en las Castle de las ventanas; ancla Dummy Depot"},
       {"op":"echo","room":"Storage","f":3,"role":"ancla","job":"Yokais en Storage y Dummy Depot; ancla detrás de los tractores y niega la planta"},
       {"op":"noor","room":"Workshop","f":3,"role":"flex","job":"Horus apuntando a Storage Corridor desde Workshop; castiga escudos Osa/Montagne y flexea"},
-      {"op":"tubarao","room":"Storage Corridor","f":3,"role":"flex","job":"Zoto listo para congelar la escotilla del techo o la ventana de Storage cuando la abran; juega el pasillo"},
+      {"op":"tubarao","room":"Storage Corridor","f":3,"role":"flex","job":"Zoto listo para congelar la pared de Storage o la ventana cuando la abran; juega el pasillo"},
       {"op":"lesion","room":"Ballistic Mat Depot","f":3,"role":"roam","job":"Gu en Storage Corridor, Side Stairs 3F y Main Stairs 3F; roamea Ballistic Mat Depot y Side Stairs para cazar el flanco"}]}
    ]
   }

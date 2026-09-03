@@ -348,3 +348,16 @@
 .drawer .side{flex:1;border-left:0;min-height:0}
 .drawer .strats{border-bottom:1px solid var(--line)}
 @media (max-width:900px){#s3.on{grid-template-columns:1fr}#s4.on{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}.live{border-left:0;border-top:1px solid var(--line)}}
+/* sugerencia entre rondas + setup */
+.hintbar{display:flex;align-items:center;gap:14px;max-width:1100px;margin:0 auto 14px;padding:12px 14px;border:1px solid rgba(94,231,255,.4);border-radius:12px;background:var(--acc-dim);box-shadow:var(--acc-glow)}
+.hintbar .ht{font-size:15px;color:var(--ink);margin-top:2px}
+.hintbar .ht b{color:var(--acc2)}
+.hintbar .hw{font-size:12px;color:var(--ink2);margin-top:2px}
+.hintbar .btn{margin-left:auto;height:40px}
+.setup{padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(0,0,0,.2)}
+.setup .sm{font-size:13px;color:var(--ink2);line-height:1.45}
+.setup .rl{margin-top:6px;font-size:12px;color:var(--ink)}
+.setup .rl b{color:#ffb3ea;font-family:var(--disp);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.setup .src{margin-top:6px;font-family:var(--mono);font-size:10px;color:var(--dim)}
+.setup .src a{color:var(--acc);text-decoration:underline dotted}
+.modal .big-toggle button[data-res="L"].on{color:#ffb3c2;border-color:var(--red);box-shadow:0 0 18px rgba(255,46,99,.3)}

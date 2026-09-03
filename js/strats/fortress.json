@@ -29,7 +29,7 @@
         {
          "room": "Pasillo",
          "f": 1,
-         "do": "tira las 2 EMP contra la pared reforzada y limpia gadgets",
+         "do": "tira las 3 EMP contra la pared reforzada de Salón (dos al muro, una a la puerta de Cocina) y limpia gadgets",
          "via": "door"
         },
         {
@@ -447,11 +447,11 @@
      "id": "vertical",
      "n": "Vertical",
      "tag": "VERTICAL",
-     "summary": "Los cinco suben a Dormitorio y matan el sitio desde arriba: Fuze mete racimos sobre Salón, Ram manda el BU-GI sobre Cocina y Sledge abre el piso para que Twitch y Ace tengan línea. Nadie pisa el sitio hasta que quedan dos defensores; entonces Ace baja, abre la pared de Salón desde Pasillo y Ram lo sigue para plantar.",
+     "summary": "Los cinco suben por Arriba→Escaleras y matan el sitio desde arriba en dos cuartos: Sledge y Fuze entran a Oficina del comandante (encima de Salón) y abren el piso sobre la ancla; Ram y Twitch van a Dormitorio (encima de Cocina) y el BU-GI abre toda la línea sobre el espejo de Mira. Nadie pisa el sitio hasta que quedan dos defensores; entonces Ace abre la pared de Salón desde el Pasillo y Ram baja detrás para plantar.",
      "timeline": [
-      "0:00–0:45 · todos por Pasillo→Arriba, Twitch limpia cámaras y ADS del segundo piso",
-      "0:45–1:30 · Dormitorio: Fuze racimos sobre Salón, Ram BU-GI sobre Cocina, Sledge abre líneas",
-      "1:30–2:30 · Ace baja y abre pared Salón, Ram lo sigue, entrada por el hueco y plant",
+      "0:00–0:45 · todos por Pasillo→Arriba; Twitch limpia cámaras y ADS del descanso y del Pasillo de arriba",
+      "0:45–1:30 · Sledge y Fuze en Oficina del comandante abren y racimean sobre Salón; Ram y Twitch en Dormitorio meten el BU-GI sobre Cocina",
+      "1:30–2:30 · Ace baja y abre la pared de Salón desde el Pasillo, Ram lo sigue por Arriba, entrada por el hueco y plant",
       "2:30–3:00 · post-plant: Fuze y Sledge sostienen desde arriba, Ace y Ram en Salón, Twitch tapa Escaleras"
      ],
      "ops": [
@@ -463,61 +463,55 @@
         {
          "room": "Exterior",
          "f": 1,
-         "do": "corre a la puerta del Pasillo con dron adelante",
+         "do": "corre a la puerta del Pasillo con el dron adelante",
          "via": "door"
         },
         {
          "room": "Pasillo",
          "f": 1,
-         "do": "cruza hacia la escalera",
+         "do": "cruza hacia la escalera sin pisar la línea de la pared reforzada",
          "via": "door"
         },
         {
          "room": "Arriba",
          "f": 1,
-         "do": "sube cubriendo el descanso",
+         "do": "sube la escalera con el dron checando el descanso",
          "via": "stairs"
         },
         {
          "room": "Escaleras",
          "f": 2,
-         "do": "sale al segundo piso y despeja",
+         "do": "sale al segundo piso y limpia el descanso",
          "via": "stairs"
         },
         {
-         "room": "Pasillo",
+         "room": "Oficina del comandante",
          "f": 2,
-         "do": "avanza al Dormitorio",
+         "do": "entra por la puerta desde Escaleras, va al rincón que queda encima de Salón y abre el piso con el martillo justo sobre el mueble donde se sienta la ancla",
          "via": "door"
-        },
-        {
-         "room": "Dormitorio",
-         "f": 2,
-         "do": "abre el piso sobre Salón y Cocina con el martillo",
-         "via": "breach"
         }
        ],
        "clear": [
         {
          "room": "Arriba",
          "f": 1,
-         "threat": "Roamer en la escalera esperando pasos",
-         "how": "dron primero, sube en pareja con Twitch"
+         "threat": "Roamer (Vigil/Caveira) esperando pasos en la escalera",
+         "how": "dron primero al descanso y sube en pareja con Twitch"
         },
         {
-         "room": "Dormitorio",
+         "room": "Oficina del comandante",
          "f": 2,
-         "threat": "Frost o Kapkan en la puerta de Dormitorio",
-         "how": "revisa el marco con dron antes de cruzar"
+         "threat": "Frost o Kapkan en la puerta que da a Escaleras",
+         "how": "revisa el marco con el dron antes de cruzar y dispara la trampa desde el descanso"
         },
         {
          "room": "Salón",
          "f": 1,
-         "threat": "Ancla debajo pegada a la pared reforzada",
-         "how": "abre justo arriba de la esquina y dispara por el hueco"
+         "threat": "Ancla debajo pegada a la pared reforzada y al mueble",
+         "how": "abre justo encima de la esquina y dispara por el hueco antes de que se mueva"
         }
        ],
-       "final": "sostiene desde arriba viendo los huecos sobre Salón"
+       "final": "sostiene desde Oficina del comandante viendo los huecos sobre Salón"
       },
       {
        "op": "fuze",
@@ -527,46 +521,40 @@
         {
          "room": "Exterior",
          "f": 1,
-         "do": "sigue a Sledge hacia el Pasillo",
+         "do": "corre a la puerta del Pasillo con el dron adelante",
          "via": "door"
         },
         {
          "room": "Pasillo",
          "f": 1,
-         "do": "cruza a la escalera",
+         "do": "cruza hacia la escalera sin pisar la línea de la pared reforzada",
          "via": "door"
         },
         {
          "room": "Arriba",
          "f": 1,
-         "do": "sube la escalera",
+         "do": "sube la escalera con el dron checando el descanso",
          "via": "stairs"
         },
         {
          "room": "Escaleras",
          "f": 2,
-         "do": "sale y cubre el descanso mientras el resto sube",
+         "do": "sale al segundo piso y limpia el descanso",
          "via": "stairs"
         },
         {
-         "room": "Pasillo",
+         "room": "Oficina del comandante",
          "f": 2,
-         "do": "llega a la puerta de Dormitorio",
+         "do": "entra detrás de Sledge y pone 2 racimos sobre Salón donde se sienta la ancla; guarda 2 para el post-plant",
          "via": "door"
-        },
-        {
-         "room": "Dormitorio",
-         "f": 2,
-         "do": "pone 3 racimos sobre Salón donde se sienta la ancla",
-         "via": "breach"
         }
        ],
        "clear": [
         {
          "room": "Escaleras",
          "f": 2,
-         "threat": "Vigil/Cav esperando en el descanso del segundo piso",
-         "how": "entra con Twitch delante y prefire la esquina"
+         "threat": "Vigil/Caveira esperando en el descanso del segundo piso",
+         "how": "entra con Twitch delante y prefire la esquina del descanso"
         },
         {
          "room": "Salón",
@@ -575,7 +563,7 @@
          "how": "racimo encima; espera al sonido de la carga y escucha las bajas"
         }
        ],
-       "final": "sostiene desde Dormitorio viendo los huecos y niega el defuser"
+       "final": "sostiene desde Oficina del comandante viendo los huecos y niega el defuser con los racimos que le quedan"
       },
       {
        "op": "ram",
@@ -585,37 +573,37 @@
         {
          "room": "Exterior",
          "f": 1,
-         "do": "entra al Pasillo con el grupo",
+         "do": "corre a la puerta del Pasillo con el dron adelante",
          "via": "door"
         },
         {
          "room": "Pasillo",
          "f": 1,
-         "do": "cruza a la escalera",
+         "do": "cruza hacia la escalera sin pisar la línea de la pared reforzada",
          "via": "door"
         },
         {
          "room": "Arriba",
          "f": 1,
-         "do": "sube",
+         "do": "sube la escalera con el dron checando el descanso",
          "via": "stairs"
         },
         {
          "room": "Escaleras",
          "f": 2,
-         "do": "sale al segundo piso",
+         "do": "sale al segundo piso y limpia el descanso",
          "via": "stairs"
         },
         {
          "room": "Pasillo",
          "f": 2,
-         "do": "cruza al Dormitorio",
+         "do": "cruza al Dormitorio detrás de Twitch",
          "via": "door"
         },
         {
          "room": "Dormitorio",
          "f": 2,
-         "do": "lanza el BU-GI hacia la parte que queda sobre Cocina y abre toda la línea",
+         "do": "lanza el BU-GI de la puerta al fondo: abre toda la línea sobre Cocina, encima de la isla y del espejo de Mira",
          "via": "breach"
         }
        ],
@@ -623,14 +611,14 @@
         {
          "room": "Pasillo",
          "f": 2,
-         "threat": "Maestro Evil Eye o Valk cam vigilando el pasillo",
-         "how": "Twitch le pega o rompe con el dron antes de cruzar"
+         "threat": "Maestro Evil Eye o Valk cam vigilando el pasillo de arriba",
+         "how": "Twitch la rompe con el dron antes de cruzar"
         },
         {
          "room": "Cocina",
          "f": 1,
          "threat": "Mira parada frente al espejo bajo el piso de Dormitorio",
-         "how": "BU-GI encima y dispara a quien salga corriendo"
+         "how": "BU-GI encima y dispara a quien salga corriendo hacia Salón"
         }
        ],
        "final": "baja detrás de Ace para tomar Cocina desde la puerta interior"
@@ -673,7 +661,7 @@
         {
          "room": "Dormitorio",
          "f": 2,
-         "do": "quema ADS y cámaras para que los racimos entren",
+         "do": "quema ADS y cámaras de Dormitorio para que el BU-GI de Ram trabaje sin que se lo coman",
          "via": "door"
         }
        ],
@@ -688,7 +676,7 @@
          "room": "Dormitorio",
          "f": 2,
          "threat": "Jäger ADS pegado al techo del sitio",
-         "how": "choca los ADS desde la puerta antes de que Fuze ponga la carga"
+         "how": "choca los ADS desde la puerta antes de que Ram suelte el BU-GI"
         }
        ],
        "final": "cubre la puerta de Dormitorio contra el retake por Escaleras"
@@ -952,7 +940,7 @@
      "reinforce": [
       "Pared Salón–Pasillo ×2",
       "Puerta exterior de Cocina barricada",
-      "Escotilla/piso Dormitorio SIN reforzar para que Pulse baje rápido"
+      "Escotilla Dormitorio→Cocina SIN reforzar: Pulse la abre para caer al sitio o bajar a picar (el piso no se puede reforzar)"
      ],
      "rotations": [
       "Cocina↔Salón por la puerta interior",
@@ -1003,7 +991,7 @@
      "reinforce": [
       "Pared Salón–Pasillo ×2",
       "Puerta exterior de Cocina con Castle",
-      "Piso de Dormitorio sobre Salón (una lámina)"
+      "Escotilla Dormitorio→Cocina reforzada; los huecos del piso los tapa Azami con Kibas"
      ],
      "rotations": [
       "Cocina↔Salón",
@@ -1495,11 +1483,11 @@
      "id": "vertical",
      "n": "Vertical",
      "tag": "VERTICAL",
-     "summary": "Los cinco suben a Oficina y matan el sitio desde arriba: Fuze racimos sobre Cafetería, Ram BU-GI sobre Hammam, Sledge abre líneas y Twitch limpia ADS para que todo entre. Cuando quedan dos, Ace baja y abre la pared de Cafetería desde el Pasillo con Ram detrás y bajamos a plantar.",
+     "summary": "Los cinco suben por Arriba→Escaleras y matan el sitio desde arriba en dos cuartos: Sledge, Fuze y Twitch entran a Oficina (encima de Cafetería) y abren el piso sobre la barra donde se sienta la ancla; Ram va a Recámara (encima de Hammam) y el BU-GI abre toda la línea sobre las columnas y el espejo de Mira. Cuando quedan dos, Ace baja y abre la pared de Cafetería desde el Pasillo con Ram detrás y bajamos a plantar.",
      "timeline": [
-      "0:00–0:45 · todos por Pasillo→Arriba; Twitch limpia cámaras y ADS del segundo piso",
-      "0:45–1:30 · Oficina: racimos sobre Cafetería, BU-GI sobre Hammam, Sledge abre líneas",
-      "1:30–2:30 · Ace baja y abre pared Cafetería; Ram lo sigue; entrada y plant",
+      "0:00–0:45 · todos por Pasillo→Arriba; Twitch limpia cámaras y ADS del descanso y del Pasillo de arriba",
+      "0:45–1:30 · Oficina: Sledge abre y Fuze racimea sobre Cafetería; Ram en Recámara mete el BU-GI sobre Hammam",
+      "1:30–2:30 · Ace baja y abre la pared de Cafetería desde el Pasillo; Ram lo sigue por Arriba; entrada y plant",
       "2:30–3:00 · post-plant: Fuze y Sledge desde arriba, Ace y Ram en Cafetería, Twitch tapa Escaleras"
      ],
      "ops": [
@@ -1541,7 +1529,7 @@
         {
          "room": "Oficina",
          "f": 2,
-         "do": "abre el piso sobre Cafetería y Hammam",
+         "do": "abre el piso sobre Cafetería con el martillo, justo encima de la barra donde se sienta la ancla",
          "via": "breach"
         }
        ],
@@ -1605,7 +1593,7 @@
         {
          "room": "Oficina",
          "f": 2,
-         "do": "3 racimos sobre Cafetería donde se sienta la ancla",
+         "do": "pone 2 racimos sobre Cafetería donde se sienta la ancla; guarda 2 para el post-plant",
          "via": "breach"
         }
        ],
@@ -1633,55 +1621,55 @@
         {
          "room": "Exterior",
          "f": 1,
-         "do": "entra al Pasillo con el grupo",
+         "do": "corre a la puerta del Pasillo con el dron adelante",
          "via": "door"
         },
         {
          "room": "Pasillo",
          "f": 1,
-         "do": "cruza a la escalera",
+         "do": "cruza hacia la escalera sin pisar la línea de la pared reforzada",
          "via": "door"
         },
         {
          "room": "Arriba",
          "f": 1,
-         "do": "sube",
+         "do": "sube la escalera con el dron checando el descanso",
          "via": "stairs"
         },
         {
          "room": "Escaleras",
          "f": 2,
-         "do": "sale al segundo piso",
+         "do": "sale al segundo piso y limpia el descanso",
          "via": "stairs"
         },
         {
-         "room": "Pasillo",
+         "room": "Recámara",
          "f": 2,
-         "do": "cruza a Oficina",
+         "do": "entra por la puerta desde Escaleras y lanza el BU-GI hacia la parte que queda sobre Hammam: abre toda la línea sobre las columnas y el espejo",
          "via": "door"
-        },
-        {
-         "room": "Oficina",
-         "f": 2,
-         "do": "BU-GI hacia la parte sobre Hammam para abrir toda la línea",
-         "via": "breach"
         }
        ],
        "clear": [
         {
-         "room": "Pasillo",
+         "room": "Escaleras",
          "f": 2,
-         "threat": "Evil Eye o Valk cam en el pasillo",
-         "how": "Twitch la rompe antes de cruzar"
+         "threat": "Evil Eye o Valk cam viendo el descanso y la puerta de Recámara",
+         "how": "Twitch la rompe antes de que cruces"
+        },
+        {
+         "room": "Recámara",
+         "f": 2,
+         "threat": "Frost o Kapkan en la puerta que da a Escaleras",
+         "how": "dron al marco y dispara la trampa desde el descanso"
         },
         {
          "room": "Hammam",
          "f": 1,
-         "threat": "Mira frente al espejo bajo el piso de Oficina",
-         "how": "BU-GI encima y dispara a quien salga"
+         "threat": "Mira frente al espejo bajo el piso de Recámara",
+         "how": "BU-GI encima y dispara a quien salga hacia Cafetería"
         }
        ],
-       "final": "baja detrás de Ace para tomar Hammam desde la puerta interior"
+       "final": "baja por Arriba detrás de Ace para tomar Hammam desde la puerta interior"
       },
       {
        "op": "twitch",
@@ -1721,7 +1709,7 @@
         {
          "room": "Oficina",
          "f": 2,
-         "do": "quema ADS para que entren los racimos",
+         "do": "quema ADS de Oficina para que entren los racimos de Fuze",
          "via": "door"
         }
        ],
@@ -2000,7 +1988,7 @@
      "reinforce": [
       "Pared Cafetería–Pasillo ×2",
       "Puerta exterior de Hammam barricada",
-      "Piso de Oficina SIN reforzar para que Pulse baje rápido"
+      "Escotilla Oficina→Cafetería SIN reforzar: Pulse la abre para bajar al sitio o a picar (el piso no se puede reforzar)"
      ],
      "rotations": [
       "Hammam↔Cafetería por la puerta interior",
@@ -2051,7 +2039,7 @@
      "reinforce": [
       "Pared Cafetería–Pasillo ×2",
       "Puerta exterior de Hammam con Castle",
-      "Piso de Oficina sobre Cafetería (una lámina)"
+      "Escotilla Oficina→Cafetería reforzada; los huecos del piso los tapa Azami con Kibas"
      ],
      "rotations": [
       "Hammam↔Cafetería",
@@ -2308,7 +2296,7 @@
          "room": "Exterior",
          "f": 2,
          "threat": "Ancla peekeando la ventana con Castle en el marco",
-         "how": "Argus a través de la barricada blindada; no te asomes"
+         "how": "Argus por la pared blanda junto a la ventana o por la barricada de madera (no por la Castle); no te asomes al marco"
         },
         {
          "room": "Oficina del comandante",
@@ -2420,7 +2408,7 @@
          "room": "Oficina del comandante",
          "f": 2,
          "threat": "Frost bajo la ventana",
-         "how": "entra por arriba del cepo con salto desde el marco o dispara el cepo primero"
+         "how": "dispara el cepo desde el marco antes de entrar; si saltas encima te atrapa"
         }
        ],
        "final": "cubre la puerta Oficina del comandante–Dormitorio en el plant"
@@ -2573,12 +2561,12 @@
      "id": "vertical",
      "n": "Vertical",
      "tag": "VERTICAL",
-     "summary": "Desde Cocina y Salón matamos el sitio por abajo: Buck abre el techo bajo Oficina del comandante, Fuze pone racimos por el techo de Dormitorio y Ram manda el BU-GI para abrir toda la línea. Twitch limpia ADS y Hibana sube al final por Arriba→Escaleras para abrir la pared y plantar cuando quedan dos.",
+     "summary": "Desde Cocina y Salón matamos el sitio por abajo: Buck abre el techo bajo Oficina del comandante con la Skeleton Key, Sledge martilla el techo de Cocina bajo Dormitorio y Zofia mete impactos y stuns por los huecos. Twitch limpia ADS y cámaras y Hibana sube al final por Arriba→Escaleras para abrir la pared de Dormitorio y plantar cuando quedan dos. Fuze y Ram no sirven aquí: los racimos no se pegan al techo y el BU-GI solo rompe el piso que pisa.",
      "timeline": [
-      "0:00–0:45 · todos por la puerta de Cocina; Twitch limpia cámaras",
-      "0:45–1:30 · Salón: Buck y Ram abren techos; Fuze racimos por el techo de Dormitorio",
-      "1:30–2:30 · Hibana sube y abre la pared de Dormitorio; entrada y plant en Oficina del comandante",
-      "2:30–3:00 · post-plant: Buck y Fuze desde abajo; Hibana y Ram arriba"
+      "0:00–0:45 · todos por la puerta exterior de Cocina; Twitch limpia cámaras y ADS de abajo",
+      "0:45–1:30 · Buck abre bajo Oficina del comandante desde Salón; Sledge abre bajo Dormitorio desde Cocina; Zofia stuns por los huecos",
+      "1:30–2:30 · Hibana sube por Arriba→Escaleras y abre la pared de Dormitorio; entrada y plant en Oficina del comandante",
+      "2:30–3:00 · post-plant: Buck y Zofia desde abajo; Hibana y Sledge arriba"
      ],
      "ops": [
       {
@@ -2628,48 +2616,42 @@
        "final": "sostiene desde Salón los huecos del sitio y niega el defuser"
       },
       {
-       "op": "fuze",
-       "role": "negacion",
+       "op": "sledge",
+       "role": "blando",
        "spawn": "Exterior",
        "path": [
         {
          "room": "Exterior",
          "f": 1,
-         "do": "entra por la puerta de Cocina tras Buck",
+         "do": "entra por la puerta exterior de Cocina detrás de Buck",
          "via": "door"
         },
         {
          "room": "Cocina",
          "f": 1,
-         "do": "pone racimos en el techo bajo Dormitorio",
+         "do": "martilla el techo de Cocina bajo Dormitorio: saca a Mira del espejo y a la ancla de la cama",
          "via": "breach"
-        },
-        {
-         "room": "Salón",
-         "f": 1,
-         "do": "segundo racimo bajo Oficina del comandante",
-         "via": "door"
         }
        ],
        "clear": [
         {
          "room": "Cocina",
          "f": 1,
-         "threat": "Roamer regresando por la puerta exterior",
-         "how": "Twitch deja el dron viendo la puerta"
+         "threat": "Roamer abajo (Vigil/Caveira) esperando detrás de la isla",
+         "how": "dron primero y entra en pareja con Twitch"
         },
         {
          "room": "Dormitorio",
          "f": 2,
-         "threat": "Smoke ancla detrás de la cama",
-         "how": "racimo bajo la cama y escucha las bajas"
+         "threat": "Mira y Smoke parados sobre tu cabeza cubriendo la pared del Pasillo",
+         "how": "abre justo bajo la cama y dispara los pies; no te quedes debajo del mismo hueco"
         }
        ],
-       "final": "sostiene desde abajo viendo los huecos"
+       "final": "sostiene desde Cocina los huecos bajo Dormitorio y niega la rotación al sitio"
       },
       {
-       "op": "ram",
-       "role": "blando",
+       "op": "zofia",
+       "role": "negacion",
        "spawn": "Exterior",
        "path": [
         {
@@ -2681,31 +2663,31 @@
         {
          "room": "Cocina",
          "f": 1,
-         "do": "cruza a Salón",
-         "via": "door"
+         "do": "impacto al techo bajo Dormitorio para abrir un segundo hueco junto al de Sledge",
+         "via": "breach"
         },
         {
          "room": "Salón",
          "f": 1,
-         "do": "BU-GI apuntando al techo para abrir la línea bajo el sitio",
-         "via": "breach"
+         "do": "cruza a Salón y mete stuns por los huecos de Buck sobre Oficina del comandante justo antes de que Hibana abra la pared",
+         "via": "door"
         }
        ],
        "clear": [
         {
-         "room": "Salón",
+         "room": "Cocina",
          "f": 1,
-         "threat": "Escotilla abierta desde arriba con ancla peekeando",
-         "how": "BU-GI cubre; dispara a quien se asome"
+         "threat": "Roamer regresando por la puerta exterior a la espalda del vertical",
+         "how": "Twitch deja el dron viendo la puerta; tú cubres al cruzar"
         },
         {
          "room": "Oficina del comandante",
          "f": 2,
-         "threat": "Mira frente al espejo sobre el piso abierto",
-         "how": "línea abierta y dispara a quien corra"
+         "threat": "Smoke ancla detrás del escritorio sobre tu cabeza",
+         "how": "stun por el hueco y dispara los pies; segunda stun al plant"
         }
        ],
-       "final": "sube detrás de Hibana para tomar Dormitorio"
+       "final": "sostiene desde Salón viendo los huecos bajo Oficina del comandante y niega el defuser"
       },
       {
        "op": "twitch",
@@ -3017,19 +2999,19 @@
         {
          "room": "Exterior",
          "f": 1,
-         "do": "escanea huellas en las puertas exteriores",
+         "do": "escanea huellas en las puertas exteriores de Cocina y del Pasillo para ubicar al roamer",
          "via": "door"
         },
         {
          "room": "Cocina",
          "f": 1,
-         "do": "caza al roamer de abajo",
+         "do": "entra a cazar al roamer de abajo y asoma a Salón por la puerta interior",
          "via": "door"
         },
         {
-         "room": "Salón",
+         "room": "Exterior",
          "f": 1,
-         "do": "limpia abajo y regresa",
+         "do": "sale por la misma puerta de Cocina (Salón no conecta al Pasillo: la pared está reforzada)",
          "via": "door"
         },
         {
@@ -3078,7 +3060,7 @@
      "reinforce": [
       "Pared Dormitorio–Pasillo ×2",
       "Ventanas Oficina del comandante (Castle)",
-      "Escotilla Salón→Oficina del comandante"
+      "Escotilla Salón→Oficina del comandante (el piso blando no se puede reforzar: por eso Valkyrie vive abajo)"
      ],
      "rotations": [
       "Oficina del comandante↔Dormitorio por la puerta interior",
@@ -3380,7 +3362,7 @@
          "room": "Exterior",
          "f": 2,
          "threat": "Ancla peekeando la ventana con Castle en el marco",
-         "how": "Argus a través de la barricada; no te asomes"
+         "how": "Argus por la pared blanda junto a la ventana o por la barricada de madera (no por la Castle); no te asomes al marco"
         },
         {
          "room": "Recámara",
@@ -3492,7 +3474,7 @@
          "room": "Recámara",
          "f": 2,
          "threat": "Frost bajo la ventana",
-         "how": "dispara el cepo o salta desde el marco"
+         "how": "dispara el cepo desde el marco antes de entrar; si saltas encima te atrapa"
         }
        ],
        "final": "cubre la puerta Recámara–Oficina en el plant"
@@ -3645,12 +3627,12 @@
      "id": "vertical",
      "n": "Vertical",
      "tag": "VERTICAL",
-     "summary": "Desde Hammam y Cafetería matamos el sitio por abajo: Buck abre el techo bajo Recámara, Fuze racimos por el techo de Oficina, Ram BU-GI para abrir la línea. Twitch limpia ADS y Hibana sube al final por Arriba→Escaleras para abrir la pared y plantar cuando quedan dos.",
+     "summary": "Desde Hammam y Cafetería matamos el sitio por abajo: Buck abre el techo bajo Recámara con la Skeleton Key, Sledge martilla el techo de Cafetería bajo Oficina y Zofia mete impactos y stuns por los huecos. Twitch limpia ADS y cámaras y Hibana sube al final por Arriba→Escaleras para abrir la pared de Oficina y plantar cuando quedan dos. Fuze y Ram no sirven aquí: los racimos no se pegan al techo y el BU-GI solo rompe el piso que pisa.",
      "timeline": [
-      "0:00–0:45 · todos por la puerta de Hammam; Twitch limpia cámaras",
-      "0:45–1:30 · Hammam/Cafetería: Buck y Ram abren techos; Fuze racimos bajo Oficina",
-      "1:30–2:30 · Hibana sube y abre la pared de Oficina; entrada y plant en Recámara",
-      "2:30–3:00 · post-plant: Buck y Fuze desde abajo; Hibana y Ram arriba"
+      "0:00–0:45 · todos por la puerta exterior de Hammam; Twitch limpia cámaras y ADS de abajo",
+      "0:45–1:30 · Buck abre bajo Recámara desde Hammam; Sledge abre bajo Oficina desde Cafetería; Zofia stuns por los huecos",
+      "1:30–2:30 · Hibana sube por Arriba→Escaleras y abre la pared de Oficina; entrada y plant en Recámara",
+      "2:30–3:00 · post-plant: Buck y Zofia desde abajo; Hibana y Sledge arriba"
      ],
      "ops": [
       {
@@ -3688,60 +3670,26 @@
        "final": "sostiene desde Hammam los huecos de Recámara y niega el defuser"
       },
       {
-       "op": "fuze",
-       "role": "negacion",
-       "spawn": "Exterior",
-       "path": [
-        {
-         "room": "Exterior",
-         "f": 1,
-         "do": "entra por la puerta de Hammam tras Buck",
-         "via": "door"
-        },
-        {
-         "room": "Hammam",
-         "f": 1,
-         "do": "cruza a Cafetería",
-         "via": "door"
-        },
-        {
-         "room": "Cafetería",
-         "f": 1,
-         "do": "racimos en el techo bajo Oficina",
-         "via": "breach"
-        }
-       ],
-       "clear": [
-        {
-         "room": "Hammam",
-         "f": 1,
-         "threat": "Roamer regresando por la puerta exterior",
-         "how": "Twitch deja el dron viendo la puerta"
-        },
-        {
-         "room": "Oficina",
-         "f": 2,
-         "threat": "Smoke ancla tras el escritorio",
-         "how": "racimo bajo el escritorio y escucha las bajas"
-        }
-       ],
-       "final": "sostiene desde abajo viendo los huecos"
-      },
-      {
-       "op": "ram",
+       "op": "sledge",
        "role": "blando",
        "spawn": "Exterior",
        "path": [
         {
          "room": "Exterior",
          "f": 1,
-         "do": "entra por la puerta de Hammam",
+         "do": "entra por la puerta exterior de Hammam detrás de Buck",
          "via": "door"
         },
         {
          "room": "Hammam",
          "f": 1,
-         "do": "BU-GI apuntando al techo para abrir la línea bajo Recámara",
+         "do": "cruza entre las columnas hacia la puerta de Cafetería",
+         "via": "door"
+        },
+        {
+         "room": "Cafetería",
+         "f": 1,
+         "do": "martilla el techo de Cafetería bajo Oficina: saca a Mira del espejo y a la ancla del escritorio",
          "via": "breach"
         }
        ],
@@ -3749,17 +3697,51 @@
         {
          "room": "Hammam",
          "f": 1,
-         "threat": "Escotilla abierta con ancla peekeando",
-         "how": "BU-GI cubre; dispara a quien se asome"
+         "threat": "Roamer abajo (Vigil/Caveira) esperando tras las columnas",
+         "how": "dron primero y entra en pareja con Twitch"
+        },
+        {
+         "room": "Oficina",
+         "f": 2,
+         "threat": "Mira y Smoke sobre tu cabeza cubriendo la pared del Pasillo",
+         "how": "abre justo bajo el escritorio y dispara los pies; cambia de hueco después de cada tiro"
+        }
+       ],
+       "final": "sostiene desde Cafetería los huecos bajo Oficina y niega la rotación a Recámara"
+      },
+      {
+       "op": "zofia",
+       "role": "negacion",
+       "spawn": "Exterior",
+       "path": [
+        {
+         "room": "Exterior",
+         "f": 1,
+         "do": "entra por la puerta de Hammam con el grupo",
+         "via": "door"
+        },
+        {
+         "room": "Hammam",
+         "f": 1,
+         "do": "impacto al techo bajo Recámara para abrir un segundo hueco junto al de Buck y stun por los huecos justo antes de que Hibana abra la pared",
+         "via": "breach"
+        }
+       ],
+       "clear": [
+        {
+         "room": "Hammam",
+         "f": 1,
+         "threat": "Roamer regresando por la puerta exterior a la espalda del vertical",
+         "how": "Twitch deja el dron viendo la puerta; tú cubres al cruzar"
         },
         {
          "room": "Recámara",
          "f": 2,
-         "threat": "Mira frente al espejo sobre el piso abierto",
-         "how": "línea abierta y dispara a quien corra"
+         "threat": "Smoke ancla tras la cama sobre tu cabeza",
+         "how": "stun por el hueco y dispara los pies; segunda stun al plant"
         }
        ],
-       "final": "sube detrás de Hibana para tomar Oficina"
+       "final": "sostiene desde Hammam viendo los huecos bajo Recámara y niega el defuser"
       },
       {
        "op": "twitch",
@@ -4071,19 +4053,19 @@
         {
          "room": "Exterior",
          "f": 1,
-         "do": "escanea huellas en las puertas exteriores",
+         "do": "escanea huellas en las puertas exteriores de Hammam y del Pasillo para ubicar al roamer",
          "via": "door"
         },
         {
          "room": "Hammam",
          "f": 1,
-         "do": "caza al roamer de abajo",
+         "do": "entra a cazar al roamer de abajo y asoma a Cafetería por la puerta interior",
          "via": "door"
         },
         {
-         "room": "Cafetería",
+         "room": "Exterior",
          "f": 1,
-         "do": "limpia abajo y regresa",
+         "do": "sale por la misma puerta de Hammam (Cafetería no conecta al Pasillo: la pared está reforzada)",
          "via": "door"
         },
         {
@@ -4132,7 +4114,7 @@
      "reinforce": [
       "Pared Oficina–Pasillo ×2",
       "Ventanas Recámara (Castle)",
-      "Escotilla Hammam→Recámara"
+      "Escotilla Hammam→Recámara (el piso blando no se puede reforzar: por eso Valkyrie vive abajo)"
      ],
      "rotations": [
       "Recámara↔Oficina por la puerta interior",

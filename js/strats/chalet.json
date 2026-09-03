@@ -126,7 +126,7 @@
          "room": "Library Stairs",
          "f": 0,
          "threat": "Kaid o Bandit electrificando desde Wine Cellar",
-         "how": "Poner la carga solo después del EMP; si truquean, Maverick-style con la segunda carga"
+         "how": "Poner la carga solo después del EMP; si truquean, guardar la segunda carga y pedir a Thatcher el segundo EMP"
         },
         {
          "room": "Wine Cellar",
@@ -181,14 +181,19 @@
         {
          "room": "Backyard Stairs",
          "f": 1,
-         "do": "Escalera exterior al sótano",
+         "do": "Baja por la escalera interior que sale de Kitchen Hallway al sótano",
          "via": "stairs"
         },
         {
          "room": "Backyard Stairs",
          "f": 0,
-         "do": "Entra al pasillo del sótano",
+         "do": "Llega al pie de la escalera y asoma a Basement Hallway",
          "via": "stairs"
+        },
+        {
+         "f": 0,
+         "room": "Basement Hallway",
+         "do": "Empuja a Wine Cellar por la puerta trasera del sitio"
         }
        ],
        "clear": [
@@ -205,7 +210,7 @@
          "how": "Abrir varios huecos, tirar granada de frag al rincón y disparar a los pies"
         }
        ],
-       "final": "Niega Wine Cellar desde arriba durante todo el plant y baja al final por Backyard Stairs"
+       "final": "Niega Wine Cellar desde Kitchen durante todo el plant y baja al final por la escalera de Kitchen Hallway a Basement Hallway"
       },
       {
        "op": "iana",
@@ -529,13 +534,13 @@
         {
          "room": "Backyard Stairs",
          "f": 1,
-         "do": "Baja al sótano",
+         "do": "Baja por la escalera interior que sale de Kitchen Hallway al sótano",
          "via": "stairs"
         },
         {
          "room": "Backyard Stairs",
          "f": 0,
-         "do": "Entra al pasillo del sótano",
+         "do": "Llega al pie de la escalera y asoma a Basement Hallway",
          "via": "stairs"
         },
         {
@@ -1565,52 +1570,59 @@
        "spawn": "Cliffside",
        "path": [
         {
+         "f": -1,
          "room": "Cliffside Woods",
-         "f": -1,
-         "do": "Sube al Backyard",
-         "via": "door"
+         "do": "Sube al Backyard"
         },
         {
+         "f": -1,
          "room": "Backyard",
-         "f": -1,
-         "do": "Dron a Master Bedroom",
-         "via": "door"
+         "do": "Dron a Master Bedroom"
         },
         {
+         "f": 2,
          "room": "Bedroom Balcony",
-         "f": 2,
-         "do": "Rapela",
-         "via": "rappel"
+         "do": "Rapela"
         },
         {
+         "f": 2,
          "room": "Master Bedroom",
-         "f": 2,
-         "do": "Martillo al piso sobre Bar",
-         "via": "window"
+         "do": "Martillo al piso sobre Bar"
         },
         {
+         "f": 2,
          "room": "Bedroom Hallway",
-         "f": 2,
-         "do": "Baja al final por Main Stairs",
-         "via": "door"
+         "do": "Baja al final por Main Stairs"
         },
         {
-         "room": "Main Stairs",
          "f": 2,
-         "do": "Desciende",
-         "via": "stairs"
+         "room": "Main Stairs",
+         "do": "Desciende"
         },
         {
-         "room": "Main Stairs",
          "f": 1,
-         "do": "Sale al vestíbulo",
-         "via": "stairs"
+         "room": "Main Stairs",
+         "do": "Sale al vestíbulo"
         },
         {
+         "f": 1,
+         "room": "Main Entrance",
+         "do": "Cruza el vestíbulo hacia Great Room"
+        },
+        {
+         "f": 1,
          "room": "Great Room",
+         "do": "Cruza pegado a la chimenea hacia la puerta de Bar"
+        },
+        {
          "f": 1,
-         "do": "Entra a plantar por Great Room Stairs hacia Bar",
-         "via": "door"
+         "room": "Great Room Stairs",
+         "do": "Pasa por el hueco de la escalera hacia Bar"
+        },
+        {
+         "f": 1,
+         "room": "Bar",
+         "do": "Entra y planta detrás de la barra"
         }
        ],
        "clear": [
@@ -2149,118 +2161,140 @@
      "id": "default",
      "n": "Default lento",
      "tag": "DEFAULT",
-     "summary": "Thatcher + Thermite abren la pared de Kitchen desde Backyard Stairs mientras Sledge abre Office sobre Trophy Room para matar al ancla desde arriba. Montagne entra por Dining Room y Nomad cierra Main Stairs. Kitchen queda abierto por pared, puerta y techo.",
+     "summary": "Thatcher + Thermite entran por el Main Garage, cruzan el sótano y suben la escalera de Kitchen para abrir la pared reforzada Kitchen–Backyard Stairs desde el descanso, mientras Sledge abre Office sobre Trophy Room para matar al ancla desde arriba. Montagne entra por Dining Room y Nomad cierra Main Stairs. Kitchen queda abierto por pared, puerta y techo.",
      "timeline": [
-      "0:00–0:45 · drones a Kitchen y Trophy Room, ubicar Mira y Pulse",
-      "0:45–1:30 · EMP + Thermite en la pared de Kitchen, Sledge abre Office",
+      "0:00–0:45 · drones a Kitchen y Trophy Room, ubicar Mira y Pulse; Thatcher/Thermite cruzan el Main Garage",
+      "0:45–1:30 · suben por Backyard Stairs, EMP + Thermite en la pared de Kitchen, Sledge abre Office",
       "1:30–2:30 · entrada por la pared y Dining Room, plant en Kitchen",
-      "2:30–3:00 · post-plant: Sledge arriba, Nomad en Main Entrance"
+      "2:30–3:00 · post-plant: Sledge arriba, Nomad en Main Entrance, Thatcher en la escalera"
      ],
      "ops": [
       {
        "op": "thatcher",
        "role": "antigadget",
-       "spawn": "Cliffside",
+       "spawn": "Front Yard",
        "path": [
         {
-         "room": "Cliffside Woods",
          "f": -1,
-         "do": "Sube al Backyard",
-         "via": "door"
+         "room": "Front Yard",
+         "do": "Dron al Main Garage y a la escalera de Kitchen"
         },
         {
-         "room": "Cliffside Stairs",
-         "f": -1,
-         "do": "Dron a Kitchen",
-         "via": "stairs"
+         "f": 0,
+         "room": "Garage Entrance",
+         "do": "Rompe la barricada del Main Garage"
         },
         {
-         "room": "Backyard",
-         "f": -1,
-         "do": "Avanza a la escalera exterior",
-         "via": "door"
+         "f": 0,
+         "room": "Main Garage",
+         "do": "Cruza el garage mirando la escotilla y Main Stairs"
         },
         {
+         "f": 0,
+         "room": "Basement Hallway",
+         "do": "Avanza por el pasillo hasta el pie de la escalera de Kitchen"
+        },
+        {
+         "f": 0,
          "room": "Backyard Stairs",
-         "f": 1,
-         "do": "EMP a la pared reforzada de Kitchen",
-         "via": "stairs"
+         "do": "Sube despacio, dron por delante"
         },
         {
-         "room": "Kitchen",
          "f": 1,
-         "do": "Entra tras Thermite",
-         "via": "breach"
+         "room": "Backyard Stairs",
+         "do": "EMP a la pared reforzada de Kitchen desde el descanso de la escalera"
+        },
+        {
+         "f": 1,
+         "room": "Kitchen",
+         "do": "Entra tras Thermite"
         }
        ],
        "clear": [
         {
-         "room": "Backyard",
-         "f": -1,
-         "threat": "Ancla de Kitchen asomando por la puerta del patio",
-         "how": "Dron y humo al patio antes de cruzar"
+         "f": 0,
+         "room": "Main Garage",
+         "threat": "Roamer bajando por Main Stairs o escotilla del garage abierta",
+         "how": "Dron antes de cruzar, mirar la escotilla y prefire a la puerta de Main Stairs"
         },
         {
-         "room": "Backyard Stairs",
+         "f": 0,
+         "room": "Basement Hallway",
+         "threat": "Roamer (Vigil/Cav) esperando en el pasillo o Kapkan en la puerta de la escalera",
+         "how": "Dron por delante, disparar la trampa, cruzar en pareja"
+        },
+        {
          "f": 1,
+         "room": "Backyard Stairs",
          "threat": "Bandit trickeando y Mira mirando la pared",
          "how": "EMP cuando Thermite pone la carga"
         },
         {
-         "room": "Kitchen",
          "f": 1,
+         "room": "Kitchen",
          "threat": "Ancla detrás de la isla",
          "how": "Entrar cuando Sledge abrió Trophy y Monty toca Dining"
         }
        ],
-       "final": "Cubre la pared abierta durante el plant"
+       "final": "Cubre la pared abierta desde la escalera durante el plant"
       },
       {
        "op": "thermite",
        "role": "duro",
-       "spawn": "Cliffside",
+       "spawn": "Front Yard",
        "path": [
         {
-         "room": "Cliffside Woods",
          "f": -1,
-         "do": "Sigue a Thatcher",
-         "via": "door"
+         "room": "Front Yard",
+         "do": "Sigue a Thatcher"
         },
         {
-         "room": "Cliffside Stairs",
-         "f": -1,
-         "do": "Cubre",
-         "via": "stairs"
+         "f": 0,
+         "room": "Garage Entrance",
+         "do": "Rompe la barricada del Main Garage"
         },
         {
-         "room": "Backyard",
-         "f": -1,
-         "do": "Avanza",
-         "via": "door"
+         "f": 0,
+         "room": "Main Garage",
+         "do": "Cruza el garage mirando la escotilla y Main Stairs"
         },
         {
+         "f": 0,
+         "room": "Basement Hallway",
+         "do": "Avanza por el pasillo hasta el pie de la escalera de Kitchen"
+        },
+        {
+         "f": 0,
          "room": "Backyard Stairs",
-         "f": 1,
-         "do": "Carga exotérmica en la pared de Kitchen",
-         "via": "stairs"
+         "do": "Sube despacio, dron por delante"
         },
         {
-         "room": "Kitchen",
          "f": 1,
-         "do": "Entra y planta detrás de la isla",
-         "via": "breach"
+         "room": "Backyard Stairs",
+         "do": "Carga exotérmica en la pared de Kitchen"
+        },
+        {
+         "f": 1,
+         "room": "Kitchen",
+         "do": "Entra y planta detrás de la isla"
         }
        ],
        "clear": [
         {
-         "room": "Backyard Stairs",
-         "f": 1,
-         "threat": "Kaid electrificando la pared",
-         "how": "Carga solo tras el EMP, retirarse a la escalera"
+         "f": 0,
+         "room": "Basement Hallway",
+         "threat": "Roamer regresando por Backyard Stairs",
+         "how": "Prefire al marco de la escalera, no subir sin dron"
         },
         {
-         "room": "Kitchen",
          "f": 1,
+         "room": "Backyard Stairs",
+         "threat": "Kaid electrificando la pared",
+         "how": "Carga solo tras el EMP, retirarse un escalón abajo"
+        },
+        {
+         "f": 1,
+         "room": "Kitchen",
          "threat": "Smoke con gas listo para el plant",
          "how": "Plantar en el lado de Kitchen Hallway con humo propio"
         }
@@ -2729,6 +2763,11 @@
          "via": "stairs"
         },
         {
+         "f": 1,
+         "room": "Main Entrance",
+         "do": "Sale al vestíbulo y gira a la puerta de Trophy Room"
+        },
+        {
          "room": "Trophy Room",
          "f": 1,
          "do": "Planta",
@@ -2929,10 +2968,10 @@
      "id": "split",
      "n": "Split",
      "tag": "SPLIT",
-     "summary": "Hibana + Maverick por la pared de Kitchen desde Backyard Stairs y Blitz + Capitão + Dokkaebi por Main Entrance a Trophy Room. Dos frentes: Kitchen y Trophy a la vez.",
+     "summary": "Hibana + Maverick suben por el sótano (Main Garage → Basement Hallway → Backyard Stairs) y abren la pared de Kitchen desde la escalera, mientras Blitz + Capitão + Dokkaebi entran por Main Entrance a Trophy Room. Dos frentes: Kitchen y Trophy a la vez.",
      "timeline": [
-      "0:00–0:45 · dos grupos, Dokkaebi hackea",
-      "0:45–1:30 · Hibana abre Kitchen mientras Blitz toca Trophy Room",
+      "0:00–0:45 · dos grupos: Hibana/Maverick cruzan el Main Garage, Blitz en Front Yard Patio; Dokkaebi hackea",
+      "0:45–1:30 · Hibana abre Kitchen desde Backyard Stairs mientras Blitz toca Trophy Room",
       "1:30–2:30 · entrada simultánea, plant en Trophy Room",
       "2:30–3:00 · post-plant a dos lados"
      ],
@@ -2940,49 +2979,60 @@
       {
        "op": "hibana",
        "role": "duro",
-       "spawn": "Cliffside",
+       "spawn": "Front Yard",
        "path": [
         {
-         "room": "Cliffside Woods",
          "f": -1,
-         "do": "Sube",
-         "via": "door"
+         "room": "Front Yard",
+         "do": "Dron al Main Garage"
         },
         {
-         "room": "Cliffside Stairs",
-         "f": -1,
-         "do": "Sube",
-         "via": "stairs"
+         "f": 0,
+         "room": "Garage Entrance",
+         "do": "Rompe la barricada del Main Garage"
         },
         {
-         "room": "Backyard",
-         "f": -1,
-         "do": "Avanza",
-         "via": "door"
+         "f": 0,
+         "room": "Main Garage",
+         "do": "Cruza el garage mirando la escotilla y Main Stairs"
         },
         {
+         "f": 0,
+         "room": "Basement Hallway",
+         "do": "Avanza por el pasillo hasta el pie de la escalera de Kitchen"
+        },
+        {
+         "f": 0,
          "room": "Backyard Stairs",
-         "f": 1,
-         "do": "X-KAIROS a la pared de Kitchen",
-         "via": "stairs"
+         "do": "Sube despacio, dron por delante"
         },
         {
-         "room": "Kitchen",
          "f": 1,
-         "do": "Entra",
-         "via": "breach"
+         "room": "Backyard Stairs",
+         "do": "X-KAIROS a la pared de Kitchen desde el descanso"
+        },
+        {
+         "f": 1,
+         "room": "Kitchen",
+         "do": "Entra"
         }
        ],
        "clear": [
         {
-         "room": "Backyard Stairs",
+         "f": 0,
+         "room": "Main Garage",
+         "threat": "Roamer bajando por Main Stairs",
+         "how": "Dron y prefire, Maverick mira la escotilla"
+        },
+        {
          "f": 1,
+         "room": "Backyard Stairs",
          "threat": "Bandit en la pared",
          "how": "Maverick mata Bandit por el agujero"
         },
         {
-         "room": "Kitchen",
          "f": 1,
+         "room": "Kitchen",
          "threat": "Ancla detrás de la isla",
          "how": "Entrar con Maverick en pareja"
         }
@@ -2992,43 +3042,54 @@
       {
        "op": "maverick",
        "role": "antigadget",
-       "spawn": "Cliffside",
+       "spawn": "Front Yard",
        "path": [
         {
-         "room": "Cliffside Woods",
          "f": -1,
-         "do": "Sigue",
-         "via": "door"
+         "room": "Front Yard",
+         "do": "Sigue a Hibana"
         },
         {
-         "room": "Cliffside Stairs",
-         "f": -1,
-         "do": "Sube",
-         "via": "stairs"
+         "f": 0,
+         "room": "Garage Entrance",
+         "do": "Rompe la barricada del Main Garage"
         },
         {
-         "room": "Backyard",
-         "f": -1,
-         "do": "Cubre",
-         "via": "door"
+         "f": 0,
+         "room": "Main Garage",
+         "do": "Cruza el garage mirando la escotilla y Main Stairs"
         },
         {
+         "f": 0,
+         "room": "Basement Hallway",
+         "do": "Avanza por el pasillo hasta el pie de la escalera de Kitchen"
+        },
+        {
+         "f": 0,
          "room": "Backyard Stairs",
-         "f": 1,
-         "do": "Soplete: agujero de tiro, mata Bandit y Mira",
-         "via": "stairs"
+         "do": "Sube despacio, dron por delante"
         },
         {
-         "room": "Kitchen",
          "f": 1,
-         "do": "Entra con Hibana",
-         "via": "breach"
+         "room": "Backyard Stairs",
+         "do": "Soplete: agujero de tiro, mata Bandit y Mira"
+        },
+        {
+         "f": 1,
+         "room": "Kitchen",
+         "do": "Entra con Hibana"
         }
        ],
        "clear": [
         {
-         "room": "Backyard Stairs",
+         "f": 0,
+         "room": "Basement Hallway",
+         "threat": "Roamer esperando en el pasillo del sótano",
+         "how": "Dron por delante, cruzar en pareja"
+        },
+        {
          "f": 1,
+         "room": "Backyard Stairs",
          "threat": "Mira mirando la pared",
          "how": "Soplete al cristal"
         }
@@ -3779,99 +3840,92 @@
      "id": "vertical",
      "n": "Vertical",
      "tag": "VERTICAL",
-     "summary": "Sitio de segundo piso: el vertical es desde abajo. Sledge y Ram abren el techo de Bar bajo Master Bedroom y el de Trophy Room bajo Office para negar posiciones y reventar gadgets; Fuze mete racimos desde Master Bathroom. Kali limpia la ventana y entramos al final por Library.",
+     "summary": "Sitio de segundo piso: el vertical es desde abajo. Buck abre el techo de Bar bajo Master Bedroom con la Skeleton Key y Ash revienta el techo de Trophy Room bajo Office con cargas de brecha para negar posiciones y gadgets; Fuze mete racimos desde Master Bathroom. Kali limpia la ventana y Twitch entra al final por Library a plantar en Office.",
      "timeline": [
       "0:00–0:45 · tomar Bar y Trophy Room, drones arriba",
-      "0:45–1:45 · Sledge y Ram abren techos, Fuze desde el baño, Kali",
-      "1:45–2:30 · subir por Library Stairs y plantar en Office",
-      "2:30–3:00 · post-plant desde abajo"
+      "0:45–1:45 · Buck abre el techo de Bar, Ash el de Trophy, Fuze desde el baño, Kali rompe gadgets de la ventana",
+      "1:45–2:30 · Twitch sube por Library Stairs y planta en Office",
+      "2:30–3:00 · post-plant desde abajo por los huecos"
      ],
      "ops": [
       {
-       "op": "sledge",
+       "op": "buck",
        "role": "blando",
        "spawn": "Lakeside",
        "path": [
         {
-         "room": "Backyard",
          "f": -1,
-         "do": "Dron a Bar",
-         "via": "door"
+         "room": "Backyard",
+         "do": "Dron a Bar y a Gaming Room"
         },
         {
+         "f": 1,
          "room": "Gazeebo",
-         "f": 1,
-         "do": "Rompe la puerta de Bar",
-         "via": "stairs"
+         "do": "Rompe la barricada de la puerta de Bar"
         },
         {
-         "room": "Bar",
          "f": 1,
-         "do": "Martillo al techo bajo Master Bedroom",
-         "via": "door"
+         "room": "Bar",
+         "do": "Escopeta Skeleton Key al techo bajo Master Bedroom: huecos en diagonal a la cama y a la puerta del baño"
         }
        ],
        "clear": [
         {
-         "room": "Bar",
          "f": 1,
-         "threat": "Roamer en Bar o Gaming Room",
-         "how": "Dron y limpiar antes de abrir"
+         "room": "Bar",
+         "threat": "Roamer en Bar o Gaming Room esperando la puerta",
+         "how": "Dron y limpiar Bar y Gaming Room antes de abrir el techo"
         },
         {
-         "room": "Master Bedroom",
          "f": 2,
+         "room": "Master Bedroom",
          "threat": "Ancla detrás de la cama disparando al piso",
-         "how": "Abrir en diagonal, no debajo de la cama"
+         "how": "Abrir en diagonal desde detrás de la barra, no pararse debajo de la cama"
         }
        ],
-       "final": "Niega Master Bedroom desde Bar"
+       "final": "Niega Master Bedroom desde Bar con el techo abierto"
       },
       {
-       "op": "ram",
+       "op": "ash",
        "role": "blando",
        "spawn": "Front Yard",
        "path": [
         {
-         "room": "Front Yard",
          "f": -1,
-         "do": "Dron a Main Entrance",
-         "via": "door"
+         "room": "Front Yard",
+         "do": "Dron a Main Entrance"
         },
         {
+         "f": 1,
          "room": "Front Yard Patio",
-         "f": 1,
-         "do": "Rompe la puerta",
-         "via": "stairs"
+         "do": "Rompe la puerta"
         },
         {
+         "f": 1,
          "room": "Main Entrance",
-         "f": 1,
-         "do": "Limpia",
-         "via": "door"
+         "do": "Limpia el vestíbulo y Main Stairs"
         },
         {
-         "room": "Trophy Room",
          "f": 1,
-         "do": "Dispara el techo bajo Office y manda el BU-GI a Kitchen Hallway para cortar el flanco",
-         "via": "door"
+         "room": "Trophy Room",
+         "do": "Cargas de brecha al techo bajo Office: abre huecos sobre el escritorio y la puerta a Master Bedroom"
         }
        ],
        "clear": [
         {
-         "room": "Main Entrance",
          "f": 1,
+         "room": "Main Entrance",
          "threat": "Kapkan y roamer en Main Stairs",
-         "how": "Dron, disparar trampa"
+         "how": "Dron, disparar trampa, claymore en Main Stairs"
         },
         {
-         "room": "Trophy Room",
          "f": 1,
-         "threat": "Roamer en Kitchen",
-         "how": "BU-GI hacia Kitchen Hallway"
+         "room": "Trophy Room",
+         "threat": "Roamer en Kitchen asomando por Kitchen Hallway",
+         "how": "Claymore en Kitchen Hallway antes de disparar el techo"
         }
        ],
-       "final": "Sostiene Trophy Room bajo Office"
+       "final": "Sostiene Trophy Room bajo Office y dispara por los huecos al plant"
       },
       {
        "op": "fuze",
@@ -4272,7 +4326,7 @@
      "reinforce": [
       "Pared Office–Library ×2",
       "Ventanas Master Bedroom (Castle)",
-      "Escotilla Bar (abajo, para negar el vertical)"
+      "Puerta exterior de Bar (barricada + ADS) para que no tomen Bar bajo la recámara"
      ],
      "rotations": [
       "Master Bedroom↔Office",
@@ -4312,7 +4366,7 @@
        "room": "Bar",
        "f": 1,
        "role": "roam",
-       "job": "Cámara afuera de la ventana de Master Bedroom, roamea Bar"
+       "job": "Cámara afuera de la ventana de Master Bedroom, roamea Bar y castiga a quien intente abrir el techo desde abajo"
       }
      ]
     },
