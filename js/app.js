@@ -623,7 +623,6 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
           <span class="ln" data-t="Nueva"><i>N</i><i>U</i><i>E</i><i>V</i><i>A</i></span>
           <span class="ln" data-t="Season"><i>S</i><i>E</i><i>A</i><i>S</i><i>O</i><i>N</i></span>
         </h1>
-        <div class="sub">Y <i>le bajan</i>.</div>
       </div>
       <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="llama">
         <feTurbulence type="fractalNoise" baseFrequency="0.022 0.055" numOctaves="3" seed="7" result="ruido">

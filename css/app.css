@@ -683,20 +683,10 @@
   background:linear-gradient(180deg,#ffca6b,#ff6a12 46%,rgba(150,25,5,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;
   filter:url(#llama) blur(2px);opacity:.65;z-index:-1;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.fuego i,.fuego::before{animation:none}.fuego .ln::after{display:none}}
-.hero .bajan{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(22px,4.6vw,54px);letter-spacing:.10em;margin:20px 0 0;color:var(--ink)}
-.hero .bajan i{font-style:normal;color:var(--acc)}
-.hero p{max-width:640px;margin:22px auto 0;font-size:16px;line-height:1.62;color:var(--ink2)}
-.hero .cta{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
-.hero .cta .btn{height:46px;padding:0 26px;font-size:12px}
-@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.hero>*{animation:riseIn .7s cubic-bezier(.2,.7,.3,1) both}
-.hero .kick{animation-delay:.02s}.hero h1{animation-delay:.10s}.hero .bajan{animation-delay:.26s}.hero p{animation-delay:.38s}.hero .cta{animation-delay:.48s}
 
 
 .inicio{text-align:center;padding:26px 0 8px;position:relative}
 .inicio .fuego{font-size:clamp(40px,7.4vw,92px)}
-.inicio .sub{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(15px,2.2vw,26px);letter-spacing:.10em;margin-top:10px;color:var(--ink)}
-.inicio .sub i{font-style:normal;color:var(--acc)}
 .sqmini{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:10px;margin-top:8px}
 @media(min-width:900px){.sqmini{grid-template-columns:repeat(4,1fr)}}
 .sqm{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}

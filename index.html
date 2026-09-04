@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>R6 NUEVA SEASON · Y le bajan</title>
+<title>R6 NUEVA SEASON · Centro de mando del squad</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788491036">
+<link rel="stylesheet" href="css/base.css?v=1788491297">
 <style>
 .wrap{max-width:1240px;margin:0 auto;padding:0 26px}
 header.top{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(8,10,12,.92);backdrop-filter:blur(8px);z-index:20}
@@ -40,14 +40,12 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
   background:linear-gradient(180deg,#ffca6b,#ff6a12 46%,rgba(150,25,5,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;
   filter:url(#llama) blur(2px);opacity:.65;z-index:-1;pointer-events:none}
 @media(prefers-reduced-motion:reduce){.fuego i,.fuego::before{animation:none}.fuego .ln::after{display:none}}
-.hero .bajan{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(22px,4.6vw,54px);letter-spacing:.10em;margin:20px 0 0;color:var(--ink)}
-.hero .bajan i{font-style:normal;color:var(--acc)}
 .hero p{max-width:640px;margin:22px auto 0;font-size:16px;line-height:1.62;color:var(--ink2)}
 .hero .cta{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
 .hero .cta .btn{height:46px;padding:0 26px;font-size:12px}
 @keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 .hero>*{animation:riseIn .7s cubic-bezier(.2,.7,.3,1) both}
-.hero .kick{animation-delay:.02s}.hero h1{animation-delay:.10s}.hero .bajan{animation-delay:.26s}.hero p{animation-delay:.38s}.hero .cta{animation-delay:.48s}
+.hero .kick{animation-delay:.02s}.hero h1{animation-delay:.10s}
 
 /* barra: escalera real de Ranked 3.0 */
 .goal{max-width:900px;margin:40px auto 0;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px 14px}
@@ -158,7 +156,6 @@ footer{margin-top:44px;padding:18px 26px;border-top:1px solid var(--line);font-f
     </feTurbulence>
     <feDisplacementMap in="SourceGraphic" in2="ruido" scale="5" xChannelSelector="R" yChannelSelector="G"/>
   </filter></svg>
-  <div class="bajan">Y <i>le bajan</i>.</div>
 
   <div class="goal">
     <div class="gh"><span>Escalera Ranked 3.0 · dónde está cada quien</span><b id="gPct">—</b></div>
@@ -198,13 +195,13 @@ footer{margin-top:44px;padding:18px 26px;border-top:1px solid var(--line);font-f
 
 <footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
 
-<script src="js/store.js?v=1788491036"></script>
-<script src="js/fx.js?v=1788491036"></script>
-<script src="js/theme.js?v=1788491036"></script>
-<script src="js/data-ops.js?v=1788491036"></script>
-<script src="js/data-squad.js?v=1788491036"></script>
-<script src="js/data-ranks.js?v=1788491036"></script>
-<script src="js/data-maps.js?v=1788491036"></script>
+<script src="js/store.js?v=1788491297"></script>
+<script src="js/fx.js?v=1788491297"></script>
+<script src="js/theme.js?v=1788491297"></script>
+<script src="js/data-ops.js?v=1788491297"></script>
+<script src="js/data-squad.js?v=1788491297"></script>
+<script src="js/data-ranks.js?v=1788491297"></script>
+<script src="js/data-maps.js?v=1788491297"></script>
 <script>
 (() => {
   const E = Store.esc, CHAMP = 4500;
