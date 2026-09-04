@@ -55,7 +55,7 @@ window.Sync = (() => {
   function apply(patch, by) { // merge superficial + merge profundo en picks/pins
     state = state || {};
     for (const [k, v] of Object.entries(patch)) {
-      if ((k === 'picks' || k === 'pins') && v && typeof v === 'object') state[k] = { ...(state[k] || {}), ...v };
+      if ((k === 'picks' || k === 'pins' || k === 'ready') && v && typeof v === 'object') state[k] = { ...(state[k] || {}), ...v }; // se fusionan: dos personas pueden tocarlos a la vez
       else state[k] = v;
     }
     state.updatedAt = Date.now(); state.by = by;
@@ -68,5 +68,5 @@ window.Sync = (() => {
     return true;
   }
   async function leave() { conns.forEach(c => { try { c.close(); } catch (e) {} }); conns = []; if (hostConn) { try { hostConn.close(); } catch (e) {} hostConn = null; } if (peer) { try { peer.destroy(); } catch (e) {} peer = null; } members.clear(); code = null; isHost = false; }
-  return { host, join, leave, patch, get code() { return code; }, get isHost() { return isHost; }, get connected() { return !!peer && (isHost || (hostConn && hostConn.open)); }, set onState(f) { onState = f; }, set onPeers(f) { onPeers = f; }, get members() { return [...members.values()]; } };
+  return { host, join, leave, patch, get code() { return code; }, get isHost() { return isHost; }, get connected() { return !!peer && (isHost || (hostConn && hostConn.open)); }, set onState(f) { onState = f; }, set onPeers(f) { onPeers = f; }, get members() { return [...members.entries()].map(([id, v]) => ({ id, ...v })); }, get meId() { return meId; } };
 })();

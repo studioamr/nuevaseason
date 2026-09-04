@@ -10,6 +10,14 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 ```
 → http://localhost:4354 (landing) · http://localhost:4354/app.html (app)
 
+## Fase 1 · Lobby con LISTO
+"Iniciar ranked" abre una ventana grande donde **cada quien da LISTO**. El estado se identifica por conexión (no por slot, así dos personas pueden elegir el mismo operador de squad sin pisarse) y se fusiona en la sala: dos pueden dar listo a la vez. Cuando todos los conectados están listos, **la partida arranca sola en todas las pantallas**. El host puede forzar con "Empezar ya".
+
+Todo lo demás es de confirmación única: **basta con que uno toque el mapa, vete un mapa o registre el resultado de la ronda para que se le actualice a todo el equipo.** Probado con dos clientes: listo 1/2 → 2/2 → arranque simultáneo; veto de Chalet y elección de Coastline desde el invitado vistas por el host; marcador 1–0 R2 idéntico en ambos.
+
+## Actualizar del tracker
+El navegador no puede leer r6.tracker.network directamente (CORS), así que cada tarjeta del squad trae **↻ Actualizar**: abre el perfil, copias la página y la pegas; se leen rango, RP, K/D, nivel, partidas y K/D de la season, y el RP entra en la gráfica de la temporada.
+
 ## Modo ronda (pensado para los 45 s de selección de operador)
 > Regla de diseño: **si hay que leer, no sirve.** El paso 3 es una hoja de operación de 5 tarjetas (operador · rol en dos palabras · spawn › entrada › objetivo). Los textos largos aparecen uno a la vez, ya en juego.
 

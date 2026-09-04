@@ -63,11 +63,11 @@
   const initials = p => (p.nick || p.id || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
 
   // ---------- estado ----------
-  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
-  const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, prep: S.prep, vetos: S.vetos, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
+  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
+  const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, prep: S.prep, vetos: S.vetos, lobbyOpen: S.lobbyOpen, ready: S.ready, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
   const map = () => MAPS.find(m => m.id === S.map) || MAPS[0];
   const site = () => map().sites.find(s => s.id === S.site) || map().sites[0];
-  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, prep: S.prep, vetos: S.vetos, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, season: SEASON });
+  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, prep: S.prep, vetos: S.vetos, lobbyOpen: S.lobbyOpen, ready: S.ready, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, season: SEASON });
   let SEASON = Store.get('season', null);
   if (!SEASON || !Array.isArray(SEASON.matches)) SEASON = { matches: [] };
   { const have = new Set(SEASON.matches.map(m => m.id));
@@ -78,7 +78,7 @@
   let syncing = false;
   function commit(patch) { Object.assign(S, patch); save(); if (Sync.connected && !syncing) { const p = {}; for (const k of Object.keys(patch)) if (k in shared()) p[k] = S[k]; if (Object.keys(p).length) Sync.patch(p); } render(); }
   Sync.onState = st => { syncing = true; const keep = { ...st }; delete keep.updatedAt; delete keep.by; if (keep.season) { SEASON = keep.season; Store.set('season', SEASON); delete keep.season; } const jump = (st.map && st.map !== S.map) || (st.site && st.site !== S.site) || (st.side && st.side !== S.side); Object.assign(S, keep); if (st.map !== undefined) S.floorIdx = null; if (jump && S.step < 3) S.step = 3; save(); render(); syncing = false; if (st.by && st.by !== (me && me.name)) Store.toast(`${st.by} actualizó el plan`); };
-  Sync.onPeers = () => { renderSala(); renderSalaChip(); };
+  Sync.onPeers = () => { renderSala(); renderSalaChip(); renderLobby(); };
 
   // ---------- helpers ----------
   const floorList = m => m.r6 ? m.r6.floors.map(f => ({ idx: f.index, n: f.n, key: f.fl })) : m.floors.map(f => ({ idx: f.id, n: f.n, key: f.id }));
@@ -91,7 +91,7 @@
   // ---------- render raíz ----------
   function ensureStratPicks() { const x = curStrat(); if (!x || S.strat === 'custom') return; const key = `${S.map}/${site().id}/${S.side}/${x.id}`; if (S.stratKey === key) return; const picks = {}; SQUAD.forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); S.picks = picks; S.stratKey = key; save(); if (Sync.connected && !syncing) Sync.patch({ picks }); }
   let renderSeq = 0;
-  function render() { Theme.apply(S.side); const seq = ++renderSeq; const go = () => { if (seq !== renderSeq) return; ensureStratPicks(); renderMe(); renderSalaChip(); renderBar(); renderWiz(); renderCanvas(); renderPlanPane(); renderOpsPane(); renderDefPane(); }; if (STR[S.map] === undefined) loadStrats(S.map).then(go); else go(); }
+  function render() { Theme.apply(S.side); const seq = ++renderSeq; const go = () => { if (seq !== renderSeq) return; ensureStratPicks(); renderMe(); renderSalaChip(); renderBar(); renderWiz(); renderCanvas(); renderPlanPane(); renderOpsPane(); renderDefPane(); renderLobby(); }; if (STR[S.map] === undefined) loadStrats(S.map).then(go); else go(); }
   function renderMe() { const p = me ? slotOf(me.slot) : null; $('#meChip').innerHTML = me ? `<span class="av ${p && p.me ? 'acc' : ''}">${E(initials({ nick: me.name }))}</span><div><div style="font-size:12px">${E(me.name)}</div><div class="k" style="font-size:9px">${E(p ? p.role : 'invitado')}</div></div>` : `<button class="btn sm" id="whoBtn">¿Quién eres?</button>`; ($('#whoBtn') || $('#meChip')).onclick = () => openIdentity(); }
   function renderSalaChip() { const c = $('#salaCode'); if (Sync.connected) { c.textContent = Sync.code; c.classList.add('live'); $('#salaBtn').textContent = `${Sync.members.length} en línea`; } else { c.textContent = '— sin sala —'; c.classList.remove('live'); $('#salaBtn').textContent = 'Crear / Unirse'; } }
   function renderMapList() {
@@ -228,18 +228,19 @@
       let body = '';
       if (st) body = `<div class="rk">${rankBadge(latest ? latest[1] : 0, latest ? latest[4] : 3)}<div class="rn">${lr ? E(lr.label) : 'Sin rango'}<small>${latest ? E(latest[0]) + ' · ' + latest[3] + ' partidas' : 'Split Fire · aún sin ranked'}</small></div><div class="rp">${latest ? Store.fmt(latest[1]) : '—'}<small>RP · pico ${Store.fmt(st.peak.rp)} ${E(pk.label)} (${E(st.peak.season)})</small></div></div><div class="kv"><div><b>${st.level}</b><span>Nivel</span></div><div><b>${st.kd.toFixed(2)}</b><span>K/D</span></div><div><b>${st.hs.toFixed(1)}%</b><span>Headshot</span></div><div><b>${st.win.toFixed(1)}%</b><span>Win</span></div><div><b>${Store.fmt(st.matches)}</b><span>Partidas</span></div><div><b>${Store.fmt(st.hours)}h</b><span>Jugadas</span></div><div><b>${Store.fmt(st.kills)}</b><span>Kills</span></div><div><b>${st.kpm.toFixed(2)}</b><span>K/partida</span></div></div><div class="seas"><div class="row h"><span>Season</span><span>RP</span><span>K/D</span><span>Part.</span></div>${st.seasons.map(s => `<div class="row"><b>${E(s[0])}</b><span>${s[1] ? Store.fmt(s[1]) : '—'}</span><span>${s[2].toFixed(2)}</span><span>${s[3]}</span></div>`).join('')}</div>${st.last.length ? `<div class="seas"><div class="k" style="margin-bottom:6px">Últimas ${st.last.length}</div><div class="spark">${st.last.map(l => `<i class="${l[1] === 'W' ? 'w' : 'l'}" style="height:${Math.min(28, 8 + l[3] * 10)}px" title="${E(l[0])} ${l[2]} K/D ${l[3]}"></i>`).join('')}</div><div class="row h" style="grid-template-columns:1fr;margin-top:4px">${st.last.map(l => E(l[0])).join(' · ')}</div></div>` : ''}`;
       else body = `<div class="empty">Sin perfil todavía. Escribe tu nick de Ubisoft/Xbox y abrimos tu tracker.<input class="in" id="nick-${p.id}" placeholder="nick exacto" value="${E(p.nick || '')}"><div style="margin-top:8px"><button class="btn sm p" data-savenick="${p.id}">Guardar</button></div></div>`;
-      return `<div class="pc ${mine ? 'me' : ''}"><div class="hd"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="nm">${E(p.nick || 'Tu nick')}<small>${E(p.role)}${p.alias ? ' · alias ' + E(p.alias) : ''}</small></div><span class="chip ${p.me ? 'acc' : ''} tag">${E(p.tag)}</span></div>${body}<div class="ft">${p.nick ? `<a class="btn sm" target="_blank" rel="noopener" href="${Store.trackerUrl(p.nick, p.plat)}">R6 Tracker ↗</a>` : ''}<button class="btn sm ghost" data-edit="${p.id}">Editar</button>${!mine ? `<button class="btn sm ghost" data-beme="${p.id}">Soy yo</button>` : '<span class="chip acc dot">tú</span>'}</div></div>`;
+      return `<div class="pc ${mine ? 'me' : ''}"><div class="hd"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="nm">${E(p.nick || 'Tu nick')}<small>${E(p.role)}${p.alias ? ' · alias ' + E(p.alias) : ''}</small></div><span class="chip ${p.me ? 'acc' : ''} tag">${E(p.tag)}</span></div>${body}<div class="ft">${p.nick ? `<a class="btn sm" target="_blank" rel="noopener" href="${Store.trackerUrl(p.nick, p.plat)}">R6 Tracker ↗</a>` : ''}<button class="btn sm" data-imp="${p.id}">↻ Actualizar</button><button class="btn sm ghost" data-edit="${p.id}">Editar</button>${!mine ? `<button class="btn sm ghost" data-beme="${p.id}">Soy yo</button>` : '<span class="chip acc dot">tú</span>'}</div></div>`;
     }).join('');
     $$('#squadCards .rp').forEach(e => { const n = parseInt(e.firstChild && e.firstChild.textContent.replace(/,/g, '')); if (n) { const t = e.firstChild; FX.count({ set textContent(v) { t.textContent = v; } }, n); } });
     renderSeason();
     $$('[data-savenick]').forEach(b => b.onclick = () => { const id = b.dataset.savenick; const v = $('#nick-' + id).value.trim(); if (!v) return; setOverride(id, { nick: v }); if (me && me.slot === id) { me.name = v; Store.set('me', me); } renderSquad(); renderMe(); });
+    $$('[data-imp]').forEach(b => b.onclick = () => openImport(b.dataset.imp));
     $$('[data-edit]').forEach(b => b.onclick = () => editMember(b.dataset.edit));
     $$('[data-beme]').forEach(b => b.onclick = () => { const p = slotOf(b.dataset.beme); me = { slot: p.id, name: p.nick || p.id }; Store.set('me', me); render(); renderSquad(); });
   }
 
   function renderSeason() {
     let host = $('#seasonBox'); if (!host) { host = document.createElement('div'); host.id = 'seasonBox'; host.className = 'season'; $('#squadCards').after(host); }
-    const ms = SEASON.matches; const w = ms.filter(m => m.result === 'W').length, l = ms.filter(m => m.result === 'L').length;
+    const ms = SEASON.matches.filter(m => !m.rpOnly); const w = ms.filter(m => m.result === 'W').length, l = ms.filter(m => m.result === 'L').length;
     const rows = SQUAD.map(p => ({ p, st: seasonStats(p.id) })); const champs = rows.filter(r => r.st.rp != null && r.st.rp >= CHAMP_RP).length;
     const pct = rows.length ? Math.round(rows.reduce((a, r) => a + Math.min(1, (r.st.rp || 0) / CHAMP_RP), 0) / rows.length * 100) : 0;
     host.innerHTML = `<div class="k" style="margin-bottom:8px">Temporada Split Fire · registro del squad</div><div class="goal"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b class="h-disp" style="font-size:15px">Meta: todos Champion</b><div class="dim" style="font-size:12px">${champs}/${rows.length} en Champion (≥ ${Store.fmt(CHAMP_RP)} RP) · partidos registrados ${ms.length} · <b class="acc">${w}W – ${l}L</b></div></div><div class="k">${pct}% del camino</div></div><div class="bar"><i style="width:${pct}%"></i></div></div>
@@ -248,6 +249,63 @@
     $$('#seasonBox [data-delm]').forEach(b => b.onclick = () => { if (!confirm('¿Borrar este partido?')) return; SEASON.matches = SEASON.matches.filter(m => m.id !== b.dataset.delm); saveSeason(); renderSeason(); });
     const ex = $('#expSeason'); if (ex) ex.onclick = () => { navigator.clipboard.writeText(JSON.stringify(SEASON)).then(() => Store.toast('Temporada copiada (JSON)')); };
     const im = $('#impSeason'); if (im) im.onclick = () => { const t = prompt('Pega el JSON de la temporada:'); try { const j = JSON.parse(t); if (j && Array.isArray(j.matches)) { SEASON = j; saveSeason(); renderSeason(); } } catch (e) { Store.toast('JSON inválido'); } };
+  }
+
+  // ---------- importar del tracker (pegar el texto de la página del perfil) ----------
+  function parseTracker(txt) {
+    const T = String(txt).replace(/ /g, ' ');
+    const num = v => v == null ? null : +String(v).replace(/,/g, '');
+    const after = (label, re) => { const i = T.indexOf(label); if (i < 0) return null; const m = T.slice(i, i + 900).match(re); return m ? m[1] : null; };
+    const out = {};
+    const cs = T.indexOf('CURRENT SEASON');
+    if (cs >= 0) { const blk = T.slice(cs, cs + 260);
+      const r = blk.match(/\n\s*(COPPER|BRONZE|SILVER|GOLD|PLATINUM|EMERALD|DIAMOND|CHAMPION)\s+(V|IV|III|II|I)\s*\n\s*([\d,]+)\s*\n\s*RP/i);
+      if (r) { out.rankRaw = `${r[1]} ${r[2]}`; out.rp = num(r[3]); }
+      else if (/NO RANK/i.test(blk)) { out.rankRaw = 'NO RANK'; out.rp = null; } }
+    out.level   = num(after('LIFETIME OVERALL', /Level\s*\n\s*([\d,]+)/));
+    out.matches = num(after('LIFETIME OVERALL', /Matches\s*\n\s*([\d,]+)/));
+    out.hours   = num(after('LIFETIME OVERALL', /Time Played\s*\n\s*([\d,]+)h/));
+    out.win     = num(after('LIFETIME OVERALL', /Win %\s*\n\s*([\d.]+)/));
+    out.kd      = num(after('LIFETIME OVERALL', /K\/D\s*\n\s*([\d.]+)/));
+    out.hs      = num(after('LIFETIME OVERALL', /Headshot %\s*\n\s*([\d.]+)/));
+    out.kills   = num(after('LIFETIME OVERALL', /Kills\s*\n\s*([\d,]+)/));
+    out.deaths  = num(after('LIFETIME OVERALL', /Deaths\s*\n\s*([\d,]+)/));
+    out.kpm     = num(after('LIFETIME OVERALL', /Kills\/Match\s*\n\s*([\d.]+)/));
+    const so = T.indexOf('OVERVIEW');
+    if (so >= 0) { const b = T.slice(so, so + 900);
+      const kd = b.match(/K\/D\s*\n\s*([\d.]+)/); if (kd) out.seasonKd = num(kd[1]);
+      const mm = b.match(/Matches\s*\n\s*([\d,]+)/); if (mm) out.seasonMatches = num(mm[1]);
+      const w = b.match(/(\d+)\s*\n\s*W\s*\n\s*(\d+)\s*\n\s*L/); if (w) { out.seasonW = +w[1]; out.seasonL = +w[2]; } }
+    return out;
+  }
+  function openImport(slot) {
+    const p = slotOf(slot);
+    openModal(`<h3>Actualizar ${E(p.nick || p.id)} del tracker</h3><div class="sub">Abre su perfil, selecciona todo (⌘A), copia (⌘C) y pega aquí. Se leen RP, rango, K/D, nivel y partidas.</div>
+      <div style="display:flex;gap:8px;margin-bottom:10px"><a class="btn" target="_blank" rel="noopener" href="${Store.trackerUrl(p.nick, p.plat)}">Abrir tracker ↗</a></div>
+      <textarea class="in" id="impTxt" rows="7" placeholder="Pega aquí el texto del perfil…"></textarea>
+      <div id="impPrev" class="dim" style="font-size:12px;margin-top:8px"></div>
+      <div class="row"><button class="btn" data-close>Cancelar</button><button class="btn p" id="impGo" disabled>Guardar</button></div>`);
+    let parsed = null;
+    $('#impTxt').oninput = e => {
+      parsed = parseTracker(e.target.value);
+      const ok = parsed.rp != null || parsed.kd != null;
+      $('#impGo').disabled = !ok;
+      $('#impPrev').innerHTML = ok ? `Detectado: ${parsed.rankRaw ? `<b class="acc">${E(parsed.rankRaw)}</b> · ` : ''}${parsed.rp != null ? Store.fmt(parsed.rp) + ' RP · ' : ''}K/D ${parsed.kd ?? '—'} · nivel ${parsed.level ?? '—'} · ${Store.fmt(parsed.matches) || '—'} partidas${parsed.seasonKd != null ? ` · season K/D ${parsed.seasonKd}` : ''}` : 'No reconocí el formato: pega el texto completo de la página del perfil.';
+    };
+    $('#impGo').onclick = () => {
+      const st = p.stats || (p.stats = { seasons: [], last: [] });
+      if (parsed.level != null) st.level = parsed.level; if (parsed.matches != null) st.matches = parsed.matches;
+      if (parsed.hours != null) st.hours = parsed.hours; if (parsed.win != null) st.win = parsed.win;
+      if (parsed.kd != null) st.kd = parsed.kd; if (parsed.hs != null) st.hs = parsed.hs;
+      if (parsed.kills != null) st.kills = parsed.kills; if (parsed.deaths != null) st.deaths = parsed.deaths;
+      if (parsed.kpm != null) st.kpm = parsed.kpm;
+      st.season = { ...(st.season || {}), n: 'Split Fire', rp: parsed.rp, rank: parsed.rankRaw || null, kd: parsed.seasonKd ?? (st.season && st.season.kd), matches: parsed.seasonMatches ?? (st.season && st.season.matches), w: parsed.seasonW, l: parsed.seasonL };
+      if (parsed.rp != null) { // el RP alimenta la temporada del squad
+        SEASON.matches.push({ id: 'trk-' + Store.uid(), date: Date.now(), map: null, mapName: 'Actualización del tracker', result: 'W', w: 0, l: 0, rounds: [], players: { [slot]: { rp: parsed.rp } }, src: 'tracker', rpOnly: true });
+        saveSeason();
+      }
+      setOverride(slot, { stats: st }); closeModal(); renderSquad(); Store.toast('Perfil actualizado');
+    };
   }
   function setOverride(id, patch) { const o = Store.get('squad', {}); o[id] = { ...(o[id] || {}), ...patch }; Store.set('squad', o); Object.assign(slotOf(id), patch); }
   function editMember(id) { const p = slotOf(id); openModal(`<h3>Editar ${E(p.nick || p.id)}</h3><div class="sub">Nick exacto como aparece en R6 Tracker.</div><label class="f"><span class="k">Nick</span><input class="in" id="e-nick" value="${E(p.nick || '')}"></label><label class="f"><span class="k">Plataforma</span><select class="in" id="e-plat"><option value="xbl" ${p.plat === 'xbl' ? 'selected' : ''}>Xbox</option><option value="psn" ${p.plat === 'psn' ? 'selected' : ''}>PlayStation</option><option value="ubi" ${p.plat === 'ubi' ? 'selected' : ''}>PC (Ubisoft)</option></select></label><label class="f"><span class="k">Rol en el squad</span><input class="in" id="e-role" value="${E(p.role || '')}"></label><label class="f"><span class="k">Apodo</span><input class="in" id="e-tag" value="${E(p.tag || '')}"></label><div class="row"><button class="btn" data-close>Cancelar</button><button class="btn p" id="e-save">Guardar</button></div>`); $('#e-save').onclick = () => { setOverride(id, { nick: $('#e-nick').value.trim(), plat: $('#e-plat').value, role: $('#e-role').value.trim(), tag: $('#e-tag').value.trim() }); closeModal(); renderSquad(); render(); }; }
@@ -300,7 +358,7 @@
   function renderWiz() {
     const lb = stepLabels(); $$('#steps button[data-step]').forEach(b => { const n = +b.dataset.step; b.classList.toggle('on', n === S.step); b.classList.toggle('done', n < S.step); b.querySelector('small').textContent = lb[n] || ''; b.onclick = () => goStep(n); });
     $$('.screen').forEach(sc => sc.classList.toggle('on', sc.id === 's' + S.step));
-    renderScore(); $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, round: 1, live: null, siteKnown: true }); };
+    renderScore(); $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, round: 1, live: null, siteKnown: true }); };
     if (S.step === 1) renderS1(); if (S.step === 2) renderS2(); if (S.step === 3) renderS3(); if (S.step === 4) renderS4();
     mountCanvas();
     if (S.step !== 4) Round.stopTick();
@@ -353,7 +411,42 @@
     if (w >= 5 || l >= 5) return w > l ? 'W' : 'L';
     return null;
   }
-  function startMatch() { S.step = 1; S.focus = null; commit({ match: { rounds: [], active: true, id: Store.uid(), startedAt: Date.now() }, hint: null, round: 1, live: null, siteKnown: true }); Store.toast('Partido ranked iniciado · ronda 1'); }
+  function openLobby() { commit({ lobbyOpen: true, ready: {} }); }
+  function startMatch() { S.step = 1; S.focus = null; commit({ lobbyOpen: false, ready: {}, match: { rounds: [], active: true, id: Store.uid(), startedAt: Date.now() }, hint: null, round: 1, live: null, siteKnown: true }); Store.toast('Partida iniciada · ronda 1'); }
+  // ---------- LOBBY: todos dan LISTO ----------
+  function lobbyPeople() { // se identifica por conexión, no por slot: dos personas pueden elegir el mismo slot
+    if (Sync.connected && Sync.members.length) return Sync.members.map(m => ({ key: m.id || m.slot || m.name, slot: m.slot, name: m.name, online: true, host: !!m.host }));
+    return [{ key: 'solo', slot: me ? me.slot : 'yo', name: me ? me.name : 'Tú', online: true, host: true }];
+  }
+  const yoKey = () => (Sync.connected && Sync.meId) ? Sync.meId : 'solo';
+  function renderLobby() {
+    let el = $('#lobby');
+    if (!S.lobbyOpen) { if (el) el.remove(); return; }
+    if (!el) { el = document.createElement('div'); el.id = 'lobby'; el.className = 'lobby'; $('#v-plan').appendChild(el); }
+    const gente = lobbyPeople(); const listos = gente.filter(g => S.ready[g.key]).length;
+    const yo = yoKey(); const yaListo = !!S.ready[yo];
+    const fuera = SQUAD.filter(p => !gente.some(g => g.slot === p.id));
+    el.innerHTML = `<div class="lb">
+      <div class="lbh"><span class="k">Fase 1</span><h2 class="h-disp" data-fx>Partida ranked</h2><p>Todos dan <b>LISTO</b> para arrancar. El que quiera confirma el mapa después: se le actualiza a todo el equipo.</p></div>
+      <div class="lbgrid">${gente.map(g => `<div class="lbp ${S.ready[g.key] ? 'ok' : ''} ${g.key === yo ? 'yo' : ''}">
+        <span class="av">${E((g.name || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase())}</span>
+        <span class="nm">${E(g.name)}${g.host ? ' <i>host</i>' : ''}</span>
+        <span class="st">${S.ready[g.key] ? 'LISTO' : 'esperando'}</span></div>`).join('')}
+        ${fuera.map(p => `<div class="lbp off"><span class="av">${E(initials(p))}</span><span class="nm">${E(p.nick || p.id)}</span><span class="st">sin conectar</span></div>`).join('')}</div>
+      <div class="lbbar"><b>${listos}</b> de <b>${gente.length}</b> listos${Sync.connected ? '' : ' · <span class="dim">sin sala: solo tú</span>'}</div>
+      <div class="lbact">
+        <button class="btn ${yaListo ? '' : 'p'} big" id="lbReady">${yaListo ? '✓ Estás listo' : 'LISTO'}</button>
+        <button class="btn big" id="lbGo">Empezar ya ▶</button>
+        <button class="btn ghost" id="lbCancel">Cancelar</button>
+        ${Sync.connected ? '' : '<button class="btn" id="lbSala">Crear sala</button>'}
+      </div></div>`;
+    FX.all(el);
+    $('#lbReady').onclick = () => { const r = { ...S.ready }; r[yo] = !r[yo]; commit({ ready: r }); };
+    $('#lbGo').onclick = startMatch;
+    $('#lbCancel').onclick = () => commit({ lobbyOpen: false, ready: {} });
+    const sb = $('#lbSala'); if (sb) sb.onclick = () => { commit({ lobbyOpen: false }); showView('sala'); };
+    if (gente.length && listos === gente.length) setTimeout(() => { if (S.lobbyOpen && lobbyPeople().every(g => S.ready[g.key])) startMatch(); }, 700);
+  }
   function renderScore() {
     let el = $('#scoreChip'); if (!el) { el = document.createElement('div'); el.id = 'scoreChip'; el.className = 'scorebar'; const sp = $('#steps .sp'); if (!sp) return; sp.after(el); }
     const sc = score(); if (S.match && S.match.active) { el.innerHTML = `<small>RANKED</small><b class="w">${sc.w}</b><small>–</small><b class="l">${sc.l}</b><small>R${S.round}</small>`; el.style.display = ''; } else el.style.display = 'none';
@@ -373,7 +466,7 @@
       const players = {};
       if (withStats) SQUAD.forEach(p => { const g = k => { const el = $(`#modal [data-k="${k}"][data-slot="${p.id}"]`); const n = el && el.value.trim() !== '' ? +el.value : null; return Number.isFinite(n) ? n : null; }; players[p.id] = { k: g('k'), d: g('d'), a: g('a'), rp: g('rp') }; });
       SEASON.matches.push({ id: (S.match && S.match.id) || Store.uid(), date: Date.now(), map: S.map, result, w: sc.w, l: sc.l, rounds: (S.match && S.match.rounds) || [], players });
-      saveSeason(); closeModal(); S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, round: 1, live: null }); Store.toast('Partido guardado en la temporada'); showView('squad');
+      saveSeason(); closeModal(); S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, round: 1, live: null }); Store.toast('Partido guardado en la temporada'); showView('squad');
     };
     $('#saveStats').onclick = () => finish(true); $('#skipStats').onclick = () => finish(false);
   }
@@ -382,7 +475,7 @@
     const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
     for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; const vet = (S.vetos || []).includes(m.id); return `<button class="tile ${m.id === S.map ? 'on' : ''} ${vet ? 'veto' : ''}" data-map="${m.id}">${vet ? '<span class="vx">VETADO</span>' : ''}${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${m.r6 ? (m.approx ? 'plano ~' : 'plano') : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
     const sc = score(); const sb = `<div class="startbar"><div class="t">${S.match.active ? `Partido en curso · ${sc.w} – ${sc.l} · ronda ${S.round}` : 'Ranked'}<small>${S.vetoMode ? 'Fase de vetos: toca los mapas que baneó tu equipo o el rival.' : S.match.active ? 'Elige el mapa que tocó (o sigue en el mismo).' : 'Toca INICIAR RANKED al entrar a la cola: la app lleva marcador, rondas, sugerencias y al final captura las stats.'}</small></div><div style="display:flex;gap:8px"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Iniciar ranked</button>`}</div></div>`;
-    $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = startMatch; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, round: 1, live: null }); };
+    $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = openLobby; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, round: 1, live: null }); };
     const vb = $('#vetoBtn'); if (vb) vb.onclick = () => commit({ vetoMode: !S.vetoMode });
     $$('#mapTiles .tile[data-map]').forEach(b => b.onclick = async () => {
       if (S.vetoMode) { const id = b.dataset.map; const v = (S.vetos || []).slice(); const i = v.indexOf(id); i >= 0 ? v.splice(i, 1) : v.push(id); commit({ vetos: v }); return; }
