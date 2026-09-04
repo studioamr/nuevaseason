@@ -1,3 +1,5 @@
+// los .json siguen la version del <script> para que no queden cacheados tras un deploy
+const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app.js"]')].pop(); const m = (t && t.src || '').match(/[?&]v=(\d+)/); return m ? '?v=' + m[1] : ''; })();
 /* R6 NUEVA SEASON — controlador de la app */
 (async () => {
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)]; const E = Store.esc;
@@ -6,20 +8,20 @@
   let R6 = {}, MAN = {};
   let EXTRA = {};
   try { [R6, MAN, EXTRA] = await Promise.all([
-    fetch('js/r6maps.json').then(r => r.json()),
-    fetch('js/floors-manifest.json').then(r => r.json()),
-    fetch('js/r6maps-extra.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    fetch('js/r6maps.json' + DV).then(r => r.json()),
+    fetch('js/floors-manifest.json' + DV).then(r => r.json()),
+    fetch('js/r6maps-extra.json' + DV).then(r => r.ok ? r.json() : {}).catch(() => ({}))
   ]); } catch (e) { console.warn('sin r6maps.json', e); }
   Object.assign(R6, EXTRA); // planos oficiales de los mapas que antes eran croquis
   const flKey = n => { n = String((n && n.full) || n || '').toLowerCase(); if (/basement/.test(n)) return 'b'; if (/roof/.test(n)) return 'r'; const m = n.match(/(\d)/); return m ? m[1] : n; };
-  MAPS.forEach(m => { const k = R6KEY[m.id] || m.id; m.r6 = R6[k] || null; if (m.r6) m.r6.floors.forEach(f => { f.fl = flKey(f.name); f.n = Engine.FLN[f.fl] || (f.name && f.name.full) || String(f.fl); }); m.floorImgs = (MAN[m.id] || []).map(x => ({ idx: x.idx, src: x.src })); if (m.r6 && !m.floorImgs.length && m.r6.floors) m.floorImgs = m.r6.floors.map(f => ({ idx: f.index, src: `img/maps/${m.id}/${f.index}.jpg` }));
+  MAPS.forEach(m => { const k = R6KEY[m.id] || m.id; m.r6 = R6[k] || null; if (m.r6) m.r6.floors.forEach(f => { f.fl = flKey(f.name); f.n = Engine.FLN[f.fl] || (f.name && f.name.full) || String(f.fl); }); m.floorImgs = (MAN[m.id] || []).map(x => ({ idx: x.idx, src: x.src + DV })); if (m.r6 && !m.floorImgs.length && m.r6.floors) m.floorImgs = m.r6.floors.map(f => ({ idx: f.index, src: `img/maps/${m.id}/${f.index}.jpg${DV}` }));
     if (m.r6 && m.r6.approx) m.approx = true; });
   // planos subidos por el usuario (IndexedDB)
   try { const keys = await Store.idb.keys(); for (const k of keys) { const [mid, fl] = k.split('|'); const m = MAPS.find(x => x.id === mid); if (m) { m.userImgs = m.userImgs || {}; m.userImgs[fl] = await Store.idb.get(k); } } } catch (e) {}
 
   // ---------- estrategias (js/strats/<map>.json, generadas y validadas contra los cuartos reales) ----------
   const STR = {};
-  async function loadStrats(mid) { if (STR[mid] !== undefined) return STR[mid]; STR[mid] = null; try { const r = await fetch(`js/strats/${mid}.json`); if (r.ok) STR[mid] = await r.json(); } catch (e) {} return STR[mid]; }
+  async function loadStrats(mid) { if (STR[mid] !== undefined) return STR[mid]; STR[mid] = null; try { const r = await fetch(`js/strats/${mid}.json${DV}`); if (r.ok) STR[mid] = await r.json(); } catch (e) {} return STR[mid]; }
   const siteStrats = () => { const st = STR[S.map]; const x = st && st.sites && st.sites[site().id]; return x || null; };
   const curStrat = () => { const st = siteStrats(); if (!st) return null; const list = S.side === 'atk' ? st.attack : st.defense; if (!list || !list.length) return null; if (S.strat === 'custom') return null; return list.find(x => x.id === S.strat) || list[0]; };
   const clean = t => String(t || '').replace(/<br\s*\/?>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -165,6 +167,15 @@
     if (best) { mark.slot = best.id; mark.color = COL(best.id); }
     return mark;
   }
+  let _tk = [];
+  // El foco de la capa de tareas: en vivo soy yo; si a esa persona no le toca ninguna
+  // tarea, se devuelve null para que se vean todas en vez de dejar el mapa apagado.
+  function focoUtil(tk) {
+    const f = (S.step === 5 && me) ? me : S.focus;
+    if (!f) return null;
+    return (tk || []).some(t => t.slot === f) ? f : null;
+  }
+
   function taskMarks() {
     const m = map(), s = site(), x = curStrat(); if (!x) return [];
     const fi = m.r6 ? Engine.floorIndex(m, s.fl) : s.fl; const out = [];
@@ -191,6 +202,28 @@
         const r = findRoomPt(m, st.room, st.f); if (!r) return;
         const K = { breach: ['breach', 'ABRIR', 1], hatch: ['hatch', 'ESCOTILLA', 1], rappel: ['rappel', 'RAPPEL', 1], window: ['window', 'VENTANA', 1] }[st.via];
         const dueno = ROSTER()[i]; out.push({ kind: K[0], x: r.x, y: r.y, f: r.f, label: `${K[1]} ${st.room}`, short: K[1], phase: K[2], slot: dueno && dueno.id, color: dueno ? COL(dueno.id) : null }); }); });
+    }
+    return repartir(m, x, out);
+  }
+
+  // Reparte las tareas para que a cada quien le toque algo: si alguien acumula 2+ y otro
+  // se queda sin nada, le pasa la tarea que le quede mas cerca.
+  function repartir(m, x, out) {
+    if (out.length < 2) return out;
+    const gente = ROSTER().map(p => p.id);
+    const donde = {};
+    (x.ops || []).forEach((o, i) => { const p = ROSTER()[i]; if (!p) return; const r = findRoomPt(m, o.room, null); if (r) donde[p.id] = r; });
+    for (let paso = 0; paso < 6; paso++) {
+      const cuenta = {}; gente.forEach(g => cuenta[g] = 0);
+      out.forEach(t => { if (t.slot != null && cuenta[t.slot] != null) cuenta[t.slot]++; });
+      const vacio = gente.find(g => cuenta[g] === 0 && donde[g]);
+      if (!vacio) break;
+      const rico = gente.filter(g => cuenta[g] >= 2).sort((a, b) => cuenta[b] - cuenta[a])[0];
+      if (!rico) break;
+      const suyas = out.filter(t => t.slot === rico);
+      const r = donde[vacio];
+      suyas.sort((a, b) => Math.hypot(a.x - r.x, a.y - r.y) - Math.hypot(b.x - r.x, b.y - r.y));
+      suyas[0].slot = vacio; suyas[0].color = COL(vacio);
     }
     return out;
   }
@@ -246,7 +279,7 @@
     let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
     const teamCol = CSSVAR('--team') || '#39b6f0';
     const enemyCol = CSSVAR('--enemy') || '#ff4d9d';
-    MapView.show({ map: mm, site: s, side: S.side, teamColor: teamCol, enemyColor: enemyCol, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, tasks: S.step === 3 ? [] : taskMarks(), focusSlot: S.focus, taskPhase: S.step === 5 && S.live ? Round.phaseIndex() : (S.side === 'def' ? 0 : 1), routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
+    MapView.show({ map: mm, site: s, side: S.side, teamColor: teamCol, enemyColor: enemyCol, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, tasks: S.step === 3 ? [] : (_tk = taskMarks()), focusSlot: focoUtil(_tk), taskPhase: S.step === 5 && S.live ? Round.phaseIndex() : (S.side === 'def' ? 0 : 1), routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
   }
   async function uploadPlan() { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async () => { const m = map(); m.userImgs = m.userImgs || {}; m.userImgs[String(S.floorIdx)] = rd.result; await Store.idb.put(`${m.id}|${S.floorIdx}`, rd.result); Store.toast('Plano guardado para ' + m.n); renderMapList(); renderCanvas(); }; rd.readAsDataURL(f); }; inp.click(); }
 
@@ -710,7 +743,7 @@
     $$('#s4 .stratrow button').forEach(b => b.onclick = () => applyStrat(b.dataset.strat));
     $$('#s4 .opcard').forEach(d => d.onclick = () => { S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS4(); renderCanvas(); });
     mountCanvas();
-    $('#goLive').onclick = () => { S.step = 5; commit({ prep: null, live: { playing: true, t0: Date.now() } }); Store.toast('Ronda en marcha · 3:00'); }; // arranca el reloj solo
+    $('#goLive').onclick = () => { S.step = 5; _finPedido = false; commit({ prep: null, live: { playing: true, t0: Date.now() } }); Store.toast('Ronda en marcha · 3:00'); }; // arranca el reloj solo
     $('#prepBtn').onclick = () => { if (running) commit({ prep: { playing: false, t: prepT() } }); else commit({ prep: { playing: true, t0: Date.now() - prepT() * 1000 } }); };
     $('#otraComp').onclick = otraComp; $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
     $('#openDrawer').onclick = () => $('#drawer').classList.add('on');
@@ -779,8 +812,11 @@
       fill.style.width = (k * 100) + '%';
     });
   }
+  let _finPedido = false;
   function renderLiveClock(force) {
     if (S.step !== 5) return; const t = Round.t(); const cl = $('#clock'); if (!cl) return; cl.textContent = fmtT(Round.T - t);
+    // al llegar a 0:00 la ronda cierra sola y pregunta quien gano
+    if (S.live && S.live.playing && t >= Round.T && !_finPedido) { _finPedido = true; Round.stopTick(); Store.toast('Se acabo el tiempo · ¿quien gano?'); openResult(); }
     const ph = Round.phases(); const cur = ph.find(p => t >= p.from && t < p.to) || (t >= Round.T ? ph[ph.length - 1] : null);
     const phEl = $('#phase'); if (phEl) phEl.textContent = cur ? cur.label : (S.live ? '' : 'Listo · toca ▶ al empezar la acción');
     const tl = $('#tl'); if (tl && (force || tl.children.length !== ph.length)) tl.innerHTML = ph.map(p => `<div><b>${fmtT(p.from)}–${fmtT(p.to)}</b><span>${E(p.label)}</span></div>`).join('');
@@ -815,6 +851,7 @@
   $$('.top .nav button').forEach(b => b.onclick = () => showView(b.dataset.view));
   $$('#sideTabs button').forEach(b => b.onclick = () => { $$('#sideTabs button').forEach(x => x.classList.toggle('on', x === b)); $$('.side .pane').forEach(p => p.classList.toggle('on', p.id === 'p-' + b.dataset.pane)); });
   if ($('#mapSearch')) $('#mapSearch').oninput = renderMapList; $('#salaBtn').onclick = () => showView('sala'); $('#modal').onclick = e => { if (e.target.id === 'modal') closeModal(); };
+  window.__dbg = { repairPath, taskMarks, Round, S, COL, loadStrats, roomPoint };
   window.addEventListener('resize', () => MapView.fit());
   // ---------- arranque ----------
   const hash = new URLSearchParams(location.hash.slice(1)); if (hash.get('m')) { S.map = hash.get('m'); S.site = hash.get('s') || null; S.step = 4; S.siteKnown = true; }
