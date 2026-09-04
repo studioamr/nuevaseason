@@ -13,10 +13,16 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 ## Las 5 fases
 `1 RANKED` (lobby con LISTO) → `2 MAPA` → `3 LADO · SITIO` → `4 PLAN` (preparación 45 s) → `5 EN VIVO` (reloj 3:00). La app abre siempre en la fase 1.
 
+## Señalización del mapa
+Cada jugador aparece en el plano como el **retrato circular de su operador** con un aro del color de su línea (el mismo color de su ficha y de su ruta). Ya no hay iniciales sueltas: se distingue de un vistazo quién es quién, y la cabeza que avanza en *En vivo* también lleva su retrato.
+
 ## Fase 1 · Lobby con LISTO
 "Iniciar ranked" abre una ventana grande donde **cada quien da LISTO**. El estado se identifica por conexión (no por slot, así dos personas pueden elegir el mismo operador de squad sin pisarse) y se fusiona en la sala: dos pueden dar listo a la vez. Cuando todos los conectados están listos, **la partida arranca sola en todas las pantallas**. El host puede forzar con "Empezar ya".
 
 Todo lo demás es de confirmación única: **basta con que uno toque el mapa, vete un mapa o registre el resultado de la ronda para que se le actualice a todo el equipo.** Probado con dos clientes: listo 1/2 → 2/2 → arranque simultáneo; veto de Chalet y elección de Coastline desde el invitado vistas por el host; marcador 1–0 R2 idéntico en ambos.
+
+## Historial (debajo del lobby)
+En la fase 1, bajo *Partida ranked*, va el historial del squad: cada partida como una **ficha del mapa con su plano de fondo**, el resultado, el marcador y las K/D/A de cada quien, más el récord total.
 
 ## Actualizar del tracker
 El navegador no puede leer r6.tracker.network directamente (CORS), así que cada tarjeta del squad trae **↻ Actualizar**: abre el perfil, copias la página y la pegas; se leen rango, RP, K/D, nivel, partidas y K/D de la season, y el RP entra en la gráfica de la temporada.

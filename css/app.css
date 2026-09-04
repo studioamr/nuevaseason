@@ -578,3 +578,56 @@
 .lbbar{font-family:var(--disp);font-size:14px;letter-spacing:.12em;color:var(--ink2);margin-bottom:14px}
 .lbbar b{color:var(--acc2);font-size:20px}
 .lbact{display:flex;gap:8px;flex-wrap:wrap}
+/* ===== historial bajo el lobby ===== */
+.hist2{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+.hist2.vacio p{color:var(--dim);font-size:13px;margin-top:6px}
+.h2h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.h2h .rec{font-family:var(--disp);font-size:20px;font-weight:700;letter-spacing:.08em}
+.h2h .rec .w{color:var(--green)} .h2h .rec .l{color:#e8735d} .h2h .rec i{color:var(--mute);font-style:normal;margin:0 6px}
+.mlist{display:grid;gap:6px;max-height:min(46vh,420px);overflow:auto}
+.mrow{display:grid;grid-template-columns:150px 118px minmax(0,1fr) 72px;gap:12px;align-items:center;
+  border:1px solid var(--line);background:#14181c;padding:0 12px 0 0;overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+.mrow.w{border-left:3px solid var(--green)} .mrow.l{border-left:3px solid #c8442f}
+.mmap{position:relative;height:52px;display:flex;align-items:flex-end;padding:6px 8px;overflow:hidden}
+.mmap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:grayscale(.4)}
+.mmap::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,#14181c)}
+.mmap span{position:relative;z-index:1;font-family:var(--disp);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px #000}
+.mres b{display:block;font-family:var(--disp);font-size:11px;letter-spacing:.14em}
+.mrow.w .mres b{color:var(--green)} .mrow.l .mres b{color:#e8735d}
+.mres span{font-family:var(--disp);font-size:19px;font-weight:700;color:var(--ink)}
+.mres i{color:var(--mute);font-style:normal;margin:0 3px;font-size:14px}
+.mst{display:flex;gap:6px;flex-wrap:wrap;min-width:0}
+.pst{font-family:var(--mono);font-size:11px;color:var(--ink2);border:1px solid var(--line2);padding:1px 6px;white-space:nowrap}
+.pst b{color:var(--acc2);font-weight:500;margin-right:5px}
+.pst i{color:var(--mute);font-style:normal}
+.mdate{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right}
+.mdate i{display:block;font-style:normal;font-size:9px;color:var(--mute)}
+@media (max-width:900px){.mrow{grid-template-columns:110px 96px 1fr}.mdate{display:none}}
+/* ===== marcador grande de la fase MAPA ===== */
+.board{display:grid;grid-template-columns:auto auto auto 1fr;grid-template-rows:auto auto;gap:6px 18px;align-items:center;justify-content:center;
+  max-width:900px;margin:0 auto 18px;padding:14px 22px;border:1px solid var(--line2);background:var(--glass);
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.board.idle{opacity:.9}
+.bd-side{grid-row:1/3;display:flex;align-items:center;font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.18em;color:var(--dim);
+  border-right:1px solid var(--line);padding-right:18px}
+.bd-side.atk{color:var(--atk)} .bd-side.def{color:var(--def)}
+.bd-mid{grid-row:1/3;text-align:center}
+.bd-sc{font-family:var(--disp);font-size:44px;font-weight:700;line-height:1;letter-spacing:.04em}
+.bd-sc .w{color:var(--green)} .bd-sc .l{color:#e8735d} .bd-sc i{color:var(--mute);font-style:normal;margin:0 8px;font-size:28px;vertical-align:6px}
+.bd-rd{font-family:var(--disp);font-size:11px;letter-spacing:.2em;color:var(--dim);margin-top:2px}
+.bd-crew{grid-row:1/3;display:flex;gap:5px;border-left:1px solid var(--line);padding-left:18px}
+.bd-p{width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;background:#0e1216;border:1px solid var(--c);
+  clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px)}
+.bd-p img{width:76%;height:76%;object-fit:contain}
+.bd-p em{font-family:var(--disp);font-size:10px;font-weight:700;color:var(--dim);font-style:normal}
+.bd-act{grid-row:1;justify-self:end;display:flex;gap:8px}
+.bd-hint{grid-row:2;grid-column:4;justify-self:end;font-size:12px;color:var(--dim)}
+@media (max-width:900px){.board{grid-template-columns:1fr;justify-items:center}.bd-side,.bd-mid,.bd-crew{grid-row:auto;border:0;padding:0}.bd-act,.bd-hint{grid-column:auto;justify-self:center}}
+.board{grid-column:1/-1}
+.tiles>.startbar{grid-column:1/-1}
+/* el marcador ocupa todo el ancho de la rejilla y se centra sin encoger */
+.board{margin:0 0 18px;justify-self:center;width:min(900px,100%)}
+.wiz{min-width:0}
+.screen{min-width:0}
+.tiles{min-width:0}

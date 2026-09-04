@@ -124,7 +124,7 @@
     const set = Engine.siteSet(m, s);
     SQUAD.forEach((p, i) => {
       const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op) || null; if (!so) return; const o = Engine.op(so.op); if (!o) return;
-      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
+      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
       const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
       const fixed = repairPath(m, so, s); so._fix = fixed;
       if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); fixed.forEach(stp => { const pt = stp.pt; if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do, room: stp.room }); });
@@ -136,7 +136,7 @@
         if (set && pts.length) { const last = pts[pts.length - 1]; const b = set.bombs.reduce((a, c) => (Math.hypot(c.left - last.x, c.top - last.y) < Math.hypot(a.left - last.x, a.top - last.y) ? c : a)); if (Math.hypot(b.left - last.x, b.top - last.y) > 6) pts.push({ x: b.left, y: b.top, f: b.f, bomb: true }); } }
       if (pts.length < 2) return;
       const clear = (so.clear || []).map(c => { const pt = roomPoint(m, c.room, c.f); return pt ? { ...pt, short: short(c.threat), threat: c.threat, how: c.how } : null; }).filter(Boolean);
-      out.push({ id: p.id, pts: pts.map(q => ({ ...q })), clear, color: Engine.COLORS[i], label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
+      out.push({ id: p.id, opId: o.id, pts: pts.map(q => ({ ...q })), clear, color: Engine.COLORS[i], label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
     });
     return out;
   }
@@ -146,10 +146,10 @@
     const sr = stratRoutes(); if (sr) return sr;
     const m = map(), s = site(); const out = [];
     if (S.side === 'atk') {
-      Engine.plan(s, slots()).forEach(p => { if (!p.o || !p.v) return; const key = pinKey(p.v); const pts = Engine.routePoints(m, s, p.v, S.pins[key]); out.push({ id: p.slot, vec: p.v, pts: pts ? pts.map(x => ({ ...x })) : null, color: p.color, label: `${p.o.n}`, tag: initials({ nick: p.name }), key }); });
+      Engine.plan(s, slots()).forEach(p => { if (!p.o || !p.v) return; const key = pinKey(p.v); const pts = Engine.routePoints(m, s, p.v, S.pins[key]); out.push({ id: p.slot, opId: p.o.id, vec: p.v, pts: pts ? pts.map(x => ({ ...x })) : null, color: p.color, label: `${p.o.n}`, tag: initials({ nick: p.name }), key }); });
     } else {
       const c = Engine.siteCenter(m, s); const set = Engine.siteSet(m, s);
-      Engine.defPlan(s, slots()).forEach((p, i) => { if (!p.o) return; let pt = null; if (set) { const b = set.bombs[i % set.bombs.length]; pt = { x: b.left + (i > 1 ? 40 : -40), y: b.top + (i % 2 ? 40 : -40), f: b.f }; if (p.role === 'ROAM') pt = { x: c.x + (i - 2) * 90, y: c.y - 180, f: c.f }; } else { pt = { x: 300 + i * 180, y: 300, f: s.fl }; } out.push({ id: p.slot, mark: true, pts: [pt], color: p.color, label: `${p.o.n} · ${p.role}`, tag: initials({ nick: p.name }) }); });
+      Engine.defPlan(s, slots()).forEach((p, i) => { if (!p.o) return; let pt = null; if (set) { const b = set.bombs[i % set.bombs.length]; pt = { x: b.left + (i > 1 ? 40 : -40), y: b.top + (i % 2 ? 40 : -40), f: b.f }; if (p.role === 'ROAM') pt = { x: c.x + (i - 2) * 90, y: c.y - 180, f: c.f }; } else { pt = { x: 300 + i * 180, y: 300, f: s.fl }; } out.push({ id: p.slot, opId: p.o.id, mark: true, pts: [pt], color: p.color, label: `${p.o.n} · ${p.role}`, tag: initials({ nick: p.name }) }); });
     }
     return out;
   }
@@ -433,6 +433,24 @@
     return [{ key: 'solo', slot: me ? me.slot : 'yo', name: me ? me.name : 'Tú', online: true, host: true }];
   }
   const yoKey = () => (Sync.connected && Sync.meId) ? Sync.meId : 'solo';
+
+  const mapImg = id => { const m = MAPS.find(x => x.id === id); if (!m || !m.floorImgs || !m.floorImgs.length) return null; const f = m.r6 && (m.r6.floors.find(z => z.def) || m.r6.floors[0]); const it = f ? m.floorImgs.find(x => x.idx === f.index) : m.floorImgs[0]; return it ? it.src : null; };
+  function histHTML() {
+    const ms = SEASON.matches.filter(m => !m.rpOnly).slice().reverse();
+    if (!ms.length) return `<div class="hist2 vacio"><span class="k">Historial</span><p>Aún no hay partidas. Al cerrar cada partido se guarda aquí con el marcador y las stats.</p></div>`;
+    const w = ms.filter(m => m.result === 'W').length, l = ms.filter(m => m.result === 'L').length;
+    return `<div class="hist2"><div class="h2h"><span class="k">Historial del squad</span><span class="rec"><b class="w">${w}</b><i>–</i><b class="l">${l}</b></span></div>
+      <div class="mlist">${ms.slice(0, 8).map(m => {
+        const nm = (MAPS.find(x => x.id === m.map) || {}).n || m.mapName || m.map || '—';
+        const img = m.map ? mapImg(m.map) : null;
+        const jug = Object.entries(m.players || {}).filter(([, v]) => v && v.k != null);
+        return `<div class="mrow ${m.result === 'W' ? 'w' : 'l'}">
+          <div class="mmap">${img ? `<img src="${img}" alt="" loading="lazy">` : ''}<span>${E(nm)}</span></div>
+          <div class="mres"><b>${m.result === 'W' ? 'GANAMOS' : 'PERDIMOS'}</b><span>${m.w}<i>–</i>${m.l}</span></div>
+          <div class="mst">${jug.length ? jug.map(([id, v]) => { const p = slotOf(id); const o = p ? (p.nick || id) : id; return `<span class="pst"><b>${E(String(o).replace(/^o\s+/i, '').split(' ')[0])}</b>${v.k}<i>/</i>${v.d}${v.a != null ? '<i>/</i>' + v.a : ''}</span>`; }).join('') : '<span class="dim">sin stats</span>'}</div>
+          <div class="mdate">${new Date(m.date).toLocaleDateString('es-MX', { day: '2-digit', month: 'short' })}${m.src === 'tracker' ? '<i>tracker</i>' : ''}</div>
+        </div>`; }).join('')}</div></div>`;
+  }
   function renderLobby() {
     const el = $('#s1'); if (!el) return;
     const gente = lobbyPeople(); const listos = gente.filter(g => S.ready[g.key]).length;
@@ -450,7 +468,9 @@
         <button class="btn ${yaListo ? '' : 'p'} big" id="lbReady">${yaListo ? '✓ Estás listo' : 'LISTO'}</button>
         <button class="btn big" id="lbGo">Empezar ya ▶</button>
         ${Sync.connected ? '' : '<button class="btn" id="lbSala">Crear sala · invita al squad</button>'}
-      </div></div></div>`;
+      </div>
+      ${histHTML()}
+      </div></div>`;
     FX.all(el);
     $('#lbReady').onclick = () => { const r = { ...S.ready }; r[yo] = !r[yo]; commit({ ready: r }); };
     $('#lbGo').onclick = startMatch;
@@ -484,7 +504,17 @@
   function renderS2() {
     const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
     for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; const vet = (S.vetos || []).includes(m.id); return `<button class="tile ${m.id === S.map ? 'on' : ''} ${vet ? 'veto' : ''}" data-map="${m.id}">${vet ? '<span class="vx">VETADO</span>' : ''}${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${m.r6 ? (m.approx ? 'plano ~' : 'plano') : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
-    const sc = score(); const sb = S.match.active || S.vetoMode ? `<div class="startbar"><div class="t">${S.match.active ? `Partido en curso · ${sc.w} – ${sc.l} · ronda ${S.round}` : 'Ranked'}<small>${S.vetoMode ? 'Fase de vetos: toca los mapas que baneó tu equipo o el rival.' : S.match.active ? 'Elige el mapa que tocó (o sigue en el mismo).' : 'Toca INICIAR RANKED al entrar a la cola: la app lleva marcador, rondas, sugerencias y al final captura las stats.'}</small></div><div style="display:flex;gap:8px"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Volver al lobby</button>`}</div></div>` : '';
+    const sc = score(); const isAtk = S.side === 'atk';
+    const sb = `<div class="board ${S.match.active ? '' : 'idle'}">
+      ${S.match.active ? `<div class="bd-side ${isAtk ? 'atk' : 'def'}">${ICO[isAtk ? 'atk' : 'def']}${isAtk ? 'ATAQUE' : 'DEFENSA'}</div>` : '<div class="bd-side">SIN PARTIDA</div>'}
+      <div class="bd-mid">
+        <div class="bd-sc"><b class="w">${sc.w}</b><i>–</i><b class="l">${sc.l}</b></div>
+        <div class="bd-rd">${S.match.active ? 'RONDA ' + S.round : 'Ranked'}</div>
+      </div>
+      <div class="bd-crew">${SQUAD.map((p, i) => { const o = Engine.op((S.picks[p.id] || {}).op); return `<span class="bd-p" title="${E(p.nick || p.id)}" style="--c:${Engine.COLORS[i]}">${o ? `<img src="img/ops/${o.id}.svg" alt="">` : `<em>${E(initials(p))}</em>`}</span>`; }).join('')}</div>
+      <div class="bd-act"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Lobby</button>`}</div>
+      <div class="bd-hint">${S.vetoMode ? 'Toca los mapas que se vetaron' : S.match.active ? 'Elige el mapa que tocó' : 'Ve al lobby para empezar'}</div>
+    </div>`;
     $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = openLobby; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, round: 1, live: null }); };
     const vb = $('#vetoBtn'); if (vb) vb.onclick = () => commit({ vetoMode: !S.vetoMode });
     $$('#mapTiles .tile[data-map]').forEach(b => b.onclick = async () => {

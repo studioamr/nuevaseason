@@ -97,6 +97,21 @@ window.MapView = (() => {
   let routeEls = {};
   function polyLen(pts) { let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y); return L; }
   function pointAt(pts, d) { for (let i = 1; i < pts.length; i++) { const l = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y); if (d <= l || i === pts.length - 1) { const k = l ? Math.max(0, Math.min(1, d / l)) : 0; return { x: pts[i - 1].x + (pts[i].x - pts[i - 1].x) * k, y: pts[i - 1].y + (pts[i].y - pts[i - 1].y) * k }; } d -= l; } return pts[pts.length - 1]; }
+  let clipN = 0;
+  function defs() { let d = svg.querySelector('defs'); if (!d) { d = el('defs'); svg.insertBefore(d, svg.firstChild); } return d; }
+  function portrait(g, x, y, r, rt, big) { // círculo con la insignia del operador y aro del color de su línea
+    const gg = el('g', { class: 'port' });
+    gg.appendChild(el('circle', { cx: x, cy: y, r: r + 3, fill: 'rgba(6,9,12,.92)' }));
+    if (rt.opId) {
+      const id = 'cp' + (++clipN); const cp = el('clipPath', { id }); cp.appendChild(el('circle', { cx: x, cy: y, r })); defs().appendChild(cp);
+      const im = el('image', { x: x - r, y: y - r, width: r * 2, height: r * 2, 'clip-path': `url(#${id})`, preserveAspectRatio: 'xMidYMid meet', opacity: .96 });
+      im.setAttribute('href', `img/ops/${rt.opId}.svg`); im.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `img/ops/${rt.opId}.svg`);
+      im.addEventListener('error', () => { im.remove(); gg.appendChild(el('text', { class: 'bn', x, y: y + 4, 'text-anchor': 'middle' }, rt.tag || '')); });
+      gg.appendChild(im);
+    } else gg.appendChild(el('text', { class: 'bn', x, y: y + 4, 'text-anchor': 'middle' }, rt.tag || ''));
+    gg.appendChild(el('circle', { cx: x, cy: y, r: r + 1.5, fill: 'none', stroke: rt.color, 'stroke-width': big ? 4 : 3 }));
+    g.appendChild(gg); return gg;
+  }
   function pill(g, x, y, text, color, big) { const w = text.length * (big ? 8.2 : 6.6) + 18, h = big ? 24 : 20; const gg = el('g', { class: 'pill' }); gg.appendChild(el('rect', { x: x - 6, y: y - h / 2, width: w, height: h, rx: h / 2, fill: 'rgba(3,6,10,.85)', stroke: color, 'stroke-width': 1.5 })); gg.appendChild(el('text', { class: 'pl' + (big ? ' big' : ''), x: x + 3, y: y + (big ? 5 : 4), fill: color }, text)); g.appendChild(gg); return gg; }
   function badge(g, x, y, n, color, r = 9) { g.appendChild(el('circle', { cx: x, cy: y, r, fill: color, stroke: '#000', 'stroke-width': 2 })); g.appendChild(el('text', { class: 'bn', x, y: y + 3.5, 'text-anchor': 'middle' }, String(n))); }
   async function drawRoutes(fast) {
@@ -109,7 +124,7 @@ window.MapView = (() => {
       let pts = rt.pts;
       if (!pts && !cur.map.r6) { pts = (rt.vec && rt.vec.path || []).map(gridPoint).filter(Boolean); if (pts.length < 2) return; rt.pts = pts; }
       const sel = selected === rt.id; const dim = selected && !sel ? .25 : 1; const w = sel ? 7 : 4.5;
-      if (rt.mark && pts && pts.length === 1) { const p = pts[0]; if (p.f !== floorIdx && p.f !== -1) return; const gg = el('g', { opacity: dim }); gg.appendChild(el('circle', { cx: X(p.x), cy: Y(p.y), r: 16, fill: rt.color, opacity: .25 })); gg.appendChild(el('circle', { cx: X(p.x), cy: Y(p.y), r: 9, fill: rt.color, stroke: '#000', 'stroke-width': 2 })); gg.appendChild(el('text', { class: 'bn', x: X(p.x), y: Y(p.y) + 3.5, 'text-anchor': 'middle' }, rt.tag || '')); const side = ri % 2 ? 1 : -1; pill(gg, X(p.x) + 16, Y(p.y) + side * (16 + (ri >> 1) * 22), rt.label || '', rt.color, sel); g.appendChild(gg); return; }
+      if (rt.mark && pts && pts.length === 1) { const p = pts[0]; if (p.f !== floorIdx && p.f !== -1) return; const gg = el('g', { opacity: dim }); gg.appendChild(el('circle', { cx: X(p.x), cy: Y(p.y), r: 22, fill: rt.color, opacity: .16 })); portrait(gg, X(p.x), Y(p.y), 14, rt, sel); const side = ri % 2 ? 1 : -1; pill(gg, X(p.x) + 22, Y(p.y) + side * (18 + (ri >> 1) * 22), rt.label || '', rt.color, sel); g.appendChild(gg); return; }
       if (!pts || pts.length < 2) return;
       const segs = geoms[ri] || []; const rg = el('g', { class: 'rt', 'data-slot': rt.id, opacity: dim }); g.appendChild(rg);
       const rec = { paths: [], total: 0, color: rt.color }; routeEls[rt.id] = rec; let cum = 0;
@@ -132,11 +147,11 @@ window.MapView = (() => {
       pts.forEach((p, i) => { const here = p.f === floorIdx || p.f === -1; const last = i === pts.length - 1; if (i === 0 || last) return; if (sel) { badge(rg, X(p.x), Y(p.y), i, rt.color, 8); } else rg.appendChild(el('circle', { cx: X(p.x), cy: Y(p.y), r: 3.5, fill: '#03060a', stroke: rt.color, 'stroke-width': 2, opacity: here ? 1 : .3 })); if (editable && sel) { const c = el('circle', { class: 'pinhit', cx: X(p.x), cy: Y(p.y), r: 12, fill: 'transparent' }); c.addEventListener('pointerdown', e => { e.stopPropagation(); pinDrag = { route: rt, pt: p }; }); rg.appendChild(c); } });
       // inicio (spawn) con píldora del operador; fin = bomba
       const a0 = pts[0], b0 = pts[pts.length - 1];
-      rg.appendChild(el('circle', { cx: X(a0.x), cy: Y(a0.y), r: 11, fill: rt.color, stroke: '#000', 'stroke-width': 2 })); rg.appendChild(el('text', { class: 'bn', x: X(a0.x), y: Y(a0.y) + 4, 'text-anchor': 'middle' }, rt.tag || ''));
-      pill(rg, X(a0.x) + 16, Y(a0.y) - 16, rt.label || '', rt.color, sel);
+      portrait(rg, X(a0.x), Y(a0.y), sel ? 16 : 13, rt, sel);
+      pill(rg, X(a0.x) + (sel ? 22 : 19), Y(a0.y) - 18, rt.label || '', rt.color, sel);
       rg.appendChild(el('circle', { cx: X(b0.x), cy: Y(b0.y), r: 6, fill: '#03060a', stroke: rt.color, 'stroke-width': 3 }));
       // cabeza animada
-      if (anim) { const hg = el('g', { class: 'head' }); hg.appendChild(el('circle', { class: 'hglow', r: 14, fill: rt.color, opacity: .25 })); hg.appendChild(el('circle', { class: 'hdot', r: 7, fill: rt.color, stroke: '#000', 'stroke-width': 2 })); rg.appendChild(hg); rec.head = hg; }
+      if (anim) { const hg = el('g', { class: 'head' }); portrait(hg, 0, 0, 12, rt, false); rg.appendChild(hg); rec.head = hg; }
     });
     if (anim) setProgress(cur.progress);
   }
