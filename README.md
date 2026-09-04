@@ -14,7 +14,8 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 `1 RANKED` (lobby con LISTO) → `2 MAPA` → `3 LADO · SITIO` → `4 PLAN` (preparación 45 s) → `5 EN VIVO` (reloj 3:00). La app abre siempre en la fase 1.
 
 ## Señalización del mapa
-Cada jugador aparece en el plano como el **retrato circular de su operador** con un aro del color de su línea (el mismo color de su ficha y de su ruta). Ya no hay iniciales sueltas: se distingue de un vistazo quién es quién, y la cabeza que avanza en *En vivo* también lleva su retrato.
+Cada jugador aparece como el **retrato circular de su operador**. El **aro es del color del lado** (azul en ataque, morado en defensa), así se distingue de un vistazo quién es de tu equipo. La **línea** conserva un color propio por jugador para poder seguir la tuya entre cinco.
+Las **bombas se dibujan con el icono de la bomba** en un aro ámbar de objetivo (nunca una letra suelta): la del sitio activo va grande y con pulso, las otras pequeñas y punteadas. Ya no hay iniciales sueltas: se distingue de un vistazo quién es quién, y la cabeza que avanza en *En vivo* también lleva su retrato.
 
 ## Fase 1 · Lobby con LISTO
 "Iniciar ranked" abre una ventana grande donde **cada quien da LISTO**. El estado se identifica por conexión (no por slot, así dos personas pueden elegir el mismo operador de squad sin pisarse) y se fusiona en la sala: dos pueden dar listo a la vez. Cuando todos los conectados están listos, **la partida arranca sola en todas las pantallas**. El host puede forzar con "Empezar ya".

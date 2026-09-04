@@ -640,3 +640,6 @@
 #s3 .mini{position:relative;border:1px solid var(--line);background:#030407;min-height:0}
 .sitecard{cursor:pointer}
 @media (max-width:1000px){#s3.on{grid-template-columns:1fr;grid-template-rows:auto 320px}}
+.ov .bombmk .pulse{animation:bombPulse 1.8s ease-out infinite}
+@keyframes bombPulse{0%{r:26;opacity:.55}70%{opacity:0}100%{r:54;opacity:0}}
+.ov text.bl{font-family:var(--disp);font-size:13px;font-weight:700}

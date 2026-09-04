@@ -54,7 +54,17 @@ window.MapView = (() => {
     // escotillas
     r.hatches.filter(h => h.f === floorIdx).forEach(h => { g.appendChild(el('rect', { class: 'hatch', x: X(h.left) - 9, y: Y(h.top) - 9, width: 18, height: 18, rx: 2 })); });
     // bombas
-    r.bombs.filter(b => b.f === floorIdx).forEach(b => { const on = set && b.set === set.set; g.appendChild(el('circle', { class: 'bomb' + (on ? '' : ' off'), cx: X(b.left), cy: Y(b.top), r: on ? 22 : 14 })); g.appendChild(el('text', { class: 'bl' + (on ? '' : ' off'), x: X(b.left), y: Y(b.top) + 4, 'text-anchor': 'middle' }, b.letter)); });
+    const objColor = cur.objColor || '#d9a520';
+    r.bombs.filter(b => b.f === floorIdx).forEach(b => {
+      const on = set && b.set === set.set; const R = on ? (cur.zoomSite ? 30 : 24) : 13; const cx = X(b.left), cy = Y(b.top);
+      const gg = el('g', { class: 'bombmk' + (on ? '' : ' off') });
+      if (on && cur.zoomSite) gg.appendChild(el('circle', { class: 'pulse', cx, cy, r: R + 10, fill: 'none', stroke: objColor, 'stroke-width': 2, opacity: .5 }));
+      gg.appendChild(el('circle', { cx, cy, r: R, fill: on ? 'rgba(8,10,13,.86)' : 'rgba(8,10,13,.6)', stroke: on ? objColor : '#5a636d', 'stroke-width': on ? 3 : 1.5, 'stroke-dasharray': on ? 'none' : '4 3' }));
+      const im = el('image', { x: cx - R * .62, y: cy - R * .62, width: R * 1.24, height: R * 1.24, opacity: on ? .95 : .45, preserveAspectRatio: 'xMidYMid meet' });
+      im.setAttribute('href', 'img/ui/bomb.svg'); im.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/ui/bomb.svg'); gg.appendChild(im);
+      gg.appendChild(el('text', { class: 'bl' + (on ? '' : ' off'), x: cx + R - 2, y: cy - R + 6, 'text-anchor': 'middle', fill: on ? objColor : '#7d858e' }, b.letter));
+      g.appendChild(gg);
+    });
     // spawns (exterior)
     r.spawns.forEach(sp => { g.appendChild(el('circle', { class: 'spawn', cx: X(sp.left), cy: Y(sp.top), r: 14 })); g.appendChild(el('text', { class: 'sp', x: X(sp.left), y: Y(sp.top) + 4, 'text-anchor': 'middle' }, sp.letter || 'S')); g.appendChild(el('text', { class: 'room out', x: X(sp.left), y: Y(sp.top) + 28, 'text-anchor': 'middle' }, (sp.es || sp.en || '').replace(/<br\s*\/?>/g, ' '))); });
     // labels
@@ -115,7 +125,7 @@ window.MapView = (() => {
       im.addEventListener('error', () => { im.remove(); gg.appendChild(el('text', { class: 'bn', x, y: y + 4, 'text-anchor': 'middle' }, rt.tag || '')); });
       gg.appendChild(im);
     } else gg.appendChild(el('text', { class: 'bn', x, y: y + 4, 'text-anchor': 'middle' }, rt.tag || ''));
-    gg.appendChild(el('circle', { cx: x, cy: y, r: r + 1.5, fill: 'none', stroke: rt.color, 'stroke-width': big ? 4 : 3 }));
+    gg.appendChild(el('circle', { cx: x, cy: y, r: r + 1.5, fill: 'none', stroke: rt.ring || rt.color, 'stroke-width': big ? 4 : 3 }));
     g.appendChild(gg); return gg;
   }
   function pill(g, x, y, text, color, big) { const w = text.length * (big ? 8.2 : 6.6) + 18, h = big ? 24 : 20; const gg = el('g', { class: 'pill' }); gg.appendChild(el('rect', { x: x - 6, y: y - h / 2, width: w, height: h, rx: h / 2, fill: 'rgba(3,6,10,.85)', stroke: color, 'stroke-width': 1.5 })); gg.appendChild(el('text', { class: 'pl' + (big ? ' big' : ''), x: x + 3, y: y + (big ? 5 : 4), fill: color }, text)); g.appendChild(gg); return gg; }

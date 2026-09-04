@@ -124,7 +124,7 @@
     const set = Engine.siteSet(m, s);
     SQUAD.forEach((p, i) => {
       const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op) || null; if (!so) return; const o = Engine.op(so.op); if (!o) return;
-      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
+      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, ring: TEAM(), mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
       const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
       const fixed = repairPath(m, so, s); so._fix = fixed;
       if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); fixed.forEach(stp => { const pt = stp.pt; if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do, room: stp.room }); });
@@ -136,20 +136,21 @@
         if (set && pts.length) { const last = pts[pts.length - 1]; const b = set.bombs.reduce((a, c) => (Math.hypot(c.left - last.x, c.top - last.y) < Math.hypot(a.left - last.x, a.top - last.y) ? c : a)); if (Math.hypot(b.left - last.x, b.top - last.y) > 6) pts.push({ x: b.left, y: b.top, f: b.f, bomb: true }); } }
       if (pts.length < 2) return;
       const clear = (so.clear || []).map(c => { const pt = roomPoint(m, c.room, c.f); return pt ? { ...pt, short: short(c.threat), threat: c.threat, how: c.how } : null; }).filter(Boolean);
-      out.push({ id: p.id, opId: o.id, pts: pts.map(q => ({ ...q })), clear, color: Engine.COLORS[i], label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
+      out.push({ id: p.id, opId: o.id, ring: TEAM(), pts: pts.map(q => ({ ...q })), clear, color: Engine.COLORS[i], label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
     });
     return out;
   }
   // ---------- canvas ----------
   let mounted = false, preview = null;
+  const TEAM = () => getComputedStyle(document.documentElement).getPropertyValue(S.side === 'atk' ? '--atk' : '--def').trim() || '#2f7fd4';
   function routes() {
     const sr = stratRoutes(); if (sr) return sr;
     const m = map(), s = site(); const out = [];
     if (S.side === 'atk') {
-      Engine.plan(s, slots()).forEach(p => { if (!p.o || !p.v) return; const key = pinKey(p.v); const pts = Engine.routePoints(m, s, p.v, S.pins[key]); out.push({ id: p.slot, opId: p.o.id, vec: p.v, pts: pts ? pts.map(x => ({ ...x })) : null, color: p.color, label: `${p.o.n}`, tag: initials({ nick: p.name }), key }); });
+      Engine.plan(s, slots()).forEach(p => { if (!p.o || !p.v) return; const key = pinKey(p.v); const pts = Engine.routePoints(m, s, p.v, S.pins[key]); out.push({ id: p.slot, opId: p.o.id, ring: TEAM(), vec: p.v, pts: pts ? pts.map(x => ({ ...x })) : null, color: p.color, label: `${p.o.n}`, tag: initials({ nick: p.name }), key }); });
     } else {
       const c = Engine.siteCenter(m, s); const set = Engine.siteSet(m, s);
-      Engine.defPlan(s, slots()).forEach((p, i) => { if (!p.o) return; let pt = null; if (set) { const b = set.bombs[i % set.bombs.length]; pt = { x: b.left + (i > 1 ? 40 : -40), y: b.top + (i % 2 ? 40 : -40), f: b.f }; if (p.role === 'ROAM') pt = { x: c.x + (i - 2) * 90, y: c.y - 180, f: c.f }; } else { pt = { x: 300 + i * 180, y: 300, f: s.fl }; } out.push({ id: p.slot, opId: p.o.id, mark: true, pts: [pt], color: p.color, label: `${p.o.n} · ${p.role}`, tag: initials({ nick: p.name }) }); });
+      Engine.defPlan(s, slots()).forEach((p, i) => { if (!p.o) return; let pt = null; if (set) { const b = set.bombs[i % set.bombs.length]; pt = { x: b.left + (i > 1 ? 40 : -40), y: b.top + (i % 2 ? 40 : -40), f: b.f }; if (p.role === 'ROAM') pt = { x: c.x + (i - 2) * 90, y: c.y - 180, f: c.f }; } else { pt = { x: 300 + i * 180, y: 300, f: s.fl }; } out.push({ id: p.slot, opId: p.o.id, ring: TEAM(), mark: true, pts: [pt], color: p.color, label: `${p.o.n} · ${p.role}`, tag: initials({ nick: p.name }) }); });
     }
     return out;
   }
@@ -175,7 +176,9 @@
     if (s.verify || m.verify) { const v = document.createElement('div'); v.className = 'verify'; v.innerHTML = `<span class="chip acc">Callouts por confirmar en el juego</span>`; c.appendChild(v); }
     // plano subido por el usuario para este piso (mapas sin r6maps)
     let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
-    MapView.show({ map: mm, site: s, side: S.side, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
+    const teamCol = getComputedStyle(document.documentElement).getPropertyValue(S.side === 'atk' ? '--atk' : '--def').trim() || '#2f7fd4';
+    const objCol = getComputedStyle(document.documentElement).getPropertyValue('--obj').trim() || '#d9a520';
+    MapView.show({ map: mm, site: s, side: S.side, objColor: objCol, teamColor: teamCol, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
   }
   async function uploadPlan() { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async () => { const m = map(); m.userImgs = m.userImgs || {}; m.userImgs[String(S.floorIdx)] = rd.result; await Store.idb.put(`${m.id}|${S.floorIdx}`, rd.result); Store.toast('Plano guardado para ' + m.n); renderMapList(); renderCanvas(); }; rd.readAsDataURL(f); }; inp.click(); }
 
