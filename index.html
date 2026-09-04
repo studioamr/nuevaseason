@@ -3,66 +3,190 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>R6 NUEVA SEASON · Centro de mando del squad</title>
+<title>R6 NUEVA SEASON · Y le bajan</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788490006">
+<link rel="stylesheet" href="css/base.css?v=1788490520">
 <style>
-.land{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
-.land header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--line)}
-.hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;max-width:1180px;width:100%;margin:0 auto;padding:60px 28px}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 20% 40%,rgba(226,147,47,.10),transparent 70%);pointer-events:none}
-.hero h1{font-size:clamp(26px,3.6vw,44px);line-height:1.12;margin:14px 0 16px}
-.hero h1 em{font-style:normal;color:var(--acc)}
-.hero p{font-size:16px;color:var(--ink2);max-width:520px;line-height:1.6}
-.hero .cta{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
-.hero .cta .btn{height:44px;padding:0 20px;font-size:12px}
-.plate{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.5)}
-.plate .ph{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
-.plate img{display:block;width:100%;height:auto;filter:saturate(.9)}
-.feat{max-width:1180px;width:100%;margin:0 auto;padding:0 28px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.feat .card .b{font-size:13px;color:var(--ink2);line-height:1.55}
-.feat .card .b b{color:var(--ink);display:block;margin-bottom:4px;font-size:14px}
-.sq{max-width:1180px;width:100%;margin:0 auto;padding:0 28px 60px}
-.sq .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-.sq .m{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
-.sq .m .av{width:36px;height:36px;font-size:12px}
-.sq .m b{display:block;font-size:14px;font-weight:600}
-.sq .m small{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-footer{padding:18px 28px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-@media(max-width:860px){.hero{grid-template-columns:1fr;padding:40px 20px}}
+.wrap{max-width:1240px;margin:0 auto;padding:0 26px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(8,10,12,.92);backdrop-filter:blur(8px);z-index:20}
+
+/* ---------- 1. bienvenida ---------- */
+.hero{position:relative;text-align:center;padding:74px 26px 54px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 0%,rgba(226,147,47,.13),transparent 72%);pointer-events:none}
+.hero .kick{font-family:var(--mono);font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
+.hero h1{font-family:var(--disp);font-weight:700;line-height:.88;letter-spacing:-.01em;margin:0;
+  font-size:clamp(52px,13vw,166px);text-transform:uppercase;
+  background:linear-gradient(180deg,#fff 8%,var(--ink) 46%,var(--mute) 108%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 span{display:block}
+.hero h1 span:nth-child(2){color:transparent;background:linear-gradient(180deg,var(--acc) 6%,#a35f14 96%);-webkit-background-clip:text;background-clip:text}
+.hero .bajan{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(22px,4.6vw,54px);letter-spacing:.10em;margin:20px 0 0;color:var(--ink)}
+.hero .bajan i{font-style:normal;color:var(--acc)}
+.hero p{max-width:640px;margin:22px auto 0;font-size:16px;line-height:1.62;color:var(--ink2)}
+.hero .cta{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.hero .cta .btn{height:46px;padding:0 26px;font-size:12px}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero>*{animation:riseIn .7s cubic-bezier(.2,.7,.3,1) both}
+.hero .kick{animation-delay:.02s}.hero h1{animation-delay:.10s}.hero .bajan{animation-delay:.26s}.hero p{animation-delay:.38s}.hero .cta{animation-delay:.48s}
+
+/* barra colectiva a Champion */
+.goal{max-width:760px;margin:38px auto 0;border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:16px 18px}
+.goal .gh{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.goal .gh b{font-family:var(--disp);font-size:19px;letter-spacing:.04em;color:var(--acc)}
+.goal .bar{height:9px;border-radius:5px;background:rgba(255,255,255,.07);overflow:hidden}
+.goal .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#f0b45c);border-radius:5px;width:0;transition:width 1.5s cubic-bezier(.2,.7,.3,1)}
+.goal .gf{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--mute);margin-top:8px;text-transform:uppercase}
+
+/* ---------- 2. el squad ---------- */
+.sec{padding:56px 0 10px}
+.sec .hd{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.sec .hd h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(26px,4vw,44px);letter-spacing:.03em;margin:0}
+.sec .hd small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:13px}
+@media(min-width:1120px){.roster{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:1119px) and (min-width:700px){.roster{grid-template-columns:repeat(3,1fr)}}
+.mem{position:relative;border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.mem::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--acc))}
+.mem .op{position:relative;height:164px;display:grid;place-items:center;background:
+  radial-gradient(72% 82% at 50% 24%,color-mix(in srgb,var(--c,var(--acc)) 26%,transparent),transparent 70%),#0a0c0f;
+  border-bottom:1px solid var(--line);overflow:hidden}
+.mem .op img{width:124px;height:124px;object-fit:contain;filter:drop-shadow(0 12px 26px rgba(0,0,0,.6));transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.mem:hover .op img{transform:scale(1.07)}
+.mem .op .opn{position:absolute;left:0;right:0;bottom:7px;text-align:center;font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  font-size:25px;letter-spacing:.05em;color:var(--c,var(--acc));text-shadow:0 2px 14px rgba(0,0,0,.8)}
+.mem .op .tag{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;padding:4px 8px;border:1px solid var(--c,var(--acc));border-radius:3px;color:var(--c,var(--acc));background:rgba(0,0,0,.5)}
+.mem .op .mas{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+.mem .id{padding:14px 16px 10px}
+.mem .id b{display:block;font-family:var(--disp);font-size:22px;font-weight:600;letter-spacing:.02em;line-height:1.05}
+.mem .id small{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.mem .rk{display:flex;align-items:baseline;gap:8px;padding:0 16px 12px}
+.mem .rk .n{font-family:var(--disp);font-size:29px;font-weight:700;letter-spacing:.01em;color:var(--ink)}
+.mem .rk .t{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c,var(--acc))}
+.mem .gs{height:6px;margin:0 16px 14px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+.mem .gs i{display:block;height:100%;width:0;border-radius:3px;background:var(--c,var(--acc));transition:width 1.4s cubic-bezier(.2,.7,.3,1)}
+.mem .st{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:auto}
+.mem .st div{padding:11px 6px;text-align:center;border-right:1px solid var(--line)}
+.mem .st div:last-child{border-right:0}
+.mem .st b{display:block;font-family:var(--disp);font-size:19px;font-weight:600;line-height:1}
+.mem .st small{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.mem.vacio .op{background:#0a0c0f}
+.mem.vacio .op .q{font-family:var(--disp);font-size:76px;color:var(--line)}
+
+/* ---------- 3. como se usa ---------- */
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(206px,1fr));gap:12px}
+.paso{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:18px 16px 16px}
+.paso .n{font-family:var(--disp);font-size:44px;font-weight:700;line-height:.8;color:var(--acc);opacity:.34}
+.paso b{display:block;font-family:var(--disp);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:8px 0 5px}
+.paso span{font-size:13px;line-height:1.5;color:var(--ink2)}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:16px}
+.shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+.shot .ph{padding:9px 12px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.shot img{display:block;width:100%;height:auto}
+footer{margin-top:60px;padding:18px 26px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:700px){.mem .st b{font-size:16px}.hero{padding:52px 20px 40px}}
 </style>
 </head>
 <body>
 <div class="scanline"></div>
-<div class="land">
-  <header><a class="brand" href="index.html"><span class="r6">R6</span><b data-fx>Nueva Season</b><i class="flick">· Y11S3 Split Fire</i></a><a class="btn p" href="app.html">Entrar al centro de mando</a></header>
-  <main>
-    <section class="hero">
-      <div>
-        <span class="chip acc">Centro de mando del squad · Xbox</span>
-        <h1 class="h-disp" data-fx>Sabe por dónde entrar antes de que empiece la ronda.</h1>
-        <p>Eliges mapa y bomba. La plataforma te dibuja las entradas sobre el plano real, reparte los operadores entre los cinco y sincroniza el plan con todo el squad en tiempo real. Ataque y defensa. Los 27 mapas.</p>
-        <div class="cta"><a class="btn p" href="app.html">Abrir el plan</a><a class="btn" href="app.html#sala=">Unirme a una sala</a></div>
-      </div>
-      <div class="plate"><div class="ph"><span class="k">Clubhouse · Iglesia / Arsenal · Ataque</span></div><img src="img/maps/clubhouse/0.jpg" alt="Plano de Clubhouse, sótano"></div>
-    </section>
-    <section class="feat">
-      <div class="card"><div class="b"><b>Planos reales</b>Blueprints del juego con cuartos, bombas, escotillas y spawns; 18 mapas con plano, el resto con croquis editable y opción de subir el tuyo.</div></div>
-      <div class="card"><div class="b"><b>Rutas por operador</b>Cada atacante recibe la entrada que le toca por su rol: breach duro, anti-gadget, vertical, intel, flanco. Se dibuja con tu color.</div></div>
-      <div class="card"><div class="b"><b>Sala en tiempo real</b>Un código, cinco navegadores. Mapa, sitio, operadores, rutas y notas se ven al instante. Sin cuentas ni servidor.</div></div>
-      <div class="card"><div class="b"><b>Squad y rangos</b>Perfiles del tracker, pico de cada uno, escalera Ranked 3.0 con los 40 rangos y dónde está cada quien.</div></div>
-    </section>
-    <section class="sq"><div class="k" style="margin-bottom:10px">El squad</div><div class="row" id="sqRow"></div></section>
-  </main>
-  <footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
+<header class="top">
+  <a class="brand" href="index.html"><span class="r6">R6</span><b data-fx>Nueva Season</b><i class="flick">· Y11S3 Split Fire</i></a>
+  <a class="btn p" href="app.html">Entrar al centro de mando</a>
+</header>
+
+<section class="hero">
+  <div class="kick">Bienvenidos · temporada Split Fire</div>
+  <h1 class="h-disp"><span>Nueva</span><span>Season</span></h1>
+  <div class="bajan">Y <i>le bajan</i>.</div>
+  <p>Esta season va a ser diferente. Llegamos a <b>Champion</b> — no de suerte: con plan de entrada antes de cada ronda, sitio decidido, operadores repartidos y los cinco viendo lo mismo. Tenemos el squad. Ahora tenemos el centro de mando.</p>
+  <div class="cta"><a class="btn p" href="app.html">Empezar ranked</a><a class="btn" href="#squad">Ver al squad</a></div>
+  <div class="goal">
+    <div class="gh"><span>El squad rumbo a Champion</span><b id="gPct">—</b></div>
+    <div class="bar"><i id="gBar"></i></div>
+    <div class="gf"><span id="gNow">—</span><span>Champion · 4,500 RP</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec" id="squad">
+    <div class="hd"><h2 class="h-disp" data-fx>El squad</h2><small>Stats reales de R6 Tracker · el operador grande es el que más juega</small></div>
+    <div class="roster" id="roster"></div>
+  </section>
+
+  <section class="sec" id="como">
+    <div class="hd"><h2 class="h-disp" data-fx>Cómo se usa</h2><small>Cinco pasos · una ronda</small></div>
+    <div class="pasos">
+      <div class="paso"><div class="n">1</div><b>Listo</b><span>Uno crea la sala y pasa el código. Todos dan LISTO y arranca la partida.</span></div>
+      <div class="paso"><div class="n">2</div><b>Mapa</b><span>El que confirma el mapa y los vetos se lo actualiza a los cinco.</span></div>
+      <div class="paso"><div class="n">3</div><b>Sitio</b><span>Dices qué bomba tocó. El plano se acerca a ese sitio, en su piso.</span></div>
+      <div class="paso"><div class="n">4</div><b>Plan</b><span>Reparte operadores y dibuja la entrada de cada quien con su color.</span></div>
+      <div class="paso"><div class="n">5</div><b>En vivo</b><span>Reloj de 3:00 por fases. Tu tarea se prende en el mapa cuando toca.</span></div>
+    </div>
+    <div class="shots">
+      <div class="shot"><div class="ph">Plano real · rutas por operador</div><img src="img/maps/clubhouse/0.jpg" loading="lazy" alt="Plano del sótano de Clubhouse"></div>
+      <div class="shot"><div class="ph">Defensa · refuerzos y rotaciones en el plano</div><img src="img/maps/border/2.jpg" loading="lazy" alt="Plano del segundo piso de Border"></div>
+    </div>
+  </section>
 </div>
-<script src="js/store.js?v=1788490006"></script>
-<script src="js/fx.js?v=1788490006"></script>
-<script src="js/theme.js?v=1788490006"></script>
-<script src="js/data-squad.js?v=1788490006"></script>
+
+<footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
+
+<script src="js/store.js?v=1788490520"></script>
+<script src="js/fx.js?v=1788490520"></script>
+<script src="js/theme.js?v=1788490520"></script>
+<script src="js/data-ops.js?v=1788490520"></script>
+<script src="js/data-squad.js?v=1788490520"></script>
+<script src="js/data-ranks.js?v=1788490520"></script>
 <script>
-document.getElementById('sqRow').innerHTML = SQUAD.map(p => `<div class="m"><span class="av ${p.me?'acc':''}">${Store.esc((p.nick||'AM').replace(/^o\s+/i,'').slice(0,2).toUpperCase())}</span><div><b>${Store.esc(p.nick||'André')}</b><small>${Store.esc(p.role)} · ${p.stats?('K/D '+p.stats.kd.toFixed(2)+' · nivel '+p.stats.level):'pon tu nick'}</small></div></div>`).join('');
+(() => {
+  const E = Store.esc, CHAMP = 4500;
+  const COLS = { valeria:'#d94f3d', paola:'#e2932f', maciaco:'#4ea8de', camila:'#8f6bd0', andre:'#39b6f0' };
+  const rpDe = s => (s && s.season && s.season.rp) || (s && (s.seasons.find(x => x[1] > 0) || [])[1]) || 0;
+  const rango = rp => (window.RANKS && RANKS.rankOf ? RANKS.rankOf(rp, 3) : null);
+  const opDe = id => (window.OPS || []).find(o => o.id === id);
+
+  const R = SQUAD.filter(p => !p.removed);
+  R.forEach(p => {
+    const s = p.stats, rp = rpDe(s), o = opDe(p.main), c = COLS[p.id] || 'var(--acc)';
+    const r = rango(rp), nom = r ? r.label : '';
+    const pct = Math.max(4, Math.min(100, Math.round(rp / CHAMP * 100)));
+    const el = document.createElement('div');
+    el.className = 'mem' + (s ? '' : ' vacio'); el.style.setProperty('--c', c);
+    el.innerHTML = s ? `
+      <div class="op"><span class="mas">Más jugado</span><span class="tag">${E(p.tag || '')}</span>
+        <img src="img/ops/${E(p.main)}.svg" alt="" loading="lazy">
+        <span class="opn">${E(o ? o.n : p.main)}</span></div>
+      <div class="id"><b>${E(p.nick || p.id)}</b><small>${E(p.role)}</small></div>
+      <div class="rk"><span class="n" style="color:${r ? r.color : 'var(--ink)'}">${rp.toLocaleString('es-MX')}</span><span class="t">${E(nom)} · pico ${s.peak.rp.toLocaleString('es-MX')}</span></div>
+      <div class="gs"><i data-w="${pct}"></i></div>
+      <div class="st">
+        <div><b>${s.kd.toFixed(2)}</b><small>K/D</small></div>
+        <div><b>${s.hs.toFixed(0)}%</b><small>Cabeza</small></div>
+        <div><b>${s.win.toFixed(0)}%</b><small>Ganadas</small></div>
+        <div><b>${(s.matches / 1000).toFixed(1)}k</b><small>Partidas</small></div>
+      </div>` : `
+      <div class="op"><span class="mas">Más jugado</span><span class="q">?</span><span class="opn">Sin definir</span></div>
+      <div class="id"><b>André</b><small>${E(p.role)} · falta tu nick</small></div>
+      <div class="rk"><span class="n">—</span><span class="t">Ponlo en Squad → Editar</span></div>
+      <div class="gs"><i data-w="0"></i></div>
+      <div class="st"><div><b>—</b><small>K/D</small></div><div><b>—</b><small>Cabeza</small></div><div><b>—</b><small>Ganadas</small></div><div><b>—</b><small>Partidas</small></div></div>`;
+    document.getElementById('roster').appendChild(el);
+  });
+
+  const con = R.filter(p => p.stats);
+  const prom = con.reduce((a, p) => a + rpDe(p.stats), 0) / Math.max(con.length, 1);
+  const pct = Math.max(3, Math.min(100, Math.round(prom / CHAMP * 100)));
+  document.getElementById('gNow').textContent = `Promedio del squad · ${Math.round(prom).toLocaleString('es-MX')} RP`;
+  document.getElementById('gPct').textContent = pct + '%';
+
+  // las barras crecen al entrar en pantalla
+  const crece = () => { document.getElementById('gBar').style.width = pct + '%';
+    document.querySelectorAll('.gs i').forEach(i => { i.style.width = i.dataset.w + '%'; }); };
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(e => { if (e.some(x => x.isIntersecting)) { crece(); io.disconnect(); } }, { threshold: .2 });
+    io.observe(document.querySelector('.goal'));
+    setTimeout(crece, 1200);
+  } else setTimeout(crece, 300);
+})();
 </script>
 </body>
 </html>

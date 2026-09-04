@@ -76,10 +76,12 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
   const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, prep: S.prep, vetos: S.vetos, lobbyOpen: S.lobbyOpen, ready: S.ready, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, season: SEASON });
   let SEASON = Store.get('season', null);
   if (!SEASON || !Array.isArray(SEASON.matches)) SEASON = { matches: [] };
-  { const have = new Set(SEASON.matches.map(m => m.id));
-    (window.SQUAD_MATCHES || []).forEach(t => { if (have.has(t.id)) return;
-      SEASON.matches.push({ id: t.id, date: Date.parse(t.date), map: t.map, mapName: t.mapName, result: t.result, w: t.w, l: t.l, rounds: [], players: t.players, src: 'tracker' }); });
-    SEASON.matches.sort((a, b) => a.date - b.date); Store.set('season', SEASON); }
+  // La temporada arranca EN BLANCO: los partidos viejos del tracker ya no se siembran,
+  // y a quien los tenga guardados del deploy anterior se le limpian una sola vez.
+  if (Store.get('limpieza', 0) < 1) {
+    SEASON.matches = SEASON.matches.filter(m => m.src !== 'tracker');
+    Store.set('limpieza', 1); Store.set('season', SEASON);
+  }
   const saveSeason = () => { Store.set('season', SEASON); if (Sync.connected && !syncing) Sync.patch({ season: SEASON }); };
   let syncing = false;
   function commit(patch) { Object.assign(S, patch); save(); if (Sync.connected && !syncing) { const p = {}; for (const k of Object.keys(patch)) if (k in shared()) p[k] = S[k]; if (Object.keys(p).length) Sync.patch(p); } render(); }
@@ -390,10 +392,16 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
     const ms = SEASON.matches.filter(m => !m.rpOnly); const w = ms.filter(m => m.result === 'W').length, l = ms.filter(m => m.result === 'L').length;
     const rows = ROSTER().map(p => ({ p, st: seasonStats(p.id) })); const champs = rows.filter(r => r.st.rp != null && r.st.rp >= CHAMP_RP).length;
     const pct = rows.length ? Math.round(rows.reduce((a, r) => a + Math.min(1, (r.st.rp || 0) / CHAMP_RP), 0) / rows.length * 100) : 0;
-    host.innerHTML = `<div class="k" style="margin-bottom:8px">Temporada Split Fire · registro del squad</div><div class="goal"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b class="h-disp" style="font-size:15px">Meta: todos Champion</b><div class="dim" style="font-size:12px">${champs}/${rows.length} en Champion (≥ ${Store.fmt(CHAMP_RP)} RP) · partidos registrados ${ms.length} · <b class="acc">${w}W – ${l}L</b></div></div><div class="k">${pct}% del camino</div></div><div class="bar"><i style="width:${pct}%"></i></div></div>
+    host.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px"><div class="k">Temporada Split Fire · registro del squad</div><button class="btn sm ghost" id="deCero">Empezar de cero</button></div><div class="goal"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b class="h-disp" style="font-size:15px">Meta: todos Champion</b><div class="dim" style="font-size:12px">${champs}/${rows.length} en Champion (≥ ${Store.fmt(CHAMP_RP)} RP) · partidos registrados ${ms.length} · <b class="acc">${w}W – ${l}L</b></div></div><div class="k">${pct}% del camino</div></div><div class="bar"><i style="width:${pct}%"></i></div></div>
     <table><thead><tr><th>Jugador</th><th>RP ahora</th><th>Rango</th><th>Faltan p/ Champion</th><th>K/D temp.</th><th>K · D · A</th><th>Partidos</th><th>Progreso RP</th></tr></thead><tbody>${rows.map(({ p, st }) => { const r = st.rp != null ? RANKS.rankOf(st.rp, 3) : null; const falta = st.rp != null ? Math.max(0, CHAMP_RP - st.rp) : null; const mx = Math.max(1, ...st.rps); return `<tr><td><b>${E(p.nick || p.id)}</b></td><td class="rp">${st.rp != null ? Store.fmt(st.rp) : '—'}</td><td>${r ? `<span class="chip" style="border-color:${r.color};color:${r.color}">${E(r.label)}</span>` : '<span class="dim">sin dato</span>'}</td><td class="rp">${falta == null ? '—' : falta === 0 ? '<span style="color:var(--green)">CHAMPION</span>' : Store.fmt(falta) + ' RP · ~' + Math.ceil(falta / 80) + ' victorias'}</td><td><b>${st.n ? st.kd.toFixed(2) : '—'}</b></td><td class="rp">${st.n ? `${st.k} · ${st.d} · ${st.a}` : '—'}</td><td>${st.n}</td><td><div class="spark">${st.rps.map(v => `<i style="height:${Math.max(3, Math.round(v / mx * 22))}px;background:${v >= CHAMP_RP ? 'var(--green)' : 'var(--acc)'}" title="${v}"></i>`).join('') || '<span class="dim">—</span>'}</div></td></tr>`; }).join('')}</tbody></table>
     ${ms.length ? `<div class="k" style="margin-top:16px">Historial</div><div class="hist">${ms.slice().reverse().map(m => `<div><b>${new Date(m.date).toLocaleDateString('es-MX', { day: '2-digit', month: 'short' })}</b><span>${E((MAPS.find(x => x.id === m.map) || {}).n || m.mapName || m.map)}${m.src === 'tracker' ? ' <span class="dim">· tracker</span>' : ''} · ${m.result === 'W' ? '<b style="color:var(--green)">W</b>' : '<b style="color:var(--red)">L</b>'} ${m.w}–${m.l}</span><span class="rp">${Object.entries(m.players || {}).filter(([, v]) => v.k != null).map(([id, v]) => `${E((slotOf(id) || {}).nick || id).split(' ')[0]} ${v.k}/${v.d}`).join(' · ')}</span><button class="btn sm ghost" data-delm="${m.id}">×</button></div>`).join('')}</div><div style="margin-top:10px;display:flex;gap:8px"><button class="btn sm" id="expSeason">Exportar JSON</button><button class="btn sm ghost" id="impSeason">Importar</button></div>` : '<div class="dim" style="margin-top:10px;font-size:13px">Aún no hay partidos registrados. Toca <b>Iniciar ranked</b> en PLAN y al terminar captura las stats.</div>'}`;
     $$('#seasonBox [data-delm]').forEach(b => b.onclick = () => { if (!confirm('¿Borrar este partido?')) return; SEASON.matches = SEASON.matches.filter(m => m.id !== b.dataset.delm); saveSeason(); renderSeason(); });
+    const cero = $('#deCero'); if (cero) cero.onclick = () => {
+      if (!confirm('Borra TODO el registro de la temporada y la partida en curso de este navegador. ¿Seguro?')) return;
+      SEASON = { matches: [] }; saveSeason();
+      ['state', 'me', 'squad', 'limpieza'].forEach(k => { try { localStorage.removeItem('r6ns.' + k); } catch (e) {} });
+      location.href = 'app.html';
+    };
     const ex = $('#expSeason'); if (ex) ex.onclick = () => { navigator.clipboard.writeText(JSON.stringify(SEASON)).then(() => Store.toast('Temporada copiada (JSON)')); };
     const im = $('#impSeason'); if (im) im.onclick = () => { const t = prompt('Pega el JSON de la temporada:'); try { const j = JSON.parse(t); if (j && Array.isArray(j.matches)) { SEASON = j; saveSeason(); renderSeason(); } } catch (e) { Store.toast('JSON inválido'); } };
   }
