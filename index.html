@@ -6,7 +6,7 @@
 <title>R6 NUEVA SEASON · Centro de mando del squad</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788492352">
+<link rel="stylesheet" href="css/base.css?v=1788492722">
 <style>
 body{background:#05070a}
 .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
@@ -32,10 +32,17 @@ header.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;just
 /* ---------- 1. hero con fuego ---------- */
 .hero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
   padding:clamp(46px,7vh,86px) 24px clamp(44px,6vh,72px);isolation:isolate}
-.hero .bg{position:absolute;inset:0;z-index:-3;
-  background:radial-gradient(58% 44% at 50% 64%,rgba(224,96,20,.16),transparent 70%),
-             radial-gradient(90% 60% at 50% 100%,rgba(150,38,6,.14),transparent 72%),#05070a}
-.hero .rej{position:absolute;inset:0;z-index:-3;opacity:.26;
+/* key art oficial de Siege detras; se apaga fuerte para que el fuego y el titulo manden */
+.hero .bg{position:absolute;inset:0;z-index:-4;background:#05070a;overflow:hidden}
+.hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;
+  opacity:.46;filter:grayscale(.28) contrast(1.06) brightness(.82);
+  animation:derivar 26s ease-in-out infinite alternate}
+@keyframes derivar{from{transform:scale(1.06) translateX(-1.2%)}to{transform:scale(1.12) translateX(1.2%)}}
+.hero .velo{position:absolute;inset:0;z-index:-3;pointer-events:none;
+  background:radial-gradient(64% 56% at 50% 46%,rgba(5,7,10,.30),rgba(5,7,10,.80) 62%,#05070a 92%),
+             linear-gradient(180deg,rgba(5,7,10,.9),transparent 22%,transparent 62%,#05070a 100%),
+             radial-gradient(58% 44% at 50% 62%,rgba(224,96,20,.20),transparent 72%)}
+.hero .rej{position:absolute;inset:0;z-index:-3;opacity:.20;
   background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:64px 64px;
   -webkit-mask-image:radial-gradient(64% 58% at 50% 46%,#000,transparent 78%);mask-image:radial-gradient(64% 58% at 50% 46%,#000,transparent 78%)}
@@ -140,7 +147,36 @@ header.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;just
   .sec{padding:44px 0 0}
   .hero .pie{gap:16px}
 }
-footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:9.5px;
+
+/* ---------- 5. cinta infinita de planos, en grande ---------- */
+.cinta{padding:66px 0 0;overflow:hidden}
+.cinta .hd{max-width:1280px;margin:0 auto 20px;padding:0 24px;display:flex;align-items:flex-end;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:11px}
+.cinta .hd h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(25px,3.9vw,42px);
+  letter-spacing:.03em;margin:0;line-height:1}
+.cinta .hd h2 em{font-style:normal;color:var(--acc)}
+.riel{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.riel .via{display:flex;gap:16px;width:max-content;animation:correr 96s linear infinite;will-change:transform}
+.riel:hover .via{animation-play-state:paused}
+.riel+.riel{margin-top:16px}
+.riel.rev .via{animation-direction:reverse;animation-duration:118s}
+@keyframes correr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.plano{position:relative;flex:0 0 auto;width:clamp(300px,26vw,440px);aspect-ratio:16/10;overflow:hidden;
+  border:1px solid var(--line);background:#080b0e;display:block;transition:border-color .3s}
+.plano::before,.plano::after{content:"";position:absolute;width:13px;height:13px;border:1px solid var(--acc);opacity:.5;z-index:2}
+.plano::before{left:6px;top:6px;border-right:0;border-bottom:0}
+.plano::after{right:6px;bottom:6px;border-left:0;border-top:0}
+.plano:hover{border-color:var(--acc)}
+.plano img{width:100%;height:100%;object-fit:cover;opacity:.6;transition:opacity .4s,transform .7s cubic-bezier(.2,.7,.3,1)}
+.plano:hover img{opacity:1;transform:scale(1.06)}
+.plano .nm{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;font-family:var(--disp);font-weight:700;
+  font-size:clamp(20px,2.2vw,30px);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);
+  background:linear-gradient(180deg,transparent,rgba(4,6,9,.94))}
+.plano .fl{position:absolute;top:11px;left:26px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);background:rgba(4,6,9,.82);border:1px solid var(--line);padding:3px 7px;z-index:2}
+@media(prefers-reduced-motion:reduce){.riel .via{animation:none}.riel{overflow-x:auto}}
+footer{margin-top:60px;padding:17px 24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:9.5px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 @media(prefers-reduced-motion:reduce){#fuego{display:none}.hero .aura,.tac .ru,.tac .bmb{animation:none}.tac .ru{stroke-dashoffset:0}}
 </style>
@@ -154,7 +190,7 @@ footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-f
 </header>
 
 <section class="hero">
-  <div class="bg"></div><div class="rej"></div><div class="aura"></div>
+  <div class="bg"><img src="img/ui/hero-r6.jpg" alt="" fetchpriority="high"></div><div class="velo"></div><div class="rej"></div><div class="aura"></div>
   <canvas id="fuego" aria-hidden="true"></canvas>
   <div class="caja">
     <div class="kick tag"><b></b> Temporada Split Fire · escuadra de 4</div>
@@ -214,15 +250,22 @@ footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-f
   </section>
 </div>
 
-<footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
 
-<script src="js/store.js?v=1788492352"></script>
-<script src="js/fx.js?v=1788492352"></script>
-<script src="js/theme.js?v=1788492352"></script>
-<script src="js/data-ops.js?v=1788492352"></script>
-<script src="js/data-squad.js?v=1788492352"></script>
-<script src="js/data-ranks.js?v=1788492352"></script>
-<script src="js/data-maps.js?v=1788492352"></script>
+<section class="cinta">
+  <div class="hd"><h2 class="h-disp" data-fx>Los <em>planos</em></h2><span class="tag">Blueprints reales del juego · pasa el cursor para frenar</span></div>
+  <div class="riel"><div class="via" id="via1"></div></div>
+  <div class="riel rev"><div class="via" id="via2"></div></div>
+</section>
+
+<footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · Arte: Ubisoft · No afiliado a Ubisoft</span></footer>
+
+<script src="js/store.js?v=1788492722"></script>
+<script src="js/fx.js?v=1788492722"></script>
+<script src="js/theme.js?v=1788492722"></script>
+<script src="js/data-ops.js?v=1788492722"></script>
+<script src="js/data-squad.js?v=1788492722"></script>
+<script src="js/data-ranks.js?v=1788492722"></script>
+<script src="js/data-maps.js?v=1788492722"></script>
 <script>
 /* ============ 1. FUEGO: partículas que salen de las propias letras ============ */
 (() => {
@@ -363,6 +406,23 @@ footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-f
   const ranked = (window.MAPS || []).filter(m => m.pool === 'ranked');
   document.getElementById('kMapas').textContent = ranked.length || 18;
   document.getElementById('kPlanes').textContent = ranked.reduce((a, m) => a + (m.sites || []).length, 0) * 8 || '—';
+
+
+  // Cinta infinita de planos: cada mapa con su blueprint, dos rieles en sentidos opuestos.
+  (async () => {
+    let TH = {}; try { TH = await (await fetch('img/thumbs/index.json')).json(); } catch (e) {}
+    const lista = (window.MAPS || []).filter(m => TH[m.id]).map(m => ({
+      n: m.n, src: `img/thumbs/${m.id}.jpg`,
+      fl: TH[m.id] + (TH[m.id] === 1 ? ' planta' : ' plantas')
+    }));
+    const cinta = document.querySelector('.cinta');
+    if (lista.length < 4) { if (cinta) cinta.remove(); return; }
+    const mitad = Math.ceil(lista.length / 2);
+    const carta = m => `<a class="plano" href="app.html" title="${E(m.n)}"><img src="${E(m.src)}" loading="eager" decoding="async" alt=""><span class="fl">${E(m.fl)}</span><span class="nm">${E(m.n)}</span></a>`;
+    const llena = (id, arr) => { const h = arr.map(carta).join(''); document.getElementById(id).innerHTML = h + h; };
+    llena('via1', lista.slice(0, mitad));
+    llena('via2', lista.slice(mitad).concat(lista.slice(0, 3)));
+  })();
 
   // Plan real: estas rutas salieron del propio motor de la app (Clubhouse · Iglesia, ataque).
   const RUTAS = [
