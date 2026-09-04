@@ -656,3 +656,58 @@
 .ov .task{transition:opacity .25s}
 .setup .rl i{color:var(--dim);font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:0;text-transform:none}
 .setup .rl b{font-family:var(--disp);font-size:15px;color:var(--acc2);letter-spacing:0}
+
+/* ---------- pantalla de inicio del centro de mando ---------- */
+/* titulo en llamas: gradiente que sube + brasa detras + temblor de la llama */
+.fuego{font-family:var(--disp);font-weight:700;line-height:.86;letter-spacing:.005em;margin:0;
+  font-size:clamp(50px,12.6vw,164px);text-transform:uppercase;position:relative;z-index:1}
+.fuego .ln{display:block;position:relative}
+.fuego i{display:inline-block;font-style:normal;position:relative;
+  background:linear-gradient(180deg,#fff8e6 0%,#ffd98a 22%,#f7a52c 48%,#e2621a 72%,#a02a08 100%);
+  background-size:100% 260%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:lamer 2.6s ease-in-out infinite, brotar .75s cubic-bezier(.2,.7,.3,1) both;
+  filter:drop-shadow(0 -6px 16px rgba(255,150,40,.5)) drop-shadow(0 4px 30px rgba(190,50,10,.35))}
+.fuego .ln:nth-child(2) i{animation-duration:3.1s,.75s}
+@keyframes lamer{0%,100%{background-position:50% 78%}50%{background-position:50% 26%}}
+@keyframes brotar{from{opacity:0;transform:translateY(26px) scaleY(.7)}to{opacity:1;transform:none}}
+.fuego i:nth-child(1){animation-delay:0s,.02s}.fuego i:nth-child(2){animation-delay:.14s,.08s}
+.fuego i:nth-child(3){animation-delay:.28s,.14s}.fuego i:nth-child(4){animation-delay:.42s,.20s}
+.fuego i:nth-child(5){animation-delay:.56s,.26s}.fuego i:nth-child(6){animation-delay:.70s,.32s}
+/* la brasa que respira detras */
+.fuego::before{content:"";position:absolute;left:50%;top:52%;width:112%;height:150%;transform:translate(-50%,-50%);
+  background:radial-gradient(46% 40% at 50% 62%,rgba(255,132,26,.30),rgba(190,40,10,.12) 52%,transparent 74%);
+  filter:blur(20px);z-index:-1;animation:respira 3.4s ease-in-out infinite}
+@keyframes respira{0%,100%{opacity:.72;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
+/* lengua de llama: copia del texto, desplazada por turbulencia, detras */
+.fuego .ln::after{content:attr(data-t);position:absolute;left:0;right:0;top:-.06em;
+  background:linear-gradient(180deg,#ffca6b,#ff6a12 46%,rgba(150,25,5,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:url(#llama) blur(2px);opacity:.65;z-index:-1;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.fuego i,.fuego::before{animation:none}.fuego .ln::after{display:none}}
+.hero .bajan{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(22px,4.6vw,54px);letter-spacing:.10em;margin:20px 0 0;color:var(--ink)}
+.hero .bajan i{font-style:normal;color:var(--acc)}
+.hero p{max-width:640px;margin:22px auto 0;font-size:16px;line-height:1.62;color:var(--ink2)}
+.hero .cta{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.hero .cta .btn{height:46px;padding:0 26px;font-size:12px}
+@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero>*{animation:riseIn .7s cubic-bezier(.2,.7,.3,1) both}
+.hero .kick{animation-delay:.02s}.hero h1{animation-delay:.10s}.hero .bajan{animation-delay:.26s}.hero p{animation-delay:.38s}.hero .cta{animation-delay:.48s}
+
+
+.inicio{text-align:center;padding:26px 0 8px;position:relative}
+.inicio .fuego{font-size:clamp(40px,7.4vw,92px)}
+.inicio .sub{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(15px,2.2vw,26px);letter-spacing:.10em;margin-top:10px;color:var(--ink)}
+.inicio .sub i{font-style:normal;color:var(--acc)}
+.sqmini{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:10px;margin-top:8px}
+@media(min-width:900px){.sqmini{grid-template-columns:repeat(4,1fr)}}
+.sqm{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}
+.sqm::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--acc))}
+.sqm .op{position:relative;height:96px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line);
+  background:radial-gradient(70% 80% at 50% 26%,color-mix(in srgb,var(--c,var(--acc)) 24%,transparent),transparent 70%),#0a0c0f}
+.sqm .op img{width:74px;height:74px;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(0,0,0,.6))}
+.sqm .op b{position:absolute;left:0;right:0;bottom:5px;text-align:center;font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  font-size:15px;letter-spacing:.05em;color:var(--c,var(--acc));text-shadow:0 2px 10px rgba(0,0,0,.85)}
+.sqm .nm{display:block;padding:9px 11px 2px;font-family:var(--disp);font-size:16px;font-weight:600;line-height:1.1}
+.sqm .rl{display:block;padding:0 11px 8px;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.sqm .rp{display:flex;align-items:baseline;gap:6px;padding:0 11px 10px}
+.sqm .rp b{font-family:var(--disp);font-size:20px;font-weight:700}
+.sqm .rp span{font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}

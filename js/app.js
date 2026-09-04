@@ -574,6 +574,21 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
   function openLobby() { S.step = 1; commit({ lobbyOpen: true, ready: {} }); }
   function startMatch() { S.step = 2; S.focus = null; commit({ lobbyOpen: false, ready: {}, match: { rounds: [], active: true, id: Store.uid(), startedAt: Date.now() }, hint: null, round: 1, live: null, siteKnown: true }); Store.toast('Partida iniciada · ronda 1'); }
   // ---------- LOBBY: todos dan LISTO ----------
+  // Tarjetas del squad en la pantalla de inicio: operador mas jugado + rango y RP.
+  const COLSQ = { valeria: '#d94f3d', paola: '#e2932f', maciaco: '#4ea8de', camila: '#8f6bd0' };
+  function rpDeSquad(st) { return (st && st.season && st.season.rp) || (st && (st.seasons.find(x => x[1] > 0) || [])[1]) || 0; }
+  function sqMiniHTML() {
+    return `<div class="sqmini">${ROSTER().map(p => {
+      const st = p.stats, rp = rpDeSquad(st), r = rp ? RANKS.rankOf(rp, 3) : null;
+      const o = Engine.op(p.main), c = COLSQ[p.id] || 'var(--acc)';
+      return `<div class="sqm" style="--c:${c}">
+        <div class="op">${p.main ? `<img src="${OPIMG(p.main)}" alt="" loading="lazy">` : ''}<b>${E(o ? o.n : '—')}</b></div>
+        <span class="nm">${E(p.nick || p.id)}</span><span class="rl">${E(p.role)}</span>
+        <div class="rp"><b style="color:${r ? r.color : 'var(--ink)'}">${rp ? Store.fmt(rp) : '—'}</b><span>${r ? E(r.label) : 'sin rango'}</span></div>
+      </div>`;
+    }).join('')}</div>`;
+  }
+
   function lobbyPeople() { // se identifica por conexión, no por slot: dos personas pueden elegir el mismo slot
     if (Sync.connected && Sync.members.length) return Sync.members.map(m => ({ key: m.id || m.slot || m.name, slot: m.slot, name: m.name, online: true, host: !!m.host }));
     return [{ key: 'solo', slot: me ? me.slot : 'yo', name: me ? me.name : 'Tú', online: true, host: true }];
@@ -603,7 +618,19 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
     const yo = yoKey(); const yaListo = !!S.ready[yo];
     const fuera = ROSTER().filter(p => !gente.some(g => g.slot === p.id));
     el.innerHTML = `<div class="lobby"><div class="lb">
-      <div class="lbh"><span class="k">Fase 1</span><h2 class="h-disp" data-fx>Partida ranked</h2><p>Todos dan <b>LISTO</b> para arrancar. El que quiera confirma el mapa después: se le actualiza a todo el equipo.</p></div>
+      <div class="inicio">
+        <h1 class="fuego" aria-label="Nueva Season">
+          <span class="ln" data-t="Nueva"><i>N</i><i>U</i><i>E</i><i>V</i><i>A</i></span>
+          <span class="ln" data-t="Season"><i>S</i><i>E</i><i>A</i><i>S</i><i>O</i><i>N</i></span>
+        </h1>
+        <div class="sub">Y <i>le bajan</i>.</div>
+      </div>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="llama">
+        <feTurbulence type="fractalNoise" baseFrequency="0.022 0.055" numOctaves="3" seed="7" result="ruido">
+          <animate attributeName="baseFrequency" dur="9s" values="0.022 0.055;0.03 0.08;0.022 0.055" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter></svg>
       <div class="lbgrid">${gente.map(g => `<div class="lbp ${S.ready[g.key] ? 'ok' : ''} ${g.key === yo ? 'yo' : ''}">
         <span class="av">${E((g.name || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase())}</span>
         <span class="nm">${E(g.name)}${g.host ? ' <i>host</i>' : ''}</span>
@@ -612,9 +639,11 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
       <div class="lbbar"><b>${listos}</b> de <b>${gente.length}</b> listos${Sync.connected ? '' : ' · <span class="dim">sin sala: solo tú</span>'}</div>
       <div class="lbact">
         <button class="btn ${yaListo ? '' : 'p'} big" id="lbReady">${yaListo ? '✓ Estás listo' : 'LISTO'}</button>
-        <button class="btn big" id="lbGo">Empezar ya ▶</button>
+        <button class="btn ${yaListo ? 'p' : ''} big" id="lbGo">Empezar ranked ▶</button>
         ${Sync.connected ? '' : '<button class="btn" id="lbSala">Crear sala · invita al squad</button>'}
       </div>
+      <div class="k" style="margin:22px 0 8px">El squad</div>
+      ${sqMiniHTML()}
       ${histHTML()}
       </div></div>`;
     FX.all(el);

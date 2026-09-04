@@ -6,7 +6,7 @@
 <title>R6 NUEVA SEASON · Y le bajan</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788490520">
+<link rel="stylesheet" href="css/base.css?v=1788491036">
 <style>
 .wrap{max-width:1240px;margin:0 auto;padding:0 26px}
 header.top{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(8,10,12,.92);backdrop-filter:blur(8px);z-index:20}
@@ -15,11 +15,31 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .hero{position:relative;text-align:center;padding:74px 26px 54px;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 0%,rgba(226,147,47,.13),transparent 72%);pointer-events:none}
 .hero .kick{font-family:var(--mono);font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
-.hero h1{font-family:var(--disp);font-weight:700;line-height:.88;letter-spacing:-.01em;margin:0;
-  font-size:clamp(52px,13vw,166px);text-transform:uppercase;
-  background:linear-gradient(180deg,#fff 8%,var(--ink) 46%,var(--mute) 108%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero h1 span{display:block}
-.hero h1 span:nth-child(2){color:transparent;background:linear-gradient(180deg,var(--acc) 6%,#a35f14 96%);-webkit-background-clip:text;background-clip:text}
+/* titulo en llamas: gradiente que sube + brasa detras + temblor de la llama */
+.fuego{font-family:var(--disp);font-weight:700;line-height:.86;letter-spacing:.005em;margin:0;
+  font-size:clamp(50px,12.6vw,164px);text-transform:uppercase;position:relative;z-index:1}
+.fuego .ln{display:block;position:relative}
+.fuego i{display:inline-block;font-style:normal;position:relative;
+  background:linear-gradient(180deg,#fff8e6 0%,#ffd98a 22%,#f7a52c 48%,#e2621a 72%,#a02a08 100%);
+  background-size:100% 260%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:lamer 2.6s ease-in-out infinite, brotar .75s cubic-bezier(.2,.7,.3,1) both;
+  filter:drop-shadow(0 -6px 16px rgba(255,150,40,.5)) drop-shadow(0 4px 30px rgba(190,50,10,.35))}
+.fuego .ln:nth-child(2) i{animation-duration:3.1s,.75s}
+@keyframes lamer{0%,100%{background-position:50% 78%}50%{background-position:50% 26%}}
+@keyframes brotar{from{opacity:0;transform:translateY(26px) scaleY(.7)}to{opacity:1;transform:none}}
+.fuego i:nth-child(1){animation-delay:0s,.02s}.fuego i:nth-child(2){animation-delay:.14s,.08s}
+.fuego i:nth-child(3){animation-delay:.28s,.14s}.fuego i:nth-child(4){animation-delay:.42s,.20s}
+.fuego i:nth-child(5){animation-delay:.56s,.26s}.fuego i:nth-child(6){animation-delay:.70s,.32s}
+/* la brasa que respira detras */
+.fuego::before{content:"";position:absolute;left:50%;top:52%;width:112%;height:150%;transform:translate(-50%,-50%);
+  background:radial-gradient(46% 40% at 50% 62%,rgba(255,132,26,.30),rgba(190,40,10,.12) 52%,transparent 74%);
+  filter:blur(20px);z-index:-1;animation:respira 3.4s ease-in-out infinite}
+@keyframes respira{0%,100%{opacity:.72;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
+/* lengua de llama: copia del texto, desplazada por turbulencia, detras */
+.fuego .ln::after{content:attr(data-t);position:absolute;left:0;right:0;top:-.06em;
+  background:linear-gradient(180deg,#ffca6b,#ff6a12 46%,rgba(150,25,5,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:url(#llama) blur(2px);opacity:.65;z-index:-1;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.fuego i,.fuego::before{animation:none}.fuego .ln::after{display:none}}
 .hero .bajan{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(22px,4.6vw,54px);letter-spacing:.10em;margin:20px 0 0;color:var(--ink)}
 .hero .bajan i{font-style:normal;color:var(--acc)}
 .hero p{max-width:640px;margin:22px auto 0;font-size:16px;line-height:1.62;color:var(--ink2)}
@@ -29,13 +49,26 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .hero>*{animation:riseIn .7s cubic-bezier(.2,.7,.3,1) both}
 .hero .kick{animation-delay:.02s}.hero h1{animation-delay:.10s}.hero .bajan{animation-delay:.26s}.hero p{animation-delay:.38s}.hero .cta{animation-delay:.48s}
 
-/* barra colectiva a Champion */
-.goal{max-width:760px;margin:38px auto 0;border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:16px 18px}
-.goal .gh{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+/* barra: escalera real de Ranked 3.0 */
+.goal{max-width:900px;margin:40px auto 0;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px 14px}
+.goal .gh{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
 .goal .gh b{font-family:var(--disp);font-size:19px;letter-spacing:.04em;color:var(--acc)}
-.goal .bar{height:9px;border-radius:5px;background:rgba(255,255,255,.07);overflow:hidden}
-.goal .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),#f0b45c);border-radius:5px;width:0;transition:width 1.5s cubic-bezier(.2,.7,.3,1)}
-.goal .gf{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--mute);margin-top:8px;text-transform:uppercase}
+.lad{position:relative;padding-bottom:34px}
+.tiers{display:flex;height:14px;border-radius:7px;overflow:hidden;border:1px solid var(--line)}
+.tiers span{position:relative;flex:1 1 0;background:var(--c);opacity:.30;transition:opacity .3s}
+.tiers span.hay{opacity:.92}
+.tiers span+span{border-left:1px solid rgba(0,0,0,.5)}
+.tiers em{position:absolute;left:0;right:0;top:19px;font-style:normal;font-family:var(--mono);font-size:8px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--mute);text-align:center;white-space:nowrap;overflow:hidden}
+.pins{position:absolute;left:0;right:0;top:-4px;height:22px}
+.pins b{position:absolute;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;border:2px solid #0a0c0f;
+  display:grid;place-items:center;font-family:var(--mono);font-size:8.5px;font-weight:600;color:#0a0c0f;letter-spacing:0;
+  box-shadow:0 3px 10px rgba(0,0,0,.6);animation:pinIn .8s cubic-bezier(.2,.7,.3,1) both;left:0}
+@keyframes pinIn{from{opacity:0;transform:translateX(-50%) translateY(-12px) scale(.6)}to{opacity:1}}
+.champ{display:flex;align-items:center;gap:11px;justify-content:flex-end;margin-top:6px}
+.champ img{filter:drop-shadow(0 4px 12px rgba(226,147,47,.45))}
+.champ b{display:block;font-family:var(--disp);font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--acc)}
+.champ small{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
 
 /* ---------- 2. el squad ---------- */
 .sec{padding:56px 0 10px}
@@ -82,7 +115,27 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
 .shot .ph{padding:9px 12px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
 .shot img{display:block;width:100%;height:auto}
-footer{margin-top:60px;padding:18px 26px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ---------- 4. cinta infinita de planos ---------- */
+.cinta{padding:44px 0 8px;overflow:hidden}
+.cinta .hd{max-width:1240px;margin:0 auto 18px;padding:0 26px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.cinta .hd h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(24px,3.6vw,40px);letter-spacing:.03em;margin:0}
+.cinta .hd small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.riel{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.riel .via{display:flex;gap:12px;width:max-content;animation:correr 84s linear infinite}
+.riel:hover .via{animation-play-state:paused}
+.riel+.riel{margin-top:12px}
+.riel.rev .via{animation-direction:reverse;animation-duration:98s}
+@keyframes correr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.plano{position:relative;flex:0 0 auto;width:232px;height:146px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0a0c0f}
+.plano img{width:100%;height:100%;object-fit:cover;opacity:.62;transition:opacity .35s,transform .5s cubic-bezier(.2,.7,.3,1)}
+.plano:hover img{opacity:1;transform:scale(1.05)}
+.plano .nm{position:absolute;left:0;right:0;bottom:0;padding:16px 10px 8px;font-family:var(--disp);font-weight:600;font-size:15px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--ink);background:linear-gradient(180deg,transparent,rgba(4,6,9,.92))}
+.plano .fl{position:absolute;top:7px;left:8px;font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim);background:rgba(4,6,9,.8);border:1px solid var(--line);border-radius:3px;padding:2px 5px}
+@media(prefers-reduced-motion:reduce){.riel .via{animation:none}.riel{overflow-x:auto}}
+footer{margin-top:44px;padding:18px 26px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 @media(max-width:700px){.mem .st b{font-size:16px}.hero{padding:52px 20px 40px}}
 </style>
 </head>
@@ -95,14 +148,22 @@ footer{margin-top:60px;padding:18px 26px;border-top:1px solid var(--line);font-f
 
 <section class="hero">
   <div class="kick">Bienvenidos · temporada Split Fire</div>
-  <h1 class="h-disp"><span>Nueva</span><span>Season</span></h1>
+  <h1 class="fuego" aria-label="Nueva Season">
+    <span class="ln" data-t="Nueva"><i>N</i><i>U</i><i>E</i><i>V</i><i>A</i></span>
+    <span class="ln" data-t="Season"><i>S</i><i>E</i><i>A</i><i>S</i><i>O</i><i>N</i></span>
+  </h1>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="llama">
+    <feTurbulence type="fractalNoise" baseFrequency="0.022 0.055" numOctaves="3" seed="7" result="ruido">
+      <animate attributeName="baseFrequency" dur="9s" values="0.022 0.055;0.03 0.08;0.022 0.055" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter></svg>
   <div class="bajan">Y <i>le bajan</i>.</div>
-  <p>Esta season va a ser diferente. Llegamos a <b>Champion</b> — no de suerte: con plan de entrada antes de cada ronda, sitio decidido, operadores repartidos y los cinco viendo lo mismo. Tenemos el squad. Ahora tenemos el centro de mando.</p>
-  <div class="cta"><a class="btn p" href="app.html">Empezar ranked</a><a class="btn" href="#squad">Ver al squad</a></div>
+
   <div class="goal">
-    <div class="gh"><span>El squad rumbo a Champion</span><b id="gPct">—</b></div>
-    <div class="bar"><i id="gBar"></i></div>
-    <div class="gf"><span id="gNow">—</span><span>Champion · 4,500 RP</span></div>
+    <div class="gh"><span>Escalera Ranked 3.0 · dónde está cada quien</span><b id="gPct">—</b></div>
+    <div class="lad" id="lad"><div class="tiers" id="tiers"></div><div class="pins" id="pins"></div></div>
+    <div class="champ"><img src="img/ui/champion.svg" alt="" width="46" height="46"><div><b>Champion</b><small>4,500 RP · a donde vamos</small></div></div>
   </div>
 </section>
 
@@ -128,14 +189,22 @@ footer{margin-top:60px;padding:18px 26px;border-top:1px solid var(--line);font-f
   </section>
 </div>
 
+
+<section class="cinta">
+  <div class="hd"><h2 class="h-disp" data-fx>Los planos</h2><small>Blueprints reales del juego · pasa el cursor para frenar</small></div>
+  <div class="riel"><div class="via" id="via1"></div></div>
+  <div class="riel rev"><div class="via" id="via2"></div></div>
+</section>
+
 <footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
 
-<script src="js/store.js?v=1788490520"></script>
-<script src="js/fx.js?v=1788490520"></script>
-<script src="js/theme.js?v=1788490520"></script>
-<script src="js/data-ops.js?v=1788490520"></script>
-<script src="js/data-squad.js?v=1788490520"></script>
-<script src="js/data-ranks.js?v=1788490520"></script>
+<script src="js/store.js?v=1788491036"></script>
+<script src="js/fx.js?v=1788491036"></script>
+<script src="js/theme.js?v=1788491036"></script>
+<script src="js/data-ops.js?v=1788491036"></script>
+<script src="js/data-squad.js?v=1788491036"></script>
+<script src="js/data-ranks.js?v=1788491036"></script>
+<script src="js/data-maps.js?v=1788491036"></script>
 <script>
 (() => {
   const E = Store.esc, CHAMP = 4500;
@@ -172,19 +241,53 @@ footer{margin-top:60px;padding:18px 26px;border-top:1px solid var(--line);font-f
     document.getElementById('roster').appendChild(el);
   });
 
+  // Escalera real de Ranked 3.0: un tramo por rango, con cada quien clavado en su RP.
+  // 7 tramos de 500 RP (Cobre → Diamante). Champion es la meta, va como escudo al final.
+  const BASE = (RANKS.base && RANKS.base[3]) || 1000, TOP = 4500;
+  const T = RANKS.tiers.slice(0, 7);
+  const tiers = document.getElementById('tiers'), pins = document.getElementById('pins');
+  T.forEach(t => { const sp = document.createElement('span'); sp.style.setProperty('--c', t.c); sp.innerHTML = `<em>${t.n}</em>`; tiers.appendChild(sp); });
+  const pos = rp => Math.max(0, Math.min(100, (rp - BASE) / (TOP - BASE) * 100));
+  // los pines no se enciman: si dos caen a menos de un pin de distancia, se apartan
+  const anchoPin = 24 / (document.querySelector('.lad').clientWidth || 860) * 100 + .6;
+  const gente = R.filter(p => p.stats).map(p => ({ p, rp: rpDe(p.stats), x: pos(rpDe(p.stats)) })).sort((a, b) => a.x - b.x);
+  for (let k = 1; k < gente.length; k++) if (gente[k].x - gente[k - 1].x < anchoPin) gente[k].x = gente[k - 1].x + anchoPin;
+  const sobra = gente.length ? gente[gente.length - 1].x - 100 : 0;
+  if (sobra > 0) gente.forEach(g => { g.x -= sobra; });
+  gente.forEach(({ p, rp, x }, i) => {
+    const r = rango(rp);
+    const b = document.createElement('b');
+    b.style.left = x + '%'; b.style.background = r ? r.color : 'var(--acc)';
+    b.style.animationDelay = (.2 + i * .12) + 's';
+    b.textContent = (p.nick || p.id).replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
+    b.title = `${p.nick} · ${rp.toLocaleString('es-MX')} RP · ${r ? r.label : ''}`;
+    pins.appendChild(b);
+    const seg = tiers.children[r ? r.t : 0]; if (seg) seg.classList.add('hay');
+  });
   const con = R.filter(p => p.stats);
   const prom = con.reduce((a, p) => a + rpDe(p.stats), 0) / Math.max(con.length, 1);
-  const pct = Math.max(3, Math.min(100, Math.round(prom / CHAMP * 100)));
-  document.getElementById('gNow').textContent = `Promedio del squad · ${Math.round(prom).toLocaleString('es-MX')} RP`;
-  document.getElementById('gPct').textContent = pct + '%';
+  document.getElementById('gPct').textContent = Math.round(prom).toLocaleString('es-MX') + ' RP promedio';
 
-  // las barras crecen al entrar en pantalla
-  const crece = () => { document.getElementById('gBar').style.width = pct + '%';
-    document.querySelectorAll('.gs i').forEach(i => { i.style.width = i.dataset.w + '%'; }); };
+
+  // cinta infinita: cada mapa con su plano real, en dos rieles que corren al reves
+  (async () => {
+    let MAN = {}; try { MAN = await (await fetch('js/floors-manifest.json')).json(); } catch (e) {}
+    const lista = (window.MAPS || []).filter(m => (MAN[m.id] || []).length).map(m => {
+      const fs = MAN[m.id], f = fs[Math.min(1, fs.length - 1)];
+      return { n: m.n, src: f.src, fl: fs.length + (fs.length === 1 ? ' planta' : ' plantas'), pool: m.pool };
+    });
+    if (!lista.length) { document.querySelector('.cinta').remove(); return; }
+    const mitad = Math.ceil(lista.length / 2);
+    const tarjeta = m => `<a class="plano" href="app.html" title="${E(m.n)}"><img src="${E(m.src)}" loading="lazy" alt=""><span class="fl">${E(m.fl)}</span><span class="nm">${E(m.n)}</span></a>`;
+    const llena = (id, arr) => { const h = arr.map(tarjeta).join(''); document.getElementById(id).innerHTML = h + h; };
+    llena('via1', lista.slice(0, mitad));
+    llena('via2', lista.slice(mitad).concat(lista.slice(0, 2)));
+  })();
+
+  const crece = () => { document.querySelectorAll('.gs i').forEach(i => { i.style.width = i.dataset.w + '%'; }); };
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(e => { if (e.some(x => x.isIntersecting)) { crece(); io.disconnect(); } }, { threshold: .2 });
-    io.observe(document.querySelector('.goal'));
-    setTimeout(crece, 1200);
+    io.observe(document.querySelector('.roster')); setTimeout(crece, 1400);
   } else setTimeout(crece, 300);
 })();
 </script>

@@ -2,8 +2,6 @@
    Escala de RP verificada contra el propio tracker: Ranked 3.0 arranca en 1,000 RP
    (Camila 2,150 = PLATA IV · maciaco 3,100 = PLATINO IV · Paola 3,164 = PLATINO IV). Champion = 4,500+. */
 window.SQUAD = [
- {id:'andre',   nick:'',               plat:'xbl', role:'IGL / Flex', tag:'JEFE', me:true,
-  note:'Pon tu nick de Ubisoft/Xbox aquí para jalar tu perfil.', stats:null},
  {id:'valeria', main:'ash',      nick:'NarrativePrime', alias:'o Valeria 15', plat:'xbl', role:'Entry / Fragger', tag:'MVP',
   stats:{level:874, matches:9472, hours:3504, win:49.5, kd:1.16, hs:47.8, kills:54276, deaths:46599, kpm:5.73,
          ranked:{matches:8771, win:50.0, kd:1.12}, peak:{season:'Deep Freeze', rp:4567, scale:2},
