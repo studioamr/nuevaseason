@@ -33,7 +33,7 @@ window.MapView = (() => {
       const order = [bg, curF].filter((f, i, a) => f && a.indexOf(f) === i);
       order.forEach(f => { const src = map.floorImgs.find(x => x.idx === f.index)?.src; if (!src) return; const im = document.createElement('img'); im.className = 'floorimg'; im.src = src; im.style.left = (f.left - minX) + 'px'; im.style.top = (f.top - minY) + 'px'; im.draggable = false; if (f !== curF) im.style.opacity = '.38'; world.appendChild(im); imgs[f.index] = im; });
       svg = el('svg', { class: 'ov', width: W, height: H, viewBox: `0 0 ${W} ${H}` }); svg.style.width = W + 'px'; svg.style.height = H + 'px'; world.appendChild(svg);
-      drawR6(); drawRoutes();
+      drawR6(); drawTasks(); drawRoutes();
       if (o.zoomSite) { // acercarse al sitio elegido
         const set = Engine.siteSet(map, o.site);
         if (set && set.bombs.length) { const xs = set.bombs.map(b => b.left), ys = set.bombs.map(b => b.top); const pad = 300;
@@ -44,7 +44,7 @@ window.MapView = (() => {
     } else {
       minX = 0; minY = 0; W = 1400; H = 1000;
       svg = el('svg', { class: 'ov', width: W, height: H, viewBox: `0 0 ${W} ${H}` }); svg.style.width = W + 'px'; svg.style.height = H + 'px'; world.appendChild(svg);
-      drawGrid(); drawRoutes();
+      drawGrid(); drawTasks(); drawRoutes();
       if (changed || o.refit) fit();
     }
   }
@@ -136,6 +136,30 @@ window.MapView = (() => {
   }
   function pill(g, x, y, text, color, big) { const w = text.length * (big ? 8.2 : 6.6) + 18, h = big ? 24 : 20; const gg = el('g', { class: 'pill' }); gg.appendChild(el('rect', { x: x - 6, y: y - h / 2, width: w, height: h, rx: h / 2, fill: 'rgba(3,6,10,.85)', stroke: color, 'stroke-width': 1.5 })); gg.appendChild(el('text', { class: 'pl' + (big ? ' big' : ''), x: x + 3, y: y + (big ? 5 : 4), fill: color }, text)); g.appendChild(gg); return gg; }
   function badge(g, x, y, n, color, r = 9) { g.appendChild(el('circle', { cx: x, cy: y, r, fill: color, stroke: '#000', 'stroke-width': 2 })); g.appendChild(el('text', { class: 'bn', x, y: y + 3.5, 'text-anchor': 'middle' }, String(n))); }
+  const TASKICON = { wall: 'M-9 -3h18v6h-18z', hatch: 'M-7 -7h14v14h-14z', window: 'M-8 -6h16v12h-16z', door: 'M-5 -8h10v16h-10z', breach: 'M0 -10l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z', rappel: 'M0 -9v18M-6 -3l6-6 6 6' };
+  function drawTasks() {
+    svg.querySelectorAll('.tasks').forEach(x => x.remove());
+    const list = cur.tasks || []; if (!list.length) return;
+    const g = el('g', { class: 'tasks' }); svg.appendChild(g); const X = x => x - minX, Y = y => y - minY;
+    const foco = cur.focusSlot; const fase = cur.taskPhase;
+    list.forEach(t => {
+      if (t.f !== cur.floorIdx && t.f !== -1) return;
+      const mio = !foco || t.slot === foco; const activa = fase == null || t.phase === fase;
+      const col = t.color || cur.teamColor || '#39b6f0';
+      const op = mio ? (activa ? 1 : .55) : .16;
+      const gg = el('g', { class: 'task' + (mio && activa ? ' viva' : ''), opacity: op });
+      if (t.kind === 'rot') {
+        gg.appendChild(el('path', { d: `M${X(t.x)} ${Y(t.y)} L${X(t.x2)} ${Y(t.y2)}`, stroke: col, 'stroke-width': 3, 'stroke-dasharray': '9 7', fill: 'none' }));
+        [[t.x, t.y], [t.x2, t.y2]].forEach(([px, py]) => gg.appendChild(el('circle', { cx: X(px), cy: Y(py), r: 5, fill: col })));
+        if (mio) pill(gg, X((t.x + t.x2) / 2) + 8, Y((t.y + t.y2) / 2) - 12, t.short, col, false);
+      } else {
+        gg.appendChild(el('circle', { cx: X(t.x), cy: Y(t.y), r: 17, fill: 'rgba(6,9,12,.82)', stroke: col, 'stroke-width': 2.5 }));
+        gg.appendChild(el('path', { d: TASKICON[t.kind] || TASKICON.wall, transform: `translate(${X(t.x)},${Y(t.y)}) scale(.9)`, fill: t.kind === 'breach' ? col : 'none', stroke: col, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }));
+        if (mio) pill(gg, X(t.x) + 22, Y(t.y) - 12, t.short, col, false);
+      }
+      g.appendChild(gg);
+    });
+  }
   async function drawRoutes(fast) {
     const token = ++drawToken; const { routes = [], floorIdx, editable, selected } = cur; const X = x => x - minX, Y = y => y - minY;
     const geoms = await Promise.all(routes.map(rt => geometry(rt, fast)));

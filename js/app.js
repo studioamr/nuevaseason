@@ -144,6 +144,56 @@
     });
     return out;
   }
+
+  // ---------- tareas del plan convertidas en marcas sobre el mapa ----------
+  const stripParen = t => String(t || '').replace(/\([^)]*\)/g, ' ').replace(/×\s*\d+/g, ' ').replace(/\s+/g, ' ').trim();
+  function findRoomPt(m, name, fl) { // resuelve un nombre suelto a coordenada, probando el piso del sitio y los demás
+    if (!name) return null;
+    const t = stripParen(name);
+    let pt = roomPoint(m, t, fl); if (pt) return pt;
+    if (m.r6) { const n = Store.norm(t);
+      const cand = m.r6.rooms.filter(r => { const en = Store.norm(clean(r.en)), es = Store.norm(clean(r.es || '')); return en === n || es === n || en.includes(n) || n.includes(en); });
+      if (cand.length) { const pick = cand.find(r => r.f === fl) || cand[0]; return { x: pick.left, y: pick.top, f: pick.out ? -1 : pick.f }; } }
+    return null;
+  }
+  function nearestHatch(m, pt, fl) { if (!m.r6 || !m.r6.hatches.length) return null; const hs = m.r6.hatches.filter(h => fl == null || h.f === fl); const list = hs.length ? hs : m.r6.hatches;
+    let best = null, bd = Infinity; list.forEach(h => { const d = Math.hypot(h.left - pt.x, h.top - pt.y); if (d < bd) { bd = d; best = h; } }); return best && bd < 700 ? { x: best.left, y: best.top, f: best.f } : null; }
+  function own(m, x, mark) { // asigna la tarea al operador colocado más cerca
+    let best = null, bd = Infinity;
+    (x.ops || []).forEach((o, i) => { const p = ROSTER()[i]; if (!p) return; const r = findRoomPt(m, o.room, mark.f); if (!r) return;
+      const d = Math.hypot(r.x - mark.x, r.y - mark.y); if (d < bd) { bd = d; best = p; } });
+    if (best) { mark.slot = best.id; mark.color = COL(best.id); }
+    return mark;
+  }
+  function taskMarks() {
+    const m = map(), s = site(), x = curStrat(); if (!x) return [];
+    const fi = m.r6 ? Engine.floorIndex(m, s.fl) : s.fl; const out = [];
+    const par = t => { const mm = stripParen(t).match(/^(?:pared|muro)\s+(.+?)\s*[–—\-]\s*(.+)$/i); return mm ? [mm[1], mm[2]] : null; };
+    if (S.side === 'def') {
+      (x.reinforce || []).forEach(t => {
+        const txt = stripParen(t); const dosC = par(t);
+        if (dosC) { const a = findRoomPt(m, dosC[0], fi), b = findRoomPt(m, dosC[1], fi);
+          if (a && b) { out.push(own(m, x, { kind: 'wall', x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, f: a.f >= 0 ? a.f : b.f, label: `REFORZAR ${dosC[0]}–${dosC[1]}`, short: 'REFORZAR', phase: 0 })); return; } }
+        const esc = txt.match(/escotilla\s+(?:de\s+)?(.+)/i);
+        if (esc) { const r = findRoomPt(m, esc[1], fi); const h = r ? nearestHatch(m, r, null) : null; const p = h || r; if (p) { out.push(own(m, x, { kind: 'hatch', x: p.x, y: p.y, f: p.f, label: `REFORZAR escotilla ${esc[1]}`, short: 'ESCOTILLA', phase: 0 })); return; } }
+        const ven = txt.match(/(ventana|puerta)\s+(?:de\s+)?(.+)/i);
+        if (ven) { const r = findRoomPt(m, ven[2], fi); if (r) { out.push(own(m, x, { kind: ven[1].toLowerCase() === 'ventana' ? 'window' : 'door', x: r.x, y: r.y, f: r.f, label: `${ven[1].toUpperCase()} ${ven[2]}`, short: ven[1].toUpperCase(), phase: 0 })); return; } }
+      });
+      (x.rotations || []).forEach(t => { const partes = stripParen(t).split(/\s*(?:↔|→|<->|->|—>)\s*/).filter(Boolean); if (partes.length < 2) return;
+        const mm = [null, partes[0], partes[partes.length - 1]];
+        const a = findRoomPt(m, mm[1], fi), b = findRoomPt(m, mm[2], fi);
+        if (a && b) out.push(own(m, x, { kind: 'rot', x: a.x, y: a.y, x2: b.x, y2: b.y, f: a.f, label: `ROTAR ${mm[1]}↔${mm[2]}`, short: 'ROTAR', phase: 3 })); });
+    } else {
+      const seen = new Set();
+      (x.ops || []).forEach((o, i) => { (o.path || []).forEach(st => {
+        if (!['breach', 'hatch', 'rappel', 'window'].includes(st.via)) return;
+        const key = st.via + '|' + st.room; if (seen.has(key)) return; seen.add(key);
+        const r = findRoomPt(m, st.room, st.f); if (!r) return;
+        const K = { breach: ['breach', 'ABRIR', 1], hatch: ['hatch', 'ESCOTILLA', 1], rappel: ['rappel', 'RAPPEL', 1], window: ['window', 'VENTANA', 1] }[st.via];
+        const dueno = ROSTER()[i]; out.push({ kind: K[0], x: r.x, y: r.y, f: r.f, label: `${K[1]} ${st.room}`, short: K[1], phase: K[2], slot: dueno && dueno.id, color: dueno ? COL(dueno.id) : null }); }); });
+    }
+    return out;
+  }
   // ---------- canvas ----------
   let mounted = false, preview = null;
   const CSSVAR = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -196,7 +246,7 @@
     let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
     const teamCol = CSSVAR('--team') || '#39b6f0';
     const enemyCol = CSSVAR('--enemy') || '#ff4d9d';
-    MapView.show({ map: mm, site: s, side: S.side, teamColor: teamCol, enemyColor: enemyCol, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
+    MapView.show({ map: mm, site: s, side: S.side, teamColor: teamCol, enemyColor: enemyCol, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, tasks: S.step === 3 ? [] : taskMarks(), focusSlot: S.focus, taskPhase: S.step === 5 && S.live ? Round.phaseIndex() : (S.side === 'def' ? 0 : 1), routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
   }
   async function uploadPlan() { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async () => { const m = map(); m.userImgs = m.userImgs || {}; m.userImgs[String(S.floorIdx)] = rd.result; await Store.idb.put(`${m.id}|${S.floorIdx}`, rd.result); Store.toast('Plano guardado para ' + m.n); renderMapList(); renderCanvas(); }; rd.readAsDataURL(f); }; inp.click(); }
 
@@ -678,13 +728,15 @@
       const rot = (x.rotations || []).join(' · ');
       const anc = (x.ops || []).filter(o => o.role === 'ancla').map(o => `${(Engine.op(o.op) || {}).n || o.op} en ${o.room}`).join(' · ');
       const roam = (x.ops || []).filter(o => o.role === 'roam').map(o => (Engine.op(o.op) || {}).n || o.op).join(' · ');
+      const nRef = (x.reinforce || []).length;
       return [
-        { from: 0, to: 45, label: 'Preparación: ' + rf },
-        { from: 45, to: 105, label: 'Roam y primer contacto' + (roam ? ': ' + roam : '') },
-        { from: 105, to: 150, label: 'Anclas al sitio' + (anc ? ': ' + anc : '') },
-        { from: 150, to: 180, label: 'Retake / cortar el plant' + (rot ? ' · rotar ' + rot : '') }
+        { from: 0, to: 45, label: 'Reforzar y gadgets' + (nRef ? ` (${nRef})` : '') },
+        { from: 45, to: 105, label: 'Roam' + (roam ? ' · ' + roam.split(' · ')[0] : '') },
+        { from: 105, to: 150, label: 'Anclas al sitio' },
+        { from: 150, to: 180, label: 'Retake / cortar plant' }
       ];
     },
+    phaseIndex() { const ph = this.phases(); const t = this.t(); const i = ph.findIndex(p => t >= p.from && t < p.to); return i < 0 ? (t >= this.T ? ph.length - 1 : 0) : i; },
     arrival() { const ph = this.phases(); if (ph.length >= 3) return ph[ph.length - 1].from; return this.T * .75; },
     t() { if (!S.live) return 0; if (!S.live.playing) return S.live.t || 0; return Math.min(this.T, (Date.now() - S.live.t0) / 1000); },
     progress() { const t = this.t(); const arr = this.arrival(); const pr = {}; ROSTER().forEach(p => { pr[p.id] = S.live ? Math.min(1, t / arr) : 1; }); return pr; },

@@ -651,3 +651,8 @@
 /* el lado activo ya no cambia el color: se distingue por icono y por relleno */
 .big-toggle button.on.atk,.big-toggle button.on.def{color:#fff;border-color:var(--team);background:color-mix(in srgb,var(--team) 18%,transparent)}
 .seg.side button.on.atk,.seg.side button.on.def{color:var(--acc2)}
+.ov .task.viva circle:first-child{animation:taskPulse 2s ease-in-out infinite}
+@keyframes taskPulse{0%,100%{opacity:.82}50%{opacity:.35}}
+.ov .task{transition:opacity .25s}
+.setup .rl i{color:var(--dim);font-style:normal;font-family:var(--sans);font-size:12px;letter-spacing:0;text-transform:none}
+.setup .rl b{font-family:var(--disp);font-size:15px;color:var(--acc2);letter-spacing:0}
