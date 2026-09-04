@@ -64,8 +64,8 @@
 
   // ---------- estado ----------
   const _st = Store.get('state', {}); if (_st && !_st.v5 && typeof _st.step === 'number') { _st.step = Math.min(5, _st.step + 1); _st.v5 = 1; Store.set('state', _st); }
-  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
-  const save = () => Store.set('state', { v5: 1, map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, prep: S.prep, vetos: S.vetos, lobbyOpen: S.lobbyOpen, ready: S.ready, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
+  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, showAll: false, focus: null, live: null, stratKey: '', match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
+  const save = () => Store.set('state', { v5: 1, showAll: S.showAll, map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, prep: S.prep, vetos: S.vetos, lobbyOpen: S.lobbyOpen, ready: S.ready, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
   const map = () => MAPS.find(m => m.id === S.map) || MAPS[0];
   const site = () => map().sites.find(s => s.id === S.site) || map().sites[0];
   const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, prep: S.prep, vetos: S.vetos, lobbyOpen: S.lobbyOpen, ready: S.ready, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, season: SEASON });
@@ -502,7 +502,7 @@
   }
   // ---- paso 1: mapa
   function renderS2() {
-    const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
+    const groups = S.showAll ? [['ranked', 'Pool ranked'], ['off', 'Fuera del pool']] : [['ranked', 'Pool ranked']]; let h = '';
     for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; const vet = (S.vetos || []).includes(m.id); return `<button class="tile ${m.id === S.map ? 'on' : ''} ${vet ? 'veto' : ''}" data-map="${m.id}">${vet ? '<span class="vx">VETADO</span>' : ''}${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${m.r6 ? (m.approx ? 'plano ~' : 'plano') : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
     const sc = score(); const isAtk = S.side === 'atk';
     const sb = `<div class="board ${S.match.active ? '' : 'idle'}">
@@ -515,7 +515,10 @@
       <div class="bd-act"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Lobby</button>`}</div>
       <div class="bd-hint">${S.vetoMode ? 'Toca los mapas que se vetaron' : S.match.active ? 'Elige el mapa que tocó' : 'Ve al lobby para empezar'}</div>
     </div>`;
-    $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = openLobby; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, round: 1, live: null }); };
+    h += `<div class="tile grp"><button class="btn sm ghost" id="allMaps">${S.showAll ? '− solo el pool de ranked' : '+ ver mapas fuera del pool (' + MAPS.filter(m => m.pool === 'off').length + ')'}</button></div>`;
+    $('#mapTiles').innerHTML = sb + h;
+    const am2 = $('#allMaps'); if (am2) am2.onclick = () => { S.showAll = !S.showAll; save(); renderS2(); };
+    const sm = $('#startMatch'); if (sm) sm.onclick = openLobby; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, round: 1, live: null }); };
     const vb = $('#vetoBtn'); if (vb) vb.onclick = () => commit({ vetoMode: !S.vetoMode });
     $$('#mapTiles .tile[data-map]').forEach(b => b.onclick = async () => {
       if (S.vetoMode) { const id = b.dataset.map; const v = (S.vetos || []).slice(); const i = v.indexOf(id); i >= 0 ? v.splice(i, 1) : v.push(id); commit({ vetos: v }); return; }

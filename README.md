@@ -38,6 +38,9 @@ El navegador no puede leer r6.tracker.network directamente (CORS), así que cada
 - Rutas por **pathfinding A\*** sobre máscaras del blueprint (`img/masks`, `tools/build-masks.py`): pared blanca = bloqueada, amarillo = rompible (caro), interior/exterior del edificio distinguidos para que las rutas exteriores rodeen el edificio.
 - Estrategias por sitio en `js/strats/<mapa>.json` (generadas por agentes contra `tools/ctx/<mapa>.json` y validadas con `tools/validate-strats.js`). Faltan 9 mapas (límite de sesión): kanal, house, tower, bartlett, closequarter, fortress, favela, yacht, plane, hereford.
 
+## Mapas
+La app muestra **18 mapas: el pool de ranked, todos con plano oficial del juego** (Fortress incluido). Los casuales y los dos Stadium (sin blueprint público) quedan fuera de la lista pero sus datos y estrategias siguen ahí: se ven con **+ ver mapas fuera del pool** al final de la cuadrícula, por si el pool rota.
+
 ## Planos
 25 de 27 mapas tienen **plano oficial del juego**: 18 desde r6maps.com (con nombres de cuarto y bombas reales) y 7 desde los blueprints oficiales publicados por Dexerto — Villa, Lair, Outback, Fortress, Emerald Plains, Nighthaven Labs y Close Quarter. Estos 7 traen geometría real (paredes y paredes rompibles, que alimentan el pathfinding) pero **no traen nombres de cuarto**, así que las posiciones de cuarto se proyectan desde el croquis y son **aproximadas y editables** (arrástralas con "Editar rutas"; se guardan y se sincronizan). Solo Stadium Alpha y Stadium Bravo siguen en croquis: no hay blueprint público.
 
