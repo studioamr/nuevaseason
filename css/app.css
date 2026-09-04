@@ -643,3 +643,5 @@
 .ov .bombmk .pulse{animation:bombPulse 1.8s ease-out infinite}
 @keyframes bombPulse{0%{r:26;opacity:.55}70%{opacity:0}100%{r:54;opacity:0}}
 .ov text.bl{font-family:var(--disp);font-size:13px;font-weight:700}
+.ov text.bletra{font-family:var(--disp);font-weight:700;letter-spacing:.02em;paint-order:stroke;stroke:#03060a;stroke-width:3px;stroke-linejoin:round}
+.ov .bombmk.off text.bletra{opacity:.7}

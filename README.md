@@ -15,7 +15,8 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 
 ## Señalización del mapa
 Cada jugador aparece como el **retrato circular de su operador**. El **aro es del color del lado** (azul en ataque, morado en defensa), así se distingue de un vistazo quién es de tu equipo. La **línea** conserva un color propio por jugador para poder seguir la tuya entre cinco.
-Las **bombas se dibujan con el icono de la bomba** en un aro ámbar de objetivo (nunca una letra suelta): la del sitio activo va grande y con pulso, las otras pequeñas y punteadas. Ya no hay iniciales sueltas: se distingue de un vistazo quién es quién, y la cabeza que avanza en *En vivo* también lleva su retrato.
+Las **bombas llevan su letra A/B grande, en el color de tu equipo** (azul atacando, morado defendiendo), con un sello de bomba en la esquina; la del sitio activo va grande y con pulso, las otras pequeñas y punteadas.
+Las **zonas a limpiar usan el color del equipo contrario**, así el plano se lee solo por color: tu equipo / el enemigo / el objetivo. Ya no hay iniciales sueltas: se distingue de un vistazo quién es quién, y la cabeza que avanza en *En vivo* también lleva su retrato.
 
 ## Fase 1 · Lobby con LISTO
 "Iniciar ranked" abre una ventana grande donde **cada quien da LISTO**. El estado se identifica por conexión (no por slot, así dos personas pueden elegir el mismo operador de squad sin pisarse) y se fusiona en la sala: dos pueden dar listo a la vez. Cuando todos los conectados están listos, **la partida arranca sola en todas las pantallas**. El host puede forzar con "Empezar ya".

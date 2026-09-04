@@ -52,17 +52,23 @@ window.MapView = (() => {
     const { map, site, floorIdx } = cur; const r = map.r6; const set = Engine.siteSet(map, site); const X = x => x - minX, Y = y => y - minY;
     const g = el('g', { class: 'r6 hit' }); svg.appendChild(g);
     // escotillas
-    r.hatches.filter(h => h.f === floorIdx).forEach(h => { g.appendChild(el('rect', { class: 'hatch', x: X(h.left) - 9, y: Y(h.top) - 9, width: 18, height: 18, rx: 2 })); });
+    r.hatches.filter(h => h.f === floorIdx).forEach(h => { g.appendChild(el('rect', { class: 'hatch', x: X(h.left) - 9, y: Y(h.top) - 9, width: 18, height: 18, rx: 2, stroke: cur.teamColor || '#cfd8e3', opacity: .55 })); });
     // bombas
-    const objColor = cur.objColor || '#d9a520';
+    const team = cur.teamColor || '#2f7fd4';          // color de TU equipo
+    const enemy = cur.enemyColor || '#8158c8';        // color del equipo contrario
     r.bombs.filter(b => b.f === floorIdx).forEach(b => {
-      const on = set && b.set === set.set; const R = on ? (cur.zoomSite ? 30 : 24) : 13; const cx = X(b.left), cy = Y(b.top);
+      const on = set && b.set === set.set; const R = on ? (cur.zoomSite ? 32 : 25) : 14; const cx = X(b.left), cy = Y(b.top);
+      const col = on ? team : '#5a636d';
       const gg = el('g', { class: 'bombmk' + (on ? '' : ' off') });
-      if (on && cur.zoomSite) gg.appendChild(el('circle', { class: 'pulse', cx, cy, r: R + 10, fill: 'none', stroke: objColor, 'stroke-width': 2, opacity: .5 }));
-      gg.appendChild(el('circle', { cx, cy, r: R, fill: on ? 'rgba(8,10,13,.86)' : 'rgba(8,10,13,.6)', stroke: on ? objColor : '#5a636d', 'stroke-width': on ? 3 : 1.5, 'stroke-dasharray': on ? 'none' : '4 3' }));
-      const im = el('image', { x: cx - R * .62, y: cy - R * .62, width: R * 1.24, height: R * 1.24, opacity: on ? .95 : .45, preserveAspectRatio: 'xMidYMid meet' });
-      im.setAttribute('href', 'img/ui/bomb.svg'); im.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/ui/bomb.svg'); gg.appendChild(im);
-      gg.appendChild(el('text', { class: 'bl' + (on ? '' : ' off'), x: cx + R - 2, y: cy - R + 6, 'text-anchor': 'middle', fill: on ? objColor : '#7d858e' }, b.letter));
+      if (on && cur.zoomSite) gg.appendChild(el('circle', { class: 'pulse', cx, cy, r: R + 10, fill: 'none', stroke: col, 'stroke-width': 2 }));
+      gg.appendChild(el('circle', { cx, cy, r: R, fill: 'rgba(8,10,13,.88)', stroke: col, 'stroke-width': on ? 3 : 1.5, 'stroke-dasharray': on ? 'none' : '4 3' }));
+      // la LETRA manda
+      gg.appendChild(el('text', { class: 'bletra', x: cx, y: cy + (on ? R * .34 : R * .32), 'text-anchor': 'middle', fill: col, style: `font-size:${on ? R * 1.15 : R * 1.1}px` }, b.letter));
+      // sello de bomba en la esquina, para saber que es el objetivo
+      if (on) { const br = R * .40, bx = cx + R * .72, by = cy - R * .72;
+        gg.appendChild(el('circle', { cx: bx, cy: by, r: br, fill: col }));
+        const im = el('image', { x: bx - br * .68, y: by - br * .68, width: br * 1.36, height: br * 1.36, preserveAspectRatio: 'xMidYMid meet' });
+        im.setAttribute('href', 'img/ui/bomb.svg'); im.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/ui/bomb.svg'); gg.appendChild(im); }
       g.appendChild(gg);
     });
     // spawns (exterior)
@@ -158,7 +164,7 @@ window.MapView = (() => {
       });
       rec.total = cum;
       // zonas de defensores: punto rojo numerado (texto solo si está seleccionada)
-      (rt.clear || []).forEach((c, ci) => { if (c.f !== floorIdx) return; const gg = el('g', { class: 'clearzone' }); gg.appendChild(el('circle', { cx: X(c.x), cy: Y(c.y), r: 20, fill: 'rgba(255,46,99,.14)', stroke: '#ff2e63', 'stroke-width': 2, 'stroke-dasharray': '5 4' })); badge(gg, X(c.x) - 15, Y(c.y) - 15, ci + 1, '#ff2e63'); if (sel) pill(gg, X(c.x) + 24, Y(c.y) + 2, c.short || '', '#ff8fa3', false); rg.appendChild(gg); });
+      (rt.clear || []).forEach((c, ci) => { if (c.f !== floorIdx) return; const gg = el('g', { class: 'clearzone' }); const en = cur.enemyColor || '#c8442f'; gg.appendChild(el('circle', { cx: X(c.x), cy: Y(c.y), r: 20, fill: 'rgba(0,0,0,.25)', stroke: en, 'stroke-width': 2, 'stroke-dasharray': '5 4' })); badge(gg, X(c.x) - 15, Y(c.y) - 15, ci + 1, en); if (sel) pill(gg, X(c.x) + 24, Y(c.y) + 2, c.short || '', cur.enemyColor || '#c8442f', false); rg.appendChild(gg); });
       // waypoints numerados (solo seleccionada) + arrastre en edición
       pts.forEach((p, i) => { const here = p.f === floorIdx || p.f === -1; const last = i === pts.length - 1; if (i === 0 || last) return; if (sel) { badge(rg, X(p.x), Y(p.y), i, rt.color, 8); } else rg.appendChild(el('circle', { cx: X(p.x), cy: Y(p.y), r: 3.5, fill: '#03060a', stroke: rt.color, 'stroke-width': 2, opacity: here ? 1 : .3 })); if (editable && sel) { const c = el('circle', { class: 'pinhit', cx: X(p.x), cy: Y(p.y), r: 12, fill: 'transparent' }); c.addEventListener('pointerdown', e => { e.stopPropagation(); pinDrag = { route: rt, pt: p }; }); rg.appendChild(c); } });
       // inicio (spawn) con píldora del operador; fin = bomba
