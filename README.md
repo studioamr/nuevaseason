@@ -21,6 +21,9 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 - Rutas por **pathfinding A\*** sobre máscaras del blueprint (`img/masks`, `tools/build-masks.py`): pared blanca = bloqueada, amarillo = rompible (caro), interior/exterior del edificio distinguidos para que las rutas exteriores rodeen el edificio.
 - Estrategias por sitio en `js/strats/<mapa>.json` (generadas por agentes contra `tools/ctx/<mapa>.json` y validadas con `tools/validate-strats.js`). Faltan 9 mapas (límite de sesión): kanal, house, tower, bartlett, closequarter, fortress, favela, yacht, plane, hereford.
 
+## Iconos de operador
+`img/ops/<id>.svg` — 74 iconos oficiales autohospedados (paquete comunitario `r6operators` v2.12.0, vía jsDelivr). Noor (Y11S3) aún no está en el paquete: cae a un monograma. Se usan en las fichas del plan, los chips de En vivo y la rejilla del cajón.
+
 ## Diseño
 Centro de mando táctico: chapa mate, reglas finas, sin neón ni cristal. Tipografía condensada (Barlow/Saira/Oswald) con animación de teletipo. El acento de toda la interfaz **cambia con el lado**: azul en ataque, naranja en defensa (convención de R6).
 

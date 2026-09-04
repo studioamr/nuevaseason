@@ -1,6 +1,6 @@
 /* R6 NUEVA SEASON — motor: casa sitios con r6maps, asigna operadores a entradas, calcula rutas */
 window.Engine = (() => {
-  const COLORS = ['#5ee7ff', '#ff4fd8', '#7dff6a', '#ffa552', '#b48cff'];
+  const COLORS = ['#4a90d9', '#d9a520', '#5f9e50', '#c2553c', '#8a7fb5']; // paleta táctica, distinguible sin neón
   const FL = { b: 'basement', 1: 'firstFloor', 2: 'secondFloor', 3: 'thirdFloor', 4: 'fourthFloor', r: 'roof' };
   const FLN = { b: 'Sótano', 1: 'Planta 1', 2: 'Planta 2', 3: 'Planta 3', 4: 'Planta 4', r: 'Techo' };
   const KIND = { reforzada: { n: 'Pared reforzada', c: '#5ee7ff', s: 'R' }, blanda: { n: 'Pared blanda', c: '#9ff3ff', s: 'B' }, puerta: { n: 'Puerta', c: '#6aa3ff', s: 'P' }, ventana: { n: 'Ventana', c: '#7dff6a', s: 'V' }, escotilla: { n: 'Escotilla', c: '#cfd8e3', s: 'E' }, rappel: { n: 'Rappel', c: '#7dff6a', s: '↓' }, vertical: { n: 'Vertical', c: '#b48cff', s: '↕' } }; 

@@ -199,8 +199,8 @@
   function renderOpsPane() {
     const s = site(); const isAtk = S.side === 'atk'; const ops = isAtk ? Engine.atk() : Engine.def(); const rec = new Set(isAtk ? Engine.recommend(s, []) : s.def.ops); slots().forEach(p => p.op && rec.add(p.op));
     let h = `<div class="k" style="margin-bottom:6px">${isAtk ? 'Todos los atacantes' : 'Todos los defensores'} · ${ops.length} · <span class="acc">resaltados = recomendados para ${E(s.rooms[0])}</span></div>`;
-    if (isAtk) { for (const [rid, R] of Object.entries(ROLES)) { const list = ops.filter(o => o.roles[0] === rid); if (!list.length) continue; h += `<div class="role-h"><span class="k">${E(R.n)}</span><small>${E(R.d)}</small></div><div class="opgrid">` + list.map(o => `<button class="opc ${opSel === o.id ? 'on' : ''} ${rec.has(o.id) ? 'rec' : ''}" data-op="${o.id}"><div class="n">${E(o.n)}</div><div class="r">${o.spd}·${o.hp} ${E(o.roles.map(r => ROLES[r].n).join('/'))}</div><div class="g">${E(o.g)}</div></button>`).join('') + `</div>`; } }
-    else h += `<div class="opgrid">` + ops.map(o => `<button class="opc ${opSel === o.id ? 'on' : ''} ${rec.has(o.id) ? 'rec' : ''}" data-op="${o.id}"><div class="n">${E(o.n)}</div><div class="g">${E(o.g)}</div></button>`).join('') + `</div>`;
+    if (isAtk) { for (const [rid, R] of Object.entries(ROLES)) { const list = ops.filter(o => o.roles[0] === rid); if (!list.length) continue; h += `<div class="role-h"><span class="k">${E(R.n)}</span><small>${E(R.d)}</small></div><div class="opgrid">` + list.map(o => `<button class="opc ${opSel === o.id ? 'on' : ''} ${rec.has(o.id) ? 'rec' : ''}" data-op="${o.id}">${opPlate(o, 'sm')}<div class="n">${E(o.n)}</div><div class="r">${o.spd}·${o.hp} ${E(o.roles.map(r => ROLES[r].n).join('/'))}</div><div class="g">${E(o.g)}</div></button>`).join('') + `</div>`; } }
+    else h += `<div class="opgrid">` + ops.map(o => `<button class="opc ${opSel === o.id ? 'on' : ''} ${rec.has(o.id) ? 'rec' : ''}" data-op="${o.id}">${opPlate(o, 'sm')}<div class="n">${E(o.n)}</div><div class="g">${E(o.g)}</div></button>`).join('') + `</div>`;
     const o = Engine.op(opSel);
     if (o) { if (isAtk) { const j = Engine.jobFor(s, o); h += `<div class="opdetail"><b>${E(o.n)}</b> · ${E(o.g)} · ${o.spd} vel / ${o.hp} vida<br>${E(j.base)}<div class="rt">${E(j.where)}</div>${j.v ? `<div class="p" style="font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:6px">${(j.v.path || []).join(' → ')}</div>` : ''}${me ? `<div style="margin-top:10px"><button class="btn sm p" id="pickMe">Elegir para mí</button></div>` : ''}</div>`; } else h += `<div class="opdetail"><b>${E(o.n)}</b> · ${E(o.g)}<br><b>Cómo se juega / se contra:</b> ${E(o.ctr)}${me ? `<div style="margin-top:10px"><button class="btn sm p" id="pickMe">Elegir para mí</button></div>` : ''}</div>`; }
     $('#p-ops').innerHTML = h;
@@ -416,6 +416,8 @@
     });
   }
   // ---- paso 3: PREPARACIÓN (45 s) · sin párrafos: quién, qué operador, por dónde entra
+  const OPIMG = id => `img/ops/${id}.svg`;
+  const opPlate = (o, cls) => o ? `<span class="plate ${cls || ''}"><img src="${OPIMG(o.id)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${E(o.n).slice(0, 2).toUpperCase()}',className:'ini'}))"></span>` : `<span class="plate empty"><b class="ini">?</b></span>`;
   const ROLE_ES = { duro: 'ABRE PARED', antigadget: 'LIMPIA GADGETS', blando: 'VERTICAL', intel: 'DRONES', entrada: 'ENTRA 1º', flanco: 'CUIDA ESPALDA', negacion: 'HUMO / FUEGO', soporte: 'APOYO' };
   const PREP_T = 45;
   const prepT = () => { if (!S.prep) return 0; if (!S.prep.playing) return S.prep.t || 0; return Math.min(PREP_T, (Date.now() - S.prep.t0) / 1000); };
@@ -432,12 +434,24 @@
       if (isAtk && c.so) { const ent = P.find(z => z.f !== -1 && z.f !== '-1') || P[0]; const fin = P[P.length - 1];
         ruta = `<span class="hop">${E(c.so.spawn)}</span><em>›</em>${ent ? `<span class="hop in">${via[ent.via] || 'PUERTA'} ${E(ent.room)}</span><em>›</em>` : ''}<span class="hop obj">${E(fin ? fin.room : s.rooms[0])}</span>`; }
       else if (c.so) ruta = `<span class="hop in">${E(c.so.room)}</span>`;
-      return `<button class="crewcard ${S.focus === c.slot ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}">
-        <span class="bar"></span>
-        <span class="nick">${E(c.name)}</span>
-        <span class="opn">${E(c.op)}</span>
-        <span class="role">${E(isAtk ? (ROLE_ES[(c.so && c.so.role) || ''] || c.role || '') : String((c.so && c.so.role) || c.role || '').toUpperCase())}</span>
-        <span class="ruta">${ruta}</span></button>`;
+      const abierta = S.focus === c.slot;
+      let det = '';
+      if (abierta && c.so) {
+        if (isAtk) det = `<ol class="pasos">${P.map(z => `<li><b>${E(z.room)}</b>${z.via && z.via !== 'door' ? ` <i>${E(via[z.via] || z.via)}</i>` : ''}<span>${E(z.do || '')}</span></li>`).join('')}</ol>`
+          + ((c.so.clear || []).length ? `<div class="peligro"><span class="k">Limpiar en orden</span><ol>${c.so.clear.map(z => `<li><b>${E(z.room)}</b> · ${E(z.threat)}<span>${E(z.how)}</span></li>`).join('')}</ol></div>` : '')
+          + `<div class="fin">▶ ${E(c.so.final || '')}</div>`;
+        else det = `<div class="fin">${E(c.so.job || '')}</div>`;
+      }
+      return `<div class="opcard ${abierta ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}">
+        <div class="hd">
+          ${opPlate(c.o)}
+          <div class="meta"><span class="nick">${E(c.name)}</span><span class="opn">${E(c.op)}</span></div>
+          <span class="role">${E(isAtk ? (ROLE_ES[(c.so && c.so.role) || ''] || c.role || '') : String((c.so && c.so.role) || c.role || '').toUpperCase())}</span>
+          <span class="chev">${abierta ? '▴' : '▾'}</span>
+        </div>
+        <div class="ruta">${ruta}</div>
+        ${det ? `<div class="det">${det}</div>` : ''}
+      </div>`;
     }).join('') + `</div>`;
     const t = prepT(); const running = S.prep && S.prep.playing;
     h += `<div class="sh-act">
@@ -449,7 +463,7 @@
       </div></div><div class="mini"></div>`;
     $('#s3').innerHTML = h;
     $$('#s3 .stratrow button').forEach(b => b.onclick = () => applyStrat(b.dataset.strat));
-    $$('#s3 .crewcard').forEach(d => d.onclick = () => { S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS3(); renderCanvas(); });
+    $$('#s3 .opcard').forEach(d => d.onclick = () => { S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS3(); renderCanvas(); });
     mountCanvas();
     $('#goLive').onclick = () => { commit({ prep: null }); goStep(4); };
     $('#prepBtn').onclick = () => { if (running) commit({ prep: { playing: false, t: prepT() } }); else commit({ prep: { playing: true, t0: Date.now() - prepT() * 1000 } }); };
@@ -501,7 +515,7 @@
   function renderS4() {
     const cards = callSheet(); const focus = S.focus || (me && cards.some(c => c.slot === me.slot) ? me.slot : cards[0].slot); if (!S.focus) S.focus = focus;
     const isAtk = S.side === 'atk';
-    $('#s4').innerHTML = `<div class="lv-canvas"></div><aside class="live"><div class="clock ${isAtk ? '' : 'def'}" id="clock">3:00</div><div class="phase" id="phase">${E(site().n)}</div><div class="ctl"><button class="btn p" id="lvPlay">▶</button><button class="btn" id="lvPause">❚❚</button><button class="btn" id="lvReset">↺</button><button class="btn ghost" id="lvBack">Plan</button></div><div class="now" id="now"></div><div class="tl" id="tl"></div><div class="opchips">${cards.map(c => `<button class="${S.focus === c.slot ? 'on' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><i></i><b>${E(c.op)}</b><small>${E(c.name)}</small></button>`).join('')}</div></aside>`;
+    $('#s4').innerHTML = `<div class="lv-canvas"></div><aside class="live"><div class="clock ${isAtk ? '' : 'def'}" id="clock">3:00</div><div class="phase" id="phase">${E(site().n)}</div><div class="ctl"><button class="btn p" id="lvPlay">▶</button><button class="btn" id="lvPause">❚❚</button><button class="btn" id="lvReset">↺</button><button class="btn ghost" id="lvBack">Plan</button></div><div class="now" id="now"></div><div class="tl" id="tl"></div><div class="opchips">${cards.map(c => `<button class="${S.focus === c.slot ? 'on' : ''}" data-slot="${c.slot}" style="--c:${c.color}">${opPlate(c.o, 'sm')}<b>${E(c.op)}</b><small>${E(c.name)}</small></button>`).join('')}</div></aside>`;
     mountCanvas();
     $('#lvPlay').onclick = () => Round.play(); $('#lvPause').onclick = () => Round.pause(); $('#lvReset').onclick = () => Round.reset(); $('#lvBack').onclick = () => goStep(3);
     $$('#s4 .opchips button').forEach(b => b.onclick = () => { S.focus = b.dataset.slot; save(); renderS4(); renderCanvas(); });
@@ -528,8 +542,8 @@
     // instrucción del operador enfocado según el avance
     const c = callSheet().find(x => x.slot === S.focus); const now = $('#now'); if (!c || !now) return;
     let key, html;
-    if (S.side === 'atk' && c.so) { const path = c.so.path || []; const pr = Round.progress()[c.slot] || 0; const idx = S.live ? Math.min(path.length - 1, Math.floor(pr * path.length)) : 0; const stp = path[idx]; const cz = (c.so.clear || [])[Math.min((c.so.clear || []).length - 1, Math.floor(pr * ((c.so.clear || []).length + 0.5)))]; key = c.slot + ':' + idx + ':' + (pr >= 1); html = `<div class="k">${E(c.name)} · ${E(c.role)}</div><div class="op" style="--c:${c.color}">${E(c.op)}</div><div class="room">${stp ? E(stp.room) : ''}${stp && stp.via && stp.via !== 'door' ? ' · ' + E(stp.via) : ''}</div><div class="txt">${pr >= 1 ? E(c.so.final || '') : stp ? E(stp.do || '') : ''}</div>${cz && pr < 1 ? `<div class="warn">⚠ ${E(cz.room)}: ${E(cz.threat)}<br><b>${E(cz.how)}</b></div>` : ''}`; }
-    else { key = c.slot + ':def'; html = `<div class="k">${E(c.name)} · ${E(c.role)}</div><div class="op" style="--c:${c.color}">${E(c.op)}</div><div class="room">${E(c.go)}</div><div class="txt">${E(c.sub)}</div>`; }
+    if (S.side === 'atk' && c.so) { const path = c.so.path || []; const pr = Round.progress()[c.slot] || 0; const idx = S.live ? Math.min(path.length - 1, Math.floor(pr * path.length)) : 0; const stp = path[idx]; const cz = (c.so.clear || [])[Math.min((c.so.clear || []).length - 1, Math.floor(pr * ((c.so.clear || []).length + 0.5)))]; key = c.slot + ':' + idx + ':' + (pr >= 1); html = `<div class="k">${E(c.name)} · ${E(c.role)}</div><div class="opline">${opPlate(c.o, 'lg')}<span class="op" style="--c:${c.color}">${E(c.op)}</span></div><div class="room">${stp ? E(stp.room) : ''}${stp && stp.via && stp.via !== 'door' ? ' · ' + E(stp.via) : ''}</div><div class="txt">${pr >= 1 ? E(c.so.final || '') : stp ? E(stp.do || '') : ''}</div>${cz && pr < 1 ? `<div class="warn">⚠ ${E(cz.room)}: ${E(cz.threat)}<br><b>${E(cz.how)}</b></div>` : ''}`; }
+    else { key = c.slot + ':def'; html = `<div class="k">${E(c.name)} · ${E(c.role)}</div><div class="opline">${opPlate(c.o, 'lg')}<span class="op" style="--c:${c.color}">${E(c.op)}</span></div><div class="room">${E(c.go)}</div><div class="txt">${E(c.sub)}</div>`; }
     if (key !== lastNowKey || force) { now.innerHTML = html; lastNowKey = key; }
   }
   // ---- dictado por voz (para cantar el plan en el lobby)
