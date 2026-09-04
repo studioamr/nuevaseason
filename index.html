@@ -6,286 +6,371 @@
 <title>R6 NUEVA SEASON · Centro de mando del squad</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788491297">
+<link rel="stylesheet" href="css/base.css?v=1788492111">
 <style>
-.wrap{max-width:1240px;margin:0 auto;padding:0 26px}
-header.top{display:flex;align-items:center;justify-content:space-between;padding:16px 26px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(8,10,12,.92);backdrop-filter:blur(8px);z-index:20}
+body{background:#05070a}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
 
-/* ---------- 1. bienvenida ---------- */
-.hero{position:relative;text-align:center;padding:74px 26px 54px;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 0%,rgba(226,147,47,.13),transparent 72%);pointer-events:none}
-.hero .kick{font-family:var(--mono);font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
-/* titulo en llamas: gradiente que sube + brasa detras + temblor de la llama */
-.fuego{font-family:var(--disp);font-weight:700;line-height:.86;letter-spacing:.005em;margin:0;
-  font-size:clamp(50px,12.6vw,164px);text-transform:uppercase;position:relative;z-index:1}
-.fuego .ln{display:block;position:relative}
-.fuego i{display:inline-block;font-style:normal;position:relative;
-  background:linear-gradient(180deg,#fff8e6 0%,#ffd98a 22%,#f7a52c 48%,#e2621a 72%,#a02a08 100%);
-  background-size:100% 260%;-webkit-background-clip:text;background-clip:text;color:transparent;
-  animation:lamer 2.6s ease-in-out infinite, brotar .75s cubic-bezier(.2,.7,.3,1) both;
-  filter:drop-shadow(0 -6px 16px rgba(255,150,40,.5)) drop-shadow(0 4px 30px rgba(190,50,10,.35))}
-.fuego .ln:nth-child(2) i{animation-duration:3.1s,.75s}
-@keyframes lamer{0%,100%{background-position:50% 78%}50%{background-position:50% 26%}}
-@keyframes brotar{from{opacity:0;transform:translateY(26px) scaleY(.7)}to{opacity:1;transform:none}}
-.fuego i:nth-child(1){animation-delay:0s,.02s}.fuego i:nth-child(2){animation-delay:.14s,.08s}
-.fuego i:nth-child(3){animation-delay:.28s,.14s}.fuego i:nth-child(4){animation-delay:.42s,.20s}
-.fuego i:nth-child(5){animation-delay:.56s,.26s}.fuego i:nth-child(6){animation-delay:.70s,.32s}
-/* la brasa que respira detras */
-.fuego::before{content:"";position:absolute;left:50%;top:52%;width:112%;height:150%;transform:translate(-50%,-50%);
-  background:radial-gradient(46% 40% at 50% 62%,rgba(255,132,26,.30),rgba(190,40,10,.12) 52%,transparent 74%);
-  filter:blur(20px);z-index:-1;animation:respira 3.4s ease-in-out infinite}
-@keyframes respira{0%,100%{opacity:.72;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
-/* lengua de llama: copia del texto, desplazada por turbulencia, detras */
-.fuego .ln::after{content:attr(data-t);position:absolute;left:0;right:0;top:-.06em;
-  background:linear-gradient(180deg,#ffca6b,#ff6a12 46%,rgba(150,25,5,0) 96%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:url(#llama) blur(2px);opacity:.65;z-index:-1;pointer-events:none}
-@media(prefers-reduced-motion:reduce){.fuego i,.fuego::before{animation:none}.fuego .ln::after{display:none}}
-.hero p{max-width:640px;margin:22px auto 0;font-size:16px;line-height:1.62;color:var(--ink2)}
-.hero .cta{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
-.hero .cta .btn{height:46px;padding:0 26px;font-size:12px}
-@keyframes riseIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.hero>*{animation:riseIn .7s cubic-bezier(.2,.7,.3,1) both}
-.hero .kick{animation-delay:.02s}.hero h1{animation-delay:.10s}
+/* ---------- chrome HUD ---------- */
+header.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
+  padding:13px 24px;border-bottom:1px solid var(--line);background:rgba(5,7,10,.86);backdrop-filter:blur(10px)}
+.hud{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.022),transparent 40%),#0a0d11}
+.hud::before,.hud::after{content:"";position:absolute;width:11px;height:11px;border:1px solid var(--acc);opacity:.55;pointer-events:none}
+.hud::before{left:-1px;top:-1px;border-right:0;border-bottom:0}
+.hud::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim)}
+.tag b{width:5px;height:5px;background:var(--acc);border-radius:1px;animation:late 2.4s ease-in-out infinite}
+@keyframes late{0%,100%{opacity:1}50%{opacity:.25}}
+.sec{padding:66px 0 0}
+.sec .hd{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:11px}
+.sec .hd h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(25px,3.9vw,42px);
+  letter-spacing:.03em;margin:0;line-height:1}
+.sec .hd h2 em{font-style:normal;color:var(--acc)}
 
-/* barra: escalera real de Ranked 3.0 */
-.goal{max-width:900px;margin:40px auto 0;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 18px 14px}
-.goal .gh{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
-.goal .gh b{font-family:var(--disp);font-size:19px;letter-spacing:.04em;color:var(--acc)}
-.lad{position:relative;padding-bottom:34px}
-.tiers{display:flex;height:14px;border-radius:7px;overflow:hidden;border:1px solid var(--line)}
-.tiers span{position:relative;flex:1 1 0;background:var(--c);opacity:.30;transition:opacity .3s}
-.tiers span.hay{opacity:.92}
-.tiers span+span{border-left:1px solid rgba(0,0,0,.5)}
-.tiers em{position:absolute;left:0;right:0;top:19px;font-style:normal;font-family:var(--mono);font-size:8px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--mute);text-align:center;white-space:nowrap;overflow:hidden}
-.pins{position:absolute;left:0;right:0;top:-4px;height:22px}
-.pins b{position:absolute;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;border:2px solid #0a0c0f;
-  display:grid;place-items:center;font-family:var(--mono);font-size:8.5px;font-weight:600;color:#0a0c0f;letter-spacing:0;
-  box-shadow:0 3px 10px rgba(0,0,0,.6);animation:pinIn .8s cubic-bezier(.2,.7,.3,1) both;left:0}
-@keyframes pinIn{from{opacity:0;transform:translateX(-50%) translateY(-12px) scale(.6)}to{opacity:1}}
-.champ{display:flex;align-items:center;gap:11px;justify-content:flex-end;margin-top:6px}
-.champ img{filter:drop-shadow(0 4px 12px rgba(226,147,47,.45))}
-.champ b{display:block;font-family:var(--disp);font-size:19px;letter-spacing:.05em;text-transform:uppercase;color:var(--acc)}
-.champ small{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+/* ---------- 1. hero con fuego ---------- */
+.hero{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:clamp(46px,7vh,86px) 24px clamp(44px,6vh,72px);isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-3;
+  background:radial-gradient(58% 44% at 50% 64%,rgba(224,96,20,.16),transparent 70%),
+             radial-gradient(90% 60% at 50% 100%,rgba(150,38,6,.14),transparent 72%),#05070a}
+.hero .rej{position:absolute;inset:0;z-index:-3;opacity:.26;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(64% 58% at 50% 46%,#000,transparent 78%);mask-image:radial-gradient(64% 58% at 50% 46%,#000,transparent 78%)}
+#fuego{position:absolute;left:0;top:0;z-index:-2;pointer-events:none;mix-blend-mode:screen;filter:blur(.5px) saturate(1.12)}
+.hero .aura{position:absolute;left:50%;top:48%;width:min(1280px,132vw);height:min(660px,72vh);transform:translate(-50%,-50%);
+  z-index:-2;pointer-events:none;
+  background:radial-gradient(44% 40% at 50% 56%,rgba(255,146,38,.5),rgba(212,62,10,.24) 44%,transparent 74%);
+  filter:blur(42px);animation:aura 3.6s ease-in-out infinite}
+@keyframes aura{0%,100%{opacity:.68;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
+.hero .caja{position:relative;text-align:center;width:100%}
+.hero .kick{margin-bottom:18px}
+#titulo{font-family:var(--disp);font-weight:700;line-height:.84;letter-spacing:.006em;margin:0;text-transform:uppercase;
+  font-size:clamp(54px,13.4vw,178px);position:relative}
+#titulo span{display:block;
+  background:linear-gradient(180deg,#fff6e2 0%,#ffdf9e 20%,#ffab35 46%,#f0721b 72%,#c23c07 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 26px rgba(255,150,45,.45)) drop-shadow(0 6px 46px rgba(200,52,8,.4))}
+#titulo span:first-child{animation:brotar .8s cubic-bezier(.2,.75,.3,1) both}
+#titulo span:last-child{animation:brotar .8s cubic-bezier(.2,.75,.3,1) .16s both}
+@keyframes brotar{from{opacity:0;transform:translateY(30px) scaleY(.82)}to{opacity:1;transform:none}}
+.hero .pie{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.hero .pie div{text-align:center}
+.hero .pie b{display:block;font-family:var(--disp);font-size:clamp(24px,3.4vw,36px);font-weight:700;line-height:1;color:var(--ink)}
+.hero .pie small{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.hero .go{margin-top:30px;display:inline-flex}
+.hero .go .btn{height:50px;padding:0 34px;font-size:12.5px;letter-spacing:.2em}
 
-/* ---------- 2. el squad ---------- */
-.sec{padding:56px 0 10px}
-.sec .hd{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
-.sec .hd h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(26px,4vw,44px);letter-spacing:.03em;margin:0}
-.sec .hd small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:13px}
-@media(min-width:1120px){.roster{grid-template-columns:repeat(5,1fr)}}
-@media(max-width:1119px) and (min-width:700px){.roster{grid-template-columns:repeat(3,1fr)}}
-.mem{position:relative;border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
-.mem::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c,var(--acc))}
-.mem .op{position:relative;height:164px;display:grid;place-items:center;background:
-  radial-gradient(72% 82% at 50% 24%,color-mix(in srgb,var(--c,var(--acc)) 26%,transparent),transparent 70%),#0a0c0f;
-  border-bottom:1px solid var(--line);overflow:hidden}
-.mem .op img{width:124px;height:124px;object-fit:contain;filter:drop-shadow(0 12px 26px rgba(0,0,0,.6));transition:transform .5s cubic-bezier(.2,.7,.3,1)}
-.mem:hover .op img{transform:scale(1.07)}
-.mem .op .opn{position:absolute;left:0;right:0;bottom:7px;text-align:center;font-family:var(--disp);font-weight:700;text-transform:uppercase;
-  font-size:25px;letter-spacing:.05em;color:var(--c,var(--acc));text-shadow:0 2px 14px rgba(0,0,0,.8)}
-.mem .op .tag{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;padding:4px 8px;border:1px solid var(--c,var(--acc));border-radius:3px;color:var(--c,var(--acc));background:rgba(0,0,0,.5)}
-.mem .op .mas{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
-.mem .id{padding:14px 16px 10px}
-.mem .id b{display:block;font-family:var(--disp);font-size:22px;font-weight:600;letter-spacing:.02em;line-height:1.05}
-.mem .id small{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-.mem .rk{display:flex;align-items:baseline;gap:8px;padding:0 16px 12px}
-.mem .rk .n{font-family:var(--disp);font-size:29px;font-weight:700;letter-spacing:.01em;color:var(--ink)}
-.mem .rk .t{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c,var(--acc))}
-.mem .gs{height:6px;margin:0 16px 14px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
-.mem .gs i{display:block;height:100%;width:0;border-radius:3px;background:var(--c,var(--acc));transition:width 1.4s cubic-bezier(.2,.7,.3,1)}
+/* ---------- 2. squad ---------- */
+.roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(226px,1fr));gap:12px}
+@media(min-width:1080px){.roster{grid-template-columns:repeat(4,1fr)}}
+.mem{position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+.mem:hover{transform:translateY(-4px)}
+.mem .bar{height:2px;background:var(--c,var(--acc))}
+.mem .op{position:relative;height:172px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line);
+  background:radial-gradient(68% 76% at 50% 26%,color-mix(in srgb,var(--c,var(--acc)) 30%,transparent),transparent 72%),#080b0e}
+.mem .op img{width:128px;height:128px;object-fit:contain;filter:drop-shadow(0 12px 26px rgba(0,0,0,.65));
+  transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.mem:hover .op img{transform:scale(1.09) rotate(-1.5deg)}
+.mem .op .opn{position:absolute;left:0;right:0;bottom:7px;text-align:center;font-family:var(--disp);font-weight:700;
+  text-transform:uppercase;font-size:26px;letter-spacing:.05em;color:var(--c,var(--acc));text-shadow:0 2px 16px rgba(0,0,0,.9)}
+.mem .op .rol{position:absolute;top:9px;left:10px;font-family:var(--mono);font-size:8px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim)}
+.mem .op .tg{position:absolute;top:9px;right:10px;font-family:var(--mono);font-size:8px;letter-spacing:.16em;
+  padding:3px 6px;border:1px solid var(--c,var(--acc));color:var(--c,var(--acc));background:rgba(0,0,0,.45)}
+.mem .id{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:13px 14px 9px}
+.mem .id b{font-family:var(--disp);font-size:21px;font-weight:600;line-height:1;letter-spacing:.02em}
+.mem .id i{font-style:normal;font-family:var(--disp);font-size:23px;font-weight:700}
+.mem .id em{display:block;font-style:normal;font-family:var(--mono);font-size:8px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--dim);text-align:right;margin-top:3px}
 .mem .st{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:auto}
-.mem .st div{padding:11px 6px;text-align:center;border-right:1px solid var(--line)}
+.mem .st div{padding:10px 4px;text-align:center;border-right:1px solid var(--line)}
 .mem .st div:last-child{border-right:0}
-.mem .st b{display:block;font-family:var(--disp);font-size:19px;font-weight:600;line-height:1}
-.mem .st small{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-.mem.vacio .op{background:#0a0c0f}
-.mem.vacio .op .q{font-family:var(--disp);font-size:76px;color:var(--line)}
+.mem .st b{display:block;font-family:var(--disp);font-size:18px;font-weight:600;line-height:1}
+.mem .st small{font-family:var(--mono);font-size:8px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
 
-/* ---------- 3. como se usa ---------- */
-.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(206px,1fr));gap:12px}
-.paso{position:relative;border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:18px 16px 16px}
-.paso .n{font-family:var(--disp);font-size:44px;font-weight:700;line-height:.8;color:var(--acc);opacity:.34}
-.paso b{display:block;font-family:var(--disp);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin:8px 0 5px}
-.paso span{font-size:13px;line-height:1.5;color:var(--ink2)}
-.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:16px}
-.shot{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
-.shot .ph{padding:9px 12px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
-.shot img{display:block;width:100%;height:auto}
+/* ---------- 3. rangos ---------- */
+.rangos{padding:18px 20px 16px}
+.lad{position:relative;padding-bottom:32px}
+.tiers{display:flex;height:15px;overflow:hidden;border:1px solid var(--line)}
+.tiers span{position:relative;flex:1 1 0;background:var(--c);opacity:.26;transition:opacity .4s}
+.tiers span.hay{opacity:.95}
+.tiers span+span{border-left:1px solid rgba(0,0,0,.55)}
+.tiers em{position:absolute;left:0;right:0;top:20px;font-style:normal;font-family:var(--mono);font-size:8px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:center;white-space:nowrap;overflow:hidden}
+.pins{position:absolute;left:0;right:0;top:-5px;height:24px}
+.pins b{position:absolute;left:0;transform:translateX(-50%);width:26px;height:26px;border:2px solid #05070a;
+  display:grid;place-items:center;font-family:var(--mono);font-size:9px;font-weight:600;color:#05070a;
+  box-shadow:0 3px 12px rgba(0,0,0,.7);animation:pinIn .9s cubic-bezier(.2,.7,.3,1) both}
+@keyframes pinIn{from{opacity:0;transform:translateX(-50%) translateY(-14px) scale(.5)}to{opacity:1}}
+.meta{display:flex;align-items:center;gap:12px;justify-content:flex-end;margin-top:8px}
+.meta img{filter:drop-shadow(0 4px 14px rgba(226,147,47,.5))}
+.meta b{display:block;font-family:var(--disp);font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)}
+.meta small{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
 
-/* ---------- 4. cinta infinita de planos ---------- */
-.cinta{padding:44px 0 8px;overflow:hidden}
-.cinta .hd{max-width:1240px;margin:0 auto 18px;padding:0 26px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.cinta .hd h2{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:clamp(24px,3.6vw,40px);letter-spacing:.03em;margin:0}
-.cinta .hd small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
-.riel{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.riel .via{display:flex;gap:12px;width:max-content;animation:correr 84s linear infinite}
-.riel:hover .via{animation-play-state:paused}
-.riel+.riel{margin-top:12px}
-.riel.rev .via{animation-direction:reverse;animation-duration:98s}
-@keyframes correr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.plano{position:relative;flex:0 0 auto;width:232px;height:146px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0a0c0f}
-.plano img{width:100%;height:100%;object-fit:cover;opacity:.62;transition:opacity .35s,transform .5s cubic-bezier(.2,.7,.3,1)}
-.plano:hover img{opacity:1;transform:scale(1.05)}
-.plano .nm{position:absolute;left:0;right:0;bottom:0;padding:16px 10px 8px;font-family:var(--disp);font-weight:600;font-size:15px;
-  letter-spacing:.05em;text-transform:uppercase;color:var(--ink);background:linear-gradient(180deg,transparent,rgba(4,6,9,.92))}
-.plano .fl{position:absolute;top:7px;left:8px;font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);background:rgba(4,6,9,.8);border:1px solid var(--line);border-radius:3px;padding:2px 5px}
-@media(prefers-reduced-motion:reduce){.riel .via{animation:none}.riel{overflow-x:auto}}
-footer{margin-top:44px;padding:18px 26px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-@media(max-width:700px){.mem .st b{font-size:16px}.hero{padding:52px 20px 40px}}
+/* ---------- 4. como se usa + mapa vivo ---------- */
+.uso{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:1000px){.uso{grid-template-columns:.82fr 1.18fr}}
+.pasos{display:grid;gap:9px;align-content:start}
+.paso{display:flex;gap:13px;align-items:flex-start;padding:13px 15px}
+.paso .n{font-family:var(--disp);font-size:26px;font-weight:700;line-height:.9;color:var(--acc);opacity:.4;min-width:26px}
+.paso b{display:block;font-family:var(--disp);font-size:17px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.paso span{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.tac{position:relative;overflow:hidden}
+.tac .cab{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 13px;
+  border-bottom:1px solid var(--line);font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.tac .cab i{font-style:normal;color:var(--acc)}
+.tac .vis{position:relative;background:#05070a;aspect-ratio:1800/1420}
+.tac .vis img{position:absolute;top:0;left:-21.111%;width:142.222%;height:101.408%;max-width:none;object-fit:fill;opacity:.62;filter:saturate(.85) contrast(1.05)}
+.tac .vis svg{position:absolute;inset:0;width:100%;height:100%}
+.tac .ru{fill:none;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:var(--l);stroke-dashoffset:var(--l);animation:trazar 9s ease-in-out infinite}
+.tac .glow{fill:none;stroke-width:22;stroke-linecap:round;stroke-linejoin:round;opacity:.16;filter:blur(6px)}
+@keyframes trazar{0%{stroke-dashoffset:var(--l)}42%,72%{stroke-dashoffset:0}100%{stroke-dashoffset:calc(var(--l) * -1)}}
+.tac .bmb{animation:latir 2.2s ease-in-out infinite}
+@keyframes latir{0%,100%{opacity:1}50%{opacity:.45}}
+footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(prefers-reduced-motion:reduce){#fuego{display:none}.hero .aura,.tac .ru,.tac .bmb{animation:none}.tac .ru{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
 <div class="scanline"></div>
+
 <header class="top">
   <a class="brand" href="index.html"><span class="r6">R6</span><b data-fx>Nueva Season</b><i class="flick">· Y11S3 Split Fire</i></a>
   <a class="btn p" href="app.html">Entrar al centro de mando</a>
 </header>
 
 <section class="hero">
-  <div class="kick">Bienvenidos · temporada Split Fire</div>
-  <h1 class="fuego" aria-label="Nueva Season">
-    <span class="ln" data-t="Nueva"><i>N</i><i>U</i><i>E</i><i>V</i><i>A</i></span>
-    <span class="ln" data-t="Season"><i>S</i><i>E</i><i>A</i><i>S</i><i>O</i><i>N</i></span>
-  </h1>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="llama">
-    <feTurbulence type="fractalNoise" baseFrequency="0.022 0.055" numOctaves="3" seed="7" result="ruido">
-      <animate attributeName="baseFrequency" dur="9s" values="0.022 0.055;0.03 0.08;0.022 0.055" repeatCount="indefinite"/>
-    </feTurbulence>
-    <feDisplacementMap in="SourceGraphic" in2="ruido" scale="5" xChannelSelector="R" yChannelSelector="G"/>
-  </filter></svg>
-
-  <div class="goal">
-    <div class="gh"><span>Escalera Ranked 3.0 · dónde está cada quien</span><b id="gPct">—</b></div>
-    <div class="lad" id="lad"><div class="tiers" id="tiers"></div><div class="pins" id="pins"></div></div>
-    <div class="champ"><img src="img/ui/champion.svg" alt="" width="46" height="46"><div><b>Champion</b><small>4,500 RP · a donde vamos</small></div></div>
+  <div class="bg"></div><div class="rej"></div><div class="aura"></div>
+  <canvas id="fuego" aria-hidden="true"></canvas>
+  <div class="caja">
+    <div class="kick tag"><b></b> Temporada Split Fire · escuadra de 4</div>
+    <h1 id="titulo"><span>Nueva</span><span>Season</span></h1>
+    <div class="pie">
+      <div><b id="kMapas">18</b><small>Mapas ranked</small></div>
+      <div><b id="kPlanes">—</b><small>Planes de entrada</small></div>
+      <div><b>3:00</b><small>Por ronda</small></div>
+      <div><b id="kRp">—</b><small>RP del squad</small></div>
+    </div>
+    <div class="go"><a class="btn p" href="app.html">Empezar ranked ▶</a></div>
   </div>
 </section>
 
 <div class="wrap">
   <section class="sec" id="squad">
-    <div class="hd"><h2 class="h-disp" data-fx>El squad</h2><small>Stats reales de R6 Tracker · el operador grande es el que más juega</small></div>
+    <div class="hd"><h2 class="h-disp" data-fx>El <em>squad</em></h2><span class="tag">Stats reales de R6 Tracker · el operador grande es el que más juega</span></div>
     <div class="roster" id="roster"></div>
   </section>
 
-  <section class="sec" id="como">
-    <div class="hd"><h2 class="h-disp" data-fx>Cómo se usa</h2><small>Cinco pasos · una ronda</small></div>
-    <div class="pasos">
-      <div class="paso"><div class="n">1</div><b>Listo</b><span>Uno crea la sala y pasa el código. Todos dan LISTO y arranca la partida.</span></div>
-      <div class="paso"><div class="n">2</div><b>Mapa</b><span>El que confirma el mapa y los vetos se lo actualiza a los cinco.</span></div>
-      <div class="paso"><div class="n">3</div><b>Sitio</b><span>Dices qué bomba tocó. El plano se acerca a ese sitio, en su piso.</span></div>
-      <div class="paso"><div class="n">4</div><b>Plan</b><span>Reparte operadores y dibuja la entrada de cada quien con su color.</span></div>
-      <div class="paso"><div class="n">5</div><b>En vivo</b><span>Reloj de 3:00 por fases. Tu tarea se prende en el mapa cuando toca.</span></div>
+  <section class="sec" id="rangos">
+    <div class="hd"><h2 class="h-disp" data-fx>Los <em>rangos</em></h2><span class="tag" id="promRp">—</span></div>
+    <div class="hud rangos">
+      <div class="lad"><div class="tiers" id="tiers"></div><div class="pins" id="pins"></div></div>
+      <div class="meta"><img src="img/ui/champion.svg" alt="" width="44" height="44"><div><b>Champion</b><small>4,500 RP · a donde vamos</small></div></div>
     </div>
-    <div class="shots">
-      <div class="shot"><div class="ph">Plano real · rutas por operador</div><img src="img/maps/clubhouse/0.jpg" loading="lazy" alt="Plano del sótano de Clubhouse"></div>
-      <div class="shot"><div class="ph">Defensa · refuerzos y rotaciones en el plano</div><img src="img/maps/border/2.jpg" loading="lazy" alt="Plano del segundo piso de Border"></div>
+  </section>
+
+  <section class="sec" id="como">
+    <div class="hd"><h2 class="h-disp" data-fx>Cómo se <em>usa</em></h2><span class="tag">Cinco pasos · una ronda</span></div>
+    <div class="uso">
+      <div class="pasos">
+        <div class="hud paso"><span class="n">1</span><div><b>Listo</b><span>Uno crea la sala y pasa el código. Todos dan LISTO y arranca.</span></div></div>
+        <div class="hud paso"><span class="n">2</span><div><b>Mapa</b><span>El que confirma mapa y vetos se lo actualiza a los cuatro.</span></div></div>
+        <div class="hud paso"><span class="n">3</span><div><b>Sitio</b><span>Dices qué bomba tocó y el plano se acerca a ese sitio, en su piso.</span></div></div>
+        <div class="hud paso"><span class="n">4</span><div><b>Plan</b><span>Reparte operadores y dibuja la entrada de cada quien con su color.</span></div></div>
+        <div class="hud paso"><span class="n">5</span><div><b>En vivo</b><span>Reloj de 3:00 por fases. Tu tarea se prende en el mapa cuando toca.</span></div></div>
+      </div>
+      <div class="hud tac">
+        <div class="cab"><span>Clubhouse · Sótano · <i>Iglesia / Arsenal</i></span><span>Ataque · plan real de la app</span></div>
+        <div class="vis">
+          <img src="img/maps/clubhouse/0.jpg" alt="Plano del sótano de Clubhouse" loading="lazy">
+          <svg viewBox="380 0 1800 1420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect x="2010" y="1205" width="420" height="240" fill="#05070a" opacity=".95"/>
+            <g id="rutas"></g>
+            <g class="bmb">
+              <circle cx="1371" cy="588" r="26" fill="rgba(6,9,13,.9)" stroke="#39b6f0" stroke-width="4"/>
+              <text x="1371" y="599" text-anchor="middle" fill="#39b6f0" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="30">A</text>
+              <circle cx="1385" cy="497" r="26" fill="rgba(6,9,13,.9)" stroke="#39b6f0" stroke-width="4"/>
+              <text x="1385" y="508" text-anchor="middle" fill="#39b6f0" font-family="Barlow Condensed,sans-serif" font-weight="700" font-size="30">B</text>
+            </g>
+            <g id="monos"></g>
+          </svg>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
-
-<section class="cinta">
-  <div class="hd"><h2 class="h-disp" data-fx>Los planos</h2><small>Blueprints reales del juego · pasa el cursor para frenar</small></div>
-  <div class="riel"><div class="via" id="via1"></div></div>
-  <div class="riel rev"><div class="via" id="via2"></div></div>
-</section>
-
 <footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
 
-<script src="js/store.js?v=1788491297"></script>
-<script src="js/fx.js?v=1788491297"></script>
-<script src="js/theme.js?v=1788491297"></script>
-<script src="js/data-ops.js?v=1788491297"></script>
-<script src="js/data-squad.js?v=1788491297"></script>
-<script src="js/data-ranks.js?v=1788491297"></script>
-<script src="js/data-maps.js?v=1788491297"></script>
+<script src="js/store.js?v=1788492111"></script>
+<script src="js/fx.js?v=1788492111"></script>
+<script src="js/theme.js?v=1788492111"></script>
+<script src="js/data-ops.js?v=1788492111"></script>
+<script src="js/data-squad.js?v=1788492111"></script>
+<script src="js/data-ranks.js?v=1788492111"></script>
+<script src="js/data-maps.js?v=1788492111"></script>
 <script>
+/* ============ 1. FUEGO: partículas que salen de las propias letras ============ */
 (() => {
-  const E = Store.esc, CHAMP = 4500;
-  const COLS = { valeria:'#d94f3d', paola:'#e2932f', maciaco:'#4ea8de', camila:'#8f6bd0', andre:'#39b6f0' };
-  const rpDe = s => (s && s.season && s.season.rp) || (s && (s.seasons.find(x => x[1] > 0) || [])[1]) || 0;
-  const rango = rp => (window.RANKS && RANKS.rankOf ? RANKS.rankOf(rp, 3) : null);
-  const opDe = id => (window.OPS || []).find(o => o.id === id);
+  const cv = document.getElementById('fuego'), tit = document.getElementById('titulo');
+  if (!cv || !tit || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const ctx = cv.getContext('2d');
+  let emisores = [], P = [], W = 0, H = 0, DPR = Math.min(2, devicePixelRatio || 1), corriendo = false;
 
-  const R = SQUAD.filter(p => !p.removed);
-  R.forEach(p => {
-    const s = p.stats, rp = rpDe(s), o = opDe(p.main), c = COLS[p.id] || 'var(--acc)';
-    const r = rango(rp), nom = r ? r.label : '';
-    const pct = Math.max(4, Math.min(100, Math.round(rp / CHAMP * 100)));
-    const el = document.createElement('div');
-    el.className = 'mem' + (s ? '' : ' vacio'); el.style.setProperty('--c', c);
-    el.innerHTML = s ? `
-      <div class="op"><span class="mas">Más jugado</span><span class="tag">${E(p.tag || '')}</span>
-        <img src="img/ops/${E(p.main)}.svg" alt="" loading="lazy">
-        <span class="opn">${E(o ? o.n : p.main)}</span></div>
-      <div class="id"><b>${E(p.nick || p.id)}</b><small>${E(p.role)}</small></div>
-      <div class="rk"><span class="n" style="color:${r ? r.color : 'var(--ink)'}">${rp.toLocaleString('es-MX')}</span><span class="t">${E(nom)} · pico ${s.peak.rp.toLocaleString('es-MX')}</span></div>
-      <div class="gs"><i data-w="${pct}"></i></div>
+  // Lee la silueta REAL del título y saca los puntos por donde debe salir la llama.
+  function leerLetras() {
+    const r = tit.getBoundingClientRect(); if (!r.width) return false;
+    const hr = cv.parentElement.getBoundingClientRect();
+    const padX = Math.round(r.height * .26), padT = Math.round(r.height * .86), padB = Math.round(r.height * .18);
+    W = Math.ceil(r.width + padX * 2); H = Math.ceil(r.height + padT + padB);
+    cv.width = W * DPR; cv.height = H * DPR; cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    cv.style.left = Math.round(r.left - hr.left - padX) + 'px';     // pegado a las letras, no al centro del hero
+    cv.style.top = Math.round(r.top - hr.top - padT) + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const pad = padX;
+
+    const off = document.createElement('canvas'); off.width = W; off.height = H;
+    const o = off.getContext('2d');
+    const cs = getComputedStyle(tit.querySelector('span'));
+    o.fillStyle = '#fff'; o.textAlign = 'center'; o.textBaseline = 'alphabetic';
+    o.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    [...tit.querySelectorAll('span')].forEach(ln => {
+      const b = ln.getBoundingClientRect();
+      o.fillText(ln.textContent.toUpperCase(), W / 2, b.bottom - r.top + padT - b.height * .17);
+    });
+    const d = o.getImageData(0, 0, W, H).data;
+    emisores = [];
+    const paso = Math.max(2, Math.round(W / 320));
+    for (let x = 0; x < W; x += paso) {
+      let arriba = -1;
+      for (let y = 0; y < H; y += 2) if (d[(y * W + x) * 4 + 3] > 90) { arriba = y; break; }
+      if (arriba < 0) continue;
+      emisores.push({ x, y: arriba });                          // el borde de arriba echa la llama larga
+      for (let y = arriba; y < H; y += 9) if (d[(y * W + x) * 4 + 3] > 90) emisores.push({ x, y, dentro: 1 });
+    }
+    return emisores.length > 0;
+  }
+
+  const RAMPA = [[255, 252, 232], [255, 224, 150], [255, 168, 52], [236, 104, 20], [176, 44, 8], [78, 16, 6]];
+  function color(t, a) {
+    const i = Math.min(RAMPA.length - 2, Math.floor(t * (RAMPA.length - 1))), f = t * (RAMPA.length - 1) - i;
+    const A = RAMPA[i], B = RAMPA[i + 1];
+    return `rgba(${A[0] + (B[0] - A[0]) * f | 0},${A[1] + (B[1] - A[1]) * f | 0},${A[2] + (B[2] - A[2]) * f | 0},${a})`;
+  }
+  function nacer(n) {
+    for (let k = 0; k < n && emisores.length; k++) {
+      const e = emisores[(Math.random() * emisores.length) | 0];
+      const borde = !e.dentro;
+      P.push({ x: e.x + (Math.random() - .5) * (borde ? 6 : 4), y: e.y + (Math.random() - .5) * 4,
+        vx: (Math.random() - .5) * .55, vy: -(borde ? 2.9 + Math.random() * 4.2 : 1.2 + Math.random() * 1.9),
+        r: (borde ? 13 : 5.5) + Math.random() * (borde ? 17 : 8),
+        vida: 0, max: (borde ? 72 : 40) + Math.random() * 58, s: Math.random() * 6.28 });
+    }
+  }
+
+  let t = 0;
+  function cuadro() {
+    if (!corriendo) return;
+    t += .016;
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    nacer(emisores.length > 200 ? 42 : 24);
+    for (let i = P.length - 1; i >= 0; i--) {
+      const p = P[i]; p.vida++;
+      if (p.vida > p.max) { P.splice(i, 1); continue; }
+      const k = p.vida / p.max;
+      p.x += p.vx + Math.sin(t * 1.9 + p.s) * .5;               // la llama ondea
+      p.y += p.vy; p.vy *= .988; p.vx *= .99;
+      const rad = Math.max(.5, p.r * (1 - k * .55)), a = (1 - k) * (1 - k) * .68;
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad);
+      g.addColorStop(0, color(Math.min(1, k * 1.25), a));
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(cuadro);
+  }
+
+  const arranca = () => { if (!leerLetras()) return; if (!corriendo) { corriendo = true; requestAnimationFrame(cuadro); } };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => setTimeout(arranca, 80));
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { P = []; leerLetras(); }, 180); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) corriendo = false; else if (emisores.length) { corriendo = true; requestAnimationFrame(cuadro); } });
+})();
+
+/* ============ 2. SQUAD, RANGOS Y PLAN REAL ============ */
+(() => {
+  const E = Store.esc;
+  const COLS = { valeria: '#d94f3d', paola: '#e2932f', maciaco: '#4ea8de', camila: '#8f6bd0' };
+  const rpDe = s => (s && s.season && s.season.rp) || (s && (s.seasons.find(x => x[1] > 0) || [])[1]) || 0;
+  const rango = rp => (RANKS.rankOf ? RANKS.rankOf(rp, 3) : null);
+  const opDe = id => (window.OPS || []).find(o => o.id === id);
+  const R = SQUAD.filter(p => !p.removed && p.stats);
+
+  document.getElementById('roster').innerHTML = R.map(p => {
+    const s = p.stats, rp = rpDe(s), r = rango(rp), o = opDe(p.main), c = COLS[p.id] || 'var(--acc)';
+    return `<div class="hud mem" style="--c:${c}">
+      <div class="bar"></div>
+      <div class="op"><span class="rol">Más jugado</span><span class="tg">${E(p.tag || '')}</span>
+        <img src="img/ops/${E(p.main)}.svg" alt="" loading="lazy"><span class="opn">${E(o ? o.n : p.main)}</span></div>
+      <div class="id"><div><b>${E(p.nick || p.id)}</b><em style="text-align:left">${E(p.role)}</em></div>
+        <div><i style="color:${r ? r.color : 'var(--ink)'}">${rp.toLocaleString('es-MX')}</i><em>${r ? E(r.label) : 'sin rango'}</em></div></div>
       <div class="st">
         <div><b>${s.kd.toFixed(2)}</b><small>K/D</small></div>
         <div><b>${s.hs.toFixed(0)}%</b><small>Cabeza</small></div>
         <div><b>${s.win.toFixed(0)}%</b><small>Ganadas</small></div>
         <div><b>${(s.matches / 1000).toFixed(1)}k</b><small>Partidas</small></div>
-      </div>` : `
-      <div class="op"><span class="mas">Más jugado</span><span class="q">?</span><span class="opn">Sin definir</span></div>
-      <div class="id"><b>André</b><small>${E(p.role)} · falta tu nick</small></div>
-      <div class="rk"><span class="n">—</span><span class="t">Ponlo en Squad → Editar</span></div>
-      <div class="gs"><i data-w="0"></i></div>
-      <div class="st"><div><b>—</b><small>K/D</small></div><div><b>—</b><small>Cabeza</small></div><div><b>—</b><small>Ganadas</small></div><div><b>—</b><small>Partidas</small></div></div>`;
-    document.getElementById('roster').appendChild(el);
-  });
+      </div></div>`;
+  }).join('');
 
-  // Escalera real de Ranked 3.0: un tramo por rango, con cada quien clavado en su RP.
-  // 7 tramos de 500 RP (Cobre → Diamante). Champion es la meta, va como escudo al final.
+  // escalera real de Ranked 3.0: 7 tramos de 500 RP, cada quien clavado en su RP
   const BASE = (RANKS.base && RANKS.base[3]) || 1000, TOP = 4500;
-  const T = RANKS.tiers.slice(0, 7);
   const tiers = document.getElementById('tiers'), pins = document.getElementById('pins');
-  T.forEach(t => { const sp = document.createElement('span'); sp.style.setProperty('--c', t.c); sp.innerHTML = `<em>${t.n}</em>`; tiers.appendChild(sp); });
+  RANKS.tiers.slice(0, 7).forEach(t => { const sp = document.createElement('span'); sp.style.setProperty('--c', t.c); sp.innerHTML = `<em>${t.n}</em>`; tiers.appendChild(sp); });
   const pos = rp => Math.max(0, Math.min(100, (rp - BASE) / (TOP - BASE) * 100));
-  // los pines no se enciman: si dos caen a menos de un pin de distancia, se apartan
-  const anchoPin = 24 / (document.querySelector('.lad').clientWidth || 860) * 100 + .6;
-  const gente = R.filter(p => p.stats).map(p => ({ p, rp: rpDe(p.stats), x: pos(rpDe(p.stats)) })).sort((a, b) => a.x - b.x);
-  for (let k = 1; k < gente.length; k++) if (gente[k].x - gente[k - 1].x < anchoPin) gente[k].x = gente[k - 1].x + anchoPin;
+  const ancho = 26 / (document.querySelector('.lad').clientWidth || 900) * 100 + .6;
+  const gente = R.map(p => ({ p, rp: rpDe(p.stats), x: pos(rpDe(p.stats)) })).sort((a, b) => a.x - b.x);
+  for (let k = 1; k < gente.length; k++) if (gente[k].x - gente[k - 1].x < ancho) gente[k].x = gente[k - 1].x + ancho;
   const sobra = gente.length ? gente[gente.length - 1].x - 100 : 0;
   if (sobra > 0) gente.forEach(g => { g.x -= sobra; });
   gente.forEach(({ p, rp, x }, i) => {
-    const r = rango(rp);
-    const b = document.createElement('b');
-    b.style.left = x + '%'; b.style.background = r ? r.color : 'var(--acc)';
-    b.style.animationDelay = (.2 + i * .12) + 's';
+    const r = rango(rp), b = document.createElement('b');
+    b.style.left = x + '%'; b.style.background = r ? r.color : 'var(--acc)'; b.style.animationDelay = (.2 + i * .12) + 's';
     b.textContent = (p.nick || p.id).replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
     b.title = `${p.nick} · ${rp.toLocaleString('es-MX')} RP · ${r ? r.label : ''}`;
     pins.appendChild(b);
     const seg = tiers.children[r ? r.t : 0]; if (seg) seg.classList.add('hay');
   });
-  const con = R.filter(p => p.stats);
-  const prom = con.reduce((a, p) => a + rpDe(p.stats), 0) / Math.max(con.length, 1);
-  document.getElementById('gPct').textContent = Math.round(prom).toLocaleString('es-MX') + ' RP promedio';
+  const prom = Math.round(R.reduce((a, p) => a + rpDe(p.stats), 0) / Math.max(R.length, 1));
+  document.getElementById('promRp').textContent = prom.toLocaleString('es-MX') + ' RP promedio · faltan ' + (TOP - prom).toLocaleString('es-MX');
+  document.getElementById('kRp').textContent = prom.toLocaleString('es-MX');
+  const ranked = (window.MAPS || []).filter(m => m.pool === 'ranked');
+  document.getElementById('kMapas').textContent = ranked.length || 18;
+  document.getElementById('kPlanes').textContent = ranked.reduce((a, m) => a + (m.sites || []).length, 0) * 8 || '—';
 
-
-  // cinta infinita: cada mapa con su plano real, en dos rieles que corren al reves
-  (async () => {
-    let MAN = {}; try { MAN = await (await fetch('js/floors-manifest.json')).json(); } catch (e) {}
-    const lista = (window.MAPS || []).filter(m => (MAN[m.id] || []).length).map(m => {
-      const fs = MAN[m.id], f = fs[Math.min(1, fs.length - 1)];
-      return { n: m.n, src: f.src, fl: fs.length + (fs.length === 1 ? ' planta' : ' plantas'), pool: m.pool };
-    });
-    if (!lista.length) { document.querySelector('.cinta').remove(); return; }
-    const mitad = Math.ceil(lista.length / 2);
-    const tarjeta = m => `<a class="plano" href="app.html" title="${E(m.n)}"><img src="${E(m.src)}" loading="lazy" alt=""><span class="fl">${E(m.fl)}</span><span class="nm">${E(m.n)}</span></a>`;
-    const llena = (id, arr) => { const h = arr.map(tarjeta).join(''); document.getElementById(id).innerHTML = h + h; };
-    llena('via1', lista.slice(0, mitad));
-    llena('via2', lista.slice(mitad).concat(lista.slice(0, 2)));
-  })();
-
-  const crece = () => { document.querySelectorAll('.gs i').forEach(i => { i.style.width = i.dataset.w + '%'; }); };
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(e => { if (e.some(x => x.isIntersecting)) { crece(); io.disconnect(); } }, { threshold: .2 });
-    io.observe(document.querySelector('.roster')); setTimeout(crece, 1400);
-  } else setTimeout(crece, 300);
+  // Plan real: estas rutas salieron del propio motor de la app (Clubhouse · Iglesia, ataque).
+  const RUTAS = [
+    { c: '#d75a28', op: 'thermite', x: 1419, y: 1349, d: 'M1430 1342 L1430 1318 L1261 875 L1278 776 L1288 739 L1368 799 L1384 759 L1401 755 L1420 755 L1304 535 L1228 431 L1227 445 L1337 555 L1390 558 L1374 713 L1371 588' },
+    { c: '#0990bc', op: 'buck', x: 2073, y: 954, d: 'M2073 954 L2086 934 L1510 382 L1494 402 L1458 446 L1502 742 L1506 902 L1491 910 L1420 839 L1380 811 L1380 711 L1196 715 L1188 631 L1200 611 L1470 477 L1385 497' },
+    { c: '#7bbc4b', op: 'zero', x: 1623, y: 40, d: 'M1623 40 L1314 158 L1286 158 L1316 208 L1386 250 L1446 302 L1469 357 L1474 406 L1434 490 L1406 522 L1374 713 L1371 588' },
+    { c: '#bc9358', op: 'nomad', x: 462, y: 747, d: 'M462 747 L1297 349 L1256 363 L1024 503 L1004 679 L1096 679 L1268 563 L1299 558 L1228 431 L1227 445 L1385 497' }
+  ];
+  const NS = 'http://www.w3.org/2000/svg', gr = document.getElementById('rutas'), gm = document.getElementById('monos');
+  const nodo = (t, at) => { const e = document.createElementNS(NS, t); for (const k in at) e.setAttribute(k, at[k]); return e; };
+  RUTAS.forEach((r, i) => {
+    gr.appendChild(nodo('path', { d: r.d, stroke: r.c, class: 'glow' }));
+    const p = nodo('path', { d: r.d, stroke: r.c, class: 'ru' }); gr.appendChild(p);
+    const L = Math.ceil(p.getTotalLength());
+    p.style.setProperty('--l', L); p.style.animationDelay = (i * .55) + 's'; p.style.animationDuration = (7 + i * .6) + 's';
+    const g = nodo('g', {});
+    g.appendChild(nodo('circle', { cx: r.x, cy: r.y, r: 21, fill: 'rgba(6,9,13,.94)', stroke: r.c, 'stroke-width': 3.5 }));
+    g.appendChild(nodo('image', { x: r.x - 15, y: r.y - 15, width: 30, height: 30, href: `img/ops/${r.op}.svg` }));
+    gm.appendChild(g);
+  });
 })();
 </script>
 </body>
