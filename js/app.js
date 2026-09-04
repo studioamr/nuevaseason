@@ -78,7 +78,15 @@
   const saveSeason = () => { Store.set('season', SEASON); if (Sync.connected && !syncing) Sync.patch({ season: SEASON }); };
   let syncing = false;
   function commit(patch) { Object.assign(S, patch); save(); if (Sync.connected && !syncing) { const p = {}; for (const k of Object.keys(patch)) if (k in shared()) p[k] = S[k]; if (Object.keys(p).length) Sync.patch(p); } render(); }
-  Sync.onState = st => { syncing = true; const keep = { ...st }; delete keep.updatedAt; delete keep.by; if (keep.season) { SEASON = keep.season; Store.set('season', SEASON); delete keep.season; } const jump = (st.map && st.map !== S.map) || (st.site && st.site !== S.site) || (st.side && st.side !== S.side); Object.assign(S, keep); if (st.map !== undefined) S.floorIdx = null; if (jump && S.step < 4) S.step = 4; save(); render(); syncing = false; if (st.by && st.by !== (me && me.name)) Store.toast(`${st.by} actualizó el plan`); };
+  Sync.onState = st => { syncing = true; const keep = { ...st }; delete keep.updatedAt; delete keep.by;
+    if (keep.season) { SEASON = keep.season; Store.set('season', SEASON); delete keep.season; }
+    const jump = (st.map && st.map !== S.map) || (st.site && st.site !== S.site) || (st.side && st.side !== S.side);
+    const eraActiva = !!(S.match && S.match.active);
+    Object.assign(S, keep); if (st.map !== undefined) S.floorIdx = null;
+    // el equipo sigue la fase: lobby abierto → fase 1; arranque de partida → fase 2 (mapa)
+    if (st.lobbyOpen === true) S.step = 1;
+    else if (st.lobbyOpen === false && st.match && st.match.active && !eraActiva) S.step = 2;
+    else if (jump && S.step < 4) S.step = 4; save(); render(); syncing = false; if (st.by && st.by !== (me && me.name)) Store.toast(`${st.by} actualizó el plan`); };
   Sync.onPeers = () => { renderSala(); renderSalaChip(); if (S.step === 1) renderLobby(); };
 
   // ---------- helpers ----------
@@ -349,7 +357,12 @@
   //  MODO RONDA · 4 pasos · pensado para los 45 s de selección de operador
   // =====================================================================
   const stepLabels = () => ({ 1: map().n, 2: `${S.side === 'atk' ? 'Ataque' : 'Defensa'} · ${S.side === 'atk' && !S.siteKnown ? 'sitio ?' : site().n}`, 3: (curStrat() ? (curStrat().tag || curStrat().n) : 'libre'), 4: S.live && S.live.playing ? 'en curso' : '' });
-  function goStep(n) { S.step = n; S.selected = null; save(); render(); }
+  function goStep(n) { // la fase 1 (lobby) se comparte con el equipo; salir de ella también
+    S.step = n; S.selected = null;
+    if (n === 1 && !S.lobbyOpen) { commit({ lobbyOpen: true }); return; }
+    if (n !== 1 && S.lobbyOpen) { commit({ lobbyOpen: false }); return; }
+    save(); render();
+  }
   const CV = $('#canvas');
   function mountCanvas() { // el canvas vive fuera de las pantallas: al reconstruirlas hay que volver a colgarlo
     const cv = CV; if (!cv) return; cv.hidden = !(S.step === 4 || S.step === 5);
@@ -412,7 +425,7 @@
     if (w >= 5 || l >= 5) return w > l ? 'W' : 'L';
     return null;
   }
-  function openLobby() { S.step = 1; commit({ ready: {} }); }
+  function openLobby() { S.step = 1; commit({ lobbyOpen: true, ready: {} }); }
   function startMatch() { S.step = 2; S.focus = null; commit({ lobbyOpen: false, ready: {}, match: { rounds: [], active: true, id: Store.uid(), startedAt: Date.now() }, hint: null, round: 1, live: null, siteKnown: true }); Store.toast('Partida iniciada · ronda 1'); }
   // ---------- LOBBY: todos dan LISTO ----------
   function lobbyPeople() { // se identifica por conexión, no por slot: dos personas pueden elegir el mismo slot
