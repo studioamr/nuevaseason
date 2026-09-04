@@ -462,3 +462,38 @@
 .ov .head .hglow{display:none}
 /* cabecera de sección con regla, tipo informe */
 .h-step h2,.pagewrap h2,.call .hd h2{font-family:var(--disp);letter-spacing:.14em}
+/* ===== PREPARACIÓN: hoja de operación, cero párrafos ===== */
+.sheet{display:flex;flex-direction:column;gap:12px;min-height:0;overflow:auto}
+.sh-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--disp);font-size:20px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.sh-top .sep{color:var(--mute);font-weight:400}
+.sh-top .obj{color:var(--acc2)}
+.crew{display:grid;gap:8px}
+.crewcard{position:relative;display:grid;grid-template-columns:4px 92px 1fr auto;grid-template-rows:auto auto;gap:2px 12px;align-items:center;
+  padding:12px 14px 12px 0;border:1px solid var(--line);background:#14181c;text-align:left;transition:border-color .12s,background .12s}
+.crewcard .bar{grid-row:1/3;height:100%;background:var(--c)}
+.crewcard .nick{grid-row:1/3;font-family:var(--mono);font-size:12px;color:var(--dim);line-height:1.3;overflow:hidden;text-overflow:ellipsis}
+.crewcard.me .nick::after{content:" · TÚ";color:var(--acc2)}
+.crewcard .opn{font-family:var(--disp);font-size:27px;font-weight:700;letter-spacing:.05em;color:var(--c);text-transform:uppercase;line-height:1}
+.crewcard .role{grid-column:4;grid-row:1;font-family:var(--disp);font-size:11px;letter-spacing:.18em;color:var(--dim);white-space:nowrap}
+.crewcard .ruta{grid-column:3/5;grid-row:2;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px}
+.crewcard .hop{font-family:var(--disp);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--line2);padding:2px 8px}
+.crewcard .hop.in{color:#fff;border-color:var(--c)}
+.crewcard .hop.obj{color:#fff;background:var(--c);border-color:var(--c)}
+.crewcard .ruta em{color:var(--mute);font-style:normal;font-size:14px}
+.crewcard:hover{border-color:var(--line2);background:#171c21}
+.crewcard.on{border-color:var(--c);background:#181e25}
+.sh-act{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn.big{height:48px;padding:0 22px;font-size:14px;letter-spacing:.16em}
+.btn.warn{border-color:var(--red);color:#e8735d}
+#s3.on{grid-template-columns:minmax(0,1fr) 46%}
+@media (max-width:1000px){#s3.on{grid-template-columns:1fr}.crewcard{grid-template-columns:4px 1fr auto}.crewcard .nick{grid-row:1;grid-column:2}.crewcard .opn{grid-column:2}.crewcard .ruta{grid-column:2/4}}
+.crewcard .ruta{justify-content:flex-start;align-self:start}
+.crewcard .hop{flex:0 0 auto;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sheet{position:relative;padding-bottom:4px}
+.sh-act{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(13,15,17,.4),var(--bg) 40%);padding:10px 0 4px;margin-top:auto;z-index:2}
+.sh-top{position:sticky;top:0;background:var(--bg);padding:2px 0 8px;z-index:2}
+.crewcard .ruta>.hop{width:-moz-fit-content;width:fit-content;flex:0 0 auto;display:inline-block}
+.tile.veto{opacity:.34;filter:grayscale(1)}
+.tile.veto .vx{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-8deg);z-index:2;
+  font-family:var(--disp);font-size:15px;font-weight:700;letter-spacing:.2em;color:#e8735d;border:2px solid #c8442f;padding:3px 12px;background:rgba(20,10,10,.7)}
+.tile.veto::before{content:"";position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(135deg,rgba(200,68,47,.12) 0 6px,transparent 6px 12px)}

@@ -25,6 +25,30 @@
     return null;
   }
   const short = t => { t = clean(t); return t.length > 34 ? t.slice(0, 32) + '…' : t; };
+  // Repara el recorrido: conserva solo pasos que ACERCAN al objetivo (o que son cambio de piso),
+  // para que la línea no te mande a caminar por todo el mapa.
+  function repairPath(m, so, s) {
+    const set = Engine.siteSet(m, s); const raw = (so.path || []).map(st => ({ ...st, pt: roomPoint(m, st.room, st.f) })).filter(x => x.pt);
+    if (!raw.length) return [];
+    let B = null;
+    if (set) { const bs = set.bombs; B = { x: bs.reduce((a, b) => a + b.left, 0) / bs.length, y: bs.reduce((a, b) => a + b.top, 0) / bs.length }; }
+    else B = raw[raw.length - 1].pt;
+    const sp = roomPoint(m, so.spawn, -1); const D = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+    const SL = Math.max(18, (sp ? D(sp, B) : 300) * 0.02); const out = []; let cur = sp || raw[0].pt;
+    raw.forEach((st, i) => {
+      const last = i === raw.length - 1;
+      const salto = st.via === 'stairs' || st.via === 'hatch' || st.via === 'rappel' || st.via === 'window' || st.via === 'breach';
+      const d0 = D(cur, B), d1 = D(st.pt, B);
+      const repetido = out.some(o => o.room === st.room && String(o.f) === String(st.f));
+      if (((d1 < d0 + SL) || (salto && d1 < d0 + SL * 2) || last) && !repetido) { out.push(st); cur = st.pt; }
+    });
+    if (out.length > 4 && sp) { // si aun así pasea, deja entrada + los dos últimos
+      let w = 0; const q = [sp].concat(out.map(o => o.pt)); for (let i = 1; i < q.length; i++) w += D(q[i - 1], q[i]);
+      if (w > 2.2 * D(sp, B)) { const ent = out.find(o => o.f !== -1 && o.f !== '-1') || out[0]; const tail = out.slice(-2); const nk = [ent].concat(tail.filter(t => t !== ent)); out.length = 0; nk.forEach(k => out.push(k)); }
+    }
+    return out.length ? out : raw.slice(-2);
+  }
+
   // ---------- identidad ----------
   let me = Store.get('me', null);
   const squadOverride = Store.get('squad', {}); SQUAD.forEach(p => Object.assign(p, squadOverride[p.id] || {}));
@@ -32,12 +56,17 @@
   const initials = p => (p.nick || p.id || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
 
   // ---------- estado ----------
-  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [], active: false }, hint: null, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
-  const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
+  const S = Object.assign({ map: 'clubhouse', site: null, side: 'atk', round: 1, strat: 'default', picks: {}, pins: {}, notes: '', step: 1, siteKnown: true, focus: null, live: null, stratKey: '', match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, labels: true, lang: 'es', edit: false, selected: null, floorIdx: null }, Store.get('state', {}));
+  const save = () => Store.set('state', { map: S.map, site: S.site, side: S.side, round: S.round, strat: S.strat, step: S.step, siteKnown: S.siteKnown, stratKey: S.stratKey, live: S.live, prep: S.prep, vetos: S.vetos, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, labels: S.labels, lang: S.lang });
   const map = () => MAPS.find(m => m.id === S.map) || MAPS[0];
   const site = () => map().sites.find(s => s.id === S.site) || map().sites[0];
-  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, season: SEASON });
-  let SEASON = Store.get('season', { matches: [] });
+  const shared = () => ({ map: S.map, site: site().id, side: S.side, round: S.round, strat: S.strat, siteKnown: S.siteKnown, live: S.live, prep: S.prep, vetos: S.vetos, match: S.match, hint: S.hint, picks: S.picks, pins: S.pins, notes: S.notes, season: SEASON });
+  let SEASON = Store.get('season', null);
+  if (!SEASON || !Array.isArray(SEASON.matches)) SEASON = { matches: [] };
+  { const have = new Set(SEASON.matches.map(m => m.id));
+    (window.SQUAD_MATCHES || []).forEach(t => { if (have.has(t.id)) return;
+      SEASON.matches.push({ id: t.id, date: Date.parse(t.date), map: t.map, mapName: t.mapName, result: t.result, w: t.w, l: t.l, rounds: [], players: t.players, src: 'tracker' }); });
+    SEASON.matches.sort((a, b) => a.date - b.date); Store.set('season', SEASON); }
   const saveSeason = () => { Store.set('season', SEASON); if (Sync.connected && !syncing) Sync.patch({ season: SEASON }); };
   let syncing = false;
   function commit(patch) { Object.assign(S, patch); save(); if (Sync.connected && !syncing) { const p = {}; for (const k of Object.keys(patch)) if (k in shared()) p[k] = S[k]; if (Object.keys(p).length) Sync.patch(p); } render(); }
@@ -81,7 +110,8 @@
       const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op) || null; if (!so) return; const o = Engine.op(so.op); if (!o) return;
       if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
       const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
-      if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); (so.path || []).forEach(stp => { const pt = roomPoint(m, stp.room, stp.f); if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do, room: stp.room }); });
+      const fixed = repairPath(m, so, s); so._fix = fixed;
+      if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); fixed.forEach(stp => { const pt = stp.pt; if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do, room: stp.room }); });
         // exterior: spawn → (solo el último punto exterior antes de entrar) → interior. Evita zigzags por labels lejanos.
         const firstIn = pts.findIndex((q, i) => i > 0 && q.f >= 0); if (firstIn > 2) pts = [pts[0], pts[firstIn - 1], ...pts.slice(firstIn)];
         // quitar repeticiones (ida y vuelta al mismo cuarto)
@@ -207,7 +237,7 @@
     const pct = rows.length ? Math.round(rows.reduce((a, r) => a + Math.min(1, (r.st.rp || 0) / CHAMP_RP), 0) / rows.length * 100) : 0;
     host.innerHTML = `<div class="k" style="margin-bottom:8px">Temporada Split Fire · registro del squad</div><div class="goal"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b class="h-disp" style="font-size:15px">Meta: todos Champion</b><div class="dim" style="font-size:12px">${champs}/${rows.length} en Champion (≥ ${Store.fmt(CHAMP_RP)} RP) · partidos registrados ${ms.length} · <b class="acc">${w}W – ${l}L</b></div></div><div class="k">${pct}% del camino</div></div><div class="bar"><i style="width:${pct}%"></i></div></div>
     <table><thead><tr><th>Jugador</th><th>RP ahora</th><th>Rango</th><th>Faltan p/ Champion</th><th>K/D temp.</th><th>K · D · A</th><th>Partidos</th><th>Progreso RP</th></tr></thead><tbody>${rows.map(({ p, st }) => { const r = st.rp != null ? RANKS.rankOf(st.rp, 3) : null; const falta = st.rp != null ? Math.max(0, CHAMP_RP - st.rp) : null; const mx = Math.max(1, ...st.rps); return `<tr><td><b>${E(p.nick || p.id)}</b></td><td class="rp">${st.rp != null ? Store.fmt(st.rp) : '—'}</td><td>${r ? `<span class="chip" style="border-color:${r.color};color:${r.color}">${E(r.label)}</span>` : '<span class="dim">sin dato</span>'}</td><td class="rp">${falta == null ? '—' : falta === 0 ? '<span style="color:var(--green)">CHAMPION</span>' : Store.fmt(falta) + ' RP · ~' + Math.ceil(falta / 80) + ' victorias'}</td><td><b>${st.n ? st.kd.toFixed(2) : '—'}</b></td><td class="rp">${st.n ? `${st.k} · ${st.d} · ${st.a}` : '—'}</td><td>${st.n}</td><td><div class="spark">${st.rps.map(v => `<i style="height:${Math.max(3, Math.round(v / mx * 22))}px;background:${v >= CHAMP_RP ? 'var(--green)' : 'var(--acc)'}" title="${v}"></i>`).join('') || '<span class="dim">—</span>'}</div></td></tr>`; }).join('')}</tbody></table>
-    ${ms.length ? `<div class="k" style="margin-top:16px">Historial</div><div class="hist">${ms.slice().reverse().map(m => `<div><b>${new Date(m.date).toLocaleDateString('es-MX', { day: '2-digit', month: 'short' })}</b><span>${E((MAPS.find(x => x.id === m.map) || {}).n || m.map)} · ${m.result === 'W' ? '<b style="color:var(--green)">W</b>' : '<b style="color:var(--red)">L</b>'} ${m.w}–${m.l}</span><span class="rp">${Object.entries(m.players || {}).filter(([, v]) => v.k != null).map(([id, v]) => `${E((slotOf(id) || {}).nick || id).split(' ')[0]} ${v.k}/${v.d}`).join(' · ')}</span><button class="btn sm ghost" data-delm="${m.id}">×</button></div>`).join('')}</div><div style="margin-top:10px;display:flex;gap:8px"><button class="btn sm" id="expSeason">Exportar JSON</button><button class="btn sm ghost" id="impSeason">Importar</button></div>` : '<div class="dim" style="margin-top:10px;font-size:13px">Aún no hay partidos registrados. Toca <b>Iniciar ranked</b> en PLAN y al terminar captura las stats.</div>'}`;
+    ${ms.length ? `<div class="k" style="margin-top:16px">Historial</div><div class="hist">${ms.slice().reverse().map(m => `<div><b>${new Date(m.date).toLocaleDateString('es-MX', { day: '2-digit', month: 'short' })}</b><span>${E((MAPS.find(x => x.id === m.map) || {}).n || m.mapName || m.map)}${m.src === 'tracker' ? ' <span class="dim">· tracker</span>' : ''} · ${m.result === 'W' ? '<b style="color:var(--green)">W</b>' : '<b style="color:var(--red)">L</b>'} ${m.w}–${m.l}</span><span class="rp">${Object.entries(m.players || {}).filter(([, v]) => v.k != null).map(([id, v]) => `${E((slotOf(id) || {}).nick || id).split(' ')[0]} ${v.k}/${v.d}`).join(' · ')}</span><button class="btn sm ghost" data-delm="${m.id}">×</button></div>`).join('')}</div><div style="margin-top:10px;display:flex;gap:8px"><button class="btn sm" id="expSeason">Exportar JSON</button><button class="btn sm ghost" id="impSeason">Importar</button></div>` : '<div class="dim" style="margin-top:10px;font-size:13px">Aún no hay partidos registrados. Toca <b>Iniciar ranked</b> en PLAN y al terminar captura las stats.</div>'}`;
     $$('#seasonBox [data-delm]').forEach(b => b.onclick = () => { if (!confirm('¿Borrar este partido?')) return; SEASON.matches = SEASON.matches.filter(m => m.id !== b.dataset.delm); saveSeason(); renderSeason(); });
     const ex = $('#expSeason'); if (ex) ex.onclick = () => { navigator.clipboard.writeText(JSON.stringify(SEASON)).then(() => Store.toast('Temporada copiada (JSON)')); };
     const im = $('#impSeason'); if (im) im.onclick = () => { const t = prompt('Pega el JSON de la temporada:'); try { const j = JSON.parse(t); if (j && Array.isArray(j.matches)) { SEASON = j; saveSeason(); renderSeason(); } } catch (e) { Store.toast('JSON inválido'); } };
@@ -263,7 +293,7 @@
   function renderWiz() {
     const lb = stepLabels(); $$('#steps button[data-step]').forEach(b => { const n = +b.dataset.step; b.classList.toggle('on', n === S.step); b.classList.toggle('done', n < S.step); b.querySelector('small').textContent = lb[n] || ''; b.onclick = () => goStep(n); });
     $$('.screen').forEach(sc => sc.classList.toggle('on', sc.id === 's' + S.step));
-    renderScore(); $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, round: 1, live: null, siteKnown: true }); };
+    renderScore(); $('#rNum').textContent = 'Ronda ' + S.round; const nm = $('#newMatch'); if (nm) nm.onclick = () => { if (!confirm('¿Nuevo partido? Se borra el marcador y las rondas.')) return; S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, round: 1, live: null, siteKnown: true }); };
     if (S.step === 1) renderS1(); if (S.step === 2) renderS2(); if (S.step === 3) renderS3(); if (S.step === 4) renderS4();
     mountCanvas();
     if (S.step !== 4) Round.stopTick();
@@ -309,7 +339,7 @@
   }
 
   // ---------- PARTIDO RANKED: inicio, marcador, fin y captura de stats ----------
-  const CHAMP_RP = 3500; // Ranked 3.0 · Champion V (asumido: Ubisoft no publica el corte exacto)
+  const CHAMP_RP = 4500; // Ranked 3.0 · Champion V (calibrado con R6 Tracker: la escala arranca en 1,000 RP)
   function matchOver(rounds) { // ranked: a 4 rondas; 3-3 → 3 de prórroga (a 5, o 2 de diferencia)
     const w = rounds.filter(r => r.result === 'W').length, l = rounds.filter(r => r.result === 'L').length;
     if (w >= 4 && l <= 2) return 'W'; if (l >= 4 && w <= 2) return 'L';
@@ -336,17 +366,20 @@
       const players = {};
       if (withStats) SQUAD.forEach(p => { const g = k => { const el = $(`#modal [data-k="${k}"][data-slot="${p.id}"]`); const n = el && el.value.trim() !== '' ? +el.value : null; return Number.isFinite(n) ? n : null; }; players[p.id] = { k: g('k'), d: g('d'), a: g('a'), rp: g('rp') }; });
       SEASON.matches.push({ id: (S.match && S.match.id) || Store.uid(), date: Date.now(), map: S.map, result, w: sc.w, l: sc.l, rounds: (S.match && S.match.rounds) || [], players });
-      saveSeason(); closeModal(); S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, round: 1, live: null }); Store.toast('Partido guardado en la temporada'); showView('squad');
+      saveSeason(); closeModal(); S.step = 1; commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, round: 1, live: null }); Store.toast('Partido guardado en la temporada'); showView('squad');
     };
     $('#saveStats').onclick = () => finish(true); $('#skipStats').onclick = () => finish(false);
   }
   // ---- paso 1: mapa
   function renderS1() {
     const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
-    for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; return `<button class="tile ${m.id === S.map ? 'on' : ''}" data-map="${m.id}">${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${STR[m.id] ? 'estrategias' : m.r6 ? 'plano' : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
-    const sc = score(); const sb = `<div class="startbar"><div class="t">${S.match.active ? `Partido en curso · ${sc.w} – ${sc.l} · ronda ${S.round}` : 'Ranked'}<small>${S.match.active ? 'Elige el mapa que tocó (o sigue en el mismo).' : 'Toca INICIAR RANKED al entrar a la cola: la app lleva marcador, rondas, sugerencias y al final captura las stats.'}</small></div><div style="display:flex;gap:8px">${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Iniciar ranked</button>`}</div></div>`;
-    $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = startMatch; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, round: 1, live: null }); };
-    $$('#mapTiles .tile[data-map]').forEach(b => b.onclick = async () => { const m = MAPS.find(x => x.id === b.dataset.map); await loadStrats(m.id); const pk = (PICKS[m.id] || [])[0]; S.floorIdx = null; S.selected = null; S.focus = null; S.step = 2; commit({ map: m.id, site: pk ? pk.site : m.sites[0].id, strat: 'default', siteKnown: S.side === 'def' }); });
+    for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; const vet = (S.vetos || []).includes(m.id); return `<button class="tile ${m.id === S.map ? 'on' : ''} ${vet ? 'veto' : ''}" data-map="${m.id}">${vet ? '<span class="vx">VETADO</span>' : ''}${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${STR[m.id] ? 'estrategias' : m.r6 ? 'plano' : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
+    const sc = score(); const sb = `<div class="startbar"><div class="t">${S.match.active ? `Partido en curso · ${sc.w} – ${sc.l} · ronda ${S.round}` : 'Ranked'}<small>${S.vetoMode ? 'Fase de vetos: toca los mapas que baneó tu equipo o el rival.' : S.match.active ? 'Elige el mapa que tocó (o sigue en el mismo).' : 'Toca INICIAR RANKED al entrar a la cola: la app lleva marcador, rondas, sugerencias y al final captura las stats.'}</small></div><div style="display:flex;gap:8px"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Iniciar ranked</button>`}</div></div>`;
+    $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = startMatch; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, round: 1, live: null }); };
+    const vb = $('#vetoBtn'); if (vb) vb.onclick = () => commit({ vetoMode: !S.vetoMode });
+    $$('#mapTiles .tile[data-map]').forEach(b => b.onclick = async () => {
+      if (S.vetoMode) { const id = b.dataset.map; const v = (S.vetos || []).slice(); const i = v.indexOf(id); i >= 0 ? v.splice(i, 1) : v.push(id); commit({ vetos: v }); return; }
+      const m = MAPS.find(x => x.id === b.dataset.map); await loadStrats(m.id); const pk = (PICKS[m.id] || [])[0]; S.floorIdx = null; S.selected = null; S.focus = null; S.step = 2; commit({ map: m.id, site: pk ? pk.site : m.sites[0].id, strat: 'default', siteKnown: S.side === 'def' }); });
   }
   // ---- paso 2: lado + sitio
   function renderS2() {
@@ -373,7 +406,7 @@
       if (!o) { c.go = 'Sin operador'; return c; }
       const so = x && x.ops.find(y => y.op === o.id);
       if (isAtk) {
-        if (so) { const entry = (so.path || []).find(st => st.f !== -1 && st.f !== '-1') || (so.path || [])[0]; const last = (so.path || [])[(so.path || []).length - 1]; c.role = ROLES[so.role] ? ROLES[so.role].n : so.role; c.go = `${so.spawn} → ${entry ? entry.room : '…'}${last && last !== entry ? ' → ' + last.room : ''}`; c.sub = so.final || ''; c.room = entry ? entry.room : ''; c.so = so; }
+        if (so) { const P = repairPath(m, so, s); so._fix = P; const entry = P.find(st => st.f !== -1 && st.f !== '-1') || P[0]; const last = P[P.length - 1]; c.role = ROLES[so.role] ? ROLES[so.role].n : so.role; c.go = `${so.spawn} → ${entry ? entry.room : '…'}${last && last !== entry ? ' → ' + last.room : ''}`; c.sub = so.final || ''; c.room = entry ? entry.room : ''; c.so = so; }
         else { const j = Engine.jobFor(s, o); c.role = ROLES[o.roles[0]].n; c.go = j.where; c.sub = j.base; }
       } else {
         if (so) { c.role = String(so.role || '').toUpperCase(); c.go = so.room; c.sub = so.job || ''; c.room = so.room; c.so = so; }
@@ -382,27 +415,47 @@
       return c;
     });
   }
-  // ---- paso 3: PLAN (tarjetas grandes + mini mapa)
+  // ---- paso 3: PREPARACIÓN (45 s) · sin párrafos: quién, qué operador, por dónde entra
+  const ROLE_ES = { duro: 'ABRE PARED', antigadget: 'LIMPIA GADGETS', blando: 'VERTICAL', intel: 'DRONES', entrada: 'ENTRA 1º', flanco: 'CUIDA ESPALDA', negacion: 'HUMO / FUEGO', soporte: 'APOYO' };
+  const PREP_T = 45;
+  const prepT = () => { if (!S.prep) return 0; if (!S.prep.playing) return S.prep.t || 0; return Math.min(PREP_T, (Date.now() - S.prep.t0) / 1000); };
   function renderS3() {
     const m = map(), s = site(), x = curStrat(); const isAtk = S.side === 'atk'; const st = siteStrats(); const list = st ? (isAtk ? st.attack : st.defense) : [];
-    const cards = callSheet(); const ops = isAtk ? Engine.atk() : Engine.def();
-    let h = `<div class="call"><div class="hd"><h2 data-fx>${E(m.n)}</h2><span class="chip acc">${ICO[isAtk ? 'atk' : 'def']}${isAtk ? 'ATAQUE' : 'DEFENSA'}</span><span class="chip">R${S.round}</span><span class="chip">${E(Engine.FLN[s.fl] || s.fl)} · ${E(s.n)}${S.siteKnown ? '' : ' · ?'}</span></div><div class="hazard"></div>`;
-    if (isAtk && !S.siteKnown) h += `<div class="flexnote"><b>Comp flexible</b> — sitio más probable: <b>${E(s.n)}</b>. Cuando lo veas en drones, tócalo:<div class="sites">${m.sites.map(z => `<button data-site="${z.id}"><span class="fl">${E(Engine.FLN[z.fl] || z.fl)}</span>${E(z.n)}</button>`).join('')}</div></div>`;
-    if (list && list.length) h += `<div class="stratrow">${list.map(z => `<button class="${x && x.id === z.id ? 'on' : ''}" data-strat="${z.id}"><b>${E(z.tag || z.n)}</b><small>${E(z.summary ? z.summary.split('.')[0] : z.n)}</small></button>`).join('')}</div>`;
-    if (x) h += `<div class="setup"><div class="sm">${E(x.summary || '')}</div>${!isAtk && x.reinforce ? `<div class="rl"><b>Reforzar:</b> ${E(x.reinforce.join(' · '))}${x.rotations && x.rotations.length ? ` &nbsp;<b>Rotar:</b> ${E(x.rotations.join(' · '))}` : ''}</div>` : ''}${x.sources && x.sources.length ? `<div class="src">Basado en: ${x.sources.slice(0, 4).map(u => `<a target="_blank" rel="noopener" href="${E(u)}">${E(String(u).replace(/^https?:\/\/(www\.)?/, '').split('/')[0])}</a>`).join(' · ')}${x.basis ? ' · ' + E(x.basis) : ''}</div>` : ''}</div>`;
-    else h += `<div class="flexnote">Este mapa aún no tiene estrategias generadas (se generan después de las 3:30 am). Mientras, plan por entradas: <b>Auto-completar</b> en Detalle.</div>`;
-    h += `<div class="cards5">` + cards.map(c => `<div class="pcard ${S.focus === c.slot ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}"><div class="bar"></div><div class="who"><b>${E(c.name)}</b>${E(c.role)}</div><div><div class="op">${E(c.op)}</div><div class="go">${E(c.go)}<i>${E(c.sub)}</i></div></div><span></span></div>`).join('') + `</div>`;
-    h += `<div class="actions"><button class="btn p" id="goLive">▶ En vivo</button><button class="btn" id="dictar">🔊 Dictar</button><button class="btn" id="nextRound">Terminó la ronda</button><button class="btn ghost" id="openDrawer">Detalle</button></div></div>`;
-    h += `<div class="mini"></div>`;
-    $('#s3').innerHTML = h; FX.all($('#s3'));
+    const cards = callSheet();
+    let h = `<div class="sheet">
+      <div class="sh-top"><span class="chip ${isAtk ? 'acc' : ''}" style="${isAtk ? '' : 'border-color:var(--def);color:#f0ad5a'}">${ICO[isAtk ? 'atk' : 'def']}${isAtk ? 'ATAQUE' : 'DEFENSA'}</span><b>${E(m.n)}</b><span class="sep">/</span><b class="obj">${E(s.n)}</b><span class="chip">R${S.round}</span>${S.siteKnown ? '' : '<span class="chip red">SITIO ?</span>'}</div>`;
+    if (list && list.length) h += `<div class="stratrow">${list.map(z => `<button class="${x && x.id === z.id ? 'on' : ''}" data-strat="${z.id}"><b>${E(z.tag || z.n)}</b></button>`).join('')}</div>`;
+    h += `<div class="crew">` + cards.map(c => {
+      const P = c.so && c.so._fix || [];
+      const via = { breach: 'PARED', door: 'PUERTA', window: 'VENTANA', rappel: 'RAPPEL', stairs: 'ESCALERA', hatch: 'ESCOTILLA' };
+      let ruta = '';
+      if (isAtk && c.so) { const ent = P.find(z => z.f !== -1 && z.f !== '-1') || P[0]; const fin = P[P.length - 1];
+        ruta = `<span class="hop">${E(c.so.spawn)}</span><em>›</em>${ent ? `<span class="hop in">${via[ent.via] || 'PUERTA'} ${E(ent.room)}</span><em>›</em>` : ''}<span class="hop obj">${E(fin ? fin.room : s.rooms[0])}</span>`; }
+      else if (c.so) ruta = `<span class="hop in">${E(c.so.room)}</span>`;
+      return `<button class="crewcard ${S.focus === c.slot ? 'on' : ''} ${me && me.slot === c.slot ? 'me' : ''}" data-slot="${c.slot}" style="--c:${c.color}">
+        <span class="bar"></span>
+        <span class="nick">${E(c.name)}</span>
+        <span class="opn">${E(c.op)}</span>
+        <span class="role">${E(isAtk ? (ROLE_ES[(c.so && c.so.role) || ''] || c.role || '') : String((c.so && c.so.role) || c.role || '').toUpperCase())}</span>
+        <span class="ruta">${ruta}</span></button>`;
+    }).join('') + `</div>`;
+    const t = prepT(); const running = S.prep && S.prep.playing;
+    h += `<div class="sh-act">
+        <button class="btn p big" id="goLive">▶ EMPEZAR RONDA</button>
+        <button class="btn big" id="prepBtn">${running ? '❚❚ ' : '⏱ '}PREP ${fmtT(PREP_T - t)}</button>
+        <button class="btn" id="dictar">🔊</button>
+        <button class="btn ghost" id="openDrawer">Detalle</button>
+        <button class="btn ghost" id="nextRound">Terminó</button>
+      </div></div><div class="mini"></div>`;
+    $('#s3').innerHTML = h;
     $$('#s3 .stratrow button').forEach(b => b.onclick = () => applyStrat(b.dataset.strat));
-    $$('#s3 .flexnote [data-site]').forEach(b => b.onclick = () => { S.floorIdx = null; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
-    $$('#s3 .pcard').forEach(d => d.onclick = e => { if (e.target.tagName === 'SELECT' || e.target.tagName === 'OPTION') return; S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS3(); renderCanvas(); });
-    $$('#s3 .pcard select').forEach(sel => { sel.onclick = e => e.stopPropagation(); sel.onchange = () => { const picks = { ...S.picks }; picks[sel.dataset.slot] = { op: sel.value || undefined }; commit({ picks }); }; });
+    $$('#s3 .crewcard').forEach(d => d.onclick = () => { S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS3(); renderCanvas(); });
     mountCanvas();
-    $('#goLive').onclick = () => goStep(4); $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
+    $('#goLive').onclick = () => { commit({ prep: null }); goStep(4); };
+    $('#prepBtn').onclick = () => { if (running) commit({ prep: { playing: false, t: prepT() } }); else commit({ prep: { playing: true, t0: Date.now() - prepT() * 1000 } }); };
+    $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
     $('#openDrawer').onclick = () => $('#drawer').classList.add('on');
-    setTimeout(() => MapView.fit(), 50);
+    Round.ensurePrepTick();
   }
   // ---- paso 4: EN VIVO (mapa grande + reloj + instrucción del operador enfocado)
   const Round = {
@@ -434,7 +487,15 @@
       if (!S.live || !S.live.playing || !S.focus) return; const f = MapView.headFloor(S.focus);
       if (f == null || f === S.floorIdx) return; S.floorIdx = f; renderCanvas();
     },
-    stopTick() { if (this.raf) cancelAnimationFrame(this.raf); this.raf = null; }
+    stopTick() { if (this.raf) cancelAnimationFrame(this.raf); this.raf = null; },
+    prepRaf: null,
+    ensurePrepTick() { if (this.prepRaf) return; const tick = () => { this.prepRaf = requestAnimationFrame(tick);
+      if (S.step !== 3) { cancelAnimationFrame(this.prepRaf); this.prepRaf = null; return; }
+      const b = $('#prepBtn'); if (!b) return; const t = prepT();
+      b.textContent = (S.prep && S.prep.playing ? '❚❚ ' : '⏱ ') + 'PREP ' + fmtT(PREP_T - t);
+      b.classList.toggle('warn', S.prep && S.prep.playing && PREP_T - t <= 10);
+      if (S.prep && S.prep.playing && t >= PREP_T) { commit({ prep: null }); goStep(4); }
+    }; this.prepRaf = requestAnimationFrame(tick); }
   };
   const fmtT = t => { t = Math.max(0, Math.round(t)); return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`; };
   function renderS4() {

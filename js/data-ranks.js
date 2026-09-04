@@ -1,6 +1,6 @@
-/* Rangos — Ranked 3.0 (desde 2-jun-2026): 8 tiers × 5 divisiones × 100 RP, arranca en 0.
-   Ubisoft NO publica cortes exactos de Champion/Legend; aquí Champion = 3,500+ y Legend = división
-   solo-queue para los mejores Champion (Y11S3). Ranked 2.0 (antes) arrancaba en 1,000 RP. */
+/* Rangos — Ranked 3.0: 8 tiers × 5 divisiones × 100 RP. Arranca en 1,000 RP.
+   CALIBRADO con R6 Tracker (3-sep-2026): oCamila13 2,150 = PLATA IV · maciaco 3,100 = PLATINO IV ·
+   o Paola 9 3,164 = PLATINO IV. De ahí: Plata 2,000-2,499 · Platino 3,000-3,499 · Champion 4,500+. */
 window.RANKS = {
  tiers:[
   {id:'copper',   n:'Cobre',    c:'#b87333'},
@@ -14,7 +14,7 @@ window.RANKS = {
  ],
  div:['V','IV','III','II','I'],
  step:100, perTier:500,
- base:{2:1000, 3:0},           // RP donde arranca Cobre V según la versión del ranked
+ base:{2:1000, 3:1000},        // Cobre V arranca en 1,000 RP (verificado contra el tracker)
  legend:{n:'Legend', c:'#f4e3b2', note:'División solo-queue para los mejores Champion (Y11S3 Split Fire).'},
  rankOf(rp, scale){            // scale 2 = Ranked 2.0, 3 = Ranked 3.0
   scale=scale||3; const base=this.base[scale]; let x=Math.max(0,(rp||0)-base);
