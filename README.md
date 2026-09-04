@@ -11,6 +11,8 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 → http://localhost:4354 (landing) · http://localhost:4354/app.html (app)
 
 ## Modo ronda (pensado para los 45 s de selección de operador)
+> Regla de diseño: **si hay que leer, no sirve.** El paso 3 es una hoja de operación de 5 tarjetas (operador · rol en dos palabras · spawn › entrada › objetivo). Los textos largos aparecen uno a la vez, ya en juego.
+
 0. **INICIAR RANKED** (paso 1): la app lleva marcador, rondas, cambio de lado y, al cerrar el partido (a 4 rondas / prórroga), pide **K / D / A y RP** de cada uno y lo guarda en la temporada.
 1. **Mapa** (tiles con plano) → 2. **Lado + sitio** (en defensa te dice qué sitio pedir; en ataque "aún no sé el sitio" = comp flexible) →
 3. **Plan**: 5 tarjetas grandes jugador → operador → a dónde va, estrategia DEFAULT/RUSH/VERTICAL/SPLIT, botón 🔊 Dictar (voz es-MX) →
