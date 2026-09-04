@@ -34,7 +34,13 @@ window.MapView = (() => {
       order.forEach(f => { const src = map.floorImgs.find(x => x.idx === f.index)?.src; if (!src) return; const im = document.createElement('img'); im.className = 'floorimg'; im.src = src; im.style.left = (f.left - minX) + 'px'; im.style.top = (f.top - minY) + 'px'; im.draggable = false; if (f !== curF) im.style.opacity = '.38'; world.appendChild(im); imgs[f.index] = im; });
       svg = el('svg', { class: 'ov', width: W, height: H, viewBox: `0 0 ${W} ${H}` }); svg.style.width = W + 'px'; svg.style.height = H + 'px'; world.appendChild(svg);
       drawR6(); drawRoutes();
-      if (changed || o.refit) { const z = map.r6.zoom; if (z) fit({ x: z.topLeft.left - minX - 60, y: z.topLeft.top - minY - 60, w: z.bottomRight.left - z.topLeft.left + 120, h: z.bottomRight.top - z.topLeft.top + 120 }); else { const d = dims[fl.indexOf(curF)] || { w: 1200, h: 1000 }; fit({ x: curF.left - minX, y: curF.top - minY, w: d.w, h: d.h }); } }
+      if (o.zoomSite) { // acercarse al sitio elegido
+        const set = Engine.siteSet(map, o.site);
+        if (set && set.bombs.length) { const xs = set.bombs.map(b => b.left), ys = set.bombs.map(b => b.top); const pad = 300;
+          fit({ x: Math.min(...xs) - minX - pad, y: Math.min(...ys) - minY - pad, w: (Math.max(...xs) - Math.min(...xs)) + pad * 2, h: (Math.max(...ys) - Math.min(...ys)) + pad * 2 }); }
+        else { const z2 = map.r6.zoom; if (z2) fit({ x: z2.topLeft.left - minX - 60, y: z2.topLeft.top - minY - 60, w: z2.bottomRight.left - z2.topLeft.left + 120, h: z2.bottomRight.top - z2.topLeft.top + 120 }); }
+      }
+      else if (changed || o.refit) { const z = map.r6.zoom; if (z) fit({ x: z.topLeft.left - minX - 60, y: z.topLeft.top - minY - 60, w: z.bottomRight.left - z.topLeft.left + 120, h: z.bottomRight.top - z.topLeft.top + 120 }); else { const d = dims[fl.indexOf(curF)] || { w: 1200, h: 1000 }; fit({ x: curF.left - minX, y: curF.top - minY, w: d.w, h: d.h }); } }
     } else {
       minX = 0; minY = 0; W = 1400; H = 1000;
       svg = el('svg', { class: 'ov', width: W, height: H, viewBox: `0 0 ${W} ${H}` }); svg.style.width = W + 'px'; svg.style.height = H + 'px'; world.appendChild(svg);

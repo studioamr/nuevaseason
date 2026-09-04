@@ -141,7 +141,7 @@
     return out;
   }
   // ---------- canvas ----------
-  let mounted = false;
+  let mounted = false, preview = null;
   function routes() {
     const sr = stratRoutes(); if (sr) return sr;
     const m = map(), s = site(); const out = [];
@@ -154,11 +154,11 @@
     return out;
   }
   function renderCanvas() {
-    const m = map(), s = site(); const c = CV; if (!c) return;
+    const m = map(), s = (S.step === 3 && preview) ? (m.sites.find(x => x.id === preview) || site()) : site(); const c = CV; if (!c) return;
     if (!mounted) { c.innerHTML = ''; MapView.mount(c); mounted = true; }
     // floor buttons + tools (re-crear sobre el canvas)
     c.querySelectorAll('.floors,.tools,.legend,.src,.verify,.empty,.phasebar').forEach(x => x.remove());
-    const fls = floorList(m); const sIdx = siteFloorIdx(m, s); if (S.floorIdx == null || !fls.some(f => String(f.idx) === String(S.floorIdx))) S.floorIdx = sIdx;
+    const fls = floorList(m); const sIdx = siteFloorIdx(m, s); if (S.step === 3 || S.floorIdx == null || !fls.some(f => String(f.idx) === String(S.floorIdx))) S.floorIdx = sIdx; // al elegir sitio, el plano salta siempre a su planta
     const fb = document.createElement('div'); fb.className = 'floors'; fb.innerHTML = fls.map(f => `<button class="${String(f.idx) === String(S.floorIdx) ? 'on' : ''} ${String(f.idx) === String(sIdx) ? 'site' : ''}" data-f="${f.idx}">${E(f.n)}</button>`).join(''); c.appendChild(fb);
     fb.querySelectorAll('button').forEach(b => b.onclick = () => { S.floorIdx = m.r6 ? +b.dataset.f : b.dataset.f; renderCanvas(); });
     const t = document.createElement('div'); t.className = 'tools'; t.innerHTML = `<button class="btn" data-t="in">＋</button><button class="btn" data-t="out">－</button><button class="btn" data-t="fit">Ajustar</button><button class="btn ${S.labels ? '' : 'ghost'}" data-t="lbl">Nombres</button><button class="btn ${S.lang === 'en' ? '' : 'ghost'}" data-t="lang">EN</button><button class="btn ${S.edit ? 'p' : ''}" data-t="edit">${S.edit ? 'Editando rutas' : 'Editar rutas'}</button>${!m.r6 ? '<button class="btn" data-t="up">Subir plano</button>' : ''}`; c.appendChild(t);
@@ -175,7 +175,7 @@
     if (s.verify || m.verify) { const v = document.createElement('div'); v.className = 'verify'; v.innerHTML = `<span class="chip acc">Callouts por confirmar en el juego</span>`; c.appendChild(v); }
     // plano subido por el usuario para este piso (mapas sin r6maps)
     let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
-    MapView.show({ map: mm, site: s, side: S.side, floorIdx: mm === m ? S.floorIdx : 0, routes: routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
+    MapView.show({ map: mm, site: s, side: S.side, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
   }
   async function uploadPlan() { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async () => { const m = map(); m.userImgs = m.userImgs || {}; m.userImgs[String(S.floorIdx)] = rd.result; await Store.idb.put(`${m.id}|${S.floorIdx}`, rd.result); Store.toast('Plano guardado para ' + m.n); renderMapList(); renderCanvas(); }; rd.readAsDataURL(f); }; inp.click(); }
 
@@ -365,8 +365,8 @@
   }
   const CV = $('#canvas');
   function mountCanvas() { // el canvas vive fuera de las pantallas: al reconstruirlas hay que volver a colgarlo
-    const cv = CV; if (!cv) return; cv.hidden = !(S.step === 4 || S.step === 5);
-    const host = S.step === 4 ? $('#s4 .mini') : S.step === 5 ? $('#s5 .lv-canvas') : null;
+    const cv = CV; if (!cv) return; cv.hidden = !(S.step === 3 || S.step === 4 || S.step === 5);
+    const host = S.step === 3 ? $('#s3 .mini') : S.step === 4 ? $('#s4 .mini') : S.step === 5 ? $('#s5 .lv-canvas') : null;
     if (host && cv.parentElement !== host) { host.appendChild(cv); setTimeout(() => MapView.fit(), 60); }
   }
   function renderWiz() {
@@ -534,12 +534,14 @@
     h += `<div class="sitegrid">`;
     if (!isDef) h += `<button class="sitecard unknown ${!S.siteKnown ? 'on' : ''}" data-unknown="1"><div class="fl">Fase de operadores</div><div class="n">Aún no sé el sitio</div><div class="why">Te doy la comp flexible del mapa (sirve para el sitio más probable) y cuando lo veas, lo tocas.</div></button>`;
     ordered.forEach((x, i) => { const r = siteRecord(x.s.id); const recBadge = S.hint && S.hint.n === S.round && S.hint.site === x.s.id; h += `<button class="sitecard ${S.siteKnown && x.s.id === site().id ? 'on' : ''}" data-site="${x.s.id}">${recBadge ? `<span class="chip acc rec">SUGERIDO</span>` : i === 0 && picks.length ? `<span class="chip rec">${isDef ? 'PEDIR ESTE' : 'MÁS PROBABLE'}</span>` : picks.length ? `<span class="rank">#${i + 1}</span>` : ''}<div class="fl">${E(Engine.FLN[x.s.fl] || x.s.fl)}${r.w + r.l ? ` · <b style="color:${r.w >= r.l ? 'var(--green)' : 'var(--red)'}">${r.w}W ${r.l}L</b>` : ''}</div><div class="n">${E(x.s.n)}</div><div class="why">${E(x.why || '')}${x.verify || x.s.verify ? ' <span class="dim">(por confirmar)</span>' : ''}</div></button>`; });
-    h += `</div>`;
-    $('#s3').innerHTML = h; FX.all($('#s3'));
+    h += `</div></div><div class="mini"></div>`;
+    $('#s3').innerHTML = `<div class="sidepick">` + h; FX.all($('#s3'));
+    mountCanvas();
     $$('#s3 .big-toggle button').forEach(b => b.onclick = () => { S.selected = null; S.focus = null; commit({ side: b.dataset.side, siteKnown: b.dataset.side === 'def' ? true : S.siteKnown, strat: 'default' }); });
-    $$('#s3 .sitecard[data-site]').forEach(b => b.onclick = () => { S.floorIdx = null; S.selected = null; S.focus = null; S.step = 4; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
+    $$('#s3 .sitecard[data-site]').forEach(b => { b.onmouseenter = () => { if (preview !== b.dataset.site) { preview = b.dataset.site; renderCanvas(); } }; b.onfocus = b.onmouseenter; });
+    $$('#s3 .sitecard[data-site]').forEach(b => b.onclick = () => { preview = null; S.floorIdx = null; S.selected = null; S.focus = null; S.step = 4; commit({ site: b.dataset.site, siteKnown: true, strat: 'default' }); });
     const ah = $('#applyHint'); if (ah) ah.onclick = () => { S.step = 4; S.floorIdx = null; const hs = S.hint.site; commit({ site: hs || site().id, siteKnown: !!hs || S.side === 'def', strat: S.hint.strat || 'default' }); };
-    const u = $('#s3 [data-unknown]'); if (u) u.onclick = () => { S.step = 4; const pk = (PICKS[m.id] || [])[0]; commit({ site: pk ? pk.site : m.sites[0].id, siteKnown: false, strat: 'default' }); };
+    preview = null; const u = $('#s3 [data-unknown]'); if (u) u.onclick = () => { S.step = 4; const pk = (PICKS[m.id] || [])[0]; commit({ site: pk ? pk.site : m.sites[0].id, siteKnown: false, strat: 'default' }); };
   }
   // ---- llamadas por jugador (lo que se dice en voz alta)
   function callSheet() {

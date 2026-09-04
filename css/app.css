@@ -631,3 +631,12 @@
 .wiz{min-width:0}
 .screen{min-width:0}
 .tiles{min-width:0}
+/* fase 3 (lado · sitio) con el mapa acercado al sitio */
+#s3.on{display:grid;grid-template-columns:minmax(0,1fr) 44%;gap:16px;padding:16px;overflow:hidden}
+.sidepick{min-width:0;overflow:auto;padding-right:4px}
+#s3 .sitegrid{grid-template-columns:1fr;max-width:none}
+#s3 .big-toggle{max-width:none;margin-bottom:14px}
+#s3 .h-step{margin:2px 0 14px}
+#s3 .mini{position:relative;border:1px solid var(--line);background:#030407;min-height:0}
+.sitecard{cursor:pointer}
+@media (max-width:1000px){#s3.on{grid-template-columns:1fr;grid-template-rows:auto 320px}}
