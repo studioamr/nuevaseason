@@ -58,7 +58,10 @@
 
   // ---------- identidad ----------
   let me = Store.get('me', null);
-  const squadOverride = Store.get('squad', {}); SQUAD.forEach(p => Object.assign(p, squadOverride[p.id] || {}));
+  const squadOverride = Store.get('squad', {});
+  Object.entries(squadOverride).forEach(([id, o]) => { if (!SQUAD.some(p => p.id === id) && o && o.added) SQUAD.push({ id, nick: '', role: 'Flex', tag: 'SQUAD', stats: null }); });
+  SQUAD.forEach(p => Object.assign(p, squadOverride[p.id] || {}));
+  const ROSTER = () => SQUAD.filter(p => !p.removed);
   const slotOf = id => SQUAD.find(p => p.id === id);
   const initials = p => (p.nick || p.id || '?').replace(/^o\s+/i, '').slice(0, 2).toUpperCase();
 
@@ -92,15 +95,15 @@
   // ---------- helpers ----------
   const floorList = m => m.r6 ? m.r6.floors.map(f => ({ idx: f.index, n: f.n, key: f.fl })) : m.floors.map(f => ({ idx: f.id, n: f.n, key: f.id }));
   const siteFloorIdx = (m, s) => m.r6 ? Engine.floorIndex(m, s.fl) : s.fl;
-  const slots = () => SQUAD.map(p => { const pk = S.picks[p.id] || {}; const o = Engine.op(pk.op); const okSide = o && o.side === S.side; return { slot: p.id, name: p.nick || p.id, ...(okSide ? pk : {}) }; });
+  const slots = () => ROSTER().map(p => { const pk = S.picks[p.id] || {}; const o = Engine.op(pk.op); const okSide = o && o.side === S.side; return { slot: p.id, name: p.nick || p.id, ...(okSide ? pk : {}) }; });
   const myPick = () => me && S.picks[me.slot] || {};
   const pinKey = v => `${S.map}/${site().id}/${v.id}`;
   const kindIcon = k => { const K = Engine.KIND[k] || { c: '#888', s: '?' }; return `<span class="ic" style="background:${K.c}">${K.s}</span>`; };
 
   // ---------- render raíz ----------
-  function ensureStratPicks() { const x = curStrat(); if (!x || S.strat === 'custom') return; const key = `${S.map}/${site().id}/${S.side}/${x.id}`; if (S.stratKey === key) return; const picks = {}; SQUAD.forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); S.picks = picks; S.stratKey = key; save(); if (Sync.connected && !syncing) Sync.patch({ picks }); }
+  function ensureStratPicks() { const x = curStrat(); if (!x || S.strat === 'custom') return; const key = `${S.map}/${site().id}/${S.side}/${x.id}`; if (S.stratKey === key) return; const picks = {}; ROSTER().forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); S.picks = picks; S.stratKey = key; save(); if (Sync.connected && !syncing) Sync.patch({ picks }); }
   let renderSeq = 0;
-  function render() { Theme.apply(S.side); const seq = ++renderSeq; const go = () => { if (seq !== renderSeq) return; ensureStratPicks(); renderMe(); renderSalaChip(); renderBar(); renderWiz(); renderCanvas(); renderPlanPane(); renderOpsPane(); renderDefPane(); }; if (STR[S.map] === undefined) loadStrats(S.map).then(go); else go(); }
+  function render() { Theme.apply(); const seq = ++renderSeq; const go = () => { if (seq !== renderSeq) return; ensureStratPicks(); renderMe(); renderSalaChip(); renderBar(); renderWiz(); renderCanvas(); renderPlanPane(); renderOpsPane(); renderDefPane(); }; if (STR[S.map] === undefined) loadStrats(S.map).then(go); else go(); }
   function renderMe() { const p = me ? slotOf(me.slot) : null; $('#meChip').innerHTML = me ? `<span class="av ${p && p.me ? 'acc' : ''}">${E(initials({ nick: me.name }))}</span><div><div style="font-size:12px">${E(me.name)}</div><div class="k" style="font-size:9px">${E(p ? p.role : 'invitado')}</div></div>` : `<button class="btn sm" id="whoBtn">¿Quién eres?</button>`; ($('#whoBtn') || $('#meChip')).onclick = () => openIdentity(); }
   function renderSalaChip() { const c = $('#salaCode'); if (Sync.connected) { c.textContent = Sync.code; c.classList.add('live'); $('#salaBtn').textContent = `${Sync.members.length} en línea`; } else { c.textContent = '— sin sala —'; c.classList.remove('live'); $('#salaBtn').textContent = 'Crear / Unirse'; } }
   function renderMapList() {
@@ -118,12 +121,13 @@
     else { sb.innerHTML = ''; sb.style.display = 'none'; }
     $('#rNum').textContent = 'Ronda ' + S.round; $('#rMinus').onclick = () => commit({ round: Math.max(1, S.round - 1) }); $('#rPlus').onclick = () => commit({ round: S.round + 1 });
   }
-  function applyStrat(id) { S.selected = null; if (id === 'custom') { commit({ strat: 'custom' }); return; } const st = siteStrats(); const list = S.side === 'atk' ? st.attack : st.defense; const x = list.find(y => y.id === id); if (!x) return; const picks = { ...S.picks }; SQUAD.forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); commit({ strat: id, picks }); }
+  function applyStrat(id) { S.selected = null; if (id === 'custom') { commit({ strat: 'custom' }); return; } const st = siteStrats(); const list = S.side === 'atk' ? st.attack : st.defense; const x = list.find(y => y.id === id); if (!x) return; const picks = { ...S.picks }; ROSTER().forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); commit({ strat: id, picks }); }
   function stratRoutes() { // rutas de la estrategia activa: spawn → cuartos reales → bomba, con zonas de defensores
     const m = map(), s = site(), x = curStrat(); if (!x) return null; const out = [];
     const set = Engine.siteSet(m, s);
-    SQUAD.forEach((p, i) => {
-      const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op) || null; if (!so) return; const o = Engine.op(so.op); if (!o) return;
+    ROSTER().forEach((p, i) => {
+      const pick = S.picks[p.id] || {}; const o = Engine.op(pick.op); if (!o) return;
+      const so = x.ops.find(z => z.op === pick.op) || x.ops[i]; if (!so) return;
       if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, ring: TEAM(), mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
       const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
       const fixed = repairPath(m, so, s); so._fix = fixed;
@@ -142,7 +146,8 @@
   }
   // ---------- canvas ----------
   let mounted = false, preview = null;
-  const TEAM = () => getComputedStyle(document.documentElement).getPropertyValue(S.side === 'atk' ? '--atk' : '--def').trim() || '#2f7fd4';
+  const CSSVAR = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const TEAM = () => CSSVAR('--team') || '#39b6f0';
   function routes() {
     const sr = stratRoutes(); if (sr) return sr;
     const m = map(), s = site(); const out = [];
@@ -171,13 +176,17 @@
       pb.innerHTML = ph.map((p, i) => `<div class="ph" data-i="${i}"><b>${i + 1}</b><span>${E(p.label)}</span><i></i></div>`).join('');
       c.appendChild(pb); c.classList.add('has-phases'); paintPhases();
     } else c.classList.remove('has-phases');
-    const lg = document.createElement('div'); lg.className = 'legend'; lg.innerHTML = S.side === 'atk' ? slots().map((p, i) => `<span><i style="background:${Engine.COLORS[i]}"></i>${E(p.name)}</span>`).join('') + `<span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span><span><i style="background:#cfd8e3;height:8px"></i>escotilla</span><span><i style="background:#6aa3ff;height:8px;border-radius:50%"></i>spawn</span><span><i style="background:#ff2e63;height:8px;border-radius:50%"></i>zona de defensores</span>` : `<span><i style="background:#ff4fd8"></i>ancla</span><span><i style="background:#7dff6a"></i>roam</span><span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span>`; c.appendChild(lg);
+    const lg = document.createElement('div'); lg.className = 'legend';
+    const leyEquipo = `<span><i class="dot" style="background:var(--team)"></i>tu equipo</span><span><i class="dot" style="background:var(--enemy)"></i>el enemigo</span><span><i class="dot" style="background:var(--team)"></i>bomba A/B</span>`;
+    const leyPlano = `<span class="sep">|</span><span class="k2">plano oficial:</span><span><i style="background:#e8c33a"></i>pared rompible</span><span><i style="background:#a83a3a"></i>se dispara a través</span>`;
+    lg.innerHTML = leyEquipo + (S.side === 'atk' ? `<span><i style="background:var(--team);height:3px"></i>tu ruta</span>` : '') + leyPlano;
+    c.appendChild(lg);
     const src = document.createElement('div'); src.className = 'src'; src.textContent = m.approx ? 'plano oficial del juego · posiciones de cuarto aproximadas (arrástralas en Editar rutas)' : m.r6 ? 'plano: r6maps.com · in-game blueprint' + (['border', 'chalet', 'skyscraper', 'consulate', 'house', 'favela'].includes(m.id) ? ' · versión previa al rework' : '') : m.userImgs ? 'plano subido por ti' : 'croquis esquemático · editable'; c.appendChild(src);
     if (s.verify || m.verify) { const v = document.createElement('div'); v.className = 'verify'; v.innerHTML = `<span class="chip acc">Callouts por confirmar en el juego</span>`; c.appendChild(v); }
     // plano subido por el usuario para este piso (mapas sin r6maps)
     let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
-    const teamCol = getComputedStyle(document.documentElement).getPropertyValue(S.side === 'atk' ? '--atk' : '--def').trim() || '#2f7fd4';
-    const enemyCol = getComputedStyle(document.documentElement).getPropertyValue(S.side === 'atk' ? '--def' : '--atk').trim() || '#8158c8';
+    const teamCol = CSSVAR('--team') || '#39b6f0';
+    const enemyCol = CSSVAR('--enemy') || '#ff4d9d';
     MapView.show({ map: mm, site: s, side: S.side, teamColor: teamCol, enemyColor: enemyCol, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
   }
   async function uploadPlan() { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async () => { const m = map(); m.userImgs = m.userImgs || {}; m.userImgs[String(S.floorIdx)] = rd.result; await Store.idb.put(`${m.id}|${S.floorIdx}`, rd.result); Store.toast('Plano guardado para ' + m.n); renderMapList(); renderCanvas(); }; rd.readAsDataURL(f); }; inp.click(); }
@@ -191,7 +200,7 @@
       h += `<div class="stratcard"><div class="sn"><b>${E(x.tag || x.n)}</b> ${E(x.n)}</div><p>${E(x.summary)}</p>${x.timeline ? `<ol class="tl">${x.timeline.map(t => `<li>${E(t)}</li>`).join('')}</ol>` : ''}${x.reinforce ? `<div class="k" style="margin-top:8px">Reforzar</div><ul class="deflist">${x.reinforce.map(r => `<li>${E(r)}</li>`).join('')}${(x.rotations || []).map(r => `<li class="rot">${E(r)}</li>`).join('')}</ul>` : ''}</div>`;
       const pl2 = isAtk ? Engine.plan(s, slots()) : Engine.defPlan(s, slots());
       h += `<div class="role-h"><span class="k">Ruta de cada operador</span><small>clic = resaltar${S.edit ? ' · arrastra puntos' : ''}</small></div>`;
-      SQUAD.forEach((p, i) => { const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op); const o = so && Engine.op(so.op); if (!o) return; const sel = S.selected === p.id;
+      ROSTER().forEach((p, i) => { const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op); const o = so && Engine.op(so.op); if (!o) return; const sel = S.selected === p.id;
         h += `<div class="oproute ${sel ? 'on' : ''}" data-sel="${p.id}" style="--c:${Engine.COLORS[i]}"><div class="oh"><span class="dot"></span><b>${E(o.n)}</b><span class="k">${E(so.role || '')}</span><span class="who">${E(p.nick || p.id)}</span></div>`;
         if (isAtk) { h += `<div class="sp">Spawn · <b>${E(so.spawn)}</b></div><ol class="steps">${(so.path || []).map(stp => `<li><b>${E(stp.room)}</b>${stp.via && stp.via !== 'door' ? ` <i>${E(stp.via)}</i>` : ''}<span>${E(stp.do)}</span></li>`).join('')}</ol>`; if (so.clear && so.clear.length) h += `<div class="k" style="color:var(--red);margin:6px 0 2px">Zonas de defensores · limpiar en orden</div><ol class="cz">${so.clear.map(c => `<li><b>${E(c.room)}</b> · ${E(c.threat)}<span>${E(c.how)}</span></li>`).join('')}</ol>`; h += `<div class="fin">▶ ${E(so.final)}</div>`; }
         else h += `<div class="sp"><b>${E(so.room)}</b> · ${E(so.role)}</div><div class="fin">${E(so.job)}</div>`;
@@ -207,7 +216,7 @@
     if (isAtk && !x) { h += `<div class="role-h"><span class="k">Entradas al sitio</span><small>${S.edit ? 'clic en una para editar su ruta · arrastra puntos · doble clic añade' : ''}</small></div>`; s.atk.vectors.forEach(v => { const who = pl.filter(p => p.v && p.v.id === v.id); const sel = S.selected && who.some(p => p.slot === S.selected); h += `<div class="vec" data-vec="${v.id}" style="${sel ? 'background:var(--acc-dim);margin:0 -14px;padding:10px 14px' : ''}${S.edit && who.length ? ';cursor:pointer' : ''}">${kindIcon(v.kind)}<div><div class="n">${E(v.n)}${v.verify ? ' <span class="chip" style="height:16px;font-size:8px;padding:0 5px">confirmar</span>' : ''}</div><div class="p">${(v.path || []).map(x => `<b>${E(x)}</b>`).join(' → ')}</div>${v.note ? `<div class="note">${E(v.note)}</div>` : ''}</div><div class="who"><span class="risk ${v.risk}">${v.risk}</span>${who.map(p => `<span class="chip" style="border-color:${p.color};color:${p.color}">${E(p.o.n)}</span>`).join('')}${S.pins[pinKey(v)] ? `<button class="btn sm ghost" data-reset="${v.id}">reset ruta</button>` : ''}</div></div>`; }); }
     h += `<div class="role-h"><span class="k">Notas de la ronda</span></div><textarea class="in" id="notes" rows="3" placeholder="Ej. Bandit en pared de Iglesia, Cav rota por Rojas…">${E(S.notes)}</textarea>`;
     $('#p-plan').innerHTML = h;
-    $('#autoBtn').onclick = () => { const side = isAtk ? 'atk' : 'def'; const ok = id => { const o = Engine.op(id); return !!o && o.side === side; }; const picks = { ...S.picks }; SQUAD.forEach(p => { if (picks[p.id] && !ok(picks[p.id].op)) picks[p.id] = {}; }); const cur = SQUAD.map(p => picks[p.id] && picks[p.id].op); if (isAtk) { const rec = Engine.recommend(s, cur); let j = 0; SQUAD.forEach(p => { if (!(picks[p.id] && picks[p.id].op) && rec[j]) picks[p.id] = { op: rec[j++] }; }); } else { const used = new Set(cur.filter(Boolean)); const pool = s.def.ops.filter(id => !used.has(id)); let k = 0; SQUAD.forEach(p => { if (!(picks[p.id] && picks[p.id].op) && pool[k]) picks[p.id] = { op: pool[k++] }; }); } commit({ picks, strat: 'custom' }); };
+    $('#autoBtn').onclick = () => { const side = isAtk ? 'atk' : 'def'; const ok = id => { const o = Engine.op(id); return !!o && o.side === side; }; const picks = { ...S.picks }; ROSTER().forEach(p => { if (picks[p.id] && !ok(picks[p.id].op)) picks[p.id] = {}; }); const cur = ROSTER().map(p => picks[p.id] && picks[p.id].op); if (isAtk) { const rec = Engine.recommend(s, cur); let j = 0; ROSTER().forEach(p => { if (!(picks[p.id] && picks[p.id].op) && rec[j]) picks[p.id] = { op: rec[j++] }; }); } else { const used = new Set(cur.filter(Boolean)); const pool = s.def.ops.filter(id => !used.has(id)); let k = 0; ROSTER().forEach(p => { if (!(picks[p.id] && picks[p.id].op) && pool[k]) picks[p.id] = { op: pool[k++] }; }); } commit({ picks, strat: 'custom' }); };
     $$('#p-plan select').forEach(sel => sel.onchange = () => { const picks = { ...S.picks }; picks[sel.dataset.slot] = { ...(picks[sel.dataset.slot] || {}), [sel.dataset.k]: sel.value || undefined }; if (sel.dataset.k === 'op') delete picks[sel.dataset.slot].vec; commit({ picks }); });
     $$('#p-plan .vec').forEach(v => v.onclick = e => { if (e.target.dataset.reset) { delete S.pins[pinKey({ id: e.target.dataset.reset })]; commit({ pins: S.pins }); return; } if (!S.edit) return; const who = pl.find(p => p.v && p.v.id === v.dataset.vec); if (!who) { Store.toast('Asigna un operador a esta entrada primero'); return; } S.selected = who.slot; renderCanvas(); renderPlanPane(); });
     $$('#p-plan .oproute').forEach(d => d.onclick = () => { S.selected = S.selected === d.dataset.sel ? null : d.dataset.sel; renderCanvas(); renderPlanPane(); });
@@ -234,17 +243,25 @@
   // ---------- SQUAD ----------
   function rankBadge(rp, scale) { const r = RANKS.rankOf(rp, scale); return `<div class="rkb" style="background:${r.color}">${r.tier.n.slice(0, 2).toUpperCase()}</div>`; }
   function renderSquad() {
-    $('#squadCards').innerHTML = SQUAD.map((p, i) => {
+    $('#squadCards').innerHTML = ROSTER().map((p, i) => {
       const st = p.stats; const mine = me && me.slot === p.id;
       const latest = st && st.seasons.find(s => s[1] > 0); const lr = latest ? RANKS.rankOf(latest[1], latest[4]) : null; const pk = st ? RANKS.rankOf(st.peak.rp, st.peak.scale) : null;
       let body = '';
       if (st) body = `<div class="rk">${rankBadge(latest ? latest[1] : 0, latest ? latest[4] : 3)}<div class="rn">${lr ? E(lr.label) : 'Sin rango'}<small>${latest ? E(latest[0]) + ' · ' + latest[3] + ' partidas' : 'Split Fire · aún sin ranked'}</small></div><div class="rp">${latest ? Store.fmt(latest[1]) : '—'}<small>RP · pico ${Store.fmt(st.peak.rp)} ${E(pk.label)} (${E(st.peak.season)})</small></div></div><div class="kv"><div><b>${st.level}</b><span>Nivel</span></div><div><b>${st.kd.toFixed(2)}</b><span>K/D</span></div><div><b>${st.hs.toFixed(1)}%</b><span>Headshot</span></div><div><b>${st.win.toFixed(1)}%</b><span>Win</span></div><div><b>${Store.fmt(st.matches)}</b><span>Partidas</span></div><div><b>${Store.fmt(st.hours)}h</b><span>Jugadas</span></div><div><b>${Store.fmt(st.kills)}</b><span>Kills</span></div><div><b>${st.kpm.toFixed(2)}</b><span>K/partida</span></div></div><div class="seas"><div class="row h"><span>Season</span><span>RP</span><span>K/D</span><span>Part.</span></div>${st.seasons.map(s => `<div class="row"><b>${E(s[0])}</b><span>${s[1] ? Store.fmt(s[1]) : '—'}</span><span>${s[2].toFixed(2)}</span><span>${s[3]}</span></div>`).join('')}</div>${st.last.length ? `<div class="seas"><div class="k" style="margin-bottom:6px">Últimas ${st.last.length}</div><div class="spark">${st.last.map(l => `<i class="${l[1] === 'W' ? 'w' : 'l'}" style="height:${Math.min(28, 8 + l[3] * 10)}px" title="${E(l[0])} ${l[2]} K/D ${l[3]}"></i>`).join('')}</div><div class="row h" style="grid-template-columns:1fr;margin-top:4px">${st.last.map(l => E(l[0])).join(' · ')}</div></div>` : ''}`;
       else body = `<div class="empty">Sin perfil todavía. Escribe tu nick de Ubisoft/Xbox y abrimos tu tracker.<input class="in" id="nick-${p.id}" placeholder="nick exacto" value="${E(p.nick || '')}"><div style="margin-top:8px"><button class="btn sm p" data-savenick="${p.id}">Guardar</button></div></div>`;
-      return `<div class="pc ${mine ? 'me' : ''}"><div class="hd"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="nm">${E(p.nick || 'Tu nick')}<small>${E(p.role)}${p.alias ? ' · alias ' + E(p.alias) : ''}</small></div><span class="chip ${p.me ? 'acc' : ''} tag">${E(p.tag)}</span></div>${body}<div class="ft">${p.nick ? `<a class="btn sm" target="_blank" rel="noopener" href="${Store.trackerUrl(p.nick, p.plat)}">R6 Tracker ↗</a>` : ''}<button class="btn sm" data-imp="${p.id}">↻ Actualizar</button><button class="btn sm ghost" data-edit="${p.id}">Editar</button>${!mine ? `<button class="btn sm ghost" data-beme="${p.id}">Soy yo</button>` : '<span class="chip acc dot">tú</span>'}</div></div>`;
+      return `<div class="pc ${mine ? 'me' : ''}"><div class="hd"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="nm">${E(p.nick || 'Tu nick')}<small>${E(p.role)}${p.alias ? ' · alias ' + E(p.alias) : ''}</small></div><span class="chip ${p.me ? 'acc' : ''} tag">${E(p.tag)}</span></div>${body}<div class="ft">${p.nick ? `<a class="btn sm" target="_blank" rel="noopener" href="${Store.trackerUrl(p.nick, p.plat)}">R6 Tracker ↗</a>` : ''}<button class="btn sm" data-imp="${p.id}">↻ Actualizar</button><button class="btn sm ghost" data-edit="${p.id}">Editar</button><button class="btn sm ghost danger" data-del="${p.id}" title="Quitar del squad">×</button>${!mine ? `<button class="btn sm ghost" data-beme="${p.id}">Soy yo</button>` : '<span class="chip acc dot">tú</span>'}</div></div>`;
     }).join('');
     $$('#squadCards .rp').forEach(e => { const n = parseInt(e.firstChild && e.firstChild.textContent.replace(/,/g, '')); if (n) { const t = e.firstChild; FX.count({ set textContent(v) { t.textContent = v; } }, n); } });
+    { let bar = $('#squadBar'); if (!bar) { bar = document.createElement('div'); bar.id = 'squadBar'; bar.style.cssText = 'display:flex;gap:8px;margin-top:12px;flex-wrap:wrap'; $('#squadCards').after(bar); }
+      const quitados = SQUAD.filter(p => p.removed);
+      bar.innerHTML = `<button class="btn sm" id="addP">+ Añadir jugador</button>${quitados.length ? `<button class="btn sm ghost" id="undoP">Recuperar ${quitados.length} quitado${quitados.length > 1 ? 's' : ''}</button>` : ''}<button class="btn sm ghost" id="resetP">Restablecer squad</button>`;
+      $('#addP').onclick = () => { const n = prompt('Nick exacto (Ubisoft/Xbox):'); if (!n) return; const id = 'p' + Store.uid().toLowerCase(); SQUAD.push({ id, nick: n.trim(), role: 'Flex', tag: 'SQUAD', stats: null }); setOverride(id, { nick: n.trim(), role: 'Flex', tag: 'SQUAD', added: true }); renderSquad(); render(); };
+      const ub = $('#undoP'); if (ub) ub.onclick = () => { quitados.forEach(p => setOverride(p.id, { removed: false })); renderSquad(); render(); };
+      $('#resetP').onclick = () => { if (!confirm('¿Restablecer el squad a los perfiles originales? Se borran tus cambios locales de nicks y quitados.')) return; Store.del('squad'); location.reload(); };
+    }
     renderSeason();
     $$('[data-savenick]').forEach(b => b.onclick = () => { const id = b.dataset.savenick; const v = $('#nick-' + id).value.trim(); if (!v) return; setOverride(id, { nick: v }); if (me && me.slot === id) { me.name = v; Store.set('me', me); } renderSquad(); renderMe(); });
+    $$('[data-del]').forEach(b => b.onclick = () => { const p = slotOf(b.dataset.del); if (!confirm(`¿Quitar a ${p.nick || p.id} del squad?`)) return; setOverride(p.id, { removed: true }); renderSquad(); render(); Store.toast('Fuera del squad'); });
     $$('[data-imp]').forEach(b => b.onclick = () => openImport(b.dataset.imp));
     $$('[data-edit]').forEach(b => b.onclick = () => editMember(b.dataset.edit));
     $$('[data-beme]').forEach(b => b.onclick = () => { const p = slotOf(b.dataset.beme); me = { slot: p.id, name: p.nick || p.id }; Store.set('me', me); render(); renderSquad(); });
@@ -253,7 +270,7 @@
   function renderSeason() {
     let host = $('#seasonBox'); if (!host) { host = document.createElement('div'); host.id = 'seasonBox'; host.className = 'season'; $('#squadCards').after(host); }
     const ms = SEASON.matches.filter(m => !m.rpOnly); const w = ms.filter(m => m.result === 'W').length, l = ms.filter(m => m.result === 'L').length;
-    const rows = SQUAD.map(p => ({ p, st: seasonStats(p.id) })); const champs = rows.filter(r => r.st.rp != null && r.st.rp >= CHAMP_RP).length;
+    const rows = ROSTER().map(p => ({ p, st: seasonStats(p.id) })); const champs = rows.filter(r => r.st.rp != null && r.st.rp >= CHAMP_RP).length;
     const pct = rows.length ? Math.round(rows.reduce((a, r) => a + Math.min(1, (r.st.rp || 0) / CHAMP_RP), 0) / rows.length * 100) : 0;
     host.innerHTML = `<div class="k" style="margin-bottom:8px">Temporada Split Fire · registro del squad</div><div class="goal"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div><b class="h-disp" style="font-size:15px">Meta: todos Champion</b><div class="dim" style="font-size:12px">${champs}/${rows.length} en Champion (≥ ${Store.fmt(CHAMP_RP)} RP) · partidos registrados ${ms.length} · <b class="acc">${w}W – ${l}L</b></div></div><div class="k">${pct}% del camino</div></div><div class="bar"><i style="width:${pct}%"></i></div></div>
     <table><thead><tr><th>Jugador</th><th>RP ahora</th><th>Rango</th><th>Faltan p/ Champion</th><th>K/D temp.</th><th>K · D · A</th><th>Partidos</th><th>Progreso RP</th></tr></thead><tbody>${rows.map(({ p, st }) => { const r = st.rp != null ? RANKS.rankOf(st.rp, 3) : null; const falta = st.rp != null ? Math.max(0, CHAMP_RP - st.rp) : null; const mx = Math.max(1, ...st.rps); return `<tr><td><b>${E(p.nick || p.id)}</b></td><td class="rp">${st.rp != null ? Store.fmt(st.rp) : '—'}</td><td>${r ? `<span class="chip" style="border-color:${r.color};color:${r.color}">${E(r.label)}</span>` : '<span class="dim">sin dato</span>'}</td><td class="rp">${falta == null ? '—' : falta === 0 ? '<span style="color:var(--green)">CHAMPION</span>' : Store.fmt(falta) + ' RP · ~' + Math.ceil(falta / 80) + ' victorias'}</td><td><b>${st.n ? st.kd.toFixed(2) : '—'}</b></td><td class="rp">${st.n ? `${st.k} · ${st.d} · ${st.a}` : '—'}</td><td>${st.n}</td><td><div class="spark">${st.rps.map(v => `<i style="height:${Math.max(3, Math.round(v / mx * 22))}px;background:${v >= CHAMP_RP ? 'var(--green)' : 'var(--acc)'}" title="${v}"></i>`).join('') || '<span class="dim">—</span>'}</div></td></tr>`; }).join('')}</tbody></table>
@@ -324,21 +341,21 @@
   // ---------- RANGOS ----------
   function renderRanks() {
     const base = RANKS.base[3]; let h = '';
-    RANKS.tiers.forEach((t, i) => { const lo = base + i * RANKS.perTier; const who = SQUAD.filter(p => p.stats).map(p => { const l = p.stats.seasons.find(s => s[1] > 0); return l ? { p, r: RANKS.rankOf(l[1], l[4]) } : null; }).filter(x => x && x.r.t === i); h += `<div class="tier" style="--tc:${t.c}"><div class="n">${E(t.n)}</div><div class="rp">${Store.fmt(lo)}${i === 7 ? '+' : ' – ' + Store.fmt(lo + RANKS.perTier - 1)} RP</div><div class="divs">${RANKS.div.map((d, j) => `<span>${t.n.slice(0, 3)} ${d}<i>${Store.fmt(lo + j * RANKS.step)}</i></span>`).join('')}</div><div class="who">${who.map(x => `<span class="av" title="${E(x.p.nick)} · ${E(x.r.label)}">${E(initials(x.p))}</span>`).join('')}</div></div>`; });
+    RANKS.tiers.forEach((t, i) => { const lo = base + i * RANKS.perTier; const who = ROSTER().filter(p => p.stats).map(p => { const l = p.stats.seasons.find(s => s[1] > 0); return l ? { p, r: RANKS.rankOf(l[1], l[4]) } : null; }).filter(x => x && x.r.t === i); h += `<div class="tier" style="--tc:${t.c}"><div class="n">${E(t.n)}</div><div class="rp">${Store.fmt(lo)}${i === 7 ? '+' : ' – ' + Store.fmt(lo + RANKS.perTier - 1)} RP</div><div class="divs">${RANKS.div.map((d, j) => `<span>${t.n.slice(0, 3)} ${d}<i>${Store.fmt(lo + j * RANKS.step)}</i></span>`).join('')}</div><div class="who">${who.map(x => `<span class="av" title="${E(x.p.nick)} · ${E(x.r.label)}">${E(initials(x.p))}</span>`).join('')}</div></div>`; });
     $('#ladder').innerHTML = h;
     $('#rules').innerHTML = [
       ['Cómo se gana RP', 'Cada división son <b>100 RP</b>. Una partida mueve <b>~80 RP</b> ajustados por: el rango del rival, tu rendimiento individual y si vas en <b>5-stack</b>. No hay MMR oculto desde Ranked 3.0: tu RP es tu rango.'],
       ['Restricción de squad', 'Cobre a Esmeralda: máximo <b>3 tiers</b> de diferencia dentro del squad. Diamante y arriba: <b>2 tiers</b>. Si Valeria está en Champion y Camila en Platino, no pueden ir juntas en ranked.'],
       ['Champion y Legend', 'Champion tiene divisiones reales <b>V–I</b> (asumimos 3,500+; Ubisoft no publica el corte). <b>Legend</b> (Y11S3) es una división solo-queue por encima de Champion: se entra por invitación de rango, sin squad.'],
       ['Ranked 2.0 vs 3.0', 'Los picos de Silent Hunt / Deep Freeze eran Ranked 2.0 (arrancaba en 1,000 RP: Champion = 4,500+). Desde System Override (jun-2026) es 3.0 y arranca en 0. Por eso Valeria con 4,567 era Champion y con 4,102 sigue siendo Champion.'],
-      ['Meta del squad esta season', `Peor promedio de K/D del squad: <b>${Math.min(...SQUAD.filter(p => p.stats).map(p => p.stats.kd)).toFixed(2)}</b>. Objetivo realista: todos en <b>Diamante</b> (3,000+) al cierre de Split Fire. Con ~80 RP por partida, de Platino IV (2,133) a Diamante V son <b>~11 victorias netas</b>.`],
+      ['Meta del squad esta season', `Peor promedio de K/D del squad: <b>${Math.min(...ROSTER().filter(p => p.stats).map(p => p.stats.kd)).toFixed(2)}</b>. Objetivo realista: todos en <b>Diamante</b> (3,000+) al cierre de Split Fire. Con ~80 RP por partida, de Platino IV (2,133) a Diamante V son <b>~11 victorias netas</b>.`],
       ['Fuentes', 'Ranked 3.0: <a class="acc" target="_blank" rel="noopener" href="https://www.ubisoft.com/en-us/game/rainbow-six/siege/news-updates/5fzYRZKVVHqqRkkv3m4MyF/ranked-30-update">ubisoft.com · Ranked 3.0 Update</a>. Noor y Split Fire: <a class="acc" target="_blank" rel="noopener" href="https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/noor">ubisoft.com · Noor</a>. Stats: <a class="acc" target="_blank" rel="noopener" href="https://r6.tracker.network">r6.tracker.network</a>. Planos: <a class="acc" target="_blank" rel="noopener" href="https://r6maps.com">r6maps.com</a>.']
     ].map(([t, b]) => `<div class="card"><div class="h"><span class="k">${t}</span></div><div class="b">${b}</div></div>`).join('');
   }
   // ---------- SALA ----------
   function renderSala() {
     const on = Sync.connected; const link = location.origin + location.pathname + '#sala=' + (Sync.code || '');
-    $('#salaBox').innerHTML = `<h2 class="h-disp" data-fx style="font-size:20px">Sala en tiempo real</h2><div class="sub" style="color:var(--dim);font-size:13px;margin:4px 0 18px">Uno crea la sala y comparte el código; los demás se unen. Mapa, sitio, lado, operadores, rutas y notas se sincronizan al instante entre todos. Sin cuentas, sin servidor: conexión directa entre navegadores.</div>${on ? `<div class="big">${E(Sync.code)}</div><div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap"><button class="btn" id="copyCode">Copiar código</button><button class="btn" id="copyLink">Copiar link</button><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Sala R6: ' + Sync.code + ' → ' + link)}">Mandar por WhatsApp</a><button class="btn danger" id="leaveBtn">Salir</button></div><div class="members">${Sync.members.map(m => `<div class="m"><span class="av">${E((m.name || '?').slice(0, 2).toUpperCase())}</span>${E(m.name)} ${m.host ? '<span class="chip acc">host</span>' : ''}<span class="st">en línea</span></div>`).join('')}${SQUAD.filter(p => !Sync.members.some(m => m.slot === p.id)).map(p => `<div class="m"><span class="av">${E(initials(p))}</span>${E(p.nick || p.id)}<span class="st off">fuera</span></div>`).join('')}</div>` : `<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn p" id="hostBtn">Crear sala</button><div style="display:flex;gap:6px"><input class="in" id="joinCode" placeholder="CÓDIGO" style="width:140px;letter-spacing:.2em;text-transform:uppercase"><button class="btn" id="joinBtn">Unirse</button></div></div><div class="members" style="margin-top:22px">${SQUAD.map(p => `<div class="m"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span>${E(p.nick || p.id)}<span class="k" style="margin-left:6px">${E(p.role)}</span><span class="st off">sin sala</span></div>`).join('')}</div>`}`;
+    $('#salaBox').innerHTML = `<h2 class="h-disp" data-fx style="font-size:20px">Sala en tiempo real</h2><div class="sub" style="color:var(--dim);font-size:13px;margin:4px 0 18px">Uno crea la sala y comparte el código; los demás se unen. Mapa, sitio, lado, operadores, rutas y notas se sincronizan al instante entre todos. Sin cuentas, sin servidor: conexión directa entre navegadores.</div>${on ? `<div class="big">${E(Sync.code)}</div><div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap"><button class="btn" id="copyCode">Copiar código</button><button class="btn" id="copyLink">Copiar link</button><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent('Sala R6: ' + Sync.code + ' → ' + link)}">Mandar por WhatsApp</a><button class="btn danger" id="leaveBtn">Salir</button></div><div class="members">${Sync.members.map(m => `<div class="m"><span class="av">${E((m.name || '?').slice(0, 2).toUpperCase())}</span>${E(m.name)} ${m.host ? '<span class="chip acc">host</span>' : ''}<span class="st">en línea</span></div>`).join('')}${ROSTER().filter(p => !Sync.members.some(m => m.slot === p.id)).map(p => `<div class="m"><span class="av">${E(initials(p))}</span>${E(p.nick || p.id)}<span class="st off">fuera</span></div>`).join('')}</div>` : `<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn p" id="hostBtn">Crear sala</button><div style="display:flex;gap:6px"><input class="in" id="joinCode" placeholder="CÓDIGO" style="width:140px;letter-spacing:.2em;text-transform:uppercase"><button class="btn" id="joinBtn">Unirse</button></div></div><div class="members" style="margin-top:22px">${ROSTER().map(p => `<div class="m"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span>${E(p.nick || p.id)}<span class="k" style="margin-left:6px">${E(p.role)}</span><span class="st off">sin sala</span></div>`).join('')}</div>`}`;
     FX.all($('#salaBox')); const big = $('#salaBox .big'); if (big) FX.text(big);
     const cp = t => navigator.clipboard.writeText(t).then(() => Store.toast('Copiado'));
     if (on) { $('#copyCode').onclick = () => cp(Sync.code); $('#copyLink').onclick = () => cp(link); $('#leaveBtn').onclick = async () => { await Sync.leave(); renderSala(); renderSalaChip(); }; }
@@ -350,7 +367,7 @@
   function openModal(h) { $('#modalBox').innerHTML = h; $('#modal').classList.add('on'); $$('#modal [data-close]').forEach(b => b.onclick = closeModal); }
   function closeModal() { $('#modal').classList.remove('on'); }
   function openIdentity(after) {
-    openModal(`<h3>¿Quién eres?</h3><div class="sub">Tu slot en el squad. Se guarda en este navegador.</div><div class="squad5">${SQUAD.map(p => `<button class="slot" data-who="${p.id}" style="cursor:pointer;text-align:left"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="who">${E(p.nick || 'André (pon tu nick)')}<small>${E(p.role)} · ${E(p.tag)}</small></div><span class="rt">→</span></button>`).join('')}</div><div style="margin-top:12px;display:flex;gap:6px"><input class="in" id="guestName" placeholder="…o invitado: tu nombre"><button class="btn" id="guestBtn">Entrar</button></div>`);
+    openModal(`<h3>¿Quién eres?</h3><div class="sub">Tu slot en el squad. Se guarda en este navegador.</div><div class="squad5">${ROSTER().map(p => `<button class="slot" data-who="${p.id}" style="cursor:pointer;text-align:left"><span class="av ${p.me ? 'acc' : ''}">${E(initials(p))}</span><div class="who">${E(p.nick || 'André (pon tu nick)')}<small>${E(p.role)} · ${E(p.tag)}</small></div><span class="rt">→</span></button>`).join('')}</div><div style="margin-top:12px;display:flex;gap:6px"><input class="in" id="guestName" placeholder="…o invitado: tu nombre"><button class="btn" id="guestBtn">Entrar</button></div>`);
     const pick = (slot, name) => { me = { slot, name }; Store.set('me', me); closeModal(); render(); renderSquad(); if (after) after(); };
     $$('#modal [data-who]').forEach(b => b.onclick = () => { const p = slotOf(b.dataset.who); if (!p.nick) { const n = prompt('Tu nick exacto de Ubisoft/Xbox:'); if (!n) return; setOverride(p.id, { nick: n.trim() }); } pick(p.id, slotOf(p.id).nick); });
     $('#guestBtn').onclick = () => { const n = $('#guestName').value.trim(); if (n) pick('guest-' + Store.uid(), n); };
@@ -458,7 +475,7 @@
     const el = $('#s1'); if (!el) return;
     const gente = lobbyPeople(); const listos = gente.filter(g => S.ready[g.key]).length;
     const yo = yoKey(); const yaListo = !!S.ready[yo];
-    const fuera = SQUAD.filter(p => !gente.some(g => g.slot === p.id));
+    const fuera = ROSTER().filter(p => !gente.some(g => g.slot === p.id));
     el.innerHTML = `<div class="lobby"><div class="lb">
       <div class="lbh"><span class="k">Fase 1</span><h2 class="h-disp" data-fx>Partida ranked</h2><p>Todos dan <b>LISTO</b> para arrancar. El que quiera confirma el mapa después: se le actualiza a todo el equipo.</p></div>
       <div class="lbgrid">${gente.map(g => `<div class="lbp ${S.ready[g.key] ? 'ok' : ''} ${g.key === yo ? 'yo' : ''}">
@@ -494,10 +511,10 @@
   }
   function openMatchEnd(result) {
     const sc = score();
-    openModal(`<h3>${result === 'W' ? '🏆 GANAMOS' : '💀 PERDIMOS'} ${sc.w} – ${sc.l}</h3><div class="sub">${E(map().n)} · captura el scoreboard (K / D / A) y tu RP actual. Con esto se lleva la temporada.</div><div class="statgrid"><span></span><span class="hh">Kills</span><span class="hh">Muertes</span><span class="hh">Asist.</span><span class="hh">RP ahora</span>${SQUAD.map(p => `<span class="nm">${E(p.nick || p.id)}</span><input class="in" data-k="k" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="d" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="a" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="rp" data-slot="${p.id}" inputmode="numeric" placeholder="${lastRP(p.id) || ''}">`).join('')}</div><div class="row"><button class="btn" id="skipStats">Sin stats</button><button class="btn p" id="saveStats">Guardar partido</button></div>`);
+    openModal(`<h3>${result === 'W' ? '🏆 GANAMOS' : '💀 PERDIMOS'} ${sc.w} – ${sc.l}</h3><div class="sub">${E(map().n)} · captura el scoreboard (K / D / A) y tu RP actual. Con esto se lleva la temporada.</div><div class="statgrid"><span></span><span class="hh">Kills</span><span class="hh">Muertes</span><span class="hh">Asist.</span><span class="hh">RP ahora</span>${ROSTER().map(p => `<span class="nm">${E(p.nick || p.id)}</span><input class="in" data-k="k" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="d" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="a" data-slot="${p.id}" inputmode="numeric" placeholder="0"><input class="in" data-k="rp" data-slot="${p.id}" inputmode="numeric" placeholder="${lastRP(p.id) || ''}">`).join('')}</div><div class="row"><button class="btn" id="skipStats">Sin stats</button><button class="btn p" id="saveStats">Guardar partido</button></div>`);
     const finish = withStats => {
       const players = {};
-      if (withStats) SQUAD.forEach(p => { const g = k => { const el = $(`#modal [data-k="${k}"][data-slot="${p.id}"]`); const n = el && el.value.trim() !== '' ? +el.value : null; return Number.isFinite(n) ? n : null; }; players[p.id] = { k: g('k'), d: g('d'), a: g('a'), rp: g('rp') }; });
+      if (withStats) ROSTER().forEach(p => { const g = k => { const el = $(`#modal [data-k="${k}"][data-slot="${p.id}"]`); const n = el && el.value.trim() !== '' ? +el.value : null; return Number.isFinite(n) ? n : null; }; players[p.id] = { k: g('k'), d: g('d'), a: g('a'), rp: g('rp') }; });
       SEASON.matches.push({ id: (S.match && S.match.id) || Store.uid(), date: Date.now(), map: S.map, result, w: sc.w, l: sc.l, rounds: (S.match && S.match.rounds) || [], players });
       saveSeason(); closeModal(); S.step = 2; commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, lobbyOpen: false, ready: {}, round: 1, live: null }); Store.toast('Partido guardado en la temporada'); showView('squad');
     };
@@ -514,7 +531,7 @@
         <div class="bd-sc"><b class="w">${sc.w}</b><i>–</i><b class="l">${sc.l}</b></div>
         <div class="bd-rd">${S.match.active ? 'RONDA ' + S.round : 'Ranked'}</div>
       </div>
-      <div class="bd-crew">${SQUAD.map((p, i) => { const o = Engine.op((S.picks[p.id] || {}).op); return `<span class="bd-p" title="${E(p.nick || p.id)}" style="--c:${Engine.COLORS[i]}">${o ? `<img src="img/ops/${o.id}.svg" alt="">` : `<em>${E(initials(p))}</em>`}</span>`; }).join('')}</div>
+      <div class="bd-crew">${ROSTER().map((p, i) => { const o = Engine.op((S.picks[p.id] || {}).op); return `<span class="bd-p" title="${E(p.nick || p.id)}" style="--c:${Engine.COLORS[i]}">${o ? `<img src="img/ops/${o.id}.svg" alt="">` : `<em>${E(initials(p))}</em>`}</span>`; }).join('')}</div>
       <div class="bd-act"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Lobby</button>`}</div>
       <div class="bd-hint">${S.vetoMode ? 'Toca los mapas que se vetaron' : S.match.active ? 'Elige el mapa que tocó' : 'Ve al lobby para empezar'}</div>
     </div>`;
@@ -549,10 +566,10 @@
   // ---- llamadas por jugador (lo que se dice en voz alta)
   function callSheet() {
     const m = map(), s = site(), x = curStrat(); const isAtk = S.side === 'atk';
-    return SQUAD.map((p, i) => {
+    return ROSTER().map((p, i) => {
       const pick = S.picks[p.id] || {}; const o = Engine.op(pick.op); const c = { slot: p.id, name: p.nick || p.id, color: Engine.COLORS[i], o, op: o ? o.n : '—', role: '', go: '', sub: '', room: '' };
       if (!o) { c.go = 'Sin operador'; return c; }
-      const so = x && x.ops.find(y => y.op === o.id);
+      const so = x && (x.ops.find(y => y.op === o.id) || x.ops[i]); // si cambiaste de operador, hereda el puesto del plan
       if (isAtk) {
         if (so) { const P = repairPath(m, so, s); so._fix = P; const entry = P.find(st => st.f !== -1 && st.f !== '-1') || P[0]; const last = P[P.length - 1]; c.role = ROLES[so.role] ? ROLES[so.role].n : so.role; c.go = `${so.spawn} → ${entry ? entry.room : '…'}${last && last !== entry ? ' → ' + last.room : ''}`; c.sub = so.final || ''; c.room = entry ? entry.room : ''; c.so = so; }
         else { const j = Engine.jobFor(s, o); c.role = ROLES[o.roles[0]].n; c.go = j.where; c.sub = j.base; }
@@ -567,6 +584,26 @@
   const OPIMG = id => `img/ops/${id}.svg`;
   const opPlate = (o, cls) => o ? `<span class="plate ${cls || ''}"><img src="${OPIMG(o.id)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'${E(o.n).slice(0, 2).toUpperCase()}',className:'ini'}))"></span>` : `<span class="plate empty"><b class="ini">?</b></span>`;
   const ROLE_ES = { duro: 'ABRE PARED', antigadget: 'LIMPIA GADGETS', blando: 'VERTICAL', intel: 'DRONES', entrada: 'ENTRA 1º', flanco: 'CUIDA ESPALDA', negacion: 'HUMO / FUEGO', soporte: 'APOYO' };
+
+  // Otra comp: conserva el rol de cada puesto pero cambia los operadores
+  function otraComp() {
+    const x = curStrat(); const isAtk = S.side === 'atk'; const pool = isAtk ? Engine.atk() : Engine.def();
+    const usados = new Set(); const picks = {};
+    ROSTER().forEach((p, i) => {
+      const so = x && x.ops[i]; const actual = (S.picks[p.id] || {}).op;
+      let cand;
+      if (isAtk && so) { const rol = so.role; cand = pool.filter(o => o.roles.includes(rol) && !usados.has(o.id)); }
+      else if (!isAtk && so) { const base = Engine.op(so.op); const site = siteStrats(); const sug = new Set((site ? site.defense : []).flatMap(d => d.ops.map(o => o.op))); cand = pool.filter(o => !usados.has(o.id) && (sug.has(o.id) || (base && o.side === base.side))); }
+      else { const o0 = Engine.op(actual); cand = pool.filter(o => !usados.has(o.id) && (!o0 || o.roles[0] === o0.roles[0])); }
+      if (!cand || !cand.length) cand = pool.filter(o => !usados.has(o.id));
+      const k = cand.findIndex(o => o.id === actual);
+      const pick = cand[(k + 1 + cand.length) % cand.length] || cand[0];
+      if (pick) { usados.add(pick.id); picks[p.id] = { op: pick.id }; }
+    });
+    S.stratKey = `${S.map}/${site().id}/${S.side}/${x ? x.id : 'libre'}`; // marca la comp como ya aplicada para que no la pise la estrategia
+    commit({ picks });
+    Store.toast('Otra comp · mismos roles, otros operadores');
+  }
   const PREP_T = 45;
   const prepT = () => { if (!S.prep) return 0; if (!S.prep.playing) return S.prep.t || 0; return Math.min(PREP_T, (Date.now() - S.prep.t0) / 1000); };
   function renderS4() {
@@ -605,6 +642,7 @@
     h += `<div class="sh-act">
         <button class="btn p big" id="goLive">▶ EMPEZAR RONDA</button>
         <button class="btn big" id="prepBtn">${running ? '❚❚ ' : '⏱ '}PREP ${fmtT(PREP_T - t)}</button>
+        <button class="btn" id="otraComp" title="Mismos roles, otros operadores">⟳ Otra comp</button>
         <button class="btn" id="dictar">🔊</button>
         <button class="btn ghost" id="openDrawer">Detalle</button>
         <button class="btn ghost" id="nextRound">Terminó</button>
@@ -615,7 +653,7 @@
     mountCanvas();
     $('#goLive').onclick = () => { commit({ prep: null }); goStep(5); };
     $('#prepBtn').onclick = () => { if (running) commit({ prep: { playing: false, t: prepT() } }); else commit({ prep: { playing: true, t0: Date.now() - prepT() * 1000 } }); };
-    $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
+    $('#otraComp').onclick = otraComp; $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
     $('#openDrawer').onclick = () => $('#drawer').classList.add('on');
     Round.ensurePrepTick();
   }
@@ -640,7 +678,7 @@
     },
     arrival() { const ph = this.phases(); if (ph.length >= 3) return ph[ph.length - 1].from; return this.T * .75; },
     t() { if (!S.live) return 0; if (!S.live.playing) return S.live.t || 0; return Math.min(this.T, (Date.now() - S.live.t0) / 1000); },
-    progress() { const t = this.t(); const arr = this.arrival(); const pr = {}; SQUAD.forEach(p => { pr[p.id] = S.live ? Math.min(1, t / arr) : 1; }); return pr; },
+    progress() { const t = this.t(); const arr = this.arrival(); const pr = {}; ROSTER().forEach(p => { pr[p.id] = S.live ? Math.min(1, t / arr) : 1; }); return pr; },
     play() { const t = this.t(); commit({ live: { playing: true, t0: Date.now() - t * 1000 } }); },
     pause() { commit({ live: { playing: false, t: this.t() } }); },
     reset() { commit({ live: { playing: false, t: 0 } }); },
@@ -705,9 +743,9 @@
   const ICO = { atk: '<span class="sideico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5 20 9l-9.5 9.5L5 13z"/><path d="M5 13l-2 2 2 2 2-2M9 17l-2 2"/></svg></span>', def: '<span class="sideico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg></span>' };
   function openTheme() {
     const t = Theme.cur;
-    openModal(`<h3>Tema</h3><div class="sub">Colores de ataque/defensa como en R6 (azul / naranja), fuente y estilo. Se guarda en este navegador.</div><div class="themepanel"><div class="sw">${Object.entries(Theme.PRESETS).map(([id, pr]) => `<button class="${t.preset === id ? 'on' : ''}" data-preset="${id}"><i><s style="background:${pr.atk}"></s><s style="background:${pr.def}"></s></i>${E(pr.n)}</button>`).join('')}</div><div class="row2"><label class="f"><span class="k">Color ataque</span><input type="color" id="thAtk" value="${t.atk}"></label><label class="f"><span class="k">Color defensa</span><input type="color" id="thDef" value="${t.def}"></label></div><label class="f"><span class="k">Fuente</span><select class="in" id="thFont">${Object.entries(Theme.FONTN).map(([id, n]) => `<option value="${id}" ${t.font === id ? 'selected' : ''}>${E(n)}</option>`).join('')}</select></label><label class="f"><span class="k">Brillo</span><input type="range" id="thGlow" min="0" max="0.6" step="0.05" value="${t.glow}" style="width:100%"></label><div class="row"><button class="btn p" data-close>Listo</button></div></div>`);
+    openModal(`<h3>Tema</h3><div class="sub">Un color para tu equipo y otro para el enemigo. Así se lee el plano de un vistazo. Se guarda en este navegador.</div><div class="themepanel"><div class="sw">${Object.entries(Theme.PRESETS).map(([id, pr]) => `<button class="${t.preset === id ? 'on' : ''}" data-preset="${id}"><i><s style="background:${pr.team}"></s><s style="background:${pr.enemy}"></s></i>${E(pr.n)}</button>`).join('')}</div><div class="row2"><label class="f"><span class="k">Tu equipo</span><input type="color" id="thAtk" value="${t.team}"></label><label class="f"><span class="k">El enemigo</span><input type="color" id="thDef" value="${t.enemy}"></label></div><label class="f"><span class="k">Fuente</span><select class="in" id="thFont">${Object.entries(Theme.FONTN).map(([id, n]) => `<option value="${id}" ${t.font === id ? 'selected' : ''}>${E(n)}</option>`).join('')}</select></label><label class="f"><span class="k">Brillo</span><input type="range" id="thGlow" min="0" max="0.6" step="0.05" value="${t.glow}" style="width:100%"></label><div class="row"><button class="btn p" data-close>Listo</button></div></div>`);
     $$('#modal [data-preset]').forEach(b => b.onclick = () => { Theme.set({ preset: b.dataset.preset }); openTheme(); });
-    $('#thAtk').oninput = e => Theme.set({ atk: e.target.value, preset: 'custom' }); $('#thDef').oninput = e => Theme.set({ def: e.target.value, preset: 'custom' }); $('#thFont').onchange = e => Theme.set({ font: e.target.value }); $('#thGlow').oninput = e => Theme.set({ glow: +e.target.value });
+    $('#thAtk').oninput = e => Theme.set({ team: e.target.value, preset: 'custom' }); $('#thDef').oninput = e => Theme.set({ enemy: e.target.value, preset: 'custom' }); $('#thFont').onchange = e => Theme.set({ font: e.target.value }); $('#thGlow').oninput = e => Theme.set({ glow: +e.target.value });
   }
   $('#themeBtn').onclick = openTheme;
   $('#drawerBtn').onclick = () => $('#drawer').classList.toggle('on'); $('#drawerClose').onclick = () => $('#drawer').classList.remove('on');

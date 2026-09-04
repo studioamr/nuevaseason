@@ -14,9 +14,14 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 `1 RANKED` (lobby con LISTO) → `2 MAPA` → `3 LADO · SITIO` → `4 PLAN` (preparación 45 s) → `5 EN VIVO` (reloj 3:00). La app abre siempre en la fase 1.
 
 ## Señalización del mapa
-Cada jugador aparece como el **retrato circular de su operador**. El **aro es del color del lado** (azul en ataque, morado en defensa), así se distingue de un vistazo quién es de tu equipo. La **línea** conserva un color propio por jugador para poder seguir la tuya entre cinco.
+Dos colores y ya: **tu equipo** (cian) y **el enemigo** (magenta), elegidos para no confundirse con el plano oficial, que es gris/marrón con rojo y amarillo propios. Cada jugador es el **retrato circular de su operador** con aro del color del equipo; las zonas donde está el rival van en el color del enemigo. La **línea** conserva un color propio por jugador para poder seguir la tuya entre cinco. Se cambian los dos colores en ◐ Tema.
+
+**Las marcas rojas y amarillas del plano no las pinto yo**: vienen del blueprint oficial de Ubisoft — amarillo = pared rompible, rojo = pared o piso por donde se dispara a través (line of sight). Están explicadas en la leyenda del plano.
 Las **bombas llevan su letra A/B grande, en el color de tu equipo** (azul atacando, morado defendiendo), con un sello de bomba en la esquina; la del sitio activo va grande y con pulso, las otras pequeñas y punteadas.
 Las **zonas a limpiar usan el color del equipo contrario**, así el plano se lee solo por color: tu equipo / el enemigo / el objetivo. Ya no hay iniciales sueltas: se distingue de un vistazo quién es quién, y la cabeza que avanza en *En vivo* también lleva su retrato.
+
+## Squad editable y variantes de comp
+En SQUAD puedes **quitar** (×), **añadir** jugadores y **restablecer** el roster. En el plan, **⟳ Otra comp** cambia los cinco operadores manteniendo el rol y la ruta de cada puesto, así sacas variantes infinitas del mismo plan.
 
 ## Fase 1 · Lobby con LISTO
 "Iniciar ranked" abre una ventana grande donde **cada quien da LISTO**. El estado se identifica por conexión (no por slot, así dos personas pueden elegir el mismo operador de squad sin pisarse) y se fusiona en la sala: dos pueden dar listo a la vez. Cuando todos los conectados están listos, **la partida arranca sola en todas las pantallas**. El host puede forzar con "Empezar ya".
