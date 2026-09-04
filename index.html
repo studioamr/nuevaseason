@@ -6,7 +6,7 @@
 <title>R6 NUEVA SEASON · Centro de mando del squad</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788492111">
+<link rel="stylesheet" href="css/base.css?v=1788492352">
 <style>
 body{background:#05070a}
 .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
@@ -40,11 +40,11 @@ header.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;just
   background-size:64px 64px;
   -webkit-mask-image:radial-gradient(64% 58% at 50% 46%,#000,transparent 78%);mask-image:radial-gradient(64% 58% at 50% 46%,#000,transparent 78%)}
 #fuego{position:absolute;left:0;top:0;z-index:-2;pointer-events:none;mix-blend-mode:screen;filter:blur(.5px) saturate(1.12)}
-.hero .aura{position:absolute;left:50%;top:48%;width:min(1280px,132vw);height:min(660px,72vh);transform:translate(-50%,-50%);
+.hero .aura{position:absolute;left:0;right:0;top:48%;height:min(660px,72vh);transform:translateY(-50%);
   z-index:-2;pointer-events:none;
   background:radial-gradient(44% 40% at 50% 56%,rgba(255,146,38,.5),rgba(212,62,10,.24) 44%,transparent 74%);
-  filter:blur(42px);animation:aura 3.6s ease-in-out infinite}
-@keyframes aura{0%,100%{opacity:.68;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
+  filter:blur(42px);animation:aura 3.6s ease-in-out infinite;opacity:.85}
+@keyframes aura{0%,100%{opacity:.66;transform:translateY(-50%) scale(1)}50%{opacity:1;transform:translateY(-50%) scale(1.06)}}
 .hero .caja{position:relative;text-align:center;width:100%}
 .hero .kick{margin-bottom:18px}
 #titulo{font-family:var(--disp);font-weight:700;line-height:.84;letter-spacing:.006em;margin:0;text-transform:uppercase;
@@ -131,6 +131,15 @@ header.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;just
 @keyframes trazar{0%{stroke-dashoffset:var(--l)}42%,72%{stroke-dashoffset:0}100%{stroke-dashoffset:calc(var(--l) * -1)}}
 .tac .bmb{animation:latir 2.2s ease-in-out infinite}
 @keyframes latir{0%,100%{opacity:1}50%{opacity:.45}}
+.corta{display:none}
+@media(max-width:620px){
+  header.top{padding:11px 14px}
+  .brand i{display:none}
+  .larga{display:none}.corta{display:inline}
+  .wrap{padding:0 16px}
+  .sec{padding:44px 0 0}
+  .hero .pie{gap:16px}
+}
 footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:9.5px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 @media(prefers-reduced-motion:reduce){#fuego{display:none}.hero .aura,.tac .ru,.tac .bmb{animation:none}.tac .ru{stroke-dashoffset:0}}
@@ -141,7 +150,7 @@ footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-f
 
 <header class="top">
   <a class="brand" href="index.html"><span class="r6">R6</span><b data-fx>Nueva Season</b><i class="flick">· Y11S3 Split Fire</i></a>
-  <a class="btn p" href="app.html">Entrar al centro de mando</a>
+  <a class="btn p" href="app.html"><span class="larga">Entrar al centro de mando</span><span class="corta">Entrar</span></a>
 </header>
 
 <section class="hero">
@@ -207,26 +216,29 @@ footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-f
 
 <footer><span>R6 Nueva Season · uso privado del squad</span><span>Planos: r6maps.com · Stats: r6.tracker.network · No afiliado a Ubisoft</span></footer>
 
-<script src="js/store.js?v=1788492111"></script>
-<script src="js/fx.js?v=1788492111"></script>
-<script src="js/theme.js?v=1788492111"></script>
-<script src="js/data-ops.js?v=1788492111"></script>
-<script src="js/data-squad.js?v=1788492111"></script>
-<script src="js/data-ranks.js?v=1788492111"></script>
-<script src="js/data-maps.js?v=1788492111"></script>
+<script src="js/store.js?v=1788492352"></script>
+<script src="js/fx.js?v=1788492352"></script>
+<script src="js/theme.js?v=1788492352"></script>
+<script src="js/data-ops.js?v=1788492352"></script>
+<script src="js/data-squad.js?v=1788492352"></script>
+<script src="js/data-ranks.js?v=1788492352"></script>
+<script src="js/data-maps.js?v=1788492352"></script>
 <script>
 /* ============ 1. FUEGO: partículas que salen de las propias letras ============ */
 (() => {
   const cv = document.getElementById('fuego'), tit = document.getElementById('titulo');
   if (!cv || !tit || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const ctx = cv.getContext('2d');
-  let emisores = [], P = [], W = 0, H = 0, DPR = Math.min(2, devicePixelRatio || 1), corriendo = false;
+  let emisores = [], P = [], W = 0, H = 0, DPR = Math.min(2, devicePixelRatio || 1), corriendo = false, esc = 1;
 
   // Lee la silueta REAL del título y saca los puntos por donde debe salir la llama.
   function leerLetras() {
     const r = tit.getBoundingClientRect(); if (!r.width) return false;
     const hr = cv.parentElement.getBoundingClientRect();
-    const padX = Math.round(r.height * .26), padT = Math.round(r.height * .86), padB = Math.round(r.height * .18);
+    esc = Math.min(1, r.width / 900);            // en telefono, llama mas corta
+    // el lienzo nunca se sale del hero (si no, el telefono agarra scroll horizontal)
+    const padX = Math.round(Math.min(r.height * .26, Math.max(0, (hr.width - r.width) / 2)));
+    const padT = Math.round(r.height * (.55 + .31 * esc)), padB = Math.round(r.height * .18);
     W = Math.ceil(r.width + padX * 2); H = Math.ceil(r.height + padT + padB);
     cv.width = W * DPR; cv.height = H * DPR; cv.style.width = W + 'px'; cv.style.height = H + 'px';
     cv.style.left = Math.round(r.left - hr.left - padX) + 'px';     // pegado a las letras, no al centro del hero
@@ -267,8 +279,8 @@ footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-f
       const e = emisores[(Math.random() * emisores.length) | 0];
       const borde = !e.dentro;
       P.push({ x: e.x + (Math.random() - .5) * (borde ? 6 : 4), y: e.y + (Math.random() - .5) * 4,
-        vx: (Math.random() - .5) * .55, vy: -(borde ? 2.9 + Math.random() * 4.2 : 1.2 + Math.random() * 1.9),
-        r: (borde ? 13 : 5.5) + Math.random() * (borde ? 17 : 8),
+        vx: (Math.random() - .5) * .55, vy: -(borde ? 2.9 + Math.random() * 4.2 : 1.2 + Math.random() * 1.9) * (.6 + .4 * esc),
+        r: ((borde ? 13 : 5.5) + Math.random() * (borde ? 17 : 8)) * (.55 + .45 * esc),
         vida: 0, max: (borde ? 72 : 40) + Math.random() * 58, s: Math.random() * 6.28 });
     }
   }
@@ -279,7 +291,7 @@ footer{margin-top:66px;padding:17px 24px;border-top:1px solid var(--line);font-f
     t += .016;
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = 'lighter';
-    nacer(emisores.length > 200 ? 42 : 24);
+    nacer(Math.max(8, Math.round(W / 44)));            // menos particulas en pantallas chicas
     for (let i = P.length - 1; i >= 0; i--) {
       const p = P[i]; p.vida++;
       if (p.vida > p.max) { P.splice(i, 1); continue; }
