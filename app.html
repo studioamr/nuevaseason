@@ -6,8 +6,8 @@
 <title>R6 NUEVA SEASON · Centro de mando</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230a0b0d'/><text x='16' y='22' font-family='monospace' font-weight='700' font-size='15' fill='%23e2932f' text-anchor='middle'>R6</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Saira+Condensed:wght@500;600;700&family=Oswald:wght@400;500;600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css?v=1788482025">
-<link rel="stylesheet" href="css/app.css?v=1788482025">
+<link rel="stylesheet" href="css/base.css?v=1788482321">
+<link rel="stylesheet" href="css/app.css?v=1788482321">
 </head>
 <body>
 <div class="scanline"></div>
@@ -30,18 +30,20 @@
   <section class="view on" id="v-plan">
     <div class="wiz">
       <nav class="steps" id="steps">
-        <button data-step="1"><b>1</b><span>Mapa</span><small id="st1"></small></button>
-        <button data-step="2"><b>2</b><span>Lado · Sitio</span><small id="st2"></small></button>
-        <button data-step="3"><b>3</b><span>Plan</span><small id="st3"></small></button>
-        <button data-step="4"><b>4</b><span>En vivo</span><small id="st4"></small></button>
+        <button data-step="1"><b>1</b><span>Ranked</span><small id="st1"></small></button>
+        <button data-step="2"><b>2</b><span>Mapa</span><small id="st2"></small></button>
+        <button data-step="3"><b>3</b><span>Lado · Sitio</span><small id="st3"></small></button>
+        <button data-step="4"><b>4</b><span>Plan</span><small id="st4"></small></button>
+        <button data-step="5"><b>5</b><span>En vivo</span><small id="st5"></small></button>
         <div class="sp"></div>
         <div class="seg" id="roundSeg"><button id="rMinus">−</button><button id="rNum" class="on">Ronda 1</button><button id="rPlus">+</button></div>
         <button class="btn sm ghost" id="newMatch" title="Borrar marcador y rondas">Nuevo partido</button><button class="btn sm ghost" id="drawerBtn">Detalle</button>
       </nav>
-      <div class="screen" id="s1"><div class="tiles" id="mapTiles"></div></div>
-      <div class="screen" id="s2"></div>
+      <div class="screen" id="s1"></div>
+      <div class="screen" id="s2"><div class="tiles" id="mapTiles"></div></div>
       <div class="screen" id="s3"></div>
       <div class="screen" id="s4"></div>
+      <div class="screen" id="s5"></div>
     </div>
     <!-- cajón de detalle (vista técnica completa) -->
     <aside class="drawer" id="drawer">
@@ -78,18 +80,18 @@
 <div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
-<script src="js/store.js?v=1788482025"></script>
-<script src="js/theme.js?v=1788482025"></script>
-<script src="js/fx.js?v=1788482025"></script>
-<script src="js/data-ops.js?v=1788482025"></script>
-<script src="js/data-maps.js?v=1788482025"></script>
-<script src="js/data-squad.js?v=1788482025"></script>
-<script src="js/data-picks.js?v=1788482025"></script>
-<script src="js/data-ranks.js?v=1788482025"></script>
-<script src="js/engine.js?v=1788482025"></script>
-<script src="js/sync.js?v=1788482025"></script>
-<script src="js/router.js?v=1788482025"></script>
-<script src="js/mapview.js?v=1788482025"></script>
-<script src="js/app.js?v=1788482025"></script>
+<script src="js/store.js?v=1788482321"></script>
+<script src="js/theme.js?v=1788482321"></script>
+<script src="js/fx.js?v=1788482321"></script>
+<script src="js/data-ops.js?v=1788482321"></script>
+<script src="js/data-maps.js?v=1788482321"></script>
+<script src="js/data-squad.js?v=1788482321"></script>
+<script src="js/data-picks.js?v=1788482321"></script>
+<script src="js/data-ranks.js?v=1788482321"></script>
+<script src="js/engine.js?v=1788482321"></script>
+<script src="js/sync.js?v=1788482321"></script>
+<script src="js/router.js?v=1788482321"></script>
+<script src="js/mapview.js?v=1788482321"></script>
+<script src="js/app.js?v=1788482321"></script>
 </body>
 </html>

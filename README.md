@@ -10,6 +10,9 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 ```
 → http://localhost:4354 (landing) · http://localhost:4354/app.html (app)
 
+## Las 5 fases
+`1 RANKED` (lobby con LISTO) → `2 MAPA` → `3 LADO · SITIO` → `4 PLAN` (preparación 45 s) → `5 EN VIVO` (reloj 3:00). La app abre siempre en la fase 1.
+
 ## Fase 1 · Lobby con LISTO
 "Iniciar ranked" abre una ventana grande donde **cada quien da LISTO**. El estado se identifica por conexión (no por slot, así dos personas pueden elegir el mismo operador de squad sin pisarse) y se fusiona en la sala: dos pueden dar listo a la vez. Cuando todos los conectados están listos, **la partida arranca sola en todas las pantallas**. El host puede forzar con "Empezar ya".
 
