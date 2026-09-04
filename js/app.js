@@ -128,7 +128,7 @@
     ROSTER().forEach((p, i) => {
       const pick = S.picks[p.id] || {}; const o = Engine.op(pick.op); if (!o) return;
       const so = x.ops.find(z => z.op === pick.op) || x.ops[i]; if (!so) return;
-      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, ring: TEAM(), mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: Engine.COLORS[i], label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
+      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, ring: TEAM(), mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: COL(p.id), label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
       const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
       const fixed = repairPath(m, so, s); so._fix = fixed;
       if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); fixed.forEach(stp => { const pt = stp.pt; if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do, room: stp.room }); });
@@ -140,22 +140,31 @@
         if (set && pts.length) { const last = pts[pts.length - 1]; const b = set.bombs.reduce((a, c) => (Math.hypot(c.left - last.x, c.top - last.y) < Math.hypot(a.left - last.x, a.top - last.y) ? c : a)); if (Math.hypot(b.left - last.x, b.top - last.y) > 6) pts.push({ x: b.left, y: b.top, f: b.f, bomb: true }); } }
       if (pts.length < 2) return;
       const clear = (so.clear || []).map(c => { const pt = roomPoint(m, c.room, c.f); return pt ? { ...pt, short: short(c.threat), threat: c.threat, how: c.how } : null; }).filter(Boolean);
-      out.push({ id: p.id, opId: o.id, ring: TEAM(), pts: pts.map(q => ({ ...q })), clear, color: Engine.COLORS[i], label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
+      out.push({ id: p.id, opId: o.id, ring: TEAM(), pts: pts.map(q => ({ ...q })), clear, color: COL(p.id), label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
     });
     return out;
   }
   // ---------- canvas ----------
   let mounted = false, preview = null;
   const CSSVAR = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  // color por puesto = color de la insignia del operador (desempatado si dos coinciden)
+  let _colKey = '', _cols = {};
+  function slotColors() {
+    const ids = ROSTER().map(p => (S.picks[p.id] || {}).op);
+    const key = ids.join('|');
+    if (key !== _colKey) { const arr = Engine.opColors(ids); _cols = {}; ROSTER().forEach((p, i) => { _cols[p.id] = arr[i]; }); _colKey = key; }
+    return _cols;
+  }
+  const COL = slot => slotColors()[slot] || '#4a90d9';
   const TEAM = () => CSSVAR('--team') || '#39b6f0';
   function routes() {
     const sr = stratRoutes(); if (sr) return sr;
     const m = map(), s = site(); const out = [];
     if (S.side === 'atk') {
-      Engine.plan(s, slots()).forEach(p => { if (!p.o || !p.v) return; const key = pinKey(p.v); const pts = Engine.routePoints(m, s, p.v, S.pins[key]); out.push({ id: p.slot, opId: p.o.id, ring: TEAM(), vec: p.v, pts: pts ? pts.map(x => ({ ...x })) : null, color: p.color, label: `${p.o.n}`, tag: initials({ nick: p.name }), key }); });
+      Engine.plan(s, slots()).forEach(p => { if (!p.o || !p.v) return; const key = pinKey(p.v); const pts = Engine.routePoints(m, s, p.v, S.pins[key]); out.push({ id: p.slot, opId: p.o.id, ring: TEAM(), vec: p.v, pts: pts ? pts.map(x => ({ ...x })) : null, color: COL(p.slot), label: `${p.o.n}`, tag: initials({ nick: p.name }), key }); });
     } else {
       const c = Engine.siteCenter(m, s); const set = Engine.siteSet(m, s);
-      Engine.defPlan(s, slots()).forEach((p, i) => { if (!p.o) return; let pt = null; if (set) { const b = set.bombs[i % set.bombs.length]; pt = { x: b.left + (i > 1 ? 40 : -40), y: b.top + (i % 2 ? 40 : -40), f: b.f }; if (p.role === 'ROAM') pt = { x: c.x + (i - 2) * 90, y: c.y - 180, f: c.f }; } else { pt = { x: 300 + i * 180, y: 300, f: s.fl }; } out.push({ id: p.slot, opId: p.o.id, ring: TEAM(), mark: true, pts: [pt], color: p.color, label: `${p.o.n} · ${p.role}`, tag: initials({ nick: p.name }) }); });
+      Engine.defPlan(s, slots()).forEach((p, i) => { if (!p.o) return; let pt = null; if (set) { const b = set.bombs[i % set.bombs.length]; pt = { x: b.left + (i > 1 ? 40 : -40), y: b.top + (i % 2 ? 40 : -40), f: b.f }; if (p.role === 'ROAM') pt = { x: c.x + (i - 2) * 90, y: c.y - 180, f: c.f }; } else { pt = { x: 300 + i * 180, y: 300, f: s.fl }; } out.push({ id: p.slot, opId: p.o.id, ring: TEAM(), mark: true, pts: [pt], color: COL(p.slot), label: `${p.o.n} · ${p.role}`, tag: initials({ nick: p.name }) }); });
     }
     return out;
   }
@@ -201,7 +210,7 @@
       const pl2 = isAtk ? Engine.plan(s, slots()) : Engine.defPlan(s, slots());
       h += `<div class="role-h"><span class="k">Ruta de cada operador</span><small>clic = resaltar${S.edit ? ' · arrastra puntos' : ''}</small></div>`;
       ROSTER().forEach((p, i) => { const pick = S.picks[p.id] || {}; const so = x.ops.find(o => o.op === pick.op); const o = so && Engine.op(so.op); if (!o) return; const sel = S.selected === p.id;
-        h += `<div class="oproute ${sel ? 'on' : ''}" data-sel="${p.id}" style="--c:${Engine.COLORS[i]}"><div class="oh"><span class="dot"></span><b>${E(o.n)}</b><span class="k">${E(so.role || '')}</span><span class="who">${E(p.nick || p.id)}</span></div>`;
+        h += `<div class="oproute ${sel ? 'on' : ''}" data-sel="${p.id}" style="--c:${COL(p.id)}"><div class="oh"><span class="dot"></span><b>${E(o.n)}</b><span class="k">${E(so.role || '')}</span><span class="who">${E(p.nick || p.id)}</span></div>`;
         if (isAtk) { h += `<div class="sp">Spawn · <b>${E(so.spawn)}</b></div><ol class="steps">${(so.path || []).map(stp => `<li><b>${E(stp.room)}</b>${stp.via && stp.via !== 'door' ? ` <i>${E(stp.via)}</i>` : ''}<span>${E(stp.do)}</span></li>`).join('')}</ol>`; if (so.clear && so.clear.length) h += `<div class="k" style="color:var(--red);margin:6px 0 2px">Zonas de defensores · limpiar en orden</div><ol class="cz">${so.clear.map(c => `<li><b>${E(c.room)}</b> · ${E(c.threat)}<span>${E(c.how)}</span></li>`).join('')}</ol>`; h += `<div class="fin">▶ ${E(so.final)}</div>`; }
         else h += `<div class="sp"><b>${E(so.room)}</b> · ${E(so.role)}</div><div class="fin">${E(so.job)}</div>`;
         h += `</div>`; });
@@ -531,7 +540,7 @@
         <div class="bd-sc"><b class="w">${sc.w}</b><i>–</i><b class="l">${sc.l}</b></div>
         <div class="bd-rd">${S.match.active ? 'RONDA ' + S.round : 'Ranked'}</div>
       </div>
-      <div class="bd-crew">${ROSTER().map((p, i) => { const o = Engine.op((S.picks[p.id] || {}).op); return `<span class="bd-p" title="${E(p.nick || p.id)}" style="--c:${Engine.COLORS[i]}">${o ? `<img src="img/ops/${o.id}.svg" alt="">` : `<em>${E(initials(p))}</em>`}</span>`; }).join('')}</div>
+      <div class="bd-crew">${ROSTER().map((p, i) => { const o = Engine.op((S.picks[p.id] || {}).op); return `<span class="bd-p" title="${E(p.nick || p.id)}" style="--c:${COL(p.id)}">${o ? `<img src="img/ops/${o.id}.svg" alt="">` : `<em>${E(initials(p))}</em>`}</span>`; }).join('')}</div>
       <div class="bd-act"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Lobby</button>`}</div>
       <div class="bd-hint">${S.vetoMode ? 'Toca los mapas que se vetaron' : S.match.active ? 'Elige el mapa que tocó' : 'Ve al lobby para empezar'}</div>
     </div>`;
@@ -567,7 +576,7 @@
   function callSheet() {
     const m = map(), s = site(), x = curStrat(); const isAtk = S.side === 'atk';
     return ROSTER().map((p, i) => {
-      const pick = S.picks[p.id] || {}; const o = Engine.op(pick.op); const c = { slot: p.id, name: p.nick || p.id, color: Engine.COLORS[i], o, op: o ? o.n : '—', role: '', go: '', sub: '', room: '' };
+      const pick = S.picks[p.id] || {}; const o = Engine.op(pick.op); const c = { slot: p.id, name: p.nick || p.id, color: COL(p.id), o, op: o ? o.n : '—', role: '', go: '', sub: '', room: '' };
       if (!o) { c.go = 'Sin operador'; return c; }
       const so = x && (x.ops.find(y => y.op === o.id) || x.ops[i]); // si cambiaste de operador, hereda el puesto del plan
       if (isAtk) {
@@ -651,7 +660,7 @@
     $$('#s4 .stratrow button').forEach(b => b.onclick = () => applyStrat(b.dataset.strat));
     $$('#s4 .opcard').forEach(d => d.onclick = () => { S.focus = S.focus === d.dataset.slot ? null : d.dataset.slot; save(); renderS4(); renderCanvas(); });
     mountCanvas();
-    $('#goLive').onclick = () => { commit({ prep: null }); goStep(5); };
+    $('#goLive').onclick = () => { S.step = 5; commit({ prep: null, live: { playing: true, t0: Date.now() } }); Store.toast('Ronda en marcha · 3:00'); }; // arranca el reloj solo
     $('#prepBtn').onclick = () => { if (running) commit({ prep: { playing: false, t: prepT() } }); else commit({ prep: { playing: true, t0: Date.now() - prepT() * 1000 } }); };
     $('#otraComp').onclick = otraComp; $('#dictar').onclick = dictate; $('#nextRound').onclick = openResult;
     $('#openDrawer').onclick = () => $('#drawer').classList.add('on');
@@ -694,7 +703,7 @@
       const b = $('#prepBtn'); if (!b) return; const t = prepT();
       b.textContent = (S.prep && S.prep.playing ? '❚❚ ' : '⏱ ') + 'PREP ' + fmtT(PREP_T - t);
       b.classList.toggle('warn', S.prep && S.prep.playing && PREP_T - t <= 10);
-      if (S.prep && S.prep.playing && t >= PREP_T) { commit({ prep: null }); goStep(5); }
+      if (S.prep && S.prep.playing && t >= PREP_T) { S.step = 5; commit({ prep: null, live: { playing: true, t0: Date.now() } }); }
     }; this.prepRaf = requestAnimationFrame(tick); }
   };
   const fmtT = t => { t = Math.max(0, Math.round(t)); return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`; };

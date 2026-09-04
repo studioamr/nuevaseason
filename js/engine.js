@@ -1,6 +1,27 @@
 /* R6 NUEVA SEASON — motor: casa sitios con r6maps, asigna operadores a entradas, calcula rutas */
 window.Engine = (() => {
-  const COLORS = ['#4a90d9', '#d9a520', '#5f9e50', '#c2553c', '#8a7fb5']; // paleta táctica, distinguible sin neón
+  const COLORS = ['#4a90d9', '#d9a520', '#5f9e50', '#c2553c', '#8a7fb5']; // respaldo si un puesto no tiene operador
+  // Color del operador = el de su insignia oficial. Si dos del squad salen casi iguales
+  // (mismas unidades comparten insignia) se les gira el tono hasta que se distingan.
+  function hex2hsv(h) { const r = parseInt(h.slice(1, 3), 16) / 255, g = parseInt(h.slice(3, 5), 16) / 255, b = parseInt(h.slice(5, 7), 16) / 255;
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn; let hu = 0;
+    if (d) { if (mx === r) hu = ((g - b) / d + 6) % 6; else if (mx === g) hu = (b - r) / d + 2; else hu = (r - g) / d + 4; hu /= 6; }
+    return [hu, mx ? d / mx : 0, mx]; }
+  function hsv2hex(hu, s, v) { const i = Math.floor(hu * 6), f = hu * 6 - i, p = v * (1 - s), q = v * (1 - f * s), t = v * (1 - (1 - f) * s);
+    const [r, g, b] = [[v, t, p], [q, v, p], [p, v, t], [p, q, v], [t, p, v], [v, p, q]][i % 6];
+    return '#' + [r, g, b].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join(''); }
+  const dist = (a, b) => { const A = [1, 3, 5].map(i => parseInt(a.slice(i, i + 2), 16)), B = [1, 3, 5].map(i => parseInt(b.slice(i, i + 2), 16));
+    return Math.hypot(A[0] - B[0], A[1] - B[1], A[2] - B[2]); };
+  function opColors(ids) { // devuelve un color por puesto, ya desempatado
+    const out = []; 
+    ids.forEach((id, i) => {
+      let c = (window.OPCOLOR && id && window.OPCOLOR[id]) || COLORS[i % COLORS.length];
+      let intento = 0;
+      while (out.some(o => o && dist(o, c) < 45) && intento < 12) { const [h, s, v] = hex2hsv(c); c = hsv2hex((h + (intento % 2 ? -1 : 1) * (0.055 * Math.ceil((intento + 1) / 2)) + 1) % 1, Math.max(.5, s), Math.min(1, Math.max(.78, v))); intento++; }
+      out.push(c);
+    });
+    return out;
+  }
   const FL = { b: 'basement', 1: 'firstFloor', 2: 'secondFloor', 3: 'thirdFloor', 4: 'fourthFloor', r: 'roof' };
   const FLN = { b: 'Sótano', 1: 'Planta 1', 2: 'Planta 2', 3: 'Planta 3', 4: 'Planta 4', r: 'Techo' };
   const KIND = { reforzada: { n: 'Pared reforzada', c: '#5ee7ff', s: 'R' }, blanda: { n: 'Pared blanda', c: '#9ff3ff', s: 'B' }, puerta: { n: 'Puerta', c: '#6aa3ff', s: 'P' }, ventana: { n: 'Ventana', c: '#7dff6a', s: 'V' }, escotilla: { n: 'Escotilla', c: '#cfd8e3', s: 'E' }, rappel: { n: 'Rappel', c: '#7dff6a', s: '↓' }, vertical: { n: 'Vertical', c: '#b48cff', s: '↕' } }; 
@@ -86,5 +107,5 @@ window.Engine = (() => {
     picks.forEach((p, i) => { const o = op(p.op); if (!o || o.side !== 'def') { out.push({ ...p, op: undefined, color: COLORS[i] }); return; } const roam = ['caveira', 'vigil', 'oryx', 'alibi', 'mozzie', 'pulse', 'valkyrie', 'solis', 'fenrir', 'tubarao', 'jager', 'ela', 'lesion', 'kapkan'].includes(o.id) && !['smoke', 'mira', 'maestro'].includes(o.id); const role = roam ? 'ROAM' : anchorsFirst.indexOf(o.id) >= 0 && anchorsFirst.indexOf(o.id) < 8 ? 'ANCLA' : 'FLEX'; out.push({ ...p, o, role, color: COLORS[i], where: role === 'ANCLA' ? site.rooms[i % 2] : role === 'ROAM' ? (d.keepSoft[0] ? d.keepSoft[0].replace(/\(.*\)/, '').trim() : 'Piso de arriba') : d.rotations[0] || site.rooms[0] }); });
     return out;
   }
-  return { COLORS, KIND, FLN, floorIndex, floorOf, findLabel, siteSet, siteCenter, routePoints, atk, def, op, recommend, plan, jobFor, defPlan, vectorFor };
+  return { COLORS, opColors, KIND, FLN, floorIndex, floorOf, findLabel, siteSet, siteCenter, routePoints, atk, def, op, recommend, plan, jobFor, defPlan, vectorFor };
 })();

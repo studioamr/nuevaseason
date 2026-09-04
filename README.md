@@ -13,6 +13,9 @@ python3 -m http.server 4354 --directory ~/claude/nuevaseason
 ## Las 5 fases
 `1 RANKED` (lobby con LISTO) → `2 MAPA` → `3 LADO · SITIO` → `4 PLAN` (preparación 45 s) → `5 EN VIVO` (reloj 3:00). La app abre siempre en la fase 1.
 
+## Color de cada operador
+`js/data-opcolors.js` — el color de cada uno sale de su **insignia oficial** (`staticctf.ubisoft.com/…/Y0R6_BADGE_<Op>_L.png`): se toma el tono dominante y se aclara para que se vea sobre el plano. Fuze rojo, Buck azul, Mira morado, Thermite naranja… Ocho operadores tienen la insignia en blanco (clash, dokkaebi, maverick, mute, sledge, smoke, thatcher, vigil) y llevan color elegido a mano — Sledge morado. Varias unidades comparten insignia (Ash y Thermite, Bandit y Jäger): si dos del squad quedan casi iguales, la app les gira el tono hasta que se distingan. La **línea de cada jugador usa ese color**.
+
 ## Señalización del mapa
 Dos colores y ya: **tu equipo** (cian) y **el enemigo** (magenta), elegidos para no confundirse con el plano oficial, que es gris/marrón con rojo y amarillo propios. Cada jugador es el **retrato circular de su operador** con aro del color del equipo; las zonas donde está el rival van en el color del enemigo. La **línea** conserva un color propio por jugador para poder seguir la tuya entre cinco. Se cambian los dos colores en ◐ Tema.
 
