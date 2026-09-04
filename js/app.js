@@ -4,9 +4,16 @@
   const R6KEY = { clubhouse: 'club' };
   // ---------- carga de planos reales ----------
   let R6 = {}, MAN = {};
-  try { [R6, MAN] = await Promise.all([fetch('js/r6maps.json').then(r => r.json()), fetch('js/floors-manifest.json').then(r => r.json())]); } catch (e) { console.warn('sin r6maps.json', e); }
+  let EXTRA = {};
+  try { [R6, MAN, EXTRA] = await Promise.all([
+    fetch('js/r6maps.json').then(r => r.json()),
+    fetch('js/floors-manifest.json').then(r => r.json()),
+    fetch('js/r6maps-extra.json').then(r => r.ok ? r.json() : {}).catch(() => ({}))
+  ]); } catch (e) { console.warn('sin r6maps.json', e); }
+  Object.assign(R6, EXTRA); // planos oficiales de los mapas que antes eran croquis
   const flKey = n => { n = String((n && n.full) || n || '').toLowerCase(); if (/basement/.test(n)) return 'b'; if (/roof/.test(n)) return 'r'; const m = n.match(/(\d)/); return m ? m[1] : n; };
-  MAPS.forEach(m => { const k = R6KEY[m.id] || m.id; m.r6 = R6[k] || null; if (m.r6) m.r6.floors.forEach(f => { f.fl = flKey(f.name); f.n = Engine.FLN[f.fl] || (f.name && f.name.full) || String(f.fl); }); m.floorImgs = (MAN[m.id] || []).map(x => ({ idx: x.idx, src: x.src })); if (m.r6 && !m.floorImgs.length && m.r6.floors) m.floorImgs = m.r6.floors.map(f => ({ idx: f.index, src: `img/maps/${m.id}/${f.index}.jpg` })); });
+  MAPS.forEach(m => { const k = R6KEY[m.id] || m.id; m.r6 = R6[k] || null; if (m.r6) m.r6.floors.forEach(f => { f.fl = flKey(f.name); f.n = Engine.FLN[f.fl] || (f.name && f.name.full) || String(f.fl); }); m.floorImgs = (MAN[m.id] || []).map(x => ({ idx: x.idx, src: x.src })); if (m.r6 && !m.floorImgs.length && m.r6.floors) m.floorImgs = m.r6.floors.map(f => ({ idx: f.index, src: `img/maps/${m.id}/${f.index}.jpg` }));
+    if (m.r6 && m.r6.approx) m.approx = true; });
   // planos subidos por el usuario (IndexedDB)
   try { const keys = await Store.idb.keys(); for (const k of keys) { const [mid, fl] = k.split('|'); const m = MAPS.find(x => x.id === mid); if (m) { m.userImgs = m.userImgs || {}; m.userImgs[fl] = await Store.idb.get(k); } } } catch (e) {}
 
@@ -155,7 +162,7 @@
       c.appendChild(pb); c.classList.add('has-phases'); paintPhases();
     } else c.classList.remove('has-phases');
     const lg = document.createElement('div'); lg.className = 'legend'; lg.innerHTML = S.side === 'atk' ? slots().map((p, i) => `<span><i style="background:${Engine.COLORS[i]}"></i>${E(p.name)}</span>`).join('') + `<span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span><span><i style="background:#cfd8e3;height:8px"></i>escotilla</span><span><i style="background:#6aa3ff;height:8px;border-radius:50%"></i>spawn</span><span><i style="background:#ff2e63;height:8px;border-radius:50%"></i>zona de defensores</span>` : `<span><i style="background:#ff4fd8"></i>ancla</span><span><i style="background:#7dff6a"></i>roam</span><span><i style="background:#5ee7ff;height:8px;border-radius:50%"></i>bomba</span>`; c.appendChild(lg);
-    const src = document.createElement('div'); src.className = 'src'; src.textContent = m.r6 ? 'plano: r6maps.com · in-game blueprint' + (['border', 'chalet', 'skyscraper', 'consulate', 'house', 'favela'].includes(m.id) ? ' · versión previa al rework' : '') : m.userImgs ? 'plano subido por ti' : 'croquis esquemático · editable'; c.appendChild(src);
+    const src = document.createElement('div'); src.className = 'src'; src.textContent = m.approx ? 'plano oficial del juego · posiciones de cuarto aproximadas (arrástralas en Editar rutas)' : m.r6 ? 'plano: r6maps.com · in-game blueprint' + (['border', 'chalet', 'skyscraper', 'consulate', 'house', 'favela'].includes(m.id) ? ' · versión previa al rework' : '') : m.userImgs ? 'plano subido por ti' : 'croquis esquemático · editable'; c.appendChild(src);
     if (s.verify || m.verify) { const v = document.createElement('div'); v.className = 'verify'; v.innerHTML = `<span class="chip acc">Callouts por confirmar en el juego</span>`; c.appendChild(v); }
     // plano subido por el usuario para este piso (mapas sin r6maps)
     let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
@@ -373,7 +380,7 @@
   // ---- paso 1: mapa
   function renderS1() {
     const groups = [['ranked', 'Pool ranked'], ['casual', 'Casual / evento']]; let h = '';
-    for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; const vet = (S.vetos || []).includes(m.id); return `<button class="tile ${m.id === S.map ? 'on' : ''} ${vet ? 'veto' : ''}" data-map="${m.id}">${vet ? '<span class="vx">VETADO</span>' : ''}${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${STR[m.id] ? 'estrategias' : m.r6 ? 'plano' : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
+    for (const [g, gn] of groups) { h += `<div class="tile grp"><span class="k">${gn}</span></div>` + MAPS.filter(m => m.pool === g).map(m => { const fl = m.r6 && (m.r6.floors.find(f => f.def) || m.r6.floors[0]); const img = fl ? m.floorImgs.find(x => x.idx === fl.index)?.src : ''; const vet = (S.vetos || []).includes(m.id); return `<button class="tile ${m.id === S.map ? 'on' : ''} ${vet ? 'veto' : ''}" data-map="${m.id}">${vet ? '<span class="vx">VETADO</span>' : ''}${img ? `<img src="${img}" loading="lazy" alt="">` : ''}<span class="chip t ${STR[m.id] ? 'acc' : ''}">${m.r6 ? (m.approx ? 'plano ~' : 'plano') : 'croquis'}</span><span class="n">${E(m.n)}</span></button>`; }).join(''); }
     const sc = score(); const sb = `<div class="startbar"><div class="t">${S.match.active ? `Partido en curso · ${sc.w} – ${sc.l} · ronda ${S.round}` : 'Ranked'}<small>${S.vetoMode ? 'Fase de vetos: toca los mapas que baneó tu equipo o el rival.' : S.match.active ? 'Elige el mapa que tocó (o sigue en el mismo).' : 'Toca INICIAR RANKED al entrar a la cola: la app lleva marcador, rondas, sugerencias y al final captura las stats.'}</small></div><div style="display:flex;gap:8px"><button class="btn ${S.vetoMode ? 'p' : ''}" id="vetoBtn">${S.vetoMode ? '✓ Listo' : '✕ Vetos'}</button>${S.match.active ? `<button class="btn danger" id="abortMatch">Abandonar</button>` : `<button class="btn p" id="startMatch">▶ Iniciar ranked</button>`}</div></div>`;
     $('#mapTiles').innerHTML = sb + h; const sm = $('#startMatch'); if (sm) sm.onclick = startMatch; const am = $('#abortMatch'); if (am) am.onclick = () => { if (confirm('¿Abandonar el partido sin guardarlo?')) commit({ match: { rounds: [], active: false }, hint: null, prep: null, vetos: [], vetoMode: false, round: 1, live: null }); };
     const vb = $('#vetoBtn'); if (vb) vb.onclick = () => commit({ vetoMode: !S.vetoMode });
