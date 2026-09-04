@@ -33,7 +33,7 @@ window.MapView = (() => {
       const order = [bg, curF].filter((f, i, a) => f && a.indexOf(f) === i);
       order.forEach(f => { const src = map.floorImgs.find(x => x.idx === f.index)?.src; if (!src) return; const im = document.createElement('img'); im.className = 'floorimg'; im.src = src; im.style.left = (f.left - minX) + 'px'; im.style.top = (f.top - minY) + 'px'; im.draggable = false; if (f !== curF) im.style.opacity = '.38'; world.appendChild(im); imgs[f.index] = im; });
       svg = el('svg', { class: 'ov', width: W, height: H, viewBox: `0 0 ${W} ${H}` }); svg.style.width = W + 'px'; svg.style.height = H + 'px'; world.appendChild(svg);
-      drawR6(); drawTasks(); drawRoutes();
+      drawR6(); drawTasks(); drawRoutes().then(drawRooms);
       if (o.zoomSite) { // acercarse al sitio elegido
         const set = Engine.siteSet(map, o.site);
         if (set && set.bombs.length) { const xs = set.bombs.map(b => b.left), ys = set.bombs.map(b => b.top); const pad = 300;
@@ -44,11 +44,12 @@ window.MapView = (() => {
     } else {
       minX = 0; minY = 0; W = 1400; H = 1000;
       svg = el('svg', { class: 'ov', width: W, height: H, viewBox: `0 0 ${W} ${H}` }); svg.style.width = W + 'px'; svg.style.height = H + 'px'; world.appendChild(svg);
-      drawGrid(); drawTasks(); drawRoutes();
+      drawGrid(); drawTasks(); drawRoutes().then(drawRooms);
       if (changed || o.refit) fit();
     }
   }
   function drawR6() {
+    limpiaCajas();
     const { map, site, floorIdx } = cur; const r = map.r6; const set = Engine.siteSet(map, site); const X = x => x - minX, Y = y => y - minY;
     const g = el('g', { class: 'r6 hit' }); svg.appendChild(g);
     // escotillas
@@ -60,6 +61,7 @@ window.MapView = (() => {
       const on = set && b.set === set.set; const R = on ? (cur.zoomSite ? 32 : 25) : 14; const cx = X(b.left), cy = Y(b.top);
       const col = on ? team : '#5a636d';
       const gg = el('g', { class: 'bombmk' + (on ? '' : ' off') });
+      aparta({ x: cx - R - 3, y: cy - R - 3, w: (R + 3) * 2, h: (R + 3) * 2 });
       if (on && cur.zoomSite) gg.appendChild(el('circle', { class: 'pulse', cx, cy, r: R + 10, fill: 'none', stroke: col, 'stroke-width': 2 }));
       gg.appendChild(el('circle', { cx, cy, r: R, fill: 'rgba(8,10,13,.88)', stroke: col, 'stroke-width': on ? 3 : 1.5, 'stroke-dasharray': on ? 'none' : '4 3' }));
       // la LETRA manda
@@ -74,9 +76,10 @@ window.MapView = (() => {
     // spawns (exterior)
     r.spawns.forEach(sp => { g.appendChild(el('circle', { class: 'spawn', cx: X(sp.left), cy: Y(sp.top), r: 14 })); g.appendChild(el('text', { class: 'sp', x: X(sp.left), y: Y(sp.top) + 4, 'text-anchor': 'middle' }, sp.letter || 'S')); g.appendChild(el('text', { class: 'room out', x: X(sp.left), y: Y(sp.top) + 28, 'text-anchor': 'middle' }, (sp.es || sp.en || '').replace(/<br\s*\/?>/g, ' '))); });
     // labels
-    if (cur.labels !== false) r.rooms.filter(l => l.f === floorIdx || l.out).forEach(l => { const t = el('text', { class: 'room' + (l.small ? ' small' : '') + (l.out ? ' out' : ''), x: X(l.left), y: Y(l.top), 'text-anchor': 'middle' }); const lines = String(cur.lang === 'en' ? l.en : l.es || l.en).split(/<br\s*\/?>/); lines.forEach((ln, i) => { t.appendChild(el('tspan', { x: X(l.left), dy: i ? 13 : 0 }, ln)); }); g.appendChild(t); });
+    _rooms = { r, X, Y, floorIdx };   // los nombres se pintan al final, ceden ante todo lo demas
   }
   function drawGrid() {
+    limpiaCajas();
     const { map, site, floorIdx } = cur; const cell = 100; const g = el('g', { class: 'grid' }); svg.appendChild(g);
     const fl = (site.geo && (site.geo[floorIdx] || site.geo[site.fl])) || []; g.appendChild(el('rect', { x: 0, y: 0, width: W, height: H, fill: '#0b0c0e' }));
     fl.forEach(rm => { const x = rm.c * cell + 6, y = rm.r * cell + 6, w = rm.w * cell - 12, h = rm.h * cell - 12; const cls = rm.t === 'site' ? 'gs' : rm.t === 'ext' ? 'ge' : 'gr'; g.appendChild(el('rect', { x, y, width: w, height: h, rx: 4, fill: rm.t === 'site' ? 'rgba(226,147,47,.16)' : rm.t === 'ext' ? 'rgba(255,255,255,.02)' : 'rgba(80,110,160,.14)', stroke: rm.t === 'site' ? '#e2932f' : rm.t === 'ext' ? '#2f353d' : '#4a5566', 'stroke-width': rm.t === 'site' ? 2 : 1.2, 'stroke-dasharray': rm.t === 'ext' ? '6 5' : 'none' })); const t = el('text', { class: 'room' + (rm.t === 'ext' ? ' out' : ''), x: x + w / 2, y: y + h / 2 + 4, 'text-anchor': 'middle' }, rm.n); g.appendChild(t); if (rm.t === 'site') g.appendChild(el('text', { class: 'bl', x: x + 10, y: y + 18 }, '◆ BOMBA')); });
@@ -132,14 +135,42 @@ window.MapView = (() => {
       gg.appendChild(im);
     } else gg.appendChild(el('text', { class: 'bn', x, y: y + 4, 'text-anchor': 'middle' }, rt.tag || ''));
     gg.appendChild(el('circle', { cx: x, cy: y, r: r + 1.5, fill: 'none', stroke: rt.ring || rt.color, 'stroke-width': big ? 4 : 3 }));
+    aparta({ x: x - r - 4, y: y - r - 4, w: (r + 4) * 2, h: (r + 4) * 2 });
     g.appendChild(gg); return gg;
   }
-  function pill(g, x, y, text, color, big) { const w = text.length * (big ? 8.2 : 6.6) + 18, h = big ? 24 : 20; const gg = el('g', { class: 'pill' }); gg.appendChild(el('rect', { x: x - 6, y: y - h / 2, width: w, height: h, rx: h / 2, fill: 'rgba(3,6,10,.85)', stroke: color, 'stroke-width': 1.5 })); gg.appendChild(el('text', { class: 'pl' + (big ? ' big' : ''), x: x + 3, y: y + (big ? 5 : 4), fill: color }, text)); g.appendChild(gg); return gg; }
+  // ---------- reparto de etiquetas: nada encimado ----------
+  // Cada cosa que se dibuja aparta su rectangulo. Si una etiqueta cae sobre algo ya
+  // puesto, se busca el hueco libre mas cercano y se le tira una linea fina al marcador.
+  let _cajas = [];
+  let _cajasBase = [];
+  function limpiaCajas() { _cajas = []; _cajasBase = []; }
+  function choca(b) { return _cajas.some(c => b.x < c.x + c.w && b.x + b.w > c.x && b.y < c.y + c.h && b.y + b.h > c.y); }
+  function aparta(b) { _cajas.push(b); return b; }
+  function hueco(x, y, w, h) {
+    const intento = (dx, dy) => ({ x: x - 6 + dx, y: y - h / 2 + dy, w, h });
+    let b = intento(0, 0);
+    if (!choca(b)) return aparta(b);
+    const pasos = [];
+    for (let r = 1; r <= 7; r++) { const d = r * (h + 4); pasos.push([0, -d], [0, d], [-(w + 16), -d], [-(w + 16), d], [-(w + 16), 0], [w * 0.5, -d], [w * 0.5, d]); }
+    for (const [dx, dy] of pasos) { b = intento(dx, dy); if (!choca(b)) return aparta(b); }
+    return aparta(intento(0, 0));
+  }
+  function pill(g, x, y, text, color, big) {
+    const w = String(text).length * (big ? 8.2 : 6.6) + 18, h = big ? 24 : 20;
+    const b = hueco(x, y, w, h);
+    const px = b.x + 6, py = b.y + h / 2;                    // centro real tras esquivar
+    const gg = el('g', { class: 'pill' });
+    if (Math.abs(px - x) > 3 || Math.abs(py - y) > 3)        // se movio: hilo al marcador
+      gg.appendChild(el('line', { x1: x, y1: y, x2: px, y2: py, stroke: color, 'stroke-width': 1, opacity: .5 }));
+    gg.appendChild(el('rect', { x: b.x, y: b.y, width: w, height: h, rx: h / 2, fill: 'rgba(3,6,10,.88)', stroke: color, 'stroke-width': 1.5 }));
+    gg.appendChild(el('text', { class: 'pl' + (big ? ' big' : ''), x: px + 3, y: py + (big ? 5 : 4), fill: color }, text));
+    g.appendChild(gg); return gg;
+  }
   function badge(g, x, y, n, color, r = 9) { g.appendChild(el('circle', { cx: x, cy: y, r, fill: color, stroke: '#000', 'stroke-width': 2 })); g.appendChild(el('text', { class: 'bn', x, y: y + 3.5, 'text-anchor': 'middle' }, String(n))); }
   const TASKICON = { wall: 'M-9 -3h18v6h-18z', hatch: 'M-7 -7h14v14h-14z', window: 'M-8 -6h16v12h-16z', door: 'M-5 -8h10v16h-10z', breach: 'M0 -10l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z', rappel: 'M0 -9v18M-6 -3l6-6 6 6' };
   function drawTasks() {
     svg.querySelectorAll('.tasks').forEach(x => x.remove());
-    const list = cur.tasks || []; if (!list.length) return;
+    const list = cur.tasks || []; if (!list.length) { _cajasBase = _cajas.slice(); return; }
     const g = el('g', { class: 'tasks' }); svg.appendChild(g); const X = x => x - minX, Y = y => y - minY;
     const foco = cur.focusSlot; const fase = cur.taskPhase;
     list.forEach(t => {
@@ -159,8 +190,33 @@ window.MapView = (() => {
       }
       g.appendChild(gg);
     });
+    _cajasBase = _cajas.slice();
+  }
+
+  // Nombres de cuarto: van hasta el final. Si no hay hueco libre, ese nombre NO se pinta
+  // (vale mas ver a tu escuadra y tus tareas que leer el nombre de un cuarto).
+  let _rooms = null;
+  function drawRooms() {
+    svg.querySelectorAll('.rooms').forEach(x => x.remove());
+    if (!_rooms || cur.labels === false) return;
+    const { r, X, Y, floorIdx } = _rooms; const g = el('g', { class: 'rooms' }); svg.appendChild(g);
+    r.rooms.filter(l => l.f === floorIdx || l.out).forEach(l => {
+      const lines = String(cur.lang === 'en' ? l.en : l.es || l.en).split(/<br\s*\/?>/);
+      const w = Math.max(...lines.map(z => z.length)) * (l.small ? 4.4 : 5.2) + 6, h = lines.length * 13 + 4;
+      // primero intenta correrse un poco; solo si de plano no cabe, no se pinta
+      let cx = X(l.left), cy = Y(l.top), ok = false;
+      for (const [dx, dy] of [[0,0],[0,-16],[0,16],[0,-30],[0,30],[-w*.6,0],[w*.6,0],[0,-44],[0,44]]) {
+        const caja = { x: cx + dx - w / 2, y: cy + dy - 10, w, h };
+        if (!choca(caja)) { aparta(caja); cx += dx; cy += dy; ok = true; break; }
+      }
+      if (!ok) return;
+      const t = el('text', { class: 'room' + (l.small ? ' small' : '') + (l.out ? ' out' : ''), x: cx, y: cy, 'text-anchor': 'middle' });
+      lines.forEach((ln, i) => { t.appendChild(el('tspan', { x: cx, dy: i ? 13 : 0 }, ln)); });
+      g.appendChild(t);
+    });
   }
   async function drawRoutes(fast) {
+    _cajas = _cajasBase.slice();
     const token = ++drawToken; const { routes = [], floorIdx, editable, selected } = cur; const X = x => x - minX, Y = y => y - minY;
     const geoms = await Promise.all(routes.map(rt => geometry(rt, fast)));
     if (token !== drawToken) return;
@@ -212,5 +268,5 @@ window.MapView = (() => {
   function setFloor(idx) { if (!cur) return; show({ ...cur, floorIdx: idx }); }
   function zoom(k) { const r = root.getBoundingClientRect(); const mx = r.width / 2, my = r.height / 2; const ns = Math.min(4, Math.max(0.12, s * k)); tx = mx - (mx - tx) * (ns / s); ty = my - (my - ty) * (ns / s); s = ns; apply(); }
   function headFloor(id) { const r = routeEls[id]; return r ? r.headFloor : null; }
-  return { mount, show, setFloor, headFloor, fit: () => cur && show({ ...cur, refit: true }), zoom, redraw: () => cur && drawRoutes(), setProgress, get cur() { return cur; } };
+  return { mount, show, setFloor, headFloor, fit: () => cur && show({ ...cur, refit: true }), zoom, redraw: () => cur && drawRoutes().then(drawRooms), setProgress, get cur() { return cur; } };
 })();

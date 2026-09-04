@@ -124,13 +124,38 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
     $('#rNum').textContent = 'Ronda ' + S.round; $('#rMinus').onclick = () => commit({ round: Math.max(1, S.round - 1) }); $('#rPlus').onclick = () => commit({ round: S.round + 1 });
   }
   function applyStrat(id) { S.selected = null; if (id === 'custom') { commit({ strat: 'custom' }); return; } const st = siteStrats(); const list = S.side === 'atk' ? st.attack : st.defense; const x = list.find(y => y.id === id); if (!x) return; const picks = { ...S.picks }; ROSTER().forEach((p, i) => { picks[p.id] = { op: x.ops[i] ? x.ops[i].op : undefined }; }); commit({ strat: id, picks }); }
+  // Separa los monitos que caen casi en el mismo punto: se empujan entre si hasta que
+  // ninguno queda encima de otro. Sin esto, en un sitio chico salen todos amontonados.
+  function separar(marcas, minD) {
+    const P = marcas.map(r => r.pts[0]); if (P.length < 2) return;
+    for (let it = 0; it < 60; it++) {
+      let movio = false;
+      for (let a = 0; a < P.length; a++) for (let b = a + 1; b < P.length; b++) {
+        if (P[a].f !== P[b].f) continue;
+        let dx = P[b].x - P[a].x, dy = P[b].y - P[a].y; let d = Math.hypot(dx, dy);
+        if (d >= minD) continue;
+        if (d < 0.01) { dx = Math.cos(a * 2.4); dy = Math.sin(a * 2.4); d = 1; }
+        const k = (minD - d) / 2 / d;
+        P[a].x -= dx * k; P[a].y -= dy * k; P[b].x += dx * k; P[b].y += dy * k; movio = true;
+      }
+      if (!movio) break;
+    }
+  }
+
+  // El plano arranca en el piso del sitio: si el bomb es del 2do, no sirve ver la planta baja.
+  function pisoDelSitio(m, s) {
+    if (!m || !m.r6 || !s) return 0;
+    const i = Engine.floorIndex(m, s.fl);
+    return (i == null || i < 0) ? 0 : i;
+  }
+
   function stratRoutes() { // rutas de la estrategia activa: spawn → cuartos reales → bomba, con zonas de defensores
     const m = map(), s = site(), x = curStrat(); if (!x) return null; const out = [];
     const set = Engine.siteSet(m, s);
     ROSTER().forEach((p, i) => {
       const pick = S.picks[p.id] || {}; const o = Engine.op(pick.op); if (!o) return;
       const so = x.ops.find(z => z.op === pick.op) || x.ops[i]; if (!so) return;
-      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, ring: TEAM(), mark: true, pts: [{ ...pt, x: pt.x + (i % 2 ? 26 : -26), y: pt.y + (i > 2 ? 26 : -18) }], color: COL(p.id), label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
+      if (S.side === 'def') { const pt = roomPoint(m, so.room, so.f); if (!pt) return; out.push({ id: p.id, opId: o.id, ring: TEAM(), mark: true, pts: [{ ...pt }], color: COL(p.id), label: `${o.n} · ${String(so.role || '').toUpperCase()}`, tag: initials({ nick: p.nick || p.id }), job: so.job }); return; }
       const key = `${S.map}/${s.id}/${x.id}/${so.op}`; let pts = S.pins[key];
       const fixed = repairPath(m, so, s); so._fix = fixed;
       if (!pts) { pts = []; const sp = roomPoint(m, so.spawn, -1); if (sp) pts.push({ ...sp, spawn: true }); fixed.forEach(stp => { const pt = stp.pt; if (pt && !(pts.length && Math.abs(pts[pts.length - 1].x - pt.x) < 2 && Math.abs(pts[pts.length - 1].y - pt.y) < 2)) pts.push({ ...pt, via: stp.via, do: stp.do, room: stp.room }); });
@@ -144,6 +169,7 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
       const clear = (so.clear || []).map(c => { const pt = roomPoint(m, c.room, c.f); return pt ? { ...pt, short: short(c.threat), threat: c.threat, how: c.how } : null; }).filter(Boolean);
       out.push({ id: p.id, opId: o.id, ring: TEAM(), pts: pts.map(q => ({ ...q })), clear, color: COL(p.id), label: o.n, tag: initials({ nick: p.nick || p.id }), key, so });
     });
+    separar(out, S.side === 'def' ? 46 : 42);   // en ataque todos salen del mismo spawn: hay que abrirlos
     return out;
   }
 
@@ -279,7 +305,7 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
     let mm = m; if (!m.r6 && m.userImgs && m.userImgs[String(S.floorIdx)]) { mm = { ...m, r6: { floors: [{ index: 0, top: -600, left: -800, name: 'user', nameEs: 'Plano', def: true }], rooms: [], bombs: [], hatches: [], spawns: [], cameras: [] }, floorImgs: [{ idx: 0, src: m.userImgs[String(S.floorIdx)] }] }; }
     const teamCol = CSSVAR('--team') || '#39b6f0';
     const enemyCol = CSSVAR('--enemy') || '#ff4d9d';
-    MapView.show({ map: mm, site: s, side: S.side, teamColor: teamCol, enemyColor: enemyCol, floorIdx: mm === m ? S.floorIdx : 0, zoomSite: S.step === 3, tasks: S.step === 3 ? [] : (_tk = taskMarks()), focusSlot: focoUtil(_tk), taskPhase: S.step === 5 && S.live ? Round.phaseIndex() : (S.side === 'def' ? 0 : 1), routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
+    MapView.show({ map: mm, site: s, side: S.side, teamColor: teamCol, enemyColor: enemyCol, floorIdx: mm === m ? (S.floorIdx != null ? S.floorIdx : pisoDelSitio(m, s)) : 0, zoomSite: S.step === 3, tasks: S.step === 3 ? [] : (_tk = taskMarks()), focusSlot: focoUtil(_tk), taskPhase: S.step === 5 && S.live ? Round.phaseIndex() : (S.side === 'def' ? 0 : 1), routes: S.step === 3 ? [] : routes(), labels: S.labels, lang: S.lang, editable: S.edit, selected: S.selected || S.focus, progress: S.step === 5 && S.side === 'atk' ? Round.progress() : null, onPinChange: (rt, pts) => { if (!rt.key) return; S.pins[rt.key] = pts.map(p => ({ x: Math.round(p.x), y: Math.round(p.y), f: p.f, spawn: !!p.spawn, bomb: !!p.bomb })); commit({ pins: S.pins }); } });
   }
   async function uploadPlan() { const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.onchange = async () => { const f = inp.files[0]; if (!f) return; const rd = new FileReader(); rd.onload = async () => { const m = map(); m.userImgs = m.userImgs || {}; m.userImgs[String(S.floorIdx)] = rd.result; await Store.idb.put(`${m.id}|${S.floorIdx}`, rd.result); Store.toast('Plano guardado para ' + m.n); renderMapList(); renderCanvas(); }; rd.readAsDataURL(f); }; inp.click(); }
 
@@ -851,7 +877,7 @@ const DV = (() => { const t = [...document.querySelectorAll('script[src*="js/app
   $$('.top .nav button').forEach(b => b.onclick = () => showView(b.dataset.view));
   $$('#sideTabs button').forEach(b => b.onclick = () => { $$('#sideTabs button').forEach(x => x.classList.toggle('on', x === b)); $$('.side .pane').forEach(p => p.classList.toggle('on', p.id === 'p-' + b.dataset.pane)); });
   if ($('#mapSearch')) $('#mapSearch').oninput = renderMapList; $('#salaBtn').onclick = () => showView('sala'); $('#modal').onclick = e => { if (e.target.id === 'modal') closeModal(); };
-  window.__dbg = { repairPath, taskMarks, Round, S, COL, loadStrats, roomPoint };
+  window.__dbg = { repairPath, taskMarks, Round, S, COL, loadStrats, roomPoint, stratRoutes, separar, curStrat, map, site };
   window.addEventListener('resize', () => MapView.fit());
   // ---------- arranque ----------
   const hash = new URLSearchParams(location.hash.slice(1)); if (hash.get('m')) { S.map = hash.get('m'); S.site = hash.get('s') || null; S.step = 4; S.siteKnown = true; }
